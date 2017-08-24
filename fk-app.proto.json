@@ -1,0 +1,60 @@
+{
+  "nested": {
+    "fieldkitdevice": {
+      "nested": {
+        "PingRequest": {
+          "fields": {
+            "time": {
+              "type": "int64",
+              "id": 1
+            }
+          }
+        },
+        "PingResponse": {
+          "fields": {
+            "time": {
+              "type": "int64",
+              "id": 1
+            }
+          }
+        },
+        "RequestHeader": {
+          "fields": {
+            "type": {
+              "type": "MessageType",
+              "id": 1
+            }
+          },
+          "nested": {
+            "MessageType": {
+              "values": {
+                "PING": 0,
+                "SAY_HELLO": 1
+              }
+            }
+          }
+        },
+        "ResponseHeader": {
+          "fields": {
+            "success": {
+              "type": "bool",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "Service": {
+          "methods": {
+            "Ping": {
+              "requestType": "PingRequest",
+              "responseType": "PingResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}

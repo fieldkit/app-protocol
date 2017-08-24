@@ -1,0 +1,27 @@
+syntax = "proto3";
+package fieldkitdevice;
+
+message PingRequest {
+  int64 time = 1;
+}
+
+message PingResponse {
+  int64 time = 1;
+}
+
+message RequestHeader {
+  enum MessageType {
+    PING = 0;
+    SAY_HELLO = 1;
+  }
+  MessageType type = 1;
+}
+
+message ResponseHeader {
+  bool success = 1;
+  string error = 2;
+}
+
+service Service {
+  rpc Ping (PingRequest) returns (PingResponse) {}
+}
