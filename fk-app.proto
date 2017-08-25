@@ -1,5 +1,5 @@
 syntax = "proto3";
-package fieldkitdevice;
+package fk_app;
 
 message PingRequest {
   int64 time = 1;

@@ -1,6 +1,6 @@
 {
   "nested": {
-    "fieldkitdevice": {
+    "fk_app": {
       "nested": {
         "PingRequest": {
           "fields": {
