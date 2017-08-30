@@ -2,55 +2,76 @@
   "nested": {
     "fk_app": {
       "nested": {
-        "PingRequest": {
+        "QueryType": {
+          "values": {
+            "QUERY_NONE": 0,
+            "QUERY_CAPABILITIES": 1
+          }
+        },
+        "ReplyType": {
+          "values": {
+            "REPLY_NONE": 0,
+            "REPLY_CAPABILITIES": 1
+          }
+        },
+        "QueryCapabilities": {
           "fields": {
-            "time": {
+            "version": {
               "type": "int64",
               "id": 1
             }
           }
         },
-        "PingResponse": {
+        "SensorCapabilities": {
           "fields": {
-            "time": {
-              "type": "int64",
-              "id": 1
-            }
-          }
-        },
-        "RequestHeader": {
-          "fields": {
-            "type": {
-              "type": "MessageType",
-              "id": 1
-            }
-          },
-          "nested": {
-            "MessageType": {
-              "values": {
-                "PING": 0,
-                "SAY_HELLO": 1
-              }
-            }
-          }
-        },
-        "ResponseHeader": {
-          "fields": {
-            "success": {
-              "type": "bool",
+            "index": {
+              "type": "int32",
               "id": 1
             },
-            "error": {
+            "name": {
               "type": "string",
               "id": 2
             }
           }
         },
-        "Service": {
-          "methods": {
-            "Ping": {
-              "requestType": "PingRequest",
-              "responseType": "PingResponse"
+        "Capabilities": {
+          "fields": {
+            "version": {
+              "type": "int32",
+              "id": 1
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "sensors": {
+              "rule": "repeated",
+              "type": "SensorCapabilities",
+              "id": 4
+            }
+          }
+        },
+        "WireMessageQuery": {
+          "fields": {
+            "type": {
+              "type": "QueryType",
+              "id": 1
+            },
+            "queryCapabilities": {
+              "type": "QueryCapabilities",
+              "id": 2
+            }
+          }
+        },
+        "WireMessageReply": {
+          "fields": {
+            "type": {
+              "type": "ReplyType",
+              "id": 1
+            },
+            "capabilities": {
+              "type": "Capabilities",
+              "id": 2
             }
           }
         }

@@ -1,27 +1,37 @@
 syntax = "proto3";
 package fk_app;
 
-message PingRequest {
-  int64 time = 1;
+enum QueryType {
+  QUERY_NONE = 0;
+  QUERY_CAPABILITIES = 1;
 }
 
-message PingResponse {
-  int64 time = 1;
+enum ReplyType {
+  REPLY_NONE = 0;
+  REPLY_CAPABILITIES = 1;
 }
 
-message RequestHeader {
-  enum MessageType {
-    PING = 0;
-    SAY_HELLO = 1;
-  }
-  MessageType type = 1;
+message QueryCapabilities {
+  int64 version = 1;
 }
 
-message ResponseHeader {
-  bool success = 1;
-  string error = 2;
+message SensorCapabilities {
+  int32 index = 1;
+  string name = 2;
 }
 
-service Service {
-  rpc Ping (PingRequest) returns (PingResponse) {}
+message Capabilities {
+  int32 version = 1;
+  string name = 3;
+  repeated SensorCapabilities sensors = 4;
+}
+
+message WireMessageQuery {
+  QueryType type = 1;
+  QueryCapabilities queryCapabilities = 2;
+}
+
+message WireMessageReply {
+  ReplyType type = 1;
+  Capabilities capabilities = 2;
 }
