@@ -5,39 +5,50 @@
         "QueryType": {
           "values": {
             "QUERY_NONE": 0,
-            "QUERY_CAPABILITIES": 1
+            "QUERY_CAPABILITIES": 1,
+            "QUEYR_CONFIGURE_SENSOR": 2,
+            "QUERY_DATA_SETS": 3,
+            "QUERY_DOWNLOAD_DATA_SET": 4,
+            "QUERY_ERASE_DATA_SET": 5
           }
         },
         "ReplyType": {
           "values": {
             "REPLY_NONE": 0,
-            "REPLY_CAPABILITIES": 1
+            "REPLY_SUCCESS": 1,
+            "REPLY_ERROR": 2,
+            "REPLY_CAPABILITIES": 3,
+            "REPLY_DATA_SETS": 4
           }
         },
         "QueryCapabilities": {
           "fields": {
             "version": {
-              "type": "int64",
+              "type": "uint32",
               "id": 1
             }
           }
         },
         "SensorCapabilities": {
           "fields": {
-            "index": {
-              "type": "int32",
+            "id": {
+              "type": "uint32",
               "id": 1
             },
             "name": {
               "type": "string",
               "id": 2
+            },
+            "frequency": {
+              "type": "uint32",
+              "id": 3
             }
           }
         },
         "Capabilities": {
           "fields": {
             "version": {
-              "type": "int32",
+              "type": "uint32",
               "id": 1
             },
             "name": {
@@ -51,6 +62,112 @@
             }
           }
         },
+        "ConfigureSensorQuery": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "frequency": {
+              "type": "uint32",
+              "id": 2
+            }
+          }
+        },
+        "QueryDataSets": {
+          "fields": {}
+        },
+        "DataSet": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "sensor": {
+              "type": "uint32",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "size": {
+              "type": "uint32",
+              "id": 4
+            },
+            "time": {
+              "type": "uint32",
+              "id": 5
+            },
+            "hash": {
+              "type": "uint32",
+              "id": 6
+            }
+          }
+        },
+        "DataSets": {
+          "fields": {
+            "dataSets": {
+              "rule": "repeated",
+              "type": "DataSet",
+              "id": 1
+            }
+          }
+        },
+        "DownloadDataSet": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "page": {
+              "type": "uint32",
+              "id": 2
+            }
+          }
+        },
+        "Sample": {
+          "fields": {
+            "time": {
+              "type": "uint32",
+              "id": 1
+            },
+            "value": {
+              "type": "float",
+              "id": 2
+            }
+          }
+        },
+        "DataSetData": {
+          "fields": {
+            "time": {
+              "type": "uint32",
+              "id": 1
+            },
+            "samples": {
+              "rule": "repeated",
+              "type": "Sample",
+              "id": 2
+            },
+            "data": {
+              "rule": "repeated",
+              "type": "float",
+              "id": 3
+            },
+            "hash": {
+              "type": "uint32",
+              "id": 4
+            }
+          }
+        },
+        "EraseDataSet": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            }
+          }
+        },
         "WireMessageQuery": {
           "fields": {
             "type": {
@@ -60,6 +177,30 @@
             "queryCapabilities": {
               "type": "QueryCapabilities",
               "id": 2
+            },
+            "configureSensor": {
+              "type": "ConfigureSensorQuery",
+              "id": 3
+            },
+            "queryDataSets": {
+              "type": "QueryDataSets",
+              "id": 4
+            },
+            "downloadDataSet": {
+              "type": "DownloadDataSet",
+              "id": 5
+            },
+            "eraseDataSet": {
+              "type": "EraseDataSet",
+              "id": 6
+            }
+          }
+        },
+        "Error": {
+          "fields": {
+            "message": {
+              "type": "string",
+              "id": 1
             }
           }
         },
@@ -69,9 +210,22 @@
               "type": "ReplyType",
               "id": 1
             },
+            "errors": {
+              "rule": "repeated",
+              "type": "Error",
+              "id": 2
+            },
             "capabilities": {
               "type": "Capabilities",
-              "id": 2
+              "id": 3
+            },
+            "dataSets": {
+              "type": "DataSets",
+              "id": 4
+            },
+            "dataSetData": {
+              "type": "DataSetData",
+              "id": 5
             }
           }
         }
