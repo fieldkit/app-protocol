@@ -53,7 +53,7 @@ message DataSet {
   uint32 sensor = 2;
   string name = 3;
   uint32 size = 4;
-  uint32 time = 5;
+  uint64 time = 5;
   uint32 hash = 6;
 }
 
@@ -70,7 +70,7 @@ message DownloadDataSet {
 }
 
 message Sample {
-  uint32 time = 1;
+  uint64 time = 1;
   float value = 2;
 }
 
@@ -79,7 +79,7 @@ message Sample {
 // 2) Individual samples taken at certain times.
 
 message DataSetData {
-  uint32 time = 1;
+  uint64 time = 1;
   repeated Sample samples = 2;
   repeated float data = 3;
   uint32 hash = 4;

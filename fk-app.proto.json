@@ -96,7 +96,7 @@
               "id": 4
             },
             "time": {
-              "type": "uint32",
+              "type": "uint64",
               "id": 5
             },
             "hash": {
@@ -129,7 +129,7 @@
         "Sample": {
           "fields": {
             "time": {
-              "type": "uint32",
+              "type": "uint64",
               "id": 1
             },
             "value": {
@@ -141,7 +141,7 @@
         "DataSetData": {
           "fields": {
             "time": {
-              "type": "uint32",
+              "type": "uint64",
               "id": 1
             },
             "samples": {
