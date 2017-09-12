@@ -1,6 +1,10 @@
 syntax = "proto3";
 package fk_app;
 
+// QueryType provides a way of determining the incoming type of a message. In
+// some cases simply looking at which "sub-message" is populated would work but the
+// QueryType is useful for situations where the query sub-message is empty.
+
 enum QueryType {
   QUERY_NONE = 0;
   QUERY_CAPABILITIES = 1;
@@ -10,6 +14,10 @@ enum QueryType {
   QUERY_ERASE_DATA_SET = 5;
 }
 
+// ReplyType serves a similar purpose. In general situations this isn't as
+// useful as the QueryType, but may be useful if there's ever any kind of
+// asynchronous communications where replies can come back out of order.
+
 enum ReplyType {
   REPLY_NONE = 0;
   REPLY_SUCCESS = 1;
@@ -18,11 +26,15 @@ enum ReplyType {
   REPLY_DATA_SETS = 4;
 }
 
-// Querying information about the device, what it's capable of.
+// Querying information about the device, what it's capable of. Typically the
+// first message that will be sent to a device.
 
 message QueryCapabilities {
   uint32 version = 1;
 }
+
+// Information about an individual sensor attached to the device. Temerature,
+// Depth, Conductivity, Humidity, etc...
 
 message SensorCapabilities {
   uint32 id = 1;
@@ -36,14 +48,16 @@ message Capabilities {
   repeated SensorCapabilities sensors = 4;
 }
 
-// Configuring the device.
+// Configuring a particular sensor on the device. Some sensors may require
+// sub-messages to be defined here. It will be interesting to see how this has to
+// change to facilitate dynamic sensor configuration.
 
 message ConfigureSensorQuery {
   uint32 id = 1;
   uint32 frequency = 2;
 }
 
-// Querying data sets that the device has on memory.
+// Querying for a list of data sets that the device has in memory.
 
 message QueryDataSets {
 }
@@ -69,14 +83,16 @@ message DownloadDataSet {
   uint32 page = 2;
 }
 
+// Datasets can be stored in multiple ways depending on the need:
+// 1) Values at a certain fixed frequency.
+// 2) Individual samples taken at certain times.
+// We'll need to discuss a raw format possibly too for situations where the
+// Protobuf overhead is too great?
+
 message Sample {
   uint64 time = 1;
   float value = 2;
 }
-
-// Datasets can be stored in multiple ways depending on the need:
-// 1) Values at a certain fixed frequency.
-// 2) Individual samples taken at certain times.
 
 message DataSetData {
   uint64 time = 1;
