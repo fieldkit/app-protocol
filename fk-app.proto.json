@@ -8,8 +8,9 @@
             "QUERY_CAPABILITIES": 1,
             "QUEYR_CONFIGURE_SENSOR": 2,
             "QUERY_DATA_SETS": 3,
-            "QUERY_DOWNLOAD_DATA_SET": 4,
-            "QUERY_ERASE_DATA_SET": 5
+            "QUERY_DATA_SET": 4,
+            "QUERY_DOWNLOAD_DATA_SET": 5,
+            "QUERY_ERASE_DATA_SET": 6
           }
         },
         "ReplyType": {
@@ -18,7 +19,8 @@
             "REPLY_SUCCESS": 1,
             "REPLY_ERROR": 2,
             "REPLY_CAPABILITIES": 3,
-            "REPLY_DATA_SETS": 4
+            "REPLY_DATA_SETS": 4,
+            "REPLY_DATA_SET": 5
           }
         },
         "QueryCapabilities": {
@@ -160,6 +162,14 @@
             }
           }
         },
+        "QueryDataSet": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            }
+          }
+        },
         "EraseDataSet": {
           "fields": {
             "id": {
@@ -186,13 +196,17 @@
               "type": "QueryDataSets",
               "id": 4
             },
+            "queryDataSet": {
+              "type": "QueryDataSet",
+              "id": 5
+            },
             "downloadDataSet": {
               "type": "DownloadDataSet",
-              "id": 5
+              "id": 6
             },
             "eraseDataSet": {
               "type": "EraseDataSet",
-              "id": 6
+              "id": 7
             }
           }
         },

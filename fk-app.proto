@@ -10,8 +10,9 @@ enum QueryType {
   QUERY_CAPABILITIES = 1;
   QUEYR_CONFIGURE_SENSOR = 2;
   QUERY_DATA_SETS = 3;
-  QUERY_DOWNLOAD_DATA_SET = 4;
-  QUERY_ERASE_DATA_SET = 5;
+  QUERY_DATA_SET = 4;
+  QUERY_DOWNLOAD_DATA_SET = 5;
+  QUERY_ERASE_DATA_SET = 6;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -24,6 +25,7 @@ enum ReplyType {
   REPLY_ERROR = 2;
   REPLY_CAPABILITIES = 3;
   REPLY_DATA_SETS = 4;
+  REPLY_DATA_SET = 5;
 }
 
 // Querying information about the device, what it's capable of. Typically the
@@ -101,6 +103,12 @@ message DataSetData {
   uint32 hash = 4;
 }
 
+// Query a data set.
+
+message QueryDataSet {
+  uint32 id = 1;
+}
+
 // Erase a data set.
 
 message EraseDataSet {
@@ -114,8 +122,9 @@ message WireMessageQuery {
   QueryCapabilities queryCapabilities = 2;
   ConfigureSensorQuery configureSensor = 3;
   QueryDataSets queryDataSets = 4;
-  DownloadDataSet downloadDataSet = 5;
-  EraseDataSet eraseDataSet = 6;
+  QueryDataSet queryDataSet = 5;
+  DownloadDataSet downloadDataSet = 6;
+  EraseDataSet eraseDataSet = 7;
 }
 
 message Error {
