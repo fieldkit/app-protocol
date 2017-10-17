@@ -67,10 +67,11 @@ message QueryDataSets {
 message DataSet {
   uint32 id = 1;
   uint32 sensor = 2;
-  string name = 3;
+  uint64 time = 3;
   uint32 size = 4;
-  uint64 time = 5;
+  uint32 pages = 5;
   uint32 hash = 6;
+  string name = 7;
 }
 
 // TODO: Paging?
@@ -98,9 +99,10 @@ message Sample {
 
 message DataSetData {
   uint64 time = 1;
-  repeated Sample samples = 2;
-  repeated float data = 3;
-  uint32 hash = 4;
+  uint32 page = 2;
+  repeated Sample samples = 3;
+  repeated float data = 4;
+  uint32 hash = 5;
 }
 
 // Query a data set.
