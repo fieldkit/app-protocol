@@ -102,8 +102,9 @@ message DataSetData {
   uint64 time = 1;
   uint32 page = 2;
   repeated Sample samples = 3;
-  repeated float data = 4;
-  uint32 hash = 5;
+  repeated float floats = 4;
+  bytes data = 5;
+  uint32 hash = 6;
 }
 
 // Query a data set.
