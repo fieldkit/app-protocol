@@ -20,7 +20,8 @@
             "REPLY_ERROR": 2,
             "REPLY_CAPABILITIES": 3,
             "REPLY_DATA_SETS": 4,
-            "REPLY_DATA_SET": 5
+            "REPLY_DATA_SET": 5,
+            "REPLY_DOWNLOAD_DATA_SET": 6
           }
         },
         "QueryCapabilities": {
@@ -89,21 +90,25 @@
               "type": "uint32",
               "id": 2
             },
-            "name": {
-              "type": "string",
+            "time": {
+              "type": "uint64",
               "id": 3
             },
             "size": {
               "type": "uint32",
               "id": 4
             },
-            "time": {
-              "type": "uint64",
+            "pages": {
+              "type": "uint32",
               "id": 5
             },
             "hash": {
               "type": "uint32",
               "id": 6
+            },
+            "name": {
+              "type": "string",
+              "id": 7
             }
           }
         },
@@ -146,19 +151,23 @@
               "type": "uint64",
               "id": 1
             },
+            "page": {
+              "type": "uint32",
+              "id": 2
+            },
             "samples": {
               "rule": "repeated",
               "type": "Sample",
-              "id": 2
+              "id": 3
             },
             "data": {
               "rule": "repeated",
               "type": "float",
-              "id": 3
+              "id": 4
             },
             "hash": {
               "type": "uint32",
-              "id": 4
+              "id": 5
             }
           }
         },

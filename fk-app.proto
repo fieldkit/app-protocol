@@ -26,6 +26,7 @@ enum ReplyType {
   REPLY_CAPABILITIES = 3;
   REPLY_DATA_SETS = 4;
   REPLY_DATA_SET = 5;
+  REPLY_DOWNLOAD_DATA_SET = 6;
 }
 
 // Querying information about the device, what it's capable of. Typically the
