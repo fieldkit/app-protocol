@@ -10,7 +10,8 @@
             "QUERY_DATA_SETS": 3,
             "QUERY_DATA_SET": 4,
             "QUERY_DOWNLOAD_DATA_SET": 5,
-            "QUERY_ERASE_DATA_SET": 6
+            "QUERY_ERASE_DATA_SET": 6,
+            "QUERY_LIVE_DATA_POLL": 7
           }
         },
         "ReplyType": {
@@ -21,7 +22,8 @@
             "REPLY_CAPABILITIES": 3,
             "REPLY_DATA_SETS": 4,
             "REPLY_DATA_SET": 5,
-            "REPLY_DOWNLOAD_DATA_SET": 6
+            "REPLY_DOWNLOAD_DATA_SET": 6,
+            "REPLY_LIVE_DATA_POLL": 7
           }
         },
         "QueryCapabilities": {
@@ -175,6 +177,18 @@
             }
           }
         },
+        "LiveData": {
+          "fields": {
+            "busy": {
+              "type": "bool",
+              "id": 1
+            },
+            "dataSetData": {
+              "type": "DataSetData",
+              "id": 2
+            }
+          }
+        },
         "QueryDataSet": {
           "fields": {
             "id": {
@@ -253,6 +267,10 @@
             "dataSetData": {
               "type": "DataSetData",
               "id": 5
+            },
+            "liveData": {
+              "type": "LiveData",
+              "id": 6
             }
           }
         }

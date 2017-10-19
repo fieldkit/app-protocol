@@ -13,6 +13,7 @@ enum QueryType {
   QUERY_DATA_SET = 4;
   QUERY_DOWNLOAD_DATA_SET = 5;
   QUERY_ERASE_DATA_SET = 6;
+  QUERY_LIVE_DATA_POLL = 7;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -27,6 +28,7 @@ enum ReplyType {
   REPLY_DATA_SETS = 4;
   REPLY_DATA_SET = 5;
   REPLY_DOWNLOAD_DATA_SET = 6;
+  REPLY_LIVE_DATA_POLL = 7;
 }
 
 // Querying information about the device, what it's capable of. Typically the
@@ -107,6 +109,11 @@ message DataSetData {
   uint32 hash = 6;
 }
 
+message LiveData {
+  bool busy = 1;
+  DataSetData dataSetData = 2;
+}
+
 // Query a data set.
 
 message QueryDataSet {
@@ -141,4 +148,5 @@ message WireMessageReply {
   Capabilities capabilities = 3;
   DataSets dataSets = 4;
   DataSetData dataSetData = 5;
+  LiveData liveData = 6;
 }
