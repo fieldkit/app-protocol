@@ -181,6 +181,14 @@
             }
           }
         },
+        "LiveDataPoll": {
+          "fields": {
+            "interval": {
+              "type": "uint32",
+              "id": 1
+            }
+          }
+        },
         "LiveData": {
           "fields": {
             "dataSetDatas": {
@@ -235,6 +243,10 @@
             "eraseDataSet": {
               "type": "EraseDataSet",
               "id": 7
+            },
+            "liveDataPoll": {
+              "type": "LiveDataPoll",
+              "id": 8
             }
           }
         },

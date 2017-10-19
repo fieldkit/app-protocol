@@ -110,6 +110,10 @@ message DataSetData {
   uint32 hash = 7;
 }
 
+message LiveDataPoll {
+  uint32 interval = 1;
+}
+
 message LiveData {
   repeated DataSetData dataSetDatas = 1;
 }
@@ -136,6 +140,7 @@ message WireMessageQuery {
   QueryDataSet queryDataSet = 5;
   DownloadDataSet downloadDataSet = 6;
   EraseDataSet eraseDataSet = 7;
+  LiveDataPoll liveDataPoll = 8;
 }
 
 message Error {
