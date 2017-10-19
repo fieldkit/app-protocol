@@ -36,6 +36,7 @@ enum ReplyType {
 
 message QueryCapabilities {
   uint32 version = 1;
+  uint32 callerTime = 2;
 }
 
 // Information about an individual sensor attached to the device. Temerature,

@@ -31,6 +31,10 @@
             "version": {
               "type": "uint32",
               "id": 1
+            },
+            "callerTime": {
+              "type": "uint32",
+              "id": 2
             }
           }
         },
