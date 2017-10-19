@@ -103,15 +103,15 @@ message Sample {
 message DataSetData {
   uint64 time = 1;
   uint32 page = 2;
-  repeated Sample samples = 3;
-  repeated float floats = 4;
-  bytes data = 5;
-  uint32 hash = 6;
+  uint32 sensor = 3;
+  repeated Sample samples = 4;
+  repeated float floats = 5;
+  bytes data = 6;
+  uint32 hash = 7;
 }
 
 message LiveData {
-  bool busy = 1;
-  DataSetData dataSetData = 2;
+  repeated DataSetData dataSetDatas = 1;
 }
 
 // Query a data set.
