@@ -193,11 +193,27 @@
             }
           }
         },
+        "LiveDataSample": {
+          "fields": {
+            "sensor": {
+              "type": "uint32",
+              "id": 1
+            },
+            "time": {
+              "type": "uint64",
+              "id": 2
+            },
+            "value": {
+              "type": "float",
+              "id": 3
+            }
+          }
+        },
         "LiveData": {
           "fields": {
-            "dataSetDatas": {
+            "samples": {
               "rule": "repeated",
-              "type": "DataSetData",
+              "type": "LiveDataSample",
               "id": 1
             }
           }

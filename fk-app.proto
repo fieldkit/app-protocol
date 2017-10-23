@@ -115,8 +115,14 @@ message LiveDataPoll {
   uint32 interval = 1;
 }
 
+message LiveDataSample {
+  uint32 sensor = 1;
+  uint64 time = 2;
+  float value = 3;
+}
+
 message LiveData {
-  repeated DataSetData dataSetDatas = 1;
+  repeated LiveDataSample samples = 1;
 }
 
 // Query a data set.
