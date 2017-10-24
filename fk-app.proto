@@ -46,6 +46,7 @@ message SensorCapabilities {
   uint32 id = 1;
   string name = 2;
   uint32 frequency = 3;
+  string unitOfMeasure = 4;
 }
 
 message Capabilities {

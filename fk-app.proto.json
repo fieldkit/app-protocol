@@ -51,6 +51,10 @@
             "frequency": {
               "type": "uint32",
               "id": 3
+            },
+            "unitOfMeasure": {
+              "type": "string",
+              "id": 4
             }
           }
         },
