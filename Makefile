@@ -11,3 +11,5 @@ src/fk-app.pb.c src/fk-app.pb.h: fk-app.proto
 
 fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
+
+clean:
