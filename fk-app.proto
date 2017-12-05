@@ -68,6 +68,7 @@ message Capabilities {
 message TimeSpec {
   int32 fixed = 1;
   int32 interval = 2;
+  int32 offset = 3;
 }
 
 message Schedule {

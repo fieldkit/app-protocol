@@ -108,6 +108,10 @@
             "interval": {
               "type": "int32",
               "id": 2
+            },
+            "offset": {
+              "type": "int32",
+              "id": 3
             }
           }
         },
