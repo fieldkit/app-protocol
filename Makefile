@@ -13,3 +13,5 @@ fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
 
 clean:
+
+veryclean:
