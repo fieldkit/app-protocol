@@ -8,12 +8,14 @@ package fk_app;
 enum QueryType {
   QUERY_NONE = 0;
   QUERY_CAPABILITIES = 1;
-  QUEYR_CONFIGURE_SENSOR = 2;
+  QUERY_CONFIGURE_SENSOR = 2;
   QUERY_DATA_SETS = 3;
   QUERY_DATA_SET = 4;
   QUERY_DOWNLOAD_DATA_SET = 5;
   QUERY_ERASE_DATA_SET = 6;
   QUERY_LIVE_DATA_POLL = 7;
+  QUERY_SCHEDULES = 8;
+  QUERY_CONFIGUE_SCHEDULES = 9;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -39,20 +41,46 @@ message QueryCapabilities {
   uint32 callerTime = 2;
 }
 
+message ModuleCapabilities {
+  uint32 id = 1;
+  string name = 2;
+}
+
 // Information about an individual sensor attached to the device. Temerature,
 // Depth, Conductivity, Humidity, etc...
 
 message SensorCapabilities {
   uint32 id = 1;
-  string name = 2;
-  uint32 frequency = 3;
-  string unitOfMeasure = 4;
+  uint32 module = 2;
+  string name = 3;
+  uint32 frequency = 4;
+  string unitOfMeasure = 5;
 }
 
 message Capabilities {
   uint32 version = 1;
   string name = 3;
-  repeated SensorCapabilities sensors = 4;
+  repeated ModuleCapabilities modules = 4;
+  repeated SensorCapabilities sensors = 5;
+}
+
+message TimeSpec {
+  int32 fixed = 1;
+  int32 interval = 2;
+}
+
+message Schedule {
+  TimeSpec second = 1;
+  TimeSpec minute = 2;
+  TimeSpec hour = 3;
+  TimeSpec day = 4;
+}
+
+message Schedules {
+  Schedule readings = 1;
+  Schedule transmission = 2;
+  Schedule status = 3;
+  Schedule location = 4;
 }
 
 // Configuring a particular sensor on the device. Some sensors may require
@@ -149,6 +177,7 @@ message WireMessageQuery {
   DownloadDataSet downloadDataSet = 6;
   EraseDataSet eraseDataSet = 7;
   LiveDataPoll liveDataPoll = 8;
+  Schedules newSchedules = 9;
 }
 
 message Error {
@@ -162,4 +191,5 @@ message WireMessageReply {
   DataSets dataSets = 4;
   DataSetData dataSetData = 5;
   LiveData liveData = 6;
+  Schedules schedules = 7;
 }

@@ -6,12 +6,14 @@
           "values": {
             "QUERY_NONE": 0,
             "QUERY_CAPABILITIES": 1,
-            "QUEYR_CONFIGURE_SENSOR": 2,
+            "QUERY_CONFIGURE_SENSOR": 2,
             "QUERY_DATA_SETS": 3,
             "QUERY_DATA_SET": 4,
             "QUERY_DOWNLOAD_DATA_SET": 5,
             "QUERY_ERASE_DATA_SET": 6,
-            "QUERY_LIVE_DATA_POLL": 7
+            "QUERY_LIVE_DATA_POLL": 7,
+            "QUERY_SCHEDULES": 8,
+            "QUERY_CONFIGUE_SCHEDULES": 9
           }
         },
         "ReplyType": {
@@ -38,7 +40,7 @@
             }
           }
         },
-        "SensorCapabilities": {
+        "ModuleCapabilities": {
           "fields": {
             "id": {
               "type": "uint32",
@@ -47,14 +49,30 @@
             "name": {
               "type": "string",
               "id": 2
+            }
+          }
+        },
+        "SensorCapabilities": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "module": {
+              "type": "uint32",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
             },
             "frequency": {
               "type": "uint32",
-              "id": 3
+              "id": 4
             },
             "unitOfMeasure": {
               "type": "string",
-              "id": 4
+              "id": 5
             }
           }
         },
@@ -68,9 +86,66 @@
               "type": "string",
               "id": 3
             },
+            "modules": {
+              "rule": "repeated",
+              "type": "ModuleCapabilities",
+              "id": 4
+            },
             "sensors": {
               "rule": "repeated",
               "type": "SensorCapabilities",
+              "id": 5
+            }
+          }
+        },
+        "TimeSpec": {
+          "fields": {
+            "fixed": {
+              "type": "int32",
+              "id": 1
+            },
+            "interval": {
+              "type": "int32",
+              "id": 2
+            }
+          }
+        },
+        "Schedule": {
+          "fields": {
+            "second": {
+              "type": "TimeSpec",
+              "id": 1
+            },
+            "minute": {
+              "type": "TimeSpec",
+              "id": 2
+            },
+            "hour": {
+              "type": "TimeSpec",
+              "id": 3
+            },
+            "day": {
+              "type": "TimeSpec",
+              "id": 4
+            }
+          }
+        },
+        "Schedules": {
+          "fields": {
+            "readings": {
+              "type": "Schedule",
+              "id": 1
+            },
+            "transmission": {
+              "type": "Schedule",
+              "id": 2
+            },
+            "status": {
+              "type": "Schedule",
+              "id": 3
+            },
+            "location": {
+              "type": "Schedule",
               "id": 4
             }
           }
@@ -271,6 +346,10 @@
             "liveDataPoll": {
               "type": "LiveDataPoll",
               "id": 8
+            },
+            "newSchedules": {
+              "type": "Schedules",
+              "id": 9
             }
           }
         },
@@ -308,6 +387,10 @@
             "liveData": {
               "type": "LiveData",
               "id": 6
+            },
+            "schedules": {
+              "type": "Schedules",
+              "id": 7
             }
           }
         }
