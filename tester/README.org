@@ -1,0 +1,20 @@
+#+TITLE:	README for poll
+#+AUTHOR:	Jacob Lewallen
+#+EMAIL:	jacob@conservify.org
+
+* Overview
+
+This is a simple program to exercise a device implementing fk-app-protocol. 
+
+* Example Usage
+
+You can run with ~--help~ to get the command line arguments/options.
+
+| Options               | Function                                                               |
+|-----------------------+------------------------------------------------------------------------|
+| ~--address <address>~ | IP address of the device. (Pi, MCU, etc..)                             |
+| ~--port <address>~    | Port number. Defaults to 12345.                                        |
+| ~--scan~              | Queries for credentials and then gets all the data sets on the device. |
+| ~--live-data-poll~    | Polls for live data. See ~-live-data-interval~ to change how often.    |
+| ~--download-data~     | Downloads all pages of a data set. Use ~--data-set~ to pass the ID.    |
+| ~--erase-data~        | Erases a data set. Use ~--data-set~ to pass the ID.                    |
