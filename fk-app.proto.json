@@ -84,17 +84,17 @@
             },
             "name": {
               "type": "string",
-              "id": 3
+              "id": 2
             },
             "modules": {
               "rule": "repeated",
               "type": "ModuleCapabilities",
-              "id": 4
+              "id": 3
             },
             "sensors": {
               "rule": "repeated",
               "type": "SensorCapabilities",
-              "id": 5
+              "id": 4
             }
           }
         },

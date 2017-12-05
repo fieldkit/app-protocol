@@ -59,9 +59,9 @@ message SensorCapabilities {
 
 message Capabilities {
   uint32 version = 1;
-  string name = 3;
-  repeated ModuleCapabilities modules = 4;
-  repeated SensorCapabilities sensors = 5;
+  string name = 2;
+  repeated ModuleCapabilities modules = 3;
+  repeated SensorCapabilities sensors = 4;
 }
 
 message TimeSpec {
