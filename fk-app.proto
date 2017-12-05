@@ -31,6 +31,7 @@ enum ReplyType {
   REPLY_DATA_SET = 5;
   REPLY_DOWNLOAD_DATA_SET = 6;
   REPLY_LIVE_DATA_POLL = 7;
+  REPLY_SCHEDULES = 8;
 }
 
 // Querying information about the device, what it's capable of. Typically the

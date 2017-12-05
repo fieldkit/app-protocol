@@ -25,7 +25,8 @@
             "REPLY_DATA_SETS": 4,
             "REPLY_DATA_SET": 5,
             "REPLY_DOWNLOAD_DATA_SET": 6,
-            "REPLY_LIVE_DATA_POLL": 7
+            "REPLY_LIVE_DATA_POLL": 7,
+            "REPLY_SCHEDULES": 8
           }
         },
         "QueryCapabilities": {
