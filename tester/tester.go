@@ -19,6 +19,8 @@ type options struct {
 	Port             int
 	DataSetId        int
 	Scan             bool
+	Files            bool
+	DownloadFile     int
 	DownloadData     bool
 	EraseData        bool
 	Schedules        bool
@@ -32,7 +34,7 @@ type DeviceClient struct {
 	Port    int
 }
 
-func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
+func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery, echoReplyJson bool) (reply *pb.WireMessageReply, err error) {
 	c, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", d.Address, d.Port), 5*time.Second)
 	if err != nil {
 		return nil, err
@@ -60,7 +62,7 @@ func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMe
 		return nil, err
 	}
 
-	data = make([]byte, 1024)
+	data = make([]byte, 4096)
 	length, err := c.Read(data)
 	if err != nil {
 		return nil, fmt.Errorf("Unable to read %v", err)
@@ -77,13 +79,16 @@ func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMe
 	reply = new(pb.WireMessageReply)
 	err = buf.Unmarshal(reply)
 	if err != nil {
-		log.Printf("%v", buf.Bytes())
+		log.Printf("Length: %v", len(buf.Bytes()))
+		log.Printf("Bytes: %v", buf.Bytes())
 		return nil, fmt.Errorf("Unable to Unmarshal %v", err)
 	}
 
 	replyJson, err := json.MarshalIndent(reply, "", "  ")
 	if err == nil {
-		log.Printf("Received: %s", replyJson)
+		if echoReplyJson {
+			log.Printf("Received: %s", replyJson)
+		}
 	}
 
 	if reply.Type == pb.ReplyType_REPLY_ERROR {
@@ -97,7 +102,7 @@ func (d *DeviceClient) queryCapabilities() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_CAPABILITIES,
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(query, true)
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +113,7 @@ func (d *DeviceClient) querySchedules() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_SCHEDULES,
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(query, true)
 	if err != nil {
 		return nil, err
 	}
@@ -119,11 +124,62 @@ func (d *DeviceClient) queryDataSets() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_DATA_SETS,
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(query, true)
 	if err != nil {
 		return nil, err
 	}
 	return reply, nil
+}
+
+func (d *DeviceClient) queryFiles() (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_FILES,
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
+func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_FILES,
+	}
+	files, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, file := range files.Files.Files { // Files, files, files!
+		if int(file.Id) == id {
+			token := []byte{}
+			for page := 0; uint32(page) < file.Pages; page += 1 {
+				query := &pb.WireMessageQuery{
+					Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
+					DownloadFile: &pb.DownloadFile{
+						Id:    uint32(id),
+						Page:  uint32(page),
+						Token: token,
+					},
+				}
+				reply, err := d.queryDevice(query, false)
+				if err != nil {
+					return nil, err
+				}
+
+				fmt.Printf("Page#%d: %+v (%d bytes)\n", page, reply.FileData.Token, len(reply.FileData.Data))
+
+				token = reply.FileData.Token
+
+				if len(reply.FileData.Data) == 0 {
+					break
+				}
+			}
+		}
+	}
+
+	return files, nil
 }
 
 func (d *DeviceClient) queryDataSet(id uint32) (*pb.WireMessageReply, error) {
@@ -133,7 +189,7 @@ func (d *DeviceClient) queryDataSet(id uint32) (*pb.WireMessageReply, error) {
 			Id: id,
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(query, true)
 	if err != nil {
 		return nil, err
 	}
@@ -147,7 +203,7 @@ func (d *DeviceClient) queryLiveData(liveDataInterval int) (*pb.WireMessageReply
 			Interval: uint32(liveDataInterval),
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(query, true)
 	if err != nil {
 		return nil, err
 	}
@@ -161,7 +217,7 @@ func (d *DeviceClient) eraseDataSet(id uint32) (*pb.WireMessageReply, error) {
 			Id: id,
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(query, true)
 	if err != nil {
 		return nil, err
 	}
@@ -173,10 +229,11 @@ func (d *DeviceClient) downloadDataSet(id uint32, pages uint32) (*pb.WireMessage
 		query := &pb.WireMessageQuery{
 			Type: pb.QueryType_QUERY_DOWNLOAD_DATA_SET,
 			DownloadDataSet: &pb.DownloadDataSet{
-				Id: uint32(id),
+				Id:   uint32(id),
+				Page: uint32(page),
 			},
 		}
-		reply, err := d.queryDevice(query)
+		reply, err := d.queryDevice(query, false)
 		if err != nil {
 			return nil, err
 		}
@@ -191,6 +248,8 @@ func main() {
 	flag.StringVar(&o.Address, "address", "", "ip address of the device")
 	flag.IntVar(&o.Port, "port", 12345, "port number")
 	flag.BoolVar(&o.Scan, "scan", false, "scan the device's capabilities and data sets")
+	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
+	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
 	flag.BoolVar(&o.Schedules, "schedules", false, "query for schedules")
 	flag.BoolVar(&o.DownloadData, "download-data", false, "download data")
 	flag.BoolVar(&o.EraseData, "erase-data", false, "erase data")
@@ -230,6 +289,20 @@ func main() {
 			if err != nil {
 				log.Fatalf("Error: %v", err)
 			}
+		}
+	}
+
+	if o.Files {
+		_, err := device.queryFiles()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.DownloadFile >= 0 {
+		_, err := device.downloadFile(o.DownloadFile)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
 		}
 	}
 
