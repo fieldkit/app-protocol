@@ -13,7 +13,9 @@
             "QUERY_ERASE_DATA_SET": 6,
             "QUERY_LIVE_DATA_POLL": 7,
             "QUERY_SCHEDULES": 8,
-            "QUERY_CONFIGUE_SCHEDULES": 9
+            "QUERY_CONFIGUE_SCHEDULES": 9,
+            "QUERY_FILES": 10,
+            "QUERY_DOWNLOAD_FILE": 11
           }
         },
         "ReplyType": {
@@ -26,7 +28,9 @@
             "REPLY_DATA_SET": 5,
             "REPLY_DOWNLOAD_DATA_SET": 6,
             "REPLY_LIVE_DATA_POLL": 7,
-            "REPLY_SCHEDULES": 8
+            "REPLY_SCHEDULES": 8,
+            "REPLY_FILES": 9,
+            "REPLY_DOWNLOAD_FILE": 10
           }
         },
         "QueryCapabilities": {
@@ -318,6 +322,67 @@
             }
           }
         },
+        "File": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "time": {
+              "type": "uint64",
+              "id": 2
+            },
+            "size": {
+              "type": "uint32",
+              "id": 3
+            },
+            "pages": {
+              "type": "uint32",
+              "id": 4
+            },
+            "name": {
+              "type": "string",
+              "id": 5
+            }
+          }
+        },
+        "Files": {
+          "fields": {
+            "files": {
+              "rule": "repeated",
+              "type": "File",
+              "id": 1
+            }
+          }
+        },
+        "DownloadFile": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "page": {
+              "type": "uint32",
+              "id": 2
+            }
+          }
+        },
+        "FileData": {
+          "fields": {
+            "page": {
+              "type": "uint32",
+              "id": 1
+            },
+            "data": {
+              "type": "bytes",
+              "id": 2
+            },
+            "hash": {
+              "type": "uint32",
+              "id": 3
+            }
+          }
+        },
         "WireMessageQuery": {
           "fields": {
             "type": {
@@ -355,6 +420,10 @@
             "newSchedules": {
               "type": "Schedules",
               "id": 9
+            },
+            "downloadFile": {
+              "type": "DownloadFile",
+              "id": 10
             }
           }
         },
@@ -396,6 +465,14 @@
             "schedules": {
               "type": "Schedules",
               "id": 7
+            },
+            "files": {
+              "type": "Files",
+              "id": 8
+            },
+            "fileData": {
+              "type": "FileData",
+              "id": 9
             }
           }
         }

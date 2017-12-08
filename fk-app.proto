@@ -16,6 +16,8 @@ enum QueryType {
   QUERY_LIVE_DATA_POLL = 7;
   QUERY_SCHEDULES = 8;
   QUERY_CONFIGUE_SCHEDULES = 9;
+  QUERY_FILES = 10;
+  QUERY_DOWNLOAD_FILE = 11;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -32,6 +34,8 @@ enum ReplyType {
   REPLY_DOWNLOAD_DATA_SET = 6;
   REPLY_LIVE_DATA_POLL = 7;
   REPLY_SCHEDULES = 8;
+  REPLY_FILES = 9;
+  REPLY_DOWNLOAD_FILE = 10;
 }
 
 // Querying information about the device, what it's capable of. Typically the
@@ -168,6 +172,31 @@ message EraseDataSet {
   uint32 id = 1;
 }
 
+// Files
+
+message File {
+  uint32 id = 1;
+  uint64 time = 2;
+  uint32 size = 3;
+  uint32 pages = 4;
+  string name = 5;
+}
+
+message Files {
+  repeated File files = 1;
+}
+
+message DownloadFile {
+  uint32 id = 1;
+  uint32 page = 2;
+}
+
+message FileData {
+  uint32 page = 1;
+  bytes data = 2;
+  uint32 hash = 3;
+}
+
 // Top level messages exchanged over the wire.
 
 message WireMessageQuery {
@@ -180,6 +209,7 @@ message WireMessageQuery {
   EraseDataSet eraseDataSet = 7;
   LiveDataPoll liveDataPoll = 8;
   Schedules newSchedules = 9;
+  DownloadFile downloadFile = 10;
 }
 
 message Error {
@@ -194,4 +224,6 @@ message WireMessageReply {
   DataSetData dataSetData = 5;
   LiveData liveData = 6;
   Schedules schedules = 7;
+  Files files = 8;
+  FileData fileData = 9;
 }
