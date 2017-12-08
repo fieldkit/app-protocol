@@ -364,6 +364,10 @@
             "page": {
               "type": "uint32",
               "id": 2
+            },
+            "token": {
+              "type": "bytes",
+              "id": 3
             }
           }
         },
@@ -380,6 +384,10 @@
             "hash": {
               "type": "uint32",
               "id": 3
+            },
+            "token": {
+              "type": "bytes",
+              "id": 4
             }
           }
         },

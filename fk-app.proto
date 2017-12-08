@@ -189,12 +189,14 @@ message Files {
 message DownloadFile {
   uint32 id = 1;
   uint32 page = 2;
+  bytes token = 3;
 }
 
 message FileData {
   uint32 page = 1;
   bytes data = 2;
   uint32 hash = 3;
+  bytes token = 4;
 }
 
 // Top level messages exchanged over the wire.
