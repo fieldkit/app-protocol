@@ -18,6 +18,7 @@ enum QueryType {
   QUERY_CONFIGUE_SCHEDULES = 9;
   QUERY_FILES = 10;
   QUERY_DOWNLOAD_FILE = 11;
+  QUERY_RESET = 12;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -36,6 +37,7 @@ enum ReplyType {
   REPLY_SCHEDULES = 8;
   REPLY_FILES = 9;
   REPLY_DOWNLOAD_FILE = 10;
+  REPLY_RESET = 11;
 }
 
 // Querying information about the device, what it's capable of. Typically the
