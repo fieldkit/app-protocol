@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -57,7 +58,7 @@ func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery, echoReplyJson boo
 	buf.EncodeRawBytes(data)
 
 	encoded := buf.Bytes()
-	_, err = c.Write(encoded)
+	wrote, err := c.Write(encoded)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +66,7 @@ func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery, echoReplyJson boo
 	data = make([]byte, 4096)
 	length, err := c.Read(data)
 	if err != nil {
-		return nil, fmt.Errorf("Unable to read %v", err)
+		return nil, fmt.Errorf("Unable to read %v (%d)", err, wrote)
 	}
 
 	sliced := data[0:length]
@@ -154,7 +155,8 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 	for _, file := range files.Files.Files { // Files, files, files!
 		if int(file.Id) == id {
 			token := []byte{}
-			for page := 0; uint32(page) < file.Pages; page += 1 {
+			page := 0
+			for {
 				query := &pb.WireMessageQuery{
 					Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
 					DownloadFile: &pb.DownloadFile{
@@ -170,7 +172,12 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 
 				fmt.Printf("Page#%d: %+v (%d bytes)\n", page, reply.FileData.Token, len(reply.FileData.Data))
 
+				if bytes.Equal(token, reply.FileData.Token) {
+					break
+				}
+
 				token = reply.FileData.Token
+				page += 1
 
 				if len(reply.FileData.Data) == 0 {
 					break
