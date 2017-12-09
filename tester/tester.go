@@ -152,6 +152,8 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 		return nil, err
 	}
 
+	time.Sleep(500 * time.Millisecond)
+
 	for _, file := range files.Files.Files { // Files, files, files!
 		if int(file.Id) == id {
 			token := []byte{}
@@ -182,6 +184,8 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 				if len(reply.FileData.Data) == 0 {
 					break
 				}
+
+				time.Sleep(100 * time.Millisecond)
 			}
 		}
 	}
