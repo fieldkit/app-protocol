@@ -181,7 +181,8 @@ message File {
   uint64 time = 2;
   uint32 size = 3;
   uint32 pages = 4;
-  string name = 5;
+  uint32 version = 5;
+  string name = 6;
 }
 
 message Files {

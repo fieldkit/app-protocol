@@ -342,9 +342,13 @@
               "type": "uint32",
               "id": 4
             },
+            "version": {
+              "type": "uint32",
+              "id": 5
+            },
             "name": {
               "type": "string",
-              "id": 5
+              "id": 6
             }
           }
         },
