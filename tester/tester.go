@@ -156,6 +156,14 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 
 	for _, file := range files.Files.Files { // Files, files, files!
 		if int(file.Id) == id {
+			fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
+			file, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0600)
+			if err != nil {
+				log.Fatalf("Unable to open %s (%v)", fileName, err)
+			}
+
+			defer file.Close()
+
 			token := []byte{}
 			page := 0
 			for {
@@ -184,6 +192,8 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 				if len(reply.FileData.Data) == 0 {
 					break
 				}
+
+				file.Write(reply.FileData.Data)
 
 				time.Sleep(100 * time.Millisecond)
 			}
