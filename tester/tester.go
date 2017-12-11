@@ -188,18 +188,17 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 
 				fmt.Printf("Page#%d: %+v (%d bytes)\n", page, reply.FileData.Token, len(reply.FileData.Data))
 
+				if len(reply.FileData.Data) > 0 {
+					file.Write(reply.FileData.Data)
+				}
+
 				if bytes.Equal(token, reply.FileData.Token) {
+					fmt.Printf("Page#%d: %+v (got same token back)\n", page, reply.FileData.Token)
 					break
 				}
 
 				token = reply.FileData.Token
 				page += 1
-
-				if len(reply.FileData.Data) == 0 {
-					break
-				}
-
-				file.Write(reply.FileData.Data)
 
 				time.Sleep(100 * time.Millisecond)
 			}
