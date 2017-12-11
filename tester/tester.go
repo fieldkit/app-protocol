@@ -164,6 +164,7 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 
 			defer file.Close()
 
+			retry := true
 			token := []byte{}
 			page := 0
 			for {
@@ -177,7 +178,12 @@ func (d *DeviceClient) downloadFile(id int) (*pb.WireMessageReply, error) {
 				}
 				reply, err := d.queryDevice(query, false)
 				if err != nil {
-					return nil, err
+					if !retry {
+						return nil, err
+					}
+					log.Printf("%s", err)
+					time.Sleep(6 * time.Second)
+					continue
 				}
 
 				fmt.Printf("Page#%d: %+v (%d bytes)\n", page, reply.FileData.Token, len(reply.FileData.Data))
