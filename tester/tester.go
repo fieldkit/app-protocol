@@ -20,6 +20,7 @@ type options struct {
 	Port             int
 	DataSetId        int
 	Scan             bool
+	Network          bool
 	Files            bool
 	DownloadFile     int
 	DownloadData     bool
@@ -268,12 +269,45 @@ func (d *DeviceClient) downloadDataSet(id uint32, pages uint32) (*pb.WireMessage
 	return nil, nil
 }
 
+func (d *DeviceClient) queryNetworkSettings() (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_NETWORK_SETTINGS,
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
+func (d *DeviceClient) configureNetworkSettings(ns *pb.NetworkSettings) (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_CONFIGURE_NETWORK_SETTINGS,
+		NetworkSettings: &pb.NetworkSettings{
+			CreateAccessPoint: ns.CreateAccessPoint,
+			Networks: []*pb.NetworkInfo{
+				ns.Networks[0],
+				&pb.NetworkInfo{
+					Ssid:     "Maker City",
+					Password: "foobar123",
+				},
+			},
+		},
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func main() {
 	o := options{}
 
 	flag.StringVar(&o.Address, "address", "", "ip address of the device")
 	flag.IntVar(&o.Port, "port", 12345, "port number")
 	flag.BoolVar(&o.Scan, "scan", false, "scan the device's capabilities and data sets")
+	flag.BoolVar(&o.Network, "network", false, "scan the device's network settings")
 	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
 	flag.BoolVar(&o.Schedules, "schedules", false, "query for schedules")
@@ -315,6 +349,17 @@ func main() {
 			if err != nil {
 				log.Fatalf("Error: %v", err)
 			}
+		}
+	}
+
+	if o.Network {
+		settings, err := device.queryNetworkSettings()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+		_, err = device.configureNetworkSettings(settings.NetworkSettings)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
 		}
 	}
 
