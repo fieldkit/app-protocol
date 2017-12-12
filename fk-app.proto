@@ -19,6 +19,8 @@ enum QueryType {
   QUERY_FILES = 10;
   QUERY_DOWNLOAD_FILE = 11;
   QUERY_RESET = 12;
+  QUERY_NETWORK_SETTINGS = 13;
+  QUERY_CONFIGURE_NETWORK_SETTINGS = 14;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -38,6 +40,7 @@ enum ReplyType {
   REPLY_FILES = 9;
   REPLY_DOWNLOAD_FILE = 10;
   REPLY_RESET = 11;
+  REPLY_NETWORK_SETTINGS = 12;
 }
 
 // Querying information about the device, what it's capable of. Typically the
@@ -89,6 +92,12 @@ message Schedules {
   Schedule transmission = 2;
   Schedule status = 3;
   Schedule location = 4;
+}
+
+message NetworkSettings {
+  int32 createAccessPoint = 1;
+  string ssid = 2;
+  string password = 3;
 }
 
 // Configuring a particular sensor on the device. Some sensors may require
@@ -215,6 +224,7 @@ message WireMessageQuery {
   LiveDataPoll liveDataPoll = 8;
   Schedules newSchedules = 9;
   DownloadFile downloadFile = 10;
+  NetworkSettings networkSettings = 11;
 }
 
 message Error {
@@ -231,4 +241,5 @@ message WireMessageReply {
   Schedules schedules = 7;
   Files files = 8;
   FileData fileData = 9;
+  NetworkSettings networkSettings = 10;
 }

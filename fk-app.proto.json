@@ -16,7 +16,9 @@
             "QUERY_CONFIGUE_SCHEDULES": 9,
             "QUERY_FILES": 10,
             "QUERY_DOWNLOAD_FILE": 11,
-            "QUERY_RESET": 12
+            "QUERY_RESET": 12,
+            "QUERY_NETWORK_SETTINGS": 13,
+            "QUERY_CONFIGURE_NETWORK_SETTINGS": 14
           }
         },
         "ReplyType": {
@@ -32,7 +34,8 @@
             "REPLY_SCHEDULES": 8,
             "REPLY_FILES": 9,
             "REPLY_DOWNLOAD_FILE": 10,
-            "REPLY_RESET": 11
+            "REPLY_RESET": 11,
+            "REPLY_NETWORK_SETTINGS": 12
           }
         },
         "QueryCapabilities": {
@@ -158,6 +161,22 @@
             "location": {
               "type": "Schedule",
               "id": 4
+            }
+          }
+        },
+        "NetworkSettings": {
+          "fields": {
+            "createAccessPoint": {
+              "type": "int32",
+              "id": 1
+            },
+            "ssid": {
+              "type": "string",
+              "id": 2
+            },
+            "password": {
+              "type": "string",
+              "id": 3
             }
           }
         },
@@ -438,6 +457,10 @@
             "downloadFile": {
               "type": "DownloadFile",
               "id": 10
+            },
+            "networkSettings": {
+              "type": "NetworkSettings",
+              "id": 11
             }
           }
         },
@@ -487,6 +510,10 @@
             "fileData": {
               "type": "FileData",
               "id": 9
+            },
+            "networkSettings": {
+              "type": "NetworkSettings",
+              "id": 10
             }
           }
         }
