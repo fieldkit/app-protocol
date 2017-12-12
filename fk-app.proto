@@ -94,10 +94,14 @@ message Schedules {
   Schedule location = 4;
 }
 
+message NetworkInfo {
+  string ssid = 1;
+  string password = 2;
+}
+
 message NetworkSettings {
   int32 createAccessPoint = 1;
-  string ssid = 2;
-  string password = 3;
+  repeated NetworkInfo networks = 2;
 }
 
 // Configuring a particular sensor on the device. Some sensors may require

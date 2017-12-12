@@ -164,19 +164,28 @@
             }
           }
         },
+        "NetworkInfo": {
+          "fields": {
+            "ssid": {
+              "type": "string",
+              "id": 1
+            },
+            "password": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
         "NetworkSettings": {
           "fields": {
             "createAccessPoint": {
               "type": "int32",
               "id": 1
             },
-            "ssid": {
-              "type": "string",
+            "networks": {
+              "rule": "repeated",
+              "type": "NetworkInfo",
               "id": 2
-            },
-            "password": {
-              "type": "string",
-              "id": 3
             }
           }
         },
