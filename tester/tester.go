@@ -1,9 +1,11 @@
 package main
 
 import (
+	"context"
 	"flag"
 	pb "github.com/fieldkit/app-protocol"
 	fkc "github.com/fieldkit/app-protocol/device"
+	"github.com/fieldkit/cloud/testing"
 	"log"
 	"os"
 	"time"
@@ -30,13 +32,21 @@ type options struct {
 	Identity bool
 	Device   string
 	Stream   string
+
+	Host         string
+	Scheme       string
+	Username     string
+	Password     string
+	Project      string
+	DeviceName   string
+	LinkIdentity bool
 }
 
 func main() {
 	o := options{}
 
 	flag.StringVar(&o.Address, "address", "", "ip address of the device")
-	flag.IntVar(&o.Port, "port", 12345, "port number")
+	flag.IntVar(&o.Port, "port", 54321, "port number")
 	flag.BoolVar(&o.Scan, "scan", false, "scan the device's capabilities and data sets")
 	flag.BoolVar(&o.Schedules, "schedules", false, "query for schedules")
 
@@ -55,6 +65,14 @@ func main() {
 	flag.BoolVar(&o.Identity, "identity", false, "retrieve the device's identity")
 	flag.StringVar(&o.Device, "device", "", "device identity")
 	flag.StringVar(&o.Stream, "stream", "", "stream identity")
+
+	flag.StringVar(&o.Host, "host", "127.0.0.1:8080", "hostname to use")
+	flag.StringVar(&o.Scheme, "scheme", "http", "scheme to use")
+	flag.StringVar(&o.Username, "username", "demo-user", "username to use")
+	flag.StringVar(&o.Password, "password", "asdfasdfasdf", "password to use")
+	flag.StringVar(&o.Project, "project", "www", "project")
+	flag.StringVar(&o.DeviceName, "device-name", "test-device", "device name")
+	flag.BoolVar(&o.LinkIdentity, "link", false, "link device identity to website")
 	flag.Parse()
 
 	if o.Address == "" {
@@ -172,5 +190,27 @@ func main() {
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
+	}
+
+	if o.LinkIdentity {
+		ctx := context.TODO()
+		c, err := testing.CreateAndAuthenticate(ctx, o.Host, o.Scheme, o.Username, o.Password)
+		if err != nil {
+			log.Fatalf("%v", err)
+		}
+
+		webDevice, err := testing.CreateWebDevice(ctx, c, o.Project, o.DeviceName)
+		if err != nil {
+			log.Fatalf("%v", err)
+		}
+
+		log.Printf("%v\n", webDevice)
+
+		newIdentity, err := device.ConfigureIdentity(webDevice.Key, "1")
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+
+		log.Printf("%v\n", newIdentity)
 	}
 }
