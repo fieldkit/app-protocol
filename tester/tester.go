@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	pb "github.com/fieldkit/app-protocol"
+	fkc "github.com/fieldkit/app-protocol/device"
 	"log"
 	"os"
 	"time"
@@ -61,7 +62,7 @@ func main() {
 		os.Exit(2)
 	}
 
-	device := &DeviceClient{
+	device := &fkc.DeviceClient{
 		Address: o.Address,
 		Port:    o.Port,
 	}

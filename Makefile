@@ -1,4 +1,4 @@
-all: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h
+all: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h tester/tester
 
 node_modules/.bin/pbjs:
 	npm install
@@ -12,6 +12,10 @@ src/fk-app.pb.c src/fk-app.pb.h: fk-app.proto
 fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
 
+tester/tester: tester/*.go device/*.go
+	go build -o tester/tester tester/*.go
+
 clean:
+	rm tester/tester
 
 veryclean:
