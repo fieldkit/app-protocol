@@ -1,6 +1,6 @@
 default: tester
 
-tester: tester.go
+tester: *.go
 	go build -o $@ $^
 
 clean:
