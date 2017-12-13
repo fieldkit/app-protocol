@@ -18,7 +18,9 @@
             "QUERY_DOWNLOAD_FILE": 11,
             "QUERY_RESET": 12,
             "QUERY_NETWORK_SETTINGS": 13,
-            "QUERY_CONFIGURE_NETWORK_SETTINGS": 14
+            "QUERY_CONFIGURE_NETWORK_SETTINGS": 14,
+            "QUERY_IDENTITY": 15,
+            "QUERY_CONFIGURE_IDENTITY": 16
           }
         },
         "ReplyType": {
@@ -35,7 +37,8 @@
             "REPLY_FILES": 9,
             "REPLY_DOWNLOAD_FILE": 10,
             "REPLY_RESET": 11,
-            "REPLY_NETWORK_SETTINGS": 12
+            "REPLY_NETWORK_SETTINGS": 12,
+            "REPLY_IDENTITY": 13
           }
         },
         "QueryCapabilities": {
@@ -185,6 +188,18 @@
             "networks": {
               "rule": "repeated",
               "type": "NetworkInfo",
+              "id": 2
+            }
+          }
+        },
+        "Identity": {
+          "fields": {
+            "device": {
+              "type": "string",
+              "id": 1
+            },
+            "stream": {
+              "type": "string",
               "id": 2
             }
           }
@@ -470,6 +485,10 @@
             "networkSettings": {
               "type": "NetworkSettings",
               "id": 11
+            },
+            "identity": {
+              "type": "Identity",
+              "id": 12
             }
           }
         },
@@ -523,6 +542,10 @@
             "networkSettings": {
               "type": "NetworkSettings",
               "id": 10
+            },
+            "identity": {
+              "type": "Identity",
+              "id": 11
             }
           }
         }
