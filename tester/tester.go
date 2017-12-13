@@ -14,22 +14,27 @@ import (
 )
 
 type options struct {
+	Address string
+	Port    int
+
+	Scan        bool
+	Network     bool
+	ConfigureAp bool
+	Schedules   bool
+
+	DownloadDataSet bool
+	EraseDataSet    bool
+	DataSetId       int
+
 	LiveDataPoll     bool
 	LiveDataInterval int
-	Address          string
-	Port             int
-	DataSetId        int
-	Scan             bool
-	Network          bool
-	ConfigureAp      bool
-	Files            bool
-	DownloadFile     int
-	DownloadData     bool
-	EraseData        bool
-	Schedules        bool
-	// Continuous       bool
-	// Queries          int
-	// All              bool
+
+	Files        bool
+	DownloadFile int
+
+	Identity bool
+	Device   string
+	Stream   string
 }
 
 type DeviceClient struct {
@@ -296,6 +301,32 @@ func (d *DeviceClient) configureNetworkSettings(ns *pb.NetworkSettings) (*pb.Wir
 	return reply, nil
 }
 
+func (d *DeviceClient) queryIdentity() (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_IDENTITY,
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
+func (d *DeviceClient) configureIdentity(device, stream string) (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_CONFIGURE_IDENTITY,
+		Identity: &pb.Identity{
+			Device: device,
+			Stream: stream,
+		},
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func main() {
 	o := options{}
 
@@ -307,11 +338,17 @@ func main() {
 	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
 	flag.BoolVar(&o.Schedules, "schedules", false, "query for schedules")
-	flag.BoolVar(&o.DownloadData, "download-data", false, "download data")
-	flag.BoolVar(&o.EraseData, "erase-data", false, "erase data")
+
+	flag.BoolVar(&o.DownloadDataSet, "download-ds", false, "download data")
+	flag.BoolVar(&o.EraseDataSet, "erase-ds", false, "erase data")
 	flag.IntVar(&o.DataSetId, "data-set", 0, "data set id to download or erase")
+
 	flag.IntVar(&o.LiveDataInterval, "live-data-interval", 1000, "interval to poll (0 disables)")
 	flag.BoolVar(&o.LiveDataPoll, "live-data-poll", false, "send live data poll")
+
+	flag.BoolVar(&o.Identity, "identity", false, "retrieve the device's identity")
+	flag.StringVar(&o.Device, "device", "", "device identity")
+	flag.StringVar(&o.Stream, "stream", "", "stream identity")
 	flag.Parse()
 
 	if o.Address == "" {
@@ -343,6 +380,13 @@ func main() {
 		}
 	}
 
+	if o.Schedules {
+		_, err := device.querySchedules()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
 	if o.Network {
 		_, err := device.queryNetworkSettings()
 		if err != nil {
@@ -355,27 +399,6 @@ func main() {
 			CreateAccessPoint: int32(1),
 			Networks:          []*pb.NetworkInfo{},
 		})
-		if err != nil {
-			log.Fatalf("Error: %v", err)
-		}
-	}
-
-	if o.Files {
-		_, err := device.queryFiles()
-		if err != nil {
-			log.Fatalf("Error: %v", err)
-		}
-	}
-
-	if o.DownloadFile >= 0 {
-		_, err := device.downloadFile(o.DownloadFile)
-		if err != nil {
-			log.Fatalf("Error: %v", err)
-		}
-	}
-
-	if o.Schedules {
-		_, err := device.querySchedules()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
@@ -396,7 +419,7 @@ func main() {
 		}
 	}
 
-	if o.DownloadData {
+	if o.DownloadDataSet {
 		ds, err := device.queryDataSet(uint32(o.DataSetId))
 		if err != nil {
 			log.Fatalf("Error: %v", err)
@@ -405,13 +428,41 @@ func main() {
 		device.downloadDataSet(uint32(o.DataSetId), ds.DataSets.DataSets[0].Pages)
 	}
 
-	if o.EraseData {
+	if o.EraseDataSet {
 		_, err := device.queryDataSet(uint32(o.DataSetId))
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
 
 		_, err = device.eraseDataSet(uint32(o.DataSetId))
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.Files {
+		_, err := device.queryFiles()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.DownloadFile >= 0 {
+		_, err := device.downloadFile(o.DownloadFile)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.Device != "" && o.Stream != "" {
+		_, err := device.configureIdentity(o.Device, o.Stream)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.Identity {
+		_, err := device.queryIdentity()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
