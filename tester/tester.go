@@ -21,6 +21,7 @@ type options struct {
 	DataSetId        int
 	Scan             bool
 	Network          bool
+	ConfigureAp      bool
 	Files            bool
 	DownloadFile     int
 	DownloadData     bool
@@ -285,13 +286,7 @@ func (d *DeviceClient) configureNetworkSettings(ns *pb.NetworkSettings) (*pb.Wir
 		Type: pb.QueryType_QUERY_CONFIGURE_NETWORK_SETTINGS,
 		NetworkSettings: &pb.NetworkSettings{
 			CreateAccessPoint: ns.CreateAccessPoint,
-			Networks: []*pb.NetworkInfo{
-				ns.Networks[0],
-				&pb.NetworkInfo{
-					Ssid:     "Maker City",
-					Password: "foobar123",
-				},
-			},
+			Networks:          ns.Networks,
 		},
 	}
 	reply, err := d.queryDevice(query, true)
@@ -307,7 +302,8 @@ func main() {
 	flag.StringVar(&o.Address, "address", "", "ip address of the device")
 	flag.IntVar(&o.Port, "port", 12345, "port number")
 	flag.BoolVar(&o.Scan, "scan", false, "scan the device's capabilities and data sets")
-	flag.BoolVar(&o.Network, "network", false, "scan the device's network settings")
+	flag.BoolVar(&o.Network, "network", false, "query the device's network settings")
+	flag.BoolVar(&o.ConfigureAp, "network-configure-ap", false, "force network ap mode (empty configured networks)")
 	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
 	flag.BoolVar(&o.Schedules, "schedules", false, "query for schedules")
@@ -316,11 +312,6 @@ func main() {
 	flag.IntVar(&o.DataSetId, "data-set", 0, "data set id to download or erase")
 	flag.IntVar(&o.LiveDataInterval, "live-data-interval", 1000, "interval to poll (0 disables)")
 	flag.BoolVar(&o.LiveDataPoll, "live-data-poll", false, "send live data poll")
-	/*
-		flag.IntVar(&o.Queries, "queries", 1, "number of times to query")
-		flag.BoolVar(&o.Continuous, "continuous", false, "keep trying")
-		flag.BoolVar(&o.All, "all", false, "try a bunch of queries")
-	*/
 	flag.Parse()
 
 	if o.Address == "" {
@@ -353,11 +344,17 @@ func main() {
 	}
 
 	if o.Network {
-		settings, err := device.queryNetworkSettings()
+		_, err := device.queryNetworkSettings()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
-		_, err = device.configureNetworkSettings(settings.NetworkSettings)
+	}
+
+	if o.ConfigureAp {
+		_, err := device.configureNetworkSettings(&pb.NetworkSettings{
+			CreateAccessPoint: int32(1),
+			Networks:          []*pb.NetworkInfo{},
+		})
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
