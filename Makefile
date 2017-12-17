@@ -16,6 +16,6 @@ tester/tester: tester/*.go device/*.go
 	go build -o tester/tester tester/*.go
 
 clean:
-	rm tester/tester
+	rm -f tester/tester
 
 veryclean:
