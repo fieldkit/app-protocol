@@ -33,6 +33,8 @@ type options struct {
 	Device   string
 	Stream   string
 
+	Reset bool
+
 	Host         string
 	Scheme       string
 	Username     string
@@ -65,6 +67,8 @@ func main() {
 	flag.BoolVar(&o.Identity, "identity", false, "retrieve the device's identity")
 	flag.StringVar(&o.Device, "device", "", "device identity")
 	flag.StringVar(&o.Stream, "stream", "", "stream identity")
+
+	flag.BoolVar(&o.Reset, "reset", false, "reset the device")
 
 	flag.StringVar(&o.Host, "host", "127.0.0.1:8080", "hostname to use")
 	flag.StringVar(&o.Scheme, "scheme", "http", "scheme to use")
@@ -212,5 +216,12 @@ func main() {
 		}
 
 		log.Printf("%v\n", newIdentity)
+	}
+
+	if o.Reset {
+		_, err := device.Reset()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
 	}
 }

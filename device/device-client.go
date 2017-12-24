@@ -97,6 +97,17 @@ func (d *DeviceClient) DownloadDataSet(id uint32, pages uint32) (*pb.WireMessage
 	return nil, nil
 }
 
+func (d *DeviceClient) Reset() (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_RESET,
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) QueryFiles() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_FILES,
