@@ -6,6 +6,7 @@ import (
 	"fmt"
 	pb "github.com/fieldkit/app-protocol"
 	"github.com/golang/protobuf/proto"
+	"io"
 	"log"
 	"net"
 	"os"
@@ -121,7 +122,7 @@ func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 	for _, file := range files.Files.Files { // Files, files, files!
 		if int(file.Id) == id {
 			fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
-			file, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0600)
+			file, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
 			if err != nil {
 				log.Fatalf("Unable to open %s (%v)", fileName, err)
 			}
@@ -131,7 +132,7 @@ func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 			retry := true
 			token := []byte{}
 			page := 0
-			for {
+			for finished := false; !finished; {
 				query := &pb.WireMessageQuery{
 					Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
 					DownloadFile: &pb.DownloadFile{
@@ -140,7 +141,7 @@ func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 						Token: token,
 					},
 				}
-				reply, err := d.queryDevice(query, false)
+				replies, err := d.queryDeviceMultiple(query, false)
 				if err != nil {
 					if !retry {
 						return nil, err
@@ -150,21 +151,28 @@ func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 					continue
 				}
 
-				fmt.Printf("Page#%d: %+v (%d bytes)\n", page, reply.FileData.Token, len(reply.FileData.Data))
+				for _, reply := range replies {
+					fmt.Printf("Page#%d: %+v (%d bytes)\n", page, reply.FileData.Token, len(reply.FileData.Data))
 
-				if len(reply.FileData.Data) > 0 {
-					file.Write(reply.FileData.Data)
+					if len(reply.FileData.Data) > 0 {
+						file.Write(reply.FileData.Data)
+					}
+
+					if bytes.Equal(token, reply.FileData.Token) {
+						fmt.Printf("Page#%d: %+v (got same token back)\n", page, reply.FileData.Token)
+						finished = true
+						break
+					}
+
+					token = reply.FileData.Token
+					page += 1
 				}
-
-				if bytes.Equal(token, reply.FileData.Token) {
-					fmt.Printf("Page#%d: %+v (got same token back)\n", page, reply.FileData.Token)
-					break
-				}
-
-				token = reply.FileData.Token
-				page += 1
 
 				time.Sleep(100 * time.Millisecond)
+
+				if page == 4 {
+					break
+				}
 			}
 		}
 	}
@@ -240,12 +248,22 @@ func (d *DeviceClient) ConfigureIdentity(device, stream string) (*pb.WireMessage
 }
 
 func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery, echoReplyJson bool) (reply *pb.WireMessageReply, err error) {
+	replies, err := d.queryDeviceMultiple(query, echoReplyJson)
+	if err != nil {
+		return nil, err
+	}
+	return replies[0], nil
+}
+
+func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery, echoReplyJson bool) (replies []*pb.WireMessageReply, err error) {
 	c, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", d.Address, d.Port), 5*time.Second)
 	if err != nil {
 		return nil, err
 	}
 
 	defer c.Close()
+
+	replies = make([]*pb.WireMessageReply, 0)
 
 	queryJson, err := json.MarshalIndent(query, "", "  ")
 	if err == nil {
@@ -267,37 +285,54 @@ func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery, echoReplyJson boo
 		return nil, err
 	}
 
-	data = make([]byte, 4096)
-	length, err := c.Read(data)
-	if err != nil {
-		return nil, fmt.Errorf("Unable to read %v (%d)", err, wrote)
-	}
+	data = make([]byte, 0)
 
-	sliced := data[0:length]
-
-	buf = proto.NewBuffer(sliced)
-	_, err = buf.DecodeVarint()
-	if err != nil {
-		return nil, fmt.Errorf("Unable to read length %v", err)
-	}
-
-	reply = new(pb.WireMessageReply)
-	err = buf.Unmarshal(reply)
-	if err != nil {
-		log.Printf("Length: %v", len(buf.Bytes()))
-		log.Printf("Bytes: %v", buf.Bytes())
-		return nil, fmt.Errorf("Unable to Unmarshal %v", err)
-	}
-
-	replyJson, err := json.MarshalIndent(reply, "", "  ")
-	if err == nil {
-		if echoReplyJson {
-			log.Printf("Received: %s", replyJson)
+	for {
+		page := make([]byte, 8192)
+		length, err := c.Read(page)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			return nil, fmt.Errorf("Unable to read %v (%d)", err, wrote)
+		} else {
+			data = append(data, page[0:length]...)
 		}
 	}
 
-	if reply.Type == pb.ReplyType_REPLY_ERROR {
-		log.Fatalf("Error")
+	log.Printf("Read %v bytes", len(data))
+
+	buf = proto.NewBuffer(data[:])
+
+	for {
+		messageBytes, err := buf.DecodeRawBytes(true)
+		if err != nil {
+			if err == io.ErrUnexpectedEOF {
+				err = nil
+				break
+			}
+			return nil, fmt.Errorf("Unable to read length %v", err)
+		}
+
+		messageBuffer := proto.NewBuffer(messageBytes[:])
+		reply := new(pb.WireMessageReply)
+		err = messageBuffer.Unmarshal(reply)
+		if err != nil {
+			log.Printf("Length: %v", len(messageBuffer.Bytes()))
+			if echoReplyJson {
+				log.Printf("Bytes: %v", messageBuffer.Bytes())
+			}
+			return nil, fmt.Errorf("Unable to Unmarshal %v", err)
+		}
+
+		replies = append(replies, reply)
+
+		replyJson, err := json.MarshalIndent(reply, "", "  ")
+		if err == nil {
+			if echoReplyJson {
+				log.Printf("Received: %s", replyJson)
+			}
+		}
 	}
 
 	return
