@@ -29,6 +29,17 @@ func (d *DeviceClient) QueryCapabilities() (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
+func (d *DeviceClient) QueryStatus() (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_STATUS,
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) QuerySchedules() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_SCHEDULES,
