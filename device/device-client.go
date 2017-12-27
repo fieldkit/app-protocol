@@ -133,16 +133,17 @@ func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 	for _, file := range files.Files.Files { // Files, files, files!
 		if int(file.Id) == id {
 			fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
-			file, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
+			f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
 			if err != nil {
 				log.Fatalf("Unable to open %s (%v)", fileName, err)
 			}
 
-			defer file.Close()
+			defer f.Close()
 
 			retry := true
 			token := []byte{}
 			page := 0
+			downloaded := 0
 			for finished := false; !finished; {
 				query := &pb.WireMessageQuery{
 					Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
@@ -163,10 +164,14 @@ func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 				}
 
 				for _, reply := range replies {
-					fmt.Printf("Page#%d: %+v (%d bytes)\n", page, reply.FileData.Token, len(reply.FileData.Data))
+					log.Printf("Page#%d: (%d bytes) (%.2f%%)\n", page, len(reply.FileData.Data), 100.0*(float32(downloaded)/float32(file.Size)))
 
 					if len(reply.FileData.Data) > 0 {
-						file.Write(reply.FileData.Data)
+						wrote, err := f.Write(reply.FileData.Data)
+						if err != nil {
+							log.Fatalf("Error writing: %v", err)
+						}
+						downloaded += wrote
 					}
 
 					if bytes.Equal(token, reply.FileData.Token) {
@@ -263,7 +268,10 @@ func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery, echoReplyJson boo
 	if err != nil {
 		return nil, err
 	}
-	return replies[0], nil
+	if len(replies) > 0 {
+		return replies[0], nil
+	}
+	return nil, nil
 }
 
 func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery, echoReplyJson bool) (replies []*pb.WireMessageReply, err error) {
