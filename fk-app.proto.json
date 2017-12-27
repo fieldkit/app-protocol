@@ -20,7 +20,8 @@
             "QUERY_NETWORK_SETTINGS": 13,
             "QUERY_CONFIGURE_NETWORK_SETTINGS": 14,
             "QUERY_IDENTITY": 15,
-            "QUERY_CONFIGURE_IDENTITY": 16
+            "QUERY_CONFIGURE_IDENTITY": 16,
+            "QUERY_STATUS": 17
           }
         },
         "ReplyType": {
@@ -38,7 +39,8 @@
             "REPLY_DOWNLOAD_FILE": 10,
             "REPLY_RESET": 11,
             "REPLY_NETWORK_SETTINGS": 12,
-            "REPLY_IDENTITY": 13
+            "REPLY_IDENTITY": 13,
+            "REPLY_STATUS": 14
           }
         },
         "QueryCapabilities": {
@@ -440,6 +442,30 @@
             }
           }
         },
+        "DeviceStatus": {
+          "fields": {
+            "uptime": {
+              "type": "uint32",
+              "id": 1
+            },
+            "batteryPercentage": {
+              "type": "float",
+              "id": 2
+            },
+            "batteryVoltage": {
+              "type": "float",
+              "id": 3
+            },
+            "gpsHasFix": {
+              "type": "uint32",
+              "id": 4
+            },
+            "gpsSatellites": {
+              "type": "uint32",
+              "id": 5
+            }
+          }
+        },
         "WireMessageQuery": {
           "fields": {
             "type": {
@@ -546,6 +572,10 @@
             "identity": {
               "type": "Identity",
               "id": 11
+            },
+            "status": {
+              "type": "DeviceStatus",
+              "id": 12
             }
           }
         }
