@@ -130,6 +130,21 @@ func (d *DeviceClient) QueryFiles() (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
+func (d *DeviceClient) EraseFile(id int) (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_ERASE_FILE,
+		EraseFile: &pb.EraseFile{
+			Id: uint32(id),
+		},
+	}
+	reply, err := d.queryDevice(query, true)
+	if err != nil {
+		return nil, err
+	}
+
+	return reply, nil
+}
+
 func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_FILES,

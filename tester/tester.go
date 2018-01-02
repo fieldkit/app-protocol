@@ -29,6 +29,7 @@ type options struct {
 
 	Files        bool
 	DownloadFile int
+	EraseFile    int
 
 	Identity bool
 	Device   string
@@ -60,6 +61,7 @@ func main() {
 
 	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
+	flag.IntVar(&o.EraseFile, "erase-file", -1, "erase file")
 
 	flag.IntVar(&o.DownloadDataSet, "download-ds", -1, "download data")
 	flag.IntVar(&o.EraseDataSet, "erase-ds", -1, "erase data")
@@ -187,6 +189,13 @@ func main() {
 
 	if o.DownloadFile >= 0 {
 		_, err := device.DownloadFile(o.DownloadFile)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.EraseFile >= 0 {
+		_, err := device.EraseFile(o.EraseFile)
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
