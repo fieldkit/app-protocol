@@ -18,12 +18,13 @@ enum QueryType {
   QUERY_CONFIGUE_SCHEDULES = 9;
   QUERY_FILES = 10;
   QUERY_DOWNLOAD_FILE = 11;
-  QUERY_RESET = 12;
-  QUERY_NETWORK_SETTINGS = 13;
-  QUERY_CONFIGURE_NETWORK_SETTINGS = 14;
-  QUERY_IDENTITY = 15;
-  QUERY_CONFIGURE_IDENTITY = 16;
-  QUERY_STATUS = 17;
+  QUERY_ERASE_FILE = 12;
+  QUERY_RESET = 13;
+  QUERY_NETWORK_SETTINGS = 14;
+  QUERY_CONFIGURE_NETWORK_SETTINGS = 15;
+  QUERY_IDENTITY = 16;
+  QUERY_CONFIGURE_IDENTITY = 17;
+  QUERY_STATUS = 18;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -218,6 +219,10 @@ message DownloadFile {
   bytes token = 3;
 }
 
+message EraseFile {
+  uint32 id = 1;
+}
+
 message FileData {
   uint32 page = 1;
   bytes data = 2;
@@ -246,8 +251,9 @@ message WireMessageQuery {
   LiveDataPoll liveDataPoll = 8;
   Schedules newSchedules = 9;
   DownloadFile downloadFile = 10;
-  NetworkSettings networkSettings = 11;
-  Identity identity = 12;
+  EraseFile eraseFile = 11;
+  NetworkSettings networkSettings = 12;
+  Identity identity = 13;
 }
 
 message Error {

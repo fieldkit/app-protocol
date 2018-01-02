@@ -16,12 +16,13 @@
             "QUERY_CONFIGUE_SCHEDULES": 9,
             "QUERY_FILES": 10,
             "QUERY_DOWNLOAD_FILE": 11,
-            "QUERY_RESET": 12,
-            "QUERY_NETWORK_SETTINGS": 13,
-            "QUERY_CONFIGURE_NETWORK_SETTINGS": 14,
-            "QUERY_IDENTITY": 15,
-            "QUERY_CONFIGURE_IDENTITY": 16,
-            "QUERY_STATUS": 17
+            "QUERY_ERASE_FILE": 12,
+            "QUERY_RESET": 13,
+            "QUERY_NETWORK_SETTINGS": 14,
+            "QUERY_CONFIGURE_NETWORK_SETTINGS": 15,
+            "QUERY_IDENTITY": 16,
+            "QUERY_CONFIGURE_IDENTITY": 17,
+            "QUERY_STATUS": 18
           }
         },
         "ReplyType": {
@@ -422,6 +423,14 @@
             }
           }
         },
+        "EraseFile": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            }
+          }
+        },
         "FileData": {
           "fields": {
             "page": {
@@ -508,13 +517,17 @@
               "type": "DownloadFile",
               "id": 10
             },
+            "eraseFile": {
+              "type": "EraseFile",
+              "id": 11
+            },
             "networkSettings": {
               "type": "NetworkSettings",
-              "id": 11
+              "id": 12
             },
             "identity": {
               "type": "Identity",
-              "id": 12
+              "id": 13
             }
           }
         },
