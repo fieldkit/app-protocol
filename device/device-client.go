@@ -168,6 +168,78 @@ func (d *DeviceClient) EraseFile(id uint32) (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
+type DownloadCallbacks interface {
+	DownloadProgress(downloaded int)
+}
+
+type SimpleDownloadProgress struct {
+	DownloadCallbacks
+	Name string
+	Size int
+}
+
+func (sdp *SimpleDownloadProgress) DownloadProgress(downloaded int) {
+	log.Printf("%s: %.2f%%\n", sdp.Name, 100.0*(float32(downloaded)/float32(sdp.Size)))
+}
+
+func (d *DeviceClient) DownloadFileToFile(id, pageSize uint32, f io.Writer, cb DownloadCallbacks) (*pb.WireMessageReply, error) {
+	quietClient := &DeviceClient{
+		Address: d.Address,
+		Port:    d.Port,
+	}
+
+	retry := true
+	token := []byte{}
+	page := 0
+	downloaded := 0
+	for finished := false; !finished; {
+		query := &pb.WireMessageQuery{
+			Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
+			DownloadFile: &pb.DownloadFile{
+				Id:       uint32(id),
+				Page:     uint32(page),
+				PageSize: pageSize,
+				Token:    token,
+			},
+		}
+
+		replies, err := quietClient.queryDeviceMultiple(query)
+		if err != nil {
+			if !retry {
+				return nil, err
+			}
+			log.Printf("Error getting page: %s", err)
+			time.Sleep(6 * time.Second)
+			continue
+		}
+
+		for _, reply := range replies {
+			if cb != nil {
+				cb.DownloadProgress(downloaded)
+			}
+			if len(reply.FileData.Data) > 0 {
+				wrote, err := f.Write(reply.FileData.Data)
+				if err != nil {
+					log.Fatalf("Error writing: %v", err)
+				}
+				downloaded += wrote
+			}
+
+			if bytes.Equal(token, reply.FileData.Token) {
+				finished = true
+				break
+			}
+
+			token = reply.FileData.Token
+			page += 1
+		}
+
+		time.Sleep(100 * time.Millisecond)
+	}
+
+	return nil, nil
+}
+
 func (d *DeviceClient) DownloadFile(id uint32) (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_FILES,
@@ -179,13 +251,13 @@ func (d *DeviceClient) DownloadFile(id uint32) (*pb.WireMessageReply, error) {
 
 	time.Sleep(500 * time.Millisecond)
 
-	quietClient := &DeviceClient{
-		Address: d.Address,
-		Port:    d.Port,
-	}
-
 	for _, file := range files.Files.Files { // Files, files, files!
 		if file.Id == id {
+			if file.Size == 0 {
+				log.Printf("File is empty, ignoring")
+				return nil, nil
+			}
+
 			fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
 			f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
 			if err != nil {
@@ -194,57 +266,12 @@ func (d *DeviceClient) DownloadFile(id uint32) (*pb.WireMessageReply, error) {
 
 			defer f.Close()
 
-			retry := true
-			token := []byte{}
-			page := 0
-			downloaded := 0
-			for finished := false; !finished; {
-				query := &pb.WireMessageQuery{
-					Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
-					DownloadFile: &pb.DownloadFile{
-						Id:    uint32(id),
-						Page:  uint32(page),
-						Token: token,
-					},
-				}
-				// TODO: Disable echoing.
-				replies, err := quietClient.queryDeviceMultiple(query)
-				if err != nil {
-					if !retry {
-						return nil, err
-					}
-					log.Printf("%s", err)
-					time.Sleep(6 * time.Second)
-					continue
-				}
-
-				for _, reply := range replies {
-					log.Printf("Page#%d: (%d bytes) (%.2f%%)\n", page, len(reply.FileData.Data), 100.0*(float32(downloaded)/float32(file.Size)))
-
-					if len(reply.FileData.Data) > 0 {
-						wrote, err := f.Write(reply.FileData.Data)
-						if err != nil {
-							log.Fatalf("Error writing: %v", err)
-						}
-						downloaded += wrote
-					}
-
-					if bytes.Equal(token, reply.FileData.Token) {
-						fmt.Printf("Page#%d: %+v (got same token back)\n", page, reply.FileData.Token)
-						finished = true
-						break
-					}
-
-					token = reply.FileData.Token
-					page += 1
-				}
-
-				time.Sleep(100 * time.Millisecond)
-
-				if page == 4 {
-					break
-				}
+			sdp := &SimpleDownloadProgress{
+				Name: file.Name,
+				Size: int(file.Size),
 			}
+
+			d.DownloadFileToFile(id, 0, f, sdp)
 		}
 	}
 
