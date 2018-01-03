@@ -98,19 +98,23 @@
               "type": "uint32",
               "id": 1
             },
+            "deviceId": {
+              "type": "uint32",
+              "id": 2
+            },
             "name": {
               "type": "string",
-              "id": 2
+              "id": 3
             },
             "modules": {
               "rule": "repeated",
               "type": "ModuleCapabilities",
-              "id": 3
+              "id": 4
             },
             "sensors": {
               "rule": "repeated",
               "type": "SensorCapabilities",
-              "id": 4
+              "id": 5
             }
           }
         },
@@ -204,6 +208,10 @@
             "stream": {
               "type": "string",
               "id": 2
+            },
+            "deviceId": {
+              "type": "uint32",
+              "id": 3
             }
           }
         },

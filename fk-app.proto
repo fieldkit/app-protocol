@@ -75,9 +75,10 @@ message SensorCapabilities {
 
 message Capabilities {
   uint32 version = 1;
-  string name = 2;
-  repeated ModuleCapabilities modules = 3;
-  repeated SensorCapabilities sensors = 4;
+  uint32 deviceId = 2;
+  string name = 3;
+  repeated ModuleCapabilities modules = 4;
+  repeated SensorCapabilities sensors = 5;
 }
 
 message TimeSpec {
@@ -113,6 +114,7 @@ message NetworkSettings {
 message Identity {
   string device = 1;
   string stream = 2;
+  uint32 deviceId = 3;
 }
 
 // Configuring a particular sensor on the device. Some sensors may require
