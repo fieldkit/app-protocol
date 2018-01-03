@@ -229,8 +229,9 @@ message EraseFile {
 message FileData {
   uint32 page = 1;
   bytes data = 2;
-  uint32 hash = 3;
-  bytes token = 4;
+  uint32 size = 3;
+  uint32 hash = 4;
+  bytes token = 5;
 }
 
 message DeviceStatus {
