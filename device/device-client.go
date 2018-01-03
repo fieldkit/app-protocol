@@ -153,7 +153,7 @@ func (d *DeviceClient) QueryFiles() (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
-func (d *DeviceClient) EraseFile(id int) (*pb.WireMessageReply, error) {
+func (d *DeviceClient) EraseFile(id uint32) (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_ERASE_FILE,
 		EraseFile: &pb.EraseFile{
@@ -168,7 +168,7 @@ func (d *DeviceClient) EraseFile(id int) (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
-func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
+func (d *DeviceClient) DownloadFile(id uint32) (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_FILES,
 	}
@@ -185,7 +185,7 @@ func (d *DeviceClient) DownloadFile(id int) (*pb.WireMessageReply, error) {
 	}
 
 	for _, file := range files.Files.Files { // Files, files, files!
-		if int(file.Id) == id {
+		if file.Id == id {
 			fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
 			f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
 			if err != nil {

@@ -189,14 +189,14 @@ func main() {
 	}
 
 	if o.DownloadFile >= 0 {
-		_, err := device.DownloadFile(o.DownloadFile)
+		_, err := device.DownloadFile(uint32(o.DownloadFile))
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
 	}
 
 	if o.EraseFile >= 0 {
-		_, err := device.EraseFile(o.EraseFile)
+		_, err := device.EraseFile(uint32(o.EraseFile))
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
