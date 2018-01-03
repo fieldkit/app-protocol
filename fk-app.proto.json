@@ -425,9 +425,13 @@
               "type": "uint32",
               "id": 2
             },
+            "pageSize": {
+              "type": "uint32",
+              "id": 3
+            },
             "token": {
               "type": "bytes",
-              "id": 3
+              "id": 4
             }
           }
         },

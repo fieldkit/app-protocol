@@ -218,7 +218,8 @@ message Files {
 message DownloadFile {
   uint32 id = 1;
   uint32 page = 2;
-  bytes token = 3;
+  uint32 pageSize = 3;
+  bytes token = 4;
 }
 
 message EraseFile {
