@@ -90,8 +90,9 @@ func main() {
 	}
 
 	device := &fkc.DeviceClient{
-		Address: o.Address,
-		Port:    o.Port,
+		Address:   o.Address,
+		Port:      o.Port,
+		Callbacks: &fkc.LogJsonCallbacks{},
 	}
 
 	if o.Scan {
