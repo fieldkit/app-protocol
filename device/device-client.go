@@ -380,6 +380,8 @@ func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery) (replies 
 	buf.EncodeRawBytes(data)
 
 	encoded := buf.Bytes()
+
+	c.SetDeadline(time.Now().Add(5 * time.Second))
 	wrote, err := c.Write(encoded)
 	if err != nil {
 		return nil, err
@@ -389,6 +391,7 @@ func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery) (replies 
 
 	for {
 		page := make([]byte, 8192)
+		c.SetDeadline(time.Now().Add(5 * time.Second))
 		length, err := c.Read(page)
 		if err != nil {
 			if err == io.EOF {
