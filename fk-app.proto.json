@@ -99,8 +99,7 @@
               "id": 1
             },
             "deviceId": {
-              "rule": "repeated",
-              "type": "uint32",
+              "type": "bytes",
               "id": 2
             },
             "name": {
@@ -211,8 +210,7 @@
               "id": 2
             },
             "deviceId": {
-              "rule": "repeated",
-              "type": "uint32",
+              "type": "bytes",
               "id": 3
             }
           }
