@@ -99,6 +99,7 @@
               "id": 1
             },
             "deviceId": {
+              "rule": "repeated",
               "type": "uint32",
               "id": 2
             },
@@ -210,6 +211,7 @@
               "id": 2
             },
             "deviceId": {
+              "rule": "repeated",
               "type": "uint32",
               "id": 3
             }
