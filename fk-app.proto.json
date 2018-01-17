@@ -280,6 +280,14 @@
             "page": {
               "type": "uint32",
               "id": 2
+            },
+            "pageSize": {
+              "type": "uint32",
+              "id": 3
+            },
+            "token": {
+              "type": "bytes",
+              "id": 4
             }
           }
         },
@@ -297,35 +305,39 @@
         },
         "DataSetData": {
           "fields": {
-            "time": {
-              "type": "uint64",
-              "id": 1
-            },
             "page": {
               "type": "uint32",
-              "id": 2
-            },
-            "sensor": {
-              "type": "uint32",
-              "id": 3
+              "id": 1
             },
             "samples": {
               "rule": "repeated",
               "type": "Sample",
-              "id": 4
+              "id": 2
             },
             "floats": {
               "rule": "repeated",
               "type": "float",
-              "id": 5
+              "id": 3
             },
             "data": {
               "type": "bytes",
+              "id": 4
+            },
+            "sensor": {
+              "type": "uint32",
+              "id": 5
+            },
+            "size": {
+              "type": "uint32",
               "id": 6
+            },
+            "token": {
+              "type": "bytes",
+              "id": 7
             },
             "hash": {
               "type": "uint32",
-              "id": 7
+              "id": 8
             }
           }
         },
