@@ -5,7 +5,7 @@ import (
 	"flag"
 	pb "github.com/fieldkit/app-protocol"
 	fkc "github.com/fieldkit/app-protocol/device"
-	"github.com/fieldkit/cloud/testing"
+	testing "github.com/fieldkit/cloud/server/api/tool"
 	"log"
 	"os"
 	"time"
@@ -223,7 +223,7 @@ func main() {
 			log.Fatalf("%v", err)
 		}
 
-		webDevice, err := testing.CreateWebDevice(ctx, c, o.Project, o.DeviceName)
+		webDevice, err := testing.CreateWebDevice(ctx, c, o.Project, o.DeviceName, "", "1")
 		if err != nil {
 			log.Fatalf("%v", err)
 		}
