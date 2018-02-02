@@ -6,6 +6,7 @@ import (
 	"fmt"
 	pb "github.com/fieldkit/app-protocol"
 	"github.com/golang/protobuf/proto"
+	"hash/crc32"
 	"io"
 	"log"
 	"net"
@@ -188,10 +189,10 @@ func (d *DeviceClient) DownloadFileToFile(id, pageSize uint32, f io.Writer, cb D
 		Port:    d.Port,
 	}
 
-	retry := true
 	token := []byte{}
 	page := 0
 	downloaded := 0
+	retries := 3
 	for finished := false; !finished; {
 		query := &pb.WireMessageQuery{
 			Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
@@ -205,11 +206,12 @@ func (d *DeviceClient) DownloadFileToFile(id, pageSize uint32, f io.Writer, cb D
 
 		replies, err := quietClient.queryDeviceMultiple(query)
 		if err != nil {
-			if !retry {
+			retries--
+			if retries == 0 {
 				return nil, err
 			}
 			log.Printf("Error getting page: %s", err)
-			time.Sleep(6 * time.Second)
+			time.Sleep(1 * time.Second)
 			continue
 		}
 
@@ -218,10 +220,21 @@ func (d *DeviceClient) DownloadFileToFile(id, pageSize uint32, f io.Writer, cb D
 				cb.DownloadProgress(downloaded)
 			}
 			if len(reply.FileData.Data) > 0 {
+				expectedHash := reply.FileData.Hash
+				if expectedHash != 0 {
+					actualHash := crc32.ChecksumIEEE(reply.FileData.Data)
+					if actualHash != expectedHash {
+						log.Printf("Hash mismatch (%v != %v)", actualHash, expectedHash)
+						break
+					}
+				}
+
 				wrote, err := f.Write(reply.FileData.Data)
 				if err != nil {
-					log.Fatalf("Error writing: %v", err)
+					log.Printf("Error writing: %v", err)
+					break
 				}
+
 				downloaded += wrote
 			}
 
@@ -391,7 +404,7 @@ func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery) (replies 
 
 	for {
 		page := make([]byte, 8192)
-		c.SetDeadline(time.Now().Add(5 * time.Second))
+		c.SetDeadline(time.Now().Add(10 * time.Second))
 		length, err := c.Read(page)
 		if err != nil {
 			if err == io.EOF {
