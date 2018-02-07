@@ -5,7 +5,7 @@ import (
 	"flag"
 	"fmt"
 	pb "github.com/fieldkit/app-protocol"
-	fkc "github.com/fieldkit/app-protocol/device"
+	fkc "github.com/fieldkit/app-protocol/fkdevice"
 	testing "github.com/fieldkit/cloud/server/api/tool"
 	progress "gopkg.in/cheggaaa/pb.v1"
 	"io"
