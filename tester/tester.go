@@ -3,9 +3,12 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	pb "github.com/fieldkit/app-protocol"
 	fkc "github.com/fieldkit/app-protocol/device"
 	testing "github.com/fieldkit/cloud/server/api/tool"
+	progress "gopkg.in/cheggaaa/pb.v1"
+	"io"
 	"log"
 	"os"
 	"time"
@@ -189,10 +192,30 @@ func main() {
 	}
 
 	if o.DownloadFile >= 0 {
-		_, err := device.DownloadFile(uint32(o.DownloadFile))
-		if err != nil {
-			log.Fatalf("Error: %v", err)
+		file, err := device.QueryFileInformation(uint32(o.DownloadFile))
+		if file.Size == 0 {
+			log.Fatalf("File is empty, ignoring")
 		}
+
+		fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
+		f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
+		if err != nil {
+			log.Fatalf("Unable to open %s (%v)", fileName, err)
+		}
+
+		defer f.Close()
+
+		token := []byte{}
+
+		bar := progress.New(int(file.Size)).SetUnits(progress.U_BYTES)
+		bar.Start()
+
+		writer := io.MultiWriter(f, bar)
+
+		device.DownloadFileToWriter(uint32(o.DownloadFile), 0, token, writer)
+
+		bar.Set(int(file.Size))
+		bar.Finish()
 	}
 
 	if o.EraseFile >= 0 {

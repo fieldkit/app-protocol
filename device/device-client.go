@@ -1,16 +1,16 @@
 package fkdevice
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	pb "github.com/fieldkit/app-protocol"
 	"github.com/golang/protobuf/proto"
-	"hash/crc32"
+	"github.com/robinpowered/go-proto/message"
+	"github.com/robinpowered/go-proto/stream"
+	_ "hash/crc32"
 	"io"
 	"log"
 	"net"
-	"os"
 	"time"
 )
 
@@ -169,128 +169,6 @@ func (d *DeviceClient) EraseFile(id uint32) (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
-type DownloadCallbacks interface {
-	DownloadProgress(downloaded int)
-}
-
-type SimpleDownloadProgress struct {
-	DownloadCallbacks
-	Name string
-	Size int
-}
-
-func (sdp *SimpleDownloadProgress) DownloadProgress(downloaded int) {
-	log.Printf("%s: %.2f%%\n", sdp.Name, 100.0*(float32(downloaded)/float32(sdp.Size)))
-}
-
-func (d *DeviceClient) DownloadFileToFile(id, pageSize uint32, f io.Writer, cb DownloadCallbacks) (*pb.WireMessageReply, error) {
-	quietClient := &DeviceClient{
-		Address: d.Address,
-		Port:    d.Port,
-	}
-
-	token := []byte{}
-	page := 0
-	downloaded := 0
-	retries := 3
-	for finished := false; !finished; {
-		query := &pb.WireMessageQuery{
-			Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
-			DownloadFile: &pb.DownloadFile{
-				Id:       uint32(id),
-				Page:     uint32(page),
-				PageSize: pageSize,
-				Token:    token,
-			},
-		}
-
-		replies, err := quietClient.queryDeviceMultiple(query)
-		if err != nil {
-			retries--
-			if retries == 0 {
-				return nil, err
-			}
-			log.Printf("Error getting page: %s", err)
-			time.Sleep(1 * time.Second)
-			continue
-		}
-
-		for _, reply := range replies {
-			if cb != nil {
-				cb.DownloadProgress(downloaded)
-			}
-			if len(reply.FileData.Data) > 0 {
-				expectedHash := reply.FileData.Hash
-				if expectedHash != 0 {
-					actualHash := crc32.ChecksumIEEE(reply.FileData.Data)
-					if actualHash != expectedHash {
-						log.Printf("Hash mismatch (%v != %v)", actualHash, expectedHash)
-						break
-					}
-				}
-
-				wrote, err := f.Write(reply.FileData.Data)
-				if err != nil {
-					log.Printf("Error writing: %v", err)
-					break
-				}
-
-				downloaded += wrote
-			}
-
-			if bytes.Equal(token, reply.FileData.Token) {
-				finished = true
-				break
-			}
-
-			token = reply.FileData.Token
-			page += 1
-		}
-
-		time.Sleep(100 * time.Millisecond)
-	}
-
-	return nil, nil
-}
-
-func (d *DeviceClient) DownloadFile(id uint32) (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_FILES,
-	}
-	files, err := d.queryDevice(query)
-	if err != nil {
-		return nil, err
-	}
-
-	time.Sleep(500 * time.Millisecond)
-
-	for _, file := range files.Files.Files { // Files, files, files!
-		if file.Id == id {
-			if file.Size == 0 {
-				log.Printf("File is empty, ignoring")
-				return nil, nil
-			}
-
-			fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
-			f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
-			if err != nil {
-				log.Fatalf("Unable to open %s (%v)", fileName, err)
-			}
-
-			defer f.Close()
-
-			sdp := &SimpleDownloadProgress{
-				Name: file.Name,
-				Size: int(file.Size),
-			}
-
-			d.DownloadFileToFile(id, 0, f, sdp)
-		}
-	}
-
-	return files, nil
-}
-
 func (d *DeviceClient) QueryLiveData(liveDataInterval int) (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_LIVE_DATA_POLL,
@@ -358,29 +236,50 @@ func (d *DeviceClient) ConfigureIdentity(device, stream string) (*pb.WireMessage
 	return reply, nil
 }
 
-func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
-	replies, err := d.queryDeviceMultiple(query)
+func (d *DeviceClient) QueryFileInformation(id uint32) (*pb.File, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_FILES,
+	}
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
-	if len(replies) > 0 {
-		return replies[0], nil
+	for _, file := range reply.Files.Files { // Files, files, files!
+		if file.Id == id {
+			return file, nil
+		}
 	}
 	return nil, nil
 }
 
-func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery) (replies []*pb.WireMessageReply, err error) {
+func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f io.Writer) (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
+		DownloadFile: &pb.DownloadFile{
+			Id:       uint32(id),
+			Page:     uint32(0),
+			PageSize: pageSize,
+			Token:    token,
+		},
+	}
+
+	d.queryDeviceCallback(query, CallbackFunc(func(reply *pb.WireMessageReply) error {
+		_, err := f.Write(reply.FileData.Data)
+		if err != nil {
+			return fmt.Errorf("Unable to write to file: %v", err)
+		}
+		return nil
+	}))
+
+	return nil, nil
+}
+
+type CallbackFunc func(*pb.WireMessageReply) error
+
+func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (net.Conn, error) {
 	c, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", d.Address, d.Port), 5*time.Second)
 	if err != nil {
 		return nil, err
-	}
-
-	defer c.Close()
-
-	replies = make([]*pb.WireMessageReply, 0)
-
-	if d.Callbacks != nil {
-		d.Callbacks.Sent(query)
 	}
 
 	data, err := proto.Marshal(query)
@@ -388,60 +287,74 @@ func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery) (replies 
 		return nil, err
 	}
 
-	// NOTE: EncodeRawBytes includes the varint length.
+	// EncodeRawBytes includes the length prefix.
 	buf := proto.NewBuffer(make([]byte, 0))
 	buf.EncodeRawBytes(data)
-
 	encoded := buf.Bytes()
-
 	c.SetDeadline(time.Now().Add(5 * time.Second))
-	wrote, err := c.Write(encoded)
+	_, err = c.Write(encoded)
 	if err != nil {
 		return nil, err
 	}
 
-	data = make([]byte, 0)
+	return c, nil
+}
 
-	for {
-		page := make([]byte, 8192)
-		c.SetDeadline(time.Now().Add(10 * time.Second))
-		length, err := c.Read(page)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			return nil, fmt.Errorf("Unable to read %v (%d)", err, wrote)
-		} else {
-			data = append(data, page[0:length]...)
-		}
+func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback CallbackFunc) ([]*pb.WireMessageReply, error) {
+	c, err := d.openAndSendQuery(query)
+	if err != nil {
+		return nil, err
 	}
 
-	buf = proto.NewBuffer(data[:])
+	defer c.Close()
 
-	for {
-		messageBytes, err := buf.DecodeRawBytes(true)
+	c.SetDeadline(time.Now().Add(5 * time.Second))
+	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
+		var reply pb.WireMessageReply
+		err := proto.Unmarshal(b, &reply)
 		if err != nil {
-			if err == io.ErrUnexpectedEOF {
-				err = nil
-				break
-			}
-			return nil, fmt.Errorf("Unable to read length %v", err)
+			return nil, err
 		}
 
-		messageBuffer := proto.NewBuffer(messageBytes[:])
-		reply := new(pb.WireMessageReply)
-		err = messageBuffer.Unmarshal(reply)
+		err = callback(&reply)
 		if err != nil {
-			log.Printf("Length: %v", len(messageBuffer.Bytes()))
-			return nil, fmt.Errorf("Unable to Unmarshal %v", err)
+			return nil, err
 		}
 
-		replies = append(replies, reply)
+		c.SetDeadline(time.Now().Add(5 * time.Second))
+		return &reply, err
+	})
 
+	collection, err := stream.ReadLengthPrefixedCollection(c, unmarshalFunc)
+
+	replies := make([]*pb.WireMessageReply, 0)
+
+	for _, m := range collection {
+		replies = append(replies, m.(*pb.WireMessageReply))
+	}
+
+	return replies, err
+}
+
+func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
+	if d.Callbacks != nil {
+		d.Callbacks.Sent(query)
+	}
+	replies, err := d.queryDeviceMultiple(query)
+	if err != nil {
+		return nil, err
+	}
+	if len(replies) > 0 {
 		if d.Callbacks != nil {
-			d.Callbacks.Received(reply)
+			d.Callbacks.Received(replies[0])
 		}
+		return replies[0], nil
 	}
+	return nil, nil
+}
 
-	return
+func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery) (replies []*pb.WireMessageReply, err error) {
+	return d.queryDeviceCallback(query, CallbackFunc(func(reply *pb.WireMessageReply) error {
+		return nil
+	}))
 }
