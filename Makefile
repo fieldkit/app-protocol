@@ -13,6 +13,7 @@ fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
 
 tester/tester: tester/*.go fkdevice/*.go
+	go get ./...
 	go build -o tester/tester tester/*.go
 
 clean:
