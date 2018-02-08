@@ -136,11 +136,11 @@ func (d *DeviceClient) Reset() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_RESET,
 	}
-	reply, err := d.queryDevice(query)
+	err := d.queryDeviceNoReply(query)
 	if err != nil {
 		return nil, err
 	}
-	return reply, nil
+	return nil, nil
 }
 
 func (d *DeviceClient) QueryFiles() (*pb.WireMessageReply, error) {
@@ -334,6 +334,21 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 	}
 
 	return replies, err
+}
+
+func (d *DeviceClient) queryDeviceNoReply(query *pb.WireMessageQuery) (err error) {
+	if d.Callbacks != nil {
+		d.Callbacks.Sent(query)
+	}
+
+	c, err := d.openAndSendQuery(query)
+	if err != nil {
+		return err
+	}
+
+	defer c.Close()
+
+	return err
 }
 
 func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
