@@ -198,6 +198,8 @@ func main() {
 		}
 
 		fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
+		log.Printf("Opening %s", fileName)
+
 		f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
 		if err != nil {
 			log.Fatalf("Unable to open %s (%v)", fileName, err)
