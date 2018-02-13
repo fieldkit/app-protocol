@@ -16,6 +16,10 @@ tester/tester: tester/*.go fkdevice/*.go
 	go get ./...
 	go build -o tester/tester tester/*.go
 
+install: all
+	cp tester/tester $(INSTALLDIR)
+	cd tester && go install
+
 clean:
 	rm -f tester/tester
 
