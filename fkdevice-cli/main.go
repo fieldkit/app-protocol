@@ -214,7 +214,10 @@ func main() {
 
 		writer := io.MultiWriter(f, bar)
 
-		device.DownloadFileToWriter(uint32(o.DownloadFile), 0, token, writer)
+		err = device.DownloadFileToWriter(uint32(o.DownloadFile), 0, token, writer)
+		if err != nil {
+			log.Fatalf("Unable to download file %s (%v)", fileName, err)
+		}
 
 		bar.Set(int(file.Size))
 		bar.Finish()

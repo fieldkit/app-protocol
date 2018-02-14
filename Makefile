@@ -1,4 +1,4 @@
-all: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h tester/tester
+all: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h fkdevice-cli/fkdevice-cli
 
 node_modules/.bin/pbjs:
 	npm install
@@ -12,13 +12,13 @@ src/fk-app.pb.c src/fk-app.pb.h: fk-app.proto
 fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
 
-tester/tester: tester/*.go fkdevice/*.go
+fkdevice-cli/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
 	go get ./...
-	go build -o tester/tester tester/*.go
+	go build -o fkdevice-cli/fkdevice-cli fkdevice-cli/*.go
 
 install: all
-	cp tester/tester $(INSTALLDIR)
-	cd tester && go install
+	cp fkdevice-cli/fkdevice-cli $(INSTALLDIR)
+	cd fkdevice-cli && go install
 
 clean:
 	rm -f tester/tester

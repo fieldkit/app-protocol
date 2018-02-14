@@ -252,7 +252,7 @@ func (d *DeviceClient) QueryFileInformation(id uint32) (*pb.File, error) {
 	return nil, nil
 }
 
-func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f io.Writer) (*pb.WireMessageReply, error) {
+func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f io.Writer) error {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
 		DownloadFile: &pb.DownloadFile{
@@ -263,7 +263,7 @@ func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f
 		},
 	}
 
-	d.queryDeviceCallback(query, CallbackFunc(func(reply *pb.WireMessageReply) error {
+	_, err := d.queryDeviceCallback(query, CallbackFunc(func(reply *pb.WireMessageReply) error {
 		_, err := f.Write(reply.FileData.Data)
 		if err != nil {
 			return fmt.Errorf("Unable to write to file: %v", err)
@@ -271,7 +271,7 @@ func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f
 		return nil
 	}))
 
-	return nil, nil
+	return err
 }
 
 type CallbackFunc func(*pb.WireMessageReply) error
@@ -308,7 +308,7 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 
 	defer c.Close()
 
-	c.SetDeadline(time.Now().Add(5 * time.Second))
+	c.SetDeadline(time.Now().Add(10 * time.Second))
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
 		var reply pb.WireMessageReply
 		err := proto.Unmarshal(b, &reply)
@@ -321,7 +321,7 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 			return nil, err
 		}
 
-		c.SetDeadline(time.Now().Add(5 * time.Second))
+		c.SetDeadline(time.Now().Add(10 * time.Second))
 		return &reply, err
 	})
 
