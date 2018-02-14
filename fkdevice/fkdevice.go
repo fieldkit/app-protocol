@@ -300,6 +300,15 @@ func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (net.Conn, e
 	return c, nil
 }
 
+type DebugReader struct {
+	Target io.Reader
+}
+
+func (dr *DebugReader) Read(p []byte) (n int, err error) {
+	n, err = dr.Target.Read(p)
+	return
+}
+
 func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback CallbackFunc) ([]*pb.WireMessageReply, error) {
 	c, err := d.openAndSendQuery(query)
 	if err != nil {
@@ -325,7 +334,11 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 		return &reply, err
 	})
 
-	collection, err := stream.ReadLengthPrefixedCollection(c, unmarshalFunc)
+	dr := &DebugReader{
+		Target: c,
+	}
+
+	collection, err := stream.ReadLengthPrefixedCollection(dr, unmarshalFunc)
 
 	replies := make([]*pb.WireMessageReply, 0)
 
