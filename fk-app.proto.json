@@ -22,7 +22,8 @@
             "QUERY_CONFIGURE_NETWORK_SETTINGS": 15,
             "QUERY_IDENTITY": 16,
             "QUERY_CONFIGURE_IDENTITY": 17,
-            "QUERY_STATUS": 18
+            "QUERY_STATUS": 18,
+            "QUERY_MODULE": 19
           }
         },
         "ReplyType": {
@@ -41,7 +42,8 @@
             "REPLY_RESET": 11,
             "REPLY_NETWORK_SETTINGS": 12,
             "REPLY_IDENTITY": 13,
-            "REPLY_STATUS": 14
+            "REPLY_STATUS": 14,
+            "REPLY_MODULE": 15
           }
         },
         "QueryCapabilities": {
@@ -503,6 +505,38 @@
             }
           }
         },
+        "QueryModule": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "address": {
+              "type": "uint32",
+              "id": 2
+            },
+            "message": {
+              "type": "bytes",
+              "id": 3
+            }
+          }
+        },
+        "ModuleReply": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "address": {
+              "type": "uint32",
+              "id": 2
+            },
+            "message": {
+              "type": "bytes",
+              "id": 3
+            }
+          }
+        },
         "WireMessageQuery": {
           "fields": {
             "type": {
@@ -556,6 +590,10 @@
             "identity": {
               "type": "Identity",
               "id": 13
+            },
+            "module": {
+              "type": "QueryModule",
+              "id": 14
             }
           }
         },
@@ -617,6 +655,10 @@
             "status": {
               "type": "DeviceStatus",
               "id": 12
+            },
+            "module": {
+              "type": "ModuleReply",
+              "id": 13
             }
           }
         }
