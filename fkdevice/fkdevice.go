@@ -252,6 +252,22 @@ func (d *DeviceClient) QueryFileInformation(id uint32) (*pb.File, error) {
 	return nil, nil
 }
 
+func (d *DeviceClient) QueryModule(id uint32, message []byte) (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_MODULE,
+		Module: &pb.QueryModule{
+			Id:      id,
+			Address: id,
+			Message: message,
+		},
+	}
+	reply, err := d.queryDevice(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f io.Writer) error {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_DOWNLOAD_FILE,

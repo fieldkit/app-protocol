@@ -7,6 +7,8 @@ import (
 	pb "github.com/fieldkit/app-protocol"
 	fkc "github.com/fieldkit/app-protocol/fkdevice"
 	testing "github.com/fieldkit/cloud/server/api/tool"
+	fkmodulepb "github.com/fieldkit/module-protocol"
+	"github.com/golang/protobuf/proto"
 	progress "gopkg.in/cheggaaa/pb.v1"
 	"io"
 	"log"
@@ -40,13 +42,16 @@ type options struct {
 
 	Reset bool
 
-	Host         string
-	Scheme       string
-	Username     string
-	Password     string
-	Project      string
 	DeviceName   string
 	LinkIdentity bool
+
+	DirectModuleCapabilities int
+
+	Host     string
+	Scheme   string
+	Username string
+	Password string
+	Project  string
 }
 
 func main() {
@@ -78,13 +83,17 @@ func main() {
 
 	flag.BoolVar(&o.Reset, "reset", false, "reset the device")
 
+	flag.StringVar(&o.DeviceName, "device-name", "test-device", "device name")
+	flag.BoolVar(&o.LinkIdentity, "link", false, "link device identity to website")
+
 	flag.StringVar(&o.Host, "host", "127.0.0.1:8080", "hostname to use")
 	flag.StringVar(&o.Scheme, "scheme", "http", "scheme to use")
 	flag.StringVar(&o.Username, "username", "demo-user", "username to use")
 	flag.StringVar(&o.Password, "password", "asdfasdfasdf", "password to use")
 	flag.StringVar(&o.Project, "project", "www", "project")
-	flag.StringVar(&o.DeviceName, "device-name", "test-device", "device name")
-	flag.BoolVar(&o.LinkIdentity, "link", false, "link device identity to website")
+
+	flag.IntVar(&o.DirectModuleCapabilities, "direct-module-capabilities", -1, "query module caps directly, testing opaque coms")
+
 	flag.Parse()
 
 	if o.Address == "" {
@@ -239,6 +248,20 @@ func main() {
 
 	if o.Identity {
 		_, err := device.QueryIdentity()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.DirectModuleCapabilities >= 0 {
+		moduleQuery := &fkmodulepb.WireMessageQuery{
+			Type: fkmodulepb.QueryType_QUERY_CAPABILITIES,
+		}
+		data, err := proto.Marshal(moduleQuery)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+		_, err = device.QueryModule(8, data)
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
