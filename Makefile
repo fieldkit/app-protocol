@@ -1,7 +1,21 @@
 GOARCH ?= amd64
 GO ?= env GOOS=linux GOARCH=$(GOARCH) go
+BUILD ?= build
 
-all: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h fkdevice-cli/fkdevice-cli
+all: bindings $(BUILD)/fkdevice-cli
+
+$(BUILD):
+	mkdir -p $(BUILD)
+
+$(BUILD)/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
+	$(GO) get ./...
+	$(GO) build -o $(BUILD)/fkdevice-cli fkdevice-cli/*.go
+
+install: all
+	cp $(BUILD)/fkdevice-cli $(INSTALLDIR)
+	cd fkdevice-cli && go install
+
+bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h 
 
 node_modules/.bin/pbjs:
 	npm install
@@ -15,15 +29,7 @@ src/fk-app.pb.c src/fk-app.pb.h: fk-app.proto
 fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
 
-fkdevice-cli/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
-	$(GO) get ./...
-	$(GO) build -o fkdevice-cli/fkdevice-cli fkdevice-cli/*.go
-
-install: all
-	cp fkdevice-cli/fkdevice-cli $(INSTALLDIR)
-	cd fkdevice-cli && go install
-
 clean:
-	rm -f fkdevice-cli/fkdevice-cli
+	rm -rf $(BUILD)
 
 veryclean:
