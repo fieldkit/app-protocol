@@ -6,8 +6,8 @@ import (
 	"fmt"
 	pb "github.com/fieldkit/app-protocol"
 	fkc "github.com/fieldkit/app-protocol/fkdevice"
+	fkatlaspb "github.com/fieldkit/atlas/protocol"
 	testing "github.com/fieldkit/cloud/server/api/tool"
-	fkmodulepb "github.com/fieldkit/module-protocol"
 	"github.com/golang/protobuf/proto"
 	progress "gopkg.in/cheggaaa/pb.v1"
 	"io"
@@ -45,7 +45,7 @@ type options struct {
 	DeviceName   string
 	LinkIdentity bool
 
-	DirectModuleCapabilities int
+	AtlasQuery int
 
 	Host     string
 	Scheme   string
@@ -92,7 +92,7 @@ func main() {
 	flag.StringVar(&o.Password, "password", "asdfasdfasdf", "password to use")
 	flag.StringVar(&o.Project, "project", "www", "project")
 
-	flag.IntVar(&o.DirectModuleCapabilities, "direct-module-capabilities", -1, "query module caps directly, testing opaque coms")
+	flag.IntVar(&o.AtlasQuery, "atlas-query", -1, "test atlas module queries")
 
 	flag.Parse()
 
@@ -253,17 +253,35 @@ func main() {
 		}
 	}
 
-	if o.DirectModuleCapabilities >= 0 {
-		moduleQuery := &fkmodulepb.WireMessageQuery{
-			Type: fkmodulepb.QueryType_QUERY_CAPABILITIES,
+	if o.AtlasQuery >= 0 {
+		moduleQuery := &fkatlaspb.WireAtlasQuery{
+			Type: fkatlaspb.QueryType_QUERY_ATLAS_COMMAND,
+			AtlasCommand: &fkatlaspb.AtlasCommand{
+				Sensor:  fkatlaspb.SensorType_TEMP,
+				Command: "I",
+			},
 		}
 		data, err := proto.Marshal(moduleQuery)
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
-		_, err = device.QueryModule(8, data)
+
+		reply, err := device.QueryModule(8, data)
 		if err != nil {
 			log.Fatalf("Error: %v", err)
+		}
+
+		if reply.Module != nil {
+			moduleReply := &fkatlaspb.WireAtlasReply{}
+
+			err = proto.Unmarshal(reply.Module.Message, moduleReply)
+			if err != nil {
+				log.Fatalf("Error: %v", err)
+			}
+
+			log.Printf("%v", moduleReply)
+		} else {
+			log.Printf("%v", reply)
 		}
 	}
 
