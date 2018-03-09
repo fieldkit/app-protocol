@@ -268,6 +268,8 @@ func (d *DeviceClient) QueryModule(id uint32, message []byte) (*pb.WireMessageRe
 	return reply, nil
 }
 
+var DeviceBusyErr = fmt.Errorf("Busy")
+
 func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f io.Writer) error {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
@@ -280,9 +282,13 @@ func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f
 	}
 
 	_, err := d.queryDeviceCallback(query, CallbackFunc(func(reply *pb.WireMessageReply) error {
-		_, err := f.Write(reply.FileData.Data)
-		if err != nil {
-			return fmt.Errorf("Unable to write to file: %v", err)
+		if reply.Type != pb.ReplyType_REPLY_BUSY {
+			_, err := f.Write(reply.FileData.Data)
+			if err != nil {
+				return fmt.Errorf("Unable to write to file: %v", err)
+			}
+		} else {
+			return DeviceBusyErr
 		}
 		return nil
 	}))
