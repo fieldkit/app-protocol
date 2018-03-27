@@ -361,6 +361,13 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 	}
 
 	collection, err := stream.ReadLengthPrefixedCollection(dr, unmarshalFunc)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(collection) == 0 {
+		return nil, fmt.Errorf("No reply.")
+	}
 
 	replies := make([]*pb.WireMessageReply, 0)
 
