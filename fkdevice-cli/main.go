@@ -118,6 +118,10 @@ func main() {
 			log.Fatalf("Error: %v", err)
 		}
 
+		if dataSets.DataSets == nil {
+			log.Fatalf("Error: Malformed data sets reply")
+		}
+
 		for _, ds := range dataSets.DataSets.DataSets {
 			_, err := device.QueryDataSet(ds.Id)
 			if err != nil {
