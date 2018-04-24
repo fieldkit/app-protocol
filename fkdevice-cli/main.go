@@ -7,7 +7,7 @@ import (
 	pb "github.com/fieldkit/app-protocol"
 	fkc "github.com/fieldkit/app-protocol/fkdevice"
 	fkatlaspb "github.com/fieldkit/atlas/protocol"
-	testing "github.com/fieldkit/cloud/server/api/tool"
+	testing "github.com/fieldkit/cloud/server/tools"
 	"github.com/golang/protobuf/proto"
 	progress "gopkg.in/cheggaaa/pb.v1"
 	"io"
