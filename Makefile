@@ -1,19 +1,16 @@
 GOARCH ?= amd64
-GO ?= env GOOS=linux GOARCH=$(GOARCH) go
+GOOS ?= linux
+GO ?= env GOOS=$(GOOS) GOARCH=$(GOARCH) go
 BUILD ?= build
+BUILDARCH ?= $(BUILD)/$(GOOS)-$(GOARCH)
 
-all: bindings $(BUILD)/fkdevice-cli
+all: bindings
 
-$(BUILD):
-	mkdir -p $(BUILD)
-
-$(BUILD)/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
-	$(GO) get ./...
-	$(GO) build -o $(BUILD)/fkdevice-cli fkdevice-cli/*.go
+all: bindings
+	GOOS=linux GOARCH=amd64 make binaries-all
+	GOOS=linux GOARCH=arm make binaries-all
 
 install: all
-	cp $(BUILD)/fkdevice-cli $(INSTALLDIR)
-	cd fkdevice-cli && go install
 
 bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h 
 
@@ -28,6 +25,15 @@ src/fk-app.pb.c src/fk-app.pb.h: fk-app.proto
 
 fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
+
+$(BUILD):
+	mkdir -p $(BUILD)
+
+binaries-all: $(BUILDARCH)/fkdevice-cli
+
+$(BUILDARCH)/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
+	$(GO) get ./...
+	$(GO) build -o $(BUILDARCH)/fkdevice-cli fkdevice-cli/*.go
 
 clean:
 	rm -rf $(BUILD)
