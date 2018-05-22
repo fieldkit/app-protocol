@@ -35,6 +35,7 @@ type options struct {
 	Files        bool
 	DownloadFile int
 	EraseFile    int
+	WriteTo      string
 
 	Identity bool
 	Device   string
@@ -66,6 +67,8 @@ func main() {
 
 	flag.BoolVar(&o.Network, "network", false, "query the device's network settings")
 	flag.BoolVar(&o.ConfigureAp, "network-configure-ap", false, "force network ap mode (empty configured networks)")
+
+	flag.StringVar(&o.WriteTo, "write", "", "file to write to")
 
 	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
@@ -210,7 +213,10 @@ func main() {
 			log.Fatalf("File is empty, ignoring")
 		}
 
-		fileName := fmt.Sprintf("%s_%d", file.Name, file.Version)
+		fileName := o.WriteTo
+		if fileName == "" {
+			fileName = fmt.Sprintf("%s_%d", file.Name, file.Version)
+		}
 		log.Printf("Opening %s", fileName)
 
 		f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
