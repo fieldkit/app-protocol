@@ -270,33 +270,52 @@ func (d *DeviceClient) QueryModule(id uint32, message []byte) (*pb.WireMessageRe
 
 var DeviceBusyErr = fmt.Errorf("Busy")
 
-func (d *DeviceClient) DownloadFileToWriter(id, pageSize uint32, token []byte, f io.Writer) error {
+type LimitedReader struct {
+	Target           io.Reader
+	MessagesExpected int
+}
+
+func (dr *LimitedReader) Read(p []byte) (n int, err error) {
+	if dr.MessagesExpected == 0 {
+		return 0, io.EOF
+	}
+	return dr.Target.Read(p)
+}
+
+func (d *DeviceClient) DownloadFileToWriter(id uint32, f io.Writer) error {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
 		DownloadFile: &pb.DownloadFile{
-			Id:       uint32(id),
-			Page:     uint32(0),
-			PageSize: pageSize,
-			Token:    token,
+			Id: uint32(id),
 		},
 	}
 
-	_, err := d.queryDeviceCallback(query, CallbackFunc(func(reply *pb.WireMessageReply) error {
+	headerCallback := CallbackFunc(func(reply *pb.WireMessageReply) error {
 		if reply.Type != pb.ReplyType_REPLY_BUSY {
-			_, err := f.Write(reply.FileData.Data)
-			if err != nil {
-				return fmt.Errorf("Unable to write to file: %v", err)
+			if reply.FileData != nil {
+				_, err := f.Write(reply.FileData.Data)
+				if err != nil {
+					return fmt.Errorf("Unable to write to file: %v", err)
+				}
 			}
 		} else {
 			return DeviceBusyErr
 		}
 		return nil
-	}))
+	})
+
+	bodyCallback := BodyCallbackFunc(func(r io.Reader) error {
+		_, err := io.Copy(f, r)
+		return err
+	})
+
+	_, err := d.queryDeviceDownload(query, headerCallback, bodyCallback)
 
 	return err
 }
 
 type CallbackFunc func(*pb.WireMessageReply) error
+type BodyCallbackFunc func(r io.Reader) error
 
 func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (net.Conn, error) {
 	c, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", d.Address, d.Port), 5*time.Second)
@@ -367,6 +386,66 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 
 	if len(collection) == 0 {
 		return nil, fmt.Errorf("No reply.")
+	}
+
+	replies := make([]*pb.WireMessageReply, 0)
+
+	for _, m := range collection {
+		replies = append(replies, m.(*pb.WireMessageReply))
+	}
+
+	return replies, err
+}
+
+func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback CallbackFunc, body BodyCallbackFunc) ([]*pb.WireMessageReply, error) {
+	c, err := d.openAndSendQuery(query)
+	if err != nil {
+		return nil, err
+	}
+
+	defer c.Close()
+
+	dr := &DebugReader{
+		Target: c,
+	}
+
+	lr := &LimitedReader{
+		Target:           dr,
+		MessagesExpected: 1,
+	}
+
+	c.SetDeadline(time.Now().Add(10 * time.Second))
+
+	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
+		var reply pb.WireMessageReply
+		err := proto.Unmarshal(b, &reply)
+		if err != nil {
+			return nil, err
+		}
+
+		err = callback(&reply)
+		if err != nil {
+			return nil, err
+		}
+
+		lr.MessagesExpected -= 1
+
+		c.SetDeadline(time.Now().Add(10 * time.Second))
+		return &reply, err
+	})
+
+	collection, err := stream.ReadLengthPrefixedCollection(lr, unmarshalFunc)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(collection) == 0 {
+		return nil, fmt.Errorf("No reply.")
+	}
+
+	err = body(dr)
+	if err != nil {
+		return nil, fmt.Errorf("Error reading body: %v", err)
 	}
 
 	replies := make([]*pb.WireMessageReply, 0)

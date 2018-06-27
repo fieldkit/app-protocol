@@ -226,14 +226,12 @@ func main() {
 
 		defer f.Close()
 
-		token := []byte{}
-
 		bar := progress.New(int(file.Size)).SetUnits(progress.U_BYTES)
 		bar.Start()
 
 		writer := io.MultiWriter(f, bar)
 
-		err = device.DownloadFileToWriter(uint32(o.DownloadFile), 0, token, writer)
+		err = device.DownloadFileToWriter(uint32(o.DownloadFile), writer)
 		if err != nil {
 			log.Fatalf("Unable to download file %s (%v)", fileName, err)
 		}
