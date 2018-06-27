@@ -9,6 +9,7 @@ all: bindings
 all: bindings
 	GOOS=linux GOARCH=amd64 make binaries-all
 	GOOS=linux GOARCH=arm make binaries-all
+	GOOS=darwin GOARCH=amd64 make binaries-all
 
 install: all
 
