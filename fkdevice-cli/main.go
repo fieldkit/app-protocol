@@ -26,9 +26,6 @@ type options struct {
 	ConfigureAp bool
 	Schedules   bool
 
-	DownloadDataSet int
-	EraseDataSet    int
-
 	LiveDataPoll     bool
 	LiveDataInterval int
 
@@ -74,9 +71,6 @@ func main() {
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
 	flag.IntVar(&o.EraseFile, "erase-file", -1, "erase file")
 
-	flag.IntVar(&o.DownloadDataSet, "download-ds", -1, "download data")
-	flag.IntVar(&o.EraseDataSet, "erase-ds", -1, "erase data")
-
 	flag.IntVar(&o.LiveDataInterval, "live-data-interval", 1000, "interval to poll (0 disables)")
 	flag.BoolVar(&o.LiveDataPoll, "live-data-poll", false, "send live data poll")
 
@@ -114,22 +108,6 @@ func main() {
 		_, err := device.QueryCapabilities()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
-		}
-
-		dataSets, err := device.QueryDataSets()
-		if err != nil {
-			log.Fatalf("Error: %v", err)
-		}
-
-		if dataSets.DataSets == nil {
-			log.Fatalf("Error: Malformed data sets reply")
-		}
-
-		for _, ds := range dataSets.DataSets.DataSets {
-			_, err := device.QueryDataSet(ds.Id)
-			if err != nil {
-				log.Fatalf("Error: %v", err)
-			}
 		}
 	}
 
@@ -176,27 +154,6 @@ func main() {
 			} else {
 				break
 			}
-		}
-	}
-
-	if o.DownloadDataSet >= 0 {
-		ds, err := device.QueryDataSet(uint32(o.DownloadDataSet))
-		if err != nil {
-			log.Fatalf("Error: %v", err)
-		}
-
-		device.DownloadDataSet(uint32(o.DownloadDataSet), ds.DataSets.DataSets[0].Pages)
-	}
-
-	if o.EraseDataSet >= 0 {
-		_, err := device.QueryDataSet(uint32(o.EraseDataSet))
-		if err != nil {
-			log.Fatalf("Error: %v", err)
-		}
-
-		_, err = device.EraseDataSet(uint32(o.EraseDataSet))
-		if err != nil {
-			log.Fatalf("Error: %v", err)
 		}
 	}
 

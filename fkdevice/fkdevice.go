@@ -75,63 +75,6 @@ func (d *DeviceClient) QuerySchedules() (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
-func (d *DeviceClient) QueryDataSets() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_DATA_SETS,
-	}
-	reply, err := d.queryDevice(query)
-	if err != nil {
-		return nil, err
-	}
-	return reply, nil
-}
-
-func (d *DeviceClient) QueryDataSet(id uint32) (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_DATA_SET,
-		QueryDataSet: &pb.QueryDataSet{
-			Id: id,
-		},
-	}
-	reply, err := d.queryDevice(query)
-	if err != nil {
-		return nil, err
-	}
-	return reply, nil
-}
-
-func (d *DeviceClient) EraseDataSet(id uint32) (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_ERASE_DATA_SET,
-		EraseDataSet: &pb.EraseDataSet{
-			Id: id,
-		},
-	}
-	reply, err := d.queryDevice(query)
-	if err != nil {
-		return nil, err
-	}
-	return reply, nil
-}
-
-func (d *DeviceClient) DownloadDataSet(id uint32, pages uint32) (*pb.WireMessageReply, error) {
-	for page := 0; uint32(page) < pages; page += 1 {
-		query := &pb.WireMessageQuery{
-			Type: pb.QueryType_QUERY_DOWNLOAD_DATA_SET,
-			DownloadDataSet: &pb.DownloadDataSet{
-				Id:   uint32(id),
-				Page: uint32(page),
-			},
-		}
-		reply, err := d.queryDevice(query)
-		if err != nil {
-			return nil, err
-		}
-		fmt.Printf("Page#%d: %+v", page, *reply)
-	}
-	return nil, nil
-}
-
 func (d *DeviceClient) Reset() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_RESET,

@@ -9,10 +9,6 @@ enum QueryType {
   QUERY_NONE = 0;
   QUERY_CAPABILITIES = 1;
   QUERY_CONFIGURE_SENSOR = 2;
-  QUERY_DATA_SETS = 3;
-  QUERY_DATA_SET = 4;
-  QUERY_DOWNLOAD_DATA_SET = 5;
-  QUERY_ERASE_DATA_SET = 6;
   QUERY_LIVE_DATA_POLL = 7;
   QUERY_SCHEDULES = 8;
   QUERY_CONFIGUE_SCHEDULES = 9;
@@ -38,9 +34,6 @@ enum ReplyType {
   REPLY_BUSY = 2;
   REPLY_ERROR = 3;
   REPLY_CAPABILITIES = 4;
-  REPLY_DATA_SETS = 5;
-  REPLY_DATA_SET = 6;
-  REPLY_DOWNLOAD_DATA_SET = 7;
   REPLY_LIVE_DATA_POLL = 8;
   REPLY_SCHEDULES = 9;
   REPLY_FILES = 10;
@@ -131,55 +124,6 @@ message ConfigureSensorQuery {
 
 // Querying for a list of data sets that the device has in memory.
 
-message QueryDataSets {
-}
-
-message DataSet {
-  uint32 id = 1;
-  uint32 sensor = 2;
-  uint64 time = 3;
-  uint32 size = 4;
-  uint32 pages = 5;
-  uint32 hash = 6;
-  string name = 7;
-}
-
-// TODO: Paging?
-message DataSets {
-  repeated DataSet dataSets = 1;
-}
-
-// Download a data set.
-
-message DownloadDataSet {
-  uint32 id = 1;
-  uint32 page = 2;
-  uint32 pageSize = 3;
-  bytes token = 4;
-}
-
-// Datasets can be stored in multiple ways depending on the need:
-// 1) Values at a certain fixed frequency.
-// 2) Individual samples taken at certain times.
-// We'll need to discuss a raw format possibly too for situations where the
-// Protobuf overhead is too great?
-
-message Sample {
-  uint64 time = 1;
-  float value = 2;
-}
-
-message DataSetData {
-  uint32 page = 1;
-  repeated Sample samples = 2;
-  repeated float floats = 3;
-  bytes data = 4;
-  uint32 sensor = 5;
-  uint32 size = 6;
-  bytes token = 7;
-  uint32 hash = 8;
-}
-
 message LiveDataPoll {
   uint32 interval = 1;
 }
@@ -194,27 +138,14 @@ message LiveData {
   repeated LiveDataSample samples = 1;
 }
 
-// Query a data set.
-
-message QueryDataSet {
-  uint32 id = 1;
-}
-
-// Erase a data set.
-
-message EraseDataSet {
-  uint32 id = 1;
-}
-
 // Files
 
 message File {
   uint32 id = 1;
   uint64 time = 2;
   uint32 size = 3;
-  uint32 pages = 4;
-  uint32 version = 5;
-  string name = 6;
+  uint32 version = 4;
+  string name = 5;
 }
 
 message Files {
@@ -223,9 +154,8 @@ message Files {
 
 message DownloadFile {
   uint32 id = 1;
-  uint32 page = 2;
-  uint32 pageSize = 3;
-  bytes token = 4;
+  uint32 offset = 2;
+  uint32 length = 3;
 }
 
 message EraseFile {
@@ -233,11 +163,10 @@ message EraseFile {
 }
 
 message FileData {
-  uint32 page = 1;
+  uint32 offset = 1;
   bytes data = 2;
   uint32 size = 3;
   uint32 hash = 4;
-  bytes token = 5;
 }
 
 message DeviceStatus {
@@ -266,10 +195,6 @@ message WireMessageQuery {
   QueryType type = 1;
   QueryCapabilities queryCapabilities = 2;
   ConfigureSensorQuery configureSensor = 3;
-  QueryDataSets queryDataSets = 4;
-  QueryDataSet queryDataSet = 5;
-  DownloadDataSet downloadDataSet = 6;
-  EraseDataSet eraseDataSet = 7;
   LiveDataPoll liveDataPoll = 8;
   Schedules newSchedules = 9;
   DownloadFile downloadFile = 10;
@@ -287,8 +212,6 @@ message WireMessageReply {
   ReplyType type = 1;
   repeated Error errors = 2;
   Capabilities capabilities = 3;
-  DataSets dataSets = 4;
-  DataSetData dataSetData = 5;
   LiveData liveData = 6;
   Schedules schedules = 7;
   Files files = 8;
