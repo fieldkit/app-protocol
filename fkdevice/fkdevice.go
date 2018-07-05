@@ -14,6 +14,10 @@ import (
 	"time"
 )
 
+const (
+	DefaultTimeout = 5
+)
+
 type DeviceClientLoggingCallbacks interface {
 	Sent(query *pb.WireMessageQuery)
 	Received(reply *pb.WireMessageReply)
@@ -277,13 +281,26 @@ func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (net.Conn, e
 	buf := proto.NewBuffer(make([]byte, 0))
 	buf.EncodeRawBytes(data)
 	encoded := buf.Bytes()
-	c.SetDeadline(time.Now().Add(5 * time.Second))
+
+	// We only write once, so this single call is fine here. If we need to
+	// write more in the future we'll need another one of these.
+	c.SetWriteDeadline(time.Now().Add(DefaultTimeout * time.Second))
 	_, err = c.Write(encoded)
 	if err != nil {
 		return nil, err
 	}
 
 	return c, nil
+}
+
+type DeadlineReader struct {
+	Target net.Conn
+}
+
+func (dr *DeadlineReader) Read(p []byte) (n int, err error) {
+	dr.Target.SetReadDeadline(time.Now().Add(DefaultTimeout * time.Second))
+	n, err = dr.Target.Read(p)
+	return
 }
 
 type DebugReader struct {
@@ -303,7 +320,8 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 
 	defer c.Close()
 
-	c.SetDeadline(time.Now().Add(10 * time.Second))
+	dr := &DebugReader{Target: &DeadlineReader{c}}
+
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
 		var reply pb.WireMessageReply
 		err := proto.Unmarshal(b, &reply)
@@ -316,13 +334,8 @@ func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback 
 			return nil, err
 		}
 
-		c.SetDeadline(time.Now().Add(10 * time.Second))
 		return &reply, err
 	})
-
-	dr := &DebugReader{
-		Target: c,
-	}
 
 	collection, err := stream.ReadLengthPrefixedCollection(dr, unmarshalFunc)
 	if err != nil {
@@ -350,16 +363,11 @@ func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback 
 
 	defer c.Close()
 
-	dr := &DebugReader{
-		Target: c,
-	}
-
+	dr := &DebugReader{Target: &DeadlineReader{c}}
 	lr := &LimitedReader{
 		Target:           dr,
 		MessagesExpected: 1,
 	}
-
-	c.SetDeadline(time.Now().Add(10 * time.Second))
 
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
 		var reply pb.WireMessageReply
@@ -374,8 +382,6 @@ func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback 
 		}
 
 		lr.MessagesExpected -= 1
-
-		c.SetDeadline(time.Now().Add(10 * time.Second))
 		return &reply, err
 	})
 
