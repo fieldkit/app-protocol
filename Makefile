@@ -1,6 +1,7 @@
 GOARCH ?= amd64
 GOOS ?= linux
 GO ?= env GOOS=$(GOOS) GOARCH=$(GOARCH) go
+UNAME := $(shell uname)
 BUILD ?= build
 BUILDARCH ?= $(BUILD)/$(GOOS)-$(GOARCH)
 
@@ -13,7 +14,7 @@ all: bindings
 
 install: all
 
-bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h 
+bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h
 
 node_modules/.bin/pbjs:
 	npm install
