@@ -34,6 +34,9 @@ type options struct {
 	EraseFile    int
 	WriteTo      string
 
+	Offset int
+	Length int
+
 	Identity bool
 	Device   string
 	Stream   string
@@ -70,6 +73,9 @@ func main() {
 	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
 	flag.IntVar(&o.EraseFile, "erase-file", -1, "erase file")
+
+	flag.IntVar(&o.Offset, "offset", 0, "download offset")
+	flag.IntVar(&o.Length, "length", 0, "download length")
 
 	flag.IntVar(&o.LiveDataInterval, "live-data-interval", 1000, "interval to poll (0 disables)")
 	flag.BoolVar(&o.LiveDataPoll, "live-data-poll", false, "send live data poll")
@@ -183,12 +189,16 @@ func main() {
 
 		defer f.Close()
 
-		bar := progress.New(int(file.Size)).SetUnits(progress.U_BYTES)
+		size := int(file.Size)
+		if o.Length > 0 {
+			size = o.Length
+		}
+		bar := progress.New(size).SetUnits(progress.U_BYTES)
 		bar.Start()
 
 		writer := io.MultiWriter(f, bar)
 
-		err = device.DownloadFileToWriter(uint32(o.DownloadFile), writer)
+		err = device.DownloadFileToWriter(uint32(o.DownloadFile), uint32(o.Offset), uint32(o.Length), writer)
 		if err != nil {
 			log.Fatalf("Unable to download file %s (%v)", fileName, err)
 		}
