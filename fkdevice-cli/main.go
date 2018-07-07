@@ -26,6 +26,7 @@ type options struct {
 	ConfigureAp bool
 	Schedules   bool
 
+	LiveDataOnce     bool
 	LiveDataPoll     bool
 	LiveDataInterval int
 
@@ -79,6 +80,7 @@ func main() {
 
 	flag.IntVar(&o.LiveDataInterval, "live-data-interval", 1000, "interval to poll (0 disables)")
 	flag.BoolVar(&o.LiveDataPoll, "live-data-poll", false, "send live data poll")
+	flag.BoolVar(&o.LiveDataOnce, "live-data-once", false, "one live data query")
 
 	flag.BoolVar(&o.Identity, "identity", false, "retrieve the device's identity")
 	flag.StringVar(&o.Device, "device", "", "device identity")
@@ -160,6 +162,13 @@ func main() {
 			} else {
 				break
 			}
+		}
+	}
+
+	if o.LiveDataOnce {
+		_, err := device.QueryLiveData(o.LiveDataInterval)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
 		}
 	}
 
