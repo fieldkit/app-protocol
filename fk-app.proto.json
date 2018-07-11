@@ -40,6 +40,13 @@
             "REPLY_MODULE": 16
           }
         },
+        "DownloadFlags": {
+          "values": {
+            "DOWNLOAD_FLAG_NONE": 0,
+            "DOWNLOAD_FLAG_METADATA_PREPEND": 1,
+            "DOWNLOAD_FLAG_METADATA_ONLY": 2
+          }
+        },
         "QueryCapabilities": {
           "fields": {
             "version": {
@@ -302,6 +309,10 @@
             "length": {
               "type": "uint32",
               "id": 3
+            },
+            "flags": {
+              "type": "uint32",
+              "id": 4
             }
           }
         },

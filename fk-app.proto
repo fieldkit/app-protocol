@@ -45,6 +45,12 @@ enum ReplyType {
   REPLY_MODULE = 16;
 }
 
+enum DownloadFlags {
+  DOWNLOAD_FLAG_NONE = 0;
+  DOWNLOAD_FLAG_METADATA_PREPEND = 1;
+  DOWNLOAD_FLAG_METADATA_ONLY = 2;
+}
+
 // Querying information about the device, what it's capable of. Typically the
 // first message that will be sent to a device.
 
@@ -156,6 +162,7 @@ message DownloadFile {
   uint32 id = 1;
   uint32 offset = 2;
   uint32 length = 3;
+  uint32 flags = 4;
 }
 
 message EraseFile {
