@@ -40,6 +40,8 @@ type options struct {
 	Offset int
 	Length int
 
+	Metadata bool
+
 	Identity bool
 	Device   string
 	Stream   string
@@ -81,6 +83,8 @@ func main() {
 
 	flag.IntVar(&o.Offset, "offset", 0, "download offset")
 	flag.IntVar(&o.Length, "length", 0, "download length")
+
+	flag.BoolVar(&o.Metadata, "metadata", false, "query metadata")
 
 	flag.IntVar(&o.LiveDataInterval, "live-data-interval", 1000, "interval to poll (0 disables)")
 	flag.BoolVar(&o.LiveDataPoll, "live-data-poll", false, "send live data poll")
@@ -125,6 +129,13 @@ func main() {
 
 	if o.Status {
 		_, err := device.QueryStatus()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.Metadata {
+		_, err := device.QueryMetadata()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}

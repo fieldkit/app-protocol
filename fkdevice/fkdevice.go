@@ -215,6 +215,17 @@ func (d *DeviceClient) QueryModule(id uint32, message []byte) (*pb.WireMessageRe
 	return reply, nil
 }
 
+func (d *DeviceClient) QueryMetadata() (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_METADATA,
+	}
+	reply, err := d.queryDevice(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 var DeviceBusyErr = fmt.Errorf("Busy")
 
 type LimitedReader struct {
