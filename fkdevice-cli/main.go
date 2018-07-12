@@ -207,7 +207,7 @@ func main() {
 
 		writer := io.MultiWriter(f, bar)
 
-		err = device.DownloadFileToWriter(uint32(o.DownloadFile), uint32(o.Offset), uint32(o.Length), writer)
+		err = device.DownloadFileToWriter(uint32(o.DownloadFile), uint32(o.Offset), uint32(o.Length), uint32(0), writer)
 		if err != nil {
 			log.Fatalf("Unable to download file %s (%v)", fileName, err)
 		}

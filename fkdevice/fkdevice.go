@@ -229,13 +229,14 @@ func (dr *LimitedReader) Read(p []byte) (n int, err error) {
 	return dr.Target.Read(p)
 }
 
-func (d *DeviceClient) DownloadFileToWriter(id, offset, length uint32, f io.Writer) error {
+func (d *DeviceClient) DownloadFileToWriter(id, offset, length, flags uint32, f io.Writer) error {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_DOWNLOAD_FILE,
 		DownloadFile: &pb.DownloadFile{
 			Id:     id,
 			Offset: offset,
 			Length: length,
+			Flags:  flags,
 		},
 	}
 
