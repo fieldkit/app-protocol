@@ -19,7 +19,8 @@
             "QUERY_IDENTITY": 16,
             "QUERY_CONFIGURE_IDENTITY": 17,
             "QUERY_STATUS": 18,
-            "QUERY_MODULE": 19
+            "QUERY_MODULE": 19,
+            "QUERY_METADATA": 20
           }
         },
         "ReplyType": {
@@ -37,7 +38,8 @@
             "REPLY_NETWORK_SETTINGS": 13,
             "REPLY_IDENTITY": 14,
             "REPLY_STATUS": 15,
-            "REPLY_MODULE": 16
+            "REPLY_MODULE": 16,
+            "REPLY_METADATA": 17
           }
         },
         "DownloadFlags": {
