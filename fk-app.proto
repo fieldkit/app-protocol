@@ -175,6 +175,7 @@ message FileData {
   uint32 size = 3;
   uint32 hash = 4;
   uint32 version = 5;
+  uint32 id = 6;
 }
 
 message DeviceStatus {

@@ -345,6 +345,10 @@
             "version": {
               "type": "uint32",
               "id": 5
+            },
+            "id": {
+              "type": "uint32",
+              "id": 6
             }
           }
         },
