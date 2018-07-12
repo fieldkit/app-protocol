@@ -30,10 +30,12 @@ type options struct {
 	LiveDataPoll     bool
 	LiveDataInterval int
 
-	Files        bool
-	DownloadFile int
-	EraseFile    int
-	WriteTo      string
+	Files           bool
+	DownloadFile    int
+	EraseFile       int
+	WriteTo         string
+	MetadataOnly    bool
+	PrependMetadata bool
 
 	Offset int
 	Length int
@@ -74,6 +76,8 @@ func main() {
 	flag.BoolVar(&o.Files, "files", false, "scan the device's files")
 	flag.IntVar(&o.DownloadFile, "download-file", -1, "download file")
 	flag.IntVar(&o.EraseFile, "erase-file", -1, "erase file")
+	flag.BoolVar(&o.MetadataOnly, "metadata-only", false, "only get metadata")
+	flag.BoolVar(&o.PrependMetadata, "prepend-metadata", false, "include metadata")
 
 	flag.IntVar(&o.Offset, "offset", 0, "download offset")
 	flag.IntVar(&o.Length, "length", 0, "download length")
@@ -207,11 +211,19 @@ func main() {
 
 		writer := io.MultiWriter(f, bar)
 
-		err = device.DownloadFileToWriter(uint32(o.DownloadFile), uint32(o.Offset), uint32(o.Length), uint32(0), writer)
+		flags := 0
+		if o.MetadataOnly {
+			flags |= int(pb.DownloadFlags_DOWNLOAD_FLAG_METADATA_ONLY)
+		}
+		if o.PrependMetadata {
+			flags |= int(pb.DownloadFlags_DOWNLOAD_FLAG_METADATA_PREPEND)
+		}
+		err = device.DownloadFileToWriter(uint32(o.DownloadFile), uint32(o.Offset), uint32(o.Length), uint32(flags), writer)
 		if err != nil {
 			log.Fatalf("Unable to download file %s (%v)", fileName, err)
 		}
 
+		// NOTE: This is wrong if they only ask for metadata.
 		bar.Set(int(file.Size))
 		bar.Finish()
 	}
