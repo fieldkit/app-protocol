@@ -276,7 +276,7 @@
               "id": 2
             },
             "size": {
-              "type": "uint32",
+              "type": "uint64",
               "id": 3
             },
             "version": {
@@ -286,6 +286,10 @@
             "name": {
               "type": "string",
               "id": 5
+            },
+            "maximum": {
+              "type": "uint64",
+              "id": 6
             }
           }
         },
