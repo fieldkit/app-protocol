@@ -83,7 +83,7 @@ func (d *DeviceClient) Reset() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_RESET,
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDeviceOpts(&DeviceQueryOpts{query, 60})
 	if err != nil {
 		return nil, err
 	}
@@ -317,11 +317,12 @@ func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (net.Conn, e
 }
 
 type DeadlineReader struct {
-	Target net.Conn
+	Target  net.Conn
+	Timeout time.Duration
 }
 
 func (dr *DeadlineReader) Read(p []byte) (n int, err error) {
-	dr.Target.SetReadDeadline(time.Now().Add(DefaultTimeout * time.Second))
+	dr.Target.SetReadDeadline(time.Now().Add(dr.Timeout))
 	n, err = dr.Target.Read(p)
 	return
 }
@@ -335,15 +336,20 @@ func (dr *DebugReader) Read(p []byte) (n int, err error) {
 	return
 }
 
-func (d *DeviceClient) queryDeviceCallback(query *pb.WireMessageQuery, callback CallbackFunc) ([]*pb.WireMessageReply, error) {
-	c, err := d.openAndSendQuery(query)
+type DeviceQueryOpts struct {
+	Query   *pb.WireMessageQuery
+	Timeout int
+}
+
+func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback CallbackFunc) ([]*pb.WireMessageReply, error) {
+	c, err := d.openAndSendQuery(opts.Query)
 	if err != nil {
 		return nil, err
 	}
 
 	defer c.Close()
 
-	dr := &DebugReader{Target: &DeadlineReader{c}}
+	dr := &DebugReader{Target: &DeadlineReader{c, time.Duration(opts.Timeout) * time.Second}}
 
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
 		var reply pb.WireMessageReply
@@ -386,7 +392,7 @@ func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback 
 
 	defer c.Close()
 
-	dr := &DebugReader{Target: &DeadlineReader{c}}
+	dr := &DebugReader{Target: &DeadlineReader{c, DefaultTimeout * time.Second}}
 	lr := &LimitedReader{
 		Target:           dr,
 		MessagesExpected: 1,
@@ -431,26 +437,11 @@ func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback 
 	return replies, err
 }
 
-func (d *DeviceClient) queryDeviceNoReply(query *pb.WireMessageQuery) (err error) {
+func (d *DeviceClient) queryDeviceOpts(opts *DeviceQueryOpts) (reply *pb.WireMessageReply, err error) {
 	if d.Callbacks != nil {
-		d.Callbacks.Sent(query)
+		d.Callbacks.Sent(opts.Query)
 	}
-
-	c, err := d.openAndSendQuery(query)
-	if err != nil {
-		return err
-	}
-
-	defer c.Close()
-
-	return err
-}
-
-func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
-	if d.Callbacks != nil {
-		d.Callbacks.Sent(query)
-	}
-	replies, err := d.queryDeviceMultiple(query)
+	replies, err := d.queryDeviceMultiple(opts)
 	if err != nil {
 		return nil, err
 	}
@@ -463,8 +454,12 @@ func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMe
 	return nil, nil
 }
 
-func (d *DeviceClient) queryDeviceMultiple(query *pb.WireMessageQuery) (replies []*pb.WireMessageReply, err error) {
-	return d.queryDeviceCallback(query, CallbackFunc(func(reply *pb.WireMessageReply) error {
+func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
+	return d.queryDeviceOpts(&DeviceQueryOpts{query, DefaultTimeout})
+}
+
+func (d *DeviceClient) queryDeviceMultiple(opts *DeviceQueryOpts) (replies []*pb.WireMessageReply, err error) {
+	return d.queryDeviceCallback(opts, CallbackFunc(func(reply *pb.WireMessageReply) error {
 		return nil
 	}))
 }
