@@ -141,24 +141,7 @@
           }
         },
         "Schedule": {
-          "fields": {
-            "second": {
-              "type": "TimeSpec",
-              "id": 1
-            },
-            "minute": {
-              "type": "TimeSpec",
-              "id": 2
-            },
-            "hour": {
-              "type": "TimeSpec",
-              "id": 3
-            },
-            "day": {
-              "type": "TimeSpec",
-              "id": 4
-            }
-          }
+          "fields": {}
         },
         "Schedules": {
           "fields": {

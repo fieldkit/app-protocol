@@ -93,10 +93,7 @@ message TimeSpec {
 }
 
 message Schedule {
-  TimeSpec second = 1;
-  TimeSpec minute = 2;
-  TimeSpec hour = 3;
-  TimeSpec day = 4;
+  // TODO
 }
 
 message Schedules {
