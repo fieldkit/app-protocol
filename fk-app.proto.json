@@ -20,7 +20,8 @@
             "QUERY_CONFIGURE_IDENTITY": 17,
             "QUERY_STATUS": 18,
             "QUERY_MODULE": 19,
-            "QUERY_METADATA": 20
+            "QUERY_METADATA": 20,
+            "QUERY_FORMAT": 21
           }
         },
         "ReplyType": {

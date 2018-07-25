@@ -23,6 +23,7 @@ enum QueryType {
   QUERY_STATUS = 18;
   QUERY_MODULE = 19;
   QUERY_METADATA = 20;
+  QUERY_FORMAT = 21;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
