@@ -83,11 +83,22 @@ func (d *DeviceClient) Reset() (*pb.WireMessageReply, error) {
 	query := &pb.WireMessageQuery{
 		Type: pb.QueryType_QUERY_RESET,
 	}
-	err := d.queryDeviceNoReply(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
-	return nil, nil
+	return reply, nil
+}
+
+func (d *DeviceClient) Format() (*pb.WireMessageReply, error) {
+	query := &pb.WireMessageQuery{
+		Type: pb.QueryType_QUERY_FORMAT,
+	}
+	reply, err := d.queryDevice(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
 }
 
 func (d *DeviceClient) QueryFiles() (*pb.WireMessageReply, error) {

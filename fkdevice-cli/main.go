@@ -46,7 +46,8 @@ type options struct {
 	Device   string
 	Stream   string
 
-	Reset bool
+	Reset  bool
+	Format bool
 
 	DeviceName   string
 	LinkIdentity bool
@@ -95,6 +96,7 @@ func main() {
 	flag.StringVar(&o.Stream, "stream", "", "stream identity")
 
 	flag.BoolVar(&o.Reset, "reset", false, "reset the device")
+	flag.BoolVar(&o.Format, "format", false, "format the device")
 
 	flag.StringVar(&o.DeviceName, "device-name", "test-device", "device name")
 	flag.BoolVar(&o.LinkIdentity, "link", false, "link device identity to website")
@@ -316,6 +318,13 @@ func main() {
 
 	if o.Reset {
 		_, err := device.Reset()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.Format {
+		_, err := device.Format()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
