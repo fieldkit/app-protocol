@@ -1,17 +1,20 @@
 package fkdevice
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
-	pb "github.com/fieldkit/app-protocol"
-	"github.com/golang/protobuf/proto"
-	"github.com/robinpowered/go-proto/message"
-	"github.com/robinpowered/go-proto/stream"
-	_ "hash/crc32"
 	"io"
 	"log"
 	"net"
+	"net/http"
 	"time"
+
+	"github.com/golang/protobuf/proto"
+	"github.com/robinpowered/go-proto/message"
+	"github.com/robinpowered/go-proto/stream"
+
+	pb "github.com/fieldkit/app-protocol"
 )
 
 const (
@@ -44,6 +47,7 @@ type DeviceClient struct {
 	Callbacks DeviceClientLoggingCallbacks
 	Address   string
 	Port      int
+	HttpMode  bool
 }
 
 func (d *DeviceClient) QueryCapabilities() (*pb.WireMessageReply, error) {
@@ -289,7 +293,26 @@ func (d *DeviceClient) DownloadFileToWriter(id, offset, length, flags uint32, f 
 type CallbackFunc func(*pb.WireMessageReply) error
 type BodyCallbackFunc func(r io.Reader) error
 
-func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (net.Conn, error) {
+type QueryResponse struct {
+	tcp  net.Conn
+	http *http.Response
+}
+
+func (qr *QueryResponse) Reader(to int) io.Reader {
+	if qr.tcp != nil {
+		return &DebugReader{Target: &DeadlineReader{qr.tcp, time.Duration(to) * time.Second}}
+	}
+	return qr.http.Body
+}
+
+func (qr *QueryResponse) Close() error {
+	if qr.tcp != nil {
+		qr.tcp.Close()
+	}
+	return nil
+}
+
+func (d *DeviceClient) openAndSendQueryTcp(query *pb.WireMessageQuery) (*QueryResponse, error) {
 	c, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", d.Address, d.Port), 5*time.Second)
 	if err != nil {
 		return nil, err
@@ -313,7 +336,37 @@ func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (net.Conn, e
 		return nil, err
 	}
 
-	return c, nil
+	return &QueryResponse{tcp: c}, nil
+}
+
+func (d *DeviceClient) openAndSendQueryHttp(query *pb.WireMessageQuery) (*QueryResponse, error) {
+	data, err := proto.Marshal(query)
+	if err != nil {
+		return nil, err
+	}
+
+	// EncodeRawBytes includes the length prefix.
+	buf := proto.NewBuffer(make([]byte, 0))
+	buf.EncodeRawBytes(data)
+
+	// We only write once, so this single call is fine here. If we need to
+	// write more in the future we'll need another one of these.
+	url := fmt.Sprintf("http://%s:%d/fk/v1", d.Address, d.Port)
+	body := bytes.NewReader(buf.Bytes())
+	resp, err := http.Post(url, "text/plain", body)
+	if err != nil {
+		return nil, err
+	}
+
+	return &QueryResponse{http: resp}, nil
+}
+
+func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (*QueryResponse, error) {
+	if d.HttpMode {
+		return d.openAndSendQueryHttp(query)
+	} else {
+		return d.openAndSendQueryTcp(query)
+	}
 }
 
 type DeadlineReader struct {
@@ -349,7 +402,7 @@ func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback Callb
 
 	defer c.Close()
 
-	dr := &DebugReader{Target: &DeadlineReader{c, time.Duration(opts.Timeout) * time.Second}}
+	dr := c.Reader(opts.Timeout)
 
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
 		var reply pb.WireMessageReply
@@ -392,7 +445,7 @@ func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback 
 
 	defer c.Close()
 
-	dr := &DebugReader{Target: &DeadlineReader{c, DefaultTimeout * time.Second}}
+	dr := c.Reader(120)
 	lr := &LimitedReader{
 		Target:           dr,
 		MessagesExpected: 1,

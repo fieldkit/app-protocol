@@ -17,8 +17,9 @@ import (
 )
 
 type options struct {
-	Address string
-	Port    int
+	Address  string
+	Port     int
+	HttpMode bool
 
 	Scan        bool
 	Status      bool
@@ -65,7 +66,8 @@ func main() {
 	o := options{}
 
 	flag.StringVar(&o.Address, "address", "", "ip address of the device")
-	flag.IntVar(&o.Port, "port", 54321, "port number")
+	flag.IntVar(&o.Port, "port", 80, "port number")
+	flag.BoolVar(&o.HttpMode, "http", true, "use http instead of tcp")
 
 	flag.BoolVar(&o.Scan, "scan", false, "scan the device's capabilities and data sets")
 	flag.BoolVar(&o.Schedules, "schedules", false, "query for schedules")
@@ -120,6 +122,7 @@ func main() {
 		Address:   o.Address,
 		Port:      o.Port,
 		Callbacks: &fkc.LogJsonCallbacks{},
+		HttpMode:  o.HttpMode,
 	}
 
 	if o.Scan {
