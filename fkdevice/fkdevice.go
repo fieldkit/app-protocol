@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -39,6 +40,20 @@ func (cb *LogJsonCallbacks) Sent(query *pb.WireMessageQuery) {
 }
 
 func (cb *LogJsonCallbacks) Received(reply *pb.WireMessageReply) {
+	replyJson, err := json.MarshalIndent(reply, "", "  ")
+	if err == nil {
+		log.Printf("Received: %s", replyJson)
+	}
+}
+
+func (cb *LogJsonCallbacks) HttpSent(query *pb.HttpQuery) {
+	queryJson, err := json.MarshalIndent(query, "", "  ")
+	if err == nil {
+		log.Printf("Sending: %s", queryJson)
+	}
+}
+
+func (cb *LogJsonCallbacks) HttpReceived(reply *pb.HttpReply) {
 	replyJson, err := json.MarshalIndent(reply, "", "  ")
 	if err == nil {
 		log.Printf("Received: %s", replyJson)
@@ -354,7 +369,17 @@ func (d *DeviceClient) openAndSendQueryHttp(query *pb.WireMessageQuery) (*QueryR
 	// We only write once, so this single call is fine here. If we need to
 	// write more in the future we'll need another one of these.
 	url := fmt.Sprintf("http://%s:%d/fk/v1", d.Address, d.Port)
+
+	req, err := http.NewRequest("POST", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Content-Type", "application/fkhttp")
+
 	body := bytes.NewReader(buf.Bytes())
+	req.Body = ioutil.NopCloser(body)
+
 	resp, err := http.Post(url, "text/plain", body)
 	if err != nil {
 		return nil, err
