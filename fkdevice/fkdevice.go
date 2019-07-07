@@ -68,10 +68,7 @@ type DeviceClient struct {
 }
 
 func (d *DeviceClient) QueryCapabilities() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_CAPABILITIES,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_CAPABILITIES)
 	if err != nil {
 		return nil, err
 	}
@@ -79,10 +76,7 @@ func (d *DeviceClient) QueryCapabilities() (*pb.WireMessageReply, error) {
 }
 
 func (d *DeviceClient) QueryStatus() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_STATUS,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_STATUS)
 	if err != nil {
 		return nil, err
 	}
@@ -90,10 +84,7 @@ func (d *DeviceClient) QueryStatus() (*pb.WireMessageReply, error) {
 }
 
 func (d *DeviceClient) QuerySchedules() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_SCHEDULES,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_SCHEDULES)
 	if err != nil {
 		return nil, err
 	}
@@ -101,10 +92,7 @@ func (d *DeviceClient) QuerySchedules() (*pb.WireMessageReply, error) {
 }
 
 func (d *DeviceClient) Reset() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_RESET,
-	}
-	reply, err := d.queryDeviceOpts(&DeviceQueryOpts{query, 60})
+	reply, err := d.queryDevice(pb.QueryType_QUERY_RESET)
 	if err != nil {
 		return nil, err
 	}
@@ -112,10 +100,7 @@ func (d *DeviceClient) Reset() (*pb.WireMessageReply, error) {
 }
 
 func (d *DeviceClient) Format() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_FORMAT,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_FORMAT)
 	if err != nil {
 		return nil, err
 	}
@@ -123,10 +108,7 @@ func (d *DeviceClient) Format() (*pb.WireMessageReply, error) {
 }
 
 func (d *DeviceClient) QueryFiles() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_FILES,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_FILES)
 	if err != nil {
 		return nil, err
 	}
@@ -140,7 +122,7 @@ func (d *DeviceClient) EraseFile(id uint32) (*pb.WireMessageReply, error) {
 			Id: uint32(id),
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDeviceQuery(query)
 	if err != nil {
 		return nil, err
 	}
@@ -155,7 +137,7 @@ func (d *DeviceClient) QueryLiveData(liveDataInterval int) (*pb.WireMessageReply
 			Interval: uint32(liveDataInterval),
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDeviceQuery(query)
 	if err != nil {
 		return nil, err
 	}
@@ -163,10 +145,7 @@ func (d *DeviceClient) QueryLiveData(liveDataInterval int) (*pb.WireMessageReply
 }
 
 func (d *DeviceClient) QueryNetworkSettings() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_NETWORK_SETTINGS,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_NETWORK_SETTINGS)
 	if err != nil {
 		return nil, err
 	}
@@ -181,7 +160,7 @@ func (d *DeviceClient) ConfigureNetworkSettings(ns *pb.NetworkSettings) (*pb.Wir
 			Networks:          ns.Networks,
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDeviceQuery(query)
 	if err != nil {
 		return nil, err
 	}
@@ -189,11 +168,7 @@ func (d *DeviceClient) ConfigureNetworkSettings(ns *pb.NetworkSettings) (*pb.Wir
 }
 
 func (d *DeviceClient) QueryIdentity() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_IDENTITY,
-	}
-
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_IDENTITY)
 	if err != nil {
 		return nil, err
 	}
@@ -208,7 +183,7 @@ func (d *DeviceClient) ConfigureIdentity(device, stream string) (*pb.WireMessage
 			Stream: stream,
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDeviceQuery(query)
 	if err != nil {
 		return nil, err
 	}
@@ -216,10 +191,7 @@ func (d *DeviceClient) ConfigureIdentity(device, stream string) (*pb.WireMessage
 }
 
 func (d *DeviceClient) QueryFileInformation(id uint32) (*pb.File, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_FILES,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_FILES)
 	if err != nil {
 		return nil, err
 	}
@@ -240,7 +212,7 @@ func (d *DeviceClient) QueryModule(id uint32, message []byte) (*pb.WireMessageRe
 			Message: message,
 		},
 	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDeviceQuery(query)
 	if err != nil {
 		return nil, err
 	}
@@ -248,10 +220,7 @@ func (d *DeviceClient) QueryModule(id uint32, message []byte) (*pb.WireMessageRe
 }
 
 func (d *DeviceClient) QueryMetadata() (*pb.WireMessageReply, error) {
-	query := &pb.WireMessageQuery{
-		Type: pb.QueryType_QUERY_METADATA,
-	}
-	reply, err := d.queryDevice(query)
+	reply, err := d.queryDevice(pb.QueryType_QUERY_METADATA)
 	if err != nil {
 		return nil, err
 	}
@@ -302,7 +271,9 @@ func (d *DeviceClient) DownloadFileToWriter(id, offset, length, flags uint32, f 
 		return err
 	})
 
-	_, err := d.queryDeviceDownload(query, headerCallback, bodyCallback)
+	opts := DeviceQueryOpts{nil, query, 10}
+
+	_, err := d.queryDeviceDownload(&opts, headerCallback, bodyCallback)
 
 	return err
 }
@@ -356,7 +327,7 @@ func (d *DeviceClient) openAndSendQueryTcp(query *pb.WireMessageQuery) (*QueryRe
 	return &QueryResponse{tcp: c}, nil
 }
 
-func (d *DeviceClient) openAndSendQueryHttp(query *pb.WireMessageQuery) (*QueryResponse, error) {
+func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse, error) {
 	data, err := proto.Marshal(query)
 	if err != nil {
 		return nil, err
@@ -388,11 +359,11 @@ func (d *DeviceClient) openAndSendQueryHttp(query *pb.WireMessageQuery) (*QueryR
 	return &QueryResponse{http: resp}, nil
 }
 
-func (d *DeviceClient) openAndSendQuery(query *pb.WireMessageQuery) (*QueryResponse, error) {
+func (d *DeviceClient) openAndSendQuery(opts *DeviceQueryOpts) (*QueryResponse, error) {
 	if d.HttpMode {
-		return d.openAndSendQueryHttp(query)
+		return d.openAndSendQueryHttp(opts.httpQuery)
 	} else {
-		return d.openAndSendQueryTcp(query)
+		return d.openAndSendQueryTcp(opts.wireMessageQuery)
 	}
 }
 
@@ -417,19 +388,20 @@ func (dr *DebugReader) Read(p []byte) (n int, err error) {
 }
 
 type DeviceQueryOpts struct {
-	Query   *pb.WireMessageQuery
-	Timeout int
+	httpQuery        *pb.HttpQuery
+	wireMessageQuery *pb.WireMessageQuery
+	timeout          int
 }
 
 func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback CallbackFunc) ([]*pb.WireMessageReply, error) {
-	c, err := d.openAndSendQuery(opts.Query)
+	c, err := d.openAndSendQuery(opts)
 	if err != nil {
 		return nil, err
 	}
 
 	defer c.Close()
 
-	dr := c.Reader(opts.Timeout)
+	dr := c.Reader(opts.timeout)
 
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
 		var reply pb.WireMessageReply
@@ -464,8 +436,8 @@ func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback Callb
 	return replies, err
 }
 
-func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback CallbackFunc, body BodyCallbackFunc) ([]*pb.WireMessageReply, error) {
-	c, err := d.openAndSendQuery(query)
+func (d *DeviceClient) queryDeviceDownload(opts *DeviceQueryOpts, callback CallbackFunc, body BodyCallbackFunc) ([]*pb.WireMessageReply, error) {
+	c, err := d.openAndSendQuery(opts)
 	if err != nil {
 		return nil, err
 	}
@@ -519,7 +491,7 @@ func (d *DeviceClient) queryDeviceDownload(query *pb.WireMessageQuery, callback 
 
 func (d *DeviceClient) queryDeviceOpts(opts *DeviceQueryOpts) (reply *pb.WireMessageReply, err error) {
 	if d.Callbacks != nil {
-		d.Callbacks.Sent(opts.Query)
+		d.Callbacks.Sent(opts.wireMessageQuery)
 	}
 	replies, err := d.queryDeviceMultiple(opts)
 	if err != nil {
@@ -534,8 +506,22 @@ func (d *DeviceClient) queryDeviceOpts(opts *DeviceQueryOpts) (reply *pb.WireMes
 	return nil, nil
 }
 
-func (d *DeviceClient) queryDevice(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
-	return d.queryDeviceOpts(&DeviceQueryOpts{query, DefaultTimeout})
+func (d *DeviceClient) queryDevice(queryType pb.QueryType) (reply *pb.WireMessageReply, err error) {
+	if d.HttpMode {
+		query := &pb.HttpQuery{
+			Type: queryType,
+		}
+		return d.queryDeviceOpts(&DeviceQueryOpts{query, nil, DefaultTimeout})
+	} else {
+		query := &pb.WireMessageQuery{
+			Type: queryType,
+		}
+		return d.queryDeviceOpts(&DeviceQueryOpts{nil, query, DefaultTimeout})
+	}
+}
+
+func (d *DeviceClient) queryDeviceQuery(query *pb.WireMessageQuery) (reply *pb.WireMessageReply, err error) {
+	return d.queryDeviceOpts(&DeviceQueryOpts{nil, query, DefaultTimeout})
 }
 
 func (d *DeviceClient) queryDeviceMultiple(opts *DeviceQueryOpts) (replies []*pb.WireMessageReply, err error) {
