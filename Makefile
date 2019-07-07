@@ -38,6 +38,6 @@ $(BUILDARCH)/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
 	$(GO) build -o $(BUILDARCH)/fkdevice-cli fkdevice-cli/*.go
 
 clean:
-	rm -rf $(BUILD)
+	rm -rf $(BUILD) fk-app.proto.json src/*.pb.c src/*.pb.h *.pb.go
 
 veryclean:

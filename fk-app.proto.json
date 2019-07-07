@@ -498,6 +498,27 @@
               "id": 13
             }
           }
+        },
+        "HttpQuery": {
+          "fields": {
+            "type": {
+              "type": "QueryType",
+              "id": 1
+            }
+          }
+        },
+        "HttpReply": {
+          "fields": {
+            "type": {
+              "type": "ReplyType",
+              "id": 1
+            },
+            "errors": {
+              "rule": "repeated",
+              "type": "Error",
+              "id": 2
+            }
+          }
         }
       }
     }

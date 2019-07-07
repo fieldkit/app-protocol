@@ -83,6 +83,12 @@ PB_BIND(fk_app_Error, fk_app_Error, AUTO)
 PB_BIND(fk_app_WireMessageReply, fk_app_WireMessageReply, 2)
 
 
+PB_BIND(fk_app_HttpQuery, fk_app_HttpQuery, AUTO)
+
+
+PB_BIND(fk_app_HttpReply, fk_app_HttpReply, AUTO)
+
+
 
 
 

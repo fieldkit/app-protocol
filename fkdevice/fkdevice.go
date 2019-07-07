@@ -24,6 +24,8 @@ const (
 type DeviceClientLoggingCallbacks interface {
 	Sent(query *pb.WireMessageQuery)
 	Received(reply *pb.WireMessageReply)
+	HttpSent(query *pb.HttpQuery)
+	HttpReceived(reply *pb.HttpReply)
 }
 
 type LogJsonCallbacks struct {

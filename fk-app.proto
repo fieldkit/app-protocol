@@ -231,3 +231,12 @@ message WireMessageReply {
   DeviceStatus status = 12;
   ModuleReply module = 13;
 }
+
+message HttpQuery  {
+  QueryType type = 1;
+}
+
+message HttpReply  {
+  ReplyType type = 1;
+  repeated Error errors = 2;
+}
