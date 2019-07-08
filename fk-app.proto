@@ -272,7 +272,6 @@ message Status {
   PowerStatus power = 5;
   MemoryStatus memory = 6;
   GpsStatus gps = 7;
-  repeated ModuleCapabilities modules = 8;
 }
 
 message Range {
@@ -305,5 +304,6 @@ message HttpReply {
   repeated Error errors = 2;
   Status status = 3;
   NetworkSettings networkSettings = 4;
-  repeated DataStream streams = 5;
+  repeated ModuleCapabilities modules = 5;
+  repeated DataStream streams = 6;
 }

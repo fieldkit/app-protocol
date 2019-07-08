@@ -364,7 +364,6 @@ typedef struct _fk_app_Status {
     fk_app_PowerStatus power;
     fk_app_MemoryStatus memory;
     fk_app_GpsStatus gps;
-    pb_callback_t modules;
 /* @@protoc_insertion_point(struct:fk_app_Status) */
 } fk_app_Status;
 
@@ -374,6 +373,7 @@ typedef struct _fk_app_HttpReply {
     pb_callback_t errors;
     fk_app_Status status;
     fk_app_NetworkSettings networkSettings;
+    pb_callback_t modules;
     pb_callback_t streams;
 /* @@protoc_insertion_point(struct:fk_app_HttpReply) */
 } fk_app_HttpReply;
@@ -410,12 +410,12 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
-#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, {{NULL}, NULL}}
+#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default}
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}}
+#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -446,12 +446,12 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
-#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, {{NULL}, NULL}}
+#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero}
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}}
+#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define fk_app_Error_message_tag                 1
@@ -575,12 +575,12 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_power_tag                  5
 #define fk_app_Status_memory_tag                 6
 #define fk_app_Status_gps_tag                    7
-#define fk_app_Status_modules_tag                8
 #define fk_app_HttpReply_type_tag                1
 #define fk_app_HttpReply_errors_tag              2
 #define fk_app_HttpReply_status_tag              3
 #define fk_app_HttpReply_networkSettings_tag     4
-#define fk_app_HttpReply_streams_tag             5
+#define fk_app_HttpReply_modules_tag             5
+#define fk_app_HttpReply_streams_tag             6
 
 /* Struct field encoding specification for nanopb */
 #define fk_app_QueryCapabilities_FIELDLIST(X, a) \
@@ -843,16 +843,14 @@ X(a, STATIC, SINGULAR, MESSAGE, identity, 3) \
 X(a, STATIC, SINGULAR, MESSAGE, hardware, 4) \
 X(a, STATIC, SINGULAR, MESSAGE, power, 5) \
 X(a, STATIC, SINGULAR, MESSAGE, memory, 6) \
-X(a, STATIC, SINGULAR, MESSAGE, gps, 7) \
-X(a, CALLBACK, REPEATED, MESSAGE, modules, 8)
-#define fk_app_Status_CALLBACK pb_default_field_callback
+X(a, STATIC, SINGULAR, MESSAGE, gps, 7)
+#define fk_app_Status_CALLBACK NULL
 #define fk_app_Status_DEFAULT NULL
 #define fk_app_Status_identity_MSGTYPE fk_app_Identity
 #define fk_app_Status_hardware_MSGTYPE fk_app_HardwareStatus
 #define fk_app_Status_power_MSGTYPE fk_app_PowerStatus
 #define fk_app_Status_memory_MSGTYPE fk_app_MemoryStatus
 #define fk_app_Status_gps_MSGTYPE fk_app_GpsStatus
-#define fk_app_Status_modules_MSGTYPE fk_app_ModuleCapabilities
 
 #define fk_app_Range_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, start, 1) \
@@ -889,12 +887,14 @@ X(a, STATIC, SINGULAR, UENUM, type, 1) \
 X(a, CALLBACK, REPEATED, MESSAGE, errors, 2) \
 X(a, STATIC, SINGULAR, MESSAGE, status, 3) \
 X(a, STATIC, SINGULAR, MESSAGE, networkSettings, 4) \
-X(a, CALLBACK, REPEATED, MESSAGE, streams, 5)
+X(a, CALLBACK, REPEATED, MESSAGE, modules, 5) \
+X(a, CALLBACK, REPEATED, MESSAGE, streams, 6)
 #define fk_app_HttpReply_CALLBACK pb_default_field_callback
 #define fk_app_HttpReply_DEFAULT NULL
 #define fk_app_HttpReply_errors_MSGTYPE fk_app_Error
 #define fk_app_HttpReply_status_MSGTYPE fk_app_Status
 #define fk_app_HttpReply_networkSettings_MSGTYPE fk_app_NetworkSettings
+#define fk_app_HttpReply_modules_MSGTYPE fk_app_ModuleCapabilities
 #define fk_app_HttpReply_streams_MSGTYPE fk_app_DataStream
 
 extern const pb_msgdesc_t fk_app_QueryCapabilities_msg;

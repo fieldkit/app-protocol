@@ -608,11 +608,6 @@
             "gps": {
               "type": "GpsStatus",
               "id": 7
-            },
-            "modules": {
-              "rule": "repeated",
-              "type": "ModuleCapabilities",
-              "id": 8
             }
           }
         },
@@ -705,10 +700,15 @@
               "type": "NetworkSettings",
               "id": 4
             },
+            "modules": {
+              "rule": "repeated",
+              "type": "ModuleCapabilities",
+              "id": 5
+            },
             "streams": {
               "rule": "repeated",
               "type": "DataStream",
-              "id": 5
+              "id": 6
             }
           }
         }
