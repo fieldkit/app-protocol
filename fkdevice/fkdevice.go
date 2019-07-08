@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -338,21 +337,21 @@ func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse
 	buf := proto.NewBuffer(make([]byte, 0))
 	buf.EncodeRawBytes(data)
 
+	body := bytes.NewReader(buf.Bytes())
+
 	// We only write once, so this single call is fine here. If we need to
 	// write more in the future we'll need another one of these.
 	url := fmt.Sprintf("http://%s:%d/fk/v1", d.Address, d.Port)
-
-	req, err := http.NewRequest("POST", url, nil)
+	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
 		return nil, err
 	}
 
 	req.Header.Set("Content-Type", "application/fkhttp")
+	req.Header.Set("Content-Length", fmt.Sprintf("%d", len(buf.Bytes())))
 
-	body := bytes.NewReader(buf.Bytes())
-	req.Body = ioutil.NopCloser(body)
-
-	resp, err := http.Post(url, "text/plain", body)
+	client := &http.Client{}
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}
