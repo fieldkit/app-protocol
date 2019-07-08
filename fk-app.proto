@@ -275,20 +275,32 @@ message Status {
   repeated ModuleCapabilities modules = 8;
 }
 
-message HttpQuery  {
+message Range {
+  uint32 start = 1;
+  uint32 end = 2;
+}
+
+message DownloadQuery {
+  uint32 stream = 1;
+  repeated Range ranges = 3;
+  repeated uint32 blocks = 4;
+}
+
+message HttpQuery {
   QueryType type = 1;
 }
 
-message DataStream  {
+message DataStream {
   uint32 id = 1;
   uint64 time = 2;
   uint64 size = 3;
   uint32 version = 4;
-  string name = 5;
-  string path = 6;
+  bytes hash = 5;
+  string name = 6;
+  string path = 7;
 }
 
-message HttpReply  {
+message HttpReply {
   ReplyType type = 1;
   repeated Error errors = 2;
   Status status = 3;

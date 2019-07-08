@@ -616,6 +616,36 @@
             }
           }
         },
+        "Range": {
+          "fields": {
+            "start": {
+              "type": "uint32",
+              "id": 1
+            },
+            "end": {
+              "type": "uint32",
+              "id": 2
+            }
+          }
+        },
+        "DownloadQuery": {
+          "fields": {
+            "stream": {
+              "type": "uint32",
+              "id": 1
+            },
+            "ranges": {
+              "rule": "repeated",
+              "type": "Range",
+              "id": 3
+            },
+            "blocks": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 4
+            }
+          }
+        },
         "HttpQuery": {
           "fields": {
             "type": {
@@ -642,13 +672,17 @@
               "type": "uint32",
               "id": 4
             },
+            "hash": {
+              "type": "bytes",
+              "id": 5
+            },
             "name": {
               "type": "string",
-              "id": 5
+              "id": 6
             },
             "path": {
               "type": "string",
-              "id": 6
+              "id": 7
             }
           }
         },

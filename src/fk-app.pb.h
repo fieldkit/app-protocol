@@ -146,6 +146,7 @@ typedef struct _fk_app_DataStream {
     uint64_t time;
     uint64_t size;
     uint32_t version;
+    pb_callback_t hash;
     pb_callback_t name;
     pb_callback_t path;
 /* @@protoc_insertion_point(struct:fk_app_DataStream) */
@@ -169,6 +170,14 @@ typedef struct _fk_app_DownloadFile {
     uint32_t flags;
 /* @@protoc_insertion_point(struct:fk_app_DownloadFile) */
 } fk_app_DownloadFile;
+
+
+typedef struct _fk_app_DownloadQuery {
+    uint32_t stream;
+    pb_callback_t ranges;
+    pb_callback_t blocks;
+/* @@protoc_insertion_point(struct:fk_app_DownloadQuery) */
+} fk_app_DownloadQuery;
 
 
 typedef struct _fk_app_EraseFile {
@@ -273,6 +282,13 @@ typedef struct _fk_app_QueryModule {
     pb_callback_t message;
 /* @@protoc_insertion_point(struct:fk_app_QueryModule) */
 } fk_app_QueryModule;
+
+
+typedef struct _fk_app_Range {
+    uint32_t start;
+    uint32_t end;
+/* @@protoc_insertion_point(struct:fk_app_Range) */
+} fk_app_Range;
 
 
 typedef struct _fk_app_Schedules {
@@ -395,8 +411,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
 #define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, {{NULL}, NULL}}
+#define fk_app_Range_init_default                {0, 0}
+#define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN}
-#define fk_app_DataStream_init_default           {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_DataStream_init_default           {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -429,8 +447,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
 #define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, {{NULL}, NULL}}
+#define fk_app_Range_init_zero                   {0, 0}
+#define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN}
-#define fk_app_DataStream_init_zero              {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_DataStream_init_zero              {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
@@ -457,8 +477,9 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_DataStream_time_tag               2
 #define fk_app_DataStream_size_tag               3
 #define fk_app_DataStream_version_tag            4
-#define fk_app_DataStream_name_tag               5
-#define fk_app_DataStream_path_tag               6
+#define fk_app_DataStream_hash_tag               5
+#define fk_app_DataStream_name_tag               6
+#define fk_app_DataStream_path_tag               7
 #define fk_app_DeviceStatus_uptime_tag           1
 #define fk_app_DeviceStatus_batteryPercentage_tag 2
 #define fk_app_DeviceStatus_batteryVoltage_tag   3
@@ -468,6 +489,9 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_DownloadFile_offset_tag           2
 #define fk_app_DownloadFile_length_tag           3
 #define fk_app_DownloadFile_flags_tag            4
+#define fk_app_DownloadQuery_stream_tag          1
+#define fk_app_DownloadQuery_ranges_tag          3
+#define fk_app_DownloadQuery_blocks_tag          4
 #define fk_app_EraseFile_id_tag                  1
 #define fk_app_File_id_tag                       1
 #define fk_app_File_time_tag                     2
@@ -507,6 +531,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_QueryModule_id_tag                1
 #define fk_app_QueryModule_address_tag           2
 #define fk_app_QueryModule_message_tag           3
+#define fk_app_Range_start_tag                   1
+#define fk_app_Range_end_tag                     2
 #define fk_app_Schedules_readings_tag            1
 #define fk_app_Schedules_transmission_tag        2
 #define fk_app_Schedules_status_tag              3
@@ -828,6 +854,20 @@ X(a, CALLBACK, REPEATED, MESSAGE, modules, 8)
 #define fk_app_Status_gps_MSGTYPE fk_app_GpsStatus
 #define fk_app_Status_modules_MSGTYPE fk_app_ModuleCapabilities
 
+#define fk_app_Range_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, UINT32, start, 1) \
+X(a, STATIC, SINGULAR, UINT32, end, 2)
+#define fk_app_Range_CALLBACK NULL
+#define fk_app_Range_DEFAULT NULL
+
+#define fk_app_DownloadQuery_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, UINT32, stream, 1) \
+X(a, CALLBACK, REPEATED, MESSAGE, ranges, 3) \
+X(a, CALLBACK, REPEATED, UINT32, blocks, 4)
+#define fk_app_DownloadQuery_CALLBACK pb_default_field_callback
+#define fk_app_DownloadQuery_DEFAULT NULL
+#define fk_app_DownloadQuery_ranges_MSGTYPE fk_app_Range
+
 #define fk_app_HttpQuery_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UENUM, type, 1)
 #define fk_app_HttpQuery_CALLBACK NULL
@@ -838,8 +878,9 @@ X(a, STATIC, SINGULAR, UINT32, id, 1) \
 X(a, STATIC, SINGULAR, UINT64, time, 2) \
 X(a, STATIC, SINGULAR, UINT64, size, 3) \
 X(a, STATIC, SINGULAR, UINT32, version, 4) \
-X(a, CALLBACK, SINGULAR, STRING, name, 5) \
-X(a, CALLBACK, SINGULAR, STRING, path, 6)
+X(a, CALLBACK, SINGULAR, BYTES, hash, 5) \
+X(a, CALLBACK, SINGULAR, STRING, name, 6) \
+X(a, CALLBACK, SINGULAR, STRING, path, 7)
 #define fk_app_DataStream_CALLBACK pb_default_field_callback
 #define fk_app_DataStream_DEFAULT NULL
 
@@ -887,6 +928,8 @@ extern const pb_msgdesc_t fk_app_MemoryStatus_msg;
 extern const pb_msgdesc_t fk_app_BatteryStatus_msg;
 extern const pb_msgdesc_t fk_app_PowerStatus_msg;
 extern const pb_msgdesc_t fk_app_Status_msg;
+extern const pb_msgdesc_t fk_app_Range_msg;
+extern const pb_msgdesc_t fk_app_DownloadQuery_msg;
 extern const pb_msgdesc_t fk_app_HttpQuery_msg;
 extern const pb_msgdesc_t fk_app_DataStream_msg;
 extern const pb_msgdesc_t fk_app_HttpReply_msg;
@@ -923,6 +966,8 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_BatteryStatus_fields &fk_app_BatteryStatus_msg
 #define fk_app_PowerStatus_fields &fk_app_PowerStatus_msg
 #define fk_app_Status_fields &fk_app_Status_msg
+#define fk_app_Range_fields &fk_app_Range_msg
+#define fk_app_DownloadQuery_fields &fk_app_DownloadQuery_msg
 #define fk_app_HttpQuery_fields &fk_app_HttpQuery_msg
 #define fk_app_DataStream_fields &fk_app_DataStream_msg
 #define fk_app_HttpReply_fields &fk_app_HttpReply_msg
@@ -959,6 +1004,8 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_BatteryStatus_size                10
 #define fk_app_PowerStatus_size                  12
 /* fk_app_Status_size depends on runtime parameters */
+#define fk_app_Range_size                        12
+/* fk_app_DownloadQuery_size depends on runtime parameters */
 #define fk_app_HttpQuery_size                    2
 /* fk_app_DataStream_size depends on runtime parameters */
 /* fk_app_HttpReply_size depends on runtime parameters */
