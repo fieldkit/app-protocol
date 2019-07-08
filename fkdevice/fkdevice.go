@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/robinpowered/go-proto/collection"
 	"github.com/robinpowered/go-proto/message"
 	"github.com/robinpowered/go-proto/stream"
 
@@ -393,7 +394,7 @@ type DeviceQueryOpts struct {
 	timeout          int
 }
 
-func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback CallbackFunc) ([]*pb.WireMessageReply, error) {
+func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback CallbackFunc) (collection.MessageCollection, error) {
 	c, err := d.openAndSendQuery(opts)
 	if err != nil {
 		return nil, err
@@ -404,18 +405,28 @@ func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback Callb
 	dr := c.Reader(opts.timeout)
 
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
-		var reply pb.WireMessageReply
-		err := proto.Unmarshal(b, &reply)
-		if err != nil {
-			return nil, err
-		}
+		if d.HttpMode {
+			var reply pb.HttpReply
+			err := proto.Unmarshal(b, &reply)
+			if err != nil {
+				return nil, err
+			}
 
-		err = callback(&reply)
-		if err != nil {
-			return nil, err
-		}
+			return &reply, nil
+		} else {
+			var reply pb.WireMessageReply
+			err := proto.Unmarshal(b, &reply)
+			if err != nil {
+				return nil, err
+			}
 
-		return &reply, err
+			err = callback(&reply)
+			if err != nil {
+				return nil, err
+			}
+
+			return &reply, err
+		}
 	})
 
 	collection, err := stream.ReadLengthPrefixedCollection(dr, unmarshalFunc)
@@ -427,13 +438,7 @@ func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback Callb
 		return nil, fmt.Errorf("No reply.")
 	}
 
-	replies := make([]*pb.WireMessageReply, 0)
-
-	for _, m := range collection {
-		replies = append(replies, m.(*pb.WireMessageReply))
-	}
-
-	return replies, err
+	return collection, err
 }
 
 func (d *DeviceClient) queryDeviceDownload(opts *DeviceQueryOpts, callback CallbackFunc, body BodyCallbackFunc) ([]*pb.WireMessageReply, error) {
@@ -491,17 +496,34 @@ func (d *DeviceClient) queryDeviceDownload(opts *DeviceQueryOpts, callback Callb
 
 func (d *DeviceClient) queryDeviceOpts(opts *DeviceQueryOpts) (reply *pb.WireMessageReply, err error) {
 	if d.Callbacks != nil {
-		d.Callbacks.Sent(opts.wireMessageQuery)
+		if opts.wireMessageQuery != nil {
+			d.Callbacks.Sent(opts.wireMessageQuery)
+		} else {
+			d.Callbacks.HttpSent(opts.httpQuery)
+		}
 	}
 	replies, err := d.queryDeviceMultiple(opts)
 	if err != nil {
 		return nil, err
 	}
 	if len(replies) > 0 {
-		if d.Callbacks != nil {
-			d.Callbacks.Received(replies[0])
+		if d.HttpMode {
+			if d.Callbacks != nil {
+				for _, m := range replies {
+					replies = append(replies, m.(*pb.HttpReply))
+					d.Callbacks.HttpReceived(m.(*pb.HttpReply))
+				}
+			}
+			return nil, nil
+		} else {
+			if d.Callbacks != nil {
+				for _, m := range replies {
+					replies = append(replies, m.(*pb.WireMessageReply))
+					d.Callbacks.Received(m.(*pb.WireMessageReply))
+				}
+			}
+			return replies[0].(*pb.WireMessageReply), nil
 		}
-		return replies[0], nil
 	}
 	return nil, nil
 }
@@ -524,7 +546,7 @@ func (d *DeviceClient) queryDeviceQuery(query *pb.WireMessageQuery) (reply *pb.W
 	return d.queryDeviceOpts(&DeviceQueryOpts{nil, query, DefaultTimeout})
 }
 
-func (d *DeviceClient) queryDeviceMultiple(opts *DeviceQueryOpts) (replies []*pb.WireMessageReply, err error) {
+func (d *DeviceClient) queryDeviceMultiple(opts *DeviceQueryOpts) (replies collection.MessageCollection, err error) {
 	return d.queryDeviceCallback(opts, CallbackFunc(func(reply *pb.WireMessageReply) error {
 		return nil
 	}))
