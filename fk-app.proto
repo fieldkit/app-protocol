@@ -244,7 +244,11 @@ message HardwareStatus {
 
 message GpsStatus {
   uint32 fix = 1;
-  uint32 satellites = 2;
+  uint64 time = 2;
+  uint32 satellites = 3;
+  float longitude = 4;
+  float latitude = 5;
+  float altitude = 6;
 }
 
 message MemoryStatus {
@@ -256,8 +260,8 @@ message MemoryStatus {
 }
 
 message BatteryStatus {
-  float voltage = 1;
-  float percentage = 2;
+  uint32 voltage = 1;
+  uint32 percentage = 2;
 }
 
 message PowerStatus {

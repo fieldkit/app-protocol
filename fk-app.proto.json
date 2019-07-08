@@ -529,9 +529,25 @@
               "type": "uint32",
               "id": 1
             },
+            "time": {
+              "type": "uint64",
+              "id": 2
+            },
             "satellites": {
               "type": "uint32",
-              "id": 2
+              "id": 3
+            },
+            "longitude": {
+              "type": "float",
+              "id": 4
+            },
+            "latitude": {
+              "type": "float",
+              "id": 5
+            },
+            "altitude": {
+              "type": "float",
+              "id": 6
             }
           }
         },
@@ -562,11 +578,11 @@
         "BatteryStatus": {
           "fields": {
             "voltage": {
-              "type": "float",
+              "type": "uint32",
               "id": 1
             },
             "percentage": {
-              "type": "float",
+              "type": "uint32",
               "id": 2
             }
           }

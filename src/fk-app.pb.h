@@ -118,8 +118,8 @@ typedef struct _fk_app_Schedule {
 
 
 typedef struct _fk_app_BatteryStatus {
-    float voltage;
-    float percentage;
+    uint32_t voltage;
+    uint32_t percentage;
 /* @@protoc_insertion_point(struct:fk_app_BatteryStatus) */
 } fk_app_BatteryStatus;
 
@@ -210,7 +210,11 @@ typedef struct _fk_app_FileData {
 
 typedef struct _fk_app_GpsStatus {
     uint32_t fix;
+    uint64_t time;
     uint32_t satellites;
+    float longitude;
+    float latitude;
+    float altitude;
 /* @@protoc_insertion_point(struct:fk_app_GpsStatus) */
 } fk_app_GpsStatus;
 
@@ -406,7 +410,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Error_init_default                {{{NULL}, NULL}}
 #define fk_app_WireMessageReply_init_default     {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_default, fk_app_LiveData_init_default, fk_app_Schedules_init_default, fk_app_Files_init_default, fk_app_FileData_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_DeviceStatus_init_default, fk_app_ModuleReply_init_default}
 #define fk_app_HardwareStatus_init_default       {0}
-#define fk_app_GpsStatus_init_default            {0, 0}
+#define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
@@ -442,7 +446,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Error_init_zero                   {{{NULL}, NULL}}
 #define fk_app_WireMessageReply_init_zero        {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_zero, fk_app_LiveData_init_zero, fk_app_Schedules_init_zero, fk_app_Files_init_zero, fk_app_FileData_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_DeviceStatus_init_zero, fk_app_ModuleReply_init_zero}
 #define fk_app_HardwareStatus_init_zero          {0}
-#define fk_app_GpsStatus_init_zero               {0, 0}
+#define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
@@ -506,7 +510,11 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_FileData_version_tag              5
 #define fk_app_FileData_id_tag                   6
 #define fk_app_GpsStatus_fix_tag                 1
-#define fk_app_GpsStatus_satellites_tag          2
+#define fk_app_GpsStatus_time_tag                2
+#define fk_app_GpsStatus_satellites_tag          3
+#define fk_app_GpsStatus_longitude_tag           4
+#define fk_app_GpsStatus_latitude_tag            5
+#define fk_app_GpsStatus_altitude_tag            6
 #define fk_app_HttpQuery_type_tag                1
 #define fk_app_LiveDataPoll_interval_tag         1
 #define fk_app_LiveDataSample_sensor_tag         1
@@ -811,7 +819,11 @@ X(a, STATIC, SINGULAR, MESSAGE, module, 13)
 
 #define fk_app_GpsStatus_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, fix, 1) \
-X(a, STATIC, SINGULAR, UINT32, satellites, 2)
+X(a, STATIC, SINGULAR, UINT64, time, 2) \
+X(a, STATIC, SINGULAR, UINT32, satellites, 3) \
+X(a, STATIC, SINGULAR, FLOAT, longitude, 4) \
+X(a, STATIC, SINGULAR, FLOAT, latitude, 5) \
+X(a, STATIC, SINGULAR, FLOAT, altitude, 6)
 #define fk_app_GpsStatus_CALLBACK NULL
 #define fk_app_GpsStatus_DEFAULT NULL
 
@@ -825,8 +837,8 @@ X(a, STATIC, SINGULAR, UINT32, dataMemoryUsed, 5)
 #define fk_app_MemoryStatus_DEFAULT NULL
 
 #define fk_app_BatteryStatus_FIELDLIST(X, a) \
-X(a, STATIC, SINGULAR, FLOAT, voltage, 1) \
-X(a, STATIC, SINGULAR, FLOAT, percentage, 2)
+X(a, STATIC, SINGULAR, UINT32, voltage, 1) \
+X(a, STATIC, SINGULAR, UINT32, percentage, 2)
 #define fk_app_BatteryStatus_CALLBACK NULL
 #define fk_app_BatteryStatus_DEFAULT NULL
 
@@ -999,10 +1011,10 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_Error_size depends on runtime parameters */
 /* fk_app_WireMessageReply_size depends on runtime parameters */
 #define fk_app_HardwareStatus_size               0
-#define fk_app_GpsStatus_size                    12
+#define fk_app_GpsStatus_size                    38
 #define fk_app_MemoryStatus_size                 30
-#define fk_app_BatteryStatus_size                10
-#define fk_app_PowerStatus_size                  12
+#define fk_app_BatteryStatus_size                12
+#define fk_app_PowerStatus_size                  14
 /* fk_app_Status_size depends on runtime parameters */
 #define fk_app_Range_size                        12
 /* fk_app_DownloadQuery_size depends on runtime parameters */
