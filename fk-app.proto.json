@@ -62,18 +62,6 @@
             }
           }
         },
-        "ModuleCapabilities": {
-          "fields": {
-            "id": {
-              "type": "uint32",
-              "id": 1
-            },
-            "name": {
-              "type": "string",
-              "id": 2
-            }
-          }
-        },
         "SensorCapabilities": {
           "fields": {
             "id": {
@@ -95,6 +83,31 @@
             "unitOfMeasure": {
               "type": "string",
               "id": 5
+            },
+            "path": {
+              "type": "string",
+              "id": 6
+            }
+          }
+        },
+        "ModuleCapabilities": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "name": {
+              "type": "string",
+              "id": 2
+            },
+            "path": {
+              "type": "string",
+              "id": 4
+            },
+            "sensors": {
+              "rule": "repeated",
+              "type": "SensorCapabilities",
+              "id": 3
             }
           }
         },
@@ -201,6 +214,14 @@
             "deviceId": {
               "type": "bytes",
               "id": 3
+            },
+            "firmware": {
+              "type": "string",
+              "id": 4
+            },
+            "build": {
+              "type": "string",
+              "id": 5
             }
           }
         },
@@ -499,11 +520,135 @@
             }
           }
         },
+        "HardwareStatus": {
+          "fields": {}
+        },
+        "GpsStatus": {
+          "fields": {
+            "fix": {
+              "type": "uint32",
+              "id": 1
+            },
+            "satellites": {
+              "type": "uint32",
+              "id": 2
+            }
+          }
+        },
+        "MemoryStatus": {
+          "fields": {
+            "sramAvailable": {
+              "type": "uint32",
+              "id": 1
+            },
+            "programAvailable": {
+              "type": "uint32",
+              "id": 2
+            },
+            "extendedMemoryAvailable": {
+              "type": "uint32",
+              "id": 3
+            },
+            "dataMemoryAvailable": {
+              "type": "uint32",
+              "id": 4
+            },
+            "dataMemoryUsed": {
+              "type": "uint32",
+              "id": 5
+            }
+          }
+        },
+        "BatteryStatus": {
+          "fields": {
+            "voltage": {
+              "type": "float",
+              "id": 1
+            },
+            "percentage": {
+              "type": "float",
+              "id": 2
+            }
+          }
+        },
+        "PowerStatus": {
+          "fields": {
+            "battery": {
+              "type": "BatteryStatus",
+              "id": 1
+            }
+          }
+        },
+        "Status": {
+          "fields": {
+            "version": {
+              "type": "uint32",
+              "id": 1
+            },
+            "uptime": {
+              "type": "uint32",
+              "id": 2
+            },
+            "identity": {
+              "type": "Identity",
+              "id": 3
+            },
+            "hardware": {
+              "type": "HardwareStatus",
+              "id": 4
+            },
+            "power": {
+              "type": "PowerStatus",
+              "id": 5
+            },
+            "memory": {
+              "type": "MemoryStatus",
+              "id": 6
+            },
+            "gps": {
+              "type": "GpsStatus",
+              "id": 7
+            },
+            "modules": {
+              "rule": "repeated",
+              "type": "ModuleCapabilities",
+              "id": 8
+            }
+          }
+        },
         "HttpQuery": {
           "fields": {
             "type": {
               "type": "QueryType",
               "id": 1
+            }
+          }
+        },
+        "DataStream": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "time": {
+              "type": "uint64",
+              "id": 2
+            },
+            "size": {
+              "type": "uint64",
+              "id": 3
+            },
+            "version": {
+              "type": "uint32",
+              "id": 4
+            },
+            "name": {
+              "type": "string",
+              "id": 5
+            },
+            "path": {
+              "type": "string",
+              "id": 6
             }
           }
         },
@@ -517,6 +662,19 @@
               "rule": "repeated",
               "type": "Error",
               "id": 2
+            },
+            "status": {
+              "type": "Status",
+              "id": 3
+            },
+            "networkSettings": {
+              "type": "NetworkSettings",
+              "id": 4
+            },
+            "streams": {
+              "rule": "repeated",
+              "type": "DataStream",
+              "id": 5
             }
           }
         }

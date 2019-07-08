@@ -11,10 +11,10 @@
 PB_BIND(fk_app_QueryCapabilities, fk_app_QueryCapabilities, AUTO)
 
 
-PB_BIND(fk_app_ModuleCapabilities, fk_app_ModuleCapabilities, AUTO)
-
-
 PB_BIND(fk_app_SensorCapabilities, fk_app_SensorCapabilities, AUTO)
+
+
+PB_BIND(fk_app_ModuleCapabilities, fk_app_ModuleCapabilities, AUTO)
 
 
 PB_BIND(fk_app_Capabilities, fk_app_Capabilities, AUTO)
@@ -83,7 +83,28 @@ PB_BIND(fk_app_Error, fk_app_Error, AUTO)
 PB_BIND(fk_app_WireMessageReply, fk_app_WireMessageReply, 2)
 
 
+PB_BIND(fk_app_HardwareStatus, fk_app_HardwareStatus, AUTO)
+
+
+PB_BIND(fk_app_GpsStatus, fk_app_GpsStatus, AUTO)
+
+
+PB_BIND(fk_app_MemoryStatus, fk_app_MemoryStatus, AUTO)
+
+
+PB_BIND(fk_app_BatteryStatus, fk_app_BatteryStatus, AUTO)
+
+
+PB_BIND(fk_app_PowerStatus, fk_app_PowerStatus, AUTO)
+
+
+PB_BIND(fk_app_Status, fk_app_Status, AUTO)
+
+
 PB_BIND(fk_app_HttpQuery, fk_app_HttpQuery, AUTO)
+
+
+PB_BIND(fk_app_DataStream, fk_app_DataStream, AUTO)
 
 
 PB_BIND(fk_app_HttpReply, fk_app_HttpReply, AUTO)

@@ -62,11 +62,6 @@ message QueryCapabilities {
   uint32 callerTime = 2;
 }
 
-message ModuleCapabilities {
-  uint32 id = 1;
-  string name = 2;
-}
-
 // Information about an individual sensor attached to the device. Temerature,
 // Depth, Conductivity, Humidity, etc...
 
@@ -76,6 +71,14 @@ message SensorCapabilities {
   string name = 3;
   uint32 frequency = 4;
   string unitOfMeasure = 5;
+  string path = 6;
+}
+
+message ModuleCapabilities {
+  uint32 id = 1;
+  string name = 2;
+  string path = 4;
+  repeated SensorCapabilities sensors = 3;
 }
 
 message Capabilities {
@@ -117,6 +120,8 @@ message Identity {
   string device = 1;
   string stream = 2;
   bytes deviceId = 3;
+  string firmware = 4;
+  string build = 5;
 }
 
 // Configuring a particular sensor on the device. Some sensors may require
@@ -232,11 +237,61 @@ message WireMessageReply {
   ModuleReply module = 13;
 }
 
+/**************************************************************************************************/
+
+message HardwareStatus {
+}
+
+message GpsStatus {
+  uint32 fix = 1;
+  uint32 satellites = 2;
+}
+
+message MemoryStatus {
+  uint32 sramAvailable = 1;
+  uint32 programAvailable = 2;
+  uint32 extendedMemoryAvailable = 3;
+  uint32 dataMemoryAvailable = 4;
+  uint32 dataMemoryUsed = 5;
+}
+
+message BatteryStatus {
+  float voltage = 1;
+  float percentage = 2;
+}
+
+message PowerStatus {
+  BatteryStatus battery = 1;
+}
+
+message Status {
+  uint32 version = 1;
+  uint32 uptime = 2;
+  Identity identity = 3;
+  HardwareStatus hardware = 4;
+  PowerStatus power = 5;
+  MemoryStatus memory = 6;
+  GpsStatus gps = 7;
+  repeated ModuleCapabilities modules = 8;
+}
+
 message HttpQuery  {
   QueryType type = 1;
+}
+
+message DataStream  {
+  uint32 id = 1;
+  uint64 time = 2;
+  uint64 size = 3;
+  uint32 version = 4;
+  string name = 5;
+  string path = 6;
 }
 
 message HttpReply  {
   ReplyType type = 1;
   repeated Error errors = 2;
+  Status status = 3;
+  NetworkSettings networkSettings = 4;
+  repeated DataStream streams = 5;
 }

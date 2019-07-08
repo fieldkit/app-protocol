@@ -82,10 +82,18 @@ typedef struct _fk_app_Files {
 } fk_app_Files;
 
 
+typedef struct _fk_app_HardwareStatus {
+    char dummy_field;
+/* @@protoc_insertion_point(struct:fk_app_HardwareStatus) */
+} fk_app_HardwareStatus;
+
+
 typedef struct _fk_app_Identity {
     pb_callback_t device;
     pb_callback_t stream;
     pb_callback_t deviceId;
+    pb_callback_t firmware;
+    pb_callback_t build;
 /* @@protoc_insertion_point(struct:fk_app_Identity) */
 } fk_app_Identity;
 
@@ -109,6 +117,13 @@ typedef struct _fk_app_Schedule {
 } fk_app_Schedule;
 
 
+typedef struct _fk_app_BatteryStatus {
+    float voltage;
+    float percentage;
+/* @@protoc_insertion_point(struct:fk_app_BatteryStatus) */
+} fk_app_BatteryStatus;
+
+
 typedef struct _fk_app_Capabilities {
     uint32_t version;
     pb_callback_t deviceId;
@@ -124,6 +139,17 @@ typedef struct _fk_app_ConfigureSensorQuery {
     uint32_t frequency;
 /* @@protoc_insertion_point(struct:fk_app_ConfigureSensorQuery) */
 } fk_app_ConfigureSensorQuery;
+
+
+typedef struct _fk_app_DataStream {
+    uint32_t id;
+    uint64_t time;
+    uint64_t size;
+    uint32_t version;
+    pb_callback_t name;
+    pb_callback_t path;
+/* @@protoc_insertion_point(struct:fk_app_DataStream) */
+} fk_app_DataStream;
 
 
 typedef struct _fk_app_DeviceStatus {
@@ -173,17 +199,17 @@ typedef struct _fk_app_FileData {
 } fk_app_FileData;
 
 
+typedef struct _fk_app_GpsStatus {
+    uint32_t fix;
+    uint32_t satellites;
+/* @@protoc_insertion_point(struct:fk_app_GpsStatus) */
+} fk_app_GpsStatus;
+
+
 typedef struct _fk_app_HttpQuery {
     fk_app_QueryType type;
 /* @@protoc_insertion_point(struct:fk_app_HttpQuery) */
 } fk_app_HttpQuery;
-
-
-typedef struct _fk_app_HttpReply {
-    fk_app_ReplyType type;
-    pb_callback_t errors;
-/* @@protoc_insertion_point(struct:fk_app_HttpReply) */
-} fk_app_HttpReply;
 
 
 typedef struct _fk_app_LiveDataPoll {
@@ -200,9 +226,21 @@ typedef struct _fk_app_LiveDataSample {
 } fk_app_LiveDataSample;
 
 
+typedef struct _fk_app_MemoryStatus {
+    uint32_t sramAvailable;
+    uint32_t programAvailable;
+    uint32_t extendedMemoryAvailable;
+    uint32_t dataMemoryAvailable;
+    uint32_t dataMemoryUsed;
+/* @@protoc_insertion_point(struct:fk_app_MemoryStatus) */
+} fk_app_MemoryStatus;
+
+
 typedef struct _fk_app_ModuleCapabilities {
     uint32_t id;
     pb_callback_t name;
+    pb_callback_t sensors;
+    pb_callback_t path;
 /* @@protoc_insertion_point(struct:fk_app_ModuleCapabilities) */
 } fk_app_ModuleCapabilities;
 
@@ -252,6 +290,7 @@ typedef struct _fk_app_SensorCapabilities {
     pb_callback_t name;
     uint32_t frequency;
     pb_callback_t unitOfMeasure;
+    pb_callback_t path;
 /* @@protoc_insertion_point(struct:fk_app_SensorCapabilities) */
 } fk_app_SensorCapabilities;
 
@@ -262,6 +301,12 @@ typedef struct _fk_app_TimeSpec {
     int32_t offset;
 /* @@protoc_insertion_point(struct:fk_app_TimeSpec) */
 } fk_app_TimeSpec;
+
+
+typedef struct _fk_app_PowerStatus {
+    fk_app_BatteryStatus battery;
+/* @@protoc_insertion_point(struct:fk_app_PowerStatus) */
+} fk_app_PowerStatus;
 
 
 typedef struct _fk_app_WireMessageQuery {
@@ -295,17 +340,40 @@ typedef struct _fk_app_WireMessageReply {
 } fk_app_WireMessageReply;
 
 
+typedef struct _fk_app_Status {
+    uint32_t version;
+    uint32_t uptime;
+    fk_app_Identity identity;
+    fk_app_HardwareStatus hardware;
+    fk_app_PowerStatus power;
+    fk_app_MemoryStatus memory;
+    fk_app_GpsStatus gps;
+    pb_callback_t modules;
+/* @@protoc_insertion_point(struct:fk_app_Status) */
+} fk_app_Status;
+
+
+typedef struct _fk_app_HttpReply {
+    fk_app_ReplyType type;
+    pb_callback_t errors;
+    fk_app_Status status;
+    fk_app_NetworkSettings networkSettings;
+    pb_callback_t streams;
+/* @@protoc_insertion_point(struct:fk_app_HttpReply) */
+} fk_app_HttpReply;
+
+
 /* Initializer values for message structs */
 #define fk_app_QueryCapabilities_init_default    {0, 0}
-#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}}
-#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}}
+#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_TimeSpec_init_default             {0, 0, 0}
 #define fk_app_Schedule_init_default             {0}
 #define fk_app_Schedules_init_default            {fk_app_Schedule_init_default, fk_app_Schedule_init_default, fk_app_Schedule_init_default, fk_app_Schedule_init_default}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
-#define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_default {0, 0}
 #define fk_app_LiveDataPoll_init_default         {0}
 #define fk_app_LiveDataSample_init_default       {0, 0, 0}
@@ -321,18 +389,25 @@ typedef struct _fk_app_WireMessageReply {
 #define fk_app_WireMessageQuery_init_default     {_fk_app_QueryType_MIN, fk_app_QueryCapabilities_init_default, fk_app_ConfigureSensorQuery_init_default, fk_app_LiveDataPoll_init_default, fk_app_Schedules_init_default, fk_app_DownloadFile_init_default, fk_app_EraseFile_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_QueryModule_init_default}
 #define fk_app_Error_init_default                {{{NULL}, NULL}}
 #define fk_app_WireMessageReply_init_default     {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_default, fk_app_LiveData_init_default, fk_app_Schedules_init_default, fk_app_Files_init_default, fk_app_FileData_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_DeviceStatus_init_default, fk_app_ModuleReply_init_default}
+#define fk_app_HardwareStatus_init_default       {0}
+#define fk_app_GpsStatus_init_default            {0, 0}
+#define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0}
+#define fk_app_BatteryStatus_init_default        {0, 0}
+#define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
+#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN}
-#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}}
+#define fk_app_DataStream_init_default           {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
-#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}}
-#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}}
+#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_TimeSpec_init_zero                {0, 0, 0}
 #define fk_app_Schedule_init_zero                {0}
 #define fk_app_Schedules_init_zero               {fk_app_Schedule_init_zero, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
-#define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_zero    {0, 0}
 #define fk_app_LiveDataPoll_init_zero            {0}
 #define fk_app_LiveDataSample_init_zero          {0, 0, 0}
@@ -348,8 +423,15 @@ typedef struct _fk_app_WireMessageReply {
 #define fk_app_WireMessageQuery_init_zero        {_fk_app_QueryType_MIN, fk_app_QueryCapabilities_init_zero, fk_app_ConfigureSensorQuery_init_zero, fk_app_LiveDataPoll_init_zero, fk_app_Schedules_init_zero, fk_app_DownloadFile_init_zero, fk_app_EraseFile_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_QueryModule_init_zero}
 #define fk_app_Error_init_zero                   {{{NULL}, NULL}}
 #define fk_app_WireMessageReply_init_zero        {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_zero, fk_app_LiveData_init_zero, fk_app_Schedules_init_zero, fk_app_Files_init_zero, fk_app_FileData_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_DeviceStatus_init_zero, fk_app_ModuleReply_init_zero}
+#define fk_app_HardwareStatus_init_zero          {0}
+#define fk_app_GpsStatus_init_zero               {0, 0}
+#define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0}
+#define fk_app_BatteryStatus_init_zero           {0, 0}
+#define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
+#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN}
-#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}}
+#define fk_app_DataStream_init_zero              {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define fk_app_Error_message_tag                 1
@@ -357,9 +439,13 @@ typedef struct _fk_app_WireMessageReply {
 #define fk_app_Identity_device_tag               1
 #define fk_app_Identity_stream_tag               2
 #define fk_app_Identity_deviceId_tag             3
+#define fk_app_Identity_firmware_tag             4
+#define fk_app_Identity_build_tag                5
 #define fk_app_LiveData_samples_tag              1
 #define fk_app_NetworkInfo_ssid_tag              1
 #define fk_app_NetworkInfo_password_tag          2
+#define fk_app_BatteryStatus_voltage_tag         1
+#define fk_app_BatteryStatus_percentage_tag      2
 #define fk_app_Capabilities_version_tag          1
 #define fk_app_Capabilities_deviceId_tag         2
 #define fk_app_Capabilities_name_tag             3
@@ -367,6 +453,12 @@ typedef struct _fk_app_WireMessageReply {
 #define fk_app_Capabilities_sensors_tag          5
 #define fk_app_ConfigureSensorQuery_id_tag       1
 #define fk_app_ConfigureSensorQuery_frequency_tag 2
+#define fk_app_DataStream_id_tag                 1
+#define fk_app_DataStream_time_tag               2
+#define fk_app_DataStream_size_tag               3
+#define fk_app_DataStream_version_tag            4
+#define fk_app_DataStream_name_tag               5
+#define fk_app_DataStream_path_tag               6
 #define fk_app_DeviceStatus_uptime_tag           1
 #define fk_app_DeviceStatus_batteryPercentage_tag 2
 #define fk_app_DeviceStatus_batteryVoltage_tag   3
@@ -389,15 +481,22 @@ typedef struct _fk_app_WireMessageReply {
 #define fk_app_FileData_hash_tag                 4
 #define fk_app_FileData_version_tag              5
 #define fk_app_FileData_id_tag                   6
+#define fk_app_GpsStatus_fix_tag                 1
+#define fk_app_GpsStatus_satellites_tag          2
 #define fk_app_HttpQuery_type_tag                1
-#define fk_app_HttpReply_type_tag                1
-#define fk_app_HttpReply_errors_tag              2
 #define fk_app_LiveDataPoll_interval_tag         1
 #define fk_app_LiveDataSample_sensor_tag         1
 #define fk_app_LiveDataSample_time_tag           2
 #define fk_app_LiveDataSample_value_tag          3
+#define fk_app_MemoryStatus_sramAvailable_tag    1
+#define fk_app_MemoryStatus_programAvailable_tag 2
+#define fk_app_MemoryStatus_extendedMemoryAvailable_tag 3
+#define fk_app_MemoryStatus_dataMemoryAvailable_tag 4
+#define fk_app_MemoryStatus_dataMemoryUsed_tag   5
 #define fk_app_ModuleCapabilities_id_tag         1
 #define fk_app_ModuleCapabilities_name_tag       2
+#define fk_app_ModuleCapabilities_path_tag       4
+#define fk_app_ModuleCapabilities_sensors_tag    3
 #define fk_app_ModuleReply_id_tag                1
 #define fk_app_ModuleReply_address_tag           2
 #define fk_app_ModuleReply_message_tag           3
@@ -417,9 +516,11 @@ typedef struct _fk_app_WireMessageReply {
 #define fk_app_SensorCapabilities_name_tag       3
 #define fk_app_SensorCapabilities_frequency_tag  4
 #define fk_app_SensorCapabilities_unitOfMeasure_tag 5
+#define fk_app_SensorCapabilities_path_tag       6
 #define fk_app_TimeSpec_fixed_tag                1
 #define fk_app_TimeSpec_interval_tag             2
 #define fk_app_TimeSpec_offset_tag               3
+#define fk_app_PowerStatus_battery_tag           1
 #define fk_app_WireMessageQuery_type_tag         1
 #define fk_app_WireMessageQuery_queryCapabilities_tag 2
 #define fk_app_WireMessageQuery_configureSensor_tag 3
@@ -441,6 +542,19 @@ typedef struct _fk_app_WireMessageReply {
 #define fk_app_WireMessageReply_identity_tag     11
 #define fk_app_WireMessageReply_status_tag       12
 #define fk_app_WireMessageReply_module_tag       13
+#define fk_app_Status_version_tag                1
+#define fk_app_Status_uptime_tag                 2
+#define fk_app_Status_identity_tag               3
+#define fk_app_Status_hardware_tag               4
+#define fk_app_Status_power_tag                  5
+#define fk_app_Status_memory_tag                 6
+#define fk_app_Status_gps_tag                    7
+#define fk_app_Status_modules_tag                8
+#define fk_app_HttpReply_type_tag                1
+#define fk_app_HttpReply_errors_tag              2
+#define fk_app_HttpReply_status_tag              3
+#define fk_app_HttpReply_networkSettings_tag     4
+#define fk_app_HttpReply_streams_tag             5
 
 /* Struct field encoding specification for nanopb */
 #define fk_app_QueryCapabilities_FIELDLIST(X, a) \
@@ -449,20 +563,24 @@ X(a, STATIC, SINGULAR, UINT32, callerTime, 2)
 #define fk_app_QueryCapabilities_CALLBACK NULL
 #define fk_app_QueryCapabilities_DEFAULT NULL
 
-#define fk_app_ModuleCapabilities_FIELDLIST(X, a) \
-X(a, STATIC, SINGULAR, UINT32, id, 1) \
-X(a, CALLBACK, SINGULAR, STRING, name, 2)
-#define fk_app_ModuleCapabilities_CALLBACK pb_default_field_callback
-#define fk_app_ModuleCapabilities_DEFAULT NULL
-
 #define fk_app_SensorCapabilities_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, id, 1) \
 X(a, STATIC, SINGULAR, UINT32, module, 2) \
 X(a, CALLBACK, SINGULAR, STRING, name, 3) \
 X(a, STATIC, SINGULAR, UINT32, frequency, 4) \
-X(a, CALLBACK, SINGULAR, STRING, unitOfMeasure, 5)
+X(a, CALLBACK, SINGULAR, STRING, unitOfMeasure, 5) \
+X(a, CALLBACK, SINGULAR, STRING, path, 6)
 #define fk_app_SensorCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_SensorCapabilities_DEFAULT NULL
+
+#define fk_app_ModuleCapabilities_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, UINT32, id, 1) \
+X(a, CALLBACK, SINGULAR, STRING, name, 2) \
+X(a, CALLBACK, REPEATED, MESSAGE, sensors, 3) \
+X(a, CALLBACK, SINGULAR, STRING, path, 4)
+#define fk_app_ModuleCapabilities_CALLBACK pb_default_field_callback
+#define fk_app_ModuleCapabilities_DEFAULT NULL
+#define fk_app_ModuleCapabilities_sensors_MSGTYPE fk_app_SensorCapabilities
 
 #define fk_app_Capabilities_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, version, 1) \
@@ -515,7 +633,9 @@ X(a, CALLBACK, REPEATED, MESSAGE, networks, 2)
 #define fk_app_Identity_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING, device, 1) \
 X(a, CALLBACK, SINGULAR, STRING, stream, 2) \
-X(a, CALLBACK, SINGULAR, BYTES, deviceId, 3)
+X(a, CALLBACK, SINGULAR, BYTES, deviceId, 3) \
+X(a, CALLBACK, SINGULAR, STRING, firmware, 4) \
+X(a, CALLBACK, SINGULAR, STRING, build, 5)
 #define fk_app_Identity_CALLBACK pb_default_field_callback
 #define fk_app_Identity_DEFAULT NULL
 
@@ -658,21 +778,87 @@ X(a, STATIC, SINGULAR, MESSAGE, module, 13)
 #define fk_app_WireMessageReply_status_MSGTYPE fk_app_DeviceStatus
 #define fk_app_WireMessageReply_module_MSGTYPE fk_app_ModuleReply
 
+#define fk_app_HardwareStatus_FIELDLIST(X, a) \
+
+#define fk_app_HardwareStatus_CALLBACK NULL
+#define fk_app_HardwareStatus_DEFAULT NULL
+
+#define fk_app_GpsStatus_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, UINT32, fix, 1) \
+X(a, STATIC, SINGULAR, UINT32, satellites, 2)
+#define fk_app_GpsStatus_CALLBACK NULL
+#define fk_app_GpsStatus_DEFAULT NULL
+
+#define fk_app_MemoryStatus_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, UINT32, sramAvailable, 1) \
+X(a, STATIC, SINGULAR, UINT32, programAvailable, 2) \
+X(a, STATIC, SINGULAR, UINT32, extendedMemoryAvailable, 3) \
+X(a, STATIC, SINGULAR, UINT32, dataMemoryAvailable, 4) \
+X(a, STATIC, SINGULAR, UINT32, dataMemoryUsed, 5)
+#define fk_app_MemoryStatus_CALLBACK NULL
+#define fk_app_MemoryStatus_DEFAULT NULL
+
+#define fk_app_BatteryStatus_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, FLOAT, voltage, 1) \
+X(a, STATIC, SINGULAR, FLOAT, percentage, 2)
+#define fk_app_BatteryStatus_CALLBACK NULL
+#define fk_app_BatteryStatus_DEFAULT NULL
+
+#define fk_app_PowerStatus_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, MESSAGE, battery, 1)
+#define fk_app_PowerStatus_CALLBACK NULL
+#define fk_app_PowerStatus_DEFAULT NULL
+#define fk_app_PowerStatus_battery_MSGTYPE fk_app_BatteryStatus
+
+#define fk_app_Status_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, UINT32, version, 1) \
+X(a, STATIC, SINGULAR, UINT32, uptime, 2) \
+X(a, STATIC, SINGULAR, MESSAGE, identity, 3) \
+X(a, STATIC, SINGULAR, MESSAGE, hardware, 4) \
+X(a, STATIC, SINGULAR, MESSAGE, power, 5) \
+X(a, STATIC, SINGULAR, MESSAGE, memory, 6) \
+X(a, STATIC, SINGULAR, MESSAGE, gps, 7) \
+X(a, CALLBACK, REPEATED, MESSAGE, modules, 8)
+#define fk_app_Status_CALLBACK pb_default_field_callback
+#define fk_app_Status_DEFAULT NULL
+#define fk_app_Status_identity_MSGTYPE fk_app_Identity
+#define fk_app_Status_hardware_MSGTYPE fk_app_HardwareStatus
+#define fk_app_Status_power_MSGTYPE fk_app_PowerStatus
+#define fk_app_Status_memory_MSGTYPE fk_app_MemoryStatus
+#define fk_app_Status_gps_MSGTYPE fk_app_GpsStatus
+#define fk_app_Status_modules_MSGTYPE fk_app_ModuleCapabilities
+
 #define fk_app_HttpQuery_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UENUM, type, 1)
 #define fk_app_HttpQuery_CALLBACK NULL
 #define fk_app_HttpQuery_DEFAULT NULL
 
+#define fk_app_DataStream_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, UINT32, id, 1) \
+X(a, STATIC, SINGULAR, UINT64, time, 2) \
+X(a, STATIC, SINGULAR, UINT64, size, 3) \
+X(a, STATIC, SINGULAR, UINT32, version, 4) \
+X(a, CALLBACK, SINGULAR, STRING, name, 5) \
+X(a, CALLBACK, SINGULAR, STRING, path, 6)
+#define fk_app_DataStream_CALLBACK pb_default_field_callback
+#define fk_app_DataStream_DEFAULT NULL
+
 #define fk_app_HttpReply_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UENUM, type, 1) \
-X(a, CALLBACK, REPEATED, MESSAGE, errors, 2)
+X(a, CALLBACK, REPEATED, MESSAGE, errors, 2) \
+X(a, STATIC, SINGULAR, MESSAGE, status, 3) \
+X(a, STATIC, SINGULAR, MESSAGE, networkSettings, 4) \
+X(a, CALLBACK, REPEATED, MESSAGE, streams, 5)
 #define fk_app_HttpReply_CALLBACK pb_default_field_callback
 #define fk_app_HttpReply_DEFAULT NULL
 #define fk_app_HttpReply_errors_MSGTYPE fk_app_Error
+#define fk_app_HttpReply_status_MSGTYPE fk_app_Status
+#define fk_app_HttpReply_networkSettings_MSGTYPE fk_app_NetworkSettings
+#define fk_app_HttpReply_streams_MSGTYPE fk_app_DataStream
 
 extern const pb_msgdesc_t fk_app_QueryCapabilities_msg;
-extern const pb_msgdesc_t fk_app_ModuleCapabilities_msg;
 extern const pb_msgdesc_t fk_app_SensorCapabilities_msg;
+extern const pb_msgdesc_t fk_app_ModuleCapabilities_msg;
 extern const pb_msgdesc_t fk_app_Capabilities_msg;
 extern const pb_msgdesc_t fk_app_TimeSpec_msg;
 extern const pb_msgdesc_t fk_app_Schedule_msg;
@@ -695,13 +881,20 @@ extern const pb_msgdesc_t fk_app_ModuleReply_msg;
 extern const pb_msgdesc_t fk_app_WireMessageQuery_msg;
 extern const pb_msgdesc_t fk_app_Error_msg;
 extern const pb_msgdesc_t fk_app_WireMessageReply_msg;
+extern const pb_msgdesc_t fk_app_HardwareStatus_msg;
+extern const pb_msgdesc_t fk_app_GpsStatus_msg;
+extern const pb_msgdesc_t fk_app_MemoryStatus_msg;
+extern const pb_msgdesc_t fk_app_BatteryStatus_msg;
+extern const pb_msgdesc_t fk_app_PowerStatus_msg;
+extern const pb_msgdesc_t fk_app_Status_msg;
 extern const pb_msgdesc_t fk_app_HttpQuery_msg;
+extern const pb_msgdesc_t fk_app_DataStream_msg;
 extern const pb_msgdesc_t fk_app_HttpReply_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
 #define fk_app_QueryCapabilities_fields &fk_app_QueryCapabilities_msg
-#define fk_app_ModuleCapabilities_fields &fk_app_ModuleCapabilities_msg
 #define fk_app_SensorCapabilities_fields &fk_app_SensorCapabilities_msg
+#define fk_app_ModuleCapabilities_fields &fk_app_ModuleCapabilities_msg
 #define fk_app_Capabilities_fields &fk_app_Capabilities_msg
 #define fk_app_TimeSpec_fields &fk_app_TimeSpec_msg
 #define fk_app_Schedule_fields &fk_app_Schedule_msg
@@ -724,13 +917,20 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_WireMessageQuery_fields &fk_app_WireMessageQuery_msg
 #define fk_app_Error_fields &fk_app_Error_msg
 #define fk_app_WireMessageReply_fields &fk_app_WireMessageReply_msg
+#define fk_app_HardwareStatus_fields &fk_app_HardwareStatus_msg
+#define fk_app_GpsStatus_fields &fk_app_GpsStatus_msg
+#define fk_app_MemoryStatus_fields &fk_app_MemoryStatus_msg
+#define fk_app_BatteryStatus_fields &fk_app_BatteryStatus_msg
+#define fk_app_PowerStatus_fields &fk_app_PowerStatus_msg
+#define fk_app_Status_fields &fk_app_Status_msg
 #define fk_app_HttpQuery_fields &fk_app_HttpQuery_msg
+#define fk_app_DataStream_fields &fk_app_DataStream_msg
 #define fk_app_HttpReply_fields &fk_app_HttpReply_msg
 
 /* Maximum encoded size of messages (where known) */
 #define fk_app_QueryCapabilities_size            12
-/* fk_app_ModuleCapabilities_size depends on runtime parameters */
 /* fk_app_SensorCapabilities_size depends on runtime parameters */
+/* fk_app_ModuleCapabilities_size depends on runtime parameters */
 /* fk_app_Capabilities_size depends on runtime parameters */
 #define fk_app_TimeSpec_size                     33
 #define fk_app_Schedule_size                     0
@@ -753,7 +953,14 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_WireMessageQuery_size depends on runtime parameters */
 /* fk_app_Error_size depends on runtime parameters */
 /* fk_app_WireMessageReply_size depends on runtime parameters */
+#define fk_app_HardwareStatus_size               0
+#define fk_app_GpsStatus_size                    12
+#define fk_app_MemoryStatus_size                 30
+#define fk_app_BatteryStatus_size                10
+#define fk_app_PowerStatus_size                  12
+/* fk_app_Status_size depends on runtime parameters */
 #define fk_app_HttpQuery_size                    2
+/* fk_app_DataStream_size depends on runtime parameters */
 /* fk_app_HttpReply_size depends on runtime parameters */
 
 #ifdef __cplusplus
