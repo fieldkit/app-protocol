@@ -683,17 +683,21 @@
               "type": "uint32",
               "id": 4
             },
+            "block": {
+              "type": "uint64",
+              "id": 5
+            },
             "hash": {
               "type": "bytes",
-              "id": 5
+              "id": 6
             },
             "name": {
               "type": "string",
-              "id": 6
+              "id": 7
             },
             "path": {
               "type": "string",
-              "id": 7
+              "id": 8
             }
           }
         },

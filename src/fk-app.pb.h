@@ -146,6 +146,7 @@ typedef struct _fk_app_DataStream {
     uint64_t time;
     uint64_t size;
     uint32_t version;
+    uint64_t block;
     pb_callback_t hash;
     pb_callback_t name;
     pb_callback_t path;
@@ -418,7 +419,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN}
-#define fk_app_DataStream_init_default           {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -454,7 +455,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN}
-#define fk_app_DataStream_init_zero              {0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
@@ -481,9 +482,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_DataStream_time_tag               2
 #define fk_app_DataStream_size_tag               3
 #define fk_app_DataStream_version_tag            4
-#define fk_app_DataStream_hash_tag               5
-#define fk_app_DataStream_name_tag               6
-#define fk_app_DataStream_path_tag               7
+#define fk_app_DataStream_block_tag              5
+#define fk_app_DataStream_hash_tag               6
+#define fk_app_DataStream_name_tag               7
+#define fk_app_DataStream_path_tag               8
 #define fk_app_DeviceStatus_uptime_tag           1
 #define fk_app_DeviceStatus_batteryPercentage_tag 2
 #define fk_app_DeviceStatus_batteryVoltage_tag   3
@@ -888,9 +890,10 @@ X(a, STATIC, SINGULAR, UINT32, id, 1) \
 X(a, STATIC, SINGULAR, UINT64, time, 2) \
 X(a, STATIC, SINGULAR, UINT64, size, 3) \
 X(a, STATIC, SINGULAR, UINT32, version, 4) \
-X(a, CALLBACK, SINGULAR, BYTES, hash, 5) \
-X(a, CALLBACK, SINGULAR, STRING, name, 6) \
-X(a, CALLBACK, SINGULAR, STRING, path, 7)
+X(a, STATIC, SINGULAR, UINT64, block, 5) \
+X(a, CALLBACK, SINGULAR, BYTES, hash, 6) \
+X(a, CALLBACK, SINGULAR, STRING, name, 7) \
+X(a, CALLBACK, SINGULAR, STRING, path, 8)
 #define fk_app_DataStream_CALLBACK pb_default_field_callback
 #define fk_app_DataStream_DEFAULT NULL
 

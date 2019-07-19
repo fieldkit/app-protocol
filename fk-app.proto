@@ -298,9 +298,10 @@ message DataStream {
   uint64 time = 2;
   uint64 size = 3;
   uint32 version = 4;
-  bytes hash = 5;
-  string name = 6;
-  string path = 7;
+  uint64 block = 5;
+  bytes hash = 6;
+  string name = 7;
+  string path = 8;
 }
 
 message HttpReply {
