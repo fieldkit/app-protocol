@@ -253,10 +253,11 @@ message GpsStatus {
 
 message MemoryStatus {
   uint32 sramAvailable = 1;
-  uint32 programAvailable = 2;
+  uint32 programFlashAvailable = 2;
   uint32 extendedMemoryAvailable = 3;
   uint32 dataMemoryAvailable = 4;
   uint32 dataMemoryUsed = 5;
+  float dataMemoryConsumption = 6;
 }
 
 message BatteryStatus {
@@ -304,6 +305,21 @@ message DataStream {
   string path = 8;
 }
 
+message SensorAndValue {
+  uint32 sensor = 1;
+  float value = 2;
+}
+
+message ModuleReadings {
+  uint32 module = 1;
+  repeated SensorAndValue readings = 2;
+}
+
+message Readings {
+  uint64 time = 1;
+  repeated ModuleReadings modules = 2;
+}
+
 message HttpReply {
   ReplyType type = 1;
   repeated Error errors = 2;
@@ -311,4 +327,5 @@ message HttpReply {
   NetworkSettings networkSettings = 4;
   repeated ModuleCapabilities modules = 5;
   repeated DataStream streams = 6;
+  repeated Readings readings = 7;
 }

@@ -113,7 +113,16 @@ PB_BIND(fk_app_HttpQuery, fk_app_HttpQuery, AUTO)
 PB_BIND(fk_app_DataStream, fk_app_DataStream, AUTO)
 
 
-PB_BIND(fk_app_HttpReply, fk_app_HttpReply, AUTO)
+PB_BIND(fk_app_SensorAndValue, fk_app_SensorAndValue, AUTO)
+
+
+PB_BIND(fk_app_ModuleReadings, fk_app_ModuleReadings, AUTO)
+
+
+PB_BIND(fk_app_Readings, fk_app_Readings, AUTO)
+
+
+PB_BIND(fk_app_HttpReply, fk_app_HttpReply, 2)
 
 
 

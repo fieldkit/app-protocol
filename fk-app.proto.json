@@ -557,7 +557,7 @@
               "type": "uint32",
               "id": 1
             },
-            "programAvailable": {
+            "programFlashAvailable": {
               "type": "uint32",
               "id": 2
             },
@@ -572,6 +572,10 @@
             "dataMemoryUsed": {
               "type": "uint32",
               "id": 5
+            },
+            "dataMemoryConsumption": {
+              "type": "float",
+              "id": 6
             }
           }
         },
@@ -701,6 +705,44 @@
             }
           }
         },
+        "SensorAndValue": {
+          "fields": {
+            "sensor": {
+              "type": "uint32",
+              "id": 1
+            },
+            "value": {
+              "type": "float",
+              "id": 2
+            }
+          }
+        },
+        "ModuleReadings": {
+          "fields": {
+            "module": {
+              "type": "uint32",
+              "id": 1
+            },
+            "readings": {
+              "rule": "repeated",
+              "type": "SensorAndValue",
+              "id": 2
+            }
+          }
+        },
+        "Readings": {
+          "fields": {
+            "time": {
+              "type": "uint64",
+              "id": 1
+            },
+            "modules": {
+              "rule": "repeated",
+              "type": "ModuleReadings",
+              "id": 2
+            }
+          }
+        },
         "HttpReply": {
           "fields": {
             "type": {
@@ -729,6 +771,11 @@
               "rule": "repeated",
               "type": "DataStream",
               "id": 6
+            },
+            "readings": {
+              "rule": "repeated",
+              "type": "Readings",
+              "id": 7
             }
           }
         }
