@@ -33,11 +33,12 @@ typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_STATUS = 18,
     fk_app_QueryType_QUERY_MODULE = 19,
     fk_app_QueryType_QUERY_METADATA = 20,
-    fk_app_QueryType_QUERY_FORMAT = 21
+    fk_app_QueryType_QUERY_FORMAT = 21,
+    fk_app_QueryType_QUERY_READINGS = 22
 } fk_app_QueryType;
 #define _fk_app_QueryType_MIN fk_app_QueryType_QUERY_NONE
-#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_FORMAT
-#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_FORMAT+1))
+#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_READINGS
+#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_READINGS+1))
 
 typedef enum _fk_app_ReplyType {
     fk_app_ReplyType_REPLY_NONE = 0,
@@ -54,11 +55,12 @@ typedef enum _fk_app_ReplyType {
     fk_app_ReplyType_REPLY_IDENTITY = 14,
     fk_app_ReplyType_REPLY_STATUS = 15,
     fk_app_ReplyType_REPLY_MODULE = 16,
-    fk_app_ReplyType_REPLY_METADATA = 17
+    fk_app_ReplyType_REPLY_METADATA = 17,
+    fk_app_ReplyType_REPLY_READINGS = 18
 } fk_app_ReplyType;
 #define _fk_app_ReplyType_MIN fk_app_ReplyType_REPLY_NONE
-#define _fk_app_ReplyType_MAX fk_app_ReplyType_REPLY_METADATA
-#define _fk_app_ReplyType_ARRAYSIZE ((fk_app_ReplyType)(fk_app_ReplyType_REPLY_METADATA+1))
+#define _fk_app_ReplyType_MAX fk_app_ReplyType_REPLY_READINGS
+#define _fk_app_ReplyType_ARRAYSIZE ((fk_app_ReplyType)(fk_app_ReplyType_REPLY_READINGS+1))
 
 typedef enum _fk_app_DownloadFlags {
     fk_app_DownloadFlags_DOWNLOAD_FLAG_NONE = 0,

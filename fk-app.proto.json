@@ -21,7 +21,8 @@
             "QUERY_STATUS": 18,
             "QUERY_MODULE": 19,
             "QUERY_METADATA": 20,
-            "QUERY_FORMAT": 21
+            "QUERY_FORMAT": 21,
+            "QUERY_READINGS": 22
           }
         },
         "ReplyType": {
@@ -40,7 +41,8 @@
             "REPLY_IDENTITY": 14,
             "REPLY_STATUS": 15,
             "REPLY_MODULE": 16,
-            "REPLY_METADATA": 17
+            "REPLY_METADATA": 17,
+            "REPLY_READINGS": 18
           }
         },
         "DownloadFlags": {

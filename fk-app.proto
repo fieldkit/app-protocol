@@ -24,6 +24,7 @@ enum QueryType {
   QUERY_MODULE = 19;
   QUERY_METADATA = 20;
   QUERY_FORMAT = 21;
+  QUERY_READINGS = 22;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -46,6 +47,7 @@ enum ReplyType {
   REPLY_STATUS = 15;
   REPLY_MODULE = 16;
   REPLY_METADATA = 17;
+  REPLY_READINGS = 18;
 }
 
 enum DownloadFlags {
