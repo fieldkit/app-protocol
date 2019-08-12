@@ -34,11 +34,12 @@ typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_MODULE = 19,
     fk_app_QueryType_QUERY_METADATA = 20,
     fk_app_QueryType_QUERY_FORMAT = 21,
-    fk_app_QueryType_QUERY_READINGS = 22
+    fk_app_QueryType_QUERY_GET_READINGS = 22,
+    fk_app_QueryType_QUERY_TAKE_READINGS = 23
 } fk_app_QueryType;
 #define _fk_app_QueryType_MIN fk_app_QueryType_QUERY_NONE
-#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_READINGS
-#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_READINGS+1))
+#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_TAKE_READINGS
+#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_TAKE_READINGS+1))
 
 typedef enum _fk_app_ReplyType {
     fk_app_ReplyType_REPLY_NONE = 0,

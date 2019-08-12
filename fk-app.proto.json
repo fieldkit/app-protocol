@@ -22,7 +22,8 @@
             "QUERY_MODULE": 19,
             "QUERY_METADATA": 20,
             "QUERY_FORMAT": 21,
-            "QUERY_READINGS": 22
+            "QUERY_GET_READINGS": 22,
+            "QUERY_TAKE_READINGS": 23
           }
         },
         "ReplyType": {
