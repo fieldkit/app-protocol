@@ -83,6 +83,14 @@ func (d *DeviceClient) QueryStatus() (*pb.WireMessageReply, error) {
 	return reply, nil
 }
 
+func (d *DeviceClient) QueryReadings() (*pb.WireMessageReply, error) {
+	reply, err := d.queryDevice(pb.QueryType_QUERY_READINGS)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) QuerySchedules() (*pb.WireMessageReply, error) {
 	reply, err := d.queryDevice(pb.QueryType_QUERY_SCHEDULES)
 	if err != nil {

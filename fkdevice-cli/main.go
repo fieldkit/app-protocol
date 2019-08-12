@@ -23,6 +23,7 @@ type options struct {
 
 	Scan        bool
 	Status      bool
+	Readings    bool
 	Network     bool
 	ConfigureAp bool
 	Schedules   bool
@@ -72,6 +73,7 @@ func main() {
 	flag.BoolVar(&o.Scan, "scan", false, "scan the device's capabilities and data sets")
 	flag.BoolVar(&o.Schedules, "schedules", false, "query for schedules")
 	flag.BoolVar(&o.Status, "status", false, "device status")
+	flag.BoolVar(&o.Readings, "readings", false, "readings")
 
 	flag.BoolVar(&o.Network, "network", false, "query the device's network settings")
 	flag.BoolVar(&o.ConfigureAp, "network-configure-ap", false, "force network ap mode (empty configured networks)")
@@ -134,6 +136,13 @@ func main() {
 
 	if o.Status {
 		_, err := device.QueryStatus()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.Readings {
+		_, err := device.QueryReadings()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
