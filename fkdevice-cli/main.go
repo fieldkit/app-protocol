@@ -142,7 +142,7 @@ func main() {
 	}
 
 	if o.Readings {
-		_, err := device.QueryReadings()
+		_, err := device.QueryTakeReadings()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
