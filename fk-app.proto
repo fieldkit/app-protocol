@@ -257,7 +257,7 @@ message MemoryStatus {
   uint32 sramAvailable = 1;
   uint32 programFlashAvailable = 2;
   uint32 extendedMemoryAvailable = 3;
-  uint32 dataMemoryAvailable = 4;
+  uint32 dataMemoryInstalled = 4;
   uint32 dataMemoryUsed = 5;
   float dataMemoryConsumption = 6;
 }

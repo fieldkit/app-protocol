@@ -567,7 +567,7 @@
               "type": "uint32",
               "id": 3
             },
-            "dataMemoryAvailable": {
+            "dataMemoryInstalled": {
               "type": "uint32",
               "id": 4
             },

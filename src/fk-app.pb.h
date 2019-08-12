@@ -246,7 +246,7 @@ typedef struct _fk_app_MemoryStatus {
     uint32_t sramAvailable;
     uint32_t programFlashAvailable;
     uint32_t extendedMemoryAvailable;
-    uint32_t dataMemoryAvailable;
+    uint32_t dataMemoryInstalled;
     uint32_t dataMemoryUsed;
     float dataMemoryConsumption;
 /* @@protoc_insertion_point(struct:fk_app_MemoryStatus) */
@@ -556,7 +556,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_sramAvailable_tag    1
 #define fk_app_MemoryStatus_programFlashAvailable_tag 2
 #define fk_app_MemoryStatus_extendedMemoryAvailable_tag 3
-#define fk_app_MemoryStatus_dataMemoryAvailable_tag 4
+#define fk_app_MemoryStatus_dataMemoryInstalled_tag 4
 #define fk_app_MemoryStatus_dataMemoryUsed_tag   5
 #define fk_app_MemoryStatus_dataMemoryConsumption_tag 6
 #define fk_app_ModuleCapabilities_id_tag         1
@@ -872,7 +872,7 @@ X(a, STATIC, SINGULAR, FLOAT, altitude, 6)
 X(a, STATIC, SINGULAR, UINT32, sramAvailable, 1) \
 X(a, STATIC, SINGULAR, UINT32, programFlashAvailable, 2) \
 X(a, STATIC, SINGULAR, UINT32, extendedMemoryAvailable, 3) \
-X(a, STATIC, SINGULAR, UINT32, dataMemoryAvailable, 4) \
+X(a, STATIC, SINGULAR, UINT32, dataMemoryInstalled, 4) \
 X(a, STATIC, SINGULAR, UINT32, dataMemoryUsed, 5) \
 X(a, STATIC, SINGULAR, FLOAT, dataMemoryConsumption, 6)
 #define fk_app_MemoryStatus_CALLBACK NULL
