@@ -708,10 +708,10 @@
             }
           }
         },
-        "SensorAndValue": {
+        "LiveSensorReading": {
           "fields": {
             "sensor": {
-              "type": "uint32",
+              "type": "SensorCapabilities",
               "id": 1
             },
             "value": {
@@ -720,20 +720,20 @@
             }
           }
         },
-        "ModuleReadings": {
+        "LiveModuleReadings": {
           "fields": {
             "module": {
-              "type": "uint32",
+              "type": "ModuleCapabilities",
               "id": 1
             },
             "readings": {
               "rule": "repeated",
-              "type": "SensorAndValue",
+              "type": "LiveSensorReading",
               "id": 2
             }
           }
         },
-        "Readings": {
+        "LiveReadings": {
           "fields": {
             "time": {
               "type": "uint64",
@@ -741,7 +741,7 @@
             },
             "modules": {
               "rule": "repeated",
-              "type": "ModuleReadings",
+              "type": "LiveModuleReadings",
               "id": 2
             }
           }
@@ -775,9 +775,9 @@
               "type": "DataStream",
               "id": 6
             },
-            "readings": {
+            "liveReadings": {
               "rule": "repeated",
-              "type": "Readings",
+              "type": "LiveReadings",
               "id": 7
             }
           }

@@ -308,19 +308,19 @@ message DataStream {
   string path = 8;
 }
 
-message SensorAndValue {
-  uint32 sensor = 1;
+message LiveSensorReading {
+  SensorCapabilities sensor = 1;
   float value = 2;
 }
 
-message ModuleReadings {
-  uint32 module = 1;
-  repeated SensorAndValue readings = 2;
+message LiveModuleReadings {
+  ModuleCapabilities module = 1;
+  repeated LiveSensorReading readings = 2;
 }
 
-message Readings {
+message LiveReadings {
   uint64 time = 1;
-  repeated ModuleReadings modules = 2;
+  repeated LiveModuleReadings modules = 2;
 }
 
 message HttpReply {
@@ -330,5 +330,5 @@ message HttpReply {
   NetworkSettings networkSettings = 4;
   repeated ModuleCapabilities modules = 5;
   repeated DataStream streams = 6;
-  repeated Readings readings = 7;
+  repeated LiveReadings liveReadings = 7;
 }
