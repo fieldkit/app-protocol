@@ -471,6 +471,10 @@
             "message": {
               "type": "string",
               "id": 1
+            },
+            "delay": {
+              "type": "uint32",
+              "id": 2
             }
           }
         },

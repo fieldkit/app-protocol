@@ -73,12 +73,6 @@ typedef enum _fk_app_DownloadFlags {
 #define _fk_app_DownloadFlags_ARRAYSIZE ((fk_app_DownloadFlags)(fk_app_DownloadFlags_DOWNLOAD_FLAG_METADATA_ONLY+1))
 
 /* Struct definitions */
-typedef struct _fk_app_Error {
-    pb_callback_t message;
-/* @@protoc_insertion_point(struct:fk_app_Error) */
-} fk_app_Error;
-
-
 typedef struct _fk_app_Files {
     pb_callback_t files;
 /* @@protoc_insertion_point(struct:fk_app_Files) */
@@ -188,6 +182,13 @@ typedef struct _fk_app_EraseFile {
     uint32_t id;
 /* @@protoc_insertion_point(struct:fk_app_EraseFile) */
 } fk_app_EraseFile;
+
+
+typedef struct _fk_app_Error {
+    pb_callback_t message;
+    uint32_t delay;
+/* @@protoc_insertion_point(struct:fk_app_Error) */
+} fk_app_Error;
 
 
 typedef struct _fk_app_File {
@@ -434,7 +435,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_QueryModule_init_default          {0, 0, {{NULL}, NULL}}
 #define fk_app_ModuleReply_init_default          {0, 0, {{NULL}, NULL}}
 #define fk_app_WireMessageQuery_init_default     {_fk_app_QueryType_MIN, fk_app_QueryCapabilities_init_default, fk_app_ConfigureSensorQuery_init_default, fk_app_LiveDataPoll_init_default, fk_app_Schedules_init_default, fk_app_DownloadFile_init_default, fk_app_EraseFile_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_QueryModule_init_default}
-#define fk_app_Error_init_default                {{{NULL}, NULL}}
+#define fk_app_Error_init_default                {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_default     {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_default, fk_app_LiveData_init_default, fk_app_Schedules_init_default, fk_app_Files_init_default, fk_app_FileData_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_DeviceStatus_init_default, fk_app_ModuleReply_init_default}
 #define fk_app_HardwareStatus_init_default       {0}
 #define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0}
@@ -473,7 +474,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_QueryModule_init_zero             {0, 0, {{NULL}, NULL}}
 #define fk_app_ModuleReply_init_zero             {0, 0, {{NULL}, NULL}}
 #define fk_app_WireMessageQuery_init_zero        {_fk_app_QueryType_MIN, fk_app_QueryCapabilities_init_zero, fk_app_ConfigureSensorQuery_init_zero, fk_app_LiveDataPoll_init_zero, fk_app_Schedules_init_zero, fk_app_DownloadFile_init_zero, fk_app_EraseFile_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_QueryModule_init_zero}
-#define fk_app_Error_init_zero                   {{{NULL}, NULL}}
+#define fk_app_Error_init_zero                   {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_zero        {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_zero, fk_app_LiveData_init_zero, fk_app_Schedules_init_zero, fk_app_Files_init_zero, fk_app_FileData_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_DeviceStatus_init_zero, fk_app_ModuleReply_init_zero}
 #define fk_app_HardwareStatus_init_zero          {0}
 #define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0}
@@ -491,7 +492,6 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
-#define fk_app_Error_message_tag                 1
 #define fk_app_Files_files_tag                   1
 #define fk_app_Identity_device_tag               1
 #define fk_app_Identity_stream_tag               2
@@ -531,6 +531,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_DownloadQuery_ranges_tag          3
 #define fk_app_DownloadQuery_blocks_tag          4
 #define fk_app_EraseFile_id_tag                  1
+#define fk_app_Error_message_tag                 1
+#define fk_app_Error_delay_tag                   2
 #define fk_app_File_id_tag                       1
 #define fk_app_File_time_tag                     2
 #define fk_app_File_size_tag                     3
@@ -825,7 +827,8 @@ X(a, STATIC, SINGULAR, MESSAGE, module, 14)
 #define fk_app_WireMessageQuery_module_MSGTYPE fk_app_QueryModule
 
 #define fk_app_Error_FIELDLIST(X, a) \
-X(a, CALLBACK, SINGULAR, STRING, message, 1)
+X(a, CALLBACK, SINGULAR, STRING, message, 1) \
+X(a, STATIC, SINGULAR, UINT32, delay, 2)
 #define fk_app_Error_CALLBACK pb_default_field_callback
 #define fk_app_Error_DEFAULT NULL
 

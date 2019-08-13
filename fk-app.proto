@@ -224,6 +224,7 @@ message WireMessageQuery {
 
 message Error {
   string message = 1;
+  uint32 delay = 2;
 }
 
 message WireMessageReply {
