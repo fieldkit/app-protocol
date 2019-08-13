@@ -220,6 +220,7 @@ typedef struct _fk_app_GpsStatus {
     float longitude;
     float latitude;
     float altitude;
+    uint32_t enabled;
 /* @@protoc_insertion_point(struct:fk_app_GpsStatus) */
 } fk_app_GpsStatus;
 
@@ -438,7 +439,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Error_init_default                {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_default     {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_default, fk_app_LiveData_init_default, fk_app_Schedules_init_default, fk_app_Files_init_default, fk_app_FileData_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_DeviceStatus_init_default, fk_app_ModuleReply_init_default}
 #define fk_app_HardwareStatus_init_default       {0}
-#define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0}
+#define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
@@ -477,7 +478,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Error_init_zero                   {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_zero        {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_zero, fk_app_LiveData_init_zero, fk_app_Schedules_init_zero, fk_app_Files_init_zero, fk_app_FileData_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_DeviceStatus_init_zero, fk_app_ModuleReply_init_zero}
 #define fk_app_HardwareStatus_init_zero          {0}
-#define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0}
+#define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
@@ -545,6 +546,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_FileData_hash_tag                 4
 #define fk_app_FileData_version_tag              5
 #define fk_app_FileData_id_tag                   6
+#define fk_app_GpsStatus_enabled_tag             7
 #define fk_app_GpsStatus_fix_tag                 1
 #define fk_app_GpsStatus_time_tag                2
 #define fk_app_GpsStatus_satellites_tag          3
@@ -868,7 +870,8 @@ X(a, STATIC, SINGULAR, UINT64, time, 2) \
 X(a, STATIC, SINGULAR, UINT32, satellites, 3) \
 X(a, STATIC, SINGULAR, FLOAT, longitude, 4) \
 X(a, STATIC, SINGULAR, FLOAT, latitude, 5) \
-X(a, STATIC, SINGULAR, FLOAT, altitude, 6)
+X(a, STATIC, SINGULAR, FLOAT, altitude, 6) \
+X(a, STATIC, SINGULAR, UINT32, enabled, 7)
 #define fk_app_GpsStatus_CALLBACK NULL
 #define fk_app_GpsStatus_DEFAULT NULL
 
@@ -1088,7 +1091,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_Error_size depends on runtime parameters */
 /* fk_app_WireMessageReply_size depends on runtime parameters */
 #define fk_app_HardwareStatus_size               0
-#define fk_app_GpsStatus_size                    38
+#define fk_app_GpsStatus_size                    44
 #define fk_app_MemoryStatus_size                 35
 #define fk_app_BatteryStatus_size                12
 #define fk_app_PowerStatus_size                  14

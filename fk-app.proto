@@ -247,6 +247,7 @@ message HardwareStatus {
 }
 
 message GpsStatus {
+  uint32 enabled = 7;
   uint32 fix = 1;
   uint64 time = 2;
   uint32 satellites = 3;
