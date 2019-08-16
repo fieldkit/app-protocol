@@ -26,6 +26,7 @@ enum QueryType {
   QUERY_FORMAT = 21;
   QUERY_GET_READINGS = 22;
   QUERY_TAKE_READINGS = 23;
+  QUERY_RECORDING_CONTROL = 24;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as
@@ -295,8 +296,13 @@ message DownloadQuery {
   repeated uint32 blocks = 4;
 }
 
+message Recording {
+  uint32 enabled = 1;
+}
+
 message HttpQuery {
   QueryType type = 1;
+  Recording recording = 2;
 }
 
 message DataStream {
