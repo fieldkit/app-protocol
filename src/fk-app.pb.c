@@ -20,9 +20,6 @@ PB_BIND(fk_app_ModuleCapabilities, fk_app_ModuleCapabilities, AUTO)
 PB_BIND(fk_app_Capabilities, fk_app_Capabilities, AUTO)
 
 
-PB_BIND(fk_app_TimeSpec, fk_app_TimeSpec, AUTO)
-
-
 PB_BIND(fk_app_Schedule, fk_app_Schedule, AUTO)
 
 

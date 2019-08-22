@@ -141,42 +141,23 @@
             }
           }
         },
-        "TimeSpec": {
+        "Schedule": {
           "fields": {
-            "fixed": {
-              "type": "int32",
+            "cron": {
+              "type": "bytes",
               "id": 1
             },
-            "interval": {
-              "type": "int32",
+            "seconds": {
+              "type": "uint32",
               "id": 2
-            },
-            "offset": {
-              "type": "int32",
-              "id": 3
             }
           }
-        },
-        "Schedule": {
-          "fields": {}
         },
         "Schedules": {
           "fields": {
             "readings": {
               "type": "Schedule",
               "id": 1
-            },
-            "transmission": {
-              "type": "Schedule",
-              "id": 2
-            },
-            "status": {
-              "type": "Schedule",
-              "id": 3
-            },
-            "location": {
-              "type": "Schedule",
-              "id": 4
             }
           }
         },
@@ -640,6 +621,10 @@
             "gps": {
               "type": "GpsStatus",
               "id": 7
+            },
+            "schedules": {
+              "type": "Schedules",
+              "id": 8
             }
           }
         },
@@ -690,6 +675,10 @@
             "recording": {
               "type": "Recording",
               "id": 2
+            },
+            "schedules": {
+              "type": "Schedules",
+              "id": 3
             }
           }
         },

@@ -93,21 +93,13 @@ message Capabilities {
   repeated SensorCapabilities sensors = 5;
 }
 
-message TimeSpec {
-  int32 fixed = 1;
-  int32 interval = 2;
-  int32 offset = 3;
-}
-
 message Schedule {
-  // TODO
+  bytes cron = 1;
+  uint32 seconds = 2;
 }
 
 message Schedules {
   Schedule readings = 1;
-  Schedule transmission = 2;
-  Schedule status = 3;
-  Schedule location = 4;
 }
 
 message NetworkInfo {
@@ -283,6 +275,7 @@ message Status {
   PowerStatus power = 5;
   MemoryStatus memory = 6;
   GpsStatus gps = 7;
+  Schedules schedules = 8;
 }
 
 message Range {
@@ -303,6 +296,7 @@ message Recording {
 message HttpQuery {
   QueryType type = 1;
   Recording recording = 2;
+  Schedules schedules = 3;
 }
 
 message DataStream {
