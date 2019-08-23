@@ -20,12 +20,6 @@ PB_BIND(fk_app_ModuleCapabilities, fk_app_ModuleCapabilities, AUTO)
 PB_BIND(fk_app_Capabilities, fk_app_Capabilities, AUTO)
 
 
-PB_BIND(fk_app_Schedule, fk_app_Schedule, AUTO)
-
-
-PB_BIND(fk_app_Schedules, fk_app_Schedules, AUTO)
-
-
 PB_BIND(fk_app_NetworkInfo, fk_app_NetworkInfo, AUTO)
 
 
@@ -78,6 +72,12 @@ PB_BIND(fk_app_Error, fk_app_Error, AUTO)
 
 
 PB_BIND(fk_app_WireMessageReply, fk_app_WireMessageReply, 2)
+
+
+PB_BIND(fk_app_Schedule, fk_app_Schedule, AUTO)
+
+
+PB_BIND(fk_app_Schedules, fk_app_Schedules, AUTO)
 
 
 PB_BIND(fk_app_HardwareStatus, fk_app_HardwareStatus, AUTO)

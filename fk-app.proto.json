@@ -24,7 +24,8 @@
             "QUERY_FORMAT": 21,
             "QUERY_GET_READINGS": 22,
             "QUERY_TAKE_READINGS": 23,
-            "QUERY_RECORDING_CONTROL": 24
+            "QUERY_RECORDING_CONTROL": 24,
+            "QUERY_CONFIGURE": 25
           }
         },
         "ReplyType": {
@@ -141,26 +142,6 @@
             }
           }
         },
-        "Schedule": {
-          "fields": {
-            "cron": {
-              "type": "bytes",
-              "id": 1
-            },
-            "seconds": {
-              "type": "uint32",
-              "id": 2
-            }
-          }
-        },
-        "Schedules": {
-          "fields": {
-            "readings": {
-              "type": "Schedule",
-              "id": 1
-            }
-          }
-        },
         "NetworkInfo": {
           "fields": {
             "ssid": {
@@ -207,6 +188,10 @@
             "build": {
               "type": "string",
               "id": 5
+            },
+            "name": {
+              "type": "string",
+              "id": 6
             }
           }
         },
@@ -422,10 +407,6 @@
               "type": "LiveDataPoll",
               "id": 8
             },
-            "newSchedules": {
-              "type": "Schedules",
-              "id": 9
-            },
             "downloadFile": {
               "type": "DownloadFile",
               "id": 10
@@ -479,10 +460,6 @@
               "type": "LiveData",
               "id": 6
             },
-            "schedules": {
-              "type": "Schedules",
-              "id": 7
-            },
             "files": {
               "type": "Files",
               "id": 8
@@ -506,6 +483,26 @@
             "module": {
               "type": "ModuleReply",
               "id": 13
+            }
+          }
+        },
+        "Schedule": {
+          "fields": {
+            "cron": {
+              "type": "bytes",
+              "id": 1
+            },
+            "seconds": {
+              "type": "uint32",
+              "id": 2
+            }
+          }
+        },
+        "Schedules": {
+          "fields": {
+            "readings": {
+              "type": "Schedule",
+              "id": 1
             }
           }
         },
@@ -672,13 +669,17 @@
               "type": "QueryType",
               "id": 1
             },
+            "identity": {
+              "type": "Identity",
+              "id": 2
+            },
             "recording": {
               "type": "Recording",
-              "id": 2
+              "id": 3
             },
             "schedules": {
               "type": "Schedules",
-              "id": 3
+              "id": 4
             }
           }
         },
