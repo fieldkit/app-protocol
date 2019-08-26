@@ -12,6 +12,7 @@ type options struct {
 	Address      string
 	Port         int
 	Status       bool
+	HexEncode    bool
 	Name         string
 	GetReadings  bool
 	TakeReadings bool
@@ -22,6 +23,7 @@ func main() {
 
 	flag.StringVar(&o.Address, "address", "", "ip address of the device")
 	flag.IntVar(&o.Port, "port", 80, "port number")
+	flag.BoolVar(&o.HexEncode, "hex", false, "hex encoding")
 	flag.BoolVar(&o.Status, "status", false, "device status")
 	flag.StringVar(&o.Name, "name", "", "name")
 	flag.BoolVar(&o.GetReadings, "get", false, "device status")
@@ -38,6 +40,7 @@ func main() {
 		Address:   o.Address,
 		Port:      o.Port,
 		Callbacks: &fkc.LogJsonCallbacks{},
+		HexEncode: o.HexEncode,
 	}
 
 	if o.Status {

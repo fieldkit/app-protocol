@@ -2,6 +2,7 @@ package fkdevice
 
 import (
 	"bytes"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -48,6 +49,7 @@ type DeviceClient struct {
 	Callbacks DeviceClientLoggingCallbacks
 	Address   string
 	Port      int
+	HexEncode bool
 }
 
 func (d *DeviceClient) QueryStatus() (*pb.HttpReply, error) {
@@ -124,33 +126,6 @@ func (qr *QueryResponse) Close() error {
 	return nil
 }
 
-func (d *DeviceClient) openAndSendQueryTcp(query *pb.WireMessageQuery) (*QueryResponse, error) {
-	c, err := net.DialTimeout("tcp", fmt.Sprintf("%s:%d", d.Address, d.Port), 5*time.Second)
-	if err != nil {
-		return nil, err
-	}
-
-	data, err := proto.Marshal(query)
-	if err != nil {
-		return nil, err
-	}
-
-	// EncodeRawBytes includes the length prefix.
-	buf := proto.NewBuffer(make([]byte, 0))
-	buf.EncodeRawBytes(data)
-	encoded := buf.Bytes()
-
-	// We only write once, so this single call is fine here. If we need to
-	// write more in the future we'll need another one of these.
-	c.SetWriteDeadline(time.Now().Add(DefaultTimeout * time.Second))
-	_, err = c.Write(encoded)
-	if err != nil {
-		return nil, err
-	}
-
-	return &QueryResponse{tcp: c}, nil
-}
-
 func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse, error) {
 	data, err := proto.Marshal(query)
 	if err != nil {
@@ -162,6 +137,13 @@ func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse
 	buf.EncodeRawBytes(data)
 
 	body := bytes.NewReader(buf.Bytes())
+	contentType := "application/fkhttp"
+
+	if d.HexEncode {
+		hexEncoded := hex.EncodeToString(buf.Bytes())
+		body = bytes.NewReader([]byte(hexEncoded))
+		contentType = "text/plain"
+	}
 
 	// We only write once, so this single call is fine here. If we need to
 	// write more in the future we'll need another one of these.
@@ -171,7 +153,7 @@ func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse
 		return nil, err
 	}
 
-	req.Header.Set("Content-Type", "application/fkhttp")
+	req.Header.Set("Content-Type", contentType)
 	req.Header.Set("Content-Length", fmt.Sprintf("%d", len(buf.Bytes())))
 
 	client := &http.Client{}
@@ -221,6 +203,10 @@ func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback Callb
 	defer c.Close()
 
 	dr := c.Reader(opts.timeout)
+
+	if d.HexEncode {
+		dr = hex.NewDecoder(dr)
+	}
 
 	unmarshalFunc := message.UnmarshalFunc(func(b []byte) (proto.Message, error) {
 		var reply pb.HttpReply
