@@ -699,6 +699,10 @@
             "schedules": {
               "type": "Schedules",
               "id": 4
+            },
+            "flags": {
+              "type": "uint32",
+              "id": 5
             }
           }
         },
