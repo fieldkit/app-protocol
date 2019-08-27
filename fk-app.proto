@@ -59,6 +59,15 @@ enum DownloadFlags {
   DOWNLOAD_FLAG_METADATA_ONLY = 2;
 }
 
+enum ModuleFlags {
+  MODULE_FLAG_NONE = 0;
+  MODULE_FLAG_INTERNAL = 1;
+}
+
+enum SensorFlags {
+  SENSOR_FLAG_NONE = 0;
+}
+
 // Querying information about the device, what it's capable of. Typically the
 // first message that will be sent to a device.
 
@@ -77,12 +86,14 @@ message SensorCapabilities {
   uint32 frequency = 4;
   string unitOfMeasure = 5;
   string path = 6;
+  uint32 flags = 7;
 }
 
 message ModuleCapabilities {
   uint32 id = 1;
   string name = 2;
   string path = 4;
+  uint32 flags = 5;
   repeated SensorCapabilities sensors = 3;
 }
 

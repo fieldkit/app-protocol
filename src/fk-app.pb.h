@@ -74,6 +74,21 @@ typedef enum _fk_app_DownloadFlags {
 #define _fk_app_DownloadFlags_MAX fk_app_DownloadFlags_DOWNLOAD_FLAG_METADATA_ONLY
 #define _fk_app_DownloadFlags_ARRAYSIZE ((fk_app_DownloadFlags)(fk_app_DownloadFlags_DOWNLOAD_FLAG_METADATA_ONLY+1))
 
+typedef enum _fk_app_ModuleFlags {
+    fk_app_ModuleFlags_MODULE_FLAG_NONE = 0,
+    fk_app_ModuleFlags_MODULE_FLAG_INTERNAL = 1
+} fk_app_ModuleFlags;
+#define _fk_app_ModuleFlags_MIN fk_app_ModuleFlags_MODULE_FLAG_NONE
+#define _fk_app_ModuleFlags_MAX fk_app_ModuleFlags_MODULE_FLAG_INTERNAL
+#define _fk_app_ModuleFlags_ARRAYSIZE ((fk_app_ModuleFlags)(fk_app_ModuleFlags_MODULE_FLAG_INTERNAL+1))
+
+typedef enum _fk_app_SensorFlags {
+    fk_app_SensorFlags_SENSOR_FLAG_NONE = 0
+} fk_app_SensorFlags;
+#define _fk_app_SensorFlags_MIN fk_app_SensorFlags_SENSOR_FLAG_NONE
+#define _fk_app_SensorFlags_MAX fk_app_SensorFlags_SENSOR_FLAG_NONE
+#define _fk_app_SensorFlags_ARRAYSIZE ((fk_app_SensorFlags)(fk_app_SensorFlags_SENSOR_FLAG_NONE+1))
+
 /* Struct definitions */
 typedef struct _fk_app_Files {
     pb_callback_t files;
@@ -259,6 +274,7 @@ typedef struct _fk_app_ModuleCapabilities {
     pb_callback_t name;
     pb_callback_t sensors;
     pb_callback_t path;
+    uint32_t flags;
 /* @@protoc_insertion_point(struct:fk_app_ModuleCapabilities) */
 } fk_app_ModuleCapabilities;
 
@@ -320,6 +336,7 @@ typedef struct _fk_app_SensorCapabilities {
     uint32_t frequency;
     pb_callback_t unitOfMeasure;
     pb_callback_t path;
+    uint32_t flags;
 /* @@protoc_insertion_point(struct:fk_app_SensorCapabilities) */
 } fk_app_SensorCapabilities;
 
@@ -415,8 +432,8 @@ typedef struct _fk_app_HttpReply {
 
 /* Initializer values for message structs */
 #define fk_app_QueryCapabilities_init_default    {0, 0}
-#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
+#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
@@ -454,8 +471,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveReadings_init_default         {0, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
-#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
+#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
@@ -570,6 +587,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_id_tag         1
 #define fk_app_ModuleCapabilities_name_tag       2
 #define fk_app_ModuleCapabilities_path_tag       4
+#define fk_app_ModuleCapabilities_flags_tag      5
 #define fk_app_ModuleCapabilities_sensors_tag    3
 #define fk_app_ModuleReply_id_tag                1
 #define fk_app_ModuleReply_address_tag           2
@@ -592,6 +610,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_SensorCapabilities_frequency_tag  4
 #define fk_app_SensorCapabilities_unitOfMeasure_tag 5
 #define fk_app_SensorCapabilities_path_tag       6
+#define fk_app_SensorCapabilities_flags_tag      7
 #define fk_app_LiveModuleReadings_module_tag     1
 #define fk_app_LiveModuleReadings_readings_tag   2
 #define fk_app_LiveSensorReading_sensor_tag      1
@@ -650,7 +669,8 @@ X(a, STATIC, SINGULAR, UINT32, module, 2) \
 X(a, CALLBACK, SINGULAR, STRING, name, 3) \
 X(a, STATIC, SINGULAR, UINT32, frequency, 4) \
 X(a, CALLBACK, SINGULAR, STRING, unitOfMeasure, 5) \
-X(a, CALLBACK, SINGULAR, STRING, path, 6)
+X(a, CALLBACK, SINGULAR, STRING, path, 6) \
+X(a, STATIC, SINGULAR, UINT32, flags, 7)
 #define fk_app_SensorCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_SensorCapabilities_DEFAULT NULL
 
@@ -658,7 +678,8 @@ X(a, CALLBACK, SINGULAR, STRING, path, 6)
 X(a, STATIC, SINGULAR, UINT32, id, 1) \
 X(a, CALLBACK, SINGULAR, STRING, name, 2) \
 X(a, CALLBACK, REPEATED, MESSAGE, sensors, 3) \
-X(a, CALLBACK, SINGULAR, STRING, path, 4)
+X(a, CALLBACK, SINGULAR, STRING, path, 4) \
+X(a, STATIC, SINGULAR, UINT32, flags, 5)
 #define fk_app_ModuleCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_ModuleCapabilities_DEFAULT NULL
 #define fk_app_ModuleCapabilities_sensors_MSGTYPE fk_app_SensorCapabilities

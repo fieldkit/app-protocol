@@ -55,6 +55,17 @@
             "DOWNLOAD_FLAG_METADATA_ONLY": 2
           }
         },
+        "ModuleFlags": {
+          "values": {
+            "MODULE_FLAG_NONE": 0,
+            "MODULE_FLAG_INTERNAL": 1
+          }
+        },
+        "SensorFlags": {
+          "values": {
+            "SENSOR_FLAG_NONE": 0
+          }
+        },
         "QueryCapabilities": {
           "fields": {
             "version": {
@@ -92,6 +103,10 @@
             "path": {
               "type": "string",
               "id": 6
+            },
+            "flags": {
+              "type": "uint32",
+              "id": 7
             }
           }
         },
@@ -108,6 +123,10 @@
             "path": {
               "type": "string",
               "id": 4
+            },
+            "flags": {
+              "type": "uint32",
+              "id": 5
             },
             "sensors": {
               "rule": "repeated",
