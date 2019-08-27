@@ -78,6 +78,18 @@
             }
           }
         },
+        "LiveValue": {
+          "fields": {
+            "valid": {
+              "type": "bool",
+              "id": 1
+            },
+            "value": {
+              "type": "float",
+              "id": 2
+            }
+          }
+        },
         "SensorCapabilities": {
           "fields": {
             "id": {
@@ -107,6 +119,10 @@
             "flags": {
               "type": "uint32",
               "id": 7
+            },
+            "value": {
+              "type": "LiveValue",
+              "id": 8
             }
           }
         },

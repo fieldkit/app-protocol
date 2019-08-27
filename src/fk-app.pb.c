@@ -11,6 +11,9 @@
 PB_BIND(fk_app_QueryCapabilities, fk_app_QueryCapabilities, AUTO)
 
 
+PB_BIND(fk_app_LiveValue, fk_app_LiveValue, AUTO)
+
+
 PB_BIND(fk_app_SensorCapabilities, fk_app_SensorCapabilities, AUTO)
 
 

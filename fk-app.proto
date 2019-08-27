@@ -79,6 +79,11 @@ message QueryCapabilities {
 // Information about an individual sensor attached to the device. Temerature,
 // Depth, Conductivity, Humidity, etc...
 
+message LiveValue {
+  bool valid = 1;
+  float value = 2;
+}
+
 message SensorCapabilities {
   uint32 id = 1;
   uint32 module = 2;
@@ -87,6 +92,7 @@ message SensorCapabilities {
   string unitOfMeasure = 5;
   string path = 6;
   uint32 flags = 7;
+  LiveValue value = 8;
 }
 
 message ModuleCapabilities {

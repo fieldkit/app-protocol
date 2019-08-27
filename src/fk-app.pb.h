@@ -258,6 +258,13 @@ typedef struct _fk_app_LiveReadings {
 } fk_app_LiveReadings;
 
 
+typedef struct _fk_app_LiveValue {
+    bool valid;
+    float value;
+/* @@protoc_insertion_point(struct:fk_app_LiveValue) */
+} fk_app_LiveValue;
+
+
 typedef struct _fk_app_MemoryStatus {
     uint32_t sramAvailable;
     uint32_t programFlashAvailable;
@@ -329,30 +336,11 @@ typedef struct _fk_app_Schedule {
 } fk_app_Schedule;
 
 
-typedef struct _fk_app_SensorCapabilities {
-    uint32_t id;
-    uint32_t module;
-    pb_callback_t name;
-    uint32_t frequency;
-    pb_callback_t unitOfMeasure;
-    pb_callback_t path;
-    uint32_t flags;
-/* @@protoc_insertion_point(struct:fk_app_SensorCapabilities) */
-} fk_app_SensorCapabilities;
-
-
 typedef struct _fk_app_LiveModuleReadings {
     fk_app_ModuleCapabilities module;
     pb_callback_t readings;
 /* @@protoc_insertion_point(struct:fk_app_LiveModuleReadings) */
 } fk_app_LiveModuleReadings;
-
-
-typedef struct _fk_app_LiveSensorReading {
-    fk_app_SensorCapabilities sensor;
-    float value;
-/* @@protoc_insertion_point(struct:fk_app_LiveSensorReading) */
-} fk_app_LiveSensorReading;
 
 
 typedef struct _fk_app_PowerStatus {
@@ -365,6 +353,19 @@ typedef struct _fk_app_Schedules {
     fk_app_Schedule readings;
 /* @@protoc_insertion_point(struct:fk_app_Schedules) */
 } fk_app_Schedules;
+
+
+typedef struct _fk_app_SensorCapabilities {
+    uint32_t id;
+    uint32_t module;
+    pb_callback_t name;
+    uint32_t frequency;
+    pb_callback_t unitOfMeasure;
+    pb_callback_t path;
+    uint32_t flags;
+    fk_app_LiveValue value;
+/* @@protoc_insertion_point(struct:fk_app_SensorCapabilities) */
+} fk_app_SensorCapabilities;
 
 
 typedef struct _fk_app_WireMessageQuery {
@@ -406,6 +407,13 @@ typedef struct _fk_app_HttpQuery {
 } fk_app_HttpQuery;
 
 
+typedef struct _fk_app_LiveSensorReading {
+    fk_app_SensorCapabilities sensor;
+    float value;
+/* @@protoc_insertion_point(struct:fk_app_LiveSensorReading) */
+} fk_app_LiveSensorReading;
+
+
 typedef struct _fk_app_Status {
     uint32_t version;
     uint32_t uptime;
@@ -433,7 +441,8 @@ typedef struct _fk_app_HttpReply {
 
 /* Initializer values for message structs */
 #define fk_app_QueryCapabilities_init_default    {0, 0}
-#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
+#define fk_app_LiveValue_init_default            {0, 0}
+#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, fk_app_LiveValue_init_default}
 #define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
@@ -472,7 +481,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveReadings_init_default         {0, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
-#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
+#define fk_app_LiveValue_init_zero               {0, 0}
+#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, fk_app_LiveValue_init_zero}
 #define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
@@ -579,6 +589,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveDataSample_value_tag          3
 #define fk_app_LiveReadings_time_tag             1
 #define fk_app_LiveReadings_modules_tag          2
+#define fk_app_LiveValue_valid_tag               1
+#define fk_app_LiveValue_value_tag               2
 #define fk_app_MemoryStatus_sramAvailable_tag    1
 #define fk_app_MemoryStatus_programFlashAvailable_tag 2
 #define fk_app_MemoryStatus_extendedMemoryAvailable_tag 3
@@ -605,6 +617,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Recording_enabled_tag             1
 #define fk_app_Schedule_cron_tag                 1
 #define fk_app_Schedule_seconds_tag              2
+#define fk_app_LiveModuleReadings_module_tag     1
+#define fk_app_LiveModuleReadings_readings_tag   2
+#define fk_app_PowerStatus_battery_tag           1
+#define fk_app_Schedules_readings_tag            1
 #define fk_app_SensorCapabilities_id_tag         1
 #define fk_app_SensorCapabilities_module_tag     2
 #define fk_app_SensorCapabilities_name_tag       3
@@ -612,12 +628,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_SensorCapabilities_unitOfMeasure_tag 5
 #define fk_app_SensorCapabilities_path_tag       6
 #define fk_app_SensorCapabilities_flags_tag      7
-#define fk_app_LiveModuleReadings_module_tag     1
-#define fk_app_LiveModuleReadings_readings_tag   2
-#define fk_app_LiveSensorReading_sensor_tag      1
-#define fk_app_LiveSensorReading_value_tag       2
-#define fk_app_PowerStatus_battery_tag           1
-#define fk_app_Schedules_readings_tag            1
+#define fk_app_SensorCapabilities_value_tag      8
 #define fk_app_WireMessageQuery_type_tag         1
 #define fk_app_WireMessageQuery_queryCapabilities_tag 2
 #define fk_app_WireMessageQuery_configureSensor_tag 3
@@ -642,6 +653,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpQuery_recording_tag           3
 #define fk_app_HttpQuery_schedules_tag           4
 #define fk_app_HttpQuery_flags_tag               5
+#define fk_app_LiveSensorReading_sensor_tag      1
+#define fk_app_LiveSensorReading_value_tag       2
 #define fk_app_Status_version_tag                1
 #define fk_app_Status_uptime_tag                 2
 #define fk_app_Status_identity_tag               3
@@ -665,6 +678,12 @@ X(a, STATIC, SINGULAR, UINT32, callerTime, 2)
 #define fk_app_QueryCapabilities_CALLBACK NULL
 #define fk_app_QueryCapabilities_DEFAULT NULL
 
+#define fk_app_LiveValue_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, BOOL, valid, 1) \
+X(a, STATIC, SINGULAR, FLOAT, value, 2)
+#define fk_app_LiveValue_CALLBACK NULL
+#define fk_app_LiveValue_DEFAULT NULL
+
 #define fk_app_SensorCapabilities_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, id, 1) \
 X(a, STATIC, SINGULAR, UINT32, module, 2) \
@@ -672,9 +691,11 @@ X(a, CALLBACK, SINGULAR, STRING, name, 3) \
 X(a, STATIC, SINGULAR, UINT32, frequency, 4) \
 X(a, CALLBACK, SINGULAR, STRING, unitOfMeasure, 5) \
 X(a, CALLBACK, SINGULAR, STRING, path, 6) \
-X(a, STATIC, SINGULAR, UINT32, flags, 7)
+X(a, STATIC, SINGULAR, UINT32, flags, 7) \
+X(a, STATIC, SINGULAR, MESSAGE, value, 8)
 #define fk_app_SensorCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_SensorCapabilities_DEFAULT NULL
+#define fk_app_SensorCapabilities_value_MSGTYPE fk_app_LiveValue
 
 #define fk_app_ModuleCapabilities_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, id, 1) \
@@ -1007,6 +1028,7 @@ X(a, CALLBACK, REPEATED, MESSAGE, liveReadings, 7)
 #define fk_app_HttpReply_liveReadings_MSGTYPE fk_app_LiveReadings
 
 extern const pb_msgdesc_t fk_app_QueryCapabilities_msg;
+extern const pb_msgdesc_t fk_app_LiveValue_msg;
 extern const pb_msgdesc_t fk_app_SensorCapabilities_msg;
 extern const pb_msgdesc_t fk_app_ModuleCapabilities_msg;
 extern const pb_msgdesc_t fk_app_Capabilities_msg;
@@ -1048,6 +1070,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
 #define fk_app_QueryCapabilities_fields &fk_app_QueryCapabilities_msg
+#define fk_app_LiveValue_fields &fk_app_LiveValue_msg
 #define fk_app_SensorCapabilities_fields &fk_app_SensorCapabilities_msg
 #define fk_app_ModuleCapabilities_fields &fk_app_ModuleCapabilities_msg
 #define fk_app_Capabilities_fields &fk_app_Capabilities_msg
@@ -1089,6 +1112,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 
 /* Maximum encoded size of messages (where known) */
 #define fk_app_QueryCapabilities_size            12
+#define fk_app_LiveValue_size                    7
 /* fk_app_SensorCapabilities_size depends on runtime parameters */
 /* fk_app_ModuleCapabilities_size depends on runtime parameters */
 /* fk_app_Capabilities_size depends on runtime parameters */
