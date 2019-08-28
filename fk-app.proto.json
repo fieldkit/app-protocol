@@ -657,6 +657,10 @@
             "schedules": {
               "type": "Schedules",
               "id": 8
+            },
+            "recording": {
+              "type": "Recording",
+              "id": 9
             }
           }
         },
@@ -695,6 +699,10 @@
             "enabled": {
               "type": "uint32",
               "id": 1
+            },
+            "startedTime": {
+              "type": "uint64",
+              "id": 2
             }
           }
         },

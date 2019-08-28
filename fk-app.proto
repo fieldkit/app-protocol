@@ -297,6 +297,7 @@ message Status {
   MemoryStatus memory = 6;
   GpsStatus gps = 7;
   Schedules schedules = 8;
+  Recording recording = 9;
 }
 
 message Range {
@@ -312,6 +313,7 @@ message DownloadQuery {
 
 message Recording {
   uint32 enabled = 1;
+  uint64 started_time = 2;
 }
 
 message HttpQuery {

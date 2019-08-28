@@ -325,6 +325,7 @@ typedef struct _fk_app_Range {
 
 typedef struct _fk_app_Recording {
     uint32_t enabled;
+    uint64_t started_time;
 /* @@protoc_insertion_point(struct:fk_app_Recording) */
 } fk_app_Recording;
 
@@ -423,6 +424,7 @@ typedef struct _fk_app_Status {
     fk_app_MemoryStatus memory;
     fk_app_GpsStatus gps;
     fk_app_Schedules schedules;
+    fk_app_Recording recording;
 /* @@protoc_insertion_point(struct:fk_app_Status) */
 } fk_app_Status;
 
@@ -470,10 +472,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
-#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, fk_app_Schedules_init_default}
+#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, fk_app_Schedules_init_default, fk_app_Recording_init_default}
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_Recording_init_default            {0}
+#define fk_app_Recording_init_default            {0, 0}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_default    {fk_app_SensorCapabilities_init_default, 0}
@@ -510,10 +512,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
-#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, fk_app_Schedules_init_zero}
+#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, fk_app_Schedules_init_zero, fk_app_Recording_init_zero}
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_Recording_init_zero               {0}
+#define fk_app_Recording_init_zero               {0, 0}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_zero       {fk_app_SensorCapabilities_init_zero, 0}
@@ -615,6 +617,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Range_start_tag                   1
 #define fk_app_Range_end_tag                     2
 #define fk_app_Recording_enabled_tag             1
+#define fk_app_Recording_started_time_tag        2
 #define fk_app_Schedule_cron_tag                 1
 #define fk_app_Schedule_seconds_tag              2
 #define fk_app_LiveModuleReadings_module_tag     1
@@ -663,6 +666,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_memory_tag                 6
 #define fk_app_Status_gps_tag                    7
 #define fk_app_Status_schedules_tag              8
+#define fk_app_Status_recording_tag              9
 #define fk_app_HttpReply_type_tag                1
 #define fk_app_HttpReply_errors_tag              2
 #define fk_app_HttpReply_status_tag              3
@@ -935,7 +939,8 @@ X(a, STATIC, SINGULAR, MESSAGE, hardware, 4) \
 X(a, STATIC, SINGULAR, MESSAGE, power, 5) \
 X(a, STATIC, SINGULAR, MESSAGE, memory, 6) \
 X(a, STATIC, SINGULAR, MESSAGE, gps, 7) \
-X(a, STATIC, SINGULAR, MESSAGE, schedules, 8)
+X(a, STATIC, SINGULAR, MESSAGE, schedules, 8) \
+X(a, STATIC, SINGULAR, MESSAGE, recording, 9)
 #define fk_app_Status_CALLBACK NULL
 #define fk_app_Status_DEFAULT NULL
 #define fk_app_Status_identity_MSGTYPE fk_app_Identity
@@ -944,6 +949,7 @@ X(a, STATIC, SINGULAR, MESSAGE, schedules, 8)
 #define fk_app_Status_memory_MSGTYPE fk_app_MemoryStatus
 #define fk_app_Status_gps_MSGTYPE fk_app_GpsStatus
 #define fk_app_Status_schedules_MSGTYPE fk_app_Schedules
+#define fk_app_Status_recording_MSGTYPE fk_app_Recording
 
 #define fk_app_Range_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, start, 1) \
@@ -960,7 +966,8 @@ X(a, CALLBACK, REPEATED, UINT32, blocks, 4)
 #define fk_app_DownloadQuery_ranges_MSGTYPE fk_app_Range
 
 #define fk_app_Recording_FIELDLIST(X, a) \
-X(a, STATIC, SINGULAR, UINT32, enabled, 1)
+X(a, STATIC, SINGULAR, UINT32, enabled, 1) \
+X(a, STATIC, SINGULAR, UINT64, started_time, 2)
 #define fk_app_Recording_CALLBACK NULL
 #define fk_app_Recording_DEFAULT NULL
 
@@ -1144,7 +1151,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_Status_size depends on runtime parameters */
 #define fk_app_Range_size                        12
 /* fk_app_DownloadQuery_size depends on runtime parameters */
-#define fk_app_Recording_size                    6
+#define fk_app_Recording_size                    17
 /* fk_app_HttpQuery_size depends on runtime parameters */
 /* fk_app_DataStream_size depends on runtime parameters */
 /* fk_app_LiveSensorReading_size depends on runtime parameters */
