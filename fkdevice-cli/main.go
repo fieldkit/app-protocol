@@ -9,13 +9,15 @@ import (
 )
 
 type options struct {
-	Address      string
-	Port         int
-	Status       bool
-	HexEncode    bool
-	Name         string
-	GetReadings  bool
-	TakeReadings bool
+	Address        string
+	Port           int
+	Status         bool
+	HexEncode      bool
+	Name           string
+	GetReadings    bool
+	TakeReadings   bool
+	StartRecording bool
+	StopRecording  bool
 }
 
 func main() {
@@ -26,8 +28,10 @@ func main() {
 	flag.BoolVar(&o.HexEncode, "hex", false, "hex encoding")
 	flag.BoolVar(&o.Status, "status", false, "device status")
 	flag.StringVar(&o.Name, "name", "", "name")
-	flag.BoolVar(&o.GetReadings, "get", false, "device status")
-	flag.BoolVar(&o.TakeReadings, "take", false, "device status")
+	flag.BoolVar(&o.GetReadings, "get", false, "")
+	flag.BoolVar(&o.TakeReadings, "take", false, "")
+	flag.BoolVar(&o.StartRecording, "recording", false, "")
+	flag.BoolVar(&o.StopRecording, "stop-recording", false, "")
 
 	flag.Parse()
 
@@ -66,6 +70,20 @@ func main() {
 
 	if o.TakeReadings {
 		_, err := device.QueryTakeReadings()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.StartRecording {
+		_, err := device.QueryStartRecording()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.StopRecording {
+		_, err := device.QueryStopRecording()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}

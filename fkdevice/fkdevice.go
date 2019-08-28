@@ -74,6 +74,34 @@ func (d *DeviceClient) ConfigureName(name string) (*pb.HttpReply, error) {
 	return reply, nil
 }
 
+func (d *DeviceClient) QueryStartRecording() (*pb.HttpReply, error) {
+	query := &pb.HttpQuery{
+		Type: pb.QueryType_QUERY_RECORDING_CONTROL,
+		Recording: &pb.Recording{
+			Enabled: 1,
+		},
+	}
+	reply, err := d.queryDeviceQuery(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
+func (d *DeviceClient) QueryStopRecording() (*pb.HttpReply, error) {
+	query := &pb.HttpQuery{
+		Type: pb.QueryType_QUERY_RECORDING_CONTROL,
+		Recording: &pb.Recording{
+			Enabled: 0,
+		},
+	}
+	reply, err := d.queryDeviceQuery(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) QueryGetReadings() (*pb.HttpReply, error) {
 	reply, err := d.queryDevice(pb.QueryType_QUERY_GET_READINGS)
 	if err != nil {
