@@ -92,7 +92,7 @@
         },
         "SensorCapabilities": {
           "fields": {
-            "id": {
+            "number": {
               "type": "uint32",
               "id": 1
             },
@@ -128,13 +128,18 @@
         },
         "ModuleCapabilities": {
           "fields": {
-            "id": {
+            "position": {
               "type": "uint32",
               "id": 1
             },
             "name": {
               "type": "string",
               "id": 2
+            },
+            "sensors": {
+              "rule": "repeated",
+              "type": "SensorCapabilities",
+              "id": 3
             },
             "path": {
               "type": "string",
@@ -144,10 +149,9 @@
               "type": "uint32",
               "id": 5
             },
-            "sensors": {
-              "rule": "repeated",
-              "type": "SensorCapabilities",
-              "id": 3
+            "id": {
+              "type": "bytes",
+              "id": 6
             }
           }
         },

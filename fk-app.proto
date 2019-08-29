@@ -85,22 +85,27 @@ message LiveValue {
 }
 
 message SensorCapabilities {
-  uint32 id = 1;
+  uint32 number = 1;
   uint32 module = 2;
   string name = 3;
   uint32 frequency = 4;
   string unitOfMeasure = 5;
+
+  // v2
   string path = 6;
   uint32 flags = 7;
   LiveValue value = 8;
 }
 
 message ModuleCapabilities {
-  uint32 id = 1;
+  uint32 position = 1;
   string name = 2;
+  repeated SensorCapabilities sensors = 3;
+
+  // v2
   string path = 4;
   uint32 flags = 5;
-  repeated SensorCapabilities sensors = 3;
+  bytes id = 6;
 }
 
 message Capabilities {
