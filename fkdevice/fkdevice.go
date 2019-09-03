@@ -78,7 +78,8 @@ func (d *DeviceClient) QueryStartRecording() (*pb.HttpReply, error) {
 	query := &pb.HttpQuery{
 		Type: pb.QueryType_QUERY_RECORDING_CONTROL,
 		Recording: &pb.Recording{
-			Enabled: 1,
+			Modifying: true,
+			Enabled:   true,
 		},
 	}
 	reply, err := d.queryDeviceQuery(query)
@@ -92,7 +93,8 @@ func (d *DeviceClient) QueryStopRecording() (*pb.HttpReply, error) {
 	query := &pb.HttpQuery{
 		Type: pb.QueryType_QUERY_RECORDING_CONTROL,
 		Recording: &pb.Recording{
-			Enabled: 0,
+			Modifying: true,
+			Enabled:   false,
 		},
 	}
 	reply, err := d.queryDeviceQuery(query)

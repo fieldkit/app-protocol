@@ -30,7 +30,7 @@ func main() {
 	flag.StringVar(&o.Name, "name", "", "name")
 	flag.BoolVar(&o.GetReadings, "get", false, "")
 	flag.BoolVar(&o.TakeReadings, "take", false, "")
-	flag.BoolVar(&o.StartRecording, "recording", false, "")
+	flag.BoolVar(&o.StartRecording, "start-recording", false, "")
 	flag.BoolVar(&o.StopRecording, "stop-recording", false, "")
 
 	flag.Parse()
