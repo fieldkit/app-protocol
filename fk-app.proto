@@ -317,8 +317,9 @@ message DownloadQuery {
 }
 
 message Recording {
-  uint32 enabled = 1;
-  uint64 started_time = 2;
+  bool modifying = 1;
+  bool enabled = 2;
+  uint64 started_time = 3;
 }
 
 message HttpQuery {

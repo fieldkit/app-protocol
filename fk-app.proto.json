@@ -700,13 +700,17 @@
         },
         "Recording": {
           "fields": {
-            "enabled": {
-              "type": "uint32",
+            "modifying": {
+              "type": "bool",
               "id": 1
+            },
+            "enabled": {
+              "type": "bool",
+              "id": 2
             },
             "startedTime": {
               "type": "uint64",
-              "id": 2
+              "id": 3
             }
           }
         },
