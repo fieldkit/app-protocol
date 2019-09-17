@@ -14,6 +14,7 @@ type options struct {
 	Status         bool
 	HexEncode      bool
 	Name           string
+	Save           string
 	GetReadings    bool
 	TakeReadings   bool
 	StartRecording bool
@@ -32,6 +33,7 @@ func main() {
 	flag.BoolVar(&o.TakeReadings, "take", false, "")
 	flag.BoolVar(&o.StartRecording, "start-recording", false, "")
 	flag.BoolVar(&o.StopRecording, "stop-recording", false, "")
+	flag.StringVar(&o.Save, "save", "", "save")
 
 	flag.Parse()
 
@@ -41,9 +43,11 @@ func main() {
 	}
 
 	device := &fkc.DeviceClient{
-		Address:   o.Address,
-		Port:      o.Port,
-		Callbacks: &fkc.LogJsonCallbacks{},
+		Address: o.Address,
+		Port:    o.Port,
+		Callbacks: &fkc.LogJsonCallbacks{
+			Save: o.Save,
+		},
 		HexEncode: o.HexEncode,
 	}
 

@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -29,6 +30,7 @@ type DeviceClientLoggingCallbacks interface {
 }
 
 type LogJsonCallbacks struct {
+	Save string
 }
 
 func (cb *LogJsonCallbacks) Sent(query *pb.HttpQuery) {
@@ -43,13 +45,20 @@ func (cb *LogJsonCallbacks) Received(reply *pb.HttpReply) {
 	if err == nil {
 		log.Printf("Received: %s", replyJson)
 	}
+
+	if cb.Save != "" {
+		err := ioutil.WriteFile(cb.Save, []byte(replyJson), 0644)
+		if err != nil {
+			panic(err)
+		}
+	}
 }
 
 type DeviceClient struct {
 	Callbacks DeviceClientLoggingCallbacks
 	Address   string
-	Port      int
 	HexEncode bool
+	Port      int
 }
 
 func (d *DeviceClient) QueryStatus() (*pb.HttpReply, error) {
