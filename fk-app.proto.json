@@ -231,6 +231,10 @@
             "name": {
               "type": "string",
               "id": 6
+            },
+            "generation": {
+              "type": "bytes",
+              "id": 7
             }
           }
         },

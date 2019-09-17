@@ -109,6 +109,7 @@ typedef struct _fk_app_Identity {
     pb_callback_t firmware;
     pb_callback_t build;
     pb_callback_t name;
+    pb_callback_t generation;
 /* @@protoc_insertion_point(struct:fk_app_Identity) */
 } fk_app_Identity;
 
@@ -451,7 +452,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
-#define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_default {0, 0}
 #define fk_app_LiveDataPoll_init_default         {0}
 #define fk_app_LiveDataSample_init_default       {0, 0, 0}
@@ -491,7 +492,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
-#define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_zero    {0, 0}
 #define fk_app_LiveDataPoll_init_zero            {0}
 #define fk_app_LiveDataSample_init_zero          {0, 0, 0}
@@ -533,6 +534,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Identity_firmware_tag             4
 #define fk_app_Identity_build_tag                5
 #define fk_app_Identity_name_tag                 6
+#define fk_app_Identity_generation_tag           7
 #define fk_app_LiveData_samples_tag              1
 #define fk_app_NetworkInfo_ssid_tag              1
 #define fk_app_NetworkInfo_password_tag          2
@@ -746,7 +748,8 @@ X(a, CALLBACK, SINGULAR, STRING, stream, 2) \
 X(a, CALLBACK, SINGULAR, BYTES, deviceId, 3) \
 X(a, CALLBACK, SINGULAR, STRING, firmware, 4) \
 X(a, CALLBACK, SINGULAR, STRING, build, 5) \
-X(a, CALLBACK, SINGULAR, STRING, name, 6)
+X(a, CALLBACK, SINGULAR, STRING, name, 6) \
+X(a, CALLBACK, SINGULAR, BYTES, generation, 7)
 #define fk_app_Identity_CALLBACK pb_default_field_callback
 #define fk_app_Identity_DEFAULT NULL
 
