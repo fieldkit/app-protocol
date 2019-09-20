@@ -329,6 +329,7 @@ message HttpQuery {
   Identity identity = 2;
   Recording recording = 3;
   Schedules schedules = 4;
+  NetworkSettings networkSettings = 6;
   uint32 flags = 5;
 }
 

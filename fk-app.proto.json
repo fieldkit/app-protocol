@@ -740,6 +740,10 @@
               "type": "Schedules",
               "id": 4
             },
+            "networkSettings": {
+              "type": "NetworkSettings",
+              "id": 6
+            },
             "flags": {
               "type": "uint32",
               "id": 5

@@ -407,6 +407,7 @@ typedef struct _fk_app_HttpQuery {
     fk_app_Recording recording;
     fk_app_Schedules schedules;
     uint32_t flags;
+    fk_app_NetworkSettings networkSettings;
 /* @@protoc_insertion_point(struct:fk_app_HttpQuery) */
 } fk_app_HttpQuery;
 
@@ -480,7 +481,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_default            {0, 0, 0}
-#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0}
+#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0, fk_app_NetworkSettings_init_default}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_default    {fk_app_SensorCapabilities_init_default, 0}
 #define fk_app_LiveModuleReadings_init_default   {fk_app_ModuleCapabilities_init_default, {{NULL}, NULL}}
@@ -520,7 +521,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_zero               {0, 0, 0}
-#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0}
+#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0, fk_app_NetworkSettings_init_zero}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_zero       {fk_app_SensorCapabilities_init_zero, 0}
 #define fk_app_LiveModuleReadings_init_zero      {fk_app_ModuleCapabilities_init_zero, {{NULL}, NULL}}
@@ -662,6 +663,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpQuery_identity_tag            2
 #define fk_app_HttpQuery_recording_tag           3
 #define fk_app_HttpQuery_schedules_tag           4
+#define fk_app_HttpQuery_networkSettings_tag     6
 #define fk_app_HttpQuery_flags_tag               5
 #define fk_app_LiveSensorReading_sensor_tag      1
 #define fk_app_LiveSensorReading_value_tag       2
@@ -989,12 +991,14 @@ X(a, STATIC, SINGULAR, UENUM, type, 1) \
 X(a, STATIC, SINGULAR, MESSAGE, identity, 2) \
 X(a, STATIC, SINGULAR, MESSAGE, recording, 3) \
 X(a, STATIC, SINGULAR, MESSAGE, schedules, 4) \
-X(a, STATIC, SINGULAR, UINT32, flags, 5)
+X(a, STATIC, SINGULAR, UINT32, flags, 5) \
+X(a, STATIC, SINGULAR, MESSAGE, networkSettings, 6)
 #define fk_app_HttpQuery_CALLBACK NULL
 #define fk_app_HttpQuery_DEFAULT NULL
 #define fk_app_HttpQuery_identity_MSGTYPE fk_app_Identity
 #define fk_app_HttpQuery_recording_MSGTYPE fk_app_Recording
 #define fk_app_HttpQuery_schedules_MSGTYPE fk_app_Schedules
+#define fk_app_HttpQuery_networkSettings_MSGTYPE fk_app_NetworkSettings
 
 #define fk_app_DataStream_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, id, 1) \
