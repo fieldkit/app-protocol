@@ -304,6 +304,7 @@ message Status {
   GpsStatus gps = 7;
   Schedules schedules = 8;
   Recording recording = 9;
+  NetworkSettings network = 10;
 }
 
 message Range {

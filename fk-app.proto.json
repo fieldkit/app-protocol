@@ -669,6 +669,10 @@
             "recording": {
               "type": "Recording",
               "id": 9
+            },
+            "network": {
+              "type": "NetworkSettings",
+              "id": 10
             }
           }
         },
