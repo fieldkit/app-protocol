@@ -324,12 +324,22 @@ message Recording {
   uint64 started_time = 3;
 }
 
+message LoraSettings {
+  bool available = 1;
+  bool modifying = 2;
+  bytes deviceEui = 3;
+  bytes appKey = 4;
+  bytes appEui = 5;
+  uint32 frequencyBand = 6;
+}
+
 message HttpQuery {
   QueryType type = 1;
   Identity identity = 2;
   Recording recording = 3;
   Schedules schedules = 4;
   NetworkSettings networkSettings = 6;
+  LoraSettings loraSettings = 7;
   uint32 flags = 5;
 }
 
@@ -364,6 +374,7 @@ message HttpReply {
   repeated Error errors = 2;
   Status status = 3;
   NetworkSettings networkSettings = 4;
+  LoraSettings loraSettings = 8;
   repeated ModuleCapabilities modules = 5;
   repeated DataStream streams = 6;
   repeated LiveReadings liveReadings = 7;

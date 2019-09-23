@@ -113,6 +113,35 @@ func (d *DeviceClient) QueryStopRecording() (*pb.HttpReply, error) {
 	return reply, nil
 }
 
+func (d *DeviceClient) ConfigureLora(appKey, appEui string) (*pb.HttpReply, error) {
+	appKeyBytes, err := hex.DecodeString(appKey)
+	if err != nil {
+		return nil, err
+	}
+
+	appEuiBytes, err := hex.DecodeString(appEui)
+	if err != nil {
+		return nil, err
+	}
+
+	log.Printf("EUI %+v", appKeyBytes)
+	log.Printf("KEY %+v", appEuiBytes)
+
+	query := &pb.HttpQuery{
+		Type: pb.QueryType_QUERY_CONFIGURE,
+		LoraSettings: &pb.LoraSettings{
+			Modifying: true,
+			AppKey:    appKeyBytes,
+			AppEui:    appEuiBytes,
+		},
+	}
+	reply, err := d.queryDeviceQuery(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) QueryGetReadings() (*pb.HttpReply, error) {
 	reply, err := d.queryDevice(pb.QueryType_QUERY_GET_READINGS)
 	if err != nil {

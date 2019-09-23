@@ -722,6 +722,34 @@
             }
           }
         },
+        "LoraSettings": {
+          "fields": {
+            "available": {
+              "type": "bool",
+              "id": 1
+            },
+            "modifying": {
+              "type": "bool",
+              "id": 2
+            },
+            "deviceEui": {
+              "type": "bytes",
+              "id": 3
+            },
+            "appKey": {
+              "type": "bytes",
+              "id": 4
+            },
+            "appEui": {
+              "type": "bytes",
+              "id": 5
+            },
+            "frequencyBand": {
+              "type": "uint32",
+              "id": 6
+            }
+          }
+        },
         "HttpQuery": {
           "fields": {
             "type": {
@@ -743,6 +771,10 @@
             "networkSettings": {
               "type": "NetworkSettings",
               "id": 6
+            },
+            "loraSettings": {
+              "type": "LoraSettings",
+              "id": 7
             },
             "flags": {
               "type": "uint32",
@@ -842,6 +874,10 @@
             "networkSettings": {
               "type": "NetworkSettings",
               "id": 4
+            },
+            "loraSettings": {
+              "type": "LoraSettings",
+              "id": 8
             },
             "modules": {
               "rule": "repeated",

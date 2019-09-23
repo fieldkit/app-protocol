@@ -9,16 +9,20 @@ import (
 )
 
 type options struct {
-	Address        string
-	Port           int
-	Status         bool
-	HexEncode      bool
-	Name           string
-	Save           string
+	Address   string
+	Port      int
+	Status    bool
+	HexEncode bool
+	Name      string
+	Save      string
+
 	GetReadings    bool
 	TakeReadings   bool
 	StartRecording bool
 	StopRecording  bool
+
+	LoraAppKey string
+	LoraAppEui string
 }
 
 func main() {
@@ -34,6 +38,8 @@ func main() {
 	flag.BoolVar(&o.StartRecording, "start-recording", false, "")
 	flag.BoolVar(&o.StopRecording, "stop-recording", false, "")
 	flag.StringVar(&o.Save, "save", "", "save")
+	flag.StringVar(&o.LoraAppKey, "lora-app-key", "", "lora-app-key")
+	flag.StringVar(&o.LoraAppEui, "lora-app-eui", "", "lora-app-eui")
 
 	flag.Parse()
 
@@ -88,6 +94,13 @@ func main() {
 
 	if o.StopRecording {
 		_, err := device.QueryStopRecording()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.LoraAppKey != "" && o.LoraAppEui != "" {
+		_, err := device.ConfigureLora(o.LoraAppKey, o.LoraAppEui)
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}

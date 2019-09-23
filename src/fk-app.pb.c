@@ -110,6 +110,9 @@ PB_BIND(fk_app_DownloadQuery, fk_app_DownloadQuery, AUTO)
 PB_BIND(fk_app_Recording, fk_app_Recording, AUTO)
 
 
+PB_BIND(fk_app_LoraSettings, fk_app_LoraSettings, AUTO)
+
+
 PB_BIND(fk_app_HttpQuery, fk_app_HttpQuery, AUTO)
 
 
