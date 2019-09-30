@@ -206,6 +206,22 @@
             }
           }
         },
+        "Firmware": {
+          "fields": {
+            "git": {
+              "type": "string",
+              "id": 1
+            },
+            "build": {
+              "type": "string",
+              "id": 2
+            },
+            "number": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
         "Identity": {
           "fields": {
             "device": {
@@ -227,6 +243,10 @@
             "build": {
               "type": "string",
               "id": 5
+            },
+            "number": {
+              "type": "string",
+              "id": 8
             },
             "name": {
               "type": "string",

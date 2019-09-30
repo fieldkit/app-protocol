@@ -126,12 +126,19 @@ message NetworkSettings {
   repeated NetworkInfo networks = 2;
 }
 
+message Firmware {
+  string git = 1;
+  string build = 2;
+  string number = 3;
+}
+
 message Identity {
   string device = 1;
   string stream = 2;
   bytes deviceId = 3;
   string firmware = 4;
   string build = 5;
+  string number = 8;
 
   // v2
   string name = 6;

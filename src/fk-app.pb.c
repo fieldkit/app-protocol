@@ -29,6 +29,9 @@ PB_BIND(fk_app_NetworkInfo, fk_app_NetworkInfo, AUTO)
 PB_BIND(fk_app_NetworkSettings, fk_app_NetworkSettings, AUTO)
 
 
+PB_BIND(fk_app_Firmware, fk_app_Firmware, AUTO)
+
+
 PB_BIND(fk_app_Identity, fk_app_Identity, AUTO)
 
 
@@ -98,7 +101,7 @@ PB_BIND(fk_app_BatteryStatus, fk_app_BatteryStatus, AUTO)
 PB_BIND(fk_app_PowerStatus, fk_app_PowerStatus, AUTO)
 
 
-PB_BIND(fk_app_Status, fk_app_Status, AUTO)
+PB_BIND(fk_app_Status, fk_app_Status, 2)
 
 
 PB_BIND(fk_app_Range, fk_app_Range, AUTO)
@@ -113,7 +116,7 @@ PB_BIND(fk_app_Recording, fk_app_Recording, AUTO)
 PB_BIND(fk_app_LoraSettings, fk_app_LoraSettings, AUTO)
 
 
-PB_BIND(fk_app_HttpQuery, fk_app_HttpQuery, AUTO)
+PB_BIND(fk_app_HttpQuery, fk_app_HttpQuery, 2)
 
 
 PB_BIND(fk_app_DataStream, fk_app_DataStream, AUTO)

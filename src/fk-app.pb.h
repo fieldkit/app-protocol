@@ -96,6 +96,14 @@ typedef struct _fk_app_Files {
 } fk_app_Files;
 
 
+typedef struct _fk_app_Firmware {
+    pb_callback_t git;
+    pb_callback_t build;
+    pb_callback_t number;
+/* @@protoc_insertion_point(struct:fk_app_Firmware) */
+} fk_app_Firmware;
+
+
 typedef struct _fk_app_HardwareStatus {
     char dummy_field;
 /* @@protoc_insertion_point(struct:fk_app_HardwareStatus) */
@@ -110,6 +118,7 @@ typedef struct _fk_app_Identity {
     pb_callback_t build;
     pb_callback_t name;
     pb_callback_t generation;
+    pb_callback_t number;
 /* @@protoc_insertion_point(struct:fk_app_Identity) */
 } fk_app_Identity;
 
@@ -467,7 +476,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
-#define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_default {0, 0}
 #define fk_app_LiveDataPoll_init_default         {0}
 #define fk_app_LiveDataSample_init_default       {0, 0, 0}
@@ -508,7 +518,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
-#define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_zero    {0, 0}
 #define fk_app_LiveDataPoll_init_zero            {0}
 #define fk_app_LiveDataSample_init_zero          {0, 0, 0}
@@ -545,11 +556,15 @@ typedef struct _fk_app_HttpReply {
 
 /* Field tags (for use in manual encoding/decoding) */
 #define fk_app_Files_files_tag                   1
+#define fk_app_Firmware_git_tag                  1
+#define fk_app_Firmware_build_tag                2
+#define fk_app_Firmware_number_tag               3
 #define fk_app_Identity_device_tag               1
 #define fk_app_Identity_stream_tag               2
 #define fk_app_Identity_deviceId_tag             3
 #define fk_app_Identity_firmware_tag             4
 #define fk_app_Identity_build_tag                5
+#define fk_app_Identity_number_tag               8
 #define fk_app_Identity_name_tag                 6
 #define fk_app_Identity_generation_tag           7
 #define fk_app_LiveData_samples_tag              1
@@ -769,6 +784,13 @@ X(a, CALLBACK, REPEATED, MESSAGE, networks, 2)
 #define fk_app_NetworkSettings_DEFAULT NULL
 #define fk_app_NetworkSettings_networks_MSGTYPE fk_app_NetworkInfo
 
+#define fk_app_Firmware_FIELDLIST(X, a) \
+X(a, CALLBACK, SINGULAR, STRING, git, 1) \
+X(a, CALLBACK, SINGULAR, STRING, build, 2) \
+X(a, CALLBACK, SINGULAR, STRING, number, 3)
+#define fk_app_Firmware_CALLBACK pb_default_field_callback
+#define fk_app_Firmware_DEFAULT NULL
+
 #define fk_app_Identity_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING, device, 1) \
 X(a, CALLBACK, SINGULAR, STRING, stream, 2) \
@@ -776,7 +798,8 @@ X(a, CALLBACK, SINGULAR, BYTES, deviceId, 3) \
 X(a, CALLBACK, SINGULAR, STRING, firmware, 4) \
 X(a, CALLBACK, SINGULAR, STRING, build, 5) \
 X(a, CALLBACK, SINGULAR, STRING, name, 6) \
-X(a, CALLBACK, SINGULAR, BYTES, generation, 7)
+X(a, CALLBACK, SINGULAR, BYTES, generation, 7) \
+X(a, CALLBACK, SINGULAR, STRING, number, 8)
 #define fk_app_Identity_CALLBACK pb_default_field_callback
 #define fk_app_Identity_DEFAULT NULL
 
@@ -1095,6 +1118,7 @@ extern const pb_msgdesc_t fk_app_ModuleCapabilities_msg;
 extern const pb_msgdesc_t fk_app_Capabilities_msg;
 extern const pb_msgdesc_t fk_app_NetworkInfo_msg;
 extern const pb_msgdesc_t fk_app_NetworkSettings_msg;
+extern const pb_msgdesc_t fk_app_Firmware_msg;
 extern const pb_msgdesc_t fk_app_Identity_msg;
 extern const pb_msgdesc_t fk_app_ConfigureSensorQuery_msg;
 extern const pb_msgdesc_t fk_app_LiveDataPoll_msg;
@@ -1138,6 +1162,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_Capabilities_fields &fk_app_Capabilities_msg
 #define fk_app_NetworkInfo_fields &fk_app_NetworkInfo_msg
 #define fk_app_NetworkSettings_fields &fk_app_NetworkSettings_msg
+#define fk_app_Firmware_fields &fk_app_Firmware_msg
 #define fk_app_Identity_fields &fk_app_Identity_msg
 #define fk_app_ConfigureSensorQuery_fields &fk_app_ConfigureSensorQuery_msg
 #define fk_app_LiveDataPoll_fields &fk_app_LiveDataPoll_msg
@@ -1181,6 +1206,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_Capabilities_size depends on runtime parameters */
 /* fk_app_NetworkInfo_size depends on runtime parameters */
 /* fk_app_NetworkSettings_size depends on runtime parameters */
+/* fk_app_Firmware_size depends on runtime parameters */
 /* fk_app_Identity_size depends on runtime parameters */
 #define fk_app_ConfigureSensorQuery_size         12
 #define fk_app_LiveDataPoll_size                 6
