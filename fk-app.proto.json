@@ -555,7 +555,7 @@
               "type": "bytes",
               "id": 1
             },
-            "seconds": {
+            "interval": {
               "type": "uint32",
               "id": 2
             }
@@ -563,9 +563,21 @@
         },
         "Schedules": {
           "fields": {
+            "modifying": {
+              "type": "bool",
+              "id": 1
+            },
             "readings": {
               "type": "Schedule",
-              "id": 1
+              "id": 2
+            },
+            "lora": {
+              "type": "Schedule",
+              "id": 3
+            },
+            "gps": {
+              "type": "Schedule",
+              "id": 4
             }
           }
         },

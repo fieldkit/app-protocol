@@ -263,11 +263,14 @@ message WireMessageReply {
 
 message Schedule {
   bytes cron = 1;
-  uint32 seconds = 2;
+  uint32 interval = 2;
 }
 
 message Schedules {
-  Schedule readings = 1;
+  bool modifying = 1;
+  Schedule readings = 2;
+  Schedule lora = 3;
+  Schedule gps = 4;
 }
 
 message HardwareStatus {
