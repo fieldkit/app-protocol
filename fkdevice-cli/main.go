@@ -4,6 +4,8 @@ import (
 	"flag"
 	"log"
 	"os"
+	"strconv"
+	"strings"
 
 	fkc "github.com/fieldkit/app-protocol/fkdevice"
 )
@@ -20,6 +22,8 @@ type options struct {
 	TakeReadings   bool
 	StartRecording bool
 	StopRecording  bool
+
+	Schedule string
 
 	LoraAppKey string
 	LoraAppEui string
@@ -40,6 +44,7 @@ func main() {
 	flag.StringVar(&o.Save, "save", "", "save")
 	flag.StringVar(&o.LoraAppKey, "lora-app-key", "", "lora-app-key")
 	flag.StringVar(&o.LoraAppEui, "lora-app-eui", "", "lora-app-eui")
+	flag.StringVar(&o.Schedule, "schedule", "", "schedule")
 
 	flag.Parse()
 
@@ -103,6 +108,19 @@ func main() {
 		_, err := device.ConfigureLora(o.LoraAppKey, o.LoraAppEui)
 		if err != nil {
 			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.Schedule != "" {
+		f := strings.Split(o.Schedule, ",")
+		if len(f) == 3 {
+			readings, _ := strconv.Atoi(f[0])
+			gps, _ := strconv.Atoi(f[1])
+			lora, _ := strconv.Atoi(f[2])
+			_, err := device.ConfigureSchedule(uint32(readings), uint32(gps), uint32(lora))
+			if err != nil {
+				log.Fatalf("Error: %v", err)
+			}
 		}
 	}
 }

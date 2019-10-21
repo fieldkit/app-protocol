@@ -113,6 +113,29 @@ func (d *DeviceClient) QueryStopRecording() (*pb.HttpReply, error) {
 	return reply, nil
 }
 
+func (d *DeviceClient) ConfigureSchedule(readings, gps, lora uint32) (*pb.HttpReply, error) {
+	query := &pb.HttpQuery{
+		Type: pb.QueryType_QUERY_CONFIGURE,
+		Schedules: &pb.Schedules{
+			Modifying: true,
+			Readings: &pb.Schedule{
+				Interval: readings,
+			},
+			Gps: &pb.Schedule{
+				Interval: gps,
+			},
+			Lora: &pb.Schedule{
+				Interval: lora,
+			},
+		},
+	}
+	reply, err := d.queryDeviceQuery(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) ConfigureLora(appKey, appEui string) (*pb.HttpReply, error) {
 	appKeyBytes, err := hex.DecodeString(appKey)
 	if err != nil {
