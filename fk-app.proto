@@ -388,4 +388,5 @@ message HttpReply {
   repeated ModuleCapabilities modules = 5;
   repeated DataStream streams = 6;
   repeated LiveReadings liveReadings = 7;
+  Schedules schedules = 9;
 }

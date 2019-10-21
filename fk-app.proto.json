@@ -925,6 +925,10 @@
               "rule": "repeated",
               "type": "LiveReadings",
               "id": 7
+            },
+            "schedules": {
+              "type": "Schedules",
+              "id": 9
             }
           }
         }

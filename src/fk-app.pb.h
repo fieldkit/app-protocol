@@ -467,6 +467,7 @@ typedef struct _fk_app_HttpReply {
     pb_callback_t streams;
     pb_callback_t liveReadings;
     fk_app_LoraSettings loraSettings;
+    fk_app_Schedules schedules;
 /* @@protoc_insertion_point(struct:fk_app_HttpReply) */
 } fk_app_HttpReply;
 
@@ -513,7 +514,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveSensorReading_init_default    {fk_app_SensorCapabilities_init_default, 0}
 #define fk_app_LiveModuleReadings_init_default   {fk_app_ModuleCapabilities_init_default, {{NULL}, NULL}}
 #define fk_app_LiveReadings_init_default         {0, {{NULL}, NULL}}
-#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, fk_app_LoraSettings_init_default}
+#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_default, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, fk_app_LoraSettings_init_default, fk_app_Schedules_init_default}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_LiveValue_init_zero               {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, fk_app_LiveValue_init_zero}
@@ -555,7 +556,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveSensorReading_init_zero       {fk_app_SensorCapabilities_init_zero, 0}
 #define fk_app_LiveModuleReadings_init_zero      {fk_app_ModuleCapabilities_init_zero, {{NULL}, NULL}}
 #define fk_app_LiveReadings_init_zero            {0, {{NULL}, NULL}}
-#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, fk_app_LoraSettings_init_zero}
+#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Status_init_zero, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, fk_app_LoraSettings_init_zero, fk_app_Schedules_init_zero}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define fk_app_Files_files_tag                   1
@@ -728,6 +729,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpReply_modules_tag             5
 #define fk_app_HttpReply_streams_tag             6
 #define fk_app_HttpReply_liveReadings_tag        7
+#define fk_app_HttpReply_schedules_tag           9
 
 /* Struct field encoding specification for nanopb */
 #define fk_app_QueryCapabilities_FIELDLIST(X, a) \
@@ -1111,7 +1113,8 @@ X(a, STATIC, SINGULAR, MESSAGE, networkSettings, 4) \
 X(a, CALLBACK, REPEATED, MESSAGE, modules, 5) \
 X(a, CALLBACK, REPEATED, MESSAGE, streams, 6) \
 X(a, CALLBACK, REPEATED, MESSAGE, liveReadings, 7) \
-X(a, STATIC, SINGULAR, MESSAGE, loraSettings, 8)
+X(a, STATIC, SINGULAR, MESSAGE, loraSettings, 8) \
+X(a, STATIC, SINGULAR, MESSAGE, schedules, 9)
 #define fk_app_HttpReply_CALLBACK pb_default_field_callback
 #define fk_app_HttpReply_DEFAULT NULL
 #define fk_app_HttpReply_errors_MSGTYPE fk_app_Error
@@ -1121,6 +1124,7 @@ X(a, STATIC, SINGULAR, MESSAGE, loraSettings, 8)
 #define fk_app_HttpReply_streams_MSGTYPE fk_app_DataStream
 #define fk_app_HttpReply_liveReadings_MSGTYPE fk_app_LiveReadings
 #define fk_app_HttpReply_loraSettings_MSGTYPE fk_app_LoraSettings
+#define fk_app_HttpReply_schedules_MSGTYPE fk_app_Schedules
 
 extern const pb_msgdesc_t fk_app_QueryCapabilities_msg;
 extern const pb_msgdesc_t fk_app_LiveValue_msg;
