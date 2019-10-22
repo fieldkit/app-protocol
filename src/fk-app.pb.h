@@ -377,6 +377,7 @@ typedef struct _fk_app_Schedules {
     bool modifying;
     fk_app_Schedule readings;
     fk_app_Schedule lora;
+    fk_app_Schedule network;
     fk_app_Schedule gps;
 /* @@protoc_insertion_point(struct:fk_app_Schedules) */
 } fk_app_Schedules;
@@ -498,7 +499,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Error_init_default                {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_default     {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_default, fk_app_LiveData_init_default, fk_app_Files_init_default, fk_app_FileData_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_DeviceStatus_init_default, fk_app_ModuleReply_init_default}
 #define fk_app_Schedule_init_default             {{{NULL}, NULL}, 0}
-#define fk_app_Schedules_init_default            {0, fk_app_Schedule_init_default, fk_app_Schedule_init_default, fk_app_Schedule_init_default}
+#define fk_app_Schedules_init_default            {0, fk_app_Schedule_init_default, fk_app_Schedule_init_default, fk_app_Schedule_init_default, fk_app_Schedule_init_default}
 #define fk_app_HardwareStatus_init_default       {0}
 #define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
@@ -540,7 +541,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Error_init_zero                   {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_zero        {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_zero, fk_app_LiveData_init_zero, fk_app_Files_init_zero, fk_app_FileData_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_DeviceStatus_init_zero, fk_app_ModuleReply_init_zero}
 #define fk_app_Schedule_init_zero                {{{NULL}, NULL}, 0}
-#define fk_app_Schedules_init_zero               {0, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero}
+#define fk_app_Schedules_init_zero               {0, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero}
 #define fk_app_HardwareStatus_init_zero          {0}
 #define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
@@ -674,7 +675,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Schedules_modifying_tag           1
 #define fk_app_Schedules_readings_tag            2
 #define fk_app_Schedules_lora_tag                3
-#define fk_app_Schedules_gps_tag                 4
+#define fk_app_Schedules_network_tag             4
+#define fk_app_Schedules_gps_tag                 5
 #define fk_app_SensorCapabilities_number_tag     1
 #define fk_app_SensorCapabilities_module_tag     2
 #define fk_app_SensorCapabilities_name_tag       3
@@ -957,11 +959,13 @@ X(a, STATIC, SINGULAR, UINT32, interval, 2)
 X(a, STATIC, SINGULAR, BOOL, modifying, 1) \
 X(a, STATIC, SINGULAR, MESSAGE, readings, 2) \
 X(a, STATIC, SINGULAR, MESSAGE, lora, 3) \
-X(a, STATIC, SINGULAR, MESSAGE, gps, 4)
+X(a, STATIC, SINGULAR, MESSAGE, network, 4) \
+X(a, STATIC, SINGULAR, MESSAGE, gps, 5)
 #define fk_app_Schedules_CALLBACK NULL
 #define fk_app_Schedules_DEFAULT NULL
 #define fk_app_Schedules_readings_MSGTYPE fk_app_Schedule
 #define fk_app_Schedules_lora_MSGTYPE fk_app_Schedule
+#define fk_app_Schedules_network_MSGTYPE fk_app_Schedule
 #define fk_app_Schedules_gps_MSGTYPE fk_app_Schedule
 
 #define fk_app_HardwareStatus_FIELDLIST(X, a) \

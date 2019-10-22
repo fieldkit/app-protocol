@@ -575,9 +575,13 @@
               "type": "Schedule",
               "id": 3
             },
-            "gps": {
+            "network": {
               "type": "Schedule",
               "id": 4
+            },
+            "gps": {
+              "type": "Schedule",
+              "id": 5
             }
           }
         },

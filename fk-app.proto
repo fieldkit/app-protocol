@@ -270,7 +270,8 @@ message Schedules {
   bool modifying = 1;
   Schedule readings = 2;
   Schedule lora = 3;
-  Schedule gps = 4;
+  Schedule network = 4;
+  Schedule gps = 5;
 }
 
 message HardwareStatus {
