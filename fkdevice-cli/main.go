@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	fkc "github.com/fieldkit/app-protocol/fkdevice"
+
+	pb "github.com/fieldkit/app-protocol"
 )
 
 type options struct {
@@ -24,6 +26,7 @@ type options struct {
 	StopRecording  bool
 
 	Schedule string
+	Networks bool
 
 	LoraAppKey string
 	LoraAppEui string
@@ -45,6 +48,7 @@ func main() {
 	flag.StringVar(&o.LoraAppKey, "lora-app-key", "", "lora-app-key")
 	flag.StringVar(&o.LoraAppEui, "lora-app-eui", "", "lora-app-eui")
 	flag.StringVar(&o.Schedule, "schedule", "", "schedule")
+	flag.BoolVar(&o.Networks, "networks", false, "")
 
 	flag.Parse()
 
@@ -121,6 +125,23 @@ func main() {
 			if err != nil {
 				log.Fatalf("Error: %v", err)
 			}
+		}
+	}
+
+	if o.Networks {
+		networks := []*pb.NetworkInfo{
+			&pb.NetworkInfo{
+				Ssid:     "Cottonwood",
+				Password: "asdfasdf",
+			},
+			&pb.NetworkInfo{
+				Ssid:     "Conservify",
+				Password: "Okavang0",
+			},
+		}
+		_, err := device.ConfigureWifiNetworks(networks)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
 		}
 	}
 }

@@ -136,6 +136,20 @@ func (d *DeviceClient) ConfigureSchedule(readings, gps, lora uint32) (*pb.HttpRe
 	return reply, nil
 }
 
+func (d *DeviceClient) ConfigureWifiNetworks(networks []*pb.NetworkInfo) (*pb.HttpReply, error) {
+	query := &pb.HttpQuery{
+		Type: pb.QueryType_QUERY_CONFIGURE,
+		NetworkSettings: &pb.NetworkSettings{
+			Networks: networks,
+		},
+	}
+	reply, err := d.queryDeviceQuery(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) ConfigureLora(appKey, appEui string) (*pb.HttpReply, error) {
 	appKeyBytes, err := hex.DecodeString(appKey)
 	if err != nil {
