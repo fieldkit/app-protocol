@@ -117,11 +117,12 @@ func main() {
 
 	if o.Schedule != "" {
 		f := strings.Split(o.Schedule, ",")
-		if len(f) == 3 {
+		if len(f) == 4 {
 			readings, _ := strconv.Atoi(f[0])
-			gps, _ := strconv.Atoi(f[1])
-			lora, _ := strconv.Atoi(f[2])
-			_, err := device.ConfigureSchedule(uint32(readings), uint32(gps), uint32(lora))
+			network, _ := strconv.Atoi(f[1])
+			gps, _ := strconv.Atoi(f[2])
+			lora, _ := strconv.Atoi(f[3])
+			_, err := device.ConfigureSchedule(uint32(readings), uint32(network), uint32(gps), uint32(lora))
 			if err != nil {
 				log.Fatalf("Error: %v", err)
 			}

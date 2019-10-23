@@ -113,13 +113,16 @@ func (d *DeviceClient) QueryStopRecording() (*pb.HttpReply, error) {
 	return reply, nil
 }
 
-func (d *DeviceClient) ConfigureSchedule(readings, gps, lora uint32) (*pb.HttpReply, error) {
+func (d *DeviceClient) ConfigureSchedule(readings, network, gps, lora uint32) (*pb.HttpReply, error) {
 	query := &pb.HttpQuery{
 		Type: pb.QueryType_QUERY_CONFIGURE,
 		Schedules: &pb.Schedules{
 			Modifying: true,
 			Readings: &pb.Schedule{
 				Interval: readings,
+			},
+			Network: &pb.Schedule{
+				Interval: network,
 			},
 			Gps: &pb.Schedule{
 				Interval: gps,
