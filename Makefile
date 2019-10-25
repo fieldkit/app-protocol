@@ -26,10 +26,10 @@ src/fk-app.pb.c src/fk-app.pb.h: fk-app.proto
 	protoc --nanopb_out=./src fk-app.proto
 
 fk-app.pb.go: fk-app.proto
-	protoc --go_out=./ fk-app.proto
+	protoc --go_out=. fk-app.proto
 
-fk_app/FkApp.java: fk-app.proto
-	protoc --java_out=./ fk-app.proto
+org/conservify/FkApp.java: fk-app.proto
+	protoc --java_out=lite:. fk-app.proto
 
 $(BUILD):
 	mkdir -p $(BUILD)
