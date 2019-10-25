@@ -1,6 +1,9 @@
 {
   "nested": {
     "fk_app": {
+      "options": {
+        "java_package": "org.fieldkit.app.pb"
+      },
       "nested": {
         "QueryType": {
           "values": {
