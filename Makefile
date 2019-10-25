@@ -14,7 +14,7 @@ all: bindings
 
 install: all
 
-bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h
+bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h fk_app/FkApp.java
 
 node_modules/.bin/pbjs:
 	npm install
@@ -27,6 +27,9 @@ src/fk-app.pb.c src/fk-app.pb.h: fk-app.proto
 
 fk-app.pb.go: fk-app.proto
 	protoc --go_out=./ fk-app.proto
+
+fk_app/FkApp.java: fk-app.proto
+	protoc --java_out=./ fk-app.proto
 
 $(BUILD):
 	mkdir -p $(BUILD)
