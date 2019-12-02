@@ -28,8 +28,13 @@ type options struct {
 	Schedule string
 	Networks bool
 
-	LoraAppKey string
-	LoraAppEui string
+	LoraAppKey            string
+	LoraAppEui            string
+	LoraAppSessionKey     string
+	LoraNetworkSessionKey string
+	LoraDeviceAddress     string
+	LoraUplinkCounter     int
+	LoraDownlinkCounter   int
 }
 
 func main() {
@@ -47,6 +52,11 @@ func main() {
 	flag.StringVar(&o.Save, "save", "", "save")
 	flag.StringVar(&o.LoraAppKey, "lora-app-key", "", "lora-app-key")
 	flag.StringVar(&o.LoraAppEui, "lora-app-eui", "", "lora-app-eui")
+	flag.StringVar(&o.LoraAppSessionKey, "lora-app-session-key", "", "lora-app-session-key")
+	flag.StringVar(&o.LoraNetworkSessionKey, "lora-network-session-key", "", "lora-network-session-key")
+	flag.StringVar(&o.LoraDeviceAddress, "lora-device-address", "", "lora-device-address")
+	flag.IntVar(&o.LoraUplinkCounter, "lora-uplink-counter", 0, "lora-uplink-counter")
+	flag.IntVar(&o.LoraDownlinkCounter, "lora-downlink-counter", 0, "lora-downlink-counter")
 	flag.StringVar(&o.Schedule, "schedule", "", "schedule")
 	flag.BoolVar(&o.Networks, "networks", false, "")
 
@@ -109,7 +119,14 @@ func main() {
 	}
 
 	if o.LoraAppKey != "" && o.LoraAppEui != "" {
-		_, err := device.ConfigureLora(o.LoraAppKey, o.LoraAppEui)
+		_, err := device.ConfigureLoraOtaa(o.LoraAppKey, o.LoraAppEui)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.LoraAppSessionKey != "" && o.LoraNetworkSessionKey != "" && o.LoraDeviceAddress != "" {
+		_, err := device.ConfigureLoraAbp(o.LoraAppSessionKey, o.LoraNetworkSessionKey, o.LoraDeviceAddress, uint32(o.LoraUplinkCounter), uint32(o.LoraDownlinkCounter))
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}

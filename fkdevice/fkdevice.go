@@ -153,7 +153,45 @@ func (d *DeviceClient) ConfigureWifiNetworks(networks []*pb.NetworkInfo) (*pb.Ht
 	return reply, nil
 }
 
-func (d *DeviceClient) ConfigureLora(appKey, appEui string) (*pb.HttpReply, error) {
+func (d *DeviceClient) ConfigureLoraAbp(appSessionKey, networkSessionKey, deviceAddress string, uplinkCounter, downlinkCounter uint32) (*pb.HttpReply, error) {
+	appSessionKeyBytes, err := hex.DecodeString(appSessionKey)
+	if err != nil {
+		return nil, err
+	}
+
+	networkSessionKeyBytes, err := hex.DecodeString(networkSessionKey)
+	if err != nil {
+		return nil, err
+	}
+
+	deviceAddressBytes, err := hex.DecodeString(deviceAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	log.Printf("AppSessionKey %+v", appSessionKeyBytes)
+	log.Printf("NetworkSessionKey %+v", networkSessionKeyBytes)
+	log.Printf("DeviceAddress %+v", deviceAddressBytes)
+
+	query := &pb.HttpQuery{
+		Type: pb.QueryType_QUERY_CONFIGURE,
+		LoraSettings: &pb.LoraSettings{
+			Modifying:         true,
+			AppSessionKey:     appSessionKeyBytes,
+			NetworkSessionKey: networkSessionKeyBytes,
+			DeviceAddress:     deviceAddressBytes,
+			UplinkCounter:     uplinkCounter,
+			DownlinkCounter:   downlinkCounter,
+		},
+	}
+	reply, err := d.queryDeviceQuery(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
+func (d *DeviceClient) ConfigureLoraOtaa(appKey, appEui string) (*pb.HttpReply, error) {
 	appKeyBytes, err := hex.DecodeString(appKey)
 	if err != nil {
 		return nil, err
@@ -164,8 +202,8 @@ func (d *DeviceClient) ConfigureLora(appKey, appEui string) (*pb.HttpReply, erro
 		return nil, err
 	}
 
-	log.Printf("EUI %+v", appKeyBytes)
-	log.Printf("KEY %+v", appEuiBytes)
+	log.Printf("EUI %+v", appEuiBytes)
+	log.Printf("KEY %+v", appKeyBytes)
 
 	query := &pb.HttpQuery{
 		Type: pb.QueryType_QUERY_CONFIGURE,
