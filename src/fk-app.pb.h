@@ -282,6 +282,11 @@ typedef struct _fk_app_LoraSettings {
     pb_callback_t appKey;
     pb_callback_t appEui;
     uint32_t frequencyBand;
+    pb_callback_t deviceAddress;
+    pb_callback_t networkSessionKey;
+    pb_callback_t appSessionKey;
+    uint32_t uplinkCounter;
+    uint32_t downlinkCounter;
 /* @@protoc_insertion_point(struct:fk_app_LoraSettings) */
 } fk_app_LoraSettings;
 
@@ -509,7 +514,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_default            {0, 0, 0}
-#define fk_app_LoraSettings_init_default         {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0}
+#define fk_app_LoraSettings_init_default         {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0, fk_app_NetworkSettings_init_default, fk_app_LoraSettings_init_default}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_default    {fk_app_SensorCapabilities_init_default, 0}
@@ -551,7 +556,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_zero               {0, 0, 0}
-#define fk_app_LoraSettings_init_zero            {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0}
+#define fk_app_LoraSettings_init_zero            {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0, fk_app_NetworkSettings_init_zero, fk_app_LoraSettings_init_zero}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_zero       {fk_app_SensorCapabilities_init_zero, 0}
@@ -640,6 +645,11 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LoraSettings_appKey_tag           4
 #define fk_app_LoraSettings_appEui_tag           5
 #define fk_app_LoraSettings_frequencyBand_tag    6
+#define fk_app_LoraSettings_deviceAddress_tag    7
+#define fk_app_LoraSettings_networkSessionKey_tag 8
+#define fk_app_LoraSettings_appSessionKey_tag    9
+#define fk_app_LoraSettings_uplinkCounter_tag    10
+#define fk_app_LoraSettings_downlinkCounter_tag  11
 #define fk_app_MemoryStatus_sramAvailable_tag    1
 #define fk_app_MemoryStatus_programFlashAvailable_tag 2
 #define fk_app_MemoryStatus_extendedMemoryAvailable_tag 3
@@ -1055,7 +1065,12 @@ X(a, STATIC, SINGULAR, BOOL, modifying, 2) \
 X(a, CALLBACK, SINGULAR, BYTES, deviceEui, 3) \
 X(a, CALLBACK, SINGULAR, BYTES, appKey, 4) \
 X(a, CALLBACK, SINGULAR, BYTES, appEui, 5) \
-X(a, STATIC, SINGULAR, UINT32, frequencyBand, 6)
+X(a, STATIC, SINGULAR, UINT32, frequencyBand, 6) \
+X(a, CALLBACK, SINGULAR, BYTES, deviceAddress, 7) \
+X(a, CALLBACK, SINGULAR, BYTES, networkSessionKey, 8) \
+X(a, CALLBACK, SINGULAR, BYTES, appSessionKey, 9) \
+X(a, STATIC, SINGULAR, UINT32, uplinkCounter, 10) \
+X(a, STATIC, SINGULAR, UINT32, downlinkCounter, 11)
 #define fk_app_LoraSettings_CALLBACK pb_default_field_callback
 #define fk_app_LoraSettings_DEFAULT NULL
 

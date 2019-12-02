@@ -786,6 +786,26 @@
             "frequencyBand": {
               "type": "uint32",
               "id": 6
+            },
+            "deviceAddress": {
+              "type": "bytes",
+              "id": 7
+            },
+            "networkSessionKey": {
+              "type": "bytes",
+              "id": 8
+            },
+            "appSessionKey": {
+              "type": "bytes",
+              "id": 9
+            },
+            "uplinkCounter": {
+              "type": "uint32",
+              "id": 10
+            },
+            "downlinkCounter": {
+              "type": "uint32",
+              "id": 11
             }
           }
         },

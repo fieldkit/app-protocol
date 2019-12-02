@@ -14,7 +14,7 @@ all: bindings
 
 install: all
 
-bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h fk_app/FkApp.java
+bindings: fk-app.proto.json fk-app.pb.go src/fk-app.pb.c src/fk-app.pb.h org/conservify/FkApp.java
 
 node_modules/.bin/pbjs:
 	npm install

@@ -20098,6 +20098,36 @@ public final class FkApp {
      * @return The frequencyBand.
      */
     int getFrequencyBand();
+
+    /**
+     * <code>bytes deviceAddress = 7;</code>
+     * @return The deviceAddress.
+     */
+    com.google.protobuf.ByteString getDeviceAddress();
+
+    /**
+     * <code>bytes networkSessionKey = 8;</code>
+     * @return The networkSessionKey.
+     */
+    com.google.protobuf.ByteString getNetworkSessionKey();
+
+    /**
+     * <code>bytes appSessionKey = 9;</code>
+     * @return The appSessionKey.
+     */
+    com.google.protobuf.ByteString getAppSessionKey();
+
+    /**
+     * <code>uint32 uplinkCounter = 10;</code>
+     * @return The uplinkCounter.
+     */
+    int getUplinkCounter();
+
+    /**
+     * <code>uint32 downlinkCounter = 11;</code>
+     * @return The downlinkCounter.
+     */
+    int getDownlinkCounter();
   }
   /**
    * Protobuf type {@code fk_app.LoraSettings}
@@ -20111,6 +20141,9 @@ public final class FkApp {
       deviceEui_ = com.google.protobuf.ByteString.EMPTY;
       appKey_ = com.google.protobuf.ByteString.EMPTY;
       appEui_ = com.google.protobuf.ByteString.EMPTY;
+      deviceAddress_ = com.google.protobuf.ByteString.EMPTY;
+      networkSessionKey_ = com.google.protobuf.ByteString.EMPTY;
+      appSessionKey_ = com.google.protobuf.ByteString.EMPTY;
     }
     public static final int AVAILABLE_FIELD_NUMBER = 1;
     private boolean available_;
@@ -20275,6 +20308,145 @@ public final class FkApp {
     private void clearFrequencyBand() {
       
       frequencyBand_ = 0;
+    }
+
+    public static final int DEVICEADDRESS_FIELD_NUMBER = 7;
+    private com.google.protobuf.ByteString deviceAddress_;
+    /**
+     * <code>bytes deviceAddress = 7;</code>
+     * @return The deviceAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getDeviceAddress() {
+      return deviceAddress_;
+    }
+    /**
+     * <code>bytes deviceAddress = 7;</code>
+     * @param value The deviceAddress to set.
+     */
+    private void setDeviceAddress(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      deviceAddress_ = value;
+    }
+    /**
+     * <code>bytes deviceAddress = 7;</code>
+     */
+    private void clearDeviceAddress() {
+      
+      deviceAddress_ = getDefaultInstance().getDeviceAddress();
+    }
+
+    public static final int NETWORKSESSIONKEY_FIELD_NUMBER = 8;
+    private com.google.protobuf.ByteString networkSessionKey_;
+    /**
+     * <code>bytes networkSessionKey = 8;</code>
+     * @return The networkSessionKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getNetworkSessionKey() {
+      return networkSessionKey_;
+    }
+    /**
+     * <code>bytes networkSessionKey = 8;</code>
+     * @param value The networkSessionKey to set.
+     */
+    private void setNetworkSessionKey(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      networkSessionKey_ = value;
+    }
+    /**
+     * <code>bytes networkSessionKey = 8;</code>
+     */
+    private void clearNetworkSessionKey() {
+      
+      networkSessionKey_ = getDefaultInstance().getNetworkSessionKey();
+    }
+
+    public static final int APPSESSIONKEY_FIELD_NUMBER = 9;
+    private com.google.protobuf.ByteString appSessionKey_;
+    /**
+     * <code>bytes appSessionKey = 9;</code>
+     * @return The appSessionKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getAppSessionKey() {
+      return appSessionKey_;
+    }
+    /**
+     * <code>bytes appSessionKey = 9;</code>
+     * @param value The appSessionKey to set.
+     */
+    private void setAppSessionKey(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      appSessionKey_ = value;
+    }
+    /**
+     * <code>bytes appSessionKey = 9;</code>
+     */
+    private void clearAppSessionKey() {
+      
+      appSessionKey_ = getDefaultInstance().getAppSessionKey();
+    }
+
+    public static final int UPLINKCOUNTER_FIELD_NUMBER = 10;
+    private int uplinkCounter_;
+    /**
+     * <code>uint32 uplinkCounter = 10;</code>
+     * @return The uplinkCounter.
+     */
+    @java.lang.Override
+    public int getUplinkCounter() {
+      return uplinkCounter_;
+    }
+    /**
+     * <code>uint32 uplinkCounter = 10;</code>
+     * @param value The uplinkCounter to set.
+     */
+    private void setUplinkCounter(int value) {
+      
+      uplinkCounter_ = value;
+    }
+    /**
+     * <code>uint32 uplinkCounter = 10;</code>
+     */
+    private void clearUplinkCounter() {
+      
+      uplinkCounter_ = 0;
+    }
+
+    public static final int DOWNLINKCOUNTER_FIELD_NUMBER = 11;
+    private int downlinkCounter_;
+    /**
+     * <code>uint32 downlinkCounter = 11;</code>
+     * @return The downlinkCounter.
+     */
+    @java.lang.Override
+    public int getDownlinkCounter() {
+      return downlinkCounter_;
+    }
+    /**
+     * <code>uint32 downlinkCounter = 11;</code>
+     * @param value The downlinkCounter to set.
+     */
+    private void setDownlinkCounter(int value) {
+      
+      downlinkCounter_ = value;
+    }
+    /**
+     * <code>uint32 downlinkCounter = 11;</code>
+     */
+    private void clearDownlinkCounter() {
+      
+      downlinkCounter_ = 0;
     }
 
     public static org.fieldkit.app.pb.FkApp.LoraSettings parseFrom(
@@ -20540,6 +20712,146 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>bytes deviceAddress = 7;</code>
+       * @return The deviceAddress.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getDeviceAddress() {
+        return instance.getDeviceAddress();
+      }
+      /**
+       * <code>bytes deviceAddress = 7;</code>
+       * @param value The deviceAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceAddress(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDeviceAddress(value);
+        return this;
+      }
+      /**
+       * <code>bytes deviceAddress = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceAddress() {
+        copyOnWrite();
+        instance.clearDeviceAddress();
+        return this;
+      }
+
+      /**
+       * <code>bytes networkSessionKey = 8;</code>
+       * @return The networkSessionKey.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getNetworkSessionKey() {
+        return instance.getNetworkSessionKey();
+      }
+      /**
+       * <code>bytes networkSessionKey = 8;</code>
+       * @param value The networkSessionKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNetworkSessionKey(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNetworkSessionKey(value);
+        return this;
+      }
+      /**
+       * <code>bytes networkSessionKey = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNetworkSessionKey() {
+        copyOnWrite();
+        instance.clearNetworkSessionKey();
+        return this;
+      }
+
+      /**
+       * <code>bytes appSessionKey = 9;</code>
+       * @return The appSessionKey.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAppSessionKey() {
+        return instance.getAppSessionKey();
+      }
+      /**
+       * <code>bytes appSessionKey = 9;</code>
+       * @param value The appSessionKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppSessionKey(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setAppSessionKey(value);
+        return this;
+      }
+      /**
+       * <code>bytes appSessionKey = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAppSessionKey() {
+        copyOnWrite();
+        instance.clearAppSessionKey();
+        return this;
+      }
+
+      /**
+       * <code>uint32 uplinkCounter = 10;</code>
+       * @return The uplinkCounter.
+       */
+      @java.lang.Override
+      public int getUplinkCounter() {
+        return instance.getUplinkCounter();
+      }
+      /**
+       * <code>uint32 uplinkCounter = 10;</code>
+       * @param value The uplinkCounter to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUplinkCounter(int value) {
+        copyOnWrite();
+        instance.setUplinkCounter(value);
+        return this;
+      }
+      /**
+       * <code>uint32 uplinkCounter = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUplinkCounter() {
+        copyOnWrite();
+        instance.clearUplinkCounter();
+        return this;
+      }
+
+      /**
+       * <code>uint32 downlinkCounter = 11;</code>
+       * @return The downlinkCounter.
+       */
+      @java.lang.Override
+      public int getDownlinkCounter() {
+        return instance.getDownlinkCounter();
+      }
+      /**
+       * <code>uint32 downlinkCounter = 11;</code>
+       * @param value The downlinkCounter to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDownlinkCounter(int value) {
+        copyOnWrite();
+        instance.setDownlinkCounter(value);
+        return this;
+      }
+      /**
+       * <code>uint32 downlinkCounter = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDownlinkCounter() {
+        copyOnWrite();
+        instance.clearDownlinkCounter();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.LoraSettings)
     }
     @java.lang.Override
@@ -20562,10 +20874,15 @@ public final class FkApp {
               "appKey_",
               "appEui_",
               "frequencyBand_",
+              "deviceAddress_",
+              "networkSessionKey_",
+              "appSessionKey_",
+              "uplinkCounter_",
+              "downlinkCounter_",
             };
             java.lang.String info =
-                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0007\u0002\u0007" +
-                "\u0003\n\u0004\n\u0005\n\u0006\u000b";
+                "\u0000\u000b\u0000\u0000\u0001\u000b\u000b\u0000\u0000\u0000\u0001\u0007\u0002\u0007" +
+                "\u0003\n\u0004\n\u0005\n\u0006\u000b\u0007\n\b\n\t\n\n\u000b\u000b\u000b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
