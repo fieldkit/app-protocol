@@ -391,7 +391,7 @@ func (d *DeviceClient) queryDeviceOpts(opts *DeviceQueryOpts) (reply *pb.HttpRep
 				d.Callbacks.Received(m.(*pb.HttpReply))
 			}
 		}
-		return nil, nil
+		return replies[0].(*pb.HttpReply), nil
 	}
 	return nil, nil
 }
