@@ -7,9 +7,12 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/golang/protobuf/proto"
+
 	fkc "github.com/fieldkit/app-protocol/fkdevice"
 
 	pb "github.com/fieldkit/app-protocol"
+	atlaspb "github.com/fieldkit/atlas-protocol"
 )
 
 type options struct {
@@ -35,6 +38,9 @@ type options struct {
 	LoraDeviceAddress     string
 	LoraUplinkCounter     int
 	LoraDownlinkCounter   int
+
+	Module int
+	Atlas  string
 }
 
 func main() {
@@ -59,6 +65,8 @@ func main() {
 	flag.IntVar(&o.LoraDownlinkCounter, "lora-downlink-counter", 0, "lora-downlink-counter")
 	flag.StringVar(&o.Schedule, "schedule", "", "schedule")
 	flag.BoolVar(&o.Networks, "networks", false, "")
+	flag.IntVar(&o.Module, "module", -1, "module")
+	flag.StringVar(&o.Atlas, "atlas", "", "atlas")
 
 	flag.Parse()
 
@@ -161,5 +169,34 @@ func main() {
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
+	}
+
+	if o.Atlas != "" {
+		if o.Module < 0 {
+			log.Fatalf("Error: module required")
+		}
+
+		query := &atlaspb.WireAtlasQuery{}
+		rawQuery, err := proto.Marshal(query)
+		if err != nil {
+			panic(err)
+		}
+
+		rawReply, err := device.ModuleQuery(uint32(o.Module), rawQuery)
+		if err != nil {
+			panic(err)
+		}
+
+		log.Printf("%v", rawReply)
+
+		buffer := proto.NewBuffer(rawReply)
+
+		var reply atlaspb.WireAtlasReply
+		err = buffer.DecodeMessage(&reply)
+		if err != nil {
+			panic(err)
+		}
+
+		log.Printf("%v", reply)
 	}
 }

@@ -3,14 +3,10 @@ package fkdevice
 import (
 	"bytes"
 	"encoding/hex"
-	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
-	"net"
 	"net/http"
-	"time"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/robinpowered/go-proto/collection"
@@ -24,36 +20,6 @@ const (
 	DefaultTimeout = 5
 )
 
-type DeviceClientLoggingCallbacks interface {
-	Sent(query *pb.HttpQuery)
-	Received(reply *pb.HttpReply)
-}
-
-type LogJsonCallbacks struct {
-	Save string
-}
-
-func (cb *LogJsonCallbacks) Sent(query *pb.HttpQuery) {
-	queryJson, err := json.MarshalIndent(query, "", "  ")
-	if err == nil {
-		log.Printf("Sending: %s", queryJson)
-	}
-}
-
-func (cb *LogJsonCallbacks) Received(reply *pb.HttpReply) {
-	replyJson, err := json.MarshalIndent(reply, "", "  ")
-	if err == nil {
-		log.Printf("Received: %s", replyJson)
-	}
-
-	if cb.Save != "" {
-		err := ioutil.WriteFile(cb.Save, []byte(replyJson), 0644)
-		if err != nil {
-			panic(err)
-		}
-	}
-}
-
 type DeviceClient struct {
 	Callbacks DeviceClientLoggingCallbacks
 	Address   string
@@ -62,7 +28,7 @@ type DeviceClient struct {
 }
 
 func (d *DeviceClient) QueryStatus() (*pb.HttpReply, error) {
-	reply, err := d.queryDevice(pb.QueryType_QUERY_STATUS)
+	reply, err := d.queryDeviceSimple(pb.QueryType_QUERY_STATUS)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +42,7 @@ func (d *DeviceClient) ConfigureName(name string) (*pb.HttpReply, error) {
 			Name: name,
 		},
 	}
-	reply, err := d.queryDeviceQuery(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +57,7 @@ func (d *DeviceClient) QueryStartRecording() (*pb.HttpReply, error) {
 			Enabled:   true,
 		},
 	}
-	reply, err := d.queryDeviceQuery(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
@@ -106,7 +72,7 @@ func (d *DeviceClient) QueryStopRecording() (*pb.HttpReply, error) {
 			Enabled:   false,
 		},
 	}
-	reply, err := d.queryDeviceQuery(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
@@ -132,7 +98,7 @@ func (d *DeviceClient) ConfigureSchedule(readings, network, gps, lora uint32) (*
 			},
 		},
 	}
-	reply, err := d.queryDeviceQuery(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +112,7 @@ func (d *DeviceClient) ConfigureWifiNetworks(networks []*pb.NetworkInfo) (*pb.Ht
 			Networks: networks,
 		},
 	}
-	reply, err := d.queryDeviceQuery(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
@@ -184,7 +150,7 @@ func (d *DeviceClient) ConfigureLoraAbp(appSessionKey, networkSessionKey, device
 			DownlinkCounter:   downlinkCounter,
 		},
 	}
-	reply, err := d.queryDeviceQuery(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
@@ -213,7 +179,7 @@ func (d *DeviceClient) ConfigureLoraOtaa(appKey, appEui string) (*pb.HttpReply, 
 			AppEui:    appEuiBytes,
 		},
 	}
-	reply, err := d.queryDeviceQuery(query)
+	reply, err := d.queryDevice(query)
 	if err != nil {
 		return nil, err
 	}
@@ -221,7 +187,7 @@ func (d *DeviceClient) ConfigureLoraOtaa(appKey, appEui string) (*pb.HttpReply, 
 }
 
 func (d *DeviceClient) QueryGetReadings() (*pb.HttpReply, error) {
-	reply, err := d.queryDevice(pb.QueryType_QUERY_GET_READINGS)
+	reply, err := d.queryDeviceSimple(pb.QueryType_QUERY_GET_READINGS)
 	if err != nil {
 		return nil, err
 	}
@@ -229,58 +195,23 @@ func (d *DeviceClient) QueryGetReadings() (*pb.HttpReply, error) {
 }
 
 func (d *DeviceClient) QueryTakeReadings() (*pb.HttpReply, error) {
-	reply, err := d.queryDevice(pb.QueryType_QUERY_TAKE_READINGS)
+	reply, err := d.queryDeviceSimple(pb.QueryType_QUERY_TAKE_READINGS)
 	if err != nil {
 		return nil, err
 	}
 	return reply, nil
 }
 
+func (d *DeviceClient) ModuleQuery(bay uint32, query []byte) ([]byte, error) {
+	return d.queryModule(bay, query)
+}
+
 var DeviceBusyErr = fmt.Errorf("Busy")
 
-type LimitedReader struct {
-	Target           io.Reader
-	MessagesExpected int
-}
-
-func (dr *LimitedReader) Read(p []byte) (n int, err error) {
-	if dr.MessagesExpected == 0 {
-		return 0, io.EOF
-	}
-	return dr.Target.Read(p)
-}
-
-type CallbackFunc func(*pb.WireMessageReply) error
-type BodyCallbackFunc func(r io.Reader) error
-
-type QueryResponse struct {
-	tcp  net.Conn
-	http *http.Response
-}
-
-func (qr *QueryResponse) Reader(to int) io.Reader {
-	if qr.tcp != nil {
-		return &DebugReader{Target: &DeadlineReader{qr.tcp, time.Duration(to) * time.Second}}
-	}
-	return qr.http.Body
-}
-
-func (qr *QueryResponse) Close() error {
-	if qr.tcp != nil {
-		qr.tcp.Close()
-	}
-	return nil
-}
-
-func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse, error) {
-	data, err := proto.Marshal(query)
-	if err != nil {
-		return nil, err
-	}
-
+func (d *DeviceClient) openAndSendQuery(opts *DeviceQueryOpts) (*QueryResponse, error) {
 	// EncodeRawBytes includes the length prefix.
 	buf := proto.NewBuffer(make([]byte, 0))
-	buf.EncodeRawBytes(data)
+	buf.EncodeRawBytes(opts.query)
 
 	body := bytes.NewReader(buf.Bytes())
 	contentType := "application/fkhttp"
@@ -293,7 +224,7 @@ func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse
 
 	// We only write once, so this single call is fine here. If we need to
 	// write more in the future we'll need another one of these.
-	url := fmt.Sprintf("http://%s:%d/fk/v1", d.Address, d.Port)
+	url := fmt.Sprintf("http://%s:%d/%s", d.Address, d.Port, opts.path)
 	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
 		return nil, err
@@ -311,36 +242,33 @@ func (d *DeviceClient) openAndSendQueryHttp(query *pb.HttpQuery) (*QueryResponse
 	return &QueryResponse{http: resp}, nil
 }
 
-func (d *DeviceClient) openAndSendQuery(opts *DeviceQueryOpts) (*QueryResponse, error) {
-	return d.openAndSendQueryHttp(opts.httpQuery)
-}
-
-type DeadlineReader struct {
-	Target  net.Conn
-	Timeout time.Duration
-}
-
-func (dr *DeadlineReader) Read(p []byte) (n int, err error) {
-	dr.Target.SetReadDeadline(time.Now().Add(dr.Timeout))
-	n, err = dr.Target.Read(p)
-	return
-}
-
-type DebugReader struct {
-	Target io.Reader
-}
-
-func (dr *DebugReader) Read(p []byte) (n int, err error) {
-	n, err = dr.Target.Read(p)
-	return
-}
-
 type DeviceQueryOpts struct {
-	httpQuery *pb.HttpQuery
-	timeout   int
+	path    string
+	query   []byte
+	timeout int
 }
 
-func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback CallbackFunc) (collection.MessageCollection, error) {
+func (d *DeviceClient) queryDeviceSimple(queryType pb.QueryType) (reply *pb.HttpReply, err error) {
+	query := &pb.HttpQuery{
+		Type: queryType,
+	}
+	return d.queryDevice(query)
+}
+
+func (d *DeviceClient) queryDevice(query *pb.HttpQuery) (reply *pb.HttpReply, err error) {
+	data, err := proto.Marshal(query)
+	if err != nil {
+		return nil, err
+	}
+
+	if d.Callbacks != nil {
+		d.Callbacks.Sent(query)
+	}
+
+	return d.queryDeviceOpts(&DeviceQueryOpts{"fk/v1", data, DefaultTimeout})
+}
+
+func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts) (collection.MessageCollection, error) {
 	c, err := d.openAndSendQuery(opts)
 	if err != nil {
 		return nil, err
@@ -377,10 +305,8 @@ func (d *DeviceClient) queryDeviceCallback(opts *DeviceQueryOpts, callback Callb
 }
 
 func (d *DeviceClient) queryDeviceOpts(opts *DeviceQueryOpts) (reply *pb.HttpReply, err error) {
-	if d.Callbacks != nil {
-		d.Callbacks.Sent(opts.httpQuery)
-	}
-	replies, err := d.queryDeviceMultiple(opts)
+	replies, err := d.queryDeviceCallback(opts)
+
 	if err != nil {
 		return nil, err
 	}
@@ -396,19 +322,19 @@ func (d *DeviceClient) queryDeviceOpts(opts *DeviceQueryOpts) (reply *pb.HttpRep
 	return nil, nil
 }
 
-func (d *DeviceClient) queryDevice(queryType pb.QueryType) (reply *pb.HttpReply, err error) {
-	query := &pb.HttpQuery{
-		Type: queryType,
+func (d *DeviceClient) queryModuleCallback(opts *DeviceQueryOpts) ([]byte, error) {
+	c, err := d.openAndSendQuery(opts)
+	if err != nil {
+		return nil, err
 	}
-	return d.queryDeviceOpts(&DeviceQueryOpts{query, DefaultTimeout})
+
+	defer c.Close()
+
+	dr := c.Reader(opts.timeout)
+
+	return ioutil.ReadAll(dr)
 }
 
-func (d *DeviceClient) queryDeviceQuery(query *pb.HttpQuery) (reply *pb.HttpReply, err error) {
-	return d.queryDeviceOpts(&DeviceQueryOpts{query, DefaultTimeout})
-}
-
-func (d *DeviceClient) queryDeviceMultiple(opts *DeviceQueryOpts) (replies collection.MessageCollection, err error) {
-	return d.queryDeviceCallback(opts, CallbackFunc(func(reply *pb.WireMessageReply) error {
-		return nil
-	}))
+func (d *DeviceClient) queryModule(module uint32, query []byte) (rawReply []byte, err error) {
+	return d.queryModuleCallback(&DeviceQueryOpts{fmt.Sprintf("fk/v1/module/%d", module), query, DefaultTimeout})
 }
