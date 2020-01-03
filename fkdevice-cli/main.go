@@ -41,6 +41,8 @@ type options struct {
 
 	Module int
 	Atlas  string
+
+	FactoryReset bool
 }
 
 func main() {
@@ -65,8 +67,11 @@ func main() {
 	flag.IntVar(&o.LoraDownlinkCounter, "lora-downlink-counter", 0, "lora-downlink-counter")
 	flag.StringVar(&o.Schedule, "schedule", "", "schedule")
 	flag.BoolVar(&o.Networks, "networks", false, "")
+
 	flag.IntVar(&o.Module, "module", -1, "module")
 	flag.StringVar(&o.Atlas, "atlas", "", "atlas")
+
+	flag.BoolVar(&o.FactoryReset, "factory-reset", false, "factory reset")
 
 	flag.Parse()
 
@@ -166,6 +171,13 @@ func main() {
 			},
 		}
 		_, err := device.ConfigureWifiNetworks(networks)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+	}
+
+	if o.FactoryReset {
+		_, err := device.FactoryReset()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}

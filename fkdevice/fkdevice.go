@@ -202,6 +202,14 @@ func (d *DeviceClient) QueryTakeReadings() (*pb.HttpReply, error) {
 	return reply, nil
 }
 
+func (d *DeviceClient) FactoryReset() (*pb.HttpReply, error) {
+	reply, err := d.queryDeviceSimple(pb.QueryType_QUERY_RESET)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) ModuleQuery(bay uint32, query []byte) ([]byte, error) {
 	return d.queryModule(bay, query)
 }
