@@ -7,7 +7,7 @@ require (
 	github.com/armon/go-metrics v0.0.0-20190430140413-ec5e00d3c878 // indirect
 	github.com/dimfeld/httptreemux v5.0.1+incompatible // indirect
 	github.com/fatih/color v1.7.0 // indirect
-	github.com/fieldkit/atlas-protocol v0.0.0-20190223200237-93438b343cbb
+	github.com/fieldkit/atlas-protocol v0.0.0-20200102174109-d24c2eb2cf0d
 	github.com/fieldkit/cloud v0.0.0-20190917195237-6e5ed63a57b3
 	github.com/goadesign/goa v2.0.5+incompatible // indirect
 	github.com/golang/protobuf v1.3.2

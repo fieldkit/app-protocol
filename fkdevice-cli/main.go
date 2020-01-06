@@ -40,7 +40,11 @@ type options struct {
 	LoraDownlinkCounter   int
 
 	Module int
-	Atlas  string
+
+	Atlas       string
+	AtlasClear  bool
+	AtlasStatus bool
+	AtlasSet    bool
 
 	FactoryReset bool
 }
@@ -70,6 +74,9 @@ func main() {
 
 	flag.IntVar(&o.Module, "module", -1, "module")
 	flag.StringVar(&o.Atlas, "atlas", "", "atlas")
+	flag.BoolVar(&o.AtlasClear, "atlas-clear", false, "atlas-clear")
+	flag.BoolVar(&o.AtlasStatus, "atlas-status", false, "atlas-status")
+	flag.BoolVar(&o.AtlasSet, "atlas-set", false, "atlas-set")
 
 	flag.BoolVar(&o.FactoryReset, "factory-reset", false, "factory reset")
 
@@ -211,4 +218,78 @@ func main() {
 
 		log.Printf("%v", reply)
 	}
+
+	if o.Module >= 0 {
+		if o.AtlasStatus {
+			query := &atlaspb.WireAtlasQuery{
+				Type: atlaspb.QueryType_QUERY_NONE,
+				Calibration: &atlaspb.AtlasCalibrationCommand{
+					Operation: atlaspb.CalibrationOperation_CALIBRATION_STATUS,
+				},
+			}
+
+			reply, err := atlasQuery(device, uint32(o.Module), query)
+			if err != nil {
+				panic(err)
+			}
+
+			log.Printf("%+v", reply)
+		}
+
+		if o.AtlasClear {
+			query := &atlaspb.WireAtlasQuery{
+				Type: atlaspb.QueryType_QUERY_NONE,
+				Calibration: &atlaspb.AtlasCalibrationCommand{
+					Operation: atlaspb.CalibrationOperation_CALIBRATION_CLEAR,
+				},
+			}
+
+			reply, err := atlasQuery(device, uint32(o.Module), query)
+			if err != nil {
+				panic(err)
+			}
+
+			log.Printf("%+v", reply)
+		}
+
+		if o.AtlasSet {
+			query := &atlaspb.WireAtlasQuery{
+				Type: atlaspb.QueryType_QUERY_NONE,
+				Calibration: &atlaspb.AtlasCalibrationCommand{
+					Operation: atlaspb.CalibrationOperation_CALIBRATION_SET,
+				},
+			}
+
+			reply, err := atlasQuery(device, uint32(o.Module), query)
+			if err != nil {
+				panic(err)
+			}
+
+			log.Printf("%+v", reply)
+		}
+	}
+}
+
+func atlasQuery(device *fkc.DeviceClient, module uint32, query *atlaspb.WireAtlasQuery) (reply *atlaspb.WireAtlasReply, err error) {
+	rawQuery, err := proto.Marshal(query)
+	if err != nil {
+		return nil, err
+	}
+
+	log.Printf("%v", rawQuery)
+
+	rawReply, err := device.ModuleQuery(module, rawQuery)
+	if err != nil {
+		return nil, err
+	}
+
+	reply = &atlaspb.WireAtlasReply{}
+	buffer := proto.NewBuffer(rawReply)
+
+	err = buffer.DecodeMessage(reply)
+	if err != nil {
+		return nil, err
+	}
+
+	return
 }
