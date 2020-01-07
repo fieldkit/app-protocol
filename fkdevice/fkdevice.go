@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/robinpowered/go-proto/collection"
@@ -264,6 +265,8 @@ func (d *DeviceClient) queryDeviceSimple(queryType pb.QueryType) (reply *pb.Http
 }
 
 func (d *DeviceClient) queryDevice(query *pb.HttpQuery) (reply *pb.HttpReply, err error) {
+	query.Time = uint64(time.Now().Unix())
+
 	data, err := proto.Marshal(query)
 	if err != nil {
 		return nil, err
