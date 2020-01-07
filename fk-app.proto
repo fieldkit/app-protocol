@@ -317,6 +317,7 @@ message Status {
   Schedules schedules = 8;
   Recording recording = 9;
   NetworkSettings network = 10;
+  uint64 time = 11;
 }
 
 message Range {
@@ -358,6 +359,7 @@ message HttpQuery {
   NetworkSettings networkSettings = 6;
   LoraSettings loraSettings = 7;
   uint32 flags = 5;
+  uint64 time = 8;
 }
 
 message DataStream {

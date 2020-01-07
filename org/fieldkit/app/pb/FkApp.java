@@ -17608,6 +17608,12 @@ public final class FkApp {
      * @return The network.
      */
     org.fieldkit.app.pb.FkApp.NetworkSettings getNetwork();
+
+    /**
+     * <code>uint64 time = 11;</code>
+     * @return The time.
+     */
+    long getTime();
   }
   /**
    * Protobuf type {@code fk_app.Status}
@@ -18133,6 +18139,32 @@ public final class FkApp {
      */
     private void clearNetwork() {  network_ = null;
       
+    }
+
+    public static final int TIME_FIELD_NUMBER = 11;
+    private long time_;
+    /**
+     * <code>uint64 time = 11;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+    /**
+     * <code>uint64 time = 11;</code>
+     * @param value The time to set.
+     */
+    private void setTime(long value) {
+      
+      time_ = value;
+    }
+    /**
+     * <code>uint64 time = 11;</code>
+     */
+    private void clearTime() {
+      
+      time_ = 0L;
     }
 
     public static org.fieldkit.app.pb.FkApp.Status parseFrom(
@@ -18662,6 +18694,34 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>uint64 time = 11;</code>
+       * @return The time.
+       */
+      @java.lang.Override
+      public long getTime() {
+        return instance.getTime();
+      }
+      /**
+       * <code>uint64 time = 11;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(long value) {
+        copyOnWrite();
+        instance.setTime(value);
+        return this;
+      }
+      /**
+       * <code>uint64 time = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        copyOnWrite();
+        instance.clearTime();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.Status)
     }
     @java.lang.Override
@@ -18688,10 +18748,11 @@ public final class FkApp {
               "schedules_",
               "recording_",
               "network_",
+              "time_",
             };
             java.lang.String info =
-                "\u0000\n\u0000\u0000\u0001\n\n\u0000\u0000\u0000\u0001\u000b\u0002\u000b\u0003\t" +
-                "\u0004\t\u0005\t\u0006\t\u0007\t\b\t\t\t\n\t";
+                "\u0000\u000b\u0000\u0000\u0001\u000b\u000b\u0000\u0000\u0000\u0001\u000b\u0002\u000b" +
+                "\u0003\t\u0004\t\u0005\t\u0006\t\u0007\t\b\t\t\t\n\t\u000b\u0003";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -21012,6 +21073,12 @@ public final class FkApp {
      * @return The flags.
      */
     int getFlags();
+
+    /**
+     * <code>uint64 time = 8;</code>
+     * @return The time.
+     */
+    long getTime();
   }
   /**
    * Protobuf type {@code fk_app.HttpQuery}
@@ -21382,6 +21449,32 @@ public final class FkApp {
     private void clearFlags() {
       
       flags_ = 0;
+    }
+
+    public static final int TIME_FIELD_NUMBER = 8;
+    private long time_;
+    /**
+     * <code>uint64 time = 8;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+    /**
+     * <code>uint64 time = 8;</code>
+     * @param value The time to set.
+     */
+    private void setTime(long value) {
+      
+      time_ = value;
+    }
+    /**
+     * <code>uint64 time = 8;</code>
+     */
+    private void clearTime() {
+      
+      time_ = 0L;
     }
 
     public static org.fieldkit.app.pb.FkApp.HttpQuery parseFrom(
@@ -21788,6 +21881,34 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>uint64 time = 8;</code>
+       * @return The time.
+       */
+      @java.lang.Override
+      public long getTime() {
+        return instance.getTime();
+      }
+      /**
+       * <code>uint64 time = 8;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(long value) {
+        copyOnWrite();
+        instance.setTime(value);
+        return this;
+      }
+      /**
+       * <code>uint64 time = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        copyOnWrite();
+        instance.clearTime();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.HttpQuery)
     }
     @java.lang.Override
@@ -21811,10 +21932,11 @@ public final class FkApp {
               "flags_",
               "networkSettings_",
               "loraSettings_",
+              "time_",
             };
             java.lang.String info =
-                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\f\u0002\t\u0003" +
-                "\t\u0004\t\u0005\u000b\u0006\t\u0007\t";
+                "\u0000\b\u0000\u0000\u0001\b\b\u0000\u0000\u0000\u0001\f\u0002\t\u0003\t\u0004\t" +
+                "\u0005\u000b\u0006\t\u0007\t\b\u0003";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

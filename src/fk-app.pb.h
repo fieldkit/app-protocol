@@ -438,6 +438,7 @@ typedef struct _fk_app_HttpQuery {
     uint32_t flags;
     fk_app_NetworkSettings networkSettings;
     fk_app_LoraSettings loraSettings;
+    uint64_t time;
 /* @@protoc_insertion_point(struct:fk_app_HttpQuery) */
 } fk_app_HttpQuery;
 
@@ -460,6 +461,7 @@ typedef struct _fk_app_Status {
     fk_app_Schedules schedules;
     fk_app_Recording recording;
     fk_app_NetworkSettings network;
+    uint64_t time;
 /* @@protoc_insertion_point(struct:fk_app_Status) */
 } fk_app_Status;
 
@@ -510,12 +512,12 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
-#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, fk_app_Schedules_init_default, fk_app_Recording_init_default, fk_app_NetworkSettings_init_default}
+#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, fk_app_Schedules_init_default, fk_app_Recording_init_default, fk_app_NetworkSettings_init_default, 0}
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_default            {0, 0, 0}
 #define fk_app_LoraSettings_init_default         {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0, fk_app_NetworkSettings_init_default, fk_app_LoraSettings_init_default}
+#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0, fk_app_NetworkSettings_init_default, fk_app_LoraSettings_init_default, 0}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_default    {fk_app_SensorCapabilities_init_default, 0}
 #define fk_app_LiveModuleReadings_init_default   {fk_app_ModuleCapabilities_init_default, {{NULL}, NULL}}
@@ -552,12 +554,12 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
-#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, fk_app_Schedules_init_zero, fk_app_Recording_init_zero, fk_app_NetworkSettings_init_zero}
+#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, fk_app_Schedules_init_zero, fk_app_Recording_init_zero, fk_app_NetworkSettings_init_zero, 0}
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_zero               {0, 0, 0}
 #define fk_app_LoraSettings_init_zero            {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0, fk_app_NetworkSettings_init_zero, fk_app_LoraSettings_init_zero}
+#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0, fk_app_NetworkSettings_init_zero, fk_app_LoraSettings_init_zero, 0}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_zero       {fk_app_SensorCapabilities_init_zero, 0}
 #define fk_app_LiveModuleReadings_init_zero      {fk_app_ModuleCapabilities_init_zero, {{NULL}, NULL}}
@@ -721,6 +723,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpQuery_networkSettings_tag     6
 #define fk_app_HttpQuery_loraSettings_tag        7
 #define fk_app_HttpQuery_flags_tag               5
+#define fk_app_HttpQuery_time_tag                8
 #define fk_app_LiveSensorReading_sensor_tag      1
 #define fk_app_LiveSensorReading_value_tag       2
 #define fk_app_Status_version_tag                1
@@ -733,6 +736,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_schedules_tag              8
 #define fk_app_Status_recording_tag              9
 #define fk_app_Status_network_tag                10
+#define fk_app_Status_time_tag                   11
 #define fk_app_HttpReply_type_tag                1
 #define fk_app_HttpReply_errors_tag              2
 #define fk_app_HttpReply_status_tag              3
@@ -1026,7 +1030,8 @@ X(a, STATIC, SINGULAR, MESSAGE, memory, 6) \
 X(a, STATIC, SINGULAR, MESSAGE, gps, 7) \
 X(a, STATIC, SINGULAR, MESSAGE, schedules, 8) \
 X(a, STATIC, SINGULAR, MESSAGE, recording, 9) \
-X(a, STATIC, SINGULAR, MESSAGE, network, 10)
+X(a, STATIC, SINGULAR, MESSAGE, network, 10) \
+X(a, STATIC, SINGULAR, UINT64, time, 11)
 #define fk_app_Status_CALLBACK NULL
 #define fk_app_Status_DEFAULT NULL
 #define fk_app_Status_identity_MSGTYPE fk_app_Identity
@@ -1081,7 +1086,8 @@ X(a, STATIC, SINGULAR, MESSAGE, recording, 3) \
 X(a, STATIC, SINGULAR, MESSAGE, schedules, 4) \
 X(a, STATIC, SINGULAR, UINT32, flags, 5) \
 X(a, STATIC, SINGULAR, MESSAGE, networkSettings, 6) \
-X(a, STATIC, SINGULAR, MESSAGE, loraSettings, 7)
+X(a, STATIC, SINGULAR, MESSAGE, loraSettings, 7) \
+X(a, STATIC, SINGULAR, UINT64, time, 8)
 #define fk_app_HttpQuery_CALLBACK NULL
 #define fk_app_HttpQuery_DEFAULT NULL
 #define fk_app_HttpQuery_identity_MSGTYPE fk_app_Identity

@@ -41,10 +41,11 @@ type options struct {
 
 	Module int
 
-	Atlas       string
-	AtlasClear  bool
-	AtlasStatus bool
-	AtlasSet    bool
+	Atlas          string
+	AtlasClear     bool
+	AtlasStatus    bool
+	AtlasCalibrate int
+	AtlasValue     float64
 
 	FactoryReset bool
 }
@@ -76,7 +77,8 @@ func main() {
 	flag.StringVar(&o.Atlas, "atlas", "", "atlas")
 	flag.BoolVar(&o.AtlasClear, "atlas-clear", false, "atlas-clear")
 	flag.BoolVar(&o.AtlasStatus, "atlas-status", false, "atlas-status")
-	flag.BoolVar(&o.AtlasSet, "atlas-set", false, "atlas-set")
+	flag.IntVar(&o.AtlasCalibrate, "atlas-calibrate", 0, "atlas-calibrate")
+	flag.Float64Var(&o.AtlasValue, "atlas-value", 0, "atlas-value")
 
 	flag.BoolVar(&o.FactoryReset, "factory-reset", false, "factory reset")
 
@@ -233,7 +235,7 @@ func main() {
 				panic(err)
 			}
 
-			log.Printf("%+v", reply)
+			log.Printf("reply: %+v", reply)
 		}
 
 		if o.AtlasClear {
@@ -249,14 +251,16 @@ func main() {
 				panic(err)
 			}
 
-			log.Printf("%+v", reply)
+			log.Printf("reply: %+v", reply)
 		}
 
-		if o.AtlasSet {
+		if o.AtlasCalibrate > 0 {
 			query := &atlaspb.WireAtlasQuery{
 				Type: atlaspb.QueryType_QUERY_NONE,
 				Calibration: &atlaspb.AtlasCalibrationCommand{
 					Operation: atlaspb.CalibrationOperation_CALIBRATION_SET,
+					Which:     uint32(o.AtlasCalibrate),
+					Value:     float32(o.AtlasValue),
 				},
 			}
 
@@ -265,7 +269,7 @@ func main() {
 				panic(err)
 			}
 
-			log.Printf("%+v", reply)
+			log.Printf("reply: %+v", reply)
 		}
 	}
 }
@@ -276,12 +280,14 @@ func atlasQuery(device *fkc.DeviceClient, module uint32, query *atlaspb.WireAtla
 		return nil, err
 	}
 
-	log.Printf("%v", rawQuery)
+	log.Printf("query: %v", rawQuery)
 
 	rawReply, err := device.ModuleQuery(module, rawQuery)
 	if err != nil {
 		return nil, err
 	}
+
+	log.Printf("reply: %v", rawReply)
 
 	reply = &atlaspb.WireAtlasReply{}
 	buffer := proto.NewBuffer(rawReply)

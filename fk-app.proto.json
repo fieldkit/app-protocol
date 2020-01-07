@@ -712,6 +712,10 @@
             "network": {
               "type": "NetworkSettings",
               "id": 10
+            },
+            "time": {
+              "type": "uint64",
+              "id": 11
             }
           }
         },
@@ -838,6 +842,10 @@
             "flags": {
               "type": "uint32",
               "id": 5
+            },
+            "time": {
+              "type": "uint64",
+              "id": 8
             }
           }
         },
