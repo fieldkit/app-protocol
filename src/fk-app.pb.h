@@ -15,6 +15,14 @@ extern "C" {
 #endif
 
 /* Enum definitions */
+typedef enum _fk_app_QueryFlags {
+    fk_app_QueryFlags_QUERY_FLAGS_NONE = 0,
+    fk_app_QueryFlags_QUERY_FLAGS_LOGS = 1
+} fk_app_QueryFlags;
+#define _fk_app_QueryFlags_MIN fk_app_QueryFlags_QUERY_FLAGS_NONE
+#define _fk_app_QueryFlags_MAX fk_app_QueryFlags_QUERY_FLAGS_LOGS
+#define _fk_app_QueryFlags_ARRAYSIZE ((fk_app_QueryFlags)(fk_app_QueryFlags_QUERY_FLAGS_LOGS+1))
+
 typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_NONE = 0,
     fk_app_QueryType_QUERY_CAPABILITIES = 1,

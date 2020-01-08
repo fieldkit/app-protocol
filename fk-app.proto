@@ -6,6 +6,11 @@ option java_package = "org.fieldkit.app.pb";
 // some cases simply looking at which "sub-message" is populated would work but the
 // QueryType is useful for situations where the query sub-message is empty.
 
+enum QueryFlags {
+  QUERY_FLAGS_NONE = 0;
+  QUERY_FLAGS_LOGS = 1;
+}
+
 enum QueryType {
   QUERY_NONE = 0;
   QUERY_CAPABILITIES = 1;

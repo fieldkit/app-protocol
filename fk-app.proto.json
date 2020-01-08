@@ -5,6 +5,12 @@
         "java_package": "org.fieldkit.app.pb"
       },
       "nested": {
+        "QueryFlags": {
+          "values": {
+            "QUERY_FLAGS_NONE": 0,
+            "QUERY_FLAGS_LOGS": 1
+          }
+        },
         "QueryType": {
           "values": {
             "QUERY_NONE": 0,

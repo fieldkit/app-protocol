@@ -9,6 +9,95 @@ public final class FkApp {
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
   /**
+   * Protobuf enum {@code fk_app.QueryFlags}
+   */
+  public enum QueryFlags
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>QUERY_FLAGS_NONE = 0;</code>
+     */
+    QUERY_FLAGS_NONE(0),
+    /**
+     * <code>QUERY_FLAGS_LOGS = 1;</code>
+     */
+    QUERY_FLAGS_LOGS(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>QUERY_FLAGS_NONE = 0;</code>
+     */
+    public static final int QUERY_FLAGS_NONE_VALUE = 0;
+    /**
+     * <code>QUERY_FLAGS_LOGS = 1;</code>
+     */
+    public static final int QUERY_FLAGS_LOGS_VALUE = 1;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static QueryFlags valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static QueryFlags forNumber(int value) {
+      switch (value) {
+        case 0: return QUERY_FLAGS_NONE;
+        case 1: return QUERY_FLAGS_LOGS;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<QueryFlags>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        QueryFlags> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<QueryFlags>() {
+            @java.lang.Override
+            public QueryFlags findValueByNumber(int number) {
+              return QueryFlags.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return QueryFlagsVerifier.INSTANCE;
+    }
+
+    private static final class QueryFlagsVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new QueryFlagsVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return QueryFlags.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private QueryFlags(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:fk_app.QueryFlags)
+  }
+
+  /**
    * Protobuf enum {@code fk_app.QueryType}
    */
   public enum QueryType
