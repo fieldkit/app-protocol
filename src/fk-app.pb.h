@@ -369,6 +369,7 @@ typedef struct _fk_app_Recording {
 typedef struct _fk_app_Schedule {
     pb_callback_t cron;
     uint32_t interval;
+    uint32_t repeated;
 /* @@protoc_insertion_point(struct:fk_app_Schedule) */
 } fk_app_Schedule;
 
@@ -513,7 +514,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_WireMessageQuery_init_default     {_fk_app_QueryType_MIN, fk_app_QueryCapabilities_init_default, fk_app_ConfigureSensorQuery_init_default, fk_app_LiveDataPoll_init_default, fk_app_DownloadFile_init_default, fk_app_EraseFile_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_QueryModule_init_default}
 #define fk_app_Error_init_default                {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_default     {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_default, fk_app_LiveData_init_default, fk_app_Files_init_default, fk_app_FileData_init_default, fk_app_NetworkSettings_init_default, fk_app_Identity_init_default, fk_app_DeviceStatus_init_default, fk_app_ModuleReply_init_default}
-#define fk_app_Schedule_init_default             {{{NULL}, NULL}, 0}
+#define fk_app_Schedule_init_default             {{{NULL}, NULL}, 0, 0}
 #define fk_app_Schedules_init_default            {0, fk_app_Schedule_init_default, fk_app_Schedule_init_default, fk_app_Schedule_init_default, fk_app_Schedule_init_default}
 #define fk_app_HardwareStatus_init_default       {0}
 #define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0, 0}
@@ -555,7 +556,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_WireMessageQuery_init_zero        {_fk_app_QueryType_MIN, fk_app_QueryCapabilities_init_zero, fk_app_ConfigureSensorQuery_init_zero, fk_app_LiveDataPoll_init_zero, fk_app_DownloadFile_init_zero, fk_app_EraseFile_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_QueryModule_init_zero}
 #define fk_app_Error_init_zero                   {{{NULL}, NULL}, 0}
 #define fk_app_WireMessageReply_init_zero        {_fk_app_ReplyType_MIN, {{NULL}, NULL}, fk_app_Capabilities_init_zero, fk_app_LiveData_init_zero, fk_app_Files_init_zero, fk_app_FileData_init_zero, fk_app_NetworkSettings_init_zero, fk_app_Identity_init_zero, fk_app_DeviceStatus_init_zero, fk_app_ModuleReply_init_zero}
-#define fk_app_Schedule_init_zero                {{{NULL}, NULL}, 0}
+#define fk_app_Schedule_init_zero                {{{NULL}, NULL}, 0, 0}
 #define fk_app_Schedules_init_zero               {0, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero, fk_app_Schedule_init_zero}
 #define fk_app_HardwareStatus_init_zero          {0}
 #define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0, 0}
@@ -689,6 +690,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Recording_started_time_tag        3
 #define fk_app_Schedule_cron_tag                 1
 #define fk_app_Schedule_interval_tag             2
+#define fk_app_Schedule_repeated_tag             3
 #define fk_app_LiveModuleReadings_module_tag     1
 #define fk_app_LiveModuleReadings_readings_tag   2
 #define fk_app_PowerStatus_battery_tag           1
@@ -973,7 +975,8 @@ X(a, STATIC, SINGULAR, MESSAGE, module, 13)
 
 #define fk_app_Schedule_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, BYTES, cron, 1) \
-X(a, STATIC, SINGULAR, UINT32, interval, 2)
+X(a, STATIC, SINGULAR, UINT32, interval, 2) \
+X(a, STATIC, SINGULAR, UINT32, repeated, 3)
 #define fk_app_Schedule_CALLBACK pb_default_field_callback
 #define fk_app_Schedule_DEFAULT NULL
 

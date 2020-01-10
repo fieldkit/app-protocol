@@ -14645,6 +14645,12 @@ public final class FkApp {
      * @return The interval.
      */
     int getInterval();
+
+    /**
+     * <code>uint32 repeated = 3;</code>
+     * @return The repeated.
+     */
+    int getRepeated();
   }
   /**
    * Protobuf type {@code fk_app.Schedule}
@@ -14710,6 +14716,32 @@ public final class FkApp {
     private void clearInterval() {
       
       interval_ = 0;
+    }
+
+    public static final int REPEATED_FIELD_NUMBER = 3;
+    private int repeated_;
+    /**
+     * <code>uint32 repeated = 3;</code>
+     * @return The repeated.
+     */
+    @java.lang.Override
+    public int getRepeated() {
+      return repeated_;
+    }
+    /**
+     * <code>uint32 repeated = 3;</code>
+     * @param value The repeated to set.
+     */
+    private void setRepeated(int value) {
+      
+      repeated_ = value;
+    }
+    /**
+     * <code>uint32 repeated = 3;</code>
+     */
+    private void clearRepeated() {
+      
+      repeated_ = 0;
     }
 
     public static org.fieldkit.app.pb.FkApp.Schedule parseFrom(
@@ -14863,6 +14895,34 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>uint32 repeated = 3;</code>
+       * @return The repeated.
+       */
+      @java.lang.Override
+      public int getRepeated() {
+        return instance.getRepeated();
+      }
+      /**
+       * <code>uint32 repeated = 3;</code>
+       * @param value The repeated to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated(int value) {
+        copyOnWrite();
+        instance.setRepeated(value);
+        return this;
+      }
+      /**
+       * <code>uint32 repeated = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated() {
+        copyOnWrite();
+        instance.clearRepeated();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.Schedule)
     }
     @java.lang.Override
@@ -14881,10 +14941,11 @@ public final class FkApp {
             java.lang.Object[] objects = new java.lang.Object[] {
               "cron_",
               "interval_",
+              "repeated_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\n\u0002\u000b" +
-                "";
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\n\u0002\u000b" +
+                "\u0003\u000b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

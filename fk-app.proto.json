@@ -567,6 +567,10 @@
             "interval": {
               "type": "uint32",
               "id": 2
+            },
+            "repeated": {
+              "type": "uint32",
+              "id": 3
             }
           }
         },
