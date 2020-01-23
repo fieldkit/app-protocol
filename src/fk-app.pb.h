@@ -104,14 +104,6 @@ typedef struct _fk_app_Files {
 } fk_app_Files;
 
 
-typedef struct _fk_app_Firmware {
-    pb_callback_t git;
-    pb_callback_t build;
-    pb_callback_t number;
-/* @@protoc_insertion_point(struct:fk_app_Firmware) */
-} fk_app_Firmware;
-
-
 typedef struct _fk_app_HardwareStatus {
     char dummy_field;
 /* @@protoc_insertion_point(struct:fk_app_HardwareStatus) */
@@ -241,6 +233,16 @@ typedef struct _fk_app_FileData {
     uint32_t id;
 /* @@protoc_insertion_point(struct:fk_app_FileData) */
 } fk_app_FileData;
+
+
+typedef struct _fk_app_Firmware {
+    pb_callback_t version;
+    pb_callback_t build;
+    pb_callback_t number;
+    uint64_t timestamp;
+    pb_callback_t hash;
+/* @@protoc_insertion_point(struct:fk_app_Firmware) */
+} fk_app_Firmware;
 
 
 typedef struct _fk_app_GpsStatus {
@@ -471,6 +473,7 @@ typedef struct _fk_app_Status {
     fk_app_Recording recording;
     fk_app_NetworkSettings network;
     uint64_t time;
+    fk_app_Firmware firmware;
 /* @@protoc_insertion_point(struct:fk_app_Status) */
 } fk_app_Status;
 
@@ -497,7 +500,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
-#define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_default {0, 0}
 #define fk_app_LiveDataPoll_init_default         {0}
@@ -521,7 +524,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {fk_app_BatteryStatus_init_default}
-#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, fk_app_Schedules_init_default, fk_app_Recording_init_default, fk_app_NetworkSettings_init_default, 0}
+#define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, fk_app_Schedules_init_default, fk_app_Recording_init_default, fk_app_NetworkSettings_init_default, 0, fk_app_Firmware_init_default}
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_default            {0, 0, 0}
@@ -539,7 +542,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
-#define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_zero    {0, 0}
 #define fk_app_LiveDataPoll_init_zero            {0}
@@ -563,7 +566,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {fk_app_BatteryStatus_init_zero}
-#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, fk_app_Schedules_init_zero, fk_app_Recording_init_zero, fk_app_NetworkSettings_init_zero, 0}
+#define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, fk_app_Schedules_init_zero, fk_app_Recording_init_zero, fk_app_NetworkSettings_init_zero, 0, fk_app_Firmware_init_zero}
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_zero               {0, 0, 0}
@@ -577,9 +580,6 @@ typedef struct _fk_app_HttpReply {
 
 /* Field tags (for use in manual encoding/decoding) */
 #define fk_app_Files_files_tag                   1
-#define fk_app_Firmware_git_tag                  1
-#define fk_app_Firmware_build_tag                2
-#define fk_app_Firmware_number_tag               3
 #define fk_app_Identity_device_tag               1
 #define fk_app_Identity_stream_tag               2
 #define fk_app_Identity_deviceId_tag             3
@@ -635,6 +635,11 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_FileData_hash_tag                 4
 #define fk_app_FileData_version_tag              5
 #define fk_app_FileData_id_tag                   6
+#define fk_app_Firmware_version_tag              1
+#define fk_app_Firmware_build_tag                2
+#define fk_app_Firmware_number_tag               3
+#define fk_app_Firmware_timestamp_tag            4
+#define fk_app_Firmware_hash_tag                 5
 #define fk_app_GpsStatus_enabled_tag             7
 #define fk_app_GpsStatus_fix_tag                 1
 #define fk_app_GpsStatus_time_tag                2
@@ -747,6 +752,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_recording_tag              9
 #define fk_app_Status_network_tag                10
 #define fk_app_Status_time_tag                   11
+#define fk_app_Status_firmware_tag               12
 #define fk_app_HttpReply_type_tag                1
 #define fk_app_HttpReply_errors_tag              2
 #define fk_app_HttpReply_status_tag              3
@@ -819,9 +825,11 @@ X(a, CALLBACK, REPEATED, MESSAGE, networks, 2)
 #define fk_app_NetworkSettings_networks_MSGTYPE fk_app_NetworkInfo
 
 #define fk_app_Firmware_FIELDLIST(X, a) \
-X(a, CALLBACK, SINGULAR, STRING, git, 1) \
+X(a, CALLBACK, SINGULAR, STRING, version, 1) \
 X(a, CALLBACK, SINGULAR, STRING, build, 2) \
-X(a, CALLBACK, SINGULAR, STRING, number, 3)
+X(a, CALLBACK, SINGULAR, STRING, number, 3) \
+X(a, STATIC, SINGULAR, UINT64, timestamp, 4) \
+X(a, CALLBACK, SINGULAR, STRING, hash, 5)
 #define fk_app_Firmware_CALLBACK pb_default_field_callback
 #define fk_app_Firmware_DEFAULT NULL
 
@@ -1042,7 +1050,8 @@ X(a, STATIC, SINGULAR, MESSAGE, gps, 7) \
 X(a, STATIC, SINGULAR, MESSAGE, schedules, 8) \
 X(a, STATIC, SINGULAR, MESSAGE, recording, 9) \
 X(a, STATIC, SINGULAR, MESSAGE, network, 10) \
-X(a, STATIC, SINGULAR, UINT64, time, 11)
+X(a, STATIC, SINGULAR, UINT64, time, 11) \
+X(a, STATIC, SINGULAR, MESSAGE, firmware, 12)
 #define fk_app_Status_CALLBACK NULL
 #define fk_app_Status_DEFAULT NULL
 #define fk_app_Status_identity_MSGTYPE fk_app_Identity
@@ -1053,6 +1062,7 @@ X(a, STATIC, SINGULAR, UINT64, time, 11)
 #define fk_app_Status_schedules_MSGTYPE fk_app_Schedules
 #define fk_app_Status_recording_MSGTYPE fk_app_Recording
 #define fk_app_Status_network_MSGTYPE fk_app_NetworkSettings
+#define fk_app_Status_firmware_MSGTYPE fk_app_Firmware
 
 #define fk_app_Range_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, start, 1) \

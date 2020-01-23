@@ -217,7 +217,7 @@
         },
         "Firmware": {
           "fields": {
-            "git": {
+            "version": {
               "type": "string",
               "id": 1
             },
@@ -228,6 +228,14 @@
             "number": {
               "type": "string",
               "id": 3
+            },
+            "timestamp": {
+              "type": "uint64",
+              "id": 4
+            },
+            "hash": {
+              "type": "string",
+              "id": 5
             }
           }
         },
@@ -726,6 +734,10 @@
             "time": {
               "type": "uint64",
               "id": 11
+            },
+            "firmware": {
+              "type": "Firmware",
+              "id": 12
             }
           }
         },

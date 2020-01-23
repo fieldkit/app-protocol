@@ -1631,9 +1631,7 @@ public final class FkApp {
      */
     private void setName(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       name_ = value;
     }
@@ -1650,12 +1648,9 @@ public final class FkApp {
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       name_ = value.toStringUtf8();
+      
     }
 
     public static final int FREQUENCY_FIELD_NUMBER = 4;
@@ -1709,9 +1704,7 @@ public final class FkApp {
      */
     private void setUnitOfMeasure(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       unitOfMeasure_ = value;
     }
@@ -1728,12 +1721,9 @@ public final class FkApp {
      */
     private void setUnitOfMeasureBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       unitOfMeasure_ = value.toStringUtf8();
+      
     }
 
     public static final int PATH_FIELD_NUMBER = 6;
@@ -1773,9 +1763,7 @@ public final class FkApp {
      */
     private void setPath(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       path_ = value;
     }
@@ -1800,12 +1788,9 @@ public final class FkApp {
      */
     private void setPathBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       path_ = value.toStringUtf8();
+      
     }
 
     public static final int FLAGS_FIELD_NUMBER = 7;
@@ -1854,29 +1839,17 @@ public final class FkApp {
      * <code>.fk_app.LiveValue value = 8;</code>
      */
     private void setValue(org.fieldkit.app.pb.FkApp.LiveValue value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      value_ = value;
+      value.getClass();
+  value_ = value;
       
       }
-    /**
-     * <code>.fk_app.LiveValue value = 8;</code>
-     */
-    private void setValue(
-        org.fieldkit.app.pb.FkApp.LiveValue.Builder builderForValue) {
-      value_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.LiveValue value = 8;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeValue(org.fieldkit.app.pb.FkApp.LiveValue value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (value_ != null &&
+      value.getClass();
+  if (value_ != null &&
           value_ != org.fieldkit.app.pb.FkApp.LiveValue.getDefaultInstance()) {
         value_ =
           org.fieldkit.app.pb.FkApp.LiveValue.newBuilder(value_).mergeFrom(value).buildPartial();
@@ -2294,7 +2267,7 @@ public final class FkApp {
       public Builder setValue(
           org.fieldkit.app.pb.FkApp.LiveValue.Builder builderForValue) {
         copyOnWrite();
-        instance.setValue(builderForValue);
+        instance.setValue(builderForValue.build());
         return this;
       }
       /**
@@ -2528,9 +2501,7 @@ public final class FkApp {
      */
     private void setName(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       name_ = value;
     }
@@ -2547,12 +2518,9 @@ public final class FkApp {
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       name_ = value.toStringUtf8();
+      
     }
 
     public static final int SENSORS_FIELD_NUMBER = 3;
@@ -2604,28 +2572,16 @@ public final class FkApp {
      */
     private void setSensors(
         int index, org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSensorsIsMutable();
+      value.getClass();
+  ensureSensorsIsMutable();
       sensors_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.SensorCapabilities sensors = 3;</code>
      */
-    private void setSensors(
-        int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
-      ensureSensorsIsMutable();
-      sensors_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.SensorCapabilities sensors = 3;</code>
-     */
     private void addSensors(org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSensorsIsMutable();
+      value.getClass();
+  ensureSensorsIsMutable();
       sensors_.add(value);
     }
     /**
@@ -2633,27 +2589,9 @@ public final class FkApp {
      */
     private void addSensors(
         int index, org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSensorsIsMutable();
+      value.getClass();
+  ensureSensorsIsMutable();
       sensors_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.SensorCapabilities sensors = 3;</code>
-     */
-    private void addSensors(
-        org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
-      ensureSensorsIsMutable();
-      sensors_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.SensorCapabilities sensors = 3;</code>
-     */
-    private void addSensors(
-        int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
-      ensureSensorsIsMutable();
-      sensors_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.SensorCapabilities sensors = 3;</code>
@@ -2715,9 +2653,7 @@ public final class FkApp {
      */
     private void setPath(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       path_ = value;
     }
@@ -2742,12 +2678,9 @@ public final class FkApp {
      */
     private void setPathBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       path_ = value.toStringUtf8();
+      
     }
 
     public static final int FLAGS_FIELD_NUMBER = 5;
@@ -2791,9 +2724,7 @@ public final class FkApp {
      * @param value The id to set.
      */
     private void setId(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       id_ = value;
     }
@@ -3013,7 +2944,8 @@ public final class FkApp {
       public Builder setSensors(
           int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setSensors(index, builderForValue);
+        instance.setSensors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -3039,7 +2971,7 @@ public final class FkApp {
       public Builder addSensors(
           org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addSensors(builderForValue);
+        instance.addSensors(builderForValue.build());
         return this;
       }
       /**
@@ -3048,7 +2980,8 @@ public final class FkApp {
       public Builder addSensors(
           int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addSensors(index, builderForValue);
+        instance.addSensors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -3394,9 +3327,7 @@ public final class FkApp {
      * @param value The deviceId to set.
      */
     private void setDeviceId(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       deviceId_ = value;
     }
@@ -3433,9 +3364,7 @@ public final class FkApp {
      */
     private void setName(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       name_ = value;
     }
@@ -3452,12 +3381,9 @@ public final class FkApp {
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       name_ = value.toStringUtf8();
+      
     }
 
     public static final int MODULES_FIELD_NUMBER = 4;
@@ -3509,28 +3435,16 @@ public final class FkApp {
      */
     private void setModules(
         int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.ModuleCapabilities modules = 4;</code>
      */
-    private void setModules(
-        int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.ModuleCapabilities modules = 4;</code>
-     */
     private void addModules(org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.add(value);
     }
     /**
@@ -3538,27 +3452,9 @@ public final class FkApp {
      */
     private void addModules(
         int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.ModuleCapabilities modules = 4;</code>
-     */
-    private void addModules(
-        org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.ModuleCapabilities modules = 4;</code>
-     */
-    private void addModules(
-        int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.ModuleCapabilities modules = 4;</code>
@@ -3632,28 +3528,16 @@ public final class FkApp {
      */
     private void setSensors(
         int index, org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSensorsIsMutable();
+      value.getClass();
+  ensureSensorsIsMutable();
       sensors_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.SensorCapabilities sensors = 5;</code>
      */
-    private void setSensors(
-        int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
-      ensureSensorsIsMutable();
-      sensors_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.SensorCapabilities sensors = 5;</code>
-     */
     private void addSensors(org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSensorsIsMutable();
+      value.getClass();
+  ensureSensorsIsMutable();
       sensors_.add(value);
     }
     /**
@@ -3661,27 +3545,9 @@ public final class FkApp {
      */
     private void addSensors(
         int index, org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSensorsIsMutable();
+      value.getClass();
+  ensureSensorsIsMutable();
       sensors_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.SensorCapabilities sensors = 5;</code>
-     */
-    private void addSensors(
-        org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
-      ensureSensorsIsMutable();
-      sensors_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.SensorCapabilities sensors = 5;</code>
-     */
-    private void addSensors(
-        int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
-      ensureSensorsIsMutable();
-      sensors_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.SensorCapabilities sensors = 5;</code>
@@ -3942,7 +3808,8 @@ public final class FkApp {
       public Builder setModules(
           int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setModules(index, builderForValue);
+        instance.setModules(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -3968,7 +3835,7 @@ public final class FkApp {
       public Builder addModules(
           org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addModules(builderForValue);
+        instance.addModules(builderForValue.build());
         return this;
       }
       /**
@@ -3977,7 +3844,8 @@ public final class FkApp {
       public Builder addModules(
           int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addModules(index, builderForValue);
+        instance.addModules(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -4042,7 +3910,8 @@ public final class FkApp {
       public Builder setSensors(
           int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setSensors(index, builderForValue);
+        instance.setSensors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -4068,7 +3937,7 @@ public final class FkApp {
       public Builder addSensors(
           org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addSensors(builderForValue);
+        instance.addSensors(builderForValue.build());
         return this;
       }
       /**
@@ -4077,7 +3946,8 @@ public final class FkApp {
       public Builder addSensors(
           int index, org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addSensors(index, builderForValue);
+        instance.addSensors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -4252,9 +4122,7 @@ public final class FkApp {
      */
     private void setSsid(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       ssid_ = value;
     }
@@ -4271,12 +4139,9 @@ public final class FkApp {
      */
     private void setSsidBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       ssid_ = value.toStringUtf8();
+      
     }
 
     public static final int PASSWORD_FIELD_NUMBER = 2;
@@ -4304,9 +4169,7 @@ public final class FkApp {
      */
     private void setPassword(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       password_ = value;
     }
@@ -4323,12 +4186,9 @@ public final class FkApp {
      */
     private void setPasswordBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       password_ = value.toStringUtf8();
+      
     }
 
     public static org.fieldkit.app.pb.FkApp.NetworkInfo parseFrom(
@@ -4710,28 +4570,16 @@ public final class FkApp {
      */
     private void setNetworks(
         int index, org.fieldkit.app.pb.FkApp.NetworkInfo value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureNetworksIsMutable();
+      value.getClass();
+  ensureNetworksIsMutable();
       networks_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
      */
-    private void setNetworks(
-        int index, org.fieldkit.app.pb.FkApp.NetworkInfo.Builder builderForValue) {
-      ensureNetworksIsMutable();
-      networks_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
-     */
     private void addNetworks(org.fieldkit.app.pb.FkApp.NetworkInfo value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureNetworksIsMutable();
+      value.getClass();
+  ensureNetworksIsMutable();
       networks_.add(value);
     }
     /**
@@ -4739,27 +4587,9 @@ public final class FkApp {
      */
     private void addNetworks(
         int index, org.fieldkit.app.pb.FkApp.NetworkInfo value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureNetworksIsMutable();
+      value.getClass();
+  ensureNetworksIsMutable();
       networks_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
-     */
-    private void addNetworks(
-        org.fieldkit.app.pb.FkApp.NetworkInfo.Builder builderForValue) {
-      ensureNetworksIsMutable();
-      networks_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
-     */
-    private void addNetworks(
-        int index, org.fieldkit.app.pb.FkApp.NetworkInfo.Builder builderForValue) {
-      ensureNetworksIsMutable();
-      networks_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
@@ -4943,7 +4773,8 @@ public final class FkApp {
       public Builder setNetworks(
           int index, org.fieldkit.app.pb.FkApp.NetworkInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.setNetworks(index, builderForValue);
+        instance.setNetworks(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -4969,7 +4800,7 @@ public final class FkApp {
       public Builder addNetworks(
           org.fieldkit.app.pb.FkApp.NetworkInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addNetworks(builderForValue);
+        instance.addNetworks(builderForValue.build());
         return this;
       }
       /**
@@ -4978,7 +4809,8 @@ public final class FkApp {
       public Builder addNetworks(
           int index, org.fieldkit.app.pb.FkApp.NetworkInfo.Builder builderForValue) {
         copyOnWrite();
-        instance.addNetworks(index, builderForValue);
+        instance.addNetworks(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -5089,16 +4921,16 @@ public final class FkApp {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>string git = 1;</code>
-     * @return The git.
+     * <code>string version = 1;</code>
+     * @return The version.
      */
-    java.lang.String getGit();
+    java.lang.String getVersion();
     /**
-     * <code>string git = 1;</code>
-     * @return The bytes for git.
+     * <code>string version = 1;</code>
+     * @return The bytes for version.
      */
     com.google.protobuf.ByteString
-        getGitBytes();
+        getVersionBytes();
 
     /**
      * <code>string build = 2;</code>
@@ -5123,6 +4955,24 @@ public final class FkApp {
      */
     com.google.protobuf.ByteString
         getNumberBytes();
+
+    /**
+     * <code>uint64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>string hash = 5;</code>
+     * @return The hash.
+     */
+    java.lang.String getHash();
+    /**
+     * <code>string hash = 5;</code>
+     * @return The bytes for hash.
+     */
+    com.google.protobuf.ByteString
+        getHashBytes();
   }
   /**
    * Protobuf type {@code fk_app.Firmware}
@@ -5133,60 +4983,56 @@ public final class FkApp {
       // @@protoc_insertion_point(message_implements:fk_app.Firmware)
       FirmwareOrBuilder {
     private Firmware() {
-      git_ = "";
+      version_ = "";
       build_ = "";
       number_ = "";
+      hash_ = "";
     }
-    public static final int GIT_FIELD_NUMBER = 1;
-    private java.lang.String git_;
+    public static final int VERSION_FIELD_NUMBER = 1;
+    private java.lang.String version_;
     /**
-     * <code>string git = 1;</code>
-     * @return The git.
+     * <code>string version = 1;</code>
+     * @return The version.
      */
     @java.lang.Override
-    public java.lang.String getGit() {
-      return git_;
+    public java.lang.String getVersion() {
+      return version_;
     }
     /**
-     * <code>string git = 1;</code>
-     * @return The bytes for git.
+     * <code>string version = 1;</code>
+     * @return The bytes for version.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getGitBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(git_);
+        getVersionBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(version_);
     }
     /**
-     * <code>string git = 1;</code>
-     * @param value The git to set.
+     * <code>string version = 1;</code>
+     * @param value The version to set.
      */
-    private void setGit(
+    private void setVersion(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
-      git_ = value;
+      version_ = value;
     }
     /**
-     * <code>string git = 1;</code>
+     * <code>string version = 1;</code>
      */
-    private void clearGit() {
+    private void clearVersion() {
       
-      git_ = getDefaultInstance().getGit();
+      version_ = getDefaultInstance().getVersion();
     }
     /**
-     * <code>string git = 1;</code>
-     * @param value The bytes for git to set.
+     * <code>string version = 1;</code>
+     * @param value The bytes for version to set.
      */
-    private void setGitBytes(
+    private void setVersionBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      checkByteStringIsUtf8(value);
+      version_ = value.toStringUtf8();
       
-      git_ = value.toStringUtf8();
     }
 
     public static final int BUILD_FIELD_NUMBER = 2;
@@ -5214,9 +5060,7 @@ public final class FkApp {
      */
     private void setBuild(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       build_ = value;
     }
@@ -5233,12 +5077,9 @@ public final class FkApp {
      */
     private void setBuildBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       build_ = value.toStringUtf8();
+      
     }
 
     public static final int NUMBER_FIELD_NUMBER = 3;
@@ -5266,9 +5107,7 @@ public final class FkApp {
      */
     private void setNumber(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       number_ = value;
     }
@@ -5285,12 +5124,82 @@ public final class FkApp {
      */
     private void setNumberBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       number_ = value.toStringUtf8();
+      
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private long timestamp_;
+    /**
+     * <code>uint64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+    /**
+     * <code>uint64 timestamp = 4;</code>
+     * @param value The timestamp to set.
+     */
+    private void setTimestamp(long value) {
+      
+      timestamp_ = value;
+    }
+    /**
+     * <code>uint64 timestamp = 4;</code>
+     */
+    private void clearTimestamp() {
+      
+      timestamp_ = 0L;
+    }
+
+    public static final int HASH_FIELD_NUMBER = 5;
+    private java.lang.String hash_;
+    /**
+     * <code>string hash = 5;</code>
+     * @return The hash.
+     */
+    @java.lang.Override
+    public java.lang.String getHash() {
+      return hash_;
+    }
+    /**
+     * <code>string hash = 5;</code>
+     * @return The bytes for hash.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getHashBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(hash_);
+    }
+    /**
+     * <code>string hash = 5;</code>
+     * @param value The hash to set.
+     */
+    private void setHash(
+        java.lang.String value) {
+      value.getClass();
+  
+      hash_ = value;
+    }
+    /**
+     * <code>string hash = 5;</code>
+     */
+    private void clearHash() {
+      
+      hash_ = getDefaultInstance().getHash();
+    }
+    /**
+     * <code>string hash = 5;</code>
+     * @param value The bytes for hash to set.
+     */
+    private void setHashBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      hash_ = value.toStringUtf8();
+      
     }
 
     public static org.fieldkit.app.pb.FkApp.Firmware parseFrom(
@@ -5389,51 +5298,51 @@ public final class FkApp {
 
 
       /**
-       * <code>string git = 1;</code>
-       * @return The git.
+       * <code>string version = 1;</code>
+       * @return The version.
        */
       @java.lang.Override
-      public java.lang.String getGit() {
-        return instance.getGit();
+      public java.lang.String getVersion() {
+        return instance.getVersion();
       }
       /**
-       * <code>string git = 1;</code>
-       * @return The bytes for git.
+       * <code>string version = 1;</code>
+       * @return The bytes for version.
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getGitBytes() {
-        return instance.getGitBytes();
+          getVersionBytes() {
+        return instance.getVersionBytes();
       }
       /**
-       * <code>string git = 1;</code>
-       * @param value The git to set.
+       * <code>string version = 1;</code>
+       * @param value The version to set.
        * @return This builder for chaining.
        */
-      public Builder setGit(
+      public Builder setVersion(
           java.lang.String value) {
         copyOnWrite();
-        instance.setGit(value);
+        instance.setVersion(value);
         return this;
       }
       /**
-       * <code>string git = 1;</code>
+       * <code>string version = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearGit() {
+      public Builder clearVersion() {
         copyOnWrite();
-        instance.clearGit();
+        instance.clearVersion();
         return this;
       }
       /**
-       * <code>string git = 1;</code>
-       * @param value The bytes for git to set.
+       * <code>string version = 1;</code>
+       * @param value The bytes for version to set.
        * @return This builder for chaining.
        */
-      public Builder setGitBytes(
+      public Builder setVersionBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setGitBytes(value);
+        instance.setVersionBytes(value);
         return this;
       }
 
@@ -5535,6 +5444,83 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>uint64 timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return instance.getTimestamp();
+      }
+      /**
+       * <code>uint64 timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+        copyOnWrite();
+        instance.setTimestamp(value);
+        return this;
+      }
+      /**
+       * <code>uint64 timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        copyOnWrite();
+        instance.clearTimestamp();
+        return this;
+      }
+
+      /**
+       * <code>string hash = 5;</code>
+       * @return The hash.
+       */
+      @java.lang.Override
+      public java.lang.String getHash() {
+        return instance.getHash();
+      }
+      /**
+       * <code>string hash = 5;</code>
+       * @return The bytes for hash.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getHashBytes() {
+        return instance.getHashBytes();
+      }
+      /**
+       * <code>string hash = 5;</code>
+       * @param value The hash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHash(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setHash(value);
+        return this;
+      }
+      /**
+       * <code>string hash = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHash() {
+        copyOnWrite();
+        instance.clearHash();
+        return this;
+      }
+      /**
+       * <code>string hash = 5;</code>
+       * @param value The bytes for hash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHashBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setHashBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.Firmware)
     }
     @java.lang.Override
@@ -5551,13 +5537,15 @@ public final class FkApp {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "git_",
+              "version_",
               "build_",
               "number_",
+              "timestamp_",
+              "hash_",
             };
             java.lang.String info =
-                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-                "\u0003\u0208";
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\u0208\u0004\u0003\u0005\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -5751,9 +5739,7 @@ public final class FkApp {
      */
     private void setDevice(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       device_ = value;
     }
@@ -5770,12 +5756,9 @@ public final class FkApp {
      */
     private void setDeviceBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       device_ = value.toStringUtf8();
+      
     }
 
     public static final int STREAM_FIELD_NUMBER = 2;
@@ -5803,9 +5786,7 @@ public final class FkApp {
      */
     private void setStream(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       stream_ = value;
     }
@@ -5822,12 +5803,9 @@ public final class FkApp {
      */
     private void setStreamBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       stream_ = value.toStringUtf8();
+      
     }
 
     public static final int DEVICEID_FIELD_NUMBER = 3;
@@ -5845,9 +5823,7 @@ public final class FkApp {
      * @param value The deviceId to set.
      */
     private void setDeviceId(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       deviceId_ = value;
     }
@@ -5884,9 +5860,7 @@ public final class FkApp {
      */
     private void setFirmware(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       firmware_ = value;
     }
@@ -5903,12 +5877,9 @@ public final class FkApp {
      */
     private void setFirmwareBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       firmware_ = value.toStringUtf8();
+      
     }
 
     public static final int BUILD_FIELD_NUMBER = 5;
@@ -5936,9 +5907,7 @@ public final class FkApp {
      */
     private void setBuild(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       build_ = value;
     }
@@ -5955,12 +5924,9 @@ public final class FkApp {
      */
     private void setBuildBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       build_ = value.toStringUtf8();
+      
     }
 
     public static final int NUMBER_FIELD_NUMBER = 8;
@@ -5988,9 +5954,7 @@ public final class FkApp {
      */
     private void setNumber(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       number_ = value;
     }
@@ -6007,12 +5971,9 @@ public final class FkApp {
      */
     private void setNumberBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       number_ = value.toStringUtf8();
+      
     }
 
     public static final int NAME_FIELD_NUMBER = 6;
@@ -6052,9 +6013,7 @@ public final class FkApp {
      */
     private void setName(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       name_ = value;
     }
@@ -6079,12 +6038,9 @@ public final class FkApp {
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       name_ = value.toStringUtf8();
+      
     }
 
     public static final int GENERATION_FIELD_NUMBER = 7;
@@ -6102,9 +6058,7 @@ public final class FkApp {
      * @param value The generation to set.
      */
     private void setGeneration(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       generation_ = value;
     }
@@ -7655,28 +7609,16 @@ public final class FkApp {
      */
     private void setSamples(
         int index, org.fieldkit.app.pb.FkApp.LiveDataSample value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSamplesIsMutable();
+      value.getClass();
+  ensureSamplesIsMutable();
       samples_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.LiveDataSample samples = 1;</code>
      */
-    private void setSamples(
-        int index, org.fieldkit.app.pb.FkApp.LiveDataSample.Builder builderForValue) {
-      ensureSamplesIsMutable();
-      samples_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveDataSample samples = 1;</code>
-     */
     private void addSamples(org.fieldkit.app.pb.FkApp.LiveDataSample value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSamplesIsMutable();
+      value.getClass();
+  ensureSamplesIsMutable();
       samples_.add(value);
     }
     /**
@@ -7684,27 +7626,9 @@ public final class FkApp {
      */
     private void addSamples(
         int index, org.fieldkit.app.pb.FkApp.LiveDataSample value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureSamplesIsMutable();
+      value.getClass();
+  ensureSamplesIsMutable();
       samples_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.LiveDataSample samples = 1;</code>
-     */
-    private void addSamples(
-        org.fieldkit.app.pb.FkApp.LiveDataSample.Builder builderForValue) {
-      ensureSamplesIsMutable();
-      samples_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveDataSample samples = 1;</code>
-     */
-    private void addSamples(
-        int index, org.fieldkit.app.pb.FkApp.LiveDataSample.Builder builderForValue) {
-      ensureSamplesIsMutable();
-      samples_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.LiveDataSample samples = 1;</code>
@@ -7860,7 +7784,8 @@ public final class FkApp {
       public Builder setSamples(
           int index, org.fieldkit.app.pb.FkApp.LiveDataSample.Builder builderForValue) {
         copyOnWrite();
-        instance.setSamples(index, builderForValue);
+        instance.setSamples(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -7886,7 +7811,7 @@ public final class FkApp {
       public Builder addSamples(
           org.fieldkit.app.pb.FkApp.LiveDataSample.Builder builderForValue) {
         copyOnWrite();
-        instance.addSamples(builderForValue);
+        instance.addSamples(builderForValue.build());
         return this;
       }
       /**
@@ -7895,7 +7820,8 @@ public final class FkApp {
       public Builder addSamples(
           int index, org.fieldkit.app.pb.FkApp.LiveDataSample.Builder builderForValue) {
         copyOnWrite();
-        instance.addSamples(index, builderForValue);
+        instance.addSamples(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -8185,9 +8111,7 @@ public final class FkApp {
      */
     private void setName(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       name_ = value;
     }
@@ -8204,12 +8128,9 @@ public final class FkApp {
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       name_ = value.toStringUtf8();
+      
     }
 
     public static final int MAXIMUM_FIELD_NUMBER = 6;
@@ -8680,28 +8601,16 @@ public final class FkApp {
      */
     private void setFiles(
         int index, org.fieldkit.app.pb.FkApp.File value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureFilesIsMutable();
+      value.getClass();
+  ensureFilesIsMutable();
       files_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.File files = 1;</code>
      */
-    private void setFiles(
-        int index, org.fieldkit.app.pb.FkApp.File.Builder builderForValue) {
-      ensureFilesIsMutable();
-      files_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.File files = 1;</code>
-     */
     private void addFiles(org.fieldkit.app.pb.FkApp.File value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureFilesIsMutable();
+      value.getClass();
+  ensureFilesIsMutable();
       files_.add(value);
     }
     /**
@@ -8709,27 +8618,9 @@ public final class FkApp {
      */
     private void addFiles(
         int index, org.fieldkit.app.pb.FkApp.File value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureFilesIsMutable();
+      value.getClass();
+  ensureFilesIsMutable();
       files_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.File files = 1;</code>
-     */
-    private void addFiles(
-        org.fieldkit.app.pb.FkApp.File.Builder builderForValue) {
-      ensureFilesIsMutable();
-      files_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.File files = 1;</code>
-     */
-    private void addFiles(
-        int index, org.fieldkit.app.pb.FkApp.File.Builder builderForValue) {
-      ensureFilesIsMutable();
-      files_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.File files = 1;</code>
@@ -8885,7 +8776,8 @@ public final class FkApp {
       public Builder setFiles(
           int index, org.fieldkit.app.pb.FkApp.File.Builder builderForValue) {
         copyOnWrite();
-        instance.setFiles(index, builderForValue);
+        instance.setFiles(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -8911,7 +8803,7 @@ public final class FkApp {
       public Builder addFiles(
           org.fieldkit.app.pb.FkApp.File.Builder builderForValue) {
         copyOnWrite();
-        instance.addFiles(builderForValue);
+        instance.addFiles(builderForValue.build());
         return this;
       }
       /**
@@ -8920,7 +8812,8 @@ public final class FkApp {
       public Builder addFiles(
           int index, org.fieldkit.app.pb.FkApp.File.Builder builderForValue) {
         copyOnWrite();
-        instance.addFiles(index, builderForValue);
+        instance.addFiles(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -9786,9 +9679,7 @@ public final class FkApp {
      * @param value The data to set.
      */
     private void setData(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       data_ = value;
     }
@@ -10835,9 +10726,7 @@ public final class FkApp {
      * @param value The message to set.
      */
     private void setMessage(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       message_ = value;
     }
@@ -11205,9 +11094,7 @@ public final class FkApp {
      * @param value The message to set.
      */
     private void setMessage(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       message_ = value;
     }
@@ -11627,11 +11514,8 @@ public final class FkApp {
      * @param value The type to set.
      */
     private void setType(org.fieldkit.app.pb.FkApp.QueryType value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
       type_ = value.getNumber();
+      
     }
     /**
      * <code>.fk_app.QueryType type = 1;</code>
@@ -11661,29 +11545,17 @@ public final class FkApp {
      * <code>.fk_app.QueryCapabilities queryCapabilities = 2;</code>
      */
     private void setQueryCapabilities(org.fieldkit.app.pb.FkApp.QueryCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      queryCapabilities_ = value;
+      value.getClass();
+  queryCapabilities_ = value;
       
       }
-    /**
-     * <code>.fk_app.QueryCapabilities queryCapabilities = 2;</code>
-     */
-    private void setQueryCapabilities(
-        org.fieldkit.app.pb.FkApp.QueryCapabilities.Builder builderForValue) {
-      queryCapabilities_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.QueryCapabilities queryCapabilities = 2;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeQueryCapabilities(org.fieldkit.app.pb.FkApp.QueryCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (queryCapabilities_ != null &&
+      value.getClass();
+  if (queryCapabilities_ != null &&
           queryCapabilities_ != org.fieldkit.app.pb.FkApp.QueryCapabilities.getDefaultInstance()) {
         queryCapabilities_ =
           org.fieldkit.app.pb.FkApp.QueryCapabilities.newBuilder(queryCapabilities_).mergeFrom(value).buildPartial();
@@ -11719,29 +11591,17 @@ public final class FkApp {
      * <code>.fk_app.ConfigureSensorQuery configureSensor = 3;</code>
      */
     private void setConfigureSensor(org.fieldkit.app.pb.FkApp.ConfigureSensorQuery value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      configureSensor_ = value;
+      value.getClass();
+  configureSensor_ = value;
       
       }
-    /**
-     * <code>.fk_app.ConfigureSensorQuery configureSensor = 3;</code>
-     */
-    private void setConfigureSensor(
-        org.fieldkit.app.pb.FkApp.ConfigureSensorQuery.Builder builderForValue) {
-      configureSensor_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.ConfigureSensorQuery configureSensor = 3;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeConfigureSensor(org.fieldkit.app.pb.FkApp.ConfigureSensorQuery value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (configureSensor_ != null &&
+      value.getClass();
+  if (configureSensor_ != null &&
           configureSensor_ != org.fieldkit.app.pb.FkApp.ConfigureSensorQuery.getDefaultInstance()) {
         configureSensor_ =
           org.fieldkit.app.pb.FkApp.ConfigureSensorQuery.newBuilder(configureSensor_).mergeFrom(value).buildPartial();
@@ -11777,29 +11637,17 @@ public final class FkApp {
      * <code>.fk_app.LiveDataPoll liveDataPoll = 8;</code>
      */
     private void setLiveDataPoll(org.fieldkit.app.pb.FkApp.LiveDataPoll value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      liveDataPoll_ = value;
+      value.getClass();
+  liveDataPoll_ = value;
       
       }
-    /**
-     * <code>.fk_app.LiveDataPoll liveDataPoll = 8;</code>
-     */
-    private void setLiveDataPoll(
-        org.fieldkit.app.pb.FkApp.LiveDataPoll.Builder builderForValue) {
-      liveDataPoll_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.LiveDataPoll liveDataPoll = 8;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeLiveDataPoll(org.fieldkit.app.pb.FkApp.LiveDataPoll value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (liveDataPoll_ != null &&
+      value.getClass();
+  if (liveDataPoll_ != null &&
           liveDataPoll_ != org.fieldkit.app.pb.FkApp.LiveDataPoll.getDefaultInstance()) {
         liveDataPoll_ =
           org.fieldkit.app.pb.FkApp.LiveDataPoll.newBuilder(liveDataPoll_).mergeFrom(value).buildPartial();
@@ -11847,24 +11695,10 @@ public final class FkApp {
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      */
     private void setDownloadFile(org.fieldkit.app.pb.FkApp.DownloadFile value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      downloadFile_ = value;
+      value.getClass();
+  downloadFile_ = value;
       
       }
-    /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
-     * <code>.fk_app.DownloadFile downloadFile = 10;</code>
-     */
-    private void setDownloadFile(
-        org.fieldkit.app.pb.FkApp.DownloadFile.Builder builderForValue) {
-      downloadFile_ = builderForValue.build();
-      
-    }
     /**
      * <pre>
      * Schedules newSchedules = 9;
@@ -11874,10 +11708,8 @@ public final class FkApp {
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeDownloadFile(org.fieldkit.app.pb.FkApp.DownloadFile value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (downloadFile_ != null &&
+      value.getClass();
+  if (downloadFile_ != null &&
           downloadFile_ != org.fieldkit.app.pb.FkApp.DownloadFile.getDefaultInstance()) {
         downloadFile_ =
           org.fieldkit.app.pb.FkApp.DownloadFile.newBuilder(downloadFile_).mergeFrom(value).buildPartial();
@@ -11917,29 +11749,17 @@ public final class FkApp {
      * <code>.fk_app.EraseFile eraseFile = 11;</code>
      */
     private void setEraseFile(org.fieldkit.app.pb.FkApp.EraseFile value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      eraseFile_ = value;
+      value.getClass();
+  eraseFile_ = value;
       
       }
-    /**
-     * <code>.fk_app.EraseFile eraseFile = 11;</code>
-     */
-    private void setEraseFile(
-        org.fieldkit.app.pb.FkApp.EraseFile.Builder builderForValue) {
-      eraseFile_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.EraseFile eraseFile = 11;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeEraseFile(org.fieldkit.app.pb.FkApp.EraseFile value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (eraseFile_ != null &&
+      value.getClass();
+  if (eraseFile_ != null &&
           eraseFile_ != org.fieldkit.app.pb.FkApp.EraseFile.getDefaultInstance()) {
         eraseFile_ =
           org.fieldkit.app.pb.FkApp.EraseFile.newBuilder(eraseFile_).mergeFrom(value).buildPartial();
@@ -11975,29 +11795,17 @@ public final class FkApp {
      * <code>.fk_app.NetworkSettings networkSettings = 12;</code>
      */
     private void setNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      networkSettings_ = value;
+      value.getClass();
+  networkSettings_ = value;
       
       }
-    /**
-     * <code>.fk_app.NetworkSettings networkSettings = 12;</code>
-     */
-    private void setNetworkSettings(
-        org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
-      networkSettings_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.NetworkSettings networkSettings = 12;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (networkSettings_ != null &&
+      value.getClass();
+  if (networkSettings_ != null &&
           networkSettings_ != org.fieldkit.app.pb.FkApp.NetworkSettings.getDefaultInstance()) {
         networkSettings_ =
           org.fieldkit.app.pb.FkApp.NetworkSettings.newBuilder(networkSettings_).mergeFrom(value).buildPartial();
@@ -12033,29 +11841,17 @@ public final class FkApp {
      * <code>.fk_app.Identity identity = 13;</code>
      */
     private void setIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      identity_ = value;
+      value.getClass();
+  identity_ = value;
       
       }
-    /**
-     * <code>.fk_app.Identity identity = 13;</code>
-     */
-    private void setIdentity(
-        org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
-      identity_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Identity identity = 13;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (identity_ != null &&
+      value.getClass();
+  if (identity_ != null &&
           identity_ != org.fieldkit.app.pb.FkApp.Identity.getDefaultInstance()) {
         identity_ =
           org.fieldkit.app.pb.FkApp.Identity.newBuilder(identity_).mergeFrom(value).buildPartial();
@@ -12091,29 +11887,17 @@ public final class FkApp {
      * <code>.fk_app.QueryModule module = 14;</code>
      */
     private void setModule(org.fieldkit.app.pb.FkApp.QueryModule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      module_ = value;
+      value.getClass();
+  module_ = value;
       
       }
-    /**
-     * <code>.fk_app.QueryModule module = 14;</code>
-     */
-    private void setModule(
-        org.fieldkit.app.pb.FkApp.QueryModule.Builder builderForValue) {
-      module_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.QueryModule module = 14;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeModule(org.fieldkit.app.pb.FkApp.QueryModule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (module_ != null &&
+      value.getClass();
+  if (module_ != null &&
           module_ != org.fieldkit.app.pb.FkApp.QueryModule.getDefaultInstance()) {
         module_ =
           org.fieldkit.app.pb.FkApp.QueryModule.newBuilder(module_).mergeFrom(value).buildPartial();
@@ -12298,7 +12082,7 @@ public final class FkApp {
       public Builder setQueryCapabilities(
           org.fieldkit.app.pb.FkApp.QueryCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setQueryCapabilities(builderForValue);
+        instance.setQueryCapabilities(builderForValue.build());
         return this;
       }
       /**
@@ -12345,7 +12129,7 @@ public final class FkApp {
       public Builder setConfigureSensor(
           org.fieldkit.app.pb.FkApp.ConfigureSensorQuery.Builder builderForValue) {
         copyOnWrite();
-        instance.setConfigureSensor(builderForValue);
+        instance.setConfigureSensor(builderForValue.build());
         return this;
       }
       /**
@@ -12392,7 +12176,7 @@ public final class FkApp {
       public Builder setLiveDataPoll(
           org.fieldkit.app.pb.FkApp.LiveDataPoll.Builder builderForValue) {
         copyOnWrite();
-        instance.setLiveDataPoll(builderForValue);
+        instance.setLiveDataPoll(builderForValue.build());
         return this;
       }
       /**
@@ -12455,7 +12239,7 @@ public final class FkApp {
       public Builder setDownloadFile(
           org.fieldkit.app.pb.FkApp.DownloadFile.Builder builderForValue) {
         copyOnWrite();
-        instance.setDownloadFile(builderForValue);
+        instance.setDownloadFile(builderForValue.build());
         return this;
       }
       /**
@@ -12510,7 +12294,7 @@ public final class FkApp {
       public Builder setEraseFile(
           org.fieldkit.app.pb.FkApp.EraseFile.Builder builderForValue) {
         copyOnWrite();
-        instance.setEraseFile(builderForValue);
+        instance.setEraseFile(builderForValue.build());
         return this;
       }
       /**
@@ -12557,7 +12341,7 @@ public final class FkApp {
       public Builder setNetworkSettings(
           org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
         copyOnWrite();
-        instance.setNetworkSettings(builderForValue);
+        instance.setNetworkSettings(builderForValue.build());
         return this;
       }
       /**
@@ -12604,7 +12388,7 @@ public final class FkApp {
       public Builder setIdentity(
           org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
         copyOnWrite();
-        instance.setIdentity(builderForValue);
+        instance.setIdentity(builderForValue.build());
         return this;
       }
       /**
@@ -12651,7 +12435,7 @@ public final class FkApp {
       public Builder setModule(
           org.fieldkit.app.pb.FkApp.QueryModule.Builder builderForValue) {
         copyOnWrite();
-        instance.setModule(builderForValue);
+        instance.setModule(builderForValue.build());
         return this;
       }
       /**
@@ -12811,9 +12595,7 @@ public final class FkApp {
      */
     private void setMessage(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       message_ = value;
     }
@@ -12830,12 +12612,9 @@ public final class FkApp {
      */
     private void setMessageBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       message_ = value.toStringUtf8();
+      
     }
 
     public static final int DELAY_FIELD_NUMBER = 2;
@@ -13279,11 +13058,8 @@ public final class FkApp {
      * @param value The type to set.
      */
     private void setType(org.fieldkit.app.pb.FkApp.ReplyType value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
       type_ = value.getNumber();
+      
     }
     /**
      * <code>.fk_app.ReplyType type = 1;</code>
@@ -13342,28 +13118,16 @@ public final class FkApp {
      */
     private void setErrors(
         int index, org.fieldkit.app.pb.FkApp.Error value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureErrorsIsMutable();
+      value.getClass();
+  ensureErrorsIsMutable();
       errors_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.Error errors = 2;</code>
      */
-    private void setErrors(
-        int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
-      ensureErrorsIsMutable();
-      errors_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.Error errors = 2;</code>
-     */
     private void addErrors(org.fieldkit.app.pb.FkApp.Error value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureErrorsIsMutable();
+      value.getClass();
+  ensureErrorsIsMutable();
       errors_.add(value);
     }
     /**
@@ -13371,27 +13135,9 @@ public final class FkApp {
      */
     private void addErrors(
         int index, org.fieldkit.app.pb.FkApp.Error value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureErrorsIsMutable();
+      value.getClass();
+  ensureErrorsIsMutable();
       errors_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.Error errors = 2;</code>
-     */
-    private void addErrors(
-        org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
-      ensureErrorsIsMutable();
-      errors_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.Error errors = 2;</code>
-     */
-    private void addErrors(
-        int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
-      ensureErrorsIsMutable();
-      errors_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.Error errors = 2;</code>
@@ -13436,29 +13182,17 @@ public final class FkApp {
      * <code>.fk_app.Capabilities capabilities = 3;</code>
      */
     private void setCapabilities(org.fieldkit.app.pb.FkApp.Capabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      capabilities_ = value;
+      value.getClass();
+  capabilities_ = value;
       
       }
-    /**
-     * <code>.fk_app.Capabilities capabilities = 3;</code>
-     */
-    private void setCapabilities(
-        org.fieldkit.app.pb.FkApp.Capabilities.Builder builderForValue) {
-      capabilities_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Capabilities capabilities = 3;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeCapabilities(org.fieldkit.app.pb.FkApp.Capabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (capabilities_ != null &&
+      value.getClass();
+  if (capabilities_ != null &&
           capabilities_ != org.fieldkit.app.pb.FkApp.Capabilities.getDefaultInstance()) {
         capabilities_ =
           org.fieldkit.app.pb.FkApp.Capabilities.newBuilder(capabilities_).mergeFrom(value).buildPartial();
@@ -13494,29 +13228,17 @@ public final class FkApp {
      * <code>.fk_app.LiveData liveData = 6;</code>
      */
     private void setLiveData(org.fieldkit.app.pb.FkApp.LiveData value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      liveData_ = value;
+      value.getClass();
+  liveData_ = value;
       
       }
-    /**
-     * <code>.fk_app.LiveData liveData = 6;</code>
-     */
-    private void setLiveData(
-        org.fieldkit.app.pb.FkApp.LiveData.Builder builderForValue) {
-      liveData_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.LiveData liveData = 6;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeLiveData(org.fieldkit.app.pb.FkApp.LiveData value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (liveData_ != null &&
+      value.getClass();
+  if (liveData_ != null &&
           liveData_ != org.fieldkit.app.pb.FkApp.LiveData.getDefaultInstance()) {
         liveData_ =
           org.fieldkit.app.pb.FkApp.LiveData.newBuilder(liveData_).mergeFrom(value).buildPartial();
@@ -13564,24 +13286,10 @@ public final class FkApp {
      * <code>.fk_app.Files files = 8;</code>
      */
     private void setFiles(org.fieldkit.app.pb.FkApp.Files value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      files_ = value;
+      value.getClass();
+  files_ = value;
       
       }
-    /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
-     * <code>.fk_app.Files files = 8;</code>
-     */
-    private void setFiles(
-        org.fieldkit.app.pb.FkApp.Files.Builder builderForValue) {
-      files_ = builderForValue.build();
-      
-    }
     /**
      * <pre>
      * Schedules schedules = 7;
@@ -13591,10 +13299,8 @@ public final class FkApp {
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeFiles(org.fieldkit.app.pb.FkApp.Files value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (files_ != null &&
+      value.getClass();
+  if (files_ != null &&
           files_ != org.fieldkit.app.pb.FkApp.Files.getDefaultInstance()) {
         files_ =
           org.fieldkit.app.pb.FkApp.Files.newBuilder(files_).mergeFrom(value).buildPartial();
@@ -13634,29 +13340,17 @@ public final class FkApp {
      * <code>.fk_app.FileData fileData = 9;</code>
      */
     private void setFileData(org.fieldkit.app.pb.FkApp.FileData value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      fileData_ = value;
+      value.getClass();
+  fileData_ = value;
       
       }
-    /**
-     * <code>.fk_app.FileData fileData = 9;</code>
-     */
-    private void setFileData(
-        org.fieldkit.app.pb.FkApp.FileData.Builder builderForValue) {
-      fileData_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.FileData fileData = 9;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeFileData(org.fieldkit.app.pb.FkApp.FileData value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (fileData_ != null &&
+      value.getClass();
+  if (fileData_ != null &&
           fileData_ != org.fieldkit.app.pb.FkApp.FileData.getDefaultInstance()) {
         fileData_ =
           org.fieldkit.app.pb.FkApp.FileData.newBuilder(fileData_).mergeFrom(value).buildPartial();
@@ -13692,29 +13386,17 @@ public final class FkApp {
      * <code>.fk_app.NetworkSettings networkSettings = 10;</code>
      */
     private void setNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      networkSettings_ = value;
+      value.getClass();
+  networkSettings_ = value;
       
       }
-    /**
-     * <code>.fk_app.NetworkSettings networkSettings = 10;</code>
-     */
-    private void setNetworkSettings(
-        org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
-      networkSettings_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.NetworkSettings networkSettings = 10;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (networkSettings_ != null &&
+      value.getClass();
+  if (networkSettings_ != null &&
           networkSettings_ != org.fieldkit.app.pb.FkApp.NetworkSettings.getDefaultInstance()) {
         networkSettings_ =
           org.fieldkit.app.pb.FkApp.NetworkSettings.newBuilder(networkSettings_).mergeFrom(value).buildPartial();
@@ -13750,29 +13432,17 @@ public final class FkApp {
      * <code>.fk_app.Identity identity = 11;</code>
      */
     private void setIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      identity_ = value;
+      value.getClass();
+  identity_ = value;
       
       }
-    /**
-     * <code>.fk_app.Identity identity = 11;</code>
-     */
-    private void setIdentity(
-        org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
-      identity_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Identity identity = 11;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (identity_ != null &&
+      value.getClass();
+  if (identity_ != null &&
           identity_ != org.fieldkit.app.pb.FkApp.Identity.getDefaultInstance()) {
         identity_ =
           org.fieldkit.app.pb.FkApp.Identity.newBuilder(identity_).mergeFrom(value).buildPartial();
@@ -13808,29 +13478,17 @@ public final class FkApp {
      * <code>.fk_app.DeviceStatus status = 12;</code>
      */
     private void setStatus(org.fieldkit.app.pb.FkApp.DeviceStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      status_ = value;
+      value.getClass();
+  status_ = value;
       
       }
-    /**
-     * <code>.fk_app.DeviceStatus status = 12;</code>
-     */
-    private void setStatus(
-        org.fieldkit.app.pb.FkApp.DeviceStatus.Builder builderForValue) {
-      status_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.DeviceStatus status = 12;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeStatus(org.fieldkit.app.pb.FkApp.DeviceStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (status_ != null &&
+      value.getClass();
+  if (status_ != null &&
           status_ != org.fieldkit.app.pb.FkApp.DeviceStatus.getDefaultInstance()) {
         status_ =
           org.fieldkit.app.pb.FkApp.DeviceStatus.newBuilder(status_).mergeFrom(value).buildPartial();
@@ -13866,29 +13524,17 @@ public final class FkApp {
      * <code>.fk_app.ModuleReply module = 13;</code>
      */
     private void setModule(org.fieldkit.app.pb.FkApp.ModuleReply value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      module_ = value;
+      value.getClass();
+  module_ = value;
       
       }
-    /**
-     * <code>.fk_app.ModuleReply module = 13;</code>
-     */
-    private void setModule(
-        org.fieldkit.app.pb.FkApp.ModuleReply.Builder builderForValue) {
-      module_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.ModuleReply module = 13;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeModule(org.fieldkit.app.pb.FkApp.ModuleReply value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (module_ != null &&
+      value.getClass();
+  if (module_ != null &&
           module_ != org.fieldkit.app.pb.FkApp.ModuleReply.getDefaultInstance()) {
         module_ =
           org.fieldkit.app.pb.FkApp.ModuleReply.newBuilder(module_).mergeFrom(value).buildPartial();
@@ -14081,7 +13727,8 @@ public final class FkApp {
       public Builder setErrors(
           int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
         copyOnWrite();
-        instance.setErrors(index, builderForValue);
+        instance.setErrors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -14107,7 +13754,7 @@ public final class FkApp {
       public Builder addErrors(
           org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
         copyOnWrite();
-        instance.addErrors(builderForValue);
+        instance.addErrors(builderForValue.build());
         return this;
       }
       /**
@@ -14116,7 +13763,8 @@ public final class FkApp {
       public Builder addErrors(
           int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
         copyOnWrite();
-        instance.addErrors(index, builderForValue);
+        instance.addErrors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -14173,7 +13821,7 @@ public final class FkApp {
       public Builder setCapabilities(
           org.fieldkit.app.pb.FkApp.Capabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setCapabilities(builderForValue);
+        instance.setCapabilities(builderForValue.build());
         return this;
       }
       /**
@@ -14220,7 +13868,7 @@ public final class FkApp {
       public Builder setLiveData(
           org.fieldkit.app.pb.FkApp.LiveData.Builder builderForValue) {
         copyOnWrite();
-        instance.setLiveData(builderForValue);
+        instance.setLiveData(builderForValue.build());
         return this;
       }
       /**
@@ -14283,7 +13931,7 @@ public final class FkApp {
       public Builder setFiles(
           org.fieldkit.app.pb.FkApp.Files.Builder builderForValue) {
         copyOnWrite();
-        instance.setFiles(builderForValue);
+        instance.setFiles(builderForValue.build());
         return this;
       }
       /**
@@ -14338,7 +13986,7 @@ public final class FkApp {
       public Builder setFileData(
           org.fieldkit.app.pb.FkApp.FileData.Builder builderForValue) {
         copyOnWrite();
-        instance.setFileData(builderForValue);
+        instance.setFileData(builderForValue.build());
         return this;
       }
       /**
@@ -14385,7 +14033,7 @@ public final class FkApp {
       public Builder setNetworkSettings(
           org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
         copyOnWrite();
-        instance.setNetworkSettings(builderForValue);
+        instance.setNetworkSettings(builderForValue.build());
         return this;
       }
       /**
@@ -14432,7 +14080,7 @@ public final class FkApp {
       public Builder setIdentity(
           org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
         copyOnWrite();
-        instance.setIdentity(builderForValue);
+        instance.setIdentity(builderForValue.build());
         return this;
       }
       /**
@@ -14479,7 +14127,7 @@ public final class FkApp {
       public Builder setStatus(
           org.fieldkit.app.pb.FkApp.DeviceStatus.Builder builderForValue) {
         copyOnWrite();
-        instance.setStatus(builderForValue);
+        instance.setStatus(builderForValue.build());
         return this;
       }
       /**
@@ -14526,7 +14174,7 @@ public final class FkApp {
       public Builder setModule(
           org.fieldkit.app.pb.FkApp.ModuleReply.Builder builderForValue) {
         copyOnWrite();
-        instance.setModule(builderForValue);
+        instance.setModule(builderForValue.build());
         return this;
       }
       /**
@@ -14678,9 +14326,7 @@ public final class FkApp {
      * @param value The cron to set.
      */
     private void setCron(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       cron_ = value;
     }
@@ -15110,29 +14756,17 @@ public final class FkApp {
      * <code>.fk_app.Schedule readings = 2;</code>
      */
     private void setReadings(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      readings_ = value;
+      value.getClass();
+  readings_ = value;
       
       }
-    /**
-     * <code>.fk_app.Schedule readings = 2;</code>
-     */
-    private void setReadings(
-        org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
-      readings_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Schedule readings = 2;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeReadings(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (readings_ != null &&
+      value.getClass();
+  if (readings_ != null &&
           readings_ != org.fieldkit.app.pb.FkApp.Schedule.getDefaultInstance()) {
         readings_ =
           org.fieldkit.app.pb.FkApp.Schedule.newBuilder(readings_).mergeFrom(value).buildPartial();
@@ -15168,29 +14802,17 @@ public final class FkApp {
      * <code>.fk_app.Schedule lora = 3;</code>
      */
     private void setLora(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      lora_ = value;
+      value.getClass();
+  lora_ = value;
       
       }
-    /**
-     * <code>.fk_app.Schedule lora = 3;</code>
-     */
-    private void setLora(
-        org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
-      lora_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Schedule lora = 3;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeLora(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (lora_ != null &&
+      value.getClass();
+  if (lora_ != null &&
           lora_ != org.fieldkit.app.pb.FkApp.Schedule.getDefaultInstance()) {
         lora_ =
           org.fieldkit.app.pb.FkApp.Schedule.newBuilder(lora_).mergeFrom(value).buildPartial();
@@ -15226,29 +14848,17 @@ public final class FkApp {
      * <code>.fk_app.Schedule network = 4;</code>
      */
     private void setNetwork(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      network_ = value;
+      value.getClass();
+  network_ = value;
       
       }
-    /**
-     * <code>.fk_app.Schedule network = 4;</code>
-     */
-    private void setNetwork(
-        org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
-      network_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Schedule network = 4;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeNetwork(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (network_ != null &&
+      value.getClass();
+  if (network_ != null &&
           network_ != org.fieldkit.app.pb.FkApp.Schedule.getDefaultInstance()) {
         network_ =
           org.fieldkit.app.pb.FkApp.Schedule.newBuilder(network_).mergeFrom(value).buildPartial();
@@ -15284,29 +14894,17 @@ public final class FkApp {
      * <code>.fk_app.Schedule gps = 5;</code>
      */
     private void setGps(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      gps_ = value;
+      value.getClass();
+  gps_ = value;
       
       }
-    /**
-     * <code>.fk_app.Schedule gps = 5;</code>
-     */
-    private void setGps(
-        org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
-      gps_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Schedule gps = 5;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeGps(org.fieldkit.app.pb.FkApp.Schedule value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (gps_ != null &&
+      value.getClass();
+  if (gps_ != null &&
           gps_ != org.fieldkit.app.pb.FkApp.Schedule.getDefaultInstance()) {
         gps_ =
           org.fieldkit.app.pb.FkApp.Schedule.newBuilder(gps_).mergeFrom(value).buildPartial();
@@ -15473,7 +15071,7 @@ public final class FkApp {
       public Builder setReadings(
           org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
         copyOnWrite();
-        instance.setReadings(builderForValue);
+        instance.setReadings(builderForValue.build());
         return this;
       }
       /**
@@ -15520,7 +15118,7 @@ public final class FkApp {
       public Builder setLora(
           org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
         copyOnWrite();
-        instance.setLora(builderForValue);
+        instance.setLora(builderForValue.build());
         return this;
       }
       /**
@@ -15567,7 +15165,7 @@ public final class FkApp {
       public Builder setNetwork(
           org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
         copyOnWrite();
-        instance.setNetwork(builderForValue);
+        instance.setNetwork(builderForValue.build());
         return this;
       }
       /**
@@ -15614,7 +15212,7 @@ public final class FkApp {
       public Builder setGps(
           org.fieldkit.app.pb.FkApp.Schedule.Builder builderForValue) {
         copyOnWrite();
-        instance.setGps(builderForValue);
+        instance.setGps(builderForValue.build());
         return this;
       }
       /**
@@ -17401,29 +16999,17 @@ public final class FkApp {
      * <code>.fk_app.BatteryStatus battery = 1;</code>
      */
     private void setBattery(org.fieldkit.app.pb.FkApp.BatteryStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      battery_ = value;
+      value.getClass();
+  battery_ = value;
       
       }
-    /**
-     * <code>.fk_app.BatteryStatus battery = 1;</code>
-     */
-    private void setBattery(
-        org.fieldkit.app.pb.FkApp.BatteryStatus.Builder builderForValue) {
-      battery_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.BatteryStatus battery = 1;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeBattery(org.fieldkit.app.pb.FkApp.BatteryStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (battery_ != null &&
+      value.getClass();
+  if (battery_ != null &&
           battery_ != org.fieldkit.app.pb.FkApp.BatteryStatus.getDefaultInstance()) {
         battery_ =
           org.fieldkit.app.pb.FkApp.BatteryStatus.newBuilder(battery_).mergeFrom(value).buildPartial();
@@ -17562,7 +17148,7 @@ public final class FkApp {
       public Builder setBattery(
           org.fieldkit.app.pb.FkApp.BatteryStatus.Builder builderForValue) {
         copyOnWrite();
-        instance.setBattery(builderForValue);
+        instance.setBattery(builderForValue.build());
         return this;
       }
       /**
@@ -17764,6 +17350,17 @@ public final class FkApp {
      * @return The time.
      */
     long getTime();
+
+    /**
+     * <code>.fk_app.Firmware firmware = 12;</code>
+     * @return Whether the firmware field is set.
+     */
+    boolean hasFirmware();
+    /**
+     * <code>.fk_app.Firmware firmware = 12;</code>
+     * @return The firmware.
+     */
+    org.fieldkit.app.pb.FkApp.Firmware getFirmware();
   }
   /**
    * Protobuf type {@code fk_app.Status}
@@ -17847,29 +17444,17 @@ public final class FkApp {
      * <code>.fk_app.Identity identity = 3;</code>
      */
     private void setIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      identity_ = value;
+      value.getClass();
+  identity_ = value;
       
       }
-    /**
-     * <code>.fk_app.Identity identity = 3;</code>
-     */
-    private void setIdentity(
-        org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
-      identity_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Identity identity = 3;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (identity_ != null &&
+      value.getClass();
+  if (identity_ != null &&
           identity_ != org.fieldkit.app.pb.FkApp.Identity.getDefaultInstance()) {
         identity_ =
           org.fieldkit.app.pb.FkApp.Identity.newBuilder(identity_).mergeFrom(value).buildPartial();
@@ -17905,29 +17490,17 @@ public final class FkApp {
      * <code>.fk_app.HardwareStatus hardware = 4;</code>
      */
     private void setHardware(org.fieldkit.app.pb.FkApp.HardwareStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      hardware_ = value;
+      value.getClass();
+  hardware_ = value;
       
       }
-    /**
-     * <code>.fk_app.HardwareStatus hardware = 4;</code>
-     */
-    private void setHardware(
-        org.fieldkit.app.pb.FkApp.HardwareStatus.Builder builderForValue) {
-      hardware_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.HardwareStatus hardware = 4;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeHardware(org.fieldkit.app.pb.FkApp.HardwareStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (hardware_ != null &&
+      value.getClass();
+  if (hardware_ != null &&
           hardware_ != org.fieldkit.app.pb.FkApp.HardwareStatus.getDefaultInstance()) {
         hardware_ =
           org.fieldkit.app.pb.FkApp.HardwareStatus.newBuilder(hardware_).mergeFrom(value).buildPartial();
@@ -17963,29 +17536,17 @@ public final class FkApp {
      * <code>.fk_app.PowerStatus power = 5;</code>
      */
     private void setPower(org.fieldkit.app.pb.FkApp.PowerStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      power_ = value;
+      value.getClass();
+  power_ = value;
       
       }
-    /**
-     * <code>.fk_app.PowerStatus power = 5;</code>
-     */
-    private void setPower(
-        org.fieldkit.app.pb.FkApp.PowerStatus.Builder builderForValue) {
-      power_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.PowerStatus power = 5;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergePower(org.fieldkit.app.pb.FkApp.PowerStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (power_ != null &&
+      value.getClass();
+  if (power_ != null &&
           power_ != org.fieldkit.app.pb.FkApp.PowerStatus.getDefaultInstance()) {
         power_ =
           org.fieldkit.app.pb.FkApp.PowerStatus.newBuilder(power_).mergeFrom(value).buildPartial();
@@ -18021,29 +17582,17 @@ public final class FkApp {
      * <code>.fk_app.MemoryStatus memory = 6;</code>
      */
     private void setMemory(org.fieldkit.app.pb.FkApp.MemoryStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      memory_ = value;
+      value.getClass();
+  memory_ = value;
       
       }
-    /**
-     * <code>.fk_app.MemoryStatus memory = 6;</code>
-     */
-    private void setMemory(
-        org.fieldkit.app.pb.FkApp.MemoryStatus.Builder builderForValue) {
-      memory_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.MemoryStatus memory = 6;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeMemory(org.fieldkit.app.pb.FkApp.MemoryStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (memory_ != null &&
+      value.getClass();
+  if (memory_ != null &&
           memory_ != org.fieldkit.app.pb.FkApp.MemoryStatus.getDefaultInstance()) {
         memory_ =
           org.fieldkit.app.pb.FkApp.MemoryStatus.newBuilder(memory_).mergeFrom(value).buildPartial();
@@ -18079,29 +17628,17 @@ public final class FkApp {
      * <code>.fk_app.GpsStatus gps = 7;</code>
      */
     private void setGps(org.fieldkit.app.pb.FkApp.GpsStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      gps_ = value;
+      value.getClass();
+  gps_ = value;
       
       }
-    /**
-     * <code>.fk_app.GpsStatus gps = 7;</code>
-     */
-    private void setGps(
-        org.fieldkit.app.pb.FkApp.GpsStatus.Builder builderForValue) {
-      gps_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.GpsStatus gps = 7;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeGps(org.fieldkit.app.pb.FkApp.GpsStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (gps_ != null &&
+      value.getClass();
+  if (gps_ != null &&
           gps_ != org.fieldkit.app.pb.FkApp.GpsStatus.getDefaultInstance()) {
         gps_ =
           org.fieldkit.app.pb.FkApp.GpsStatus.newBuilder(gps_).mergeFrom(value).buildPartial();
@@ -18137,29 +17674,17 @@ public final class FkApp {
      * <code>.fk_app.Schedules schedules = 8;</code>
      */
     private void setSchedules(org.fieldkit.app.pb.FkApp.Schedules value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      schedules_ = value;
+      value.getClass();
+  schedules_ = value;
       
       }
-    /**
-     * <code>.fk_app.Schedules schedules = 8;</code>
-     */
-    private void setSchedules(
-        org.fieldkit.app.pb.FkApp.Schedules.Builder builderForValue) {
-      schedules_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Schedules schedules = 8;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeSchedules(org.fieldkit.app.pb.FkApp.Schedules value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (schedules_ != null &&
+      value.getClass();
+  if (schedules_ != null &&
           schedules_ != org.fieldkit.app.pb.FkApp.Schedules.getDefaultInstance()) {
         schedules_ =
           org.fieldkit.app.pb.FkApp.Schedules.newBuilder(schedules_).mergeFrom(value).buildPartial();
@@ -18195,29 +17720,17 @@ public final class FkApp {
      * <code>.fk_app.Recording recording = 9;</code>
      */
     private void setRecording(org.fieldkit.app.pb.FkApp.Recording value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      recording_ = value;
+      value.getClass();
+  recording_ = value;
       
       }
-    /**
-     * <code>.fk_app.Recording recording = 9;</code>
-     */
-    private void setRecording(
-        org.fieldkit.app.pb.FkApp.Recording.Builder builderForValue) {
-      recording_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Recording recording = 9;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeRecording(org.fieldkit.app.pb.FkApp.Recording value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (recording_ != null &&
+      value.getClass();
+  if (recording_ != null &&
           recording_ != org.fieldkit.app.pb.FkApp.Recording.getDefaultInstance()) {
         recording_ =
           org.fieldkit.app.pb.FkApp.Recording.newBuilder(recording_).mergeFrom(value).buildPartial();
@@ -18253,29 +17766,17 @@ public final class FkApp {
      * <code>.fk_app.NetworkSettings network = 10;</code>
      */
     private void setNetwork(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      network_ = value;
+      value.getClass();
+  network_ = value;
       
       }
-    /**
-     * <code>.fk_app.NetworkSettings network = 10;</code>
-     */
-    private void setNetwork(
-        org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
-      network_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.NetworkSettings network = 10;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeNetwork(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (network_ != null &&
+      value.getClass();
+  if (network_ != null &&
           network_ != org.fieldkit.app.pb.FkApp.NetworkSettings.getDefaultInstance()) {
         network_ =
           org.fieldkit.app.pb.FkApp.NetworkSettings.newBuilder(network_).mergeFrom(value).buildPartial();
@@ -18315,6 +17816,52 @@ public final class FkApp {
     private void clearTime() {
       
       time_ = 0L;
+    }
+
+    public static final int FIRMWARE_FIELD_NUMBER = 12;
+    private org.fieldkit.app.pb.FkApp.Firmware firmware_;
+    /**
+     * <code>.fk_app.Firmware firmware = 12;</code>
+     */
+    @java.lang.Override
+    public boolean hasFirmware() {
+      return firmware_ != null;
+    }
+    /**
+     * <code>.fk_app.Firmware firmware = 12;</code>
+     */
+    @java.lang.Override
+    public org.fieldkit.app.pb.FkApp.Firmware getFirmware() {
+      return firmware_ == null ? org.fieldkit.app.pb.FkApp.Firmware.getDefaultInstance() : firmware_;
+    }
+    /**
+     * <code>.fk_app.Firmware firmware = 12;</code>
+     */
+    private void setFirmware(org.fieldkit.app.pb.FkApp.Firmware value) {
+      value.getClass();
+  firmware_ = value;
+      
+      }
+    /**
+     * <code>.fk_app.Firmware firmware = 12;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeFirmware(org.fieldkit.app.pb.FkApp.Firmware value) {
+      value.getClass();
+  if (firmware_ != null &&
+          firmware_ != org.fieldkit.app.pb.FkApp.Firmware.getDefaultInstance()) {
+        firmware_ =
+          org.fieldkit.app.pb.FkApp.Firmware.newBuilder(firmware_).mergeFrom(value).buildPartial();
+      } else {
+        firmware_ = value;
+      }
+      
+    }
+    /**
+     * <code>.fk_app.Firmware firmware = 12;</code>
+     */
+    private void clearFirmware() {  firmware_ = null;
+      
     }
 
     public static org.fieldkit.app.pb.FkApp.Status parseFrom(
@@ -18496,7 +18043,7 @@ public final class FkApp {
       public Builder setIdentity(
           org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
         copyOnWrite();
-        instance.setIdentity(builderForValue);
+        instance.setIdentity(builderForValue.build());
         return this;
       }
       /**
@@ -18543,7 +18090,7 @@ public final class FkApp {
       public Builder setHardware(
           org.fieldkit.app.pb.FkApp.HardwareStatus.Builder builderForValue) {
         copyOnWrite();
-        instance.setHardware(builderForValue);
+        instance.setHardware(builderForValue.build());
         return this;
       }
       /**
@@ -18590,7 +18137,7 @@ public final class FkApp {
       public Builder setPower(
           org.fieldkit.app.pb.FkApp.PowerStatus.Builder builderForValue) {
         copyOnWrite();
-        instance.setPower(builderForValue);
+        instance.setPower(builderForValue.build());
         return this;
       }
       /**
@@ -18637,7 +18184,7 @@ public final class FkApp {
       public Builder setMemory(
           org.fieldkit.app.pb.FkApp.MemoryStatus.Builder builderForValue) {
         copyOnWrite();
-        instance.setMemory(builderForValue);
+        instance.setMemory(builderForValue.build());
         return this;
       }
       /**
@@ -18684,7 +18231,7 @@ public final class FkApp {
       public Builder setGps(
           org.fieldkit.app.pb.FkApp.GpsStatus.Builder builderForValue) {
         copyOnWrite();
-        instance.setGps(builderForValue);
+        instance.setGps(builderForValue.build());
         return this;
       }
       /**
@@ -18731,7 +18278,7 @@ public final class FkApp {
       public Builder setSchedules(
           org.fieldkit.app.pb.FkApp.Schedules.Builder builderForValue) {
         copyOnWrite();
-        instance.setSchedules(builderForValue);
+        instance.setSchedules(builderForValue.build());
         return this;
       }
       /**
@@ -18778,7 +18325,7 @@ public final class FkApp {
       public Builder setRecording(
           org.fieldkit.app.pb.FkApp.Recording.Builder builderForValue) {
         copyOnWrite();
-        instance.setRecording(builderForValue);
+        instance.setRecording(builderForValue.build());
         return this;
       }
       /**
@@ -18825,7 +18372,7 @@ public final class FkApp {
       public Builder setNetwork(
           org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
         copyOnWrite();
-        instance.setNetwork(builderForValue);
+        instance.setNetwork(builderForValue.build());
         return this;
       }
       /**
@@ -18872,6 +18419,53 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>.fk_app.Firmware firmware = 12;</code>
+       */
+      @java.lang.Override
+      public boolean hasFirmware() {
+        return instance.hasFirmware();
+      }
+      /**
+       * <code>.fk_app.Firmware firmware = 12;</code>
+       */
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.Firmware getFirmware() {
+        return instance.getFirmware();
+      }
+      /**
+       * <code>.fk_app.Firmware firmware = 12;</code>
+       */
+      public Builder setFirmware(org.fieldkit.app.pb.FkApp.Firmware value) {
+        copyOnWrite();
+        instance.setFirmware(value);
+        return this;
+        }
+      /**
+       * <code>.fk_app.Firmware firmware = 12;</code>
+       */
+      public Builder setFirmware(
+          org.fieldkit.app.pb.FkApp.Firmware.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFirmware(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>.fk_app.Firmware firmware = 12;</code>
+       */
+      public Builder mergeFirmware(org.fieldkit.app.pb.FkApp.Firmware value) {
+        copyOnWrite();
+        instance.mergeFirmware(value);
+        return this;
+      }
+      /**
+       * <code>.fk_app.Firmware firmware = 12;</code>
+       */
+      public Builder clearFirmware() {  copyOnWrite();
+        instance.clearFirmware();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.Status)
     }
     @java.lang.Override
@@ -18899,10 +18493,11 @@ public final class FkApp {
               "recording_",
               "network_",
               "time_",
+              "firmware_",
             };
             java.lang.String info =
-                "\u0000\u000b\u0000\u0000\u0001\u000b\u000b\u0000\u0000\u0000\u0001\u000b\u0002\u000b" +
-                "\u0003\t\u0004\t\u0005\t\u0006\t\u0007\t\b\t\t\t\n\t\u000b\u0003";
+                "\u0000\f\u0000\u0000\u0001\f\f\u0000\u0000\u0000\u0001\u000b\u0002\u000b\u0003\t" +
+                "\u0004\t\u0005\t\u0006\t\u0007\t\b\t\t\t\n\t\u000b\u0003\f\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -19390,28 +18985,16 @@ public final class FkApp {
      */
     private void setRanges(
         int index, org.fieldkit.app.pb.FkApp.Range value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureRangesIsMutable();
+      value.getClass();
+  ensureRangesIsMutable();
       ranges_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.Range ranges = 3;</code>
      */
-    private void setRanges(
-        int index, org.fieldkit.app.pb.FkApp.Range.Builder builderForValue) {
-      ensureRangesIsMutable();
-      ranges_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.Range ranges = 3;</code>
-     */
     private void addRanges(org.fieldkit.app.pb.FkApp.Range value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureRangesIsMutable();
+      value.getClass();
+  ensureRangesIsMutable();
       ranges_.add(value);
     }
     /**
@@ -19419,27 +19002,9 @@ public final class FkApp {
      */
     private void addRanges(
         int index, org.fieldkit.app.pb.FkApp.Range value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureRangesIsMutable();
+      value.getClass();
+  ensureRangesIsMutable();
       ranges_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.Range ranges = 3;</code>
-     */
-    private void addRanges(
-        org.fieldkit.app.pb.FkApp.Range.Builder builderForValue) {
-      ensureRangesIsMutable();
-      ranges_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.Range ranges = 3;</code>
-     */
-    private void addRanges(
-        int index, org.fieldkit.app.pb.FkApp.Range.Builder builderForValue) {
-      ensureRangesIsMutable();
-      ranges_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.Range ranges = 3;</code>
@@ -19693,7 +19258,8 @@ public final class FkApp {
       public Builder setRanges(
           int index, org.fieldkit.app.pb.FkApp.Range.Builder builderForValue) {
         copyOnWrite();
-        instance.setRanges(index, builderForValue);
+        instance.setRanges(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -19719,7 +19285,7 @@ public final class FkApp {
       public Builder addRanges(
           org.fieldkit.app.pb.FkApp.Range.Builder builderForValue) {
         copyOnWrite();
-        instance.addRanges(builderForValue);
+        instance.addRanges(builderForValue.build());
         return this;
       }
       /**
@@ -19728,7 +19294,8 @@ public final class FkApp {
       public Builder addRanges(
           int index, org.fieldkit.app.pb.FkApp.Range.Builder builderForValue) {
         copyOnWrite();
-        instance.addRanges(index, builderForValue);
+        instance.addRanges(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -20423,9 +19990,7 @@ public final class FkApp {
      * @param value The deviceEui to set.
      */
     private void setDeviceEui(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       deviceEui_ = value;
     }
@@ -20452,9 +20017,7 @@ public final class FkApp {
      * @param value The appKey to set.
      */
     private void setAppKey(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       appKey_ = value;
     }
@@ -20481,9 +20044,7 @@ public final class FkApp {
      * @param value The appEui to set.
      */
     private void setAppEui(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       appEui_ = value;
     }
@@ -20536,9 +20097,7 @@ public final class FkApp {
      * @param value The deviceAddress to set.
      */
     private void setDeviceAddress(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       deviceAddress_ = value;
     }
@@ -20565,9 +20124,7 @@ public final class FkApp {
      * @param value The networkSessionKey to set.
      */
     private void setNetworkSessionKey(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       networkSessionKey_ = value;
     }
@@ -20594,9 +20151,7 @@ public final class FkApp {
      * @param value The appSessionKey to set.
      */
     private void setAppSessionKey(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       appSessionKey_ = value;
     }
@@ -21271,11 +20826,8 @@ public final class FkApp {
      * @param value The type to set.
      */
     private void setType(org.fieldkit.app.pb.FkApp.QueryType value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
       type_ = value.getNumber();
+      
     }
     /**
      * <code>.fk_app.QueryType type = 1;</code>
@@ -21305,29 +20857,17 @@ public final class FkApp {
      * <code>.fk_app.Identity identity = 2;</code>
      */
     private void setIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      identity_ = value;
+      value.getClass();
+  identity_ = value;
       
       }
-    /**
-     * <code>.fk_app.Identity identity = 2;</code>
-     */
-    private void setIdentity(
-        org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
-      identity_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Identity identity = 2;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeIdentity(org.fieldkit.app.pb.FkApp.Identity value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (identity_ != null &&
+      value.getClass();
+  if (identity_ != null &&
           identity_ != org.fieldkit.app.pb.FkApp.Identity.getDefaultInstance()) {
         identity_ =
           org.fieldkit.app.pb.FkApp.Identity.newBuilder(identity_).mergeFrom(value).buildPartial();
@@ -21363,29 +20903,17 @@ public final class FkApp {
      * <code>.fk_app.Recording recording = 3;</code>
      */
     private void setRecording(org.fieldkit.app.pb.FkApp.Recording value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      recording_ = value;
+      value.getClass();
+  recording_ = value;
       
       }
-    /**
-     * <code>.fk_app.Recording recording = 3;</code>
-     */
-    private void setRecording(
-        org.fieldkit.app.pb.FkApp.Recording.Builder builderForValue) {
-      recording_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Recording recording = 3;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeRecording(org.fieldkit.app.pb.FkApp.Recording value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (recording_ != null &&
+      value.getClass();
+  if (recording_ != null &&
           recording_ != org.fieldkit.app.pb.FkApp.Recording.getDefaultInstance()) {
         recording_ =
           org.fieldkit.app.pb.FkApp.Recording.newBuilder(recording_).mergeFrom(value).buildPartial();
@@ -21421,29 +20949,17 @@ public final class FkApp {
      * <code>.fk_app.Schedules schedules = 4;</code>
      */
     private void setSchedules(org.fieldkit.app.pb.FkApp.Schedules value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      schedules_ = value;
+      value.getClass();
+  schedules_ = value;
       
       }
-    /**
-     * <code>.fk_app.Schedules schedules = 4;</code>
-     */
-    private void setSchedules(
-        org.fieldkit.app.pb.FkApp.Schedules.Builder builderForValue) {
-      schedules_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Schedules schedules = 4;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeSchedules(org.fieldkit.app.pb.FkApp.Schedules value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (schedules_ != null &&
+      value.getClass();
+  if (schedules_ != null &&
           schedules_ != org.fieldkit.app.pb.FkApp.Schedules.getDefaultInstance()) {
         schedules_ =
           org.fieldkit.app.pb.FkApp.Schedules.newBuilder(schedules_).mergeFrom(value).buildPartial();
@@ -21479,29 +20995,17 @@ public final class FkApp {
      * <code>.fk_app.NetworkSettings networkSettings = 6;</code>
      */
     private void setNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      networkSettings_ = value;
+      value.getClass();
+  networkSettings_ = value;
       
       }
-    /**
-     * <code>.fk_app.NetworkSettings networkSettings = 6;</code>
-     */
-    private void setNetworkSettings(
-        org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
-      networkSettings_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.NetworkSettings networkSettings = 6;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (networkSettings_ != null &&
+      value.getClass();
+  if (networkSettings_ != null &&
           networkSettings_ != org.fieldkit.app.pb.FkApp.NetworkSettings.getDefaultInstance()) {
         networkSettings_ =
           org.fieldkit.app.pb.FkApp.NetworkSettings.newBuilder(networkSettings_).mergeFrom(value).buildPartial();
@@ -21537,29 +21041,17 @@ public final class FkApp {
      * <code>.fk_app.LoraSettings loraSettings = 7;</code>
      */
     private void setLoraSettings(org.fieldkit.app.pb.FkApp.LoraSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      loraSettings_ = value;
+      value.getClass();
+  loraSettings_ = value;
       
       }
-    /**
-     * <code>.fk_app.LoraSettings loraSettings = 7;</code>
-     */
-    private void setLoraSettings(
-        org.fieldkit.app.pb.FkApp.LoraSettings.Builder builderForValue) {
-      loraSettings_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.LoraSettings loraSettings = 7;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeLoraSettings(org.fieldkit.app.pb.FkApp.LoraSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (loraSettings_ != null &&
+      value.getClass();
+  if (loraSettings_ != null &&
           loraSettings_ != org.fieldkit.app.pb.FkApp.LoraSettings.getDefaultInstance()) {
         loraSettings_ =
           org.fieldkit.app.pb.FkApp.LoraSettings.newBuilder(loraSettings_).mergeFrom(value).buildPartial();
@@ -21796,7 +21288,7 @@ public final class FkApp {
       public Builder setIdentity(
           org.fieldkit.app.pb.FkApp.Identity.Builder builderForValue) {
         copyOnWrite();
-        instance.setIdentity(builderForValue);
+        instance.setIdentity(builderForValue.build());
         return this;
       }
       /**
@@ -21843,7 +21335,7 @@ public final class FkApp {
       public Builder setRecording(
           org.fieldkit.app.pb.FkApp.Recording.Builder builderForValue) {
         copyOnWrite();
-        instance.setRecording(builderForValue);
+        instance.setRecording(builderForValue.build());
         return this;
       }
       /**
@@ -21890,7 +21382,7 @@ public final class FkApp {
       public Builder setSchedules(
           org.fieldkit.app.pb.FkApp.Schedules.Builder builderForValue) {
         copyOnWrite();
-        instance.setSchedules(builderForValue);
+        instance.setSchedules(builderForValue.build());
         return this;
       }
       /**
@@ -21937,7 +21429,7 @@ public final class FkApp {
       public Builder setNetworkSettings(
           org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
         copyOnWrite();
-        instance.setNetworkSettings(builderForValue);
+        instance.setNetworkSettings(builderForValue.build());
         return this;
       }
       /**
@@ -21984,7 +21476,7 @@ public final class FkApp {
       public Builder setLoraSettings(
           org.fieldkit.app.pb.FkApp.LoraSettings.Builder builderForValue) {
         copyOnWrite();
-        instance.setLoraSettings(builderForValue);
+        instance.setLoraSettings(builderForValue.build());
         return this;
       }
       /**
@@ -22363,9 +21855,7 @@ public final class FkApp {
      * @param value The hash to set.
      */
     private void setHash(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       hash_ = value;
     }
@@ -22402,9 +21892,7 @@ public final class FkApp {
      */
     private void setName(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       name_ = value;
     }
@@ -22421,12 +21909,9 @@ public final class FkApp {
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       name_ = value.toStringUtf8();
+      
     }
 
     public static final int PATH_FIELD_NUMBER = 8;
@@ -22454,9 +21939,7 @@ public final class FkApp {
      */
     private void setPath(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
+      value.getClass();
   
       path_ = value;
     }
@@ -22473,12 +21956,9 @@ public final class FkApp {
      */
     private void setPathBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      checkByteStringIsUtf8(value);
       path_ = value.toStringUtf8();
+      
     }
 
     public static org.fieldkit.app.pb.FkApp.DataStream parseFrom(
@@ -22975,29 +22455,17 @@ public final class FkApp {
      * <code>.fk_app.SensorCapabilities sensor = 1;</code>
      */
     private void setSensor(org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      sensor_ = value;
+      value.getClass();
+  sensor_ = value;
       
       }
-    /**
-     * <code>.fk_app.SensorCapabilities sensor = 1;</code>
-     */
-    private void setSensor(
-        org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
-      sensor_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.SensorCapabilities sensor = 1;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeSensor(org.fieldkit.app.pb.FkApp.SensorCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (sensor_ != null &&
+      value.getClass();
+  if (sensor_ != null &&
           sensor_ != org.fieldkit.app.pb.FkApp.SensorCapabilities.getDefaultInstance()) {
         sensor_ =
           org.fieldkit.app.pb.FkApp.SensorCapabilities.newBuilder(sensor_).mergeFrom(value).buildPartial();
@@ -23162,7 +22630,7 @@ public final class FkApp {
       public Builder setSensor(
           org.fieldkit.app.pb.FkApp.SensorCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setSensor(builderForValue);
+        instance.setSensor(builderForValue.build());
         return this;
       }
       /**
@@ -23345,29 +22813,17 @@ public final class FkApp {
      * <code>.fk_app.ModuleCapabilities module = 1;</code>
      */
     private void setModule(org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      module_ = value;
+      value.getClass();
+  module_ = value;
       
       }
-    /**
-     * <code>.fk_app.ModuleCapabilities module = 1;</code>
-     */
-    private void setModule(
-        org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
-      module_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.ModuleCapabilities module = 1;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeModule(org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (module_ != null &&
+      value.getClass();
+  if (module_ != null &&
           module_ != org.fieldkit.app.pb.FkApp.ModuleCapabilities.getDefaultInstance()) {
         module_ =
           org.fieldkit.app.pb.FkApp.ModuleCapabilities.newBuilder(module_).mergeFrom(value).buildPartial();
@@ -23432,28 +22888,16 @@ public final class FkApp {
      */
     private void setReadings(
         int index, org.fieldkit.app.pb.FkApp.LiveSensorReading value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureReadingsIsMutable();
+      value.getClass();
+  ensureReadingsIsMutable();
       readings_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.LiveSensorReading readings = 2;</code>
      */
-    private void setReadings(
-        int index, org.fieldkit.app.pb.FkApp.LiveSensorReading.Builder builderForValue) {
-      ensureReadingsIsMutable();
-      readings_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveSensorReading readings = 2;</code>
-     */
     private void addReadings(org.fieldkit.app.pb.FkApp.LiveSensorReading value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureReadingsIsMutable();
+      value.getClass();
+  ensureReadingsIsMutable();
       readings_.add(value);
     }
     /**
@@ -23461,27 +22905,9 @@ public final class FkApp {
      */
     private void addReadings(
         int index, org.fieldkit.app.pb.FkApp.LiveSensorReading value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureReadingsIsMutable();
+      value.getClass();
+  ensureReadingsIsMutable();
       readings_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.LiveSensorReading readings = 2;</code>
-     */
-    private void addReadings(
-        org.fieldkit.app.pb.FkApp.LiveSensorReading.Builder builderForValue) {
-      ensureReadingsIsMutable();
-      readings_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveSensorReading readings = 2;</code>
-     */
-    private void addReadings(
-        int index, org.fieldkit.app.pb.FkApp.LiveSensorReading.Builder builderForValue) {
-      ensureReadingsIsMutable();
-      readings_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.LiveSensorReading readings = 2;</code>
@@ -23629,7 +23055,7 @@ public final class FkApp {
       public Builder setModule(
           org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setModule(builderForValue);
+        instance.setModule(builderForValue.build());
         return this;
       }
       /**
@@ -23684,7 +23110,8 @@ public final class FkApp {
       public Builder setReadings(
           int index, org.fieldkit.app.pb.FkApp.LiveSensorReading.Builder builderForValue) {
         copyOnWrite();
-        instance.setReadings(index, builderForValue);
+        instance.setReadings(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -23710,7 +23137,7 @@ public final class FkApp {
       public Builder addReadings(
           org.fieldkit.app.pb.FkApp.LiveSensorReading.Builder builderForValue) {
         copyOnWrite();
-        instance.addReadings(builderForValue);
+        instance.addReadings(builderForValue.build());
         return this;
       }
       /**
@@ -23719,7 +23146,8 @@ public final class FkApp {
       public Builder addReadings(
           int index, org.fieldkit.app.pb.FkApp.LiveSensorReading.Builder builderForValue) {
         copyOnWrite();
-        instance.addReadings(index, builderForValue);
+        instance.addReadings(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -23935,28 +23363,16 @@ public final class FkApp {
      */
     private void setModules(
         int index, org.fieldkit.app.pb.FkApp.LiveModuleReadings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.LiveModuleReadings modules = 2;</code>
      */
-    private void setModules(
-        int index, org.fieldkit.app.pb.FkApp.LiveModuleReadings.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveModuleReadings modules = 2;</code>
-     */
     private void addModules(org.fieldkit.app.pb.FkApp.LiveModuleReadings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.add(value);
     }
     /**
@@ -23964,27 +23380,9 @@ public final class FkApp {
      */
     private void addModules(
         int index, org.fieldkit.app.pb.FkApp.LiveModuleReadings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.LiveModuleReadings modules = 2;</code>
-     */
-    private void addModules(
-        org.fieldkit.app.pb.FkApp.LiveModuleReadings.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveModuleReadings modules = 2;</code>
-     */
-    private void addModules(
-        int index, org.fieldkit.app.pb.FkApp.LiveModuleReadings.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.LiveModuleReadings modules = 2;</code>
@@ -24168,7 +23566,8 @@ public final class FkApp {
       public Builder setModules(
           int index, org.fieldkit.app.pb.FkApp.LiveModuleReadings.Builder builderForValue) {
         copyOnWrite();
-        instance.setModules(index, builderForValue);
+        instance.setModules(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -24194,7 +23593,7 @@ public final class FkApp {
       public Builder addModules(
           org.fieldkit.app.pb.FkApp.LiveModuleReadings.Builder builderForValue) {
         copyOnWrite();
-        instance.addModules(builderForValue);
+        instance.addModules(builderForValue.build());
         return this;
       }
       /**
@@ -24203,7 +23602,8 @@ public final class FkApp {
       public Builder addModules(
           int index, org.fieldkit.app.pb.FkApp.LiveModuleReadings.Builder builderForValue) {
         copyOnWrite();
-        instance.addModules(index, builderForValue);
+        instance.addModules(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -24469,11 +23869,8 @@ public final class FkApp {
      * @param value The type to set.
      */
     private void setType(org.fieldkit.app.pb.FkApp.ReplyType value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
       type_ = value.getNumber();
+      
     }
     /**
      * <code>.fk_app.ReplyType type = 1;</code>
@@ -24532,28 +23929,16 @@ public final class FkApp {
      */
     private void setErrors(
         int index, org.fieldkit.app.pb.FkApp.Error value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureErrorsIsMutable();
+      value.getClass();
+  ensureErrorsIsMutable();
       errors_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.Error errors = 2;</code>
      */
-    private void setErrors(
-        int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
-      ensureErrorsIsMutable();
-      errors_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.Error errors = 2;</code>
-     */
     private void addErrors(org.fieldkit.app.pb.FkApp.Error value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureErrorsIsMutable();
+      value.getClass();
+  ensureErrorsIsMutable();
       errors_.add(value);
     }
     /**
@@ -24561,27 +23946,9 @@ public final class FkApp {
      */
     private void addErrors(
         int index, org.fieldkit.app.pb.FkApp.Error value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureErrorsIsMutable();
+      value.getClass();
+  ensureErrorsIsMutable();
       errors_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.Error errors = 2;</code>
-     */
-    private void addErrors(
-        org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
-      ensureErrorsIsMutable();
-      errors_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.Error errors = 2;</code>
-     */
-    private void addErrors(
-        int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
-      ensureErrorsIsMutable();
-      errors_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.Error errors = 2;</code>
@@ -24626,29 +23993,17 @@ public final class FkApp {
      * <code>.fk_app.Status status = 3;</code>
      */
     private void setStatus(org.fieldkit.app.pb.FkApp.Status value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      status_ = value;
+      value.getClass();
+  status_ = value;
       
       }
-    /**
-     * <code>.fk_app.Status status = 3;</code>
-     */
-    private void setStatus(
-        org.fieldkit.app.pb.FkApp.Status.Builder builderForValue) {
-      status_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Status status = 3;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeStatus(org.fieldkit.app.pb.FkApp.Status value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (status_ != null &&
+      value.getClass();
+  if (status_ != null &&
           status_ != org.fieldkit.app.pb.FkApp.Status.getDefaultInstance()) {
         status_ =
           org.fieldkit.app.pb.FkApp.Status.newBuilder(status_).mergeFrom(value).buildPartial();
@@ -24684,29 +24039,17 @@ public final class FkApp {
      * <code>.fk_app.NetworkSettings networkSettings = 4;</code>
      */
     private void setNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      networkSettings_ = value;
+      value.getClass();
+  networkSettings_ = value;
       
       }
-    /**
-     * <code>.fk_app.NetworkSettings networkSettings = 4;</code>
-     */
-    private void setNetworkSettings(
-        org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
-      networkSettings_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.NetworkSettings networkSettings = 4;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeNetworkSettings(org.fieldkit.app.pb.FkApp.NetworkSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (networkSettings_ != null &&
+      value.getClass();
+  if (networkSettings_ != null &&
           networkSettings_ != org.fieldkit.app.pb.FkApp.NetworkSettings.getDefaultInstance()) {
         networkSettings_ =
           org.fieldkit.app.pb.FkApp.NetworkSettings.newBuilder(networkSettings_).mergeFrom(value).buildPartial();
@@ -24742,29 +24085,17 @@ public final class FkApp {
      * <code>.fk_app.LoraSettings loraSettings = 8;</code>
      */
     private void setLoraSettings(org.fieldkit.app.pb.FkApp.LoraSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      loraSettings_ = value;
+      value.getClass();
+  loraSettings_ = value;
       
       }
-    /**
-     * <code>.fk_app.LoraSettings loraSettings = 8;</code>
-     */
-    private void setLoraSettings(
-        org.fieldkit.app.pb.FkApp.LoraSettings.Builder builderForValue) {
-      loraSettings_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.LoraSettings loraSettings = 8;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeLoraSettings(org.fieldkit.app.pb.FkApp.LoraSettings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (loraSettings_ != null &&
+      value.getClass();
+  if (loraSettings_ != null &&
           loraSettings_ != org.fieldkit.app.pb.FkApp.LoraSettings.getDefaultInstance()) {
         loraSettings_ =
           org.fieldkit.app.pb.FkApp.LoraSettings.newBuilder(loraSettings_).mergeFrom(value).buildPartial();
@@ -24829,28 +24160,16 @@ public final class FkApp {
      */
     private void setModules(
         int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.ModuleCapabilities modules = 5;</code>
      */
-    private void setModules(
-        int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.ModuleCapabilities modules = 5;</code>
-     */
     private void addModules(org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.add(value);
     }
     /**
@@ -24858,27 +24177,9 @@ public final class FkApp {
      */
     private void addModules(
         int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureModulesIsMutable();
+      value.getClass();
+  ensureModulesIsMutable();
       modules_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.ModuleCapabilities modules = 5;</code>
-     */
-    private void addModules(
-        org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.ModuleCapabilities modules = 5;</code>
-     */
-    private void addModules(
-        int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
-      ensureModulesIsMutable();
-      modules_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.ModuleCapabilities modules = 5;</code>
@@ -24952,28 +24253,16 @@ public final class FkApp {
      */
     private void setStreams(
         int index, org.fieldkit.app.pb.FkApp.DataStream value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureStreamsIsMutable();
+      value.getClass();
+  ensureStreamsIsMutable();
       streams_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.DataStream streams = 6;</code>
      */
-    private void setStreams(
-        int index, org.fieldkit.app.pb.FkApp.DataStream.Builder builderForValue) {
-      ensureStreamsIsMutable();
-      streams_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.DataStream streams = 6;</code>
-     */
     private void addStreams(org.fieldkit.app.pb.FkApp.DataStream value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureStreamsIsMutable();
+      value.getClass();
+  ensureStreamsIsMutable();
       streams_.add(value);
     }
     /**
@@ -24981,27 +24270,9 @@ public final class FkApp {
      */
     private void addStreams(
         int index, org.fieldkit.app.pb.FkApp.DataStream value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureStreamsIsMutable();
+      value.getClass();
+  ensureStreamsIsMutable();
       streams_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.DataStream streams = 6;</code>
-     */
-    private void addStreams(
-        org.fieldkit.app.pb.FkApp.DataStream.Builder builderForValue) {
-      ensureStreamsIsMutable();
-      streams_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.DataStream streams = 6;</code>
-     */
-    private void addStreams(
-        int index, org.fieldkit.app.pb.FkApp.DataStream.Builder builderForValue) {
-      ensureStreamsIsMutable();
-      streams_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.DataStream streams = 6;</code>
@@ -25075,28 +24346,16 @@ public final class FkApp {
      */
     private void setLiveReadings(
         int index, org.fieldkit.app.pb.FkApp.LiveReadings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureLiveReadingsIsMutable();
+      value.getClass();
+  ensureLiveReadingsIsMutable();
       liveReadings_.set(index, value);
     }
     /**
      * <code>repeated .fk_app.LiveReadings liveReadings = 7;</code>
      */
-    private void setLiveReadings(
-        int index, org.fieldkit.app.pb.FkApp.LiveReadings.Builder builderForValue) {
-      ensureLiveReadingsIsMutable();
-      liveReadings_.set(index, builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveReadings liveReadings = 7;</code>
-     */
     private void addLiveReadings(org.fieldkit.app.pb.FkApp.LiveReadings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureLiveReadingsIsMutable();
+      value.getClass();
+  ensureLiveReadingsIsMutable();
       liveReadings_.add(value);
     }
     /**
@@ -25104,27 +24363,9 @@ public final class FkApp {
      */
     private void addLiveReadings(
         int index, org.fieldkit.app.pb.FkApp.LiveReadings value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureLiveReadingsIsMutable();
+      value.getClass();
+  ensureLiveReadingsIsMutable();
       liveReadings_.add(index, value);
-    }
-    /**
-     * <code>repeated .fk_app.LiveReadings liveReadings = 7;</code>
-     */
-    private void addLiveReadings(
-        org.fieldkit.app.pb.FkApp.LiveReadings.Builder builderForValue) {
-      ensureLiveReadingsIsMutable();
-      liveReadings_.add(builderForValue.build());
-    }
-    /**
-     * <code>repeated .fk_app.LiveReadings liveReadings = 7;</code>
-     */
-    private void addLiveReadings(
-        int index, org.fieldkit.app.pb.FkApp.LiveReadings.Builder builderForValue) {
-      ensureLiveReadingsIsMutable();
-      liveReadings_.add(index, builderForValue.build());
     }
     /**
      * <code>repeated .fk_app.LiveReadings liveReadings = 7;</code>
@@ -25169,29 +24410,17 @@ public final class FkApp {
      * <code>.fk_app.Schedules schedules = 9;</code>
      */
     private void setSchedules(org.fieldkit.app.pb.FkApp.Schedules value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      schedules_ = value;
+      value.getClass();
+  schedules_ = value;
       
       }
-    /**
-     * <code>.fk_app.Schedules schedules = 9;</code>
-     */
-    private void setSchedules(
-        org.fieldkit.app.pb.FkApp.Schedules.Builder builderForValue) {
-      schedules_ = builderForValue.build();
-      
-    }
     /**
      * <code>.fk_app.Schedules schedules = 9;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeSchedules(org.fieldkit.app.pb.FkApp.Schedules value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      if (schedules_ != null &&
+      value.getClass();
+  if (schedules_ != null &&
           schedules_ != org.fieldkit.app.pb.FkApp.Schedules.getDefaultInstance()) {
         schedules_ =
           org.fieldkit.app.pb.FkApp.Schedules.newBuilder(schedules_).mergeFrom(value).buildPartial();
@@ -25384,7 +24613,8 @@ public final class FkApp {
       public Builder setErrors(
           int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
         copyOnWrite();
-        instance.setErrors(index, builderForValue);
+        instance.setErrors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25410,7 +24640,7 @@ public final class FkApp {
       public Builder addErrors(
           org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
         copyOnWrite();
-        instance.addErrors(builderForValue);
+        instance.addErrors(builderForValue.build());
         return this;
       }
       /**
@@ -25419,7 +24649,8 @@ public final class FkApp {
       public Builder addErrors(
           int index, org.fieldkit.app.pb.FkApp.Error.Builder builderForValue) {
         copyOnWrite();
-        instance.addErrors(index, builderForValue);
+        instance.addErrors(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25476,7 +24707,7 @@ public final class FkApp {
       public Builder setStatus(
           org.fieldkit.app.pb.FkApp.Status.Builder builderForValue) {
         copyOnWrite();
-        instance.setStatus(builderForValue);
+        instance.setStatus(builderForValue.build());
         return this;
       }
       /**
@@ -25523,7 +24754,7 @@ public final class FkApp {
       public Builder setNetworkSettings(
           org.fieldkit.app.pb.FkApp.NetworkSettings.Builder builderForValue) {
         copyOnWrite();
-        instance.setNetworkSettings(builderForValue);
+        instance.setNetworkSettings(builderForValue.build());
         return this;
       }
       /**
@@ -25570,7 +24801,7 @@ public final class FkApp {
       public Builder setLoraSettings(
           org.fieldkit.app.pb.FkApp.LoraSettings.Builder builderForValue) {
         copyOnWrite();
-        instance.setLoraSettings(builderForValue);
+        instance.setLoraSettings(builderForValue.build());
         return this;
       }
       /**
@@ -25625,7 +24856,8 @@ public final class FkApp {
       public Builder setModules(
           int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.setModules(index, builderForValue);
+        instance.setModules(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25651,7 +24883,7 @@ public final class FkApp {
       public Builder addModules(
           org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addModules(builderForValue);
+        instance.addModules(builderForValue.build());
         return this;
       }
       /**
@@ -25660,7 +24892,8 @@ public final class FkApp {
       public Builder addModules(
           int index, org.fieldkit.app.pb.FkApp.ModuleCapabilities.Builder builderForValue) {
         copyOnWrite();
-        instance.addModules(index, builderForValue);
+        instance.addModules(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25725,7 +24958,8 @@ public final class FkApp {
       public Builder setStreams(
           int index, org.fieldkit.app.pb.FkApp.DataStream.Builder builderForValue) {
         copyOnWrite();
-        instance.setStreams(index, builderForValue);
+        instance.setStreams(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25751,7 +24985,7 @@ public final class FkApp {
       public Builder addStreams(
           org.fieldkit.app.pb.FkApp.DataStream.Builder builderForValue) {
         copyOnWrite();
-        instance.addStreams(builderForValue);
+        instance.addStreams(builderForValue.build());
         return this;
       }
       /**
@@ -25760,7 +24994,8 @@ public final class FkApp {
       public Builder addStreams(
           int index, org.fieldkit.app.pb.FkApp.DataStream.Builder builderForValue) {
         copyOnWrite();
-        instance.addStreams(index, builderForValue);
+        instance.addStreams(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25825,7 +25060,8 @@ public final class FkApp {
       public Builder setLiveReadings(
           int index, org.fieldkit.app.pb.FkApp.LiveReadings.Builder builderForValue) {
         copyOnWrite();
-        instance.setLiveReadings(index, builderForValue);
+        instance.setLiveReadings(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25851,7 +25087,7 @@ public final class FkApp {
       public Builder addLiveReadings(
           org.fieldkit.app.pb.FkApp.LiveReadings.Builder builderForValue) {
         copyOnWrite();
-        instance.addLiveReadings(builderForValue);
+        instance.addLiveReadings(builderForValue.build());
         return this;
       }
       /**
@@ -25860,7 +25096,8 @@ public final class FkApp {
       public Builder addLiveReadings(
           int index, org.fieldkit.app.pb.FkApp.LiveReadings.Builder builderForValue) {
         copyOnWrite();
-        instance.addLiveReadings(index, builderForValue);
+        instance.addLiveReadings(index,
+            builderForValue.build());
         return this;
       }
       /**
@@ -25917,7 +25154,7 @@ public final class FkApp {
       public Builder setSchedules(
           org.fieldkit.app.pb.FkApp.Schedules.Builder builderForValue) {
         copyOnWrite();
-        instance.setSchedules(builderForValue);
+        instance.setSchedules(builderForValue.build());
         return this;
       }
       /**
