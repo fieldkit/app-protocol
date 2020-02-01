@@ -784,6 +784,10 @@
             "startedTime": {
               "type": "uint64",
               "id": 3
+            },
+            "location": {
+              "type": "Location",
+              "id": 4
             }
           }
         },
@@ -835,6 +839,18 @@
             }
           }
         },
+        "Location": {
+          "fields": {
+            "longitude": {
+              "type": "float",
+              "id": 1
+            },
+            "latitude": {
+              "type": "float",
+              "id": 2
+            }
+          }
+        },
         "HttpQuery": {
           "fields": {
             "type": {
@@ -860,6 +876,10 @@
             "loraSettings": {
               "type": "LoraSettings",
               "id": 7
+            },
+            "locate": {
+              "type": "Location",
+              "id": 9
             },
             "flags": {
               "type": "uint32",

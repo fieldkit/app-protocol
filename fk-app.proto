@@ -343,7 +343,8 @@ message DownloadQuery {
 message Recording {
   bool modifying = 1;
   bool enabled = 2;
-  uint64 started_time = 3;
+  uint64 startedTime = 3;
+  Location location = 4;
 }
 
 message LoraSettings {
@@ -360,6 +361,11 @@ message LoraSettings {
   uint32 downlinkCounter = 11;
 }
 
+message Location {
+  float longitude = 1;
+  float latitude = 2;
+}
+
 message HttpQuery {
   QueryType type = 1;
   Identity identity = 2;
@@ -367,6 +373,7 @@ message HttpQuery {
   Schedules schedules = 4;
   NetworkSettings networkSettings = 6;
   LoraSettings loraSettings = 7;
+  Location locate = 9;
   uint32 flags = 5;
   uint64 time = 8;
 }

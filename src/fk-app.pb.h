@@ -285,6 +285,13 @@ typedef struct _fk_app_LiveValue {
 } fk_app_LiveValue;
 
 
+typedef struct _fk_app_Location {
+    float longitude;
+    float latitude;
+/* @@protoc_insertion_point(struct:fk_app_Location) */
+} fk_app_Location;
+
+
 typedef struct _fk_app_LoraSettings {
     bool available;
     bool modifying;
@@ -360,14 +367,6 @@ typedef struct _fk_app_Range {
 } fk_app_Range;
 
 
-typedef struct _fk_app_Recording {
-    bool modifying;
-    bool enabled;
-    uint64_t started_time;
-/* @@protoc_insertion_point(struct:fk_app_Recording) */
-} fk_app_Recording;
-
-
 typedef struct _fk_app_Schedule {
     pb_callback_t cron;
     uint32_t interval;
@@ -387,6 +386,15 @@ typedef struct _fk_app_PowerStatus {
     fk_app_BatteryStatus battery;
 /* @@protoc_insertion_point(struct:fk_app_PowerStatus) */
 } fk_app_PowerStatus;
+
+
+typedef struct _fk_app_Recording {
+    bool modifying;
+    bool enabled;
+    uint64_t startedTime;
+    fk_app_Location location;
+/* @@protoc_insertion_point(struct:fk_app_Recording) */
+} fk_app_Recording;
 
 
 typedef struct _fk_app_Schedules {
@@ -450,6 +458,7 @@ typedef struct _fk_app_HttpQuery {
     fk_app_NetworkSettings networkSettings;
     fk_app_LoraSettings loraSettings;
     uint64_t time;
+    fk_app_Location locate;
 /* @@protoc_insertion_point(struct:fk_app_HttpQuery) */
 } fk_app_HttpQuery;
 
@@ -527,9 +536,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_init_default               {0, 0, fk_app_Identity_init_default, fk_app_HardwareStatus_init_default, fk_app_PowerStatus_init_default, fk_app_MemoryStatus_init_default, fk_app_GpsStatus_init_default, fk_app_Schedules_init_default, fk_app_Recording_init_default, fk_app_NetworkSettings_init_default, 0, fk_app_Firmware_init_default}
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_Recording_init_default            {0, 0, 0}
+#define fk_app_Recording_init_default            {0, 0, 0, fk_app_Location_init_default}
 #define fk_app_LoraSettings_init_default         {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0, fk_app_NetworkSettings_init_default, fk_app_LoraSettings_init_default, 0}
+#define fk_app_Location_init_default             {0, 0}
+#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, fk_app_Identity_init_default, fk_app_Recording_init_default, fk_app_Schedules_init_default, 0, fk_app_NetworkSettings_init_default, fk_app_LoraSettings_init_default, 0, fk_app_Location_init_default}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_default    {fk_app_SensorCapabilities_init_default, 0}
 #define fk_app_LiveModuleReadings_init_default   {fk_app_ModuleCapabilities_init_default, {{NULL}, NULL}}
@@ -569,9 +579,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_init_zero                  {0, 0, fk_app_Identity_init_zero, fk_app_HardwareStatus_init_zero, fk_app_PowerStatus_init_zero, fk_app_MemoryStatus_init_zero, fk_app_GpsStatus_init_zero, fk_app_Schedules_init_zero, fk_app_Recording_init_zero, fk_app_NetworkSettings_init_zero, 0, fk_app_Firmware_init_zero}
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_Recording_init_zero               {0, 0, 0}
+#define fk_app_Recording_init_zero               {0, 0, 0, fk_app_Location_init_zero}
 #define fk_app_LoraSettings_init_zero            {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0, fk_app_NetworkSettings_init_zero, fk_app_LoraSettings_init_zero, 0}
+#define fk_app_Location_init_zero                {0, 0}
+#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, fk_app_Identity_init_zero, fk_app_Recording_init_zero, fk_app_Schedules_init_zero, 0, fk_app_NetworkSettings_init_zero, fk_app_LoraSettings_init_zero, 0, fk_app_Location_init_zero}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_zero       {fk_app_SensorCapabilities_init_zero, 0}
 #define fk_app_LiveModuleReadings_init_zero      {fk_app_ModuleCapabilities_init_zero, {{NULL}, NULL}}
@@ -655,6 +666,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveReadings_modules_tag          2
 #define fk_app_LiveValue_valid_tag               1
 #define fk_app_LiveValue_value_tag               2
+#define fk_app_Location_longitude_tag            1
+#define fk_app_Location_latitude_tag             2
 #define fk_app_LoraSettings_available_tag        1
 #define fk_app_LoraSettings_modifying_tag        2
 #define fk_app_LoraSettings_deviceEui_tag        3
@@ -690,15 +703,16 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_QueryModule_message_tag           3
 #define fk_app_Range_start_tag                   1
 #define fk_app_Range_end_tag                     2
-#define fk_app_Recording_modifying_tag           1
-#define fk_app_Recording_enabled_tag             2
-#define fk_app_Recording_started_time_tag        3
 #define fk_app_Schedule_cron_tag                 1
 #define fk_app_Schedule_interval_tag             2
 #define fk_app_Schedule_repeated_tag             3
 #define fk_app_LiveModuleReadings_module_tag     1
 #define fk_app_LiveModuleReadings_readings_tag   2
 #define fk_app_PowerStatus_battery_tag           1
+#define fk_app_Recording_modifying_tag           1
+#define fk_app_Recording_enabled_tag             2
+#define fk_app_Recording_startedTime_tag         3
+#define fk_app_Recording_location_tag            4
 #define fk_app_Schedules_modifying_tag           1
 #define fk_app_Schedules_readings_tag            2
 #define fk_app_Schedules_lora_tag                3
@@ -737,6 +751,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpQuery_schedules_tag           4
 #define fk_app_HttpQuery_networkSettings_tag     6
 #define fk_app_HttpQuery_loraSettings_tag        7
+#define fk_app_HttpQuery_locate_tag              9
 #define fk_app_HttpQuery_flags_tag               5
 #define fk_app_HttpQuery_time_tag                8
 #define fk_app_LiveSensorReading_sensor_tag      1
@@ -1081,9 +1096,11 @@ X(a, CALLBACK, REPEATED, UINT32, blocks, 4)
 #define fk_app_Recording_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, BOOL, modifying, 1) \
 X(a, STATIC, SINGULAR, BOOL, enabled, 2) \
-X(a, STATIC, SINGULAR, UINT64, started_time, 3)
+X(a, STATIC, SINGULAR, UINT64, startedTime, 3) \
+X(a, STATIC, SINGULAR, MESSAGE, location, 4)
 #define fk_app_Recording_CALLBACK NULL
 #define fk_app_Recording_DEFAULT NULL
+#define fk_app_Recording_location_MSGTYPE fk_app_Location
 
 #define fk_app_LoraSettings_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, BOOL, available, 1) \
@@ -1100,6 +1117,12 @@ X(a, STATIC, SINGULAR, UINT32, downlinkCounter, 11)
 #define fk_app_LoraSettings_CALLBACK pb_default_field_callback
 #define fk_app_LoraSettings_DEFAULT NULL
 
+#define fk_app_Location_FIELDLIST(X, a) \
+X(a, STATIC, SINGULAR, FLOAT, longitude, 1) \
+X(a, STATIC, SINGULAR, FLOAT, latitude, 2)
+#define fk_app_Location_CALLBACK NULL
+#define fk_app_Location_DEFAULT NULL
+
 #define fk_app_HttpQuery_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UENUM, type, 1) \
 X(a, STATIC, SINGULAR, MESSAGE, identity, 2) \
@@ -1108,7 +1131,8 @@ X(a, STATIC, SINGULAR, MESSAGE, schedules, 4) \
 X(a, STATIC, SINGULAR, UINT32, flags, 5) \
 X(a, STATIC, SINGULAR, MESSAGE, networkSettings, 6) \
 X(a, STATIC, SINGULAR, MESSAGE, loraSettings, 7) \
-X(a, STATIC, SINGULAR, UINT64, time, 8)
+X(a, STATIC, SINGULAR, UINT64, time, 8) \
+X(a, STATIC, SINGULAR, MESSAGE, locate, 9)
 #define fk_app_HttpQuery_CALLBACK NULL
 #define fk_app_HttpQuery_DEFAULT NULL
 #define fk_app_HttpQuery_identity_MSGTYPE fk_app_Identity
@@ -1116,6 +1140,7 @@ X(a, STATIC, SINGULAR, UINT64, time, 8)
 #define fk_app_HttpQuery_schedules_MSGTYPE fk_app_Schedules
 #define fk_app_HttpQuery_networkSettings_MSGTYPE fk_app_NetworkSettings
 #define fk_app_HttpQuery_loraSettings_MSGTYPE fk_app_LoraSettings
+#define fk_app_HttpQuery_locate_MSGTYPE fk_app_Location
 
 #define fk_app_DataStream_FIELDLIST(X, a) \
 X(a, STATIC, SINGULAR, UINT32, id, 1) \
@@ -1208,6 +1233,7 @@ extern const pb_msgdesc_t fk_app_Range_msg;
 extern const pb_msgdesc_t fk_app_DownloadQuery_msg;
 extern const pb_msgdesc_t fk_app_Recording_msg;
 extern const pb_msgdesc_t fk_app_LoraSettings_msg;
+extern const pb_msgdesc_t fk_app_Location_msg;
 extern const pb_msgdesc_t fk_app_HttpQuery_msg;
 extern const pb_msgdesc_t fk_app_DataStream_msg;
 extern const pb_msgdesc_t fk_app_LiveSensorReading_msg;
@@ -1252,6 +1278,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_DownloadQuery_fields &fk_app_DownloadQuery_msg
 #define fk_app_Recording_fields &fk_app_Recording_msg
 #define fk_app_LoraSettings_fields &fk_app_LoraSettings_msg
+#define fk_app_Location_fields &fk_app_Location_msg
 #define fk_app_HttpQuery_fields &fk_app_HttpQuery_msg
 #define fk_app_DataStream_fields &fk_app_DataStream_msg
 #define fk_app_LiveSensorReading_fields &fk_app_LiveSensorReading_msg
@@ -1294,8 +1321,9 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_Status_size depends on runtime parameters */
 #define fk_app_Range_size                        12
 /* fk_app_DownloadQuery_size depends on runtime parameters */
-#define fk_app_Recording_size                    15
+#define fk_app_Recording_size                    27
 /* fk_app_LoraSettings_size depends on runtime parameters */
+#define fk_app_Location_size                     10
 /* fk_app_HttpQuery_size depends on runtime parameters */
 /* fk_app_DataStream_size depends on runtime parameters */
 /* fk_app_LiveSensorReading_size depends on runtime parameters */

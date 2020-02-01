@@ -19488,10 +19488,21 @@ public final class FkApp {
     boolean getEnabled();
 
     /**
-     * <code>uint64 started_time = 3;</code>
+     * <code>uint64 startedTime = 3;</code>
      * @return The startedTime.
      */
     long getStartedTime();
+
+    /**
+     * <code>.fk_app.Location location = 4;</code>
+     * @return Whether the location field is set.
+     */
+    boolean hasLocation();
+    /**
+     * <code>.fk_app.Location location = 4;</code>
+     * @return The location.
+     */
+    org.fieldkit.app.pb.FkApp.Location getLocation();
   }
   /**
    * Protobuf type {@code fk_app.Recording}
@@ -19555,10 +19566,10 @@ public final class FkApp {
       enabled_ = false;
     }
 
-    public static final int STARTED_TIME_FIELD_NUMBER = 3;
+    public static final int STARTEDTIME_FIELD_NUMBER = 3;
     private long startedTime_;
     /**
-     * <code>uint64 started_time = 3;</code>
+     * <code>uint64 startedTime = 3;</code>
      * @return The startedTime.
      */
     @java.lang.Override
@@ -19566,7 +19577,7 @@ public final class FkApp {
       return startedTime_;
     }
     /**
-     * <code>uint64 started_time = 3;</code>
+     * <code>uint64 startedTime = 3;</code>
      * @param value The startedTime to set.
      */
     private void setStartedTime(long value) {
@@ -19574,11 +19585,57 @@ public final class FkApp {
       startedTime_ = value;
     }
     /**
-     * <code>uint64 started_time = 3;</code>
+     * <code>uint64 startedTime = 3;</code>
      */
     private void clearStartedTime() {
       
       startedTime_ = 0L;
+    }
+
+    public static final int LOCATION_FIELD_NUMBER = 4;
+    private org.fieldkit.app.pb.FkApp.Location location_;
+    /**
+     * <code>.fk_app.Location location = 4;</code>
+     */
+    @java.lang.Override
+    public boolean hasLocation() {
+      return location_ != null;
+    }
+    /**
+     * <code>.fk_app.Location location = 4;</code>
+     */
+    @java.lang.Override
+    public org.fieldkit.app.pb.FkApp.Location getLocation() {
+      return location_ == null ? org.fieldkit.app.pb.FkApp.Location.getDefaultInstance() : location_;
+    }
+    /**
+     * <code>.fk_app.Location location = 4;</code>
+     */
+    private void setLocation(org.fieldkit.app.pb.FkApp.Location value) {
+      value.getClass();
+  location_ = value;
+      
+      }
+    /**
+     * <code>.fk_app.Location location = 4;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeLocation(org.fieldkit.app.pb.FkApp.Location value) {
+      value.getClass();
+  if (location_ != null &&
+          location_ != org.fieldkit.app.pb.FkApp.Location.getDefaultInstance()) {
+        location_ =
+          org.fieldkit.app.pb.FkApp.Location.newBuilder(location_).mergeFrom(value).buildPartial();
+      } else {
+        location_ = value;
+      }
+      
+    }
+    /**
+     * <code>.fk_app.Location location = 4;</code>
+     */
+    private void clearLocation() {  location_ = null;
+      
     }
 
     public static org.fieldkit.app.pb.FkApp.Recording parseFrom(
@@ -19733,7 +19790,7 @@ public final class FkApp {
       }
 
       /**
-       * <code>uint64 started_time = 3;</code>
+       * <code>uint64 startedTime = 3;</code>
        * @return The startedTime.
        */
       @java.lang.Override
@@ -19741,7 +19798,7 @@ public final class FkApp {
         return instance.getStartedTime();
       }
       /**
-       * <code>uint64 started_time = 3;</code>
+       * <code>uint64 startedTime = 3;</code>
        * @param value The startedTime to set.
        * @return This builder for chaining.
        */
@@ -19751,12 +19808,59 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>uint64 started_time = 3;</code>
+       * <code>uint64 startedTime = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearStartedTime() {
         copyOnWrite();
         instance.clearStartedTime();
+        return this;
+      }
+
+      /**
+       * <code>.fk_app.Location location = 4;</code>
+       */
+      @java.lang.Override
+      public boolean hasLocation() {
+        return instance.hasLocation();
+      }
+      /**
+       * <code>.fk_app.Location location = 4;</code>
+       */
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.Location getLocation() {
+        return instance.getLocation();
+      }
+      /**
+       * <code>.fk_app.Location location = 4;</code>
+       */
+      public Builder setLocation(org.fieldkit.app.pb.FkApp.Location value) {
+        copyOnWrite();
+        instance.setLocation(value);
+        return this;
+        }
+      /**
+       * <code>.fk_app.Location location = 4;</code>
+       */
+      public Builder setLocation(
+          org.fieldkit.app.pb.FkApp.Location.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLocation(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>.fk_app.Location location = 4;</code>
+       */
+      public Builder mergeLocation(org.fieldkit.app.pb.FkApp.Location value) {
+        copyOnWrite();
+        instance.mergeLocation(value);
+        return this;
+      }
+      /**
+       * <code>.fk_app.Location location = 4;</code>
+       */
+      public Builder clearLocation() {  copyOnWrite();
+        instance.clearLocation();
         return this;
       }
 
@@ -19779,10 +19883,11 @@ public final class FkApp {
               "modifying_",
               "enabled_",
               "startedTime_",
+              "location_",
             };
             java.lang.String info =
-                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0007\u0002\u0007" +
-                "\u0003\u0003";
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0007\u0002\u0007" +
+                "\u0003\u0003\u0004\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -20703,6 +20808,311 @@ public final class FkApp {
     }
   }
 
+  public interface LocationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.Location)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>float longitude = 1;</code>
+     * @return The longitude.
+     */
+    float getLongitude();
+
+    /**
+     * <code>float latitude = 2;</code>
+     * @return The latitude.
+     */
+    float getLatitude();
+  }
+  /**
+   * Protobuf type {@code fk_app.Location}
+   */
+  public  static final class Location extends
+      com.google.protobuf.GeneratedMessageLite<
+          Location, Location.Builder> implements
+      // @@protoc_insertion_point(message_implements:fk_app.Location)
+      LocationOrBuilder {
+    private Location() {
+    }
+    public static final int LONGITUDE_FIELD_NUMBER = 1;
+    private float longitude_;
+    /**
+     * <code>float longitude = 1;</code>
+     * @return The longitude.
+     */
+    @java.lang.Override
+    public float getLongitude() {
+      return longitude_;
+    }
+    /**
+     * <code>float longitude = 1;</code>
+     * @param value The longitude to set.
+     */
+    private void setLongitude(float value) {
+      
+      longitude_ = value;
+    }
+    /**
+     * <code>float longitude = 1;</code>
+     */
+    private void clearLongitude() {
+      
+      longitude_ = 0F;
+    }
+
+    public static final int LATITUDE_FIELD_NUMBER = 2;
+    private float latitude_;
+    /**
+     * <code>float latitude = 2;</code>
+     * @return The latitude.
+     */
+    @java.lang.Override
+    public float getLatitude() {
+      return latitude_;
+    }
+    /**
+     * <code>float latitude = 2;</code>
+     * @param value The latitude to set.
+     */
+    private void setLatitude(float value) {
+      
+      latitude_ = value;
+    }
+    /**
+     * <code>float latitude = 2;</code>
+     */
+    private void clearLatitude() {
+      
+      latitude_ = 0F;
+    }
+
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.Location parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.fieldkit.app.pb.FkApp.Location prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code fk_app.Location}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.fieldkit.app.pb.FkApp.Location, Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.Location)
+        org.fieldkit.app.pb.FkApp.LocationOrBuilder {
+      // Construct using org.fieldkit.app.pb.FkApp.Location.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>float longitude = 1;</code>
+       * @return The longitude.
+       */
+      @java.lang.Override
+      public float getLongitude() {
+        return instance.getLongitude();
+      }
+      /**
+       * <code>float longitude = 1;</code>
+       * @param value The longitude to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongitude(float value) {
+        copyOnWrite();
+        instance.setLongitude(value);
+        return this;
+      }
+      /**
+       * <code>float longitude = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongitude() {
+        copyOnWrite();
+        instance.clearLongitude();
+        return this;
+      }
+
+      /**
+       * <code>float latitude = 2;</code>
+       * @return The latitude.
+       */
+      @java.lang.Override
+      public float getLatitude() {
+        return instance.getLatitude();
+      }
+      /**
+       * <code>float latitude = 2;</code>
+       * @param value The latitude to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLatitude(float value) {
+        copyOnWrite();
+        instance.setLatitude(value);
+        return this;
+      }
+      /**
+       * <code>float latitude = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLatitude() {
+        copyOnWrite();
+        instance.clearLatitude();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fk_app.Location)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.fieldkit.app.pb.FkApp.Location();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "longitude_",
+              "latitude_",
+            };
+            java.lang.String info =
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0001\u0002\u0001" +
+                "";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.fieldkit.app.pb.FkApp.Location> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.fieldkit.app.pb.FkApp.Location.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.fieldkit.app.pb.FkApp.Location>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:fk_app.Location)
+    private static final org.fieldkit.app.pb.FkApp.Location DEFAULT_INSTANCE;
+    static {
+      Location defaultInstance = new Location();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        Location.class, defaultInstance);
+    }
+
+    public static org.fieldkit.app.pb.FkApp.Location getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Location> PARSER;
+
+    public static com.google.protobuf.Parser<Location> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface HttpQueryOrBuilder extends
       // @@protoc_insertion_point(interface_extends:fk_app.HttpQuery)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -20772,6 +21182,17 @@ public final class FkApp {
      * @return The loraSettings.
      */
     org.fieldkit.app.pb.FkApp.LoraSettings getLoraSettings();
+
+    /**
+     * <code>.fk_app.Location locate = 9;</code>
+     * @return Whether the locate field is set.
+     */
+    boolean hasLocate();
+    /**
+     * <code>.fk_app.Location locate = 9;</code>
+     * @return The locate.
+     */
+    org.fieldkit.app.pb.FkApp.Location getLocate();
 
     /**
      * <code>uint32 flags = 5;</code>
@@ -21064,6 +21485,52 @@ public final class FkApp {
      * <code>.fk_app.LoraSettings loraSettings = 7;</code>
      */
     private void clearLoraSettings() {  loraSettings_ = null;
+      
+    }
+
+    public static final int LOCATE_FIELD_NUMBER = 9;
+    private org.fieldkit.app.pb.FkApp.Location locate_;
+    /**
+     * <code>.fk_app.Location locate = 9;</code>
+     */
+    @java.lang.Override
+    public boolean hasLocate() {
+      return locate_ != null;
+    }
+    /**
+     * <code>.fk_app.Location locate = 9;</code>
+     */
+    @java.lang.Override
+    public org.fieldkit.app.pb.FkApp.Location getLocate() {
+      return locate_ == null ? org.fieldkit.app.pb.FkApp.Location.getDefaultInstance() : locate_;
+    }
+    /**
+     * <code>.fk_app.Location locate = 9;</code>
+     */
+    private void setLocate(org.fieldkit.app.pb.FkApp.Location value) {
+      value.getClass();
+  locate_ = value;
+      
+      }
+    /**
+     * <code>.fk_app.Location locate = 9;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeLocate(org.fieldkit.app.pb.FkApp.Location value) {
+      value.getClass();
+  if (locate_ != null &&
+          locate_ != org.fieldkit.app.pb.FkApp.Location.getDefaultInstance()) {
+        locate_ =
+          org.fieldkit.app.pb.FkApp.Location.newBuilder(locate_).mergeFrom(value).buildPartial();
+      } else {
+        locate_ = value;
+      }
+      
+    }
+    /**
+     * <code>.fk_app.Location locate = 9;</code>
+     */
+    private void clearLocate() {  locate_ = null;
       
     }
 
@@ -21496,6 +21963,53 @@ public final class FkApp {
       }
 
       /**
+       * <code>.fk_app.Location locate = 9;</code>
+       */
+      @java.lang.Override
+      public boolean hasLocate() {
+        return instance.hasLocate();
+      }
+      /**
+       * <code>.fk_app.Location locate = 9;</code>
+       */
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.Location getLocate() {
+        return instance.getLocate();
+      }
+      /**
+       * <code>.fk_app.Location locate = 9;</code>
+       */
+      public Builder setLocate(org.fieldkit.app.pb.FkApp.Location value) {
+        copyOnWrite();
+        instance.setLocate(value);
+        return this;
+        }
+      /**
+       * <code>.fk_app.Location locate = 9;</code>
+       */
+      public Builder setLocate(
+          org.fieldkit.app.pb.FkApp.Location.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLocate(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>.fk_app.Location locate = 9;</code>
+       */
+      public Builder mergeLocate(org.fieldkit.app.pb.FkApp.Location value) {
+        copyOnWrite();
+        instance.mergeLocate(value);
+        return this;
+      }
+      /**
+       * <code>.fk_app.Location locate = 9;</code>
+       */
+      public Builder clearLocate() {  copyOnWrite();
+        instance.clearLocate();
+        return this;
+      }
+
+      /**
        * <code>uint32 flags = 5;</code>
        * @return The flags.
        */
@@ -21575,10 +22089,11 @@ public final class FkApp {
               "networkSettings_",
               "loraSettings_",
               "time_",
+              "locate_",
             };
             java.lang.String info =
-                "\u0000\b\u0000\u0000\u0001\b\b\u0000\u0000\u0000\u0001\f\u0002\t\u0003\t\u0004\t" +
-                "\u0005\u000b\u0006\t\u0007\t\b\u0003";
+                "\u0000\t\u0000\u0000\u0001\t\t\u0000\u0000\u0000\u0001\f\u0002\t\u0003\t\u0004\t" +
+                "\u0005\u000b\u0006\t\u0007\t\b\u0003\t\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
