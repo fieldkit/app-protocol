@@ -1,12 +1,7 @@
 @Library('conservify') _
 
-conservifyProperties()
-
 timestamps {
     node () {
-        // conservifyBuild(name: 'app-protocol', archive: false)
-        stage ('git') {
-            checkout scm
-        }
+        conservifyBuild(name: 'app-protocol', repository: 'https://github.com/fieldkit/app-protocol.git', archive: false, python: 'python3')
     }
 }
