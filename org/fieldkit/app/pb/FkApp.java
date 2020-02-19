@@ -23892,6 +23892,12 @@ public final class FkApp {
      * @return The repeated.
      */
     int getRepeated();
+
+    /**
+     * <code>uint32 duration = 4;</code>
+     * @return The duration.
+     */
+    int getDuration();
   }
   /**
    * Protobuf type {@code fk_app.Schedule}
@@ -23952,6 +23958,11 @@ public final class FkApp {
             case 24: {
 
               repeated_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+
+              duration_ = input.readUInt32();
               break;
             }
             default: {
@@ -24016,6 +24027,16 @@ public final class FkApp {
       return repeated_;
     }
 
+    public static final int DURATION_FIELD_NUMBER = 4;
+    private int duration_;
+    /**
+     * <code>uint32 duration = 4;</code>
+     * @return The duration.
+     */
+    public int getDuration() {
+      return duration_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -24039,6 +24060,9 @@ public final class FkApp {
       if (repeated_ != 0) {
         output.writeUInt32(3, repeated_);
       }
+      if (duration_ != 0) {
+        output.writeUInt32(4, duration_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -24059,6 +24083,10 @@ public final class FkApp {
       if (repeated_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, repeated_);
+      }
+      if (duration_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, duration_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -24081,6 +24109,8 @@ public final class FkApp {
           != other.getInterval()) return false;
       if (getRepeated()
           != other.getRepeated()) return false;
+      if (getDuration()
+          != other.getDuration()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -24098,6 +24128,8 @@ public final class FkApp {
       hash = (53 * hash) + getInterval();
       hash = (37 * hash) + REPEATED_FIELD_NUMBER;
       hash = (53 * hash) + getRepeated();
+      hash = (37 * hash) + DURATION_FIELD_NUMBER;
+      hash = (53 * hash) + getDuration();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -24237,6 +24269,8 @@ public final class FkApp {
 
         repeated_ = 0;
 
+        duration_ = 0;
+
         return this;
       }
 
@@ -24266,6 +24300,7 @@ public final class FkApp {
         result.cron_ = cron_;
         result.interval_ = interval_;
         result.repeated_ = repeated_;
+        result.duration_ = duration_;
         onBuilt();
         return result;
       }
@@ -24322,6 +24357,9 @@ public final class FkApp {
         }
         if (other.getRepeated() != 0) {
           setRepeated(other.getRepeated());
+        }
+        if (other.getDuration() != 0) {
+          setDuration(other.getDuration());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -24441,6 +24479,36 @@ public final class FkApp {
       public Builder clearRepeated() {
         
         repeated_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int duration_ ;
+      /**
+       * <code>uint32 duration = 4;</code>
+       * @return The duration.
+       */
+      public int getDuration() {
+        return duration_;
+      }
+      /**
+       * <code>uint32 duration = 4;</code>
+       * @param value The duration to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDuration(int value) {
+        
+        duration_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 duration = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDuration() {
+        
+        duration_ = 0;
         onChanged();
         return this;
       }
@@ -44308,103 +44376,104 @@ public final class FkApp {
       "tworkSettings\030\n \001(\0132\027.fk_app.NetworkSett" +
       "ings\022\"\n\010identity\030\013 \001(\0132\020.fk_app.Identity" +
       "\022$\n\006status\030\014 \001(\0132\024.fk_app.DeviceStatus\022#" +
-      "\n\006module\030\r \001(\0132\023.fk_app.ModuleReply\"<\n\010S" +
+      "\n\006module\030\r \001(\0132\023.fk_app.ModuleReply\"N\n\010S" +
       "chedule\022\014\n\004cron\030\001 \001(\014\022\020\n\010interval\030\002 \001(\r\022" +
-      "\020\n\010repeated\030\003 \001(\r\"\244\001\n\tSchedules\022\021\n\tmodif" +
-      "ying\030\001 \001(\010\022\"\n\010readings\030\002 \001(\0132\020.fk_app.Sc" +
-      "hedule\022\036\n\004lora\030\003 \001(\0132\020.fk_app.Schedule\022!" +
-      "\n\007network\030\004 \001(\0132\020.fk_app.Schedule\022\035\n\003gps" +
-      "\030\005 \001(\0132\020.fk_app.Schedule\"\020\n\016HardwareStat" +
-      "us\"\202\001\n\tGpsStatus\022\017\n\007enabled\030\007 \001(\r\022\013\n\003fix" +
-      "\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\022\n\nsatellites\030\003 \001(\r" +
-      "\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latitude\030\005 \001(\002\022\020\n" +
-      "\010altitude\030\006 \001(\002\"\271\001\n\014MemoryStatus\022\025\n\rsram" +
-      "Available\030\001 \001(\r\022\035\n\025programFlashAvailable" +
-      "\030\002 \001(\r\022\037\n\027extendedMemoryAvailable\030\003 \001(\r\022" +
-      "\033\n\023dataMemoryInstalled\030\004 \001(\r\022\026\n\016dataMemo" +
-      "ryUsed\030\005 \001(\r\022\035\n\025dataMemoryConsumption\030\006 " +
-      "\001(\002\"4\n\rBatteryStatus\022\017\n\007voltage\030\001 \001(\r\022\022\n" +
-      "\npercentage\030\002 \001(\r\"5\n\013PowerStatus\022&\n\007batt" +
-      "ery\030\001 \001(\0132\025.fk_app.BatteryStatus\"\211\003\n\006Sta" +
-      "tus\022\017\n\007version\030\001 \001(\r\022\016\n\006uptime\030\002 \001(\r\022\"\n\010" +
-      "identity\030\003 \001(\0132\020.fk_app.Identity\022(\n\010hard" +
-      "ware\030\004 \001(\0132\026.fk_app.HardwareStatus\022\"\n\005po" +
-      "wer\030\005 \001(\0132\023.fk_app.PowerStatus\022$\n\006memory" +
-      "\030\006 \001(\0132\024.fk_app.MemoryStatus\022\036\n\003gps\030\007 \001(" +
-      "\0132\021.fk_app.GpsStatus\022$\n\tschedules\030\010 \001(\0132" +
-      "\021.fk_app.Schedules\022$\n\trecording\030\t \001(\0132\021." +
-      "fk_app.Recording\022(\n\007network\030\n \001(\0132\027.fk_a" +
-      "pp.NetworkSettings\022\014\n\004time\030\013 \001(\004\022\"\n\010firm" +
-      "ware\030\014 \001(\0132\020.fk_app.Firmware\"#\n\005Range\022\r\n" +
-      "\005start\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"N\n\rDownloadQue" +
-      "ry\022\016\n\006stream\030\001 \001(\r\022\035\n\006ranges\030\003 \003(\0132\r.fk_" +
-      "app.Range\022\016\n\006blocks\030\004 \003(\r\"h\n\tRecording\022\021" +
-      "\n\tmodifying\030\001 \001(\010\022\017\n\007enabled\030\002 \001(\010\022\023\n\013st" +
-      "artedTime\030\003 \001(\004\022\"\n\010location\030\004 \001(\0132\020.fk_a" +
-      "pp.Location\"\367\001\n\014LoraSettings\022\021\n\tavailabl" +
-      "e\030\001 \001(\010\022\021\n\tmodifying\030\002 \001(\010\022\021\n\tdeviceEui\030" +
-      "\003 \001(\014\022\016\n\006appKey\030\004 \001(\014\022\016\n\006appEui\030\005 \001(\014\022\025\n" +
-      "\rfrequencyBand\030\006 \001(\r\022\025\n\rdeviceAddress\030\007 " +
-      "\001(\014\022\031\n\021networkSessionKey\030\010 \001(\014\022\025\n\rappSes" +
-      "sionKey\030\t \001(\014\022\025\n\ruplinkCounter\030\n \001(\r\022\027\n\017" +
-      "downlinkCounter\030\013 \001(\r\"/\n\010Location\022\021\n\tlon" +
-      "gitude\030\001 \001(\002\022\020\n\010latitude\030\002 \001(\002\"\271\002\n\tHttpQ" +
-      "uery\022\037\n\004type\030\001 \001(\0162\021.fk_app.QueryType\022\"\n" +
-      "\010identity\030\002 \001(\0132\020.fk_app.Identity\022$\n\trec" +
-      "ording\030\003 \001(\0132\021.fk_app.Recording\022$\n\tsched" +
-      "ules\030\004 \001(\0132\021.fk_app.Schedules\0220\n\017network" +
-      "Settings\030\006 \001(\0132\027.fk_app.NetworkSettings\022" +
-      "*\n\014loraSettings\030\007 \001(\0132\024.fk_app.LoraSetti" +
-      "ngs\022 \n\006locate\030\t \001(\0132\020.fk_app.Location\022\r\n" +
-      "\005flags\030\005 \001(\r\022\014\n\004time\030\010 \001(\004\"~\n\nDataStream" +
-      "\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004" +
-      "\022\017\n\007version\030\004 \001(\r\022\r\n\005block\030\005 \001(\004\022\014\n\004hash" +
-      "\030\006 \001(\014\022\014\n\004name\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"N\n\021Li" +
-      "veSensorReading\022*\n\006sensor\030\001 \001(\0132\032.fk_app" +
-      ".SensorCapabilities\022\r\n\005value\030\002 \001(\002\"m\n\022Li" +
-      "veModuleReadings\022*\n\006module\030\001 \001(\0132\032.fk_ap" +
-      "p.ModuleCapabilities\022+\n\010readings\030\002 \003(\0132\031" +
-      ".fk_app.LiveSensorReading\"I\n\014LiveReading" +
-      "s\022\014\n\004time\030\001 \001(\004\022+\n\007modules\030\002 \003(\0132\032.fk_ap" +
-      "p.LiveModuleReadings\"\355\002\n\tHttpReply\022\037\n\004ty" +
-      "pe\030\001 \001(\0162\021.fk_app.ReplyType\022\035\n\006errors\030\002 " +
-      "\003(\0132\r.fk_app.Error\022\036\n\006status\030\003 \001(\0132\016.fk_" +
-      "app.Status\0220\n\017networkSettings\030\004 \001(\0132\027.fk" +
-      "_app.NetworkSettings\022*\n\014loraSettings\030\010 \001" +
-      "(\0132\024.fk_app.LoraSettings\022+\n\007modules\030\005 \003(" +
-      "\0132\032.fk_app.ModuleCapabilities\022#\n\007streams" +
-      "\030\006 \003(\0132\022.fk_app.DataStream\022*\n\014liveReadin" +
-      "gs\030\007 \003(\0132\024.fk_app.LiveReadings\022$\n\tschedu" +
-      "les\030\t \001(\0132\021.fk_app.Schedules*8\n\nQueryFla" +
-      "gs\022\024\n\020QUERY_FLAGS_NONE\020\000\022\024\n\020QUERY_FLAGS_" +
-      "LOGS\020\001*\216\004\n\tQueryType\022\016\n\nQUERY_NONE\020\000\022\026\n\022" +
-      "QUERY_CAPABILITIES\020\001\022\032\n\026QUERY_CONFIGURE_" +
-      "SENSOR\020\002\022\030\n\024QUERY_LIVE_DATA_POLL\020\007\022\023\n\017QU" +
-      "ERY_SCHEDULES\020\010\022\034\n\030QUERY_CONFIGUE_SCHEDU" +
-      "LES\020\t\022\017\n\013QUERY_FILES\020\n\022\027\n\023QUERY_DOWNLOAD" +
-      "_FILE\020\013\022\024\n\020QUERY_ERASE_FILE\020\014\022\017\n\013QUERY_R" +
-      "ESET\020\r\022\032\n\026QUERY_NETWORK_SETTINGS\020\016\022$\n QU" +
-      "ERY_CONFIGURE_NETWORK_SETTINGS\020\017\022\022\n\016QUER" +
-      "Y_IDENTITY\020\020\022\034\n\030QUERY_CONFIGURE_IDENTITY" +
-      "\020\021\022\020\n\014QUERY_STATUS\020\022\022\020\n\014QUERY_MODULE\020\023\022\022" +
-      "\n\016QUERY_METADATA\020\024\022\020\n\014QUERY_FORMAT\020\025\022\026\n\022" +
-      "QUERY_GET_READINGS\020\026\022\027\n\023QUERY_TAKE_READI" +
-      "NGS\020\027\022\033\n\027QUERY_RECORDING_CONTROL\020\030\022\023\n\017QU" +
-      "ERY_CONFIGURE\020\031*\315\002\n\tReplyType\022\016\n\nREPLY_N" +
-      "ONE\020\000\022\021\n\rREPLY_SUCCESS\020\001\022\016\n\nREPLY_BUSY\020\002" +
-      "\022\017\n\013REPLY_ERROR\020\003\022\026\n\022REPLY_CAPABILITIES\020" +
-      "\004\022\030\n\024REPLY_LIVE_DATA_POLL\020\010\022\023\n\017REPLY_SCH" +
-      "EDULES\020\t\022\017\n\013REPLY_FILES\020\n\022\027\n\023REPLY_DOWNL" +
-      "OAD_FILE\020\013\022\017\n\013REPLY_RESET\020\014\022\032\n\026REPLY_NET" +
-      "WORK_SETTINGS\020\r\022\022\n\016REPLY_IDENTITY\020\016\022\020\n\014R" +
-      "EPLY_STATUS\020\017\022\020\n\014REPLY_MODULE\020\020\022\022\n\016REPLY" +
-      "_METADATA\020\021\022\022\n\016REPLY_READINGS\020\022*l\n\rDownl" +
-      "oadFlags\022\026\n\022DOWNLOAD_FLAG_NONE\020\000\022\"\n\036DOWN" +
-      "LOAD_FLAG_METADATA_PREPEND\020\001\022\037\n\033DOWNLOAD" +
-      "_FLAG_METADATA_ONLY\020\002*=\n\013ModuleFlags\022\024\n\020" +
-      "MODULE_FLAG_NONE\020\000\022\030\n\024MODULE_FLAG_INTERN" +
-      "AL\020\001*#\n\013SensorFlags\022\024\n\020SENSOR_FLAG_NONE\020" +
-      "\000B\025\n\023org.fieldkit.app.pbb\006proto3"
+      "\020\n\010repeated\030\003 \001(\r\022\020\n\010duration\030\004 \001(\r\"\244\001\n\t" +
+      "Schedules\022\021\n\tmodifying\030\001 \001(\010\022\"\n\010readings" +
+      "\030\002 \001(\0132\020.fk_app.Schedule\022\036\n\004lora\030\003 \001(\0132\020" +
+      ".fk_app.Schedule\022!\n\007network\030\004 \001(\0132\020.fk_a" +
+      "pp.Schedule\022\035\n\003gps\030\005 \001(\0132\020.fk_app.Schedu" +
+      "le\"\020\n\016HardwareStatus\"\202\001\n\tGpsStatus\022\017\n\007en" +
+      "abled\030\007 \001(\r\022\013\n\003fix\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\022" +
+      "\n\nsatellites\030\003 \001(\r\022\021\n\tlongitude\030\004 \001(\002\022\020\n" +
+      "\010latitude\030\005 \001(\002\022\020\n\010altitude\030\006 \001(\002\"\271\001\n\014Me" +
+      "moryStatus\022\025\n\rsramAvailable\030\001 \001(\r\022\035\n\025pro" +
+      "gramFlashAvailable\030\002 \001(\r\022\037\n\027extendedMemo" +
+      "ryAvailable\030\003 \001(\r\022\033\n\023dataMemoryInstalled" +
+      "\030\004 \001(\r\022\026\n\016dataMemoryUsed\030\005 \001(\r\022\035\n\025dataMe" +
+      "moryConsumption\030\006 \001(\002\"4\n\rBatteryStatus\022\017" +
+      "\n\007voltage\030\001 \001(\r\022\022\n\npercentage\030\002 \001(\r\"5\n\013P" +
+      "owerStatus\022&\n\007battery\030\001 \001(\0132\025.fk_app.Bat" +
+      "teryStatus\"\211\003\n\006Status\022\017\n\007version\030\001 \001(\r\022\016" +
+      "\n\006uptime\030\002 \001(\r\022\"\n\010identity\030\003 \001(\0132\020.fk_ap" +
+      "p.Identity\022(\n\010hardware\030\004 \001(\0132\026.fk_app.Ha" +
+      "rdwareStatus\022\"\n\005power\030\005 \001(\0132\023.fk_app.Pow" +
+      "erStatus\022$\n\006memory\030\006 \001(\0132\024.fk_app.Memory" +
+      "Status\022\036\n\003gps\030\007 \001(\0132\021.fk_app.GpsStatus\022$" +
+      "\n\tschedules\030\010 \001(\0132\021.fk_app.Schedules\022$\n\t" +
+      "recording\030\t \001(\0132\021.fk_app.Recording\022(\n\007ne" +
+      "twork\030\n \001(\0132\027.fk_app.NetworkSettings\022\014\n\004" +
+      "time\030\013 \001(\004\022\"\n\010firmware\030\014 \001(\0132\020.fk_app.Fi" +
+      "rmware\"#\n\005Range\022\r\n\005start\030\001 \001(\r\022\013\n\003end\030\002 " +
+      "\001(\r\"N\n\rDownloadQuery\022\016\n\006stream\030\001 \001(\r\022\035\n\006" +
+      "ranges\030\003 \003(\0132\r.fk_app.Range\022\016\n\006blocks\030\004 " +
+      "\003(\r\"h\n\tRecording\022\021\n\tmodifying\030\001 \001(\010\022\017\n\007e" +
+      "nabled\030\002 \001(\010\022\023\n\013startedTime\030\003 \001(\004\022\"\n\010loc" +
+      "ation\030\004 \001(\0132\020.fk_app.Location\"\367\001\n\014LoraSe" +
+      "ttings\022\021\n\tavailable\030\001 \001(\010\022\021\n\tmodifying\030\002" +
+      " \001(\010\022\021\n\tdeviceEui\030\003 \001(\014\022\016\n\006appKey\030\004 \001(\014\022" +
+      "\016\n\006appEui\030\005 \001(\014\022\025\n\rfrequencyBand\030\006 \001(\r\022\025" +
+      "\n\rdeviceAddress\030\007 \001(\014\022\031\n\021networkSessionK" +
+      "ey\030\010 \001(\014\022\025\n\rappSessionKey\030\t \001(\014\022\025\n\ruplin" +
+      "kCounter\030\n \001(\r\022\027\n\017downlinkCounter\030\013 \001(\r\"" +
+      "/\n\010Location\022\021\n\tlongitude\030\001 \001(\002\022\020\n\010latitu" +
+      "de\030\002 \001(\002\"\271\002\n\tHttpQuery\022\037\n\004type\030\001 \001(\0162\021.f" +
+      "k_app.QueryType\022\"\n\010identity\030\002 \001(\0132\020.fk_a" +
+      "pp.Identity\022$\n\trecording\030\003 \001(\0132\021.fk_app." +
+      "Recording\022$\n\tschedules\030\004 \001(\0132\021.fk_app.Sc" +
+      "hedules\0220\n\017networkSettings\030\006 \001(\0132\027.fk_ap" +
+      "p.NetworkSettings\022*\n\014loraSettings\030\007 \001(\0132" +
+      "\024.fk_app.LoraSettings\022 \n\006locate\030\t \001(\0132\020." +
+      "fk_app.Location\022\r\n\005flags\030\005 \001(\r\022\014\n\004time\030\010" +
+      " \001(\004\"~\n\nDataStream\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002" +
+      " \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\r\n\005b" +
+      "lock\030\005 \001(\004\022\014\n\004hash\030\006 \001(\014\022\014\n\004name\030\007 \001(\t\022\014" +
+      "\n\004path\030\010 \001(\t\"N\n\021LiveSensorReading\022*\n\006sen" +
+      "sor\030\001 \001(\0132\032.fk_app.SensorCapabilities\022\r\n" +
+      "\005value\030\002 \001(\002\"m\n\022LiveModuleReadings\022*\n\006mo" +
+      "dule\030\001 \001(\0132\032.fk_app.ModuleCapabilities\022+" +
+      "\n\010readings\030\002 \003(\0132\031.fk_app.LiveSensorRead" +
+      "ing\"I\n\014LiveReadings\022\014\n\004time\030\001 \001(\004\022+\n\007mod" +
+      "ules\030\002 \003(\0132\032.fk_app.LiveModuleReadings\"\355" +
+      "\002\n\tHttpReply\022\037\n\004type\030\001 \001(\0162\021.fk_app.Repl" +
+      "yType\022\035\n\006errors\030\002 \003(\0132\r.fk_app.Error\022\036\n\006" +
+      "status\030\003 \001(\0132\016.fk_app.Status\0220\n\017networkS" +
+      "ettings\030\004 \001(\0132\027.fk_app.NetworkSettings\022*" +
+      "\n\014loraSettings\030\010 \001(\0132\024.fk_app.LoraSettin" +
+      "gs\022+\n\007modules\030\005 \003(\0132\032.fk_app.ModuleCapab" +
+      "ilities\022#\n\007streams\030\006 \003(\0132\022.fk_app.DataSt" +
+      "ream\022*\n\014liveReadings\030\007 \003(\0132\024.fk_app.Live" +
+      "Readings\022$\n\tschedules\030\t \001(\0132\021.fk_app.Sch" +
+      "edules*8\n\nQueryFlags\022\024\n\020QUERY_FLAGS_NONE" +
+      "\020\000\022\024\n\020QUERY_FLAGS_LOGS\020\001*\216\004\n\tQueryType\022\016" +
+      "\n\nQUERY_NONE\020\000\022\026\n\022QUERY_CAPABILITIES\020\001\022\032" +
+      "\n\026QUERY_CONFIGURE_SENSOR\020\002\022\030\n\024QUERY_LIVE" +
+      "_DATA_POLL\020\007\022\023\n\017QUERY_SCHEDULES\020\010\022\034\n\030QUE" +
+      "RY_CONFIGUE_SCHEDULES\020\t\022\017\n\013QUERY_FILES\020\n" +
+      "\022\027\n\023QUERY_DOWNLOAD_FILE\020\013\022\024\n\020QUERY_ERASE" +
+      "_FILE\020\014\022\017\n\013QUERY_RESET\020\r\022\032\n\026QUERY_NETWOR" +
+      "K_SETTINGS\020\016\022$\n QUERY_CONFIGURE_NETWORK_" +
+      "SETTINGS\020\017\022\022\n\016QUERY_IDENTITY\020\020\022\034\n\030QUERY_" +
+      "CONFIGURE_IDENTITY\020\021\022\020\n\014QUERY_STATUS\020\022\022\020" +
+      "\n\014QUERY_MODULE\020\023\022\022\n\016QUERY_METADATA\020\024\022\020\n\014" +
+      "QUERY_FORMAT\020\025\022\026\n\022QUERY_GET_READINGS\020\026\022\027" +
+      "\n\023QUERY_TAKE_READINGS\020\027\022\033\n\027QUERY_RECORDI" +
+      "NG_CONTROL\020\030\022\023\n\017QUERY_CONFIGURE\020\031*\315\002\n\tRe" +
+      "plyType\022\016\n\nREPLY_NONE\020\000\022\021\n\rREPLY_SUCCESS" +
+      "\020\001\022\016\n\nREPLY_BUSY\020\002\022\017\n\013REPLY_ERROR\020\003\022\026\n\022R" +
+      "EPLY_CAPABILITIES\020\004\022\030\n\024REPLY_LIVE_DATA_P" +
+      "OLL\020\010\022\023\n\017REPLY_SCHEDULES\020\t\022\017\n\013REPLY_FILE" +
+      "S\020\n\022\027\n\023REPLY_DOWNLOAD_FILE\020\013\022\017\n\013REPLY_RE" +
+      "SET\020\014\022\032\n\026REPLY_NETWORK_SETTINGS\020\r\022\022\n\016REP" +
+      "LY_IDENTITY\020\016\022\020\n\014REPLY_STATUS\020\017\022\020\n\014REPLY" +
+      "_MODULE\020\020\022\022\n\016REPLY_METADATA\020\021\022\022\n\016REPLY_R" +
+      "EADINGS\020\022*l\n\rDownloadFlags\022\026\n\022DOWNLOAD_F" +
+      "LAG_NONE\020\000\022\"\n\036DOWNLOAD_FLAG_METADATA_PRE" +
+      "PEND\020\001\022\037\n\033DOWNLOAD_FLAG_METADATA_ONLY\020\002*" +
+      "=\n\013ModuleFlags\022\024\n\020MODULE_FLAG_NONE\020\000\022\030\n\024" +
+      "MODULE_FLAG_INTERNAL\020\001*#\n\013SensorFlags\022\024\n" +
+      "\020SENSOR_FLAG_NONE\020\000B\025\n\023org.fieldkit.app." +
+      "pbb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -44559,7 +44628,7 @@ public final class FkApp {
     internal_static_fk_app_Schedule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Schedule_descriptor,
-        new java.lang.String[] { "Cron", "Interval", "Repeated", });
+        new java.lang.String[] { "Cron", "Interval", "Repeated", "Duration", });
     internal_static_fk_app_Schedules_descriptor =
       getDescriptor().getMessageTypes().get(25);
     internal_static_fk_app_Schedules_fieldAccessorTable = new

@@ -273,6 +273,7 @@ message Schedule {
   bytes cron = 1;
   uint32 interval = 2;
   uint32 repeated = 3;
+  uint32 duration = 4;
 }
 
 message Schedules {
