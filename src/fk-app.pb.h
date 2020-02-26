@@ -250,14 +250,11 @@ typedef struct _fk_app_MemoryStatus {
     float dataMemoryConsumption;
 } fk_app_MemoryStatus;
 
-typedef struct _fk_app_ModuleCapabilities {
-    uint32_t position;
-    pb_callback_t name;
-    pb_callback_t sensors;
-    pb_callback_t path;
-    uint32_t flags;
-    pb_callback_t id;
-} fk_app_ModuleCapabilities;
+typedef struct _fk_app_ModuleHeader {
+    uint32_t manufacturer;
+    uint32_t kind;
+    uint32_t version;
+} fk_app_ModuleHeader;
 
 typedef struct _fk_app_ModuleReply {
     uint32_t id;
@@ -293,11 +290,16 @@ typedef struct _fk_app_Schedule {
     uint32_t duration;
 } fk_app_Schedule;
 
-typedef struct _fk_app_LiveModuleReadings {
-    bool has_module;
-    fk_app_ModuleCapabilities module;
-    pb_callback_t readings;
-} fk_app_LiveModuleReadings;
+typedef struct _fk_app_ModuleCapabilities {
+    uint32_t position;
+    pb_callback_t name;
+    pb_callback_t sensors;
+    pb_callback_t path;
+    uint32_t flags;
+    pb_callback_t id;
+    bool has_header;
+    fk_app_ModuleHeader header;
+} fk_app_ModuleCapabilities;
 
 typedef struct _fk_app_PowerStatus {
     bool has_battery;
@@ -395,6 +397,12 @@ typedef struct _fk_app_HttpQuery {
     fk_app_Location locate;
 } fk_app_HttpQuery;
 
+typedef struct _fk_app_LiveModuleReadings {
+    bool has_module;
+    fk_app_ModuleCapabilities module;
+    pb_callback_t readings;
+} fk_app_LiveModuleReadings;
+
 typedef struct _fk_app_LiveSensorReading {
     bool has_sensor;
     fk_app_SensorCapabilities sensor;
@@ -472,7 +480,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_QueryCapabilities_init_default    {0, 0}
 #define fk_app_LiveValue_init_default            {0, 0}
 #define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_default}
-#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
+#define fk_app_ModuleHeader_init_default         {0, 0, 0}
+#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
@@ -515,7 +524,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_LiveValue_init_zero               {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_zero}
-#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
+#define fk_app_ModuleHeader_init_zero            {0, 0, 0}
+#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
@@ -652,12 +662,9 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_dataMemoryInstalled_tag 4
 #define fk_app_MemoryStatus_dataMemoryUsed_tag   5
 #define fk_app_MemoryStatus_dataMemoryConsumption_tag 6
-#define fk_app_ModuleCapabilities_position_tag   1
-#define fk_app_ModuleCapabilities_name_tag       2
-#define fk_app_ModuleCapabilities_sensors_tag    3
-#define fk_app_ModuleCapabilities_path_tag       4
-#define fk_app_ModuleCapabilities_flags_tag      5
-#define fk_app_ModuleCapabilities_id_tag         6
+#define fk_app_ModuleHeader_manufacturer_tag     1
+#define fk_app_ModuleHeader_kind_tag             2
+#define fk_app_ModuleHeader_version_tag          3
 #define fk_app_ModuleReply_id_tag                1
 #define fk_app_ModuleReply_address_tag           2
 #define fk_app_ModuleReply_message_tag           3
@@ -674,8 +681,13 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Schedule_interval_tag             2
 #define fk_app_Schedule_repeated_tag             3
 #define fk_app_Schedule_duration_tag             4
-#define fk_app_LiveModuleReadings_module_tag     1
-#define fk_app_LiveModuleReadings_readings_tag   2
+#define fk_app_ModuleCapabilities_position_tag   1
+#define fk_app_ModuleCapabilities_name_tag       2
+#define fk_app_ModuleCapabilities_sensors_tag    3
+#define fk_app_ModuleCapabilities_path_tag       4
+#define fk_app_ModuleCapabilities_flags_tag      5
+#define fk_app_ModuleCapabilities_id_tag         6
+#define fk_app_ModuleCapabilities_header_tag     7
 #define fk_app_PowerStatus_battery_tag           1
 #define fk_app_Recording_modifying_tag           1
 #define fk_app_Recording_enabled_tag             2
@@ -722,6 +734,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpQuery_locate_tag              9
 #define fk_app_HttpQuery_flags_tag               5
 #define fk_app_HttpQuery_time_tag                8
+#define fk_app_LiveModuleReadings_module_tag     1
+#define fk_app_LiveModuleReadings_readings_tag   2
 #define fk_app_LiveSensorReading_sensor_tag      1
 #define fk_app_LiveSensorReading_value_tag       2
 #define fk_app_Status_version_tag                1
@@ -772,16 +786,25 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  value,             8)
 #define fk_app_SensorCapabilities_DEFAULT NULL
 #define fk_app_SensorCapabilities_value_MSGTYPE fk_app_LiveValue
 
+#define fk_app_ModuleHeader_FIELDLIST(X, a) \
+X(a, STATIC,   SINGULAR, UINT32,   manufacturer,      1) \
+X(a, STATIC,   SINGULAR, UINT32,   kind,              2) \
+X(a, STATIC,   SINGULAR, UINT32,   version,           3)
+#define fk_app_ModuleHeader_CALLBACK NULL
+#define fk_app_ModuleHeader_DEFAULT NULL
+
 #define fk_app_ModuleCapabilities_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UINT32,   position,          1) \
 X(a, CALLBACK, SINGULAR, STRING,   name,              2) \
 X(a, CALLBACK, REPEATED, MESSAGE,  sensors,           3) \
 X(a, CALLBACK, SINGULAR, STRING,   path,              4) \
 X(a, STATIC,   SINGULAR, UINT32,   flags,             5) \
-X(a, CALLBACK, SINGULAR, BYTES,    id,                6)
+X(a, CALLBACK, SINGULAR, BYTES,    id,                6) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  header,            7)
 #define fk_app_ModuleCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_ModuleCapabilities_DEFAULT NULL
 #define fk_app_ModuleCapabilities_sensors_MSGTYPE fk_app_SensorCapabilities
+#define fk_app_ModuleCapabilities_header_MSGTYPE fk_app_ModuleHeader
 
 #define fk_app_Capabilities_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UINT32,   version,           1) \
@@ -1169,6 +1192,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  schedules,         9)
 extern const pb_msgdesc_t fk_app_QueryCapabilities_msg;
 extern const pb_msgdesc_t fk_app_LiveValue_msg;
 extern const pb_msgdesc_t fk_app_SensorCapabilities_msg;
+extern const pb_msgdesc_t fk_app_ModuleHeader_msg;
 extern const pb_msgdesc_t fk_app_ModuleCapabilities_msg;
 extern const pb_msgdesc_t fk_app_Capabilities_msg;
 extern const pb_msgdesc_t fk_app_NetworkInfo_msg;
@@ -1214,6 +1238,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_QueryCapabilities_fields &fk_app_QueryCapabilities_msg
 #define fk_app_LiveValue_fields &fk_app_LiveValue_msg
 #define fk_app_SensorCapabilities_fields &fk_app_SensorCapabilities_msg
+#define fk_app_ModuleHeader_fields &fk_app_ModuleHeader_msg
 #define fk_app_ModuleCapabilities_fields &fk_app_ModuleCapabilities_msg
 #define fk_app_Capabilities_fields &fk_app_Capabilities_msg
 #define fk_app_NetworkInfo_fields &fk_app_NetworkInfo_msg
@@ -1259,6 +1284,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_QueryCapabilities_size            12
 #define fk_app_LiveValue_size                    7
 /* fk_app_SensorCapabilities_size depends on runtime parameters */
+#define fk_app_ModuleHeader_size                 18
 /* fk_app_ModuleCapabilities_size depends on runtime parameters */
 /* fk_app_Capabilities_size depends on runtime parameters */
 /* fk_app_NetworkInfo_size depends on runtime parameters */

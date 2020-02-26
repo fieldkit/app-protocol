@@ -3425,6 +3425,628 @@ public final class FkApp {
 
   }
 
+  public interface ModuleHeaderOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.ModuleHeader)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 manufacturer = 1;</code>
+     * @return The manufacturer.
+     */
+    int getManufacturer();
+
+    /**
+     * <code>uint32 kind = 2;</code>
+     * @return The kind.
+     */
+    int getKind();
+
+    /**
+     * <code>uint32 version = 3;</code>
+     * @return The version.
+     */
+    int getVersion();
+  }
+  /**
+   * Protobuf type {@code fk_app.ModuleHeader}
+   */
+  public  static final class ModuleHeader extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:fk_app.ModuleHeader)
+      ModuleHeaderOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ModuleHeader.newBuilder() to construct.
+    private ModuleHeader(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ModuleHeader() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ModuleHeader();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ModuleHeader(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              manufacturer_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              kind_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              version_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ModuleHeader_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ModuleHeader_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.fieldkit.app.pb.FkApp.ModuleHeader.class, org.fieldkit.app.pb.FkApp.ModuleHeader.Builder.class);
+    }
+
+    public static final int MANUFACTURER_FIELD_NUMBER = 1;
+    private int manufacturer_;
+    /**
+     * <code>uint32 manufacturer = 1;</code>
+     * @return The manufacturer.
+     */
+    public int getManufacturer() {
+      return manufacturer_;
+    }
+
+    public static final int KIND_FIELD_NUMBER = 2;
+    private int kind_;
+    /**
+     * <code>uint32 kind = 2;</code>
+     * @return The kind.
+     */
+    public int getKind() {
+      return kind_;
+    }
+
+    public static final int VERSION_FIELD_NUMBER = 3;
+    private int version_;
+    /**
+     * <code>uint32 version = 3;</code>
+     * @return The version.
+     */
+    public int getVersion() {
+      return version_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (manufacturer_ != 0) {
+        output.writeUInt32(1, manufacturer_);
+      }
+      if (kind_ != 0) {
+        output.writeUInt32(2, kind_);
+      }
+      if (version_ != 0) {
+        output.writeUInt32(3, version_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (manufacturer_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, manufacturer_);
+      }
+      if (kind_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, kind_);
+      }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, version_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.fieldkit.app.pb.FkApp.ModuleHeader)) {
+        return super.equals(obj);
+      }
+      org.fieldkit.app.pb.FkApp.ModuleHeader other = (org.fieldkit.app.pb.FkApp.ModuleHeader) obj;
+
+      if (getManufacturer()
+          != other.getManufacturer()) return false;
+      if (getKind()
+          != other.getKind()) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MANUFACTURER_FIELD_NUMBER;
+      hash = (53 * hash) + getManufacturer();
+      hash = (37 * hash) + KIND_FIELD_NUMBER;
+      hash = (53 * hash) + getKind();
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.fieldkit.app.pb.FkApp.ModuleHeader prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fk_app.ModuleHeader}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.ModuleHeader)
+        org.fieldkit.app.pb.FkApp.ModuleHeaderOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ModuleHeader_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ModuleHeader_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.fieldkit.app.pb.FkApp.ModuleHeader.class, org.fieldkit.app.pb.FkApp.ModuleHeader.Builder.class);
+      }
+
+      // Construct using org.fieldkit.app.pb.FkApp.ModuleHeader.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        manufacturer_ = 0;
+
+        kind_ = 0;
+
+        version_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ModuleHeader_descriptor;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.ModuleHeader getDefaultInstanceForType() {
+        return org.fieldkit.app.pb.FkApp.ModuleHeader.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.ModuleHeader build() {
+        org.fieldkit.app.pb.FkApp.ModuleHeader result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.ModuleHeader buildPartial() {
+        org.fieldkit.app.pb.FkApp.ModuleHeader result = new org.fieldkit.app.pb.FkApp.ModuleHeader(this);
+        result.manufacturer_ = manufacturer_;
+        result.kind_ = kind_;
+        result.version_ = version_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.fieldkit.app.pb.FkApp.ModuleHeader) {
+          return mergeFrom((org.fieldkit.app.pb.FkApp.ModuleHeader)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.fieldkit.app.pb.FkApp.ModuleHeader other) {
+        if (other == org.fieldkit.app.pb.FkApp.ModuleHeader.getDefaultInstance()) return this;
+        if (other.getManufacturer() != 0) {
+          setManufacturer(other.getManufacturer());
+        }
+        if (other.getKind() != 0) {
+          setKind(other.getKind());
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.fieldkit.app.pb.FkApp.ModuleHeader parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.fieldkit.app.pb.FkApp.ModuleHeader) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int manufacturer_ ;
+      /**
+       * <code>uint32 manufacturer = 1;</code>
+       * @return The manufacturer.
+       */
+      public int getManufacturer() {
+        return manufacturer_;
+      }
+      /**
+       * <code>uint32 manufacturer = 1;</code>
+       * @param value The manufacturer to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturer(int value) {
+        
+        manufacturer_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 manufacturer = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearManufacturer() {
+        
+        manufacturer_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int kind_ ;
+      /**
+       * <code>uint32 kind = 2;</code>
+       * @return The kind.
+       */
+      public int getKind() {
+        return kind_;
+      }
+      /**
+       * <code>uint32 kind = 2;</code>
+       * @param value The kind to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKind(int value) {
+        
+        kind_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 kind = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKind() {
+        
+        kind_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int version_ ;
+      /**
+       * <code>uint32 version = 3;</code>
+       * @return The version.
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>uint32 version = 3;</code>
+       * @param value The version to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 version = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:fk_app.ModuleHeader)
+    }
+
+    // @@protoc_insertion_point(class_scope:fk_app.ModuleHeader)
+    private static final org.fieldkit.app.pb.FkApp.ModuleHeader DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.fieldkit.app.pb.FkApp.ModuleHeader();
+    }
+
+    public static org.fieldkit.app.pb.FkApp.ModuleHeader getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ModuleHeader>
+        PARSER = new com.google.protobuf.AbstractParser<ModuleHeader>() {
+      @java.lang.Override
+      public ModuleHeader parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ModuleHeader(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ModuleHeader> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ModuleHeader> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.fieldkit.app.pb.FkApp.ModuleHeader getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ModuleCapabilitiesOrBuilder extends
       // @@protoc_insertion_point(interface_extends:fk_app.ModuleCapabilities)
       com.google.protobuf.MessageOrBuilder {
@@ -3502,6 +4124,21 @@ public final class FkApp {
      * @return The id.
      */
     com.google.protobuf.ByteString getId();
+
+    /**
+     * <code>.fk_app.ModuleHeader header = 7;</code>
+     * @return Whether the header field is set.
+     */
+    boolean hasHeader();
+    /**
+     * <code>.fk_app.ModuleHeader header = 7;</code>
+     * @return The header.
+     */
+    org.fieldkit.app.pb.FkApp.ModuleHeader getHeader();
+    /**
+     * <code>.fk_app.ModuleHeader header = 7;</code>
+     */
+    org.fieldkit.app.pb.FkApp.ModuleHeaderOrBuilder getHeaderOrBuilder();
   }
   /**
    * Protobuf type {@code fk_app.ModuleCapabilities}
@@ -3587,6 +4224,19 @@ public final class FkApp {
             case 50: {
 
               id_ = input.readBytes();
+              break;
+            }
+            case 58: {
+              org.fieldkit.app.pb.FkApp.ModuleHeader.Builder subBuilder = null;
+              if (header_ != null) {
+                subBuilder = header_.toBuilder();
+              }
+              header_ = input.readMessage(org.fieldkit.app.pb.FkApp.ModuleHeader.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(header_);
+                header_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -3769,6 +4419,29 @@ public final class FkApp {
       return id_;
     }
 
+    public static final int HEADER_FIELD_NUMBER = 7;
+    private org.fieldkit.app.pb.FkApp.ModuleHeader header_;
+    /**
+     * <code>.fk_app.ModuleHeader header = 7;</code>
+     * @return Whether the header field is set.
+     */
+    public boolean hasHeader() {
+      return header_ != null;
+    }
+    /**
+     * <code>.fk_app.ModuleHeader header = 7;</code>
+     * @return The header.
+     */
+    public org.fieldkit.app.pb.FkApp.ModuleHeader getHeader() {
+      return header_ == null ? org.fieldkit.app.pb.FkApp.ModuleHeader.getDefaultInstance() : header_;
+    }
+    /**
+     * <code>.fk_app.ModuleHeader header = 7;</code>
+     */
+    public org.fieldkit.app.pb.FkApp.ModuleHeaderOrBuilder getHeaderOrBuilder() {
+      return getHeader();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3801,6 +4474,9 @@ public final class FkApp {
       if (!id_.isEmpty()) {
         output.writeBytes(6, id_);
       }
+      if (header_ != null) {
+        output.writeMessage(7, getHeader());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3832,6 +4508,10 @@ public final class FkApp {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, id_);
       }
+      if (header_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getHeader());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3859,6 +4539,11 @@ public final class FkApp {
           != other.getFlags()) return false;
       if (!getId()
           .equals(other.getId())) return false;
+      if (hasHeader() != other.hasHeader()) return false;
+      if (hasHeader()) {
+        if (!getHeader()
+            .equals(other.getHeader())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3884,6 +4569,10 @@ public final class FkApp {
       hash = (53 * hash) + getFlags();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
+      if (hasHeader()) {
+        hash = (37 * hash) + HEADER_FIELD_NUMBER;
+        hash = (53 * hash) + getHeader().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4034,6 +4723,12 @@ public final class FkApp {
 
         id_ = com.google.protobuf.ByteString.EMPTY;
 
+        if (headerBuilder_ == null) {
+          header_ = null;
+        } else {
+          header_ = null;
+          headerBuilder_ = null;
+        }
         return this;
       }
 
@@ -4075,6 +4770,11 @@ public final class FkApp {
         result.path_ = path_;
         result.flags_ = flags_;
         result.id_ = id_;
+        if (headerBuilder_ == null) {
+          result.header_ = header_;
+        } else {
+          result.header_ = headerBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -4165,6 +4865,9 @@ public final class FkApp {
         }
         if (other.getId() != com.google.protobuf.ByteString.EMPTY) {
           setId(other.getId());
+        }
+        if (other.hasHeader()) {
+          mergeHeader(other.getHeader());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4699,6 +5402,125 @@ public final class FkApp {
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
+      }
+
+      private org.fieldkit.app.pb.FkApp.ModuleHeader header_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.ModuleHeader, org.fieldkit.app.pb.FkApp.ModuleHeader.Builder, org.fieldkit.app.pb.FkApp.ModuleHeaderOrBuilder> headerBuilder_;
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       * @return Whether the header field is set.
+       */
+      public boolean hasHeader() {
+        return headerBuilder_ != null || header_ != null;
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       * @return The header.
+       */
+      public org.fieldkit.app.pb.FkApp.ModuleHeader getHeader() {
+        if (headerBuilder_ == null) {
+          return header_ == null ? org.fieldkit.app.pb.FkApp.ModuleHeader.getDefaultInstance() : header_;
+        } else {
+          return headerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       */
+      public Builder setHeader(org.fieldkit.app.pb.FkApp.ModuleHeader value) {
+        if (headerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          header_ = value;
+          onChanged();
+        } else {
+          headerBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       */
+      public Builder setHeader(
+          org.fieldkit.app.pb.FkApp.ModuleHeader.Builder builderForValue) {
+        if (headerBuilder_ == null) {
+          header_ = builderForValue.build();
+          onChanged();
+        } else {
+          headerBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       */
+      public Builder mergeHeader(org.fieldkit.app.pb.FkApp.ModuleHeader value) {
+        if (headerBuilder_ == null) {
+          if (header_ != null) {
+            header_ =
+              org.fieldkit.app.pb.FkApp.ModuleHeader.newBuilder(header_).mergeFrom(value).buildPartial();
+          } else {
+            header_ = value;
+          }
+          onChanged();
+        } else {
+          headerBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       */
+      public Builder clearHeader() {
+        if (headerBuilder_ == null) {
+          header_ = null;
+          onChanged();
+        } else {
+          header_ = null;
+          headerBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.ModuleHeader.Builder getHeaderBuilder() {
+        
+        onChanged();
+        return getHeaderFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.ModuleHeaderOrBuilder getHeaderOrBuilder() {
+        if (headerBuilder_ != null) {
+          return headerBuilder_.getMessageOrBuilder();
+        } else {
+          return header_ == null ?
+              org.fieldkit.app.pb.FkApp.ModuleHeader.getDefaultInstance() : header_;
+        }
+      }
+      /**
+       * <code>.fk_app.ModuleHeader header = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.ModuleHeader, org.fieldkit.app.pb.FkApp.ModuleHeader.Builder, org.fieldkit.app.pb.FkApp.ModuleHeaderOrBuilder> 
+          getHeaderFieldBuilder() {
+        if (headerBuilder_ == null) {
+          headerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.fieldkit.app.pb.FkApp.ModuleHeader, org.fieldkit.app.pb.FkApp.ModuleHeader.Builder, org.fieldkit.app.pb.FkApp.ModuleHeaderOrBuilder>(
+                  getHeader(),
+                  getParentForChildren(),
+                  isClean());
+          header_ = null;
+        }
+        return headerBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -44104,6 +44926,11 @@ public final class FkApp {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_fk_app_SensorCapabilities_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_fk_app_ModuleHeader_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_fk_app_ModuleHeader_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_fk_app_ModuleCapabilities_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -44319,161 +45146,163 @@ public final class FkApp {
       "(\r\022\016\n\006module\030\002 \001(\r\022\014\n\004name\030\003 \001(\t\022\021\n\tfreq" +
       "uency\030\004 \001(\r\022\025\n\runitOfMeasure\030\005 \001(\t\022\014\n\004pa" +
       "th\030\006 \001(\t\022\r\n\005flags\030\007 \001(\r\022 \n\005value\030\010 \001(\0132\021" +
-      ".fk_app.LiveValue\"\212\001\n\022ModuleCapabilities" +
-      "\022\020\n\010position\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022+\n\007sens" +
-      "ors\030\003 \003(\0132\032.fk_app.SensorCapabilities\022\014\n" +
-      "\004path\030\004 \001(\t\022\r\n\005flags\030\005 \001(\r\022\n\n\002id\030\006 \001(\014\"\231" +
-      "\001\n\014Capabilities\022\017\n\007version\030\001 \001(\r\022\020\n\010devi" +
-      "ceId\030\002 \001(\014\022\014\n\004name\030\003 \001(\t\022+\n\007modules\030\004 \003(" +
-      "\0132\032.fk_app.ModuleCapabilities\022+\n\007sensors" +
-      "\030\005 \003(\0132\032.fk_app.SensorCapabilities\"-\n\013Ne" +
-      "tworkInfo\022\014\n\004ssid\030\001 \001(\t\022\020\n\010password\030\002 \001(" +
-      "\t\"S\n\017NetworkSettings\022\031\n\021createAccessPoin" +
-      "t\030\001 \001(\005\022%\n\010networks\030\002 \003(\0132\023.fk_app.Netwo" +
-      "rkInfo\"[\n\010Firmware\022\017\n\007version\030\001 \001(\t\022\r\n\005b" +
-      "uild\030\002 \001(\t\022\016\n\006number\030\003 \001(\t\022\021\n\ttimestamp\030" +
-      "\004 \001(\004\022\014\n\004hash\030\005 \001(\t\"\217\001\n\010Identity\022\016\n\006devi" +
-      "ce\030\001 \001(\t\022\016\n\006stream\030\002 \001(\t\022\020\n\010deviceId\030\003 \001" +
-      "(\014\022\020\n\010firmware\030\004 \001(\t\022\r\n\005build\030\005 \001(\t\022\016\n\006n" +
-      "umber\030\010 \001(\t\022\014\n\004name\030\006 \001(\t\022\022\n\ngeneration\030" +
-      "\007 \001(\014\"5\n\024ConfigureSensorQuery\022\n\n\002id\030\001 \001(" +
-      "\r\022\021\n\tfrequency\030\002 \001(\r\" \n\014LiveDataPoll\022\020\n\010" +
-      "interval\030\001 \001(\r\"=\n\016LiveDataSample\022\016\n\006sens" +
-      "or\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\r\n\005value\030\003 \001(\002\"3\n" +
-      "\010LiveData\022\'\n\007samples\030\001 \003(\0132\026.fk_app.Live" +
-      "DataSample\"^\n\004File\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002" +
-      " \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\014\n\004n" +
-      "ame\030\005 \001(\t\022\017\n\007maximum\030\006 \001(\004\"$\n\005Files\022\033\n\005f" +
-      "iles\030\001 \003(\0132\014.fk_app.File\"I\n\014DownloadFile" +
-      "\022\n\n\002id\030\001 \001(\r\022\016\n\006offset\030\002 \001(\r\022\016\n\006length\030\003" +
-      " \001(\r\022\r\n\005flags\030\004 \001(\r\"\027\n\tEraseFile\022\n\n\002id\030\001" +
-      " \001(\r\"a\n\010FileData\022\016\n\006offset\030\001 \001(\r\022\014\n\004data" +
-      "\030\002 \001(\014\022\014\n\004size\030\003 \001(\r\022\014\n\004hash\030\004 \001(\r\022\017\n\007ve" +
-      "rsion\030\005 \001(\r\022\n\n\002id\030\006 \001(\r\"{\n\014DeviceStatus\022" +
-      "\016\n\006uptime\030\001 \001(\r\022\031\n\021batteryPercentage\030\002 \001" +
-      "(\002\022\026\n\016batteryVoltage\030\003 \001(\002\022\021\n\tgpsHasFix\030" +
-      "\004 \001(\r\022\025\n\rgpsSatellites\030\005 \001(\r\";\n\013QueryMod" +
-      "ule\022\n\n\002id\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\017\n\007mess" +
-      "age\030\003 \001(\014\";\n\013ModuleReply\022\n\n\002id\030\001 \001(\r\022\017\n\007" +
-      "address\030\002 \001(\r\022\017\n\007message\030\003 \001(\014\"\231\003\n\020WireM" +
-      "essageQuery\022\037\n\004type\030\001 \001(\0162\021.fk_app.Query" +
-      "Type\0224\n\021queryCapabilities\030\002 \001(\0132\031.fk_app" +
-      ".QueryCapabilities\0225\n\017configureSensor\030\003 " +
-      "\001(\0132\034.fk_app.ConfigureSensorQuery\022*\n\014liv" +
-      "eDataPoll\030\010 \001(\0132\024.fk_app.LiveDataPoll\022*\n" +
-      "\014downloadFile\030\n \001(\0132\024.fk_app.DownloadFil" +
-      "e\022$\n\teraseFile\030\013 \001(\0132\021.fk_app.EraseFile\022" +
-      "0\n\017networkSettings\030\014 \001(\0132\027.fk_app.Networ" +
-      "kSettings\022\"\n\010identity\030\r \001(\0132\020.fk_app.Ide" +
-      "ntity\022#\n\006module\030\016 \001(\0132\023.fk_app.QueryModu" +
-      "le\"\'\n\005Error\022\017\n\007message\030\001 \001(\t\022\r\n\005delay\030\002 " +
-      "\001(\r\"\205\003\n\020WireMessageReply\022\037\n\004type\030\001 \001(\0162\021" +
-      ".fk_app.ReplyType\022\035\n\006errors\030\002 \003(\0132\r.fk_a" +
-      "pp.Error\022*\n\014capabilities\030\003 \001(\0132\024.fk_app." +
-      "Capabilities\022\"\n\010liveData\030\006 \001(\0132\020.fk_app." +
-      "LiveData\022\034\n\005files\030\010 \001(\0132\r.fk_app.Files\022\"" +
-      "\n\010fileData\030\t \001(\0132\020.fk_app.FileData\0220\n\017ne" +
-      "tworkSettings\030\n \001(\0132\027.fk_app.NetworkSett" +
-      "ings\022\"\n\010identity\030\013 \001(\0132\020.fk_app.Identity" +
-      "\022$\n\006status\030\014 \001(\0132\024.fk_app.DeviceStatus\022#" +
-      "\n\006module\030\r \001(\0132\023.fk_app.ModuleReply\"N\n\010S" +
-      "chedule\022\014\n\004cron\030\001 \001(\014\022\020\n\010interval\030\002 \001(\r\022" +
-      "\020\n\010repeated\030\003 \001(\r\022\020\n\010duration\030\004 \001(\r\"\244\001\n\t" +
-      "Schedules\022\021\n\tmodifying\030\001 \001(\010\022\"\n\010readings" +
-      "\030\002 \001(\0132\020.fk_app.Schedule\022\036\n\004lora\030\003 \001(\0132\020" +
-      ".fk_app.Schedule\022!\n\007network\030\004 \001(\0132\020.fk_a" +
-      "pp.Schedule\022\035\n\003gps\030\005 \001(\0132\020.fk_app.Schedu" +
-      "le\"\020\n\016HardwareStatus\"\202\001\n\tGpsStatus\022\017\n\007en" +
-      "abled\030\007 \001(\r\022\013\n\003fix\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\022" +
-      "\n\nsatellites\030\003 \001(\r\022\021\n\tlongitude\030\004 \001(\002\022\020\n" +
-      "\010latitude\030\005 \001(\002\022\020\n\010altitude\030\006 \001(\002\"\271\001\n\014Me" +
-      "moryStatus\022\025\n\rsramAvailable\030\001 \001(\r\022\035\n\025pro" +
-      "gramFlashAvailable\030\002 \001(\r\022\037\n\027extendedMemo" +
-      "ryAvailable\030\003 \001(\r\022\033\n\023dataMemoryInstalled" +
-      "\030\004 \001(\r\022\026\n\016dataMemoryUsed\030\005 \001(\r\022\035\n\025dataMe" +
-      "moryConsumption\030\006 \001(\002\"4\n\rBatteryStatus\022\017" +
-      "\n\007voltage\030\001 \001(\r\022\022\n\npercentage\030\002 \001(\r\"5\n\013P" +
-      "owerStatus\022&\n\007battery\030\001 \001(\0132\025.fk_app.Bat" +
-      "teryStatus\"\211\003\n\006Status\022\017\n\007version\030\001 \001(\r\022\016" +
-      "\n\006uptime\030\002 \001(\r\022\"\n\010identity\030\003 \001(\0132\020.fk_ap" +
-      "p.Identity\022(\n\010hardware\030\004 \001(\0132\026.fk_app.Ha" +
-      "rdwareStatus\022\"\n\005power\030\005 \001(\0132\023.fk_app.Pow" +
-      "erStatus\022$\n\006memory\030\006 \001(\0132\024.fk_app.Memory" +
-      "Status\022\036\n\003gps\030\007 \001(\0132\021.fk_app.GpsStatus\022$" +
-      "\n\tschedules\030\010 \001(\0132\021.fk_app.Schedules\022$\n\t" +
-      "recording\030\t \001(\0132\021.fk_app.Recording\022(\n\007ne" +
-      "twork\030\n \001(\0132\027.fk_app.NetworkSettings\022\014\n\004" +
-      "time\030\013 \001(\004\022\"\n\010firmware\030\014 \001(\0132\020.fk_app.Fi" +
-      "rmware\"#\n\005Range\022\r\n\005start\030\001 \001(\r\022\013\n\003end\030\002 " +
-      "\001(\r\"N\n\rDownloadQuery\022\016\n\006stream\030\001 \001(\r\022\035\n\006" +
-      "ranges\030\003 \003(\0132\r.fk_app.Range\022\016\n\006blocks\030\004 " +
-      "\003(\r\"h\n\tRecording\022\021\n\tmodifying\030\001 \001(\010\022\017\n\007e" +
-      "nabled\030\002 \001(\010\022\023\n\013startedTime\030\003 \001(\004\022\"\n\010loc" +
-      "ation\030\004 \001(\0132\020.fk_app.Location\"\367\001\n\014LoraSe" +
-      "ttings\022\021\n\tavailable\030\001 \001(\010\022\021\n\tmodifying\030\002" +
-      " \001(\010\022\021\n\tdeviceEui\030\003 \001(\014\022\016\n\006appKey\030\004 \001(\014\022" +
-      "\016\n\006appEui\030\005 \001(\014\022\025\n\rfrequencyBand\030\006 \001(\r\022\025" +
-      "\n\rdeviceAddress\030\007 \001(\014\022\031\n\021networkSessionK" +
-      "ey\030\010 \001(\014\022\025\n\rappSessionKey\030\t \001(\014\022\025\n\ruplin" +
-      "kCounter\030\n \001(\r\022\027\n\017downlinkCounter\030\013 \001(\r\"" +
-      "/\n\010Location\022\021\n\tlongitude\030\001 \001(\002\022\020\n\010latitu" +
-      "de\030\002 \001(\002\"\271\002\n\tHttpQuery\022\037\n\004type\030\001 \001(\0162\021.f" +
-      "k_app.QueryType\022\"\n\010identity\030\002 \001(\0132\020.fk_a" +
-      "pp.Identity\022$\n\trecording\030\003 \001(\0132\021.fk_app." +
-      "Recording\022$\n\tschedules\030\004 \001(\0132\021.fk_app.Sc" +
-      "hedules\0220\n\017networkSettings\030\006 \001(\0132\027.fk_ap" +
-      "p.NetworkSettings\022*\n\014loraSettings\030\007 \001(\0132" +
-      "\024.fk_app.LoraSettings\022 \n\006locate\030\t \001(\0132\020." +
-      "fk_app.Location\022\r\n\005flags\030\005 \001(\r\022\014\n\004time\030\010" +
-      " \001(\004\"~\n\nDataStream\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002" +
-      " \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\r\n\005b" +
-      "lock\030\005 \001(\004\022\014\n\004hash\030\006 \001(\014\022\014\n\004name\030\007 \001(\t\022\014" +
-      "\n\004path\030\010 \001(\t\"N\n\021LiveSensorReading\022*\n\006sen" +
-      "sor\030\001 \001(\0132\032.fk_app.SensorCapabilities\022\r\n" +
-      "\005value\030\002 \001(\002\"m\n\022LiveModuleReadings\022*\n\006mo" +
-      "dule\030\001 \001(\0132\032.fk_app.ModuleCapabilities\022+" +
-      "\n\010readings\030\002 \003(\0132\031.fk_app.LiveSensorRead" +
-      "ing\"I\n\014LiveReadings\022\014\n\004time\030\001 \001(\004\022+\n\007mod" +
-      "ules\030\002 \003(\0132\032.fk_app.LiveModuleReadings\"\355" +
-      "\002\n\tHttpReply\022\037\n\004type\030\001 \001(\0162\021.fk_app.Repl" +
-      "yType\022\035\n\006errors\030\002 \003(\0132\r.fk_app.Error\022\036\n\006" +
-      "status\030\003 \001(\0132\016.fk_app.Status\0220\n\017networkS" +
-      "ettings\030\004 \001(\0132\027.fk_app.NetworkSettings\022*" +
-      "\n\014loraSettings\030\010 \001(\0132\024.fk_app.LoraSettin" +
-      "gs\022+\n\007modules\030\005 \003(\0132\032.fk_app.ModuleCapab" +
-      "ilities\022#\n\007streams\030\006 \003(\0132\022.fk_app.DataSt" +
-      "ream\022*\n\014liveReadings\030\007 \003(\0132\024.fk_app.Live" +
-      "Readings\022$\n\tschedules\030\t \001(\0132\021.fk_app.Sch" +
-      "edules*8\n\nQueryFlags\022\024\n\020QUERY_FLAGS_NONE" +
-      "\020\000\022\024\n\020QUERY_FLAGS_LOGS\020\001*\216\004\n\tQueryType\022\016" +
-      "\n\nQUERY_NONE\020\000\022\026\n\022QUERY_CAPABILITIES\020\001\022\032" +
-      "\n\026QUERY_CONFIGURE_SENSOR\020\002\022\030\n\024QUERY_LIVE" +
-      "_DATA_POLL\020\007\022\023\n\017QUERY_SCHEDULES\020\010\022\034\n\030QUE" +
-      "RY_CONFIGUE_SCHEDULES\020\t\022\017\n\013QUERY_FILES\020\n" +
-      "\022\027\n\023QUERY_DOWNLOAD_FILE\020\013\022\024\n\020QUERY_ERASE" +
-      "_FILE\020\014\022\017\n\013QUERY_RESET\020\r\022\032\n\026QUERY_NETWOR" +
-      "K_SETTINGS\020\016\022$\n QUERY_CONFIGURE_NETWORK_" +
-      "SETTINGS\020\017\022\022\n\016QUERY_IDENTITY\020\020\022\034\n\030QUERY_" +
-      "CONFIGURE_IDENTITY\020\021\022\020\n\014QUERY_STATUS\020\022\022\020" +
-      "\n\014QUERY_MODULE\020\023\022\022\n\016QUERY_METADATA\020\024\022\020\n\014" +
-      "QUERY_FORMAT\020\025\022\026\n\022QUERY_GET_READINGS\020\026\022\027" +
-      "\n\023QUERY_TAKE_READINGS\020\027\022\033\n\027QUERY_RECORDI" +
-      "NG_CONTROL\020\030\022\023\n\017QUERY_CONFIGURE\020\031*\315\002\n\tRe" +
-      "plyType\022\016\n\nREPLY_NONE\020\000\022\021\n\rREPLY_SUCCESS" +
-      "\020\001\022\016\n\nREPLY_BUSY\020\002\022\017\n\013REPLY_ERROR\020\003\022\026\n\022R" +
-      "EPLY_CAPABILITIES\020\004\022\030\n\024REPLY_LIVE_DATA_P" +
-      "OLL\020\010\022\023\n\017REPLY_SCHEDULES\020\t\022\017\n\013REPLY_FILE" +
-      "S\020\n\022\027\n\023REPLY_DOWNLOAD_FILE\020\013\022\017\n\013REPLY_RE" +
-      "SET\020\014\022\032\n\026REPLY_NETWORK_SETTINGS\020\r\022\022\n\016REP" +
-      "LY_IDENTITY\020\016\022\020\n\014REPLY_STATUS\020\017\022\020\n\014REPLY" +
-      "_MODULE\020\020\022\022\n\016REPLY_METADATA\020\021\022\022\n\016REPLY_R" +
-      "EADINGS\020\022*l\n\rDownloadFlags\022\026\n\022DOWNLOAD_F" +
-      "LAG_NONE\020\000\022\"\n\036DOWNLOAD_FLAG_METADATA_PRE" +
-      "PEND\020\001\022\037\n\033DOWNLOAD_FLAG_METADATA_ONLY\020\002*" +
-      "=\n\013ModuleFlags\022\024\n\020MODULE_FLAG_NONE\020\000\022\030\n\024" +
-      "MODULE_FLAG_INTERNAL\020\001*#\n\013SensorFlags\022\024\n" +
-      "\020SENSOR_FLAG_NONE\020\000B\025\n\023org.fieldkit.app." +
-      "pbb\006proto3"
+      ".fk_app.LiveValue\"C\n\014ModuleHeader\022\024\n\014man" +
+      "ufacturer\030\001 \001(\r\022\014\n\004kind\030\002 \001(\r\022\017\n\007version" +
+      "\030\003 \001(\r\"\260\001\n\022ModuleCapabilities\022\020\n\010positio" +
+      "n\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022+\n\007sensors\030\003 \003(\0132\032" +
+      ".fk_app.SensorCapabilities\022\014\n\004path\030\004 \001(\t" +
+      "\022\r\n\005flags\030\005 \001(\r\022\n\n\002id\030\006 \001(\014\022$\n\006header\030\007 " +
+      "\001(\0132\024.fk_app.ModuleHeader\"\231\001\n\014Capabiliti" +
+      "es\022\017\n\007version\030\001 \001(\r\022\020\n\010deviceId\030\002 \001(\014\022\014\n" +
+      "\004name\030\003 \001(\t\022+\n\007modules\030\004 \003(\0132\032.fk_app.Mo" +
+      "duleCapabilities\022+\n\007sensors\030\005 \003(\0132\032.fk_a" +
+      "pp.SensorCapabilities\"-\n\013NetworkInfo\022\014\n\004" +
+      "ssid\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"S\n\017NetworkS" +
+      "ettings\022\031\n\021createAccessPoint\030\001 \001(\005\022%\n\010ne" +
+      "tworks\030\002 \003(\0132\023.fk_app.NetworkInfo\"[\n\010Fir" +
+      "mware\022\017\n\007version\030\001 \001(\t\022\r\n\005build\030\002 \001(\t\022\016\n" +
+      "\006number\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\004\022\014\n\004hash" +
+      "\030\005 \001(\t\"\217\001\n\010Identity\022\016\n\006device\030\001 \001(\t\022\016\n\006s" +
+      "tream\030\002 \001(\t\022\020\n\010deviceId\030\003 \001(\014\022\020\n\010firmwar" +
+      "e\030\004 \001(\t\022\r\n\005build\030\005 \001(\t\022\016\n\006number\030\010 \001(\t\022\014" +
+      "\n\004name\030\006 \001(\t\022\022\n\ngeneration\030\007 \001(\014\"5\n\024Conf" +
+      "igureSensorQuery\022\n\n\002id\030\001 \001(\r\022\021\n\tfrequenc" +
+      "y\030\002 \001(\r\" \n\014LiveDataPoll\022\020\n\010interval\030\001 \001(" +
+      "\r\"=\n\016LiveDataSample\022\016\n\006sensor\030\001 \001(\r\022\014\n\004t" +
+      "ime\030\002 \001(\004\022\r\n\005value\030\003 \001(\002\"3\n\010LiveData\022\'\n\007" +
+      "samples\030\001 \003(\0132\026.fk_app.LiveDataSample\"^\n" +
+      "\004File\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030" +
+      "\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\014\n\004name\030\005 \001(\t\022\017\n\007" +
+      "maximum\030\006 \001(\004\"$\n\005Files\022\033\n\005files\030\001 \003(\0132\014." +
+      "fk_app.File\"I\n\014DownloadFile\022\n\n\002id\030\001 \001(\r\022" +
+      "\016\n\006offset\030\002 \001(\r\022\016\n\006length\030\003 \001(\r\022\r\n\005flags" +
+      "\030\004 \001(\r\"\027\n\tEraseFile\022\n\n\002id\030\001 \001(\r\"a\n\010FileD" +
+      "ata\022\016\n\006offset\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004siz" +
+      "e\030\003 \001(\r\022\014\n\004hash\030\004 \001(\r\022\017\n\007version\030\005 \001(\r\022\n" +
+      "\n\002id\030\006 \001(\r\"{\n\014DeviceStatus\022\016\n\006uptime\030\001 \001" +
+      "(\r\022\031\n\021batteryPercentage\030\002 \001(\002\022\026\n\016battery" +
+      "Voltage\030\003 \001(\002\022\021\n\tgpsHasFix\030\004 \001(\r\022\025\n\rgpsS" +
+      "atellites\030\005 \001(\r\";\n\013QueryModule\022\n\n\002id\030\001 \001" +
+      "(\r\022\017\n\007address\030\002 \001(\r\022\017\n\007message\030\003 \001(\014\";\n\013" +
+      "ModuleReply\022\n\n\002id\030\001 \001(\r\022\017\n\007address\030\002 \001(\r" +
+      "\022\017\n\007message\030\003 \001(\014\"\231\003\n\020WireMessageQuery\022\037" +
+      "\n\004type\030\001 \001(\0162\021.fk_app.QueryType\0224\n\021query" +
+      "Capabilities\030\002 \001(\0132\031.fk_app.QueryCapabil" +
+      "ities\0225\n\017configureSensor\030\003 \001(\0132\034.fk_app." +
+      "ConfigureSensorQuery\022*\n\014liveDataPoll\030\010 \001" +
+      "(\0132\024.fk_app.LiveDataPoll\022*\n\014downloadFile" +
+      "\030\n \001(\0132\024.fk_app.DownloadFile\022$\n\teraseFil" +
+      "e\030\013 \001(\0132\021.fk_app.EraseFile\0220\n\017networkSet" +
+      "tings\030\014 \001(\0132\027.fk_app.NetworkSettings\022\"\n\010" +
+      "identity\030\r \001(\0132\020.fk_app.Identity\022#\n\006modu" +
+      "le\030\016 \001(\0132\023.fk_app.QueryModule\"\'\n\005Error\022\017" +
+      "\n\007message\030\001 \001(\t\022\r\n\005delay\030\002 \001(\r\"\205\003\n\020WireM" +
+      "essageReply\022\037\n\004type\030\001 \001(\0162\021.fk_app.Reply" +
+      "Type\022\035\n\006errors\030\002 \003(\0132\r.fk_app.Error\022*\n\014c" +
+      "apabilities\030\003 \001(\0132\024.fk_app.Capabilities\022" +
+      "\"\n\010liveData\030\006 \001(\0132\020.fk_app.LiveData\022\034\n\005f" +
+      "iles\030\010 \001(\0132\r.fk_app.Files\022\"\n\010fileData\030\t " +
+      "\001(\0132\020.fk_app.FileData\0220\n\017networkSettings" +
+      "\030\n \001(\0132\027.fk_app.NetworkSettings\022\"\n\010ident" +
+      "ity\030\013 \001(\0132\020.fk_app.Identity\022$\n\006status\030\014 " +
+      "\001(\0132\024.fk_app.DeviceStatus\022#\n\006module\030\r \001(" +
+      "\0132\023.fk_app.ModuleReply\"N\n\010Schedule\022\014\n\004cr" +
+      "on\030\001 \001(\014\022\020\n\010interval\030\002 \001(\r\022\020\n\010repeated\030\003" +
+      " \001(\r\022\020\n\010duration\030\004 \001(\r\"\244\001\n\tSchedules\022\021\n\t" +
+      "modifying\030\001 \001(\010\022\"\n\010readings\030\002 \001(\0132\020.fk_a" +
+      "pp.Schedule\022\036\n\004lora\030\003 \001(\0132\020.fk_app.Sched" +
+      "ule\022!\n\007network\030\004 \001(\0132\020.fk_app.Schedule\022\035" +
+      "\n\003gps\030\005 \001(\0132\020.fk_app.Schedule\"\020\n\016Hardwar" +
+      "eStatus\"\202\001\n\tGpsStatus\022\017\n\007enabled\030\007 \001(\r\022\013" +
+      "\n\003fix\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\022\n\nsatellites\030" +
+      "\003 \001(\r\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010latitude\030\005 \001" +
+      "(\002\022\020\n\010altitude\030\006 \001(\002\"\271\001\n\014MemoryStatus\022\025\n" +
+      "\rsramAvailable\030\001 \001(\r\022\035\n\025programFlashAvai" +
+      "lable\030\002 \001(\r\022\037\n\027extendedMemoryAvailable\030\003" +
+      " \001(\r\022\033\n\023dataMemoryInstalled\030\004 \001(\r\022\026\n\016dat" +
+      "aMemoryUsed\030\005 \001(\r\022\035\n\025dataMemoryConsumpti" +
+      "on\030\006 \001(\002\"4\n\rBatteryStatus\022\017\n\007voltage\030\001 \001" +
+      "(\r\022\022\n\npercentage\030\002 \001(\r\"5\n\013PowerStatus\022&\n" +
+      "\007battery\030\001 \001(\0132\025.fk_app.BatteryStatus\"\211\003" +
+      "\n\006Status\022\017\n\007version\030\001 \001(\r\022\016\n\006uptime\030\002 \001(" +
+      "\r\022\"\n\010identity\030\003 \001(\0132\020.fk_app.Identity\022(\n" +
+      "\010hardware\030\004 \001(\0132\026.fk_app.HardwareStatus\022" +
+      "\"\n\005power\030\005 \001(\0132\023.fk_app.PowerStatus\022$\n\006m" +
+      "emory\030\006 \001(\0132\024.fk_app.MemoryStatus\022\036\n\003gps" +
+      "\030\007 \001(\0132\021.fk_app.GpsStatus\022$\n\tschedules\030\010" +
+      " \001(\0132\021.fk_app.Schedules\022$\n\trecording\030\t \001" +
+      "(\0132\021.fk_app.Recording\022(\n\007network\030\n \001(\0132\027" +
+      ".fk_app.NetworkSettings\022\014\n\004time\030\013 \001(\004\022\"\n" +
+      "\010firmware\030\014 \001(\0132\020.fk_app.Firmware\"#\n\005Ran" +
+      "ge\022\r\n\005start\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"N\n\rDownlo" +
+      "adQuery\022\016\n\006stream\030\001 \001(\r\022\035\n\006ranges\030\003 \003(\0132" +
+      "\r.fk_app.Range\022\016\n\006blocks\030\004 \003(\r\"h\n\tRecord" +
+      "ing\022\021\n\tmodifying\030\001 \001(\010\022\017\n\007enabled\030\002 \001(\010\022" +
+      "\023\n\013startedTime\030\003 \001(\004\022\"\n\010location\030\004 \001(\0132\020" +
+      ".fk_app.Location\"\367\001\n\014LoraSettings\022\021\n\tava" +
+      "ilable\030\001 \001(\010\022\021\n\tmodifying\030\002 \001(\010\022\021\n\tdevic" +
+      "eEui\030\003 \001(\014\022\016\n\006appKey\030\004 \001(\014\022\016\n\006appEui\030\005 \001" +
+      "(\014\022\025\n\rfrequencyBand\030\006 \001(\r\022\025\n\rdeviceAddre" +
+      "ss\030\007 \001(\014\022\031\n\021networkSessionKey\030\010 \001(\014\022\025\n\ra" +
+      "ppSessionKey\030\t \001(\014\022\025\n\ruplinkCounter\030\n \001(" +
+      "\r\022\027\n\017downlinkCounter\030\013 \001(\r\"/\n\010Location\022\021" +
+      "\n\tlongitude\030\001 \001(\002\022\020\n\010latitude\030\002 \001(\002\"\271\002\n\t" +
+      "HttpQuery\022\037\n\004type\030\001 \001(\0162\021.fk_app.QueryTy" +
+      "pe\022\"\n\010identity\030\002 \001(\0132\020.fk_app.Identity\022$" +
+      "\n\trecording\030\003 \001(\0132\021.fk_app.Recording\022$\n\t" +
+      "schedules\030\004 \001(\0132\021.fk_app.Schedules\0220\n\017ne" +
+      "tworkSettings\030\006 \001(\0132\027.fk_app.NetworkSett" +
+      "ings\022*\n\014loraSettings\030\007 \001(\0132\024.fk_app.Lora" +
+      "Settings\022 \n\006locate\030\t \001(\0132\020.fk_app.Locati" +
+      "on\022\r\n\005flags\030\005 \001(\r\022\014\n\004time\030\010 \001(\004\"~\n\nDataS" +
+      "tream\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030" +
+      "\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\r\n\005block\030\005 \001(\004\022\014\n" +
+      "\004hash\030\006 \001(\014\022\014\n\004name\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"" +
+      "N\n\021LiveSensorReading\022*\n\006sensor\030\001 \001(\0132\032.f" +
+      "k_app.SensorCapabilities\022\r\n\005value\030\002 \001(\002\"" +
+      "m\n\022LiveModuleReadings\022*\n\006module\030\001 \001(\0132\032." +
+      "fk_app.ModuleCapabilities\022+\n\010readings\030\002 " +
+      "\003(\0132\031.fk_app.LiveSensorReading\"I\n\014LiveRe" +
+      "adings\022\014\n\004time\030\001 \001(\004\022+\n\007modules\030\002 \003(\0132\032." +
+      "fk_app.LiveModuleReadings\"\355\002\n\tHttpReply\022" +
+      "\037\n\004type\030\001 \001(\0162\021.fk_app.ReplyType\022\035\n\006erro" +
+      "rs\030\002 \003(\0132\r.fk_app.Error\022\036\n\006status\030\003 \001(\0132" +
+      "\016.fk_app.Status\0220\n\017networkSettings\030\004 \001(\013" +
+      "2\027.fk_app.NetworkSettings\022*\n\014loraSetting" +
+      "s\030\010 \001(\0132\024.fk_app.LoraSettings\022+\n\007modules" +
+      "\030\005 \003(\0132\032.fk_app.ModuleCapabilities\022#\n\007st" +
+      "reams\030\006 \003(\0132\022.fk_app.DataStream\022*\n\014liveR" +
+      "eadings\030\007 \003(\0132\024.fk_app.LiveReadings\022$\n\ts" +
+      "chedules\030\t \001(\0132\021.fk_app.Schedules*8\n\nQue" +
+      "ryFlags\022\024\n\020QUERY_FLAGS_NONE\020\000\022\024\n\020QUERY_F" +
+      "LAGS_LOGS\020\001*\216\004\n\tQueryType\022\016\n\nQUERY_NONE\020" +
+      "\000\022\026\n\022QUERY_CAPABILITIES\020\001\022\032\n\026QUERY_CONFI" +
+      "GURE_SENSOR\020\002\022\030\n\024QUERY_LIVE_DATA_POLL\020\007\022" +
+      "\023\n\017QUERY_SCHEDULES\020\010\022\034\n\030QUERY_CONFIGUE_S" +
+      "CHEDULES\020\t\022\017\n\013QUERY_FILES\020\n\022\027\n\023QUERY_DOW" +
+      "NLOAD_FILE\020\013\022\024\n\020QUERY_ERASE_FILE\020\014\022\017\n\013QU" +
+      "ERY_RESET\020\r\022\032\n\026QUERY_NETWORK_SETTINGS\020\016\022" +
+      "$\n QUERY_CONFIGURE_NETWORK_SETTINGS\020\017\022\022\n" +
+      "\016QUERY_IDENTITY\020\020\022\034\n\030QUERY_CONFIGURE_IDE" +
+      "NTITY\020\021\022\020\n\014QUERY_STATUS\020\022\022\020\n\014QUERY_MODUL" +
+      "E\020\023\022\022\n\016QUERY_METADATA\020\024\022\020\n\014QUERY_FORMAT\020" +
+      "\025\022\026\n\022QUERY_GET_READINGS\020\026\022\027\n\023QUERY_TAKE_" +
+      "READINGS\020\027\022\033\n\027QUERY_RECORDING_CONTROL\020\030\022" +
+      "\023\n\017QUERY_CONFIGURE\020\031*\315\002\n\tReplyType\022\016\n\nRE" +
+      "PLY_NONE\020\000\022\021\n\rREPLY_SUCCESS\020\001\022\016\n\nREPLY_B" +
+      "USY\020\002\022\017\n\013REPLY_ERROR\020\003\022\026\n\022REPLY_CAPABILI" +
+      "TIES\020\004\022\030\n\024REPLY_LIVE_DATA_POLL\020\010\022\023\n\017REPL" +
+      "Y_SCHEDULES\020\t\022\017\n\013REPLY_FILES\020\n\022\027\n\023REPLY_" +
+      "DOWNLOAD_FILE\020\013\022\017\n\013REPLY_RESET\020\014\022\032\n\026REPL" +
+      "Y_NETWORK_SETTINGS\020\r\022\022\n\016REPLY_IDENTITY\020\016" +
+      "\022\020\n\014REPLY_STATUS\020\017\022\020\n\014REPLY_MODULE\020\020\022\022\n\016" +
+      "REPLY_METADATA\020\021\022\022\n\016REPLY_READINGS\020\022*l\n\r" +
+      "DownloadFlags\022\026\n\022DOWNLOAD_FLAG_NONE\020\000\022\"\n" +
+      "\036DOWNLOAD_FLAG_METADATA_PREPEND\020\001\022\037\n\033DOW" +
+      "NLOAD_FLAG_METADATA_ONLY\020\002*=\n\013ModuleFlag" +
+      "s\022\024\n\020MODULE_FLAG_NONE\020\000\022\030\n\024MODULE_FLAG_I" +
+      "NTERNAL\020\001*#\n\013SensorFlags\022\024\n\020SENSOR_FLAG_" +
+      "NONE\020\000B\025\n\023org.fieldkit.app.pbb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -44497,242 +45326,248 @@ public final class FkApp {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_SensorCapabilities_descriptor,
         new java.lang.String[] { "Number", "Module", "Name", "Frequency", "UnitOfMeasure", "Path", "Flags", "Value", });
-    internal_static_fk_app_ModuleCapabilities_descriptor =
+    internal_static_fk_app_ModuleHeader_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_fk_app_ModuleHeader_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_fk_app_ModuleHeader_descriptor,
+        new java.lang.String[] { "Manufacturer", "Kind", "Version", });
+    internal_static_fk_app_ModuleCapabilities_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_fk_app_ModuleCapabilities_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_ModuleCapabilities_descriptor,
-        new java.lang.String[] { "Position", "Name", "Sensors", "Path", "Flags", "Id", });
+        new java.lang.String[] { "Position", "Name", "Sensors", "Path", "Flags", "Id", "Header", });
     internal_static_fk_app_Capabilities_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_fk_app_Capabilities_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Capabilities_descriptor,
         new java.lang.String[] { "Version", "DeviceId", "Name", "Modules", "Sensors", });
     internal_static_fk_app_NetworkInfo_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_fk_app_NetworkInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_NetworkInfo_descriptor,
         new java.lang.String[] { "Ssid", "Password", });
     internal_static_fk_app_NetworkSettings_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_fk_app_NetworkSettings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_NetworkSettings_descriptor,
         new java.lang.String[] { "CreateAccessPoint", "Networks", });
     internal_static_fk_app_Firmware_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_fk_app_Firmware_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Firmware_descriptor,
         new java.lang.String[] { "Version", "Build", "Number", "Timestamp", "Hash", });
     internal_static_fk_app_Identity_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_fk_app_Identity_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Identity_descriptor,
         new java.lang.String[] { "Device", "Stream", "DeviceId", "Firmware", "Build", "Number", "Name", "Generation", });
     internal_static_fk_app_ConfigureSensorQuery_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_fk_app_ConfigureSensorQuery_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_ConfigureSensorQuery_descriptor,
         new java.lang.String[] { "Id", "Frequency", });
     internal_static_fk_app_LiveDataPoll_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_fk_app_LiveDataPoll_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveDataPoll_descriptor,
         new java.lang.String[] { "Interval", });
     internal_static_fk_app_LiveDataSample_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_fk_app_LiveDataSample_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveDataSample_descriptor,
         new java.lang.String[] { "Sensor", "Time", "Value", });
     internal_static_fk_app_LiveData_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_fk_app_LiveData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveData_descriptor,
         new java.lang.String[] { "Samples", });
     internal_static_fk_app_File_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_fk_app_File_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_File_descriptor,
         new java.lang.String[] { "Id", "Time", "Size", "Version", "Name", "Maximum", });
     internal_static_fk_app_Files_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_fk_app_Files_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Files_descriptor,
         new java.lang.String[] { "Files", });
     internal_static_fk_app_DownloadFile_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_fk_app_DownloadFile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_DownloadFile_descriptor,
         new java.lang.String[] { "Id", "Offset", "Length", "Flags", });
     internal_static_fk_app_EraseFile_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_fk_app_EraseFile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_EraseFile_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_fk_app_FileData_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_fk_app_FileData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_FileData_descriptor,
         new java.lang.String[] { "Offset", "Data", "Size", "Hash", "Version", "Id", });
     internal_static_fk_app_DeviceStatus_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_fk_app_DeviceStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_DeviceStatus_descriptor,
         new java.lang.String[] { "Uptime", "BatteryPercentage", "BatteryVoltage", "GpsHasFix", "GpsSatellites", });
     internal_static_fk_app_QueryModule_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_fk_app_QueryModule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_QueryModule_descriptor,
         new java.lang.String[] { "Id", "Address", "Message", });
     internal_static_fk_app_ModuleReply_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_fk_app_ModuleReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_ModuleReply_descriptor,
         new java.lang.String[] { "Id", "Address", "Message", });
     internal_static_fk_app_WireMessageQuery_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_fk_app_WireMessageQuery_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_WireMessageQuery_descriptor,
         new java.lang.String[] { "Type", "QueryCapabilities", "ConfigureSensor", "LiveDataPoll", "DownloadFile", "EraseFile", "NetworkSettings", "Identity", "Module", });
     internal_static_fk_app_Error_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_fk_app_Error_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Error_descriptor,
         new java.lang.String[] { "Message", "Delay", });
     internal_static_fk_app_WireMessageReply_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_fk_app_WireMessageReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_WireMessageReply_descriptor,
         new java.lang.String[] { "Type", "Errors", "Capabilities", "LiveData", "Files", "FileData", "NetworkSettings", "Identity", "Status", "Module", });
     internal_static_fk_app_Schedule_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_fk_app_Schedule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Schedule_descriptor,
         new java.lang.String[] { "Cron", "Interval", "Repeated", "Duration", });
     internal_static_fk_app_Schedules_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_fk_app_Schedules_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Schedules_descriptor,
         new java.lang.String[] { "Modifying", "Readings", "Lora", "Network", "Gps", });
     internal_static_fk_app_HardwareStatus_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_fk_app_HardwareStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_HardwareStatus_descriptor,
         new java.lang.String[] { });
     internal_static_fk_app_GpsStatus_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_fk_app_GpsStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_GpsStatus_descriptor,
         new java.lang.String[] { "Enabled", "Fix", "Time", "Satellites", "Longitude", "Latitude", "Altitude", });
     internal_static_fk_app_MemoryStatus_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_fk_app_MemoryStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_MemoryStatus_descriptor,
         new java.lang.String[] { "SramAvailable", "ProgramFlashAvailable", "ExtendedMemoryAvailable", "DataMemoryInstalled", "DataMemoryUsed", "DataMemoryConsumption", });
     internal_static_fk_app_BatteryStatus_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_fk_app_BatteryStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_BatteryStatus_descriptor,
         new java.lang.String[] { "Voltage", "Percentage", });
     internal_static_fk_app_PowerStatus_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_fk_app_PowerStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_PowerStatus_descriptor,
         new java.lang.String[] { "Battery", });
     internal_static_fk_app_Status_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_fk_app_Status_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Status_descriptor,
         new java.lang.String[] { "Version", "Uptime", "Identity", "Hardware", "Power", "Memory", "Gps", "Schedules", "Recording", "Network", "Time", "Firmware", });
     internal_static_fk_app_Range_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_fk_app_Range_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Range_descriptor,
         new java.lang.String[] { "Start", "End", });
     internal_static_fk_app_DownloadQuery_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_fk_app_DownloadQuery_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_DownloadQuery_descriptor,
         new java.lang.String[] { "Stream", "Ranges", "Blocks", });
     internal_static_fk_app_Recording_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_fk_app_Recording_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Recording_descriptor,
         new java.lang.String[] { "Modifying", "Enabled", "StartedTime", "Location", });
     internal_static_fk_app_LoraSettings_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_fk_app_LoraSettings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LoraSettings_descriptor,
         new java.lang.String[] { "Available", "Modifying", "DeviceEui", "AppKey", "AppEui", "FrequencyBand", "DeviceAddress", "NetworkSessionKey", "AppSessionKey", "UplinkCounter", "DownlinkCounter", });
     internal_static_fk_app_Location_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_fk_app_Location_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Location_descriptor,
         new java.lang.String[] { "Longitude", "Latitude", });
     internal_static_fk_app_HttpQuery_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_fk_app_HttpQuery_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_HttpQuery_descriptor,
         new java.lang.String[] { "Type", "Identity", "Recording", "Schedules", "NetworkSettings", "LoraSettings", "Locate", "Flags", "Time", });
     internal_static_fk_app_DataStream_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_fk_app_DataStream_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_DataStream_descriptor,
         new java.lang.String[] { "Id", "Time", "Size", "Version", "Block", "Hash", "Name", "Path", });
     internal_static_fk_app_LiveSensorReading_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_fk_app_LiveSensorReading_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveSensorReading_descriptor,
         new java.lang.String[] { "Sensor", "Value", });
     internal_static_fk_app_LiveModuleReadings_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_fk_app_LiveModuleReadings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveModuleReadings_descriptor,
         new java.lang.String[] { "Module", "Readings", });
     internal_static_fk_app_LiveReadings_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_fk_app_LiveReadings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveReadings_descriptor,
         new java.lang.String[] { "Time", "Modules", });
     internal_static_fk_app_HttpReply_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_fk_app_HttpReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_HttpReply_descriptor,

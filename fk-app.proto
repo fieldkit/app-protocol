@@ -103,6 +103,12 @@ message SensorCapabilities {
   LiveValue value = 8;
 }
 
+message ModuleHeader {
+  uint32 manufacturer = 1;
+  uint32 kind = 2;
+  uint32 version = 3;
+}
+
 message ModuleCapabilities {
   uint32 position = 1;
   string name = 2;
@@ -112,6 +118,7 @@ message ModuleCapabilities {
   string path = 4;
   uint32 flags = 5;
   bytes id = 6;
+  ModuleHeader header = 7;
 }
 
 message Capabilities {

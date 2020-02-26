@@ -15,6 +15,9 @@ PB_BIND(fk_app_LiveValue, fk_app_LiveValue, AUTO)
 PB_BIND(fk_app_SensorCapabilities, fk_app_SensorCapabilities, AUTO)
 
 
+PB_BIND(fk_app_ModuleHeader, fk_app_ModuleHeader, AUTO)
+
+
 PB_BIND(fk_app_ModuleCapabilities, fk_app_ModuleCapabilities, AUTO)
 
 

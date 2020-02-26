@@ -135,6 +135,22 @@
             }
           }
         },
+        "ModuleHeader": {
+          "fields": {
+            "manufacturer": {
+              "type": "uint32",
+              "id": 1
+            },
+            "kind": {
+              "type": "uint32",
+              "id": 2
+            },
+            "version": {
+              "type": "uint32",
+              "id": 3
+            }
+          }
+        },
         "ModuleCapabilities": {
           "fields": {
             "position": {
@@ -161,6 +177,10 @@
             "id": {
               "type": "bytes",
               "id": 6
+            },
+            "header": {
+              "type": "ModuleHeader",
+              "id": 7
             }
           }
         },
