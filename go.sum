@@ -36,6 +36,8 @@ github.com/fieldkit/atlas-protocol v0.0.0-20200106204731-20e4af5440ab h1:Fwaxgvz
 github.com/fieldkit/atlas-protocol v0.0.0-20200106204731-20e4af5440ab/go.mod h1:Q/2y8dvxA64Ni4AHv96Tqn/qwtZZXU2LBXuJ9ZlqCxs=
 github.com/fieldkit/atlas-protocol v0.0.0-20200121230333-aa951d7c3ba4 h1:h3lnzidPzlVlw8NiD6a0uU9O7RhuCQeousAz44jq2Xc=
 github.com/fieldkit/atlas-protocol v0.0.0-20200121230333-aa951d7c3ba4/go.mod h1:Q/2y8dvxA64Ni4AHv96Tqn/qwtZZXU2LBXuJ9ZlqCxs=
+github.com/fieldkit/atlas-protocol v0.0.0-20200205183448-29cdb99f6423 h1:Y4M6DNP/xLDqr2oQscRYsxFCmBn7g3ZaGMEeVVUuchs=
+github.com/fieldkit/atlas-protocol v0.0.0-20200205183448-29cdb99f6423/go.mod h1:Q/2y8dvxA64Ni4AHv96Tqn/qwtZZXU2LBXuJ9ZlqCxs=
 github.com/fieldkit/cloud v0.0.0-20190529183849-5426fab875ec h1:ECDe0gnQvmDD4DIThnnix0chpKM/o3fbVvkgIW5wEpc=
 github.com/fieldkit/cloud v0.0.0-20190529183849-5426fab875ec/go.mod h1:3t/uXpAzdatC0wZ+NbO7cu5VhheO3l43o9egSygavw8=
 github.com/fieldkit/cloud v0.0.0-20190917195237-6e5ed63a57b3/go.mod h1:3t/uXpAzdatC0wZ+NbO7cu5VhheO3l43o9egSygavw8=

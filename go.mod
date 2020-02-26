@@ -9,7 +9,7 @@ require (
 	github.com/circonus-labs/circonusllhist v0.1.4 // indirect
 	github.com/dimfeld/httptreemux v5.0.1+incompatible // indirect
 	github.com/fatih/color v1.9.0 // indirect
-	github.com/fieldkit/atlas-protocol v0.0.0-20200121230333-aa951d7c3ba4
+	github.com/fieldkit/atlas-protocol v0.0.0-20200205183448-29cdb99f6423
 	github.com/fieldkit/cloud v0.0.0-20200123002559-65cc88368a74
 	github.com/go-logfmt/logfmt v0.5.0 // indirect
 	github.com/goadesign/goa v2.0.8+incompatible // indirect
