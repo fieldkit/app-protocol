@@ -374,6 +374,15 @@ message Location {
   float latitude = 2;
 }
 
+message WifiTransmission {
+  string url = 1;
+  string token = 2;
+}
+
+message Transmission {
+  WifiTransmission wifi = 1;
+}
+
 message HttpQuery {
   QueryType type = 1;
   Identity identity = 2;
@@ -382,6 +391,7 @@ message HttpQuery {
   NetworkSettings networkSettings = 6;
   LoraSettings loraSettings = 7;
   Location locate = 9;
+  Transmission transmission = 10;
   uint32 flags = 5;
   uint64 time = 8;
 }
@@ -422,4 +432,5 @@ message HttpReply {
   repeated DataStream streams = 6;
   repeated LiveReadings liveReadings = 7;
   Schedules schedules = 9;
+  Transmission transmission = 10;
 }

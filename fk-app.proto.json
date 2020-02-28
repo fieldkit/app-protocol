@@ -875,6 +875,26 @@
             }
           }
         },
+        "WifiTransmission": {
+          "fields": {
+            "url": {
+              "type": "string",
+              "id": 1
+            },
+            "token": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "Transmission": {
+          "fields": {
+            "wifi": {
+              "type": "WifiTransmission",
+              "id": 1
+            }
+          }
+        },
         "HttpQuery": {
           "fields": {
             "type": {
@@ -904,6 +924,10 @@
             "locate": {
               "type": "Location",
               "id": 9
+            },
+            "transmission": {
+              "type": "Transmission",
+              "id": 10
             },
             "flags": {
               "type": "uint32",
@@ -1030,6 +1054,10 @@
             "schedules": {
               "type": "Schedules",
               "id": 9
+            },
+            "transmission": {
+              "type": "Transmission",
+              "id": 10
             }
           }
         }
