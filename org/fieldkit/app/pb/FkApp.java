@@ -36599,24 +36599,30 @@ public final class FkApp {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string url = 1;</code>
+     * <code>bool modifying = 1;</code>
+     * @return The modifying.
+     */
+    boolean getModifying();
+
+    /**
+     * <code>string url = 2;</code>
      * @return The url.
      */
     java.lang.String getUrl();
     /**
-     * <code>string url = 1;</code>
+     * <code>string url = 2;</code>
      * @return The bytes for url.
      */
     com.google.protobuf.ByteString
         getUrlBytes();
 
     /**
-     * <code>string token = 2;</code>
+     * <code>string token = 3;</code>
      * @return The token.
      */
     java.lang.String getToken();
     /**
-     * <code>string token = 2;</code>
+     * <code>string token = 3;</code>
      * @return The bytes for token.
      */
     com.google.protobuf.ByteString
@@ -36669,13 +36675,18 @@ public final class FkApp {
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+
+              modifying_ = input.readBool();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               url_ = s;
               break;
             }
-            case 18: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               token_ = s;
@@ -36713,10 +36724,20 @@ public final class FkApp {
               org.fieldkit.app.pb.FkApp.WifiTransmission.class, org.fieldkit.app.pb.FkApp.WifiTransmission.Builder.class);
     }
 
-    public static final int URL_FIELD_NUMBER = 1;
+    public static final int MODIFYING_FIELD_NUMBER = 1;
+    private boolean modifying_;
+    /**
+     * <code>bool modifying = 1;</code>
+     * @return The modifying.
+     */
+    public boolean getModifying() {
+      return modifying_;
+    }
+
+    public static final int URL_FIELD_NUMBER = 2;
     private volatile java.lang.Object url_;
     /**
-     * <code>string url = 1;</code>
+     * <code>string url = 2;</code>
      * @return The url.
      */
     public java.lang.String getUrl() {
@@ -36732,7 +36753,7 @@ public final class FkApp {
       }
     }
     /**
-     * <code>string url = 1;</code>
+     * <code>string url = 2;</code>
      * @return The bytes for url.
      */
     public com.google.protobuf.ByteString
@@ -36749,10 +36770,10 @@ public final class FkApp {
       }
     }
 
-    public static final int TOKEN_FIELD_NUMBER = 2;
+    public static final int TOKEN_FIELD_NUMBER = 3;
     private volatile java.lang.Object token_;
     /**
-     * <code>string token = 2;</code>
+     * <code>string token = 3;</code>
      * @return The token.
      */
     public java.lang.String getToken() {
@@ -36768,7 +36789,7 @@ public final class FkApp {
       }
     }
     /**
-     * <code>string token = 2;</code>
+     * <code>string token = 3;</code>
      * @return The bytes for token.
      */
     public com.google.protobuf.ByteString
@@ -36799,11 +36820,14 @@ public final class FkApp {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (modifying_ != false) {
+        output.writeBool(1, modifying_);
+      }
       if (!getUrlBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, url_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, url_);
       }
       if (!getTokenBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, token_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, token_);
       }
       unknownFields.writeTo(output);
     }
@@ -36814,11 +36838,15 @@ public final class FkApp {
       if (size != -1) return size;
 
       size = 0;
+      if (modifying_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, modifying_);
+      }
       if (!getUrlBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, url_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, url_);
       }
       if (!getTokenBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, token_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, token_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -36835,6 +36863,8 @@ public final class FkApp {
       }
       org.fieldkit.app.pb.FkApp.WifiTransmission other = (org.fieldkit.app.pb.FkApp.WifiTransmission) obj;
 
+      if (getModifying()
+          != other.getModifying()) return false;
       if (!getUrl()
           .equals(other.getUrl())) return false;
       if (!getToken()
@@ -36850,6 +36880,9 @@ public final class FkApp {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MODIFYING_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getModifying());
       hash = (37 * hash) + URL_FIELD_NUMBER;
       hash = (53 * hash) + getUrl().hashCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
@@ -36987,6 +37020,8 @@ public final class FkApp {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        modifying_ = false;
+
         url_ = "";
 
         token_ = "";
@@ -37017,6 +37052,7 @@ public final class FkApp {
       @java.lang.Override
       public org.fieldkit.app.pb.FkApp.WifiTransmission buildPartial() {
         org.fieldkit.app.pb.FkApp.WifiTransmission result = new org.fieldkit.app.pb.FkApp.WifiTransmission(this);
+        result.modifying_ = modifying_;
         result.url_ = url_;
         result.token_ = token_;
         onBuilt();
@@ -37067,6 +37103,9 @@ public final class FkApp {
 
       public Builder mergeFrom(org.fieldkit.app.pb.FkApp.WifiTransmission other) {
         if (other == org.fieldkit.app.pb.FkApp.WifiTransmission.getDefaultInstance()) return this;
+        if (other.getModifying() != false) {
+          setModifying(other.getModifying());
+        }
         if (!other.getUrl().isEmpty()) {
           url_ = other.url_;
           onChanged();
@@ -37104,9 +37143,39 @@ public final class FkApp {
         return this;
       }
 
+      private boolean modifying_ ;
+      /**
+       * <code>bool modifying = 1;</code>
+       * @return The modifying.
+       */
+      public boolean getModifying() {
+        return modifying_;
+      }
+      /**
+       * <code>bool modifying = 1;</code>
+       * @param value The modifying to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModifying(boolean value) {
+        
+        modifying_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool modifying = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModifying() {
+        
+        modifying_ = false;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object url_ = "";
       /**
-       * <code>string url = 1;</code>
+       * <code>string url = 2;</code>
        * @return The url.
        */
       public java.lang.String getUrl() {
@@ -37122,7 +37191,7 @@ public final class FkApp {
         }
       }
       /**
-       * <code>string url = 1;</code>
+       * <code>string url = 2;</code>
        * @return The bytes for url.
        */
       public com.google.protobuf.ByteString
@@ -37139,7 +37208,7 @@ public final class FkApp {
         }
       }
       /**
-       * <code>string url = 1;</code>
+       * <code>string url = 2;</code>
        * @param value The url to set.
        * @return This builder for chaining.
        */
@@ -37154,7 +37223,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>string url = 1;</code>
+       * <code>string url = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearUrl() {
@@ -37164,7 +37233,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>string url = 1;</code>
+       * <code>string url = 2;</code>
        * @param value The bytes for url to set.
        * @return This builder for chaining.
        */
@@ -37182,7 +37251,7 @@ public final class FkApp {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>string token = 2;</code>
+       * <code>string token = 3;</code>
        * @return The token.
        */
       public java.lang.String getToken() {
@@ -37198,7 +37267,7 @@ public final class FkApp {
         }
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>string token = 3;</code>
        * @return The bytes for token.
        */
       public com.google.protobuf.ByteString
@@ -37215,7 +37284,7 @@ public final class FkApp {
         }
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>string token = 3;</code>
        * @param value The token to set.
        * @return This builder for chaining.
        */
@@ -37230,7 +37299,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>string token = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearToken() {
@@ -37240,7 +37309,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>string token = 3;</code>
        * @param value The bytes for token to set.
        * @return This builder for chaining.
        */
@@ -46988,68 +47057,69 @@ public final class FkApp {
       "ss\030\007 \001(\014\022\031\n\021networkSessionKey\030\010 \001(\014\022\025\n\ra" +
       "ppSessionKey\030\t \001(\014\022\025\n\ruplinkCounter\030\n \001(" +
       "\r\022\027\n\017downlinkCounter\030\013 \001(\r\"/\n\010Location\022\021" +
-      "\n\tlongitude\030\001 \001(\002\022\020\n\010latitude\030\002 \001(\002\".\n\020W" +
-      "ifiTransmission\022\013\n\003url\030\001 \001(\t\022\r\n\005token\030\002 " +
-      "\001(\t\"6\n\014Transmission\022&\n\004wifi\030\001 \001(\0132\030.fk_a" +
-      "pp.WifiTransmission\"\345\002\n\tHttpQuery\022\037\n\004typ" +
-      "e\030\001 \001(\0162\021.fk_app.QueryType\022\"\n\010identity\030\002" +
-      " \001(\0132\020.fk_app.Identity\022$\n\trecording\030\003 \001(" +
-      "\0132\021.fk_app.Recording\022$\n\tschedules\030\004 \001(\0132" +
-      "\021.fk_app.Schedules\0220\n\017networkSettings\030\006 " +
-      "\001(\0132\027.fk_app.NetworkSettings\022*\n\014loraSett" +
-      "ings\030\007 \001(\0132\024.fk_app.LoraSettings\022 \n\006loca" +
-      "te\030\t \001(\0132\020.fk_app.Location\022*\n\014transmissi" +
-      "on\030\n \001(\0132\024.fk_app.Transmission\022\r\n\005flags\030" +
-      "\005 \001(\r\022\014\n\004time\030\010 \001(\004\"~\n\nDataStream\022\n\n\002id\030" +
-      "\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007ver" +
-      "sion\030\004 \001(\r\022\r\n\005block\030\005 \001(\004\022\014\n\004hash\030\006 \001(\014\022" +
-      "\014\n\004name\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"N\n\021LiveSenso" +
-      "rReading\022*\n\006sensor\030\001 \001(\0132\032.fk_app.Sensor" +
-      "Capabilities\022\r\n\005value\030\002 \001(\002\"m\n\022LiveModul" +
-      "eReadings\022*\n\006module\030\001 \001(\0132\032.fk_app.Modul" +
-      "eCapabilities\022+\n\010readings\030\002 \003(\0132\031.fk_app" +
-      ".LiveSensorReading\"I\n\014LiveReadings\022\014\n\004ti" +
-      "me\030\001 \001(\004\022+\n\007modules\030\002 \003(\0132\032.fk_app.LiveM" +
-      "oduleReadings\"\231\003\n\tHttpReply\022\037\n\004type\030\001 \001(" +
-      "\0162\021.fk_app.ReplyType\022\035\n\006errors\030\002 \003(\0132\r.f" +
-      "k_app.Error\022\036\n\006status\030\003 \001(\0132\016.fk_app.Sta" +
-      "tus\0220\n\017networkSettings\030\004 \001(\0132\027.fk_app.Ne" +
-      "tworkSettings\022*\n\014loraSettings\030\010 \001(\0132\024.fk" +
-      "_app.LoraSettings\022+\n\007modules\030\005 \003(\0132\032.fk_" +
-      "app.ModuleCapabilities\022#\n\007streams\030\006 \003(\0132" +
-      "\022.fk_app.DataStream\022*\n\014liveReadings\030\007 \003(" +
-      "\0132\024.fk_app.LiveReadings\022$\n\tschedules\030\t \001" +
-      "(\0132\021.fk_app.Schedules\022*\n\014transmission\030\n " +
-      "\001(\0132\024.fk_app.Transmission*8\n\nQueryFlags\022" +
-      "\024\n\020QUERY_FLAGS_NONE\020\000\022\024\n\020QUERY_FLAGS_LOG" +
-      "S\020\001*\216\004\n\tQueryType\022\016\n\nQUERY_NONE\020\000\022\026\n\022QUE" +
-      "RY_CAPABILITIES\020\001\022\032\n\026QUERY_CONFIGURE_SEN" +
-      "SOR\020\002\022\030\n\024QUERY_LIVE_DATA_POLL\020\007\022\023\n\017QUERY" +
-      "_SCHEDULES\020\010\022\034\n\030QUERY_CONFIGUE_SCHEDULES" +
-      "\020\t\022\017\n\013QUERY_FILES\020\n\022\027\n\023QUERY_DOWNLOAD_FI" +
-      "LE\020\013\022\024\n\020QUERY_ERASE_FILE\020\014\022\017\n\013QUERY_RESE" +
-      "T\020\r\022\032\n\026QUERY_NETWORK_SETTINGS\020\016\022$\n QUERY" +
-      "_CONFIGURE_NETWORK_SETTINGS\020\017\022\022\n\016QUERY_I" +
-      "DENTITY\020\020\022\034\n\030QUERY_CONFIGURE_IDENTITY\020\021\022" +
-      "\020\n\014QUERY_STATUS\020\022\022\020\n\014QUERY_MODULE\020\023\022\022\n\016Q" +
-      "UERY_METADATA\020\024\022\020\n\014QUERY_FORMAT\020\025\022\026\n\022QUE" +
-      "RY_GET_READINGS\020\026\022\027\n\023QUERY_TAKE_READINGS" +
-      "\020\027\022\033\n\027QUERY_RECORDING_CONTROL\020\030\022\023\n\017QUERY" +
-      "_CONFIGURE\020\031*\315\002\n\tReplyType\022\016\n\nREPLY_NONE" +
-      "\020\000\022\021\n\rREPLY_SUCCESS\020\001\022\016\n\nREPLY_BUSY\020\002\022\017\n" +
-      "\013REPLY_ERROR\020\003\022\026\n\022REPLY_CAPABILITIES\020\004\022\030" +
-      "\n\024REPLY_LIVE_DATA_POLL\020\010\022\023\n\017REPLY_SCHEDU" +
-      "LES\020\t\022\017\n\013REPLY_FILES\020\n\022\027\n\023REPLY_DOWNLOAD" +
-      "_FILE\020\013\022\017\n\013REPLY_RESET\020\014\022\032\n\026REPLY_NETWOR" +
-      "K_SETTINGS\020\r\022\022\n\016REPLY_IDENTITY\020\016\022\020\n\014REPL" +
-      "Y_STATUS\020\017\022\020\n\014REPLY_MODULE\020\020\022\022\n\016REPLY_ME" +
-      "TADATA\020\021\022\022\n\016REPLY_READINGS\020\022*l\n\rDownload" +
-      "Flags\022\026\n\022DOWNLOAD_FLAG_NONE\020\000\022\"\n\036DOWNLOA" +
-      "D_FLAG_METADATA_PREPEND\020\001\022\037\n\033DOWNLOAD_FL" +
-      "AG_METADATA_ONLY\020\002*=\n\013ModuleFlags\022\024\n\020MOD" +
-      "ULE_FLAG_NONE\020\000\022\030\n\024MODULE_FLAG_INTERNAL\020" +
-      "\001*#\n\013SensorFlags\022\024\n\020SENSOR_FLAG_NONE\020\000B\025" +
-      "\n\023org.fieldkit.app.pbb\006proto3"
+      "\n\tlongitude\030\001 \001(\002\022\020\n\010latitude\030\002 \001(\002\"A\n\020W" +
+      "ifiTransmission\022\021\n\tmodifying\030\001 \001(\010\022\013\n\003ur" +
+      "l\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\"6\n\014Transmission\022&" +
+      "\n\004wifi\030\001 \001(\0132\030.fk_app.WifiTransmission\"\345" +
+      "\002\n\tHttpQuery\022\037\n\004type\030\001 \001(\0162\021.fk_app.Quer" +
+      "yType\022\"\n\010identity\030\002 \001(\0132\020.fk_app.Identit" +
+      "y\022$\n\trecording\030\003 \001(\0132\021.fk_app.Recording\022" +
+      "$\n\tschedules\030\004 \001(\0132\021.fk_app.Schedules\0220\n" +
+      "\017networkSettings\030\006 \001(\0132\027.fk_app.NetworkS" +
+      "ettings\022*\n\014loraSettings\030\007 \001(\0132\024.fk_app.L" +
+      "oraSettings\022 \n\006locate\030\t \001(\0132\020.fk_app.Loc" +
+      "ation\022*\n\014transmission\030\n \001(\0132\024.fk_app.Tra" +
+      "nsmission\022\r\n\005flags\030\005 \001(\r\022\014\n\004time\030\010 \001(\004\"~" +
+      "\n\nDataStream\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014" +
+      "\n\004size\030\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\r\n\005block\030\005" +
+      " \001(\004\022\014\n\004hash\030\006 \001(\014\022\014\n\004name\030\007 \001(\t\022\014\n\004path" +
+      "\030\010 \001(\t\"N\n\021LiveSensorReading\022*\n\006sensor\030\001 " +
+      "\001(\0132\032.fk_app.SensorCapabilities\022\r\n\005value" +
+      "\030\002 \001(\002\"m\n\022LiveModuleReadings\022*\n\006module\030\001" +
+      " \001(\0132\032.fk_app.ModuleCapabilities\022+\n\010read" +
+      "ings\030\002 \003(\0132\031.fk_app.LiveSensorReading\"I\n" +
+      "\014LiveReadings\022\014\n\004time\030\001 \001(\004\022+\n\007modules\030\002" +
+      " \003(\0132\032.fk_app.LiveModuleReadings\"\231\003\n\tHtt" +
+      "pReply\022\037\n\004type\030\001 \001(\0162\021.fk_app.ReplyType\022" +
+      "\035\n\006errors\030\002 \003(\0132\r.fk_app.Error\022\036\n\006status" +
+      "\030\003 \001(\0132\016.fk_app.Status\0220\n\017networkSetting" +
+      "s\030\004 \001(\0132\027.fk_app.NetworkSettings\022*\n\014lora" +
+      "Settings\030\010 \001(\0132\024.fk_app.LoraSettings\022+\n\007" +
+      "modules\030\005 \003(\0132\032.fk_app.ModuleCapabilitie" +
+      "s\022#\n\007streams\030\006 \003(\0132\022.fk_app.DataStream\022*" +
+      "\n\014liveReadings\030\007 \003(\0132\024.fk_app.LiveReadin" +
+      "gs\022$\n\tschedules\030\t \001(\0132\021.fk_app.Schedules" +
+      "\022*\n\014transmission\030\n \001(\0132\024.fk_app.Transmis" +
+      "sion*8\n\nQueryFlags\022\024\n\020QUERY_FLAGS_NONE\020\000" +
+      "\022\024\n\020QUERY_FLAGS_LOGS\020\001*\216\004\n\tQueryType\022\016\n\n" +
+      "QUERY_NONE\020\000\022\026\n\022QUERY_CAPABILITIES\020\001\022\032\n\026" +
+      "QUERY_CONFIGURE_SENSOR\020\002\022\030\n\024QUERY_LIVE_D" +
+      "ATA_POLL\020\007\022\023\n\017QUERY_SCHEDULES\020\010\022\034\n\030QUERY" +
+      "_CONFIGUE_SCHEDULES\020\t\022\017\n\013QUERY_FILES\020\n\022\027" +
+      "\n\023QUERY_DOWNLOAD_FILE\020\013\022\024\n\020QUERY_ERASE_F" +
+      "ILE\020\014\022\017\n\013QUERY_RESET\020\r\022\032\n\026QUERY_NETWORK_" +
+      "SETTINGS\020\016\022$\n QUERY_CONFIGURE_NETWORK_SE" +
+      "TTINGS\020\017\022\022\n\016QUERY_IDENTITY\020\020\022\034\n\030QUERY_CO" +
+      "NFIGURE_IDENTITY\020\021\022\020\n\014QUERY_STATUS\020\022\022\020\n\014" +
+      "QUERY_MODULE\020\023\022\022\n\016QUERY_METADATA\020\024\022\020\n\014QU" +
+      "ERY_FORMAT\020\025\022\026\n\022QUERY_GET_READINGS\020\026\022\027\n\023" +
+      "QUERY_TAKE_READINGS\020\027\022\033\n\027QUERY_RECORDING" +
+      "_CONTROL\020\030\022\023\n\017QUERY_CONFIGURE\020\031*\315\002\n\tRepl" +
+      "yType\022\016\n\nREPLY_NONE\020\000\022\021\n\rREPLY_SUCCESS\020\001" +
+      "\022\016\n\nREPLY_BUSY\020\002\022\017\n\013REPLY_ERROR\020\003\022\026\n\022REP" +
+      "LY_CAPABILITIES\020\004\022\030\n\024REPLY_LIVE_DATA_POL" +
+      "L\020\010\022\023\n\017REPLY_SCHEDULES\020\t\022\017\n\013REPLY_FILES\020" +
+      "\n\022\027\n\023REPLY_DOWNLOAD_FILE\020\013\022\017\n\013REPLY_RESE" +
+      "T\020\014\022\032\n\026REPLY_NETWORK_SETTINGS\020\r\022\022\n\016REPLY" +
+      "_IDENTITY\020\016\022\020\n\014REPLY_STATUS\020\017\022\020\n\014REPLY_M" +
+      "ODULE\020\020\022\022\n\016REPLY_METADATA\020\021\022\022\n\016REPLY_REA" +
+      "DINGS\020\022*l\n\rDownloadFlags\022\026\n\022DOWNLOAD_FLA" +
+      "G_NONE\020\000\022\"\n\036DOWNLOAD_FLAG_METADATA_PREPE" +
+      "ND\020\001\022\037\n\033DOWNLOAD_FLAG_METADATA_ONLY\020\002*=\n" +
+      "\013ModuleFlags\022\024\n\020MODULE_FLAG_NONE\020\000\022\030\n\024MO" +
+      "DULE_FLAG_INTERNAL\020\001*#\n\013SensorFlags\022\024\n\020S" +
+      "ENSOR_FLAG_NONE\020\000B\025\n\023org.fieldkit.app.pb" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -47288,7 +47358,7 @@ public final class FkApp {
     internal_static_fk_app_WifiTransmission_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_WifiTransmission_descriptor,
-        new java.lang.String[] { "Url", "Token", });
+        new java.lang.String[] { "Modifying", "Url", "Token", });
     internal_static_fk_app_Transmission_descriptor =
       getDescriptor().getMessageTypes().get(39);
     internal_static_fk_app_Transmission_fieldAccessorTable = new

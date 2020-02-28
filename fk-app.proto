@@ -375,8 +375,9 @@ message Location {
 }
 
 message WifiTransmission {
-  string url = 1;
-  string token = 2;
+  bool modifying = 1;
+  string url = 2;
+  string token = 3;
 }
 
 message Transmission {
