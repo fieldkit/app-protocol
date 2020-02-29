@@ -120,6 +120,24 @@ func (d *DeviceClient) ConfigureWifiNetworks(networks []*pb.NetworkInfo) (*pb.Ht
 	return reply, nil
 }
 
+func (d *DeviceClient) ConfigureTransmission(url, token string) (*pb.HttpReply, error) {
+	query := &pb.HttpQuery{
+		Type: pb.QueryType_QUERY_CONFIGURE,
+		Transmission: &pb.Transmission{
+			Wifi: &pb.WifiTransmission{
+				Modifying: true,
+				Url:       url,
+				Token:     token,
+			},
+		},
+	}
+	reply, err := d.queryDevice(query)
+	if err != nil {
+		return nil, err
+	}
+	return reply, nil
+}
+
 func (d *DeviceClient) ConfigureLoraAbp(appSessionKey, networkSessionKey, deviceAddress string, uplinkCounter, downlinkCounter uint32) (*pb.HttpReply, error) {
 	appSessionKeyBytes, err := hex.DecodeString(appSessionKey)
 	if err != nil {

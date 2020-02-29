@@ -48,6 +48,9 @@ type options struct {
 	AtlasValue     float64
 
 	FactoryReset bool
+
+	TransmissionUrl   string
+	TransmissionToken string
 }
 
 func main() {
@@ -79,6 +82,9 @@ func main() {
 	flag.BoolVar(&o.AtlasStatus, "atlas-status", false, "atlas-status")
 	flag.IntVar(&o.AtlasCalibrate, "atlas-calibrate", 0, "atlas-calibrate")
 	flag.Float64Var(&o.AtlasValue, "atlas-value", 0, "atlas-value")
+
+	flag.StringVar(&o.TransmissionUrl, "transmission-url", "", "transmission url")
+	flag.StringVar(&o.TransmissionToken, "transmission-token", "", "transmission token")
 
 	flag.BoolVar(&o.FactoryReset, "factory-reset", false, "factory reset")
 
@@ -219,6 +225,13 @@ func main() {
 		}
 
 		log.Printf("%v", reply)
+	}
+
+	if o.TransmissionUrl != "" || o.TransmissionToken != "" {
+		_, err := device.ConfigureTransmission(o.TransmissionUrl, o.TransmissionToken)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
 	}
 
 	if o.Module >= 0 {
