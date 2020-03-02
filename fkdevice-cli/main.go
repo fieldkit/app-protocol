@@ -177,12 +177,12 @@ func main() {
 	if o.Networks {
 		networks := []*pb.NetworkInfo{
 			&pb.NetworkInfo{
-				Ssid:     "Cottonwood",
-				Password: "asdfasdf",
+				Ssid:     "",
+				Password: "",
 			},
 			&pb.NetworkInfo{
-				Ssid:     "Conservify",
-				Password: "Okavang0",
+				Ssid:     "",
+				Password: "",
 			},
 		}
 		_, err := device.ConfigureWifiNetworks(networks)
