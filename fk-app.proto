@@ -373,6 +373,7 @@ message Location {
   bool modifying = 1;
   float longitude = 2;
   float latitude = 3;
+  uint64 time = 4;
 }
 
 message WifiTransmission {

@@ -876,6 +876,10 @@
             "latitude": {
               "type": "float",
               "id": 3
+            },
+            "time": {
+              "type": "uint64",
+              "id": 4
             }
           }
         },
