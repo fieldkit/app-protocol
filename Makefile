@@ -23,13 +23,16 @@ $(BUILDARCH)/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
 	$(GO) get ./...
 	$(GO) build -o $(BUILDARCH)/fkdevice-cli fkdevice-cli/*.go
 
-bindings: $(PROTO_NAME).proto.json $(PROTO_NAME).pb.go src/$(PROTO_NAME).pb.c src/$(PROTO_NAME).pb.h $(JAVA_DEP)
+bindings: $(PROTO_NAME).proto.json $(PROTO_NAME).pb.go src/$(PROTO_NAME).pb.c src/$(PROTO_NAME).pb.h $(JAVA_DEP) $(PROTO_NAME)_pb2.py
 
 $(PROTO_NAME).proto.json: build $(PROTO_NAME).proto
 	node_modules/.bin/pbjs $(PROTO_NAME).proto -t json -o $(PROTO_NAME).proto.json
 
 src/$(PROTO_NAME).pb.c src/$(PROTO_NAME).pb.h: build $(PROTO_NAME).proto
 	PATH=$(PATH):$(PROTOC_BIN) $(PROTOC) --plugin=protoc-gen-nanopb=build/nanopb/generator/protoc-gen-nanopb --nanopb_out=./src $(PROTO_NAME).proto
+
+$(PROTO_NAME)_pb2.py: build $(PROTO_NAME).proto
+	PATH=$(PATH):$(PROTOC_BIN) $(PROTOC) --python_out=./ $(PROTO_NAME).proto
 
 $(PROTO_NAME).pb.go: build $(PROTO_NAME).proto
 	go get -u github.com/golang/protobuf/protoc-gen-go
