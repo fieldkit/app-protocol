@@ -370,8 +370,9 @@ message LoraSettings {
 }
 
 message Location {
-  float longitude = 1;
-  float latitude = 2;
+  bool modifying = 1;
+  float longitude = 2;
+  float latitude = 3;
 }
 
 message WifiTransmission {

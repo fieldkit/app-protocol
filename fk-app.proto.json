@@ -865,13 +865,17 @@
         },
         "Location": {
           "fields": {
+            "modifying": {
+              "type": "bool",
+              "id": 1
+            },
             "longitude": {
               "type": "float",
-              "id": 1
+              "id": 2
             },
             "latitude": {
               "type": "float",
-              "id": 2
+              "id": 3
             }
           }
         },

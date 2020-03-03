@@ -223,6 +223,7 @@ typedef struct _fk_app_LiveValue {
 } fk_app_LiveValue;
 
 typedef struct _fk_app_Location {
+    bool modifying;
     float longitude;
     float latitude;
 } fk_app_Location;
@@ -529,7 +530,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_default            {0, 0, 0, false, fk_app_Location_init_default}
 #define fk_app_LoraSettings_init_default         {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_Location_init_default             {0, 0}
+#define fk_app_Location_init_default             {0, 0, 0}
 #define fk_app_WifiTransmission_init_default     {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Transmission_init_default         {false, fk_app_WifiTransmission_init_default}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, false, fk_app_Identity_init_default, false, fk_app_Recording_init_default, false, fk_app_Schedules_init_default, 0, false, fk_app_NetworkSettings_init_default, false, fk_app_LoraSettings_init_default, 0, false, fk_app_Location_init_default, false, fk_app_Transmission_init_default}
@@ -575,7 +576,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_zero               {0, 0, 0, false, fk_app_Location_init_zero}
 #define fk_app_LoraSettings_init_zero            {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_Location_init_zero                {0, 0}
+#define fk_app_Location_init_zero                {0, 0, 0}
 #define fk_app_WifiTransmission_init_zero        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Transmission_init_zero            {false, fk_app_WifiTransmission_init_zero}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, false, fk_app_Identity_init_zero, false, fk_app_Recording_init_zero, false, fk_app_Schedules_init_zero, 0, false, fk_app_NetworkSettings_init_zero, false, fk_app_LoraSettings_init_zero, 0, false, fk_app_Location_init_zero, false, fk_app_Transmission_init_zero}
@@ -662,8 +663,9 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveReadings_modules_tag          2
 #define fk_app_LiveValue_valid_tag               1
 #define fk_app_LiveValue_value_tag               2
-#define fk_app_Location_longitude_tag            1
-#define fk_app_Location_latitude_tag             2
+#define fk_app_Location_modifying_tag            1
+#define fk_app_Location_longitude_tag            2
+#define fk_app_Location_latitude_tag             3
 #define fk_app_LoraSettings_available_tag        1
 #define fk_app_LoraSettings_modifying_tag        2
 #define fk_app_LoraSettings_deviceEui_tag        3
@@ -1135,8 +1137,9 @@ X(a, STATIC,   SINGULAR, UINT32,   downlinkCounter,  11)
 #define fk_app_LoraSettings_DEFAULT NULL
 
 #define fk_app_Location_FIELDLIST(X, a) \
-X(a, STATIC,   SINGULAR, FLOAT,    longitude,         1) \
-X(a, STATIC,   SINGULAR, FLOAT,    latitude,          2)
+X(a, STATIC,   SINGULAR, BOOL,     modifying,         1) \
+X(a, STATIC,   SINGULAR, FLOAT,    longitude,         2) \
+X(a, STATIC,   SINGULAR, FLOAT,    latitude,          3)
 #define fk_app_Location_CALLBACK NULL
 #define fk_app_Location_DEFAULT NULL
 
@@ -1362,9 +1365,9 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_Status_size depends on runtime parameters */
 #define fk_app_Range_size                        12
 /* fk_app_DownloadQuery_size depends on runtime parameters */
-#define fk_app_Recording_size                    27
+#define fk_app_Recording_size                    29
 /* fk_app_LoraSettings_size depends on runtime parameters */
-#define fk_app_Location_size                     10
+#define fk_app_Location_size                     12
 /* fk_app_WifiTransmission_size depends on runtime parameters */
 /* fk_app_Transmission_size depends on runtime parameters */
 /* fk_app_HttpQuery_size depends on runtime parameters */
