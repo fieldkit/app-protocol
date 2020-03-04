@@ -1,29 +1,10 @@
-GOARCH ?= amd64
-GOOS ?= linux
-GO ?= env GOOS=$(GOOS) GOARCH=$(GOARCH) go
-UNAME := $(shell uname)
-BUILD ?= $(abspath build)
-BUILDARCH ?= $(BUILD)/$(GOOS)-$(GOARCH)
 PROTOC_VERSION = 3.11.2
 PROTOC_BIN = build/bin
 PROTOC = $(PROTOC_BIN)/protoc
 PROTO_NAME = fk-app
 JAVA_DEP = org/fieldkit/app/pb/FkApp.java
 
-all: bindings
-	GOOS=linux GOARCH=amd64 $(MAKE) binaries-all
-	GOOS=linux GOARCH=arm $(MAKE) binaries-all
-	GOOS=darwin GOARCH=amd64 $(MAKE) binaries-all
-
-install: all
-
-binaries-all: $(BUILDARCH)/fkdevice-cli
-
-$(BUILDARCH)/fkdevice-cli: fkdevice-cli/*.go fkdevice/*.go
-	$(GO) get ./...
-	$(GO) build -o $(BUILDARCH)/fkdevice-cli fkdevice-cli/*.go
-
-bindings: $(PROTO_NAME).proto.json $(PROTO_NAME).pb.go src/$(PROTO_NAME).pb.c src/$(PROTO_NAME).pb.h $(JAVA_DEP) $(PROTO_NAME)_pb2.py
+all: $(PROTO_NAME).proto.json $(PROTO_NAME).pb.go src/$(PROTO_NAME).pb.c src/$(PROTO_NAME).pb.h $(JAVA_DEP) $(PROTO_NAME)_pb2.py
 
 $(PROTO_NAME).proto.json: build $(PROTO_NAME).proto
 	node_modules/.bin/pbjs $(PROTO_NAME).proto -t json -o $(PROTO_NAME).proto.json
