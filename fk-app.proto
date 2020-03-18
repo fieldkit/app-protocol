@@ -380,6 +380,7 @@ message WifiTransmission {
   bool modifying = 1;
   string url = 2;
   string token = 3;
+  bool enabled = 4;
 }
 
 message Transmission {

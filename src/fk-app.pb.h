@@ -296,6 +296,7 @@ typedef struct _fk_app_WifiTransmission {
     bool modifying;
     pb_callback_t url;
     pb_callback_t token;
+    bool enabled;
 } fk_app_WifiTransmission;
 
 typedef struct _fk_app_ModuleCapabilities {
@@ -532,7 +533,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Recording_init_default            {0, 0, 0, false, fk_app_Location_init_default}
 #define fk_app_LoraSettings_init_default         {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_Location_init_default             {0, 0, 0, 0}
-#define fk_app_WifiTransmission_init_default     {0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_WifiTransmission_init_default     {0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Transmission_init_default         {false, fk_app_WifiTransmission_init_default}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, false, fk_app_Identity_init_default, false, fk_app_Recording_init_default, false, fk_app_Schedules_init_default, 0, false, fk_app_NetworkSettings_init_default, false, fk_app_LoraSettings_init_default, 0, false, fk_app_Location_init_default, false, fk_app_Transmission_init_default}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -578,7 +579,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Recording_init_zero               {0, 0, 0, false, fk_app_Location_init_zero}
 #define fk_app_LoraSettings_init_zero            {0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_Location_init_zero                {0, 0, 0, 0}
-#define fk_app_WifiTransmission_init_zero        {0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_WifiTransmission_init_zero        {0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Transmission_init_zero            {false, fk_app_WifiTransmission_init_zero}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, false, fk_app_Identity_init_zero, false, fk_app_Recording_init_zero, false, fk_app_Schedules_init_zero, 0, false, fk_app_NetworkSettings_init_zero, false, fk_app_LoraSettings_init_zero, 0, false, fk_app_Location_init_zero, false, fk_app_Transmission_init_zero}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -707,6 +708,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_WifiTransmission_modifying_tag    1
 #define fk_app_WifiTransmission_url_tag          2
 #define fk_app_WifiTransmission_token_tag        3
+#define fk_app_WifiTransmission_enabled_tag      4
 #define fk_app_ModuleCapabilities_position_tag   1
 #define fk_app_ModuleCapabilities_name_tag       2
 #define fk_app_ModuleCapabilities_sensors_tag    3
@@ -1149,7 +1151,8 @@ X(a, STATIC,   SINGULAR, UINT64,   time,              4)
 #define fk_app_WifiTransmission_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, BOOL,     modifying,         1) \
 X(a, CALLBACK, SINGULAR, STRING,   url,               2) \
-X(a, CALLBACK, SINGULAR, STRING,   token,             3)
+X(a, CALLBACK, SINGULAR, STRING,   token,             3) \
+X(a, STATIC,   SINGULAR, BOOL,     enabled,           4)
 #define fk_app_WifiTransmission_CALLBACK pb_default_field_callback
 #define fk_app_WifiTransmission_DEFAULT NULL
 

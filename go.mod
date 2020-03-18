@@ -13,7 +13,7 @@ require (
 	github.com/fieldkit/cloud v0.0.0-20200123002559-65cc88368a74
 	github.com/go-logfmt/logfmt v0.5.0 // indirect
 	github.com/goadesign/goa v2.0.8+incompatible // indirect
-	github.com/golang/protobuf v1.3.4
+	github.com/golang/protobuf v1.3.5
 	github.com/google/go-cmp v0.4.0 // indirect
 	github.com/google/gofuzz v1.1.0 // indirect
 	github.com/hashicorp/go-hclog v0.11.0 // indirect
