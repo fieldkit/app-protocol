@@ -219,6 +219,14 @@
             "password": {
               "type": "string",
               "id": 2
+            },
+            "create": {
+              "type": "bool",
+              "id": 3
+            },
+            "preferred": {
+              "type": "bool",
+              "id": 4
             }
           }
         },

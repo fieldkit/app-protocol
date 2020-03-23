@@ -102,11 +102,6 @@ typedef struct _fk_app_LiveData {
     pb_callback_t samples;
 } fk_app_LiveData;
 
-typedef struct _fk_app_NetworkInfo {
-    pb_callback_t ssid;
-    pb_callback_t password;
-} fk_app_NetworkInfo;
-
 typedef struct _fk_app_BatteryStatus {
     uint32_t voltage;
     uint32_t percentage;
@@ -263,6 +258,13 @@ typedef struct _fk_app_ModuleReply {
     uint32_t address;
     pb_callback_t message;
 } fk_app_ModuleReply;
+
+typedef struct _fk_app_NetworkInfo {
+    pb_callback_t ssid;
+    pb_callback_t password;
+    bool create;
+    bool preferred;
+} fk_app_NetworkInfo;
 
 typedef struct _fk_app_NetworkSettings {
     int32_t createAccessPoint;
@@ -502,7 +504,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleHeader_init_default         {0, 0, 0}
 #define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
 #define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -548,7 +550,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleHeader_init_zero            {0, 0, 0}
 #define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
 #define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -600,8 +602,6 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Identity_name_tag                 6
 #define fk_app_Identity_generation_tag           7
 #define fk_app_LiveData_samples_tag              1
-#define fk_app_NetworkInfo_ssid_tag              1
-#define fk_app_NetworkInfo_password_tag          2
 #define fk_app_BatteryStatus_voltage_tag         1
 #define fk_app_BatteryStatus_percentage_tag      2
 #define fk_app_Capabilities_version_tag          1
@@ -693,6 +693,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleReply_id_tag                1
 #define fk_app_ModuleReply_address_tag           2
 #define fk_app_ModuleReply_message_tag           3
+#define fk_app_NetworkInfo_ssid_tag              1
+#define fk_app_NetworkInfo_password_tag          2
+#define fk_app_NetworkInfo_create_tag            3
+#define fk_app_NetworkInfo_preferred_tag         4
 #define fk_app_NetworkSettings_createAccessPoint_tag 1
 #define fk_app_NetworkSettings_networks_tag      2
 #define fk_app_QueryCapabilities_version_tag     1
@@ -852,7 +856,9 @@ X(a, CALLBACK, REPEATED, MESSAGE,  sensors,           5)
 
 #define fk_app_NetworkInfo_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING,   ssid,              1) \
-X(a, CALLBACK, SINGULAR, STRING,   password,          2)
+X(a, CALLBACK, SINGULAR, STRING,   password,          2) \
+X(a, STATIC,   SINGULAR, BOOL,     create,            3) \
+X(a, STATIC,   SINGULAR, BOOL,     preferred,         4)
 #define fk_app_NetworkInfo_CALLBACK pb_default_field_callback
 #define fk_app_NetworkInfo_DEFAULT NULL
 

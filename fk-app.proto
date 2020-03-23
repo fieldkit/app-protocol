@@ -132,6 +132,8 @@ message Capabilities {
 message NetworkInfo {
   string ssid = 1;
   string password = 2;
+  bool create = 3;
+  bool preferred = 4;
 }
 
 message NetworkSettings {
