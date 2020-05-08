@@ -923,6 +923,14 @@
             }
           }
         },
+        "ListDirectory": {
+          "fields": {
+            "path": {
+              "type": "string",
+              "id": 1
+            }
+          }
+        },
         "HttpQuery": {
           "fields": {
             "type": {
@@ -956,6 +964,10 @@
             "transmission": {
               "type": "Transmission",
               "id": 10
+            },
+            "directory": {
+              "type": "ListDirectory",
+              "id": 11
             },
             "flags": {
               "type": "uint32",
@@ -1041,6 +1053,35 @@
             }
           }
         },
+        "DirectoryEntry": {
+          "fields": {
+            "name": {
+              "type": "string",
+              "id": 1
+            },
+            "path": {
+              "type": "string",
+              "id": 2
+            },
+            "size": {
+              "type": "uint32",
+              "id": 3
+            },
+            "directory": {
+              "type": "bool",
+              "id": 4
+            }
+          }
+        },
+        "DirectoryListing": {
+          "fields": {
+            "entries": {
+              "rule": "repeated",
+              "type": "DirectoryEntry",
+              "id": 1
+            }
+          }
+        },
         "HttpReply": {
           "fields": {
             "type": {
@@ -1086,6 +1127,10 @@
             "transmission": {
               "type": "Transmission",
               "id": 10
+            },
+            "listing": {
+              "type": "DirectoryListing",
+              "id": 11
             }
           }
         }

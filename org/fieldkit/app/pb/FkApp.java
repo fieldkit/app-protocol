@@ -38408,6 +38408,572 @@ public final class FkApp {
 
   }
 
+  public interface ListDirectoryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.ListDirectory)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string path = 1;</code>
+     * @return The path.
+     */
+    java.lang.String getPath();
+    /**
+     * <code>string path = 1;</code>
+     * @return The bytes for path.
+     */
+    com.google.protobuf.ByteString
+        getPathBytes();
+  }
+  /**
+   * Protobuf type {@code fk_app.ListDirectory}
+   */
+  public  static final class ListDirectory extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:fk_app.ListDirectory)
+      ListDirectoryOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ListDirectory.newBuilder() to construct.
+    private ListDirectory(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ListDirectory() {
+      path_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ListDirectory();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ListDirectory(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              path_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ListDirectory_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ListDirectory_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.fieldkit.app.pb.FkApp.ListDirectory.class, org.fieldkit.app.pb.FkApp.ListDirectory.Builder.class);
+    }
+
+    public static final int PATH_FIELD_NUMBER = 1;
+    private volatile java.lang.Object path_;
+    /**
+     * <code>string path = 1;</code>
+     * @return The path.
+     */
+    public java.lang.String getPath() {
+      java.lang.Object ref = path_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        path_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string path = 1;</code>
+     * @return The bytes for path.
+     */
+    public com.google.protobuf.ByteString
+        getPathBytes() {
+      java.lang.Object ref = path_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        path_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPathBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, path_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPathBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, path_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.fieldkit.app.pb.FkApp.ListDirectory)) {
+        return super.equals(obj);
+      }
+      org.fieldkit.app.pb.FkApp.ListDirectory other = (org.fieldkit.app.pb.FkApp.ListDirectory) obj;
+
+      if (!getPath()
+          .equals(other.getPath())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PATH_FIELD_NUMBER;
+      hash = (53 * hash) + getPath().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.fieldkit.app.pb.FkApp.ListDirectory prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fk_app.ListDirectory}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.ListDirectory)
+        org.fieldkit.app.pb.FkApp.ListDirectoryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ListDirectory_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ListDirectory_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.fieldkit.app.pb.FkApp.ListDirectory.class, org.fieldkit.app.pb.FkApp.ListDirectory.Builder.class);
+      }
+
+      // Construct using org.fieldkit.app.pb.FkApp.ListDirectory.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        path_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_ListDirectory_descriptor;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.ListDirectory getDefaultInstanceForType() {
+        return org.fieldkit.app.pb.FkApp.ListDirectory.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.ListDirectory build() {
+        org.fieldkit.app.pb.FkApp.ListDirectory result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.ListDirectory buildPartial() {
+        org.fieldkit.app.pb.FkApp.ListDirectory result = new org.fieldkit.app.pb.FkApp.ListDirectory(this);
+        result.path_ = path_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.fieldkit.app.pb.FkApp.ListDirectory) {
+          return mergeFrom((org.fieldkit.app.pb.FkApp.ListDirectory)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.fieldkit.app.pb.FkApp.ListDirectory other) {
+        if (other == org.fieldkit.app.pb.FkApp.ListDirectory.getDefaultInstance()) return this;
+        if (!other.getPath().isEmpty()) {
+          path_ = other.path_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.fieldkit.app.pb.FkApp.ListDirectory parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.fieldkit.app.pb.FkApp.ListDirectory) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object path_ = "";
+      /**
+       * <code>string path = 1;</code>
+       * @return The path.
+       */
+      public java.lang.String getPath() {
+        java.lang.Object ref = path_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          path_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @return The bytes for path.
+       */
+      public com.google.protobuf.ByteString
+          getPathBytes() {
+        java.lang.Object ref = path_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          path_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @param value The path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPath(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        path_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPath() {
+        
+        path_ = getDefaultInstance().getPath();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @param value The bytes for path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        path_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:fk_app.ListDirectory)
+    }
+
+    // @@protoc_insertion_point(class_scope:fk_app.ListDirectory)
+    private static final org.fieldkit.app.pb.FkApp.ListDirectory DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.fieldkit.app.pb.FkApp.ListDirectory();
+    }
+
+    public static org.fieldkit.app.pb.FkApp.ListDirectory getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ListDirectory>
+        PARSER = new com.google.protobuf.AbstractParser<ListDirectory>() {
+      @java.lang.Override
+      public ListDirectory parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ListDirectory(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ListDirectory> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ListDirectory> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.fieldkit.app.pb.FkApp.ListDirectory getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface HttpQueryOrBuilder extends
       // @@protoc_insertion_point(interface_extends:fk_app.HttpQuery)
       com.google.protobuf.MessageOrBuilder {
@@ -38527,6 +39093,21 @@ public final class FkApp {
      * <code>.fk_app.Transmission transmission = 10;</code>
      */
     org.fieldkit.app.pb.FkApp.TransmissionOrBuilder getTransmissionOrBuilder();
+
+    /**
+     * <code>.fk_app.ListDirectory directory = 11;</code>
+     * @return Whether the directory field is set.
+     */
+    boolean hasDirectory();
+    /**
+     * <code>.fk_app.ListDirectory directory = 11;</code>
+     * @return The directory.
+     */
+    org.fieldkit.app.pb.FkApp.ListDirectory getDirectory();
+    /**
+     * <code>.fk_app.ListDirectory directory = 11;</code>
+     */
+    org.fieldkit.app.pb.FkApp.ListDirectoryOrBuilder getDirectoryOrBuilder();
 
     /**
      * <code>uint32 flags = 5;</code>
@@ -38689,6 +39270,19 @@ public final class FkApp {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(transmission_);
                 transmission_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 90: {
+              org.fieldkit.app.pb.FkApp.ListDirectory.Builder subBuilder = null;
+              if (directory_ != null) {
+                subBuilder = directory_.toBuilder();
+              }
+              directory_ = input.readMessage(org.fieldkit.app.pb.FkApp.ListDirectory.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(directory_);
+                directory_ = subBuilder.buildPartial();
               }
 
               break;
@@ -38905,6 +39499,29 @@ public final class FkApp {
       return getTransmission();
     }
 
+    public static final int DIRECTORY_FIELD_NUMBER = 11;
+    private org.fieldkit.app.pb.FkApp.ListDirectory directory_;
+    /**
+     * <code>.fk_app.ListDirectory directory = 11;</code>
+     * @return Whether the directory field is set.
+     */
+    public boolean hasDirectory() {
+      return directory_ != null;
+    }
+    /**
+     * <code>.fk_app.ListDirectory directory = 11;</code>
+     * @return The directory.
+     */
+    public org.fieldkit.app.pb.FkApp.ListDirectory getDirectory() {
+      return directory_ == null ? org.fieldkit.app.pb.FkApp.ListDirectory.getDefaultInstance() : directory_;
+    }
+    /**
+     * <code>.fk_app.ListDirectory directory = 11;</code>
+     */
+    public org.fieldkit.app.pb.FkApp.ListDirectoryOrBuilder getDirectoryOrBuilder() {
+      return getDirectory();
+    }
+
     public static final int FLAGS_FIELD_NUMBER = 5;
     private int flags_;
     /**
@@ -38969,6 +39586,9 @@ public final class FkApp {
       if (transmission_ != null) {
         output.writeMessage(10, getTransmission());
       }
+      if (directory_ != null) {
+        output.writeMessage(11, getDirectory());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -39017,6 +39637,10 @@ public final class FkApp {
       if (transmission_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, getTransmission());
+      }
+      if (directory_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getDirectory());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -39069,6 +39693,11 @@ public final class FkApp {
         if (!getTransmission()
             .equals(other.getTransmission())) return false;
       }
+      if (hasDirectory() != other.hasDirectory()) return false;
+      if (hasDirectory()) {
+        if (!getDirectory()
+            .equals(other.getDirectory())) return false;
+      }
       if (getFlags()
           != other.getFlags()) return false;
       if (getTime()
@@ -39113,6 +39742,10 @@ public final class FkApp {
       if (hasTransmission()) {
         hash = (37 * hash) + TRANSMISSION_FIELD_NUMBER;
         hash = (53 * hash) + getTransmission().hashCode();
+      }
+      if (hasDirectory()) {
+        hash = (37 * hash) + DIRECTORY_FIELD_NUMBER;
+        hash = (53 * hash) + getDirectory().hashCode();
       }
       hash = (37 * hash) + FLAGS_FIELD_NUMBER;
       hash = (53 * hash) + getFlags();
@@ -39296,6 +39929,12 @@ public final class FkApp {
           transmission_ = null;
           transmissionBuilder_ = null;
         }
+        if (directoryBuilder_ == null) {
+          directory_ = null;
+        } else {
+          directory_ = null;
+          directoryBuilder_ = null;
+        }
         flags_ = 0;
 
         time_ = 0L;
@@ -39361,6 +40000,11 @@ public final class FkApp {
           result.transmission_ = transmission_;
         } else {
           result.transmission_ = transmissionBuilder_.build();
+        }
+        if (directoryBuilder_ == null) {
+          result.directory_ = directory_;
+        } else {
+          result.directory_ = directoryBuilder_.build();
         }
         result.flags_ = flags_;
         result.time_ = time_;
@@ -39435,6 +40079,9 @@ public final class FkApp {
         }
         if (other.hasTransmission()) {
           mergeTransmission(other.getTransmission());
+        }
+        if (other.hasDirectory()) {
+          mergeDirectory(other.getDirectory());
         }
         if (other.getFlags() != 0) {
           setFlags(other.getFlags());
@@ -40354,6 +41001,125 @@ public final class FkApp {
           transmission_ = null;
         }
         return transmissionBuilder_;
+      }
+
+      private org.fieldkit.app.pb.FkApp.ListDirectory directory_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.ListDirectory, org.fieldkit.app.pb.FkApp.ListDirectory.Builder, org.fieldkit.app.pb.FkApp.ListDirectoryOrBuilder> directoryBuilder_;
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       * @return Whether the directory field is set.
+       */
+      public boolean hasDirectory() {
+        return directoryBuilder_ != null || directory_ != null;
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       * @return The directory.
+       */
+      public org.fieldkit.app.pb.FkApp.ListDirectory getDirectory() {
+        if (directoryBuilder_ == null) {
+          return directory_ == null ? org.fieldkit.app.pb.FkApp.ListDirectory.getDefaultInstance() : directory_;
+        } else {
+          return directoryBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       */
+      public Builder setDirectory(org.fieldkit.app.pb.FkApp.ListDirectory value) {
+        if (directoryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          directory_ = value;
+          onChanged();
+        } else {
+          directoryBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       */
+      public Builder setDirectory(
+          org.fieldkit.app.pb.FkApp.ListDirectory.Builder builderForValue) {
+        if (directoryBuilder_ == null) {
+          directory_ = builderForValue.build();
+          onChanged();
+        } else {
+          directoryBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       */
+      public Builder mergeDirectory(org.fieldkit.app.pb.FkApp.ListDirectory value) {
+        if (directoryBuilder_ == null) {
+          if (directory_ != null) {
+            directory_ =
+              org.fieldkit.app.pb.FkApp.ListDirectory.newBuilder(directory_).mergeFrom(value).buildPartial();
+          } else {
+            directory_ = value;
+          }
+          onChanged();
+        } else {
+          directoryBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       */
+      public Builder clearDirectory() {
+        if (directoryBuilder_ == null) {
+          directory_ = null;
+          onChanged();
+        } else {
+          directory_ = null;
+          directoryBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.ListDirectory.Builder getDirectoryBuilder() {
+        
+        onChanged();
+        return getDirectoryFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.ListDirectoryOrBuilder getDirectoryOrBuilder() {
+        if (directoryBuilder_ != null) {
+          return directoryBuilder_.getMessageOrBuilder();
+        } else {
+          return directory_ == null ?
+              org.fieldkit.app.pb.FkApp.ListDirectory.getDefaultInstance() : directory_;
+        }
+      }
+      /**
+       * <code>.fk_app.ListDirectory directory = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.ListDirectory, org.fieldkit.app.pb.FkApp.ListDirectory.Builder, org.fieldkit.app.pb.FkApp.ListDirectoryOrBuilder> 
+          getDirectoryFieldBuilder() {
+        if (directoryBuilder_ == null) {
+          directoryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.fieldkit.app.pb.FkApp.ListDirectory, org.fieldkit.app.pb.FkApp.ListDirectory.Builder, org.fieldkit.app.pb.FkApp.ListDirectoryOrBuilder>(
+                  getDirectory(),
+                  getParentForChildren(),
+                  isClean());
+          directory_ = null;
+        }
+        return directoryBuilder_;
       }
 
       private int flags_ ;
@@ -44130,6 +44896,1645 @@ public final class FkApp {
 
   }
 
+  public interface DirectoryEntryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.DirectoryEntry)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string path = 2;</code>
+     * @return The path.
+     */
+    java.lang.String getPath();
+    /**
+     * <code>string path = 2;</code>
+     * @return The bytes for path.
+     */
+    com.google.protobuf.ByteString
+        getPathBytes();
+
+    /**
+     * <code>uint32 size = 3;</code>
+     * @return The size.
+     */
+    int getSize();
+
+    /**
+     * <code>bool directory = 4;</code>
+     * @return The directory.
+     */
+    boolean getDirectory();
+  }
+  /**
+   * Protobuf type {@code fk_app.DirectoryEntry}
+   */
+  public  static final class DirectoryEntry extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:fk_app.DirectoryEntry)
+      DirectoryEntryOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DirectoryEntry.newBuilder() to construct.
+    private DirectoryEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DirectoryEntry() {
+      name_ = "";
+      path_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DirectoryEntry();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DirectoryEntry(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              path_ = s;
+              break;
+            }
+            case 24: {
+
+              size_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+
+              directory_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryEntry_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryEntry_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.fieldkit.app.pb.FkApp.DirectoryEntry.class, org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PATH_FIELD_NUMBER = 2;
+    private volatile java.lang.Object path_;
+    /**
+     * <code>string path = 2;</code>
+     * @return The path.
+     */
+    public java.lang.String getPath() {
+      java.lang.Object ref = path_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        path_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string path = 2;</code>
+     * @return The bytes for path.
+     */
+    public com.google.protobuf.ByteString
+        getPathBytes() {
+      java.lang.Object ref = path_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        path_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SIZE_FIELD_NUMBER = 3;
+    private int size_;
+    /**
+     * <code>uint32 size = 3;</code>
+     * @return The size.
+     */
+    public int getSize() {
+      return size_;
+    }
+
+    public static final int DIRECTORY_FIELD_NUMBER = 4;
+    private boolean directory_;
+    /**
+     * <code>bool directory = 4;</code>
+     * @return The directory.
+     */
+    public boolean getDirectory() {
+      return directory_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      if (!getPathBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, path_);
+      }
+      if (size_ != 0) {
+        output.writeUInt32(3, size_);
+      }
+      if (directory_ != false) {
+        output.writeBool(4, directory_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (!getPathBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, path_);
+      }
+      if (size_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, size_);
+      }
+      if (directory_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, directory_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.fieldkit.app.pb.FkApp.DirectoryEntry)) {
+        return super.equals(obj);
+      }
+      org.fieldkit.app.pb.FkApp.DirectoryEntry other = (org.fieldkit.app.pb.FkApp.DirectoryEntry) obj;
+
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getPath()
+          .equals(other.getPath())) return false;
+      if (getSize()
+          != other.getSize()) return false;
+      if (getDirectory()
+          != other.getDirectory()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + PATH_FIELD_NUMBER;
+      hash = (53 * hash) + getPath().hashCode();
+      hash = (37 * hash) + SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getSize();
+      hash = (37 * hash) + DIRECTORY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDirectory());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.fieldkit.app.pb.FkApp.DirectoryEntry prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fk_app.DirectoryEntry}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.DirectoryEntry)
+        org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryEntry_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryEntry_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.fieldkit.app.pb.FkApp.DirectoryEntry.class, org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder.class);
+      }
+
+      // Construct using org.fieldkit.app.pb.FkApp.DirectoryEntry.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        path_ = "";
+
+        size_ = 0;
+
+        directory_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryEntry_descriptor;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.DirectoryEntry getDefaultInstanceForType() {
+        return org.fieldkit.app.pb.FkApp.DirectoryEntry.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.DirectoryEntry build() {
+        org.fieldkit.app.pb.FkApp.DirectoryEntry result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.DirectoryEntry buildPartial() {
+        org.fieldkit.app.pb.FkApp.DirectoryEntry result = new org.fieldkit.app.pb.FkApp.DirectoryEntry(this);
+        result.name_ = name_;
+        result.path_ = path_;
+        result.size_ = size_;
+        result.directory_ = directory_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.fieldkit.app.pb.FkApp.DirectoryEntry) {
+          return mergeFrom((org.fieldkit.app.pb.FkApp.DirectoryEntry)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.fieldkit.app.pb.FkApp.DirectoryEntry other) {
+        if (other == org.fieldkit.app.pb.FkApp.DirectoryEntry.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getPath().isEmpty()) {
+          path_ = other.path_;
+          onChanged();
+        }
+        if (other.getSize() != 0) {
+          setSize(other.getSize());
+        }
+        if (other.getDirectory() != false) {
+          setDirectory(other.getDirectory());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.fieldkit.app.pb.FkApp.DirectoryEntry parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.fieldkit.app.pb.FkApp.DirectoryEntry) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 1;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object path_ = "";
+      /**
+       * <code>string path = 2;</code>
+       * @return The path.
+       */
+      public java.lang.String getPath() {
+        java.lang.Object ref = path_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          path_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string path = 2;</code>
+       * @return The bytes for path.
+       */
+      public com.google.protobuf.ByteString
+          getPathBytes() {
+        java.lang.Object ref = path_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          path_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string path = 2;</code>
+       * @param value The path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPath(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        path_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string path = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPath() {
+        
+        path_ = getDefaultInstance().getPath();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string path = 2;</code>
+       * @param value The bytes for path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        path_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int size_ ;
+      /**
+       * <code>uint32 size = 3;</code>
+       * @return The size.
+       */
+      public int getSize() {
+        return size_;
+      }
+      /**
+       * <code>uint32 size = 3;</code>
+       * @param value The size to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSize(int value) {
+        
+        size_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 size = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSize() {
+        
+        size_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean directory_ ;
+      /**
+       * <code>bool directory = 4;</code>
+       * @return The directory.
+       */
+      public boolean getDirectory() {
+        return directory_;
+      }
+      /**
+       * <code>bool directory = 4;</code>
+       * @param value The directory to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDirectory(boolean value) {
+        
+        directory_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool directory = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDirectory() {
+        
+        directory_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:fk_app.DirectoryEntry)
+    }
+
+    // @@protoc_insertion_point(class_scope:fk_app.DirectoryEntry)
+    private static final org.fieldkit.app.pb.FkApp.DirectoryEntry DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.fieldkit.app.pb.FkApp.DirectoryEntry();
+    }
+
+    public static org.fieldkit.app.pb.FkApp.DirectoryEntry getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DirectoryEntry>
+        PARSER = new com.google.protobuf.AbstractParser<DirectoryEntry>() {
+      @java.lang.Override
+      public DirectoryEntry parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DirectoryEntry(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DirectoryEntry> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DirectoryEntry> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.fieldkit.app.pb.FkApp.DirectoryEntry getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DirectoryListingOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.DirectoryListing)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    java.util.List<org.fieldkit.app.pb.FkApp.DirectoryEntry> 
+        getEntriesList();
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    org.fieldkit.app.pb.FkApp.DirectoryEntry getEntries(int index);
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    int getEntriesCount();
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    java.util.List<? extends org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder> 
+        getEntriesOrBuilderList();
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder getEntriesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code fk_app.DirectoryListing}
+   */
+  public  static final class DirectoryListing extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:fk_app.DirectoryListing)
+      DirectoryListingOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DirectoryListing.newBuilder() to construct.
+    private DirectoryListing(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DirectoryListing() {
+      entries_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DirectoryListing();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DirectoryListing(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                entries_ = new java.util.ArrayList<org.fieldkit.app.pb.FkApp.DirectoryEntry>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              entries_.add(
+                  input.readMessage(org.fieldkit.app.pb.FkApp.DirectoryEntry.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          entries_ = java.util.Collections.unmodifiableList(entries_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryListing_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryListing_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.fieldkit.app.pb.FkApp.DirectoryListing.class, org.fieldkit.app.pb.FkApp.DirectoryListing.Builder.class);
+    }
+
+    public static final int ENTRIES_FIELD_NUMBER = 1;
+    private java.util.List<org.fieldkit.app.pb.FkApp.DirectoryEntry> entries_;
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    public java.util.List<org.fieldkit.app.pb.FkApp.DirectoryEntry> getEntriesList() {
+      return entries_;
+    }
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    public java.util.List<? extends org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder> 
+        getEntriesOrBuilderList() {
+      return entries_;
+    }
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    public int getEntriesCount() {
+      return entries_.size();
+    }
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    public org.fieldkit.app.pb.FkApp.DirectoryEntry getEntries(int index) {
+      return entries_.get(index);
+    }
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     */
+    public org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder getEntriesOrBuilder(
+        int index) {
+      return entries_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < entries_.size(); i++) {
+        output.writeMessage(1, entries_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < entries_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, entries_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.fieldkit.app.pb.FkApp.DirectoryListing)) {
+        return super.equals(obj);
+      }
+      org.fieldkit.app.pb.FkApp.DirectoryListing other = (org.fieldkit.app.pb.FkApp.DirectoryListing) obj;
+
+      if (!getEntriesList()
+          .equals(other.getEntriesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getEntriesCount() > 0) {
+        hash = (37 * hash) + ENTRIES_FIELD_NUMBER;
+        hash = (53 * hash) + getEntriesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.fieldkit.app.pb.FkApp.DirectoryListing prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code fk_app.DirectoryListing}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.DirectoryListing)
+        org.fieldkit.app.pb.FkApp.DirectoryListingOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryListing_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryListing_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.fieldkit.app.pb.FkApp.DirectoryListing.class, org.fieldkit.app.pb.FkApp.DirectoryListing.Builder.class);
+      }
+
+      // Construct using org.fieldkit.app.pb.FkApp.DirectoryListing.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getEntriesFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          entriesBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.fieldkit.app.pb.FkApp.internal_static_fk_app_DirectoryListing_descriptor;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.DirectoryListing getDefaultInstanceForType() {
+        return org.fieldkit.app.pb.FkApp.DirectoryListing.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.DirectoryListing build() {
+        org.fieldkit.app.pb.FkApp.DirectoryListing result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.fieldkit.app.pb.FkApp.DirectoryListing buildPartial() {
+        org.fieldkit.app.pb.FkApp.DirectoryListing result = new org.fieldkit.app.pb.FkApp.DirectoryListing(this);
+        int from_bitField0_ = bitField0_;
+        if (entriesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            entries_ = java.util.Collections.unmodifiableList(entries_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.entries_ = entries_;
+        } else {
+          result.entries_ = entriesBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.fieldkit.app.pb.FkApp.DirectoryListing) {
+          return mergeFrom((org.fieldkit.app.pb.FkApp.DirectoryListing)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.fieldkit.app.pb.FkApp.DirectoryListing other) {
+        if (other == org.fieldkit.app.pb.FkApp.DirectoryListing.getDefaultInstance()) return this;
+        if (entriesBuilder_ == null) {
+          if (!other.entries_.isEmpty()) {
+            if (entries_.isEmpty()) {
+              entries_ = other.entries_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEntriesIsMutable();
+              entries_.addAll(other.entries_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.entries_.isEmpty()) {
+            if (entriesBuilder_.isEmpty()) {
+              entriesBuilder_.dispose();
+              entriesBuilder_ = null;
+              entries_ = other.entries_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              entriesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getEntriesFieldBuilder() : null;
+            } else {
+              entriesBuilder_.addAllMessages(other.entries_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.fieldkit.app.pb.FkApp.DirectoryListing parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.fieldkit.app.pb.FkApp.DirectoryListing) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<org.fieldkit.app.pb.FkApp.DirectoryEntry> entries_ =
+        java.util.Collections.emptyList();
+      private void ensureEntriesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          entries_ = new java.util.ArrayList<org.fieldkit.app.pb.FkApp.DirectoryEntry>(entries_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.DirectoryEntry, org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder, org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder> entriesBuilder_;
+
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public java.util.List<org.fieldkit.app.pb.FkApp.DirectoryEntry> getEntriesList() {
+        if (entriesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(entries_);
+        } else {
+          return entriesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public int getEntriesCount() {
+        if (entriesBuilder_ == null) {
+          return entries_.size();
+        } else {
+          return entriesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryEntry getEntries(int index) {
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);
+        } else {
+          return entriesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder setEntries(
+          int index, org.fieldkit.app.pb.FkApp.DirectoryEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.set(index, value);
+          onChanged();
+        } else {
+          entriesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder setEntries(
+          int index, org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder addEntries(org.fieldkit.app.pb.FkApp.DirectoryEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.add(value);
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder addEntries(
+          int index, org.fieldkit.app.pb.FkApp.DirectoryEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.add(index, value);
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder addEntries(
+          org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder addEntries(
+          int index, org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder addAllEntries(
+          java.lang.Iterable<? extends org.fieldkit.app.pb.FkApp.DirectoryEntry> values) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, entries_);
+          onChanged();
+        } else {
+          entriesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder clearEntries() {
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          entriesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public Builder removeEntries(int index) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.remove(index);
+          onChanged();
+        } else {
+          entriesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder getEntriesBuilder(
+          int index) {
+        return getEntriesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder getEntriesOrBuilder(
+          int index) {
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);  } else {
+          return entriesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public java.util.List<? extends org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder> 
+           getEntriesOrBuilderList() {
+        if (entriesBuilder_ != null) {
+          return entriesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(entries_);
+        }
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder addEntriesBuilder() {
+        return getEntriesFieldBuilder().addBuilder(
+            org.fieldkit.app.pb.FkApp.DirectoryEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder addEntriesBuilder(
+          int index) {
+        return getEntriesFieldBuilder().addBuilder(
+            index, org.fieldkit.app.pb.FkApp.DirectoryEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       */
+      public java.util.List<org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder> 
+           getEntriesBuilderList() {
+        return getEntriesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.DirectoryEntry, org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder, org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder> 
+          getEntriesFieldBuilder() {
+        if (entriesBuilder_ == null) {
+          entriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              org.fieldkit.app.pb.FkApp.DirectoryEntry, org.fieldkit.app.pb.FkApp.DirectoryEntry.Builder, org.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder>(
+                  entries_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          entries_ = null;
+        }
+        return entriesBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:fk_app.DirectoryListing)
+    }
+
+    // @@protoc_insertion_point(class_scope:fk_app.DirectoryListing)
+    private static final org.fieldkit.app.pb.FkApp.DirectoryListing DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.fieldkit.app.pb.FkApp.DirectoryListing();
+    }
+
+    public static org.fieldkit.app.pb.FkApp.DirectoryListing getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DirectoryListing>
+        PARSER = new com.google.protobuf.AbstractParser<DirectoryListing>() {
+      @java.lang.Override
+      public DirectoryListing parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DirectoryListing(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DirectoryListing> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DirectoryListing> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.fieldkit.app.pb.FkApp.DirectoryListing getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface HttpReplyOrBuilder extends
       // @@protoc_insertion_point(interface_extends:fk_app.HttpReply)
       com.google.protobuf.MessageOrBuilder {
@@ -44315,6 +46720,21 @@ public final class FkApp {
      * <code>.fk_app.Transmission transmission = 10;</code>
      */
     org.fieldkit.app.pb.FkApp.TransmissionOrBuilder getTransmissionOrBuilder();
+
+    /**
+     * <code>.fk_app.DirectoryListing listing = 11;</code>
+     * @return Whether the listing field is set.
+     */
+    boolean hasListing();
+    /**
+     * <code>.fk_app.DirectoryListing listing = 11;</code>
+     * @return The listing.
+     */
+    org.fieldkit.app.pb.FkApp.DirectoryListing getListing();
+    /**
+     * <code>.fk_app.DirectoryListing listing = 11;</code>
+     */
+    org.fieldkit.app.pb.FkApp.DirectoryListingOrBuilder getListingOrBuilder();
   }
   /**
    * Protobuf type {@code fk_app.HttpReply}
@@ -44470,6 +46890,19 @@ public final class FkApp {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(transmission_);
                 transmission_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 90: {
+              org.fieldkit.app.pb.FkApp.DirectoryListing.Builder subBuilder = null;
+              if (listing_ != null) {
+                subBuilder = listing_.toBuilder();
+              }
+              listing_ = input.readMessage(org.fieldkit.app.pb.FkApp.DirectoryListing.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(listing_);
+                listing_ = subBuilder.buildPartial();
               }
 
               break;
@@ -44792,6 +47225,29 @@ public final class FkApp {
       return getTransmission();
     }
 
+    public static final int LISTING_FIELD_NUMBER = 11;
+    private org.fieldkit.app.pb.FkApp.DirectoryListing listing_;
+    /**
+     * <code>.fk_app.DirectoryListing listing = 11;</code>
+     * @return Whether the listing field is set.
+     */
+    public boolean hasListing() {
+      return listing_ != null;
+    }
+    /**
+     * <code>.fk_app.DirectoryListing listing = 11;</code>
+     * @return The listing.
+     */
+    public org.fieldkit.app.pb.FkApp.DirectoryListing getListing() {
+      return listing_ == null ? org.fieldkit.app.pb.FkApp.DirectoryListing.getDefaultInstance() : listing_;
+    }
+    /**
+     * <code>.fk_app.DirectoryListing listing = 11;</code>
+     */
+    public org.fieldkit.app.pb.FkApp.DirectoryListingOrBuilder getListingOrBuilder() {
+      return getListing();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -44835,6 +47291,9 @@ public final class FkApp {
       }
       if (transmission_ != null) {
         output.writeMessage(10, getTransmission());
+      }
+      if (listing_ != null) {
+        output.writeMessage(11, getListing());
       }
       unknownFields.writeTo(output);
     }
@@ -44885,6 +47344,10 @@ public final class FkApp {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, getTransmission());
       }
+      if (listing_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getListing());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -44934,6 +47397,11 @@ public final class FkApp {
         if (!getTransmission()
             .equals(other.getTransmission())) return false;
       }
+      if (hasListing() != other.hasListing()) return false;
+      if (hasListing()) {
+        if (!getListing()
+            .equals(other.getListing())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -44982,6 +47450,10 @@ public final class FkApp {
       if (hasTransmission()) {
         hash = (37 * hash) + TRANSMISSION_FIELD_NUMBER;
         hash = (53 * hash) + getTransmission().hashCode();
+      }
+      if (hasListing()) {
+        hash = (37 * hash) + LISTING_FIELD_NUMBER;
+        hash = (53 * hash) + getListing().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -45176,6 +47648,12 @@ public final class FkApp {
           transmission_ = null;
           transmissionBuilder_ = null;
         }
+        if (listingBuilder_ == null) {
+          listing_ = null;
+        } else {
+          listing_ = null;
+          listingBuilder_ = null;
+        }
         return this;
       }
 
@@ -45264,6 +47742,11 @@ public final class FkApp {
           result.transmission_ = transmission_;
         } else {
           result.transmission_ = transmissionBuilder_.build();
+        }
+        if (listingBuilder_ == null) {
+          result.listing_ = listing_;
+        } else {
+          result.listing_ = listingBuilder_.build();
         }
         onBuilt();
         return result;
@@ -45434,6 +47917,9 @@ public final class FkApp {
         }
         if (other.hasTransmission()) {
           mergeTransmission(other.getTransmission());
+        }
+        if (other.hasListing()) {
+          mergeListing(other.getListing());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -47071,6 +49557,125 @@ public final class FkApp {
         }
         return transmissionBuilder_;
       }
+
+      private org.fieldkit.app.pb.FkApp.DirectoryListing listing_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.DirectoryListing, org.fieldkit.app.pb.FkApp.DirectoryListing.Builder, org.fieldkit.app.pb.FkApp.DirectoryListingOrBuilder> listingBuilder_;
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       * @return Whether the listing field is set.
+       */
+      public boolean hasListing() {
+        return listingBuilder_ != null || listing_ != null;
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       * @return The listing.
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryListing getListing() {
+        if (listingBuilder_ == null) {
+          return listing_ == null ? org.fieldkit.app.pb.FkApp.DirectoryListing.getDefaultInstance() : listing_;
+        } else {
+          return listingBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       */
+      public Builder setListing(org.fieldkit.app.pb.FkApp.DirectoryListing value) {
+        if (listingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          listing_ = value;
+          onChanged();
+        } else {
+          listingBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       */
+      public Builder setListing(
+          org.fieldkit.app.pb.FkApp.DirectoryListing.Builder builderForValue) {
+        if (listingBuilder_ == null) {
+          listing_ = builderForValue.build();
+          onChanged();
+        } else {
+          listingBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       */
+      public Builder mergeListing(org.fieldkit.app.pb.FkApp.DirectoryListing value) {
+        if (listingBuilder_ == null) {
+          if (listing_ != null) {
+            listing_ =
+              org.fieldkit.app.pb.FkApp.DirectoryListing.newBuilder(listing_).mergeFrom(value).buildPartial();
+          } else {
+            listing_ = value;
+          }
+          onChanged();
+        } else {
+          listingBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       */
+      public Builder clearListing() {
+        if (listingBuilder_ == null) {
+          listing_ = null;
+          onChanged();
+        } else {
+          listing_ = null;
+          listingBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryListing.Builder getListingBuilder() {
+        
+        onChanged();
+        return getListingFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.DirectoryListingOrBuilder getListingOrBuilder() {
+        if (listingBuilder_ != null) {
+          return listingBuilder_.getMessageOrBuilder();
+        } else {
+          return listing_ == null ?
+              org.fieldkit.app.pb.FkApp.DirectoryListing.getDefaultInstance() : listing_;
+        }
+      }
+      /**
+       * <code>.fk_app.DirectoryListing listing = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.DirectoryListing, org.fieldkit.app.pb.FkApp.DirectoryListing.Builder, org.fieldkit.app.pb.FkApp.DirectoryListingOrBuilder> 
+          getListingFieldBuilder() {
+        if (listingBuilder_ == null) {
+          listingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.fieldkit.app.pb.FkApp.DirectoryListing, org.fieldkit.app.pb.FkApp.DirectoryListing.Builder, org.fieldkit.app.pb.FkApp.DirectoryListingOrBuilder>(
+                  getListing(),
+                  getParentForChildren(),
+                  isClean());
+          listing_ = null;
+        }
+        return listingBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -47325,6 +49930,11 @@ public final class FkApp {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_fk_app_Transmission_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_fk_app_ListDirectory_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_fk_app_ListDirectory_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_fk_app_HttpQuery_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -47349,6 +49959,16 @@ public final class FkApp {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_fk_app_LiveReadings_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_fk_app_DirectoryEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_fk_app_DirectoryEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_fk_app_DirectoryListing_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_fk_app_DirectoryListing_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_fk_app_HttpReply_descriptor;
   private static final 
@@ -47476,65 +50096,72 @@ public final class FkApp {
       "R\n\020WifiTransmission\022\021\n\tmodifying\030\001 \001(\010\022\013" +
       "\n\003url\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\022\017\n\007enabled\030\004 " +
       "\001(\010\"6\n\014Transmission\022&\n\004wifi\030\001 \001(\0132\030.fk_a" +
-      "pp.WifiTransmission\"\345\002\n\tHttpQuery\022\037\n\004typ" +
-      "e\030\001 \001(\0162\021.fk_app.QueryType\022\"\n\010identity\030\002" +
-      " \001(\0132\020.fk_app.Identity\022$\n\trecording\030\003 \001(" +
-      "\0132\021.fk_app.Recording\022$\n\tschedules\030\004 \001(\0132" +
-      "\021.fk_app.Schedules\0220\n\017networkSettings\030\006 " +
-      "\001(\0132\027.fk_app.NetworkSettings\022*\n\014loraSett" +
-      "ings\030\007 \001(\0132\024.fk_app.LoraSettings\022 \n\006loca" +
-      "te\030\t \001(\0132\020.fk_app.Location\022*\n\014transmissi" +
-      "on\030\n \001(\0132\024.fk_app.Transmission\022\r\n\005flags\030" +
-      "\005 \001(\r\022\014\n\004time\030\010 \001(\004\"~\n\nDataStream\022\n\n\002id\030" +
-      "\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007ver" +
-      "sion\030\004 \001(\r\022\r\n\005block\030\005 \001(\004\022\014\n\004hash\030\006 \001(\014\022" +
-      "\014\n\004name\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"N\n\021LiveSenso" +
-      "rReading\022*\n\006sensor\030\001 \001(\0132\032.fk_app.Sensor" +
-      "Capabilities\022\r\n\005value\030\002 \001(\002\"m\n\022LiveModul" +
-      "eReadings\022*\n\006module\030\001 \001(\0132\032.fk_app.Modul" +
-      "eCapabilities\022+\n\010readings\030\002 \003(\0132\031.fk_app" +
-      ".LiveSensorReading\"I\n\014LiveReadings\022\014\n\004ti" +
-      "me\030\001 \001(\004\022+\n\007modules\030\002 \003(\0132\032.fk_app.LiveM" +
-      "oduleReadings\"\231\003\n\tHttpReply\022\037\n\004type\030\001 \001(" +
-      "\0162\021.fk_app.ReplyType\022\035\n\006errors\030\002 \003(\0132\r.f" +
-      "k_app.Error\022\036\n\006status\030\003 \001(\0132\016.fk_app.Sta" +
-      "tus\0220\n\017networkSettings\030\004 \001(\0132\027.fk_app.Ne" +
-      "tworkSettings\022*\n\014loraSettings\030\010 \001(\0132\024.fk" +
-      "_app.LoraSettings\022+\n\007modules\030\005 \003(\0132\032.fk_" +
-      "app.ModuleCapabilities\022#\n\007streams\030\006 \003(\0132" +
-      "\022.fk_app.DataStream\022*\n\014liveReadings\030\007 \003(" +
-      "\0132\024.fk_app.LiveReadings\022$\n\tschedules\030\t \001" +
-      "(\0132\021.fk_app.Schedules\022*\n\014transmission\030\n " +
-      "\001(\0132\024.fk_app.Transmission*8\n\nQueryFlags\022" +
-      "\024\n\020QUERY_FLAGS_NONE\020\000\022\024\n\020QUERY_FLAGS_LOG" +
-      "S\020\001*\216\004\n\tQueryType\022\016\n\nQUERY_NONE\020\000\022\026\n\022QUE" +
-      "RY_CAPABILITIES\020\001\022\032\n\026QUERY_CONFIGURE_SEN" +
-      "SOR\020\002\022\030\n\024QUERY_LIVE_DATA_POLL\020\007\022\023\n\017QUERY" +
-      "_SCHEDULES\020\010\022\034\n\030QUERY_CONFIGUE_SCHEDULES" +
-      "\020\t\022\017\n\013QUERY_FILES\020\n\022\027\n\023QUERY_DOWNLOAD_FI" +
-      "LE\020\013\022\024\n\020QUERY_ERASE_FILE\020\014\022\017\n\013QUERY_RESE" +
-      "T\020\r\022\032\n\026QUERY_NETWORK_SETTINGS\020\016\022$\n QUERY" +
-      "_CONFIGURE_NETWORK_SETTINGS\020\017\022\022\n\016QUERY_I" +
-      "DENTITY\020\020\022\034\n\030QUERY_CONFIGURE_IDENTITY\020\021\022" +
-      "\020\n\014QUERY_STATUS\020\022\022\020\n\014QUERY_MODULE\020\023\022\022\n\016Q" +
-      "UERY_METADATA\020\024\022\020\n\014QUERY_FORMAT\020\025\022\026\n\022QUE" +
-      "RY_GET_READINGS\020\026\022\027\n\023QUERY_TAKE_READINGS" +
-      "\020\027\022\033\n\027QUERY_RECORDING_CONTROL\020\030\022\023\n\017QUERY" +
-      "_CONFIGURE\020\031*\315\002\n\tReplyType\022\016\n\nREPLY_NONE" +
-      "\020\000\022\021\n\rREPLY_SUCCESS\020\001\022\016\n\nREPLY_BUSY\020\002\022\017\n" +
-      "\013REPLY_ERROR\020\003\022\026\n\022REPLY_CAPABILITIES\020\004\022\030" +
-      "\n\024REPLY_LIVE_DATA_POLL\020\010\022\023\n\017REPLY_SCHEDU" +
-      "LES\020\t\022\017\n\013REPLY_FILES\020\n\022\027\n\023REPLY_DOWNLOAD" +
-      "_FILE\020\013\022\017\n\013REPLY_RESET\020\014\022\032\n\026REPLY_NETWOR" +
-      "K_SETTINGS\020\r\022\022\n\016REPLY_IDENTITY\020\016\022\020\n\014REPL" +
-      "Y_STATUS\020\017\022\020\n\014REPLY_MODULE\020\020\022\022\n\016REPLY_ME" +
-      "TADATA\020\021\022\022\n\016REPLY_READINGS\020\022*l\n\rDownload" +
-      "Flags\022\026\n\022DOWNLOAD_FLAG_NONE\020\000\022\"\n\036DOWNLOA" +
-      "D_FLAG_METADATA_PREPEND\020\001\022\037\n\033DOWNLOAD_FL" +
-      "AG_METADATA_ONLY\020\002*=\n\013ModuleFlags\022\024\n\020MOD" +
-      "ULE_FLAG_NONE\020\000\022\030\n\024MODULE_FLAG_INTERNAL\020" +
-      "\001*#\n\013SensorFlags\022\024\n\020SENSOR_FLAG_NONE\020\000B\025" +
-      "\n\023org.fieldkit.app.pbb\006proto3"
+      "pp.WifiTransmission\"\035\n\rListDirectory\022\014\n\004" +
+      "path\030\001 \001(\t\"\217\003\n\tHttpQuery\022\037\n\004type\030\001 \001(\0162\021" +
+      ".fk_app.QueryType\022\"\n\010identity\030\002 \001(\0132\020.fk" +
+      "_app.Identity\022$\n\trecording\030\003 \001(\0132\021.fk_ap" +
+      "p.Recording\022$\n\tschedules\030\004 \001(\0132\021.fk_app." +
+      "Schedules\0220\n\017networkSettings\030\006 \001(\0132\027.fk_" +
+      "app.NetworkSettings\022*\n\014loraSettings\030\007 \001(" +
+      "\0132\024.fk_app.LoraSettings\022 \n\006locate\030\t \001(\0132" +
+      "\020.fk_app.Location\022*\n\014transmission\030\n \001(\0132" +
+      "\024.fk_app.Transmission\022(\n\tdirectory\030\013 \001(\013" +
+      "2\025.fk_app.ListDirectory\022\r\n\005flags\030\005 \001(\r\022\014" +
+      "\n\004time\030\010 \001(\004\"~\n\nDataStream\022\n\n\002id\030\001 \001(\r\022\014" +
+      "\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007version\030\004 " +
+      "\001(\r\022\r\n\005block\030\005 \001(\004\022\014\n\004hash\030\006 \001(\014\022\014\n\004name" +
+      "\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"N\n\021LiveSensorReadin" +
+      "g\022*\n\006sensor\030\001 \001(\0132\032.fk_app.SensorCapabil" +
+      "ities\022\r\n\005value\030\002 \001(\002\"m\n\022LiveModuleReadin" +
+      "gs\022*\n\006module\030\001 \001(\0132\032.fk_app.ModuleCapabi" +
+      "lities\022+\n\010readings\030\002 \003(\0132\031.fk_app.LiveSe" +
+      "nsorReading\"I\n\014LiveReadings\022\014\n\004time\030\001 \001(" +
+      "\004\022+\n\007modules\030\002 \003(\0132\032.fk_app.LiveModuleRe" +
+      "adings\"M\n\016DirectoryEntry\022\014\n\004name\030\001 \001(\t\022\014" +
+      "\n\004path\030\002 \001(\t\022\014\n\004size\030\003 \001(\r\022\021\n\tdirectory\030" +
+      "\004 \001(\010\";\n\020DirectoryListing\022\'\n\007entries\030\001 \003" +
+      "(\0132\026.fk_app.DirectoryEntry\"\304\003\n\tHttpReply" +
+      "\022\037\n\004type\030\001 \001(\0162\021.fk_app.ReplyType\022\035\n\006err" +
+      "ors\030\002 \003(\0132\r.fk_app.Error\022\036\n\006status\030\003 \001(\013" +
+      "2\016.fk_app.Status\0220\n\017networkSettings\030\004 \001(" +
+      "\0132\027.fk_app.NetworkSettings\022*\n\014loraSettin" +
+      "gs\030\010 \001(\0132\024.fk_app.LoraSettings\022+\n\007module" +
+      "s\030\005 \003(\0132\032.fk_app.ModuleCapabilities\022#\n\007s" +
+      "treams\030\006 \003(\0132\022.fk_app.DataStream\022*\n\014live" +
+      "Readings\030\007 \003(\0132\024.fk_app.LiveReadings\022$\n\t" +
+      "schedules\030\t \001(\0132\021.fk_app.Schedules\022*\n\014tr" +
+      "ansmission\030\n \001(\0132\024.fk_app.Transmission\022)" +
+      "\n\007listing\030\013 \001(\0132\030.fk_app.DirectoryListin" +
+      "g*8\n\nQueryFlags\022\024\n\020QUERY_FLAGS_NONE\020\000\022\024\n" +
+      "\020QUERY_FLAGS_LOGS\020\001*\216\004\n\tQueryType\022\016\n\nQUE" +
+      "RY_NONE\020\000\022\026\n\022QUERY_CAPABILITIES\020\001\022\032\n\026QUE" +
+      "RY_CONFIGURE_SENSOR\020\002\022\030\n\024QUERY_LIVE_DATA" +
+      "_POLL\020\007\022\023\n\017QUERY_SCHEDULES\020\010\022\034\n\030QUERY_CO" +
+      "NFIGUE_SCHEDULES\020\t\022\017\n\013QUERY_FILES\020\n\022\027\n\023Q" +
+      "UERY_DOWNLOAD_FILE\020\013\022\024\n\020QUERY_ERASE_FILE" +
+      "\020\014\022\017\n\013QUERY_RESET\020\r\022\032\n\026QUERY_NETWORK_SET" +
+      "TINGS\020\016\022$\n QUERY_CONFIGURE_NETWORK_SETTI" +
+      "NGS\020\017\022\022\n\016QUERY_IDENTITY\020\020\022\034\n\030QUERY_CONFI" +
+      "GURE_IDENTITY\020\021\022\020\n\014QUERY_STATUS\020\022\022\020\n\014QUE" +
+      "RY_MODULE\020\023\022\022\n\016QUERY_METADATA\020\024\022\020\n\014QUERY" +
+      "_FORMAT\020\025\022\026\n\022QUERY_GET_READINGS\020\026\022\027\n\023QUE" +
+      "RY_TAKE_READINGS\020\027\022\033\n\027QUERY_RECORDING_CO" +
+      "NTROL\020\030\022\023\n\017QUERY_CONFIGURE\020\031*\315\002\n\tReplyTy" +
+      "pe\022\016\n\nREPLY_NONE\020\000\022\021\n\rREPLY_SUCCESS\020\001\022\016\n" +
+      "\nREPLY_BUSY\020\002\022\017\n\013REPLY_ERROR\020\003\022\026\n\022REPLY_" +
+      "CAPABILITIES\020\004\022\030\n\024REPLY_LIVE_DATA_POLL\020\010" +
+      "\022\023\n\017REPLY_SCHEDULES\020\t\022\017\n\013REPLY_FILES\020\n\022\027" +
+      "\n\023REPLY_DOWNLOAD_FILE\020\013\022\017\n\013REPLY_RESET\020\014" +
+      "\022\032\n\026REPLY_NETWORK_SETTINGS\020\r\022\022\n\016REPLY_ID" +
+      "ENTITY\020\016\022\020\n\014REPLY_STATUS\020\017\022\020\n\014REPLY_MODU" +
+      "LE\020\020\022\022\n\016REPLY_METADATA\020\021\022\022\n\016REPLY_READIN" +
+      "GS\020\022*l\n\rDownloadFlags\022\026\n\022DOWNLOAD_FLAG_N" +
+      "ONE\020\000\022\"\n\036DOWNLOAD_FLAG_METADATA_PREPEND\020" +
+      "\001\022\037\n\033DOWNLOAD_FLAG_METADATA_ONLY\020\002*=\n\013Mo" +
+      "duleFlags\022\024\n\020MODULE_FLAG_NONE\020\000\022\030\n\024MODUL" +
+      "E_FLAG_INTERNAL\020\001*#\n\013SensorFlags\022\024\n\020SENS" +
+      "OR_FLAG_NONE\020\000B\025\n\023org.fieldkit.app.pbb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -47780,42 +50407,60 @@ public final class FkApp {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Transmission_descriptor,
         new java.lang.String[] { "Wifi", });
-    internal_static_fk_app_HttpQuery_descriptor =
+    internal_static_fk_app_ListDirectory_descriptor =
       getDescriptor().getMessageTypes().get(40);
+    internal_static_fk_app_ListDirectory_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_fk_app_ListDirectory_descriptor,
+        new java.lang.String[] { "Path", });
+    internal_static_fk_app_HttpQuery_descriptor =
+      getDescriptor().getMessageTypes().get(41);
     internal_static_fk_app_HttpQuery_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_HttpQuery_descriptor,
-        new java.lang.String[] { "Type", "Identity", "Recording", "Schedules", "NetworkSettings", "LoraSettings", "Locate", "Transmission", "Flags", "Time", });
+        new java.lang.String[] { "Type", "Identity", "Recording", "Schedules", "NetworkSettings", "LoraSettings", "Locate", "Transmission", "Directory", "Flags", "Time", });
     internal_static_fk_app_DataStream_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_fk_app_DataStream_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_DataStream_descriptor,
         new java.lang.String[] { "Id", "Time", "Size", "Version", "Block", "Hash", "Name", "Path", });
     internal_static_fk_app_LiveSensorReading_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_fk_app_LiveSensorReading_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveSensorReading_descriptor,
         new java.lang.String[] { "Sensor", "Value", });
     internal_static_fk_app_LiveModuleReadings_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_fk_app_LiveModuleReadings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveModuleReadings_descriptor,
         new java.lang.String[] { "Module", "Readings", });
     internal_static_fk_app_LiveReadings_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_fk_app_LiveReadings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_LiveReadings_descriptor,
         new java.lang.String[] { "Time", "Modules", });
+    internal_static_fk_app_DirectoryEntry_descriptor =
+      getDescriptor().getMessageTypes().get(46);
+    internal_static_fk_app_DirectoryEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_fk_app_DirectoryEntry_descriptor,
+        new java.lang.String[] { "Name", "Path", "Size", "Directory", });
+    internal_static_fk_app_DirectoryListing_descriptor =
+      getDescriptor().getMessageTypes().get(47);
+    internal_static_fk_app_DirectoryListing_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_fk_app_DirectoryListing_descriptor,
+        new java.lang.String[] { "Entries", });
     internal_static_fk_app_HttpReply_descriptor =
-      getDescriptor().getMessageTypes().get(45);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_fk_app_HttpReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_HttpReply_descriptor,
-        new java.lang.String[] { "Type", "Errors", "Status", "NetworkSettings", "LoraSettings", "Modules", "Streams", "LiveReadings", "Schedules", "Transmission", });
+        new java.lang.String[] { "Type", "Errors", "Status", "NetworkSettings", "LoraSettings", "Modules", "Streams", "LiveReadings", "Schedules", "Transmission", "Listing", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -390,6 +390,10 @@ message Transmission {
   WifiTransmission wifi = 1;
 }
 
+message ListDirectory {
+  string path = 1;
+}
+
 message HttpQuery {
   QueryType type = 1;
   Identity identity = 2;
@@ -399,6 +403,7 @@ message HttpQuery {
   LoraSettings loraSettings = 7;
   Location locate = 9;
   Transmission transmission = 10;
+  ListDirectory directory = 11;
   uint32 flags = 5;
   uint64 time = 8;
 }
@@ -429,6 +434,17 @@ message LiveReadings {
   repeated LiveModuleReadings modules = 2;
 }
 
+message DirectoryEntry {
+  string name = 1;
+  string path = 2;
+  uint32 size = 3;
+  bool directory = 4;
+}
+
+message DirectoryListing {
+  repeated DirectoryEntry entries = 1;
+}
+
 message HttpReply {
   ReplyType type = 1;
   repeated Error errors = 2;
@@ -440,4 +456,5 @@ message HttpReply {
   repeated LiveReadings liveReadings = 7;
   Schedules schedules = 9;
   Transmission transmission = 10;
+  DirectoryListing listing = 11;
 }

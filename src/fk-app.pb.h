@@ -79,6 +79,10 @@ typedef enum _fk_app_SensorFlags {
 } fk_app_SensorFlags;
 
 /* Struct definitions */
+typedef struct _fk_app_DirectoryListing {
+    pb_callback_t entries;
+} fk_app_DirectoryListing;
+
 typedef struct _fk_app_Files {
     pb_callback_t files;
 } fk_app_Files;
@@ -97,6 +101,10 @@ typedef struct _fk_app_Identity {
     pb_callback_t generation;
     pb_callback_t number;
 } fk_app_Identity;
+
+typedef struct _fk_app_ListDirectory {
+    pb_callback_t path;
+} fk_app_ListDirectory;
 
 typedef struct _fk_app_LiveData {
     pb_callback_t samples;
@@ -138,6 +146,13 @@ typedef struct _fk_app_DeviceStatus {
     uint32_t gpsHasFix;
     uint32_t gpsSatellites;
 } fk_app_DeviceStatus;
+
+typedef struct _fk_app_DirectoryEntry {
+    pb_callback_t name;
+    pb_callback_t path;
+    uint32_t size;
+    bool directory;
+} fk_app_DirectoryEntry;
 
 typedef struct _fk_app_DownloadFile {
     uint32_t id;
@@ -414,6 +429,8 @@ typedef struct _fk_app_HttpQuery {
     fk_app_Location locate;
     bool has_transmission;
     fk_app_Transmission transmission;
+    bool has_directory;
+    fk_app_ListDirectory directory;
 } fk_app_HttpQuery;
 
 typedef struct _fk_app_LiveModuleReadings {
@@ -468,6 +485,8 @@ typedef struct _fk_app_HttpReply {
     fk_app_Schedules schedules;
     bool has_transmission;
     fk_app_Transmission transmission;
+    bool has_listing;
+    fk_app_DirectoryListing listing;
 } fk_app_HttpReply;
 
 
@@ -538,12 +557,15 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Location_init_default             {0, 0, 0, 0}
 #define fk_app_WifiTransmission_init_default     {0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Transmission_init_default         {false, fk_app_WifiTransmission_init_default}
-#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, false, fk_app_Identity_init_default, false, fk_app_Recording_init_default, false, fk_app_Schedules_init_default, 0, false, fk_app_NetworkSettings_init_default, false, fk_app_LoraSettings_init_default, 0, false, fk_app_Location_init_default, false, fk_app_Transmission_init_default}
+#define fk_app_ListDirectory_init_default        {{{NULL}, NULL}}
+#define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, false, fk_app_Identity_init_default, false, fk_app_Recording_init_default, false, fk_app_Schedules_init_default, 0, false, fk_app_NetworkSettings_init_default, false, fk_app_LoraSettings_init_default, 0, false, fk_app_Location_init_default, false, fk_app_Transmission_init_default, false, fk_app_ListDirectory_init_default}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_default    {false, fk_app_SensorCapabilities_init_default, 0}
 #define fk_app_LiveModuleReadings_init_default   {false, fk_app_ModuleCapabilities_init_default, {{NULL}, NULL}}
 #define fk_app_LiveReadings_init_default         {0, {{NULL}, NULL}}
-#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_default, false, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_default, false, fk_app_Schedules_init_default, false, fk_app_Transmission_init_default}
+#define fk_app_DirectoryEntry_init_default       {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
+#define fk_app_DirectoryListing_init_default     {{{NULL}, NULL}}
+#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_default, false, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_default, false, fk_app_Schedules_init_default, false, fk_app_Transmission_init_default, false, fk_app_DirectoryListing_init_default}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_LiveValue_init_zero               {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_zero}
@@ -584,14 +606,18 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Location_init_zero                {0, 0, 0, 0}
 #define fk_app_WifiTransmission_init_zero        {0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Transmission_init_zero            {false, fk_app_WifiTransmission_init_zero}
-#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, false, fk_app_Identity_init_zero, false, fk_app_Recording_init_zero, false, fk_app_Schedules_init_zero, 0, false, fk_app_NetworkSettings_init_zero, false, fk_app_LoraSettings_init_zero, 0, false, fk_app_Location_init_zero, false, fk_app_Transmission_init_zero}
+#define fk_app_ListDirectory_init_zero           {{{NULL}, NULL}}
+#define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, false, fk_app_Identity_init_zero, false, fk_app_Recording_init_zero, false, fk_app_Schedules_init_zero, 0, false, fk_app_NetworkSettings_init_zero, false, fk_app_LoraSettings_init_zero, 0, false, fk_app_Location_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_ListDirectory_init_zero}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_zero       {false, fk_app_SensorCapabilities_init_zero, 0}
 #define fk_app_LiveModuleReadings_init_zero      {false, fk_app_ModuleCapabilities_init_zero, {{NULL}, NULL}}
 #define fk_app_LiveReadings_init_zero            {0, {{NULL}, NULL}}
-#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_zero, false, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Transmission_init_zero}
+#define fk_app_DirectoryEntry_init_zero          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
+#define fk_app_DirectoryListing_init_zero        {{{NULL}, NULL}}
+#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_zero, false, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_DirectoryListing_init_zero}
 
 /* Field tags (for use in manual encoding/decoding) */
+#define fk_app_DirectoryListing_entries_tag      1
 #define fk_app_Files_files_tag                   1
 #define fk_app_Identity_device_tag               1
 #define fk_app_Identity_stream_tag               2
@@ -601,6 +627,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Identity_number_tag               8
 #define fk_app_Identity_name_tag                 6
 #define fk_app_Identity_generation_tag           7
+#define fk_app_ListDirectory_path_tag            1
 #define fk_app_LiveData_samples_tag              1
 #define fk_app_BatteryStatus_voltage_tag         1
 #define fk_app_BatteryStatus_percentage_tag      2
@@ -624,6 +651,10 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_DeviceStatus_batteryVoltage_tag   3
 #define fk_app_DeviceStatus_gpsHasFix_tag        4
 #define fk_app_DeviceStatus_gpsSatellites_tag    5
+#define fk_app_DirectoryEntry_name_tag           1
+#define fk_app_DirectoryEntry_path_tag           2
+#define fk_app_DirectoryEntry_size_tag           3
+#define fk_app_DirectoryEntry_directory_tag      4
 #define fk_app_DownloadFile_id_tag               1
 #define fk_app_DownloadFile_offset_tag           2
 #define fk_app_DownloadFile_length_tag           3
@@ -768,6 +799,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpQuery_loraSettings_tag        7
 #define fk_app_HttpQuery_locate_tag              9
 #define fk_app_HttpQuery_transmission_tag        10
+#define fk_app_HttpQuery_directory_tag           11
 #define fk_app_HttpQuery_flags_tag               5
 #define fk_app_HttpQuery_time_tag                8
 #define fk_app_LiveModuleReadings_module_tag     1
@@ -796,6 +828,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpReply_liveReadings_tag        7
 #define fk_app_HttpReply_schedules_tag           9
 #define fk_app_HttpReply_transmission_tag        10
+#define fk_app_HttpReply_listing_tag             11
 
 /* Struct field encoding specification for nanopb */
 #define fk_app_QueryCapabilities_FIELDLIST(X, a) \
@@ -1171,6 +1204,11 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  wifi,              1)
 #define fk_app_Transmission_DEFAULT NULL
 #define fk_app_Transmission_wifi_MSGTYPE fk_app_WifiTransmission
 
+#define fk_app_ListDirectory_FIELDLIST(X, a) \
+X(a, CALLBACK, SINGULAR, STRING,   path,              1)
+#define fk_app_ListDirectory_CALLBACK pb_default_field_callback
+#define fk_app_ListDirectory_DEFAULT NULL
+
 #define fk_app_HttpQuery_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UENUM,    type,              1) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  identity,          2) \
@@ -1181,7 +1219,8 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  networkSettings,   6) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  loraSettings,      7) \
 X(a, STATIC,   SINGULAR, UINT64,   time,              8) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  locate,            9) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  transmission,     10)
+X(a, STATIC,   OPTIONAL, MESSAGE,  transmission,     10) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  directory,        11)
 #define fk_app_HttpQuery_CALLBACK NULL
 #define fk_app_HttpQuery_DEFAULT NULL
 #define fk_app_HttpQuery_identity_MSGTYPE fk_app_Identity
@@ -1191,6 +1230,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  transmission,     10)
 #define fk_app_HttpQuery_loraSettings_MSGTYPE fk_app_LoraSettings
 #define fk_app_HttpQuery_locate_MSGTYPE fk_app_Location
 #define fk_app_HttpQuery_transmission_MSGTYPE fk_app_Transmission
+#define fk_app_HttpQuery_directory_MSGTYPE fk_app_ListDirectory
 
 #define fk_app_DataStream_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UINT32,   id,                1) \
@@ -1226,6 +1266,20 @@ X(a, CALLBACK, REPEATED, MESSAGE,  modules,           2)
 #define fk_app_LiveReadings_DEFAULT NULL
 #define fk_app_LiveReadings_modules_MSGTYPE fk_app_LiveModuleReadings
 
+#define fk_app_DirectoryEntry_FIELDLIST(X, a) \
+X(a, CALLBACK, SINGULAR, STRING,   name,              1) \
+X(a, CALLBACK, SINGULAR, STRING,   path,              2) \
+X(a, STATIC,   SINGULAR, UINT32,   size,              3) \
+X(a, STATIC,   SINGULAR, BOOL,     directory,         4)
+#define fk_app_DirectoryEntry_CALLBACK pb_default_field_callback
+#define fk_app_DirectoryEntry_DEFAULT NULL
+
+#define fk_app_DirectoryListing_FIELDLIST(X, a) \
+X(a, CALLBACK, REPEATED, MESSAGE,  entries,           1)
+#define fk_app_DirectoryListing_CALLBACK pb_default_field_callback
+#define fk_app_DirectoryListing_DEFAULT NULL
+#define fk_app_DirectoryListing_entries_MSGTYPE fk_app_DirectoryEntry
+
 #define fk_app_HttpReply_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UENUM,    type,              1) \
 X(a, CALLBACK, REPEATED, MESSAGE,  errors,            2) \
@@ -1236,7 +1290,8 @@ X(a, CALLBACK, REPEATED, MESSAGE,  streams,           6) \
 X(a, CALLBACK, REPEATED, MESSAGE,  liveReadings,      7) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  loraSettings,      8) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  schedules,         9) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  transmission,     10)
+X(a, STATIC,   OPTIONAL, MESSAGE,  transmission,     10) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  listing,          11)
 #define fk_app_HttpReply_CALLBACK pb_default_field_callback
 #define fk_app_HttpReply_DEFAULT NULL
 #define fk_app_HttpReply_errors_MSGTYPE fk_app_Error
@@ -1248,6 +1303,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  transmission,     10)
 #define fk_app_HttpReply_loraSettings_MSGTYPE fk_app_LoraSettings
 #define fk_app_HttpReply_schedules_MSGTYPE fk_app_Schedules
 #define fk_app_HttpReply_transmission_MSGTYPE fk_app_Transmission
+#define fk_app_HttpReply_listing_MSGTYPE fk_app_DirectoryListing
 
 extern const pb_msgdesc_t fk_app_QueryCapabilities_msg;
 extern const pb_msgdesc_t fk_app_LiveValue_msg;
@@ -1289,11 +1345,14 @@ extern const pb_msgdesc_t fk_app_LoraSettings_msg;
 extern const pb_msgdesc_t fk_app_Location_msg;
 extern const pb_msgdesc_t fk_app_WifiTransmission_msg;
 extern const pb_msgdesc_t fk_app_Transmission_msg;
+extern const pb_msgdesc_t fk_app_ListDirectory_msg;
 extern const pb_msgdesc_t fk_app_HttpQuery_msg;
 extern const pb_msgdesc_t fk_app_DataStream_msg;
 extern const pb_msgdesc_t fk_app_LiveSensorReading_msg;
 extern const pb_msgdesc_t fk_app_LiveModuleReadings_msg;
 extern const pb_msgdesc_t fk_app_LiveReadings_msg;
+extern const pb_msgdesc_t fk_app_DirectoryEntry_msg;
+extern const pb_msgdesc_t fk_app_DirectoryListing_msg;
 extern const pb_msgdesc_t fk_app_HttpReply_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
@@ -1337,11 +1396,14 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_Location_fields &fk_app_Location_msg
 #define fk_app_WifiTransmission_fields &fk_app_WifiTransmission_msg
 #define fk_app_Transmission_fields &fk_app_Transmission_msg
+#define fk_app_ListDirectory_fields &fk_app_ListDirectory_msg
 #define fk_app_HttpQuery_fields &fk_app_HttpQuery_msg
 #define fk_app_DataStream_fields &fk_app_DataStream_msg
 #define fk_app_LiveSensorReading_fields &fk_app_LiveSensorReading_msg
 #define fk_app_LiveModuleReadings_fields &fk_app_LiveModuleReadings_msg
 #define fk_app_LiveReadings_fields &fk_app_LiveReadings_msg
+#define fk_app_DirectoryEntry_fields &fk_app_DirectoryEntry_msg
+#define fk_app_DirectoryListing_fields &fk_app_DirectoryListing_msg
 #define fk_app_HttpReply_fields &fk_app_HttpReply_msg
 
 /* Maximum encoded size of messages (where known) */
@@ -1385,11 +1447,14 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_Location_size                     23
 /* fk_app_WifiTransmission_size depends on runtime parameters */
 /* fk_app_Transmission_size depends on runtime parameters */
+/* fk_app_ListDirectory_size depends on runtime parameters */
 /* fk_app_HttpQuery_size depends on runtime parameters */
 /* fk_app_DataStream_size depends on runtime parameters */
 /* fk_app_LiveSensorReading_size depends on runtime parameters */
 /* fk_app_LiveModuleReadings_size depends on runtime parameters */
 /* fk_app_LiveReadings_size depends on runtime parameters */
+/* fk_app_DirectoryEntry_size depends on runtime parameters */
+/* fk_app_DirectoryListing_size depends on runtime parameters */
 /* fk_app_HttpReply_size depends on runtime parameters */
 
 #ifdef __cplusplus

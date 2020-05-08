@@ -126,6 +126,9 @@ PB_BIND(fk_app_WifiTransmission, fk_app_WifiTransmission, AUTO)
 PB_BIND(fk_app_Transmission, fk_app_Transmission, AUTO)
 
 
+PB_BIND(fk_app_ListDirectory, fk_app_ListDirectory, AUTO)
+
+
 PB_BIND(fk_app_HttpQuery, fk_app_HttpQuery, 2)
 
 
@@ -139,6 +142,12 @@ PB_BIND(fk_app_LiveModuleReadings, fk_app_LiveModuleReadings, AUTO)
 
 
 PB_BIND(fk_app_LiveReadings, fk_app_LiveReadings, AUTO)
+
+
+PB_BIND(fk_app_DirectoryEntry, fk_app_DirectoryEntry, AUTO)
+
+
+PB_BIND(fk_app_DirectoryListing, fk_app_DirectoryListing, AUTO)
 
 
 PB_BIND(fk_app_HttpReply, fk_app_HttpReply, 2)
