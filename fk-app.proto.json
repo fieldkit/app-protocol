@@ -236,6 +236,10 @@
               "type": "int32",
               "id": 1
             },
+            "connected": {
+              "type": "NetworkInfo",
+              "id": 3
+            },
             "networks": {
               "rule": "repeated",
               "type": "NetworkInfo",

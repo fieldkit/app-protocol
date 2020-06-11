@@ -281,11 +281,6 @@ typedef struct _fk_app_NetworkInfo {
     bool preferred;
 } fk_app_NetworkInfo;
 
-typedef struct _fk_app_NetworkSettings {
-    int32_t createAccessPoint;
-    pb_callback_t networks;
-} fk_app_NetworkSettings;
-
 typedef struct _fk_app_QueryCapabilities {
     uint32_t version;
     uint32_t callerTime;
@@ -328,6 +323,13 @@ typedef struct _fk_app_ModuleCapabilities {
     fk_app_ModuleHeader header;
 } fk_app_ModuleCapabilities;
 
+typedef struct _fk_app_NetworkSettings {
+    int32_t createAccessPoint;
+    pb_callback_t networks;
+    bool has_connected;
+    fk_app_NetworkInfo connected;
+} fk_app_NetworkSettings;
+
 typedef struct _fk_app_PowerStatus {
     bool has_battery;
     fk_app_BatteryStatus battery;
@@ -369,47 +371,6 @@ typedef struct _fk_app_Transmission {
     bool has_wifi;
     fk_app_WifiTransmission wifi;
 } fk_app_Transmission;
-
-typedef struct _fk_app_WireMessageQuery {
-    fk_app_QueryType type;
-    bool has_queryCapabilities;
-    fk_app_QueryCapabilities queryCapabilities;
-    bool has_configureSensor;
-    fk_app_ConfigureSensorQuery configureSensor;
-    bool has_liveDataPoll;
-    fk_app_LiveDataPoll liveDataPoll;
-    bool has_downloadFile;
-    fk_app_DownloadFile downloadFile;
-    bool has_eraseFile;
-    fk_app_EraseFile eraseFile;
-    bool has_networkSettings;
-    fk_app_NetworkSettings networkSettings;
-    bool has_identity;
-    fk_app_Identity identity;
-    bool has_module;
-    fk_app_QueryModule module;
-} fk_app_WireMessageQuery;
-
-typedef struct _fk_app_WireMessageReply {
-    fk_app_ReplyType type;
-    pb_callback_t errors;
-    bool has_capabilities;
-    fk_app_Capabilities capabilities;
-    bool has_liveData;
-    fk_app_LiveData liveData;
-    bool has_files;
-    fk_app_Files files;
-    bool has_fileData;
-    fk_app_FileData fileData;
-    bool has_networkSettings;
-    fk_app_NetworkSettings networkSettings;
-    bool has_identity;
-    fk_app_Identity identity;
-    bool has_status;
-    fk_app_DeviceStatus status;
-    bool has_module;
-    fk_app_ModuleReply module;
-} fk_app_WireMessageReply;
 
 typedef struct _fk_app_HttpQuery {
     fk_app_QueryType type;
@@ -469,6 +430,47 @@ typedef struct _fk_app_Status {
     fk_app_Firmware firmware;
 } fk_app_Status;
 
+typedef struct _fk_app_WireMessageQuery {
+    fk_app_QueryType type;
+    bool has_queryCapabilities;
+    fk_app_QueryCapabilities queryCapabilities;
+    bool has_configureSensor;
+    fk_app_ConfigureSensorQuery configureSensor;
+    bool has_liveDataPoll;
+    fk_app_LiveDataPoll liveDataPoll;
+    bool has_downloadFile;
+    fk_app_DownloadFile downloadFile;
+    bool has_eraseFile;
+    fk_app_EraseFile eraseFile;
+    bool has_networkSettings;
+    fk_app_NetworkSettings networkSettings;
+    bool has_identity;
+    fk_app_Identity identity;
+    bool has_module;
+    fk_app_QueryModule module;
+} fk_app_WireMessageQuery;
+
+typedef struct _fk_app_WireMessageReply {
+    fk_app_ReplyType type;
+    pb_callback_t errors;
+    bool has_capabilities;
+    fk_app_Capabilities capabilities;
+    bool has_liveData;
+    fk_app_LiveData liveData;
+    bool has_files;
+    fk_app_Files files;
+    bool has_fileData;
+    fk_app_FileData fileData;
+    bool has_networkSettings;
+    fk_app_NetworkSettings networkSettings;
+    bool has_identity;
+    fk_app_Identity identity;
+    bool has_status;
+    fk_app_DeviceStatus status;
+    bool has_module;
+    fk_app_ModuleReply module;
+} fk_app_WireMessageReply;
+
 typedef struct _fk_app_HttpReply {
     fk_app_ReplyType type;
     pb_callback_t errors;
@@ -524,7 +526,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}}
+#define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_default}
 #define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_default {0, 0}
@@ -573,7 +575,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}}
+#define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_zero}
 #define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_zero    {0, 0}
@@ -728,8 +730,6 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_NetworkInfo_password_tag          2
 #define fk_app_NetworkInfo_create_tag            3
 #define fk_app_NetworkInfo_preferred_tag         4
-#define fk_app_NetworkSettings_createAccessPoint_tag 1
-#define fk_app_NetworkSettings_networks_tag      2
 #define fk_app_QueryCapabilities_version_tag     1
 #define fk_app_QueryCapabilities_callerTime_tag  2
 #define fk_app_QueryModule_id_tag                1
@@ -753,6 +753,9 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_flags_tag      5
 #define fk_app_ModuleCapabilities_id_tag         6
 #define fk_app_ModuleCapabilities_header_tag     7
+#define fk_app_NetworkSettings_createAccessPoint_tag 1
+#define fk_app_NetworkSettings_connected_tag     3
+#define fk_app_NetworkSettings_networks_tag      2
 #define fk_app_PowerStatus_battery_tag           1
 #define fk_app_Recording_modifying_tag           1
 #define fk_app_Recording_enabled_tag             2
@@ -772,25 +775,6 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_SensorCapabilities_flags_tag      7
 #define fk_app_SensorCapabilities_value_tag      8
 #define fk_app_Transmission_wifi_tag             1
-#define fk_app_WireMessageQuery_type_tag         1
-#define fk_app_WireMessageQuery_queryCapabilities_tag 2
-#define fk_app_WireMessageQuery_configureSensor_tag 3
-#define fk_app_WireMessageQuery_liveDataPoll_tag 8
-#define fk_app_WireMessageQuery_downloadFile_tag 10
-#define fk_app_WireMessageQuery_eraseFile_tag    11
-#define fk_app_WireMessageQuery_networkSettings_tag 12
-#define fk_app_WireMessageQuery_identity_tag     13
-#define fk_app_WireMessageQuery_module_tag       14
-#define fk_app_WireMessageReply_type_tag         1
-#define fk_app_WireMessageReply_errors_tag       2
-#define fk_app_WireMessageReply_capabilities_tag 3
-#define fk_app_WireMessageReply_liveData_tag     6
-#define fk_app_WireMessageReply_files_tag        8
-#define fk_app_WireMessageReply_fileData_tag     9
-#define fk_app_WireMessageReply_networkSettings_tag 10
-#define fk_app_WireMessageReply_identity_tag     11
-#define fk_app_WireMessageReply_status_tag       12
-#define fk_app_WireMessageReply_module_tag       13
 #define fk_app_HttpQuery_type_tag                1
 #define fk_app_HttpQuery_identity_tag            2
 #define fk_app_HttpQuery_recording_tag           3
@@ -818,6 +802,25 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_network_tag                10
 #define fk_app_Status_time_tag                   11
 #define fk_app_Status_firmware_tag               12
+#define fk_app_WireMessageQuery_type_tag         1
+#define fk_app_WireMessageQuery_queryCapabilities_tag 2
+#define fk_app_WireMessageQuery_configureSensor_tag 3
+#define fk_app_WireMessageQuery_liveDataPoll_tag 8
+#define fk_app_WireMessageQuery_downloadFile_tag 10
+#define fk_app_WireMessageQuery_eraseFile_tag    11
+#define fk_app_WireMessageQuery_networkSettings_tag 12
+#define fk_app_WireMessageQuery_identity_tag     13
+#define fk_app_WireMessageQuery_module_tag       14
+#define fk_app_WireMessageReply_type_tag         1
+#define fk_app_WireMessageReply_errors_tag       2
+#define fk_app_WireMessageReply_capabilities_tag 3
+#define fk_app_WireMessageReply_liveData_tag     6
+#define fk_app_WireMessageReply_files_tag        8
+#define fk_app_WireMessageReply_fileData_tag     9
+#define fk_app_WireMessageReply_networkSettings_tag 10
+#define fk_app_WireMessageReply_identity_tag     11
+#define fk_app_WireMessageReply_status_tag       12
+#define fk_app_WireMessageReply_module_tag       13
 #define fk_app_HttpReply_type_tag                1
 #define fk_app_HttpReply_errors_tag              2
 #define fk_app_HttpReply_status_tag              3
@@ -897,10 +900,12 @@ X(a, STATIC,   SINGULAR, BOOL,     preferred,         4)
 
 #define fk_app_NetworkSettings_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, INT32,    createAccessPoint,   1) \
-X(a, CALLBACK, REPEATED, MESSAGE,  networks,          2)
+X(a, CALLBACK, REPEATED, MESSAGE,  networks,          2) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  connected,         3)
 #define fk_app_NetworkSettings_CALLBACK pb_default_field_callback
 #define fk_app_NetworkSettings_DEFAULT NULL
 #define fk_app_NetworkSettings_networks_MSGTYPE fk_app_NetworkInfo
+#define fk_app_NetworkSettings_connected_MSGTYPE fk_app_NetworkInfo
 
 #define fk_app_Firmware_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING,   version,           1) \

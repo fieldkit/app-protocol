@@ -72,7 +72,7 @@ PB_BIND(fk_app_QueryModule, fk_app_QueryModule, AUTO)
 PB_BIND(fk_app_ModuleReply, fk_app_ModuleReply, AUTO)
 
 
-PB_BIND(fk_app_WireMessageQuery, fk_app_WireMessageQuery, AUTO)
+PB_BIND(fk_app_WireMessageQuery, fk_app_WireMessageQuery, 2)
 
 
 PB_BIND(fk_app_Error, fk_app_Error, AUTO)

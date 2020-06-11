@@ -7881,6 +7881,21 @@ public final class FkApp {
     int getCreateAccessPoint();
 
     /**
+     * <code>.fk_app.NetworkInfo connected = 3;</code>
+     * @return Whether the connected field is set.
+     */
+    boolean hasConnected();
+    /**
+     * <code>.fk_app.NetworkInfo connected = 3;</code>
+     * @return The connected.
+     */
+    org.fieldkit.app.pb.FkApp.NetworkInfo getConnected();
+    /**
+     * <code>.fk_app.NetworkInfo connected = 3;</code>
+     */
+    org.fieldkit.app.pb.FkApp.NetworkInfoOrBuilder getConnectedOrBuilder();
+
+    /**
      * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
      */
     java.util.List<org.fieldkit.app.pb.FkApp.NetworkInfo> 
@@ -7965,6 +7980,19 @@ public final class FkApp {
                   input.readMessage(org.fieldkit.app.pb.FkApp.NetworkInfo.parser(), extensionRegistry));
               break;
             }
+            case 26: {
+              org.fieldkit.app.pb.FkApp.NetworkInfo.Builder subBuilder = null;
+              if (connected_ != null) {
+                subBuilder = connected_.toBuilder();
+              }
+              connected_ = input.readMessage(org.fieldkit.app.pb.FkApp.NetworkInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(connected_);
+                connected_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -8008,6 +8036,29 @@ public final class FkApp {
      */
     public int getCreateAccessPoint() {
       return createAccessPoint_;
+    }
+
+    public static final int CONNECTED_FIELD_NUMBER = 3;
+    private org.fieldkit.app.pb.FkApp.NetworkInfo connected_;
+    /**
+     * <code>.fk_app.NetworkInfo connected = 3;</code>
+     * @return Whether the connected field is set.
+     */
+    public boolean hasConnected() {
+      return connected_ != null;
+    }
+    /**
+     * <code>.fk_app.NetworkInfo connected = 3;</code>
+     * @return The connected.
+     */
+    public org.fieldkit.app.pb.FkApp.NetworkInfo getConnected() {
+      return connected_ == null ? org.fieldkit.app.pb.FkApp.NetworkInfo.getDefaultInstance() : connected_;
+    }
+    /**
+     * <code>.fk_app.NetworkInfo connected = 3;</code>
+     */
+    public org.fieldkit.app.pb.FkApp.NetworkInfoOrBuilder getConnectedOrBuilder() {
+      return getConnected();
     }
 
     public static final int NETWORKS_FIELD_NUMBER = 2;
@@ -8065,6 +8116,9 @@ public final class FkApp {
       for (int i = 0; i < networks_.size(); i++) {
         output.writeMessage(2, networks_.get(i));
       }
+      if (connected_ != null) {
+        output.writeMessage(3, getConnected());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -8081,6 +8135,10 @@ public final class FkApp {
       for (int i = 0; i < networks_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, networks_.get(i));
+      }
+      if (connected_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getConnected());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8099,6 +8157,11 @@ public final class FkApp {
 
       if (getCreateAccessPoint()
           != other.getCreateAccessPoint()) return false;
+      if (hasConnected() != other.hasConnected()) return false;
+      if (hasConnected()) {
+        if (!getConnected()
+            .equals(other.getConnected())) return false;
+      }
       if (!getNetworksList()
           .equals(other.getNetworksList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -8114,6 +8177,10 @@ public final class FkApp {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CREATEACCESSPOINT_FIELD_NUMBER;
       hash = (53 * hash) + getCreateAccessPoint();
+      if (hasConnected()) {
+        hash = (37 * hash) + CONNECTED_FIELD_NUMBER;
+        hash = (53 * hash) + getConnected().hashCode();
+      }
       if (getNetworksCount() > 0) {
         hash = (37 * hash) + NETWORKS_FIELD_NUMBER;
         hash = (53 * hash) + getNetworksList().hashCode();
@@ -8254,6 +8321,12 @@ public final class FkApp {
         super.clear();
         createAccessPoint_ = 0;
 
+        if (connectedBuilder_ == null) {
+          connected_ = null;
+        } else {
+          connected_ = null;
+          connectedBuilder_ = null;
+        }
         if (networksBuilder_ == null) {
           networks_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
@@ -8288,6 +8361,11 @@ public final class FkApp {
         org.fieldkit.app.pb.FkApp.NetworkSettings result = new org.fieldkit.app.pb.FkApp.NetworkSettings(this);
         int from_bitField0_ = bitField0_;
         result.createAccessPoint_ = createAccessPoint_;
+        if (connectedBuilder_ == null) {
+          result.connected_ = connected_;
+        } else {
+          result.connected_ = connectedBuilder_.build();
+        }
         if (networksBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             networks_ = java.util.Collections.unmodifiableList(networks_);
@@ -8347,6 +8425,9 @@ public final class FkApp {
         if (other == org.fieldkit.app.pb.FkApp.NetworkSettings.getDefaultInstance()) return this;
         if (other.getCreateAccessPoint() != 0) {
           setCreateAccessPoint(other.getCreateAccessPoint());
+        }
+        if (other.hasConnected()) {
+          mergeConnected(other.getConnected());
         }
         if (networksBuilder_ == null) {
           if (!other.networks_.isEmpty()) {
@@ -8432,6 +8513,125 @@ public final class FkApp {
         createAccessPoint_ = 0;
         onChanged();
         return this;
+      }
+
+      private org.fieldkit.app.pb.FkApp.NetworkInfo connected_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.NetworkInfo, org.fieldkit.app.pb.FkApp.NetworkInfo.Builder, org.fieldkit.app.pb.FkApp.NetworkInfoOrBuilder> connectedBuilder_;
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       * @return Whether the connected field is set.
+       */
+      public boolean hasConnected() {
+        return connectedBuilder_ != null || connected_ != null;
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       * @return The connected.
+       */
+      public org.fieldkit.app.pb.FkApp.NetworkInfo getConnected() {
+        if (connectedBuilder_ == null) {
+          return connected_ == null ? org.fieldkit.app.pb.FkApp.NetworkInfo.getDefaultInstance() : connected_;
+        } else {
+          return connectedBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       */
+      public Builder setConnected(org.fieldkit.app.pb.FkApp.NetworkInfo value) {
+        if (connectedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          connected_ = value;
+          onChanged();
+        } else {
+          connectedBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       */
+      public Builder setConnected(
+          org.fieldkit.app.pb.FkApp.NetworkInfo.Builder builderForValue) {
+        if (connectedBuilder_ == null) {
+          connected_ = builderForValue.build();
+          onChanged();
+        } else {
+          connectedBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       */
+      public Builder mergeConnected(org.fieldkit.app.pb.FkApp.NetworkInfo value) {
+        if (connectedBuilder_ == null) {
+          if (connected_ != null) {
+            connected_ =
+              org.fieldkit.app.pb.FkApp.NetworkInfo.newBuilder(connected_).mergeFrom(value).buildPartial();
+          } else {
+            connected_ = value;
+          }
+          onChanged();
+        } else {
+          connectedBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       */
+      public Builder clearConnected() {
+        if (connectedBuilder_ == null) {
+          connected_ = null;
+          onChanged();
+        } else {
+          connected_ = null;
+          connectedBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.NetworkInfo.Builder getConnectedBuilder() {
+        
+        onChanged();
+        return getConnectedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       */
+      public org.fieldkit.app.pb.FkApp.NetworkInfoOrBuilder getConnectedOrBuilder() {
+        if (connectedBuilder_ != null) {
+          return connectedBuilder_.getMessageOrBuilder();
+        } else {
+          return connected_ == null ?
+              org.fieldkit.app.pb.FkApp.NetworkInfo.getDefaultInstance() : connected_;
+        }
+      }
+      /**
+       * <code>.fk_app.NetworkInfo connected = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.fieldkit.app.pb.FkApp.NetworkInfo, org.fieldkit.app.pb.FkApp.NetworkInfo.Builder, org.fieldkit.app.pb.FkApp.NetworkInfoOrBuilder> 
+          getConnectedFieldBuilder() {
+        if (connectedBuilder_ == null) {
+          connectedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.fieldkit.app.pb.FkApp.NetworkInfo, org.fieldkit.app.pb.FkApp.NetworkInfo.Builder, org.fieldkit.app.pb.FkApp.NetworkInfoOrBuilder>(
+                  getConnected(),
+                  getParentForChildren(),
+                  isClean());
+          connected_ = null;
+        }
+        return connectedBuilder_;
       }
 
       private java.util.List<org.fieldkit.app.pb.FkApp.NetworkInfo> networks_ =
@@ -50002,8 +50202,9 @@ public final class FkApp {
       "duleCapabilities\022+\n\007sensors\030\005 \003(\0132\032.fk_a" +
       "pp.SensorCapabilities\"P\n\013NetworkInfo\022\014\n\004" +
       "ssid\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006create\030\003" +
-      " \001(\010\022\021\n\tpreferred\030\004 \001(\010\"S\n\017NetworkSettin" +
-      "gs\022\031\n\021createAccessPoint\030\001 \001(\005\022%\n\010network" +
+      " \001(\010\022\021\n\tpreferred\030\004 \001(\010\"{\n\017NetworkSettin" +
+      "gs\022\031\n\021createAccessPoint\030\001 \001(\005\022&\n\tconnect" +
+      "ed\030\003 \001(\0132\023.fk_app.NetworkInfo\022%\n\010network" +
       "s\030\002 \003(\0132\023.fk_app.NetworkInfo\"[\n\010Firmware" +
       "\022\017\n\007version\030\001 \001(\t\022\r\n\005build\030\002 \001(\t\022\016\n\006numb" +
       "er\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\004\022\014\n\004hash\030\005 \001(" +
@@ -50214,7 +50415,7 @@ public final class FkApp {
     internal_static_fk_app_NetworkSettings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_NetworkSettings_descriptor,
-        new java.lang.String[] { "CreateAccessPoint", "Networks", });
+        new java.lang.String[] { "CreateAccessPoint", "Connected", "Networks", });
     internal_static_fk_app_Firmware_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_fk_app_Firmware_fieldAccessorTable = new
