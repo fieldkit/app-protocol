@@ -305,6 +305,10 @@ typedef struct _fk_app_Schedule {
     uint32_t jitter;
 } fk_app_Schedule;
 
+typedef struct _fk_app_SolarStatus {
+    uint32_t voltage;
+} fk_app_SolarStatus;
+
 typedef struct _fk_app_WifiTransmission {
     bool modifying;
     pb_callback_t url;
@@ -333,6 +337,8 @@ typedef struct _fk_app_NetworkSettings {
 typedef struct _fk_app_PowerStatus {
     bool has_battery;
     fk_app_BatteryStatus battery;
+    bool has_solar;
+    fk_app_SolarStatus solar;
 } fk_app_PowerStatus;
 
 typedef struct _fk_app_Recording {
@@ -551,7 +557,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
-#define fk_app_PowerStatus_init_default          {false, fk_app_BatteryStatus_init_default}
+#define fk_app_SolarStatus_init_default          {0}
+#define fk_app_PowerStatus_init_default          {false, fk_app_BatteryStatus_init_default, false, fk_app_SolarStatus_init_default}
 #define fk_app_Status_init_default               {0, 0, false, fk_app_Identity_init_default, false, fk_app_HardwareStatus_init_default, false, fk_app_PowerStatus_init_default, false, fk_app_MemoryStatus_init_default, false, fk_app_GpsStatus_init_default, false, fk_app_Schedules_init_default, false, fk_app_Recording_init_default, false, fk_app_NetworkSettings_init_default, 0, false, fk_app_Firmware_init_default, {{NULL}, NULL}}
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -600,7 +607,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0, 0}
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
-#define fk_app_PowerStatus_init_zero             {false, fk_app_BatteryStatus_init_zero}
+#define fk_app_SolarStatus_init_zero             {0}
+#define fk_app_PowerStatus_init_zero             {false, fk_app_BatteryStatus_init_zero, false, fk_app_SolarStatus_init_zero}
 #define fk_app_Status_init_zero                  {0, 0, false, fk_app_Identity_init_zero, false, fk_app_HardwareStatus_init_zero, false, fk_app_PowerStatus_init_zero, false, fk_app_MemoryStatus_init_zero, false, fk_app_GpsStatus_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Recording_init_zero, false, fk_app_NetworkSettings_init_zero, 0, false, fk_app_Firmware_init_zero, {{NULL}, NULL}}
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -743,6 +751,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Schedule_repeated_tag             3
 #define fk_app_Schedule_duration_tag             4
 #define fk_app_Schedule_jitter_tag               5
+#define fk_app_SolarStatus_voltage_tag           1
 #define fk_app_WifiTransmission_modifying_tag    1
 #define fk_app_WifiTransmission_url_tag          2
 #define fk_app_WifiTransmission_token_tag        3
@@ -758,6 +767,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_NetworkSettings_connected_tag     3
 #define fk_app_NetworkSettings_networks_tag      2
 #define fk_app_PowerStatus_battery_tag           1
+#define fk_app_PowerStatus_solar_tag             2
 #define fk_app_Recording_modifying_tag           1
 #define fk_app_Recording_enabled_tag             2
 #define fk_app_Recording_startedTime_tag         3
@@ -1120,11 +1130,18 @@ X(a, STATIC,   SINGULAR, UINT32,   percentage,        2)
 #define fk_app_BatteryStatus_CALLBACK NULL
 #define fk_app_BatteryStatus_DEFAULT NULL
 
+#define fk_app_SolarStatus_FIELDLIST(X, a) \
+X(a, STATIC,   SINGULAR, UINT32,   voltage,           1)
+#define fk_app_SolarStatus_CALLBACK NULL
+#define fk_app_SolarStatus_DEFAULT NULL
+
 #define fk_app_PowerStatus_FIELDLIST(X, a) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  battery,           1)
+X(a, STATIC,   OPTIONAL, MESSAGE,  battery,           1) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  solar,             2)
 #define fk_app_PowerStatus_CALLBACK NULL
 #define fk_app_PowerStatus_DEFAULT NULL
 #define fk_app_PowerStatus_battery_MSGTYPE fk_app_BatteryStatus
+#define fk_app_PowerStatus_solar_MSGTYPE fk_app_SolarStatus
 
 #define fk_app_Status_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UINT32,   version,           1) \
@@ -1344,6 +1361,7 @@ extern const pb_msgdesc_t fk_app_HardwareStatus_msg;
 extern const pb_msgdesc_t fk_app_GpsStatus_msg;
 extern const pb_msgdesc_t fk_app_MemoryStatus_msg;
 extern const pb_msgdesc_t fk_app_BatteryStatus_msg;
+extern const pb_msgdesc_t fk_app_SolarStatus_msg;
 extern const pb_msgdesc_t fk_app_PowerStatus_msg;
 extern const pb_msgdesc_t fk_app_Status_msg;
 extern const pb_msgdesc_t fk_app_Range_msg;
@@ -1395,6 +1413,7 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_GpsStatus_fields &fk_app_GpsStatus_msg
 #define fk_app_MemoryStatus_fields &fk_app_MemoryStatus_msg
 #define fk_app_BatteryStatus_fields &fk_app_BatteryStatus_msg
+#define fk_app_SolarStatus_fields &fk_app_SolarStatus_msg
 #define fk_app_PowerStatus_fields &fk_app_PowerStatus_msg
 #define fk_app_Status_fields &fk_app_Status_msg
 #define fk_app_Range_fields &fk_app_Range_msg
@@ -1446,7 +1465,8 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_GpsStatus_size                    44
 #define fk_app_MemoryStatus_size                 35
 #define fk_app_BatteryStatus_size                12
-#define fk_app_PowerStatus_size                  14
+#define fk_app_SolarStatus_size                  6
+#define fk_app_PowerStatus_size                  22
 /* fk_app_Status_size depends on runtime parameters */
 #define fk_app_Range_size                        12
 /* fk_app_DownloadQuery_size depends on runtime parameters */

@@ -322,8 +322,13 @@ message BatteryStatus {
   uint32 percentage = 2;
 }
 
+message SolarStatus {
+  uint32 voltage = 1;
+}
+
 message PowerStatus {
   BatteryStatus battery = 1;
+  SolarStatus solar = 2;
 }
 
 message Status {

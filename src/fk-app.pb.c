@@ -99,6 +99,9 @@ PB_BIND(fk_app_MemoryStatus, fk_app_MemoryStatus, AUTO)
 PB_BIND(fk_app_BatteryStatus, fk_app_BatteryStatus, AUTO)
 
 
+PB_BIND(fk_app_SolarStatus, fk_app_SolarStatus, AUTO)
+
+
 PB_BIND(fk_app_PowerStatus, fk_app_PowerStatus, AUTO)
 
 

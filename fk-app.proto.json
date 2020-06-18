@@ -721,11 +721,23 @@
             }
           }
         },
+        "SolarStatus": {
+          "fields": {
+            "voltage": {
+              "type": "uint32",
+              "id": 1
+            }
+          }
+        },
         "PowerStatus": {
           "fields": {
             "battery": {
               "type": "BatteryStatus",
               "id": 1
+            },
+            "solar": {
+              "type": "SolarStatus",
+              "id": 2
             }
           }
         },
