@@ -139,6 +139,7 @@ message NetworkInfo {
 message NetworkSettings {
   int32 createAccessPoint = 1;
   NetworkInfo connected = 3;
+  string macAddress = 4;
   repeated NetworkInfo networks = 2;
 }
 

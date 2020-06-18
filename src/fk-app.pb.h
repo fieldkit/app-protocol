@@ -332,6 +332,7 @@ typedef struct _fk_app_NetworkSettings {
     pb_callback_t networks;
     bool has_connected;
     fk_app_NetworkInfo connected;
+    pb_callback_t macAddress;
 } fk_app_NetworkSettings;
 
 typedef struct _fk_app_PowerStatus {
@@ -533,7 +534,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_default}
+#define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_default, {{NULL}, NULL}}
 #define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_default {0, 0}
@@ -583,7 +584,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
-#define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_zero}
+#define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_zero, {{NULL}, NULL}}
 #define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_zero    {0, 0}
@@ -765,6 +766,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_header_tag     7
 #define fk_app_NetworkSettings_createAccessPoint_tag 1
 #define fk_app_NetworkSettings_connected_tag     3
+#define fk_app_NetworkSettings_macAddress_tag    4
 #define fk_app_NetworkSettings_networks_tag      2
 #define fk_app_PowerStatus_battery_tag           1
 #define fk_app_PowerStatus_solar_tag             2
@@ -913,7 +915,8 @@ X(a, STATIC,   SINGULAR, BOOL,     preferred,         4)
 #define fk_app_NetworkSettings_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, INT32,    createAccessPoint,   1) \
 X(a, CALLBACK, REPEATED, MESSAGE,  networks,          2) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  connected,         3)
+X(a, STATIC,   OPTIONAL, MESSAGE,  connected,         3) \
+X(a, CALLBACK, SINGULAR, STRING,   macAddress,        4)
 #define fk_app_NetworkSettings_CALLBACK pb_default_field_callback
 #define fk_app_NetworkSettings_DEFAULT NULL
 #define fk_app_NetworkSettings_networks_MSGTYPE fk_app_NetworkInfo

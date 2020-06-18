@@ -7896,6 +7896,18 @@ public final class FkApp {
     org.fieldkit.app.pb.FkApp.NetworkInfoOrBuilder getConnectedOrBuilder();
 
     /**
+     * <code>string macAddress = 4;</code>
+     * @return The macAddress.
+     */
+    java.lang.String getMacAddress();
+    /**
+     * <code>string macAddress = 4;</code>
+     * @return The bytes for macAddress.
+     */
+    com.google.protobuf.ByteString
+        getMacAddressBytes();
+
+    /**
      * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
      */
     java.util.List<org.fieldkit.app.pb.FkApp.NetworkInfo> 
@@ -7932,6 +7944,7 @@ public final class FkApp {
       super(builder);
     }
     private NetworkSettings() {
+      macAddress_ = "";
       networks_ = java.util.Collections.emptyList();
     }
 
@@ -7991,6 +8004,12 @@ public final class FkApp {
                 connected_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              macAddress_ = s;
               break;
             }
             default: {
@@ -8061,6 +8080,42 @@ public final class FkApp {
       return getConnected();
     }
 
+    public static final int MACADDRESS_FIELD_NUMBER = 4;
+    private volatile java.lang.Object macAddress_;
+    /**
+     * <code>string macAddress = 4;</code>
+     * @return The macAddress.
+     */
+    public java.lang.String getMacAddress() {
+      java.lang.Object ref = macAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        macAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string macAddress = 4;</code>
+     * @return The bytes for macAddress.
+     */
+    public com.google.protobuf.ByteString
+        getMacAddressBytes() {
+      java.lang.Object ref = macAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        macAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     public static final int NETWORKS_FIELD_NUMBER = 2;
     private java.util.List<org.fieldkit.app.pb.FkApp.NetworkInfo> networks_;
     /**
@@ -8119,6 +8174,9 @@ public final class FkApp {
       if (connected_ != null) {
         output.writeMessage(3, getConnected());
       }
+      if (!getMacAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, macAddress_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -8139,6 +8197,9 @@ public final class FkApp {
       if (connected_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getConnected());
+      }
+      if (!getMacAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, macAddress_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8162,6 +8223,8 @@ public final class FkApp {
         if (!getConnected()
             .equals(other.getConnected())) return false;
       }
+      if (!getMacAddress()
+          .equals(other.getMacAddress())) return false;
       if (!getNetworksList()
           .equals(other.getNetworksList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -8181,6 +8244,8 @@ public final class FkApp {
         hash = (37 * hash) + CONNECTED_FIELD_NUMBER;
         hash = (53 * hash) + getConnected().hashCode();
       }
+      hash = (37 * hash) + MACADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getMacAddress().hashCode();
       if (getNetworksCount() > 0) {
         hash = (37 * hash) + NETWORKS_FIELD_NUMBER;
         hash = (53 * hash) + getNetworksList().hashCode();
@@ -8327,6 +8392,8 @@ public final class FkApp {
           connected_ = null;
           connectedBuilder_ = null;
         }
+        macAddress_ = "";
+
         if (networksBuilder_ == null) {
           networks_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
@@ -8366,6 +8433,7 @@ public final class FkApp {
         } else {
           result.connected_ = connectedBuilder_.build();
         }
+        result.macAddress_ = macAddress_;
         if (networksBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             networks_ = java.util.Collections.unmodifiableList(networks_);
@@ -8428,6 +8496,10 @@ public final class FkApp {
         }
         if (other.hasConnected()) {
           mergeConnected(other.getConnected());
+        }
+        if (!other.getMacAddress().isEmpty()) {
+          macAddress_ = other.macAddress_;
+          onChanged();
         }
         if (networksBuilder_ == null) {
           if (!other.networks_.isEmpty()) {
@@ -8632,6 +8704,82 @@ public final class FkApp {
           connected_ = null;
         }
         return connectedBuilder_;
+      }
+
+      private java.lang.Object macAddress_ = "";
+      /**
+       * <code>string macAddress = 4;</code>
+       * @return The macAddress.
+       */
+      public java.lang.String getMacAddress() {
+        java.lang.Object ref = macAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          macAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string macAddress = 4;</code>
+       * @return The bytes for macAddress.
+       */
+      public com.google.protobuf.ByteString
+          getMacAddressBytes() {
+        java.lang.Object ref = macAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          macAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string macAddress = 4;</code>
+       * @param value The macAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMacAddress(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        macAddress_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string macAddress = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMacAddress() {
+        
+        macAddress_ = getDefaultInstance().getMacAddress();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string macAddress = 4;</code>
+       * @param value The bytes for macAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMacAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        macAddress_ = value;
+        onChanged();
+        return this;
       }
 
       private java.util.List<org.fieldkit.app.pb.FkApp.NetworkInfo> networks_ =
@@ -51041,169 +51189,169 @@ public final class FkApp {
       "duleCapabilities\022+\n\007sensors\030\005 \003(\0132\032.fk_a" +
       "pp.SensorCapabilities\"P\n\013NetworkInfo\022\014\n\004" +
       "ssid\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006create\030\003" +
-      " \001(\010\022\021\n\tpreferred\030\004 \001(\010\"{\n\017NetworkSettin" +
-      "gs\022\031\n\021createAccessPoint\030\001 \001(\005\022&\n\tconnect" +
-      "ed\030\003 \001(\0132\023.fk_app.NetworkInfo\022%\n\010network" +
-      "s\030\002 \003(\0132\023.fk_app.NetworkInfo\"[\n\010Firmware" +
-      "\022\017\n\007version\030\001 \001(\t\022\r\n\005build\030\002 \001(\t\022\016\n\006numb" +
-      "er\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\004\022\014\n\004hash\030\005 \001(" +
-      "\t\"\217\001\n\010Identity\022\016\n\006device\030\001 \001(\t\022\016\n\006stream" +
-      "\030\002 \001(\t\022\020\n\010deviceId\030\003 \001(\014\022\020\n\010firmware\030\004 \001" +
-      "(\t\022\r\n\005build\030\005 \001(\t\022\016\n\006number\030\010 \001(\t\022\014\n\004nam" +
-      "e\030\006 \001(\t\022\022\n\ngeneration\030\007 \001(\014\"5\n\024Configure" +
-      "SensorQuery\022\n\n\002id\030\001 \001(\r\022\021\n\tfrequency\030\002 \001" +
-      "(\r\" \n\014LiveDataPoll\022\020\n\010interval\030\001 \001(\r\"=\n\016" +
-      "LiveDataSample\022\016\n\006sensor\030\001 \001(\r\022\014\n\004time\030\002" +
-      " \001(\004\022\r\n\005value\030\003 \001(\002\"3\n\010LiveData\022\'\n\007sampl" +
-      "es\030\001 \003(\0132\026.fk_app.LiveDataSample\"^\n\004File" +
-      "\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004" +
-      "\022\017\n\007version\030\004 \001(\r\022\014\n\004name\030\005 \001(\t\022\017\n\007maxim" +
-      "um\030\006 \001(\004\"$\n\005Files\022\033\n\005files\030\001 \003(\0132\014.fk_ap" +
-      "p.File\"I\n\014DownloadFile\022\n\n\002id\030\001 \001(\r\022\016\n\006of" +
-      "fset\030\002 \001(\r\022\016\n\006length\030\003 \001(\r\022\r\n\005flags\030\004 \001(" +
-      "\r\"\027\n\tEraseFile\022\n\n\002id\030\001 \001(\r\"a\n\010FileData\022\016" +
-      "\n\006offset\030\001 \001(\r\022\014\n\004data\030\002 \001(\014\022\014\n\004size\030\003 \001" +
-      "(\r\022\014\n\004hash\030\004 \001(\r\022\017\n\007version\030\005 \001(\r\022\n\n\002id\030" +
-      "\006 \001(\r\"{\n\014DeviceStatus\022\016\n\006uptime\030\001 \001(\r\022\031\n" +
-      "\021batteryPercentage\030\002 \001(\002\022\026\n\016batteryVolta" +
-      "ge\030\003 \001(\002\022\021\n\tgpsHasFix\030\004 \001(\r\022\025\n\rgpsSatell" +
-      "ites\030\005 \001(\r\";\n\013QueryModule\022\n\n\002id\030\001 \001(\r\022\017\n" +
-      "\007address\030\002 \001(\r\022\017\n\007message\030\003 \001(\014\";\n\013Modul" +
-      "eReply\022\n\n\002id\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\017\n\007m" +
-      "essage\030\003 \001(\014\"\231\003\n\020WireMessageQuery\022\037\n\004typ" +
-      "e\030\001 \001(\0162\021.fk_app.QueryType\0224\n\021queryCapab" +
-      "ilities\030\002 \001(\0132\031.fk_app.QueryCapabilities" +
-      "\0225\n\017configureSensor\030\003 \001(\0132\034.fk_app.Confi" +
-      "gureSensorQuery\022*\n\014liveDataPoll\030\010 \001(\0132\024." +
-      "fk_app.LiveDataPoll\022*\n\014downloadFile\030\n \001(" +
-      "\0132\024.fk_app.DownloadFile\022$\n\teraseFile\030\013 \001" +
-      "(\0132\021.fk_app.EraseFile\0220\n\017networkSettings" +
-      "\030\014 \001(\0132\027.fk_app.NetworkSettings\022\"\n\010ident" +
-      "ity\030\r \001(\0132\020.fk_app.Identity\022#\n\006module\030\016 " +
-      "\001(\0132\023.fk_app.QueryModule\"\'\n\005Error\022\017\n\007mes" +
-      "sage\030\001 \001(\t\022\r\n\005delay\030\002 \001(\r\"\205\003\n\020WireMessag" +
-      "eReply\022\037\n\004type\030\001 \001(\0162\021.fk_app.ReplyType\022" +
-      "\035\n\006errors\030\002 \003(\0132\r.fk_app.Error\022*\n\014capabi" +
-      "lities\030\003 \001(\0132\024.fk_app.Capabilities\022\"\n\010li" +
-      "veData\030\006 \001(\0132\020.fk_app.LiveData\022\034\n\005files\030" +
-      "\010 \001(\0132\r.fk_app.Files\022\"\n\010fileData\030\t \001(\0132\020" +
-      ".fk_app.FileData\0220\n\017networkSettings\030\n \001(" +
-      "\0132\027.fk_app.NetworkSettings\022\"\n\010identity\030\013" +
-      " \001(\0132\020.fk_app.Identity\022$\n\006status\030\014 \001(\0132\024" +
-      ".fk_app.DeviceStatus\022#\n\006module\030\r \001(\0132\023.f" +
-      "k_app.ModuleReply\"^\n\010Schedule\022\014\n\004cron\030\001 " +
-      "\001(\014\022\020\n\010interval\030\002 \001(\r\022\020\n\010repeated\030\003 \001(\r\022" +
-      "\020\n\010duration\030\004 \001(\r\022\016\n\006jitter\030\005 \001(\r\"\244\001\n\tSc" +
-      "hedules\022\021\n\tmodifying\030\001 \001(\010\022\"\n\010readings\030\002" +
-      " \001(\0132\020.fk_app.Schedule\022\036\n\004lora\030\003 \001(\0132\020.f" +
-      "k_app.Schedule\022!\n\007network\030\004 \001(\0132\020.fk_app" +
-      ".Schedule\022\035\n\003gps\030\005 \001(\0132\020.fk_app.Schedule" +
-      "\"\020\n\016HardwareStatus\"\202\001\n\tGpsStatus\022\017\n\007enab" +
-      "led\030\007 \001(\r\022\013\n\003fix\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\022\n\n" +
-      "satellites\030\003 \001(\r\022\021\n\tlongitude\030\004 \001(\002\022\020\n\010l" +
-      "atitude\030\005 \001(\002\022\020\n\010altitude\030\006 \001(\002\"\271\001\n\014Memo" +
-      "ryStatus\022\025\n\rsramAvailable\030\001 \001(\r\022\035\n\025progr" +
-      "amFlashAvailable\030\002 \001(\r\022\037\n\027extendedMemory" +
-      "Available\030\003 \001(\r\022\033\n\023dataMemoryInstalled\030\004" +
-      " \001(\r\022\026\n\016dataMemoryUsed\030\005 \001(\r\022\035\n\025dataMemo" +
-      "ryConsumption\030\006 \001(\002\"4\n\rBatteryStatus\022\017\n\007" +
-      "voltage\030\001 \001(\r\022\022\n\npercentage\030\002 \001(\r\"\036\n\013Sol" +
-      "arStatus\022\017\n\007voltage\030\001 \001(\r\"Y\n\013PowerStatus" +
-      "\022&\n\007battery\030\001 \001(\0132\025.fk_app.BatteryStatus" +
-      "\022\"\n\005solar\030\002 \001(\0132\023.fk_app.SolarStatus\"\227\003\n" +
-      "\006Status\022\017\n\007version\030\001 \001(\r\022\016\n\006uptime\030\002 \001(\r" +
-      "\022\"\n\010identity\030\003 \001(\0132\020.fk_app.Identity\022(\n\010" +
-      "hardware\030\004 \001(\0132\026.fk_app.HardwareStatus\022\"" +
-      "\n\005power\030\005 \001(\0132\023.fk_app.PowerStatus\022$\n\006me" +
-      "mory\030\006 \001(\0132\024.fk_app.MemoryStatus\022\036\n\003gps\030" +
-      "\007 \001(\0132\021.fk_app.GpsStatus\022$\n\tschedules\030\010 " +
-      "\001(\0132\021.fk_app.Schedules\022$\n\trecording\030\t \001(" +
-      "\0132\021.fk_app.Recording\022(\n\007network\030\n \001(\0132\027." +
-      "fk_app.NetworkSettings\022\014\n\004time\030\013 \001(\004\022\"\n\010" +
-      "firmware\030\014 \001(\0132\020.fk_app.Firmware\022\014\n\004logs" +
-      "\030\r \001(\t\"#\n\005Range\022\r\n\005start\030\001 \001(\r\022\013\n\003end\030\002 " +
-      "\001(\r\"N\n\rDownloadQuery\022\016\n\006stream\030\001 \001(\r\022\035\n\006" +
-      "ranges\030\003 \003(\0132\r.fk_app.Range\022\016\n\006blocks\030\004 " +
-      "\003(\r\"h\n\tRecording\022\021\n\tmodifying\030\001 \001(\010\022\017\n\007e" +
-      "nabled\030\002 \001(\010\022\023\n\013startedTime\030\003 \001(\004\022\"\n\010loc" +
-      "ation\030\004 \001(\0132\020.fk_app.Location\"\367\001\n\014LoraSe" +
-      "ttings\022\021\n\tavailable\030\001 \001(\010\022\021\n\tmodifying\030\002" +
-      " \001(\010\022\021\n\tdeviceEui\030\003 \001(\014\022\016\n\006appKey\030\004 \001(\014\022" +
-      "\016\n\006appEui\030\005 \001(\014\022\025\n\rfrequencyBand\030\006 \001(\r\022\025" +
-      "\n\rdeviceAddress\030\007 \001(\014\022\031\n\021networkSessionK" +
-      "ey\030\010 \001(\014\022\025\n\rappSessionKey\030\t \001(\014\022\025\n\ruplin" +
-      "kCounter\030\n \001(\r\022\027\n\017downlinkCounter\030\013 \001(\r\"" +
-      "P\n\010Location\022\021\n\tmodifying\030\001 \001(\010\022\021\n\tlongit" +
-      "ude\030\002 \001(\002\022\020\n\010latitude\030\003 \001(\002\022\014\n\004time\030\004 \001(" +
-      "\004\"R\n\020WifiTransmission\022\021\n\tmodifying\030\001 \001(\010" +
-      "\022\013\n\003url\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\022\017\n\007enabled\030" +
-      "\004 \001(\010\"6\n\014Transmission\022&\n\004wifi\030\001 \001(\0132\030.fk" +
-      "_app.WifiTransmission\"\035\n\rListDirectory\022\014" +
-      "\n\004path\030\001 \001(\t\"\217\003\n\tHttpQuery\022\037\n\004type\030\001 \001(\016" +
-      "2\021.fk_app.QueryType\022\"\n\010identity\030\002 \001(\0132\020." +
-      "fk_app.Identity\022$\n\trecording\030\003 \001(\0132\021.fk_" +
-      "app.Recording\022$\n\tschedules\030\004 \001(\0132\021.fk_ap" +
-      "p.Schedules\0220\n\017networkSettings\030\006 \001(\0132\027.f" +
-      "k_app.NetworkSettings\022*\n\014loraSettings\030\007 " +
-      "\001(\0132\024.fk_app.LoraSettings\022 \n\006locate\030\t \001(" +
-      "\0132\020.fk_app.Location\022*\n\014transmission\030\n \001(" +
-      "\0132\024.fk_app.Transmission\022(\n\tdirectory\030\013 \001" +
-      "(\0132\025.fk_app.ListDirectory\022\r\n\005flags\030\005 \001(\r" +
-      "\022\014\n\004time\030\010 \001(\004\"~\n\nDataStream\022\n\n\002id\030\001 \001(\r" +
-      "\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007version\030" +
-      "\004 \001(\r\022\r\n\005block\030\005 \001(\004\022\014\n\004hash\030\006 \001(\014\022\014\n\004na" +
-      "me\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"N\n\021LiveSensorRead" +
-      "ing\022*\n\006sensor\030\001 \001(\0132\032.fk_app.SensorCapab" +
-      "ilities\022\r\n\005value\030\002 \001(\002\"m\n\022LiveModuleRead" +
-      "ings\022*\n\006module\030\001 \001(\0132\032.fk_app.ModuleCapa" +
-      "bilities\022+\n\010readings\030\002 \003(\0132\031.fk_app.Live" +
-      "SensorReading\"I\n\014LiveReadings\022\014\n\004time\030\001 " +
-      "\001(\004\022+\n\007modules\030\002 \003(\0132\032.fk_app.LiveModule" +
-      "Readings\"M\n\016DirectoryEntry\022\014\n\004name\030\001 \001(\t" +
-      "\022\014\n\004path\030\002 \001(\t\022\014\n\004size\030\003 \001(\r\022\021\n\tdirector" +
-      "y\030\004 \001(\010\";\n\020DirectoryListing\022\'\n\007entries\030\001" +
-      " \003(\0132\026.fk_app.DirectoryEntry\"\304\003\n\tHttpRep" +
-      "ly\022\037\n\004type\030\001 \001(\0162\021.fk_app.ReplyType\022\035\n\006e" +
-      "rrors\030\002 \003(\0132\r.fk_app.Error\022\036\n\006status\030\003 \001" +
-      "(\0132\016.fk_app.Status\0220\n\017networkSettings\030\004 " +
-      "\001(\0132\027.fk_app.NetworkSettings\022*\n\014loraSett" +
-      "ings\030\010 \001(\0132\024.fk_app.LoraSettings\022+\n\007modu" +
-      "les\030\005 \003(\0132\032.fk_app.ModuleCapabilities\022#\n" +
-      "\007streams\030\006 \003(\0132\022.fk_app.DataStream\022*\n\014li" +
-      "veReadings\030\007 \003(\0132\024.fk_app.LiveReadings\022$" +
-      "\n\tschedules\030\t \001(\0132\021.fk_app.Schedules\022*\n\014" +
-      "transmission\030\n \001(\0132\024.fk_app.Transmission" +
-      "\022)\n\007listing\030\013 \001(\0132\030.fk_app.DirectoryList" +
-      "ing*8\n\nQueryFlags\022\024\n\020QUERY_FLAGS_NONE\020\000\022" +
-      "\024\n\020QUERY_FLAGS_LOGS\020\001*\216\004\n\tQueryType\022\016\n\nQ" +
-      "UERY_NONE\020\000\022\026\n\022QUERY_CAPABILITIES\020\001\022\032\n\026Q" +
-      "UERY_CONFIGURE_SENSOR\020\002\022\030\n\024QUERY_LIVE_DA" +
-      "TA_POLL\020\007\022\023\n\017QUERY_SCHEDULES\020\010\022\034\n\030QUERY_" +
-      "CONFIGUE_SCHEDULES\020\t\022\017\n\013QUERY_FILES\020\n\022\027\n" +
-      "\023QUERY_DOWNLOAD_FILE\020\013\022\024\n\020QUERY_ERASE_FI" +
-      "LE\020\014\022\017\n\013QUERY_RESET\020\r\022\032\n\026QUERY_NETWORK_S" +
-      "ETTINGS\020\016\022$\n QUERY_CONFIGURE_NETWORK_SET" +
-      "TINGS\020\017\022\022\n\016QUERY_IDENTITY\020\020\022\034\n\030QUERY_CON" +
-      "FIGURE_IDENTITY\020\021\022\020\n\014QUERY_STATUS\020\022\022\020\n\014Q" +
-      "UERY_MODULE\020\023\022\022\n\016QUERY_METADATA\020\024\022\020\n\014QUE" +
-      "RY_FORMAT\020\025\022\026\n\022QUERY_GET_READINGS\020\026\022\027\n\023Q" +
-      "UERY_TAKE_READINGS\020\027\022\033\n\027QUERY_RECORDING_" +
-      "CONTROL\020\030\022\023\n\017QUERY_CONFIGURE\020\031*\315\002\n\tReply" +
-      "Type\022\016\n\nREPLY_NONE\020\000\022\021\n\rREPLY_SUCCESS\020\001\022" +
-      "\016\n\nREPLY_BUSY\020\002\022\017\n\013REPLY_ERROR\020\003\022\026\n\022REPL" +
-      "Y_CAPABILITIES\020\004\022\030\n\024REPLY_LIVE_DATA_POLL" +
-      "\020\010\022\023\n\017REPLY_SCHEDULES\020\t\022\017\n\013REPLY_FILES\020\n" +
-      "\022\027\n\023REPLY_DOWNLOAD_FILE\020\013\022\017\n\013REPLY_RESET" +
-      "\020\014\022\032\n\026REPLY_NETWORK_SETTINGS\020\r\022\022\n\016REPLY_" +
-      "IDENTITY\020\016\022\020\n\014REPLY_STATUS\020\017\022\020\n\014REPLY_MO" +
-      "DULE\020\020\022\022\n\016REPLY_METADATA\020\021\022\022\n\016REPLY_READ" +
-      "INGS\020\022*l\n\rDownloadFlags\022\026\n\022DOWNLOAD_FLAG" +
-      "_NONE\020\000\022\"\n\036DOWNLOAD_FLAG_METADATA_PREPEN" +
-      "D\020\001\022\037\n\033DOWNLOAD_FLAG_METADATA_ONLY\020\002*=\n\013" +
-      "ModuleFlags\022\024\n\020MODULE_FLAG_NONE\020\000\022\030\n\024MOD" +
-      "ULE_FLAG_INTERNAL\020\001*#\n\013SensorFlags\022\024\n\020SE" +
-      "NSOR_FLAG_NONE\020\000B\025\n\023org.fieldkit.app.pbb" +
-      "\006proto3"
+      " \001(\010\022\021\n\tpreferred\030\004 \001(\010\"\217\001\n\017NetworkSetti" +
+      "ngs\022\031\n\021createAccessPoint\030\001 \001(\005\022&\n\tconnec" +
+      "ted\030\003 \001(\0132\023.fk_app.NetworkInfo\022\022\n\nmacAdd" +
+      "ress\030\004 \001(\t\022%\n\010networks\030\002 \003(\0132\023.fk_app.Ne" +
+      "tworkInfo\"[\n\010Firmware\022\017\n\007version\030\001 \001(\t\022\r" +
+      "\n\005build\030\002 \001(\t\022\016\n\006number\030\003 \001(\t\022\021\n\ttimesta" +
+      "mp\030\004 \001(\004\022\014\n\004hash\030\005 \001(\t\"\217\001\n\010Identity\022\016\n\006d" +
+      "evice\030\001 \001(\t\022\016\n\006stream\030\002 \001(\t\022\020\n\010deviceId\030" +
+      "\003 \001(\014\022\020\n\010firmware\030\004 \001(\t\022\r\n\005build\030\005 \001(\t\022\016" +
+      "\n\006number\030\010 \001(\t\022\014\n\004name\030\006 \001(\t\022\022\n\ngenerati" +
+      "on\030\007 \001(\014\"5\n\024ConfigureSensorQuery\022\n\n\002id\030\001" +
+      " \001(\r\022\021\n\tfrequency\030\002 \001(\r\" \n\014LiveDataPoll\022" +
+      "\020\n\010interval\030\001 \001(\r\"=\n\016LiveDataSample\022\016\n\006s" +
+      "ensor\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\r\n\005value\030\003 \001(\002" +
+      "\"3\n\010LiveData\022\'\n\007samples\030\001 \003(\0132\026.fk_app.L" +
+      "iveDataSample\"^\n\004File\022\n\n\002id\030\001 \001(\r\022\014\n\004tim" +
+      "e\030\002 \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\014" +
+      "\n\004name\030\005 \001(\t\022\017\n\007maximum\030\006 \001(\004\"$\n\005Files\022\033" +
+      "\n\005files\030\001 \003(\0132\014.fk_app.File\"I\n\014DownloadF" +
+      "ile\022\n\n\002id\030\001 \001(\r\022\016\n\006offset\030\002 \001(\r\022\016\n\006lengt" +
+      "h\030\003 \001(\r\022\r\n\005flags\030\004 \001(\r\"\027\n\tEraseFile\022\n\n\002i" +
+      "d\030\001 \001(\r\"a\n\010FileData\022\016\n\006offset\030\001 \001(\r\022\014\n\004d" +
+      "ata\030\002 \001(\014\022\014\n\004size\030\003 \001(\r\022\014\n\004hash\030\004 \001(\r\022\017\n" +
+      "\007version\030\005 \001(\r\022\n\n\002id\030\006 \001(\r\"{\n\014DeviceStat" +
+      "us\022\016\n\006uptime\030\001 \001(\r\022\031\n\021batteryPercentage\030" +
+      "\002 \001(\002\022\026\n\016batteryVoltage\030\003 \001(\002\022\021\n\tgpsHasF" +
+      "ix\030\004 \001(\r\022\025\n\rgpsSatellites\030\005 \001(\r\";\n\013Query" +
+      "Module\022\n\n\002id\030\001 \001(\r\022\017\n\007address\030\002 \001(\r\022\017\n\007m" +
+      "essage\030\003 \001(\014\";\n\013ModuleReply\022\n\n\002id\030\001 \001(\r\022" +
+      "\017\n\007address\030\002 \001(\r\022\017\n\007message\030\003 \001(\014\"\231\003\n\020Wi" +
+      "reMessageQuery\022\037\n\004type\030\001 \001(\0162\021.fk_app.Qu" +
+      "eryType\0224\n\021queryCapabilities\030\002 \001(\0132\031.fk_" +
+      "app.QueryCapabilities\0225\n\017configureSensor" +
+      "\030\003 \001(\0132\034.fk_app.ConfigureSensorQuery\022*\n\014" +
+      "liveDataPoll\030\010 \001(\0132\024.fk_app.LiveDataPoll" +
+      "\022*\n\014downloadFile\030\n \001(\0132\024.fk_app.Download" +
+      "File\022$\n\teraseFile\030\013 \001(\0132\021.fk_app.EraseFi" +
+      "le\0220\n\017networkSettings\030\014 \001(\0132\027.fk_app.Net" +
+      "workSettings\022\"\n\010identity\030\r \001(\0132\020.fk_app." +
+      "Identity\022#\n\006module\030\016 \001(\0132\023.fk_app.QueryM" +
+      "odule\"\'\n\005Error\022\017\n\007message\030\001 \001(\t\022\r\n\005delay" +
+      "\030\002 \001(\r\"\205\003\n\020WireMessageReply\022\037\n\004type\030\001 \001(" +
+      "\0162\021.fk_app.ReplyType\022\035\n\006errors\030\002 \003(\0132\r.f" +
+      "k_app.Error\022*\n\014capabilities\030\003 \001(\0132\024.fk_a" +
+      "pp.Capabilities\022\"\n\010liveData\030\006 \001(\0132\020.fk_a" +
+      "pp.LiveData\022\034\n\005files\030\010 \001(\0132\r.fk_app.File" +
+      "s\022\"\n\010fileData\030\t \001(\0132\020.fk_app.FileData\0220\n" +
+      "\017networkSettings\030\n \001(\0132\027.fk_app.NetworkS" +
+      "ettings\022\"\n\010identity\030\013 \001(\0132\020.fk_app.Ident" +
+      "ity\022$\n\006status\030\014 \001(\0132\024.fk_app.DeviceStatu" +
+      "s\022#\n\006module\030\r \001(\0132\023.fk_app.ModuleReply\"^" +
+      "\n\010Schedule\022\014\n\004cron\030\001 \001(\014\022\020\n\010interval\030\002 \001" +
+      "(\r\022\020\n\010repeated\030\003 \001(\r\022\020\n\010duration\030\004 \001(\r\022\016" +
+      "\n\006jitter\030\005 \001(\r\"\244\001\n\tSchedules\022\021\n\tmodifyin" +
+      "g\030\001 \001(\010\022\"\n\010readings\030\002 \001(\0132\020.fk_app.Sched" +
+      "ule\022\036\n\004lora\030\003 \001(\0132\020.fk_app.Schedule\022!\n\007n" +
+      "etwork\030\004 \001(\0132\020.fk_app.Schedule\022\035\n\003gps\030\005 " +
+      "\001(\0132\020.fk_app.Schedule\"\020\n\016HardwareStatus\"" +
+      "\202\001\n\tGpsStatus\022\017\n\007enabled\030\007 \001(\r\022\013\n\003fix\030\001 " +
+      "\001(\r\022\014\n\004time\030\002 \001(\004\022\022\n\nsatellites\030\003 \001(\r\022\021\n" +
+      "\tlongitude\030\004 \001(\002\022\020\n\010latitude\030\005 \001(\002\022\020\n\010al" +
+      "titude\030\006 \001(\002\"\271\001\n\014MemoryStatus\022\025\n\rsramAva" +
+      "ilable\030\001 \001(\r\022\035\n\025programFlashAvailable\030\002 " +
+      "\001(\r\022\037\n\027extendedMemoryAvailable\030\003 \001(\r\022\033\n\023" +
+      "dataMemoryInstalled\030\004 \001(\r\022\026\n\016dataMemoryU" +
+      "sed\030\005 \001(\r\022\035\n\025dataMemoryConsumption\030\006 \001(\002" +
+      "\"4\n\rBatteryStatus\022\017\n\007voltage\030\001 \001(\r\022\022\n\npe" +
+      "rcentage\030\002 \001(\r\"\036\n\013SolarStatus\022\017\n\007voltage" +
+      "\030\001 \001(\r\"Y\n\013PowerStatus\022&\n\007battery\030\001 \001(\0132\025" +
+      ".fk_app.BatteryStatus\022\"\n\005solar\030\002 \001(\0132\023.f" +
+      "k_app.SolarStatus\"\227\003\n\006Status\022\017\n\007version\030" +
+      "\001 \001(\r\022\016\n\006uptime\030\002 \001(\r\022\"\n\010identity\030\003 \001(\0132" +
+      "\020.fk_app.Identity\022(\n\010hardware\030\004 \001(\0132\026.fk" +
+      "_app.HardwareStatus\022\"\n\005power\030\005 \001(\0132\023.fk_" +
+      "app.PowerStatus\022$\n\006memory\030\006 \001(\0132\024.fk_app" +
+      ".MemoryStatus\022\036\n\003gps\030\007 \001(\0132\021.fk_app.GpsS" +
+      "tatus\022$\n\tschedules\030\010 \001(\0132\021.fk_app.Schedu" +
+      "les\022$\n\trecording\030\t \001(\0132\021.fk_app.Recordin" +
+      "g\022(\n\007network\030\n \001(\0132\027.fk_app.NetworkSetti" +
+      "ngs\022\014\n\004time\030\013 \001(\004\022\"\n\010firmware\030\014 \001(\0132\020.fk" +
+      "_app.Firmware\022\014\n\004logs\030\r \001(\t\"#\n\005Range\022\r\n\005" +
+      "start\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"N\n\rDownloadQuer" +
+      "y\022\016\n\006stream\030\001 \001(\r\022\035\n\006ranges\030\003 \003(\0132\r.fk_a" +
+      "pp.Range\022\016\n\006blocks\030\004 \003(\r\"h\n\tRecording\022\021\n" +
+      "\tmodifying\030\001 \001(\010\022\017\n\007enabled\030\002 \001(\010\022\023\n\013sta" +
+      "rtedTime\030\003 \001(\004\022\"\n\010location\030\004 \001(\0132\020.fk_ap" +
+      "p.Location\"\367\001\n\014LoraSettings\022\021\n\tavailable" +
+      "\030\001 \001(\010\022\021\n\tmodifying\030\002 \001(\010\022\021\n\tdeviceEui\030\003" +
+      " \001(\014\022\016\n\006appKey\030\004 \001(\014\022\016\n\006appEui\030\005 \001(\014\022\025\n\r" +
+      "frequencyBand\030\006 \001(\r\022\025\n\rdeviceAddress\030\007 \001" +
+      "(\014\022\031\n\021networkSessionKey\030\010 \001(\014\022\025\n\rappSess" +
+      "ionKey\030\t \001(\014\022\025\n\ruplinkCounter\030\n \001(\r\022\027\n\017d" +
+      "ownlinkCounter\030\013 \001(\r\"P\n\010Location\022\021\n\tmodi" +
+      "fying\030\001 \001(\010\022\021\n\tlongitude\030\002 \001(\002\022\020\n\010latitu" +
+      "de\030\003 \001(\002\022\014\n\004time\030\004 \001(\004\"R\n\020WifiTransmissi" +
+      "on\022\021\n\tmodifying\030\001 \001(\010\022\013\n\003url\030\002 \001(\t\022\r\n\005to" +
+      "ken\030\003 \001(\t\022\017\n\007enabled\030\004 \001(\010\"6\n\014Transmissi" +
+      "on\022&\n\004wifi\030\001 \001(\0132\030.fk_app.WifiTransmissi" +
+      "on\"\035\n\rListDirectory\022\014\n\004path\030\001 \001(\t\"\217\003\n\tHt" +
+      "tpQuery\022\037\n\004type\030\001 \001(\0162\021.fk_app.QueryType" +
+      "\022\"\n\010identity\030\002 \001(\0132\020.fk_app.Identity\022$\n\t" +
+      "recording\030\003 \001(\0132\021.fk_app.Recording\022$\n\tsc" +
+      "hedules\030\004 \001(\0132\021.fk_app.Schedules\0220\n\017netw" +
+      "orkSettings\030\006 \001(\0132\027.fk_app.NetworkSettin" +
+      "gs\022*\n\014loraSettings\030\007 \001(\0132\024.fk_app.LoraSe" +
+      "ttings\022 \n\006locate\030\t \001(\0132\020.fk_app.Location" +
+      "\022*\n\014transmission\030\n \001(\0132\024.fk_app.Transmis" +
+      "sion\022(\n\tdirectory\030\013 \001(\0132\025.fk_app.ListDir" +
+      "ectory\022\r\n\005flags\030\005 \001(\r\022\014\n\004time\030\010 \001(\004\"~\n\nD" +
+      "ataStream\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004s" +
+      "ize\030\003 \001(\004\022\017\n\007version\030\004 \001(\r\022\r\n\005block\030\005 \001(" +
+      "\004\022\014\n\004hash\030\006 \001(\014\022\014\n\004name\030\007 \001(\t\022\014\n\004path\030\010 " +
+      "\001(\t\"N\n\021LiveSensorReading\022*\n\006sensor\030\001 \001(\013" +
+      "2\032.fk_app.SensorCapabilities\022\r\n\005value\030\002 " +
+      "\001(\002\"m\n\022LiveModuleReadings\022*\n\006module\030\001 \001(" +
+      "\0132\032.fk_app.ModuleCapabilities\022+\n\010reading" +
+      "s\030\002 \003(\0132\031.fk_app.LiveSensorReading\"I\n\014Li" +
+      "veReadings\022\014\n\004time\030\001 \001(\004\022+\n\007modules\030\002 \003(" +
+      "\0132\032.fk_app.LiveModuleReadings\"M\n\016Directo" +
+      "ryEntry\022\014\n\004name\030\001 \001(\t\022\014\n\004path\030\002 \001(\t\022\014\n\004s" +
+      "ize\030\003 \001(\r\022\021\n\tdirectory\030\004 \001(\010\";\n\020Director" +
+      "yListing\022\'\n\007entries\030\001 \003(\0132\026.fk_app.Direc" +
+      "toryEntry\"\304\003\n\tHttpReply\022\037\n\004type\030\001 \001(\0162\021." +
+      "fk_app.ReplyType\022\035\n\006errors\030\002 \003(\0132\r.fk_ap" +
+      "p.Error\022\036\n\006status\030\003 \001(\0132\016.fk_app.Status\022" +
+      "0\n\017networkSettings\030\004 \001(\0132\027.fk_app.Networ" +
+      "kSettings\022*\n\014loraSettings\030\010 \001(\0132\024.fk_app" +
+      ".LoraSettings\022+\n\007modules\030\005 \003(\0132\032.fk_app." +
+      "ModuleCapabilities\022#\n\007streams\030\006 \003(\0132\022.fk" +
+      "_app.DataStream\022*\n\014liveReadings\030\007 \003(\0132\024." +
+      "fk_app.LiveReadings\022$\n\tschedules\030\t \001(\0132\021" +
+      ".fk_app.Schedules\022*\n\014transmission\030\n \001(\0132" +
+      "\024.fk_app.Transmission\022)\n\007listing\030\013 \001(\0132\030" +
+      ".fk_app.DirectoryListing*8\n\nQueryFlags\022\024" +
+      "\n\020QUERY_FLAGS_NONE\020\000\022\024\n\020QUERY_FLAGS_LOGS" +
+      "\020\001*\216\004\n\tQueryType\022\016\n\nQUERY_NONE\020\000\022\026\n\022QUER" +
+      "Y_CAPABILITIES\020\001\022\032\n\026QUERY_CONFIGURE_SENS" +
+      "OR\020\002\022\030\n\024QUERY_LIVE_DATA_POLL\020\007\022\023\n\017QUERY_" +
+      "SCHEDULES\020\010\022\034\n\030QUERY_CONFIGUE_SCHEDULES\020" +
+      "\t\022\017\n\013QUERY_FILES\020\n\022\027\n\023QUERY_DOWNLOAD_FIL" +
+      "E\020\013\022\024\n\020QUERY_ERASE_FILE\020\014\022\017\n\013QUERY_RESET" +
+      "\020\r\022\032\n\026QUERY_NETWORK_SETTINGS\020\016\022$\n QUERY_" +
+      "CONFIGURE_NETWORK_SETTINGS\020\017\022\022\n\016QUERY_ID" +
+      "ENTITY\020\020\022\034\n\030QUERY_CONFIGURE_IDENTITY\020\021\022\020" +
+      "\n\014QUERY_STATUS\020\022\022\020\n\014QUERY_MODULE\020\023\022\022\n\016QU" +
+      "ERY_METADATA\020\024\022\020\n\014QUERY_FORMAT\020\025\022\026\n\022QUER" +
+      "Y_GET_READINGS\020\026\022\027\n\023QUERY_TAKE_READINGS\020" +
+      "\027\022\033\n\027QUERY_RECORDING_CONTROL\020\030\022\023\n\017QUERY_" +
+      "CONFIGURE\020\031*\315\002\n\tReplyType\022\016\n\nREPLY_NONE\020" +
+      "\000\022\021\n\rREPLY_SUCCESS\020\001\022\016\n\nREPLY_BUSY\020\002\022\017\n\013" +
+      "REPLY_ERROR\020\003\022\026\n\022REPLY_CAPABILITIES\020\004\022\030\n" +
+      "\024REPLY_LIVE_DATA_POLL\020\010\022\023\n\017REPLY_SCHEDUL" +
+      "ES\020\t\022\017\n\013REPLY_FILES\020\n\022\027\n\023REPLY_DOWNLOAD_" +
+      "FILE\020\013\022\017\n\013REPLY_RESET\020\014\022\032\n\026REPLY_NETWORK" +
+      "_SETTINGS\020\r\022\022\n\016REPLY_IDENTITY\020\016\022\020\n\014REPLY" +
+      "_STATUS\020\017\022\020\n\014REPLY_MODULE\020\020\022\022\n\016REPLY_MET" +
+      "ADATA\020\021\022\022\n\016REPLY_READINGS\020\022*l\n\rDownloadF" +
+      "lags\022\026\n\022DOWNLOAD_FLAG_NONE\020\000\022\"\n\036DOWNLOAD" +
+      "_FLAG_METADATA_PREPEND\020\001\022\037\n\033DOWNLOAD_FLA" +
+      "G_METADATA_ONLY\020\002*=\n\013ModuleFlags\022\024\n\020MODU" +
+      "LE_FLAG_NONE\020\000\022\030\n\024MODULE_FLAG_INTERNAL\020\001" +
+      "*#\n\013SensorFlags\022\024\n\020SENSOR_FLAG_NONE\020\000B\025\n" +
+      "\023org.fieldkit.app.pbb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -51256,7 +51404,7 @@ public final class FkApp {
     internal_static_fk_app_NetworkSettings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_NetworkSettings_descriptor,
-        new java.lang.String[] { "CreateAccessPoint", "Connected", "Networks", });
+        new java.lang.String[] { "CreateAccessPoint", "Connected", "MacAddress", "Networks", });
     internal_static_fk_app_Firmware_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_fk_app_Firmware_fieldAccessorTable = new

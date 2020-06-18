@@ -240,6 +240,10 @@
               "type": "NetworkInfo",
               "id": 3
             },
+            "macAddress": {
+              "type": "string",
+              "id": 4
+            },
             "networks": {
               "rule": "repeated",
               "type": "NetworkInfo",
