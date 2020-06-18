@@ -30555,6 +30555,18 @@ public final class FkApp {
      * <code>.fk_app.Firmware firmware = 12;</code>
      */
     org.fieldkit.app.pb.FkApp.FirmwareOrBuilder getFirmwareOrBuilder();
+
+    /**
+     * <code>string logs = 13;</code>
+     * @return The logs.
+     */
+    java.lang.String getLogs();
+    /**
+     * <code>string logs = 13;</code>
+     * @return The bytes for logs.
+     */
+    com.google.protobuf.ByteString
+        getLogsBytes();
   }
   /**
    * Protobuf type {@code fk_app.Status}
@@ -30569,6 +30581,7 @@ public final class FkApp {
       super(builder);
     }
     private Status() {
+      logs_ = "";
     }
 
     @java.lang.Override
@@ -30731,6 +30744,12 @@ public final class FkApp {
                 firmware_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 106: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              logs_ = s;
               break;
             }
             default: {
@@ -31002,6 +31021,42 @@ public final class FkApp {
       return getFirmware();
     }
 
+    public static final int LOGS_FIELD_NUMBER = 13;
+    private volatile java.lang.Object logs_;
+    /**
+     * <code>string logs = 13;</code>
+     * @return The logs.
+     */
+    public java.lang.String getLogs() {
+      java.lang.Object ref = logs_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        logs_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string logs = 13;</code>
+     * @return The bytes for logs.
+     */
+    public com.google.protobuf.ByteString
+        getLogsBytes() {
+      java.lang.Object ref = logs_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        logs_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -31051,6 +31106,9 @@ public final class FkApp {
       }
       if (firmware_ != null) {
         output.writeMessage(12, getFirmware());
+      }
+      if (!getLogsBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, logs_);
       }
       unknownFields.writeTo(output);
     }
@@ -31108,6 +31166,9 @@ public final class FkApp {
       if (firmware_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(12, getFirmware());
+      }
+      if (!getLogsBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, logs_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -31175,6 +31236,8 @@ public final class FkApp {
         if (!getFirmware()
             .equals(other.getFirmware())) return false;
       }
+      if (!getLogs()
+          .equals(other.getLogs())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -31229,6 +31292,8 @@ public final class FkApp {
         hash = (37 * hash) + FIRMWARE_FIELD_NUMBER;
         hash = (53 * hash) + getFirmware().hashCode();
       }
+      hash = (37 * hash) + LOGS_FIELD_NUMBER;
+      hash = (53 * hash) + getLogs().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -31422,6 +31487,8 @@ public final class FkApp {
           firmware_ = null;
           firmwareBuilder_ = null;
         }
+        logs_ = "";
+
         return this;
       }
 
@@ -31496,6 +31563,7 @@ public final class FkApp {
         } else {
           result.firmware_ = firmwareBuilder_.build();
         }
+        result.logs_ = logs_;
         onBuilt();
         return result;
       }
@@ -31579,6 +31647,10 @@ public final class FkApp {
         }
         if (other.hasFirmware()) {
           mergeFirmware(other.getFirmware());
+        }
+        if (!other.getLogs().isEmpty()) {
+          logs_ = other.logs_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -32768,6 +32840,82 @@ public final class FkApp {
           firmware_ = null;
         }
         return firmwareBuilder_;
+      }
+
+      private java.lang.Object logs_ = "";
+      /**
+       * <code>string logs = 13;</code>
+       * @return The logs.
+       */
+      public java.lang.String getLogs() {
+        java.lang.Object ref = logs_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          logs_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string logs = 13;</code>
+       * @return The bytes for logs.
+       */
+      public com.google.protobuf.ByteString
+          getLogsBytes() {
+        java.lang.Object ref = logs_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          logs_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string logs = 13;</code>
+       * @param value The logs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLogs(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        logs_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string logs = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLogs() {
+        
+        logs_ = getDefaultInstance().getLogs();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string logs = 13;</code>
+       * @param value The bytes for logs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLogsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        logs_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -50270,7 +50418,7 @@ public final class FkApp {
       "ryConsumption\030\006 \001(\002\"4\n\rBatteryStatus\022\017\n\007" +
       "voltage\030\001 \001(\r\022\022\n\npercentage\030\002 \001(\r\"5\n\013Pow" +
       "erStatus\022&\n\007battery\030\001 \001(\0132\025.fk_app.Batte" +
-      "ryStatus\"\211\003\n\006Status\022\017\n\007version\030\001 \001(\r\022\016\n\006" +
+      "ryStatus\"\227\003\n\006Status\022\017\n\007version\030\001 \001(\r\022\016\n\006" +
       "uptime\030\002 \001(\r\022\"\n\010identity\030\003 \001(\0132\020.fk_app." +
       "Identity\022(\n\010hardware\030\004 \001(\0132\026.fk_app.Hard" +
       "wareStatus\022\"\n\005power\030\005 \001(\0132\023.fk_app.Power" +
@@ -50280,89 +50428,89 @@ public final class FkApp {
       "cording\030\t \001(\0132\021.fk_app.Recording\022(\n\007netw" +
       "ork\030\n \001(\0132\027.fk_app.NetworkSettings\022\014\n\004ti" +
       "me\030\013 \001(\004\022\"\n\010firmware\030\014 \001(\0132\020.fk_app.Firm" +
-      "ware\"#\n\005Range\022\r\n\005start\030\001 \001(\r\022\013\n\003end\030\002 \001(" +
-      "\r\"N\n\rDownloadQuery\022\016\n\006stream\030\001 \001(\r\022\035\n\006ra" +
-      "nges\030\003 \003(\0132\r.fk_app.Range\022\016\n\006blocks\030\004 \003(" +
-      "\r\"h\n\tRecording\022\021\n\tmodifying\030\001 \001(\010\022\017\n\007ena" +
-      "bled\030\002 \001(\010\022\023\n\013startedTime\030\003 \001(\004\022\"\n\010locat" +
-      "ion\030\004 \001(\0132\020.fk_app.Location\"\367\001\n\014LoraSett" +
-      "ings\022\021\n\tavailable\030\001 \001(\010\022\021\n\tmodifying\030\002 \001" +
-      "(\010\022\021\n\tdeviceEui\030\003 \001(\014\022\016\n\006appKey\030\004 \001(\014\022\016\n" +
-      "\006appEui\030\005 \001(\014\022\025\n\rfrequencyBand\030\006 \001(\r\022\025\n\r" +
-      "deviceAddress\030\007 \001(\014\022\031\n\021networkSessionKey" +
-      "\030\010 \001(\014\022\025\n\rappSessionKey\030\t \001(\014\022\025\n\ruplinkC" +
-      "ounter\030\n \001(\r\022\027\n\017downlinkCounter\030\013 \001(\r\"P\n" +
-      "\010Location\022\021\n\tmodifying\030\001 \001(\010\022\021\n\tlongitud" +
-      "e\030\002 \001(\002\022\020\n\010latitude\030\003 \001(\002\022\014\n\004time\030\004 \001(\004\"" +
-      "R\n\020WifiTransmission\022\021\n\tmodifying\030\001 \001(\010\022\013" +
-      "\n\003url\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\022\017\n\007enabled\030\004 " +
-      "\001(\010\"6\n\014Transmission\022&\n\004wifi\030\001 \001(\0132\030.fk_a" +
-      "pp.WifiTransmission\"\035\n\rListDirectory\022\014\n\004" +
-      "path\030\001 \001(\t\"\217\003\n\tHttpQuery\022\037\n\004type\030\001 \001(\0162\021" +
-      ".fk_app.QueryType\022\"\n\010identity\030\002 \001(\0132\020.fk" +
-      "_app.Identity\022$\n\trecording\030\003 \001(\0132\021.fk_ap" +
-      "p.Recording\022$\n\tschedules\030\004 \001(\0132\021.fk_app." +
-      "Schedules\0220\n\017networkSettings\030\006 \001(\0132\027.fk_" +
-      "app.NetworkSettings\022*\n\014loraSettings\030\007 \001(" +
-      "\0132\024.fk_app.LoraSettings\022 \n\006locate\030\t \001(\0132" +
-      "\020.fk_app.Location\022*\n\014transmission\030\n \001(\0132" +
-      "\024.fk_app.Transmission\022(\n\tdirectory\030\013 \001(\013" +
-      "2\025.fk_app.ListDirectory\022\r\n\005flags\030\005 \001(\r\022\014" +
-      "\n\004time\030\010 \001(\004\"~\n\nDataStream\022\n\n\002id\030\001 \001(\r\022\014" +
-      "\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004\022\017\n\007version\030\004 " +
-      "\001(\r\022\r\n\005block\030\005 \001(\004\022\014\n\004hash\030\006 \001(\014\022\014\n\004name" +
-      "\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"N\n\021LiveSensorReadin" +
-      "g\022*\n\006sensor\030\001 \001(\0132\032.fk_app.SensorCapabil" +
-      "ities\022\r\n\005value\030\002 \001(\002\"m\n\022LiveModuleReadin" +
-      "gs\022*\n\006module\030\001 \001(\0132\032.fk_app.ModuleCapabi" +
-      "lities\022+\n\010readings\030\002 \003(\0132\031.fk_app.LiveSe" +
-      "nsorReading\"I\n\014LiveReadings\022\014\n\004time\030\001 \001(" +
-      "\004\022+\n\007modules\030\002 \003(\0132\032.fk_app.LiveModuleRe" +
-      "adings\"M\n\016DirectoryEntry\022\014\n\004name\030\001 \001(\t\022\014" +
-      "\n\004path\030\002 \001(\t\022\014\n\004size\030\003 \001(\r\022\021\n\tdirectory\030" +
-      "\004 \001(\010\";\n\020DirectoryListing\022\'\n\007entries\030\001 \003" +
-      "(\0132\026.fk_app.DirectoryEntry\"\304\003\n\tHttpReply" +
-      "\022\037\n\004type\030\001 \001(\0162\021.fk_app.ReplyType\022\035\n\006err" +
-      "ors\030\002 \003(\0132\r.fk_app.Error\022\036\n\006status\030\003 \001(\013" +
-      "2\016.fk_app.Status\0220\n\017networkSettings\030\004 \001(" +
-      "\0132\027.fk_app.NetworkSettings\022*\n\014loraSettin" +
-      "gs\030\010 \001(\0132\024.fk_app.LoraSettings\022+\n\007module" +
-      "s\030\005 \003(\0132\032.fk_app.ModuleCapabilities\022#\n\007s" +
-      "treams\030\006 \003(\0132\022.fk_app.DataStream\022*\n\014live" +
-      "Readings\030\007 \003(\0132\024.fk_app.LiveReadings\022$\n\t" +
-      "schedules\030\t \001(\0132\021.fk_app.Schedules\022*\n\014tr" +
-      "ansmission\030\n \001(\0132\024.fk_app.Transmission\022)" +
-      "\n\007listing\030\013 \001(\0132\030.fk_app.DirectoryListin" +
-      "g*8\n\nQueryFlags\022\024\n\020QUERY_FLAGS_NONE\020\000\022\024\n" +
-      "\020QUERY_FLAGS_LOGS\020\001*\216\004\n\tQueryType\022\016\n\nQUE" +
-      "RY_NONE\020\000\022\026\n\022QUERY_CAPABILITIES\020\001\022\032\n\026QUE" +
-      "RY_CONFIGURE_SENSOR\020\002\022\030\n\024QUERY_LIVE_DATA" +
-      "_POLL\020\007\022\023\n\017QUERY_SCHEDULES\020\010\022\034\n\030QUERY_CO" +
-      "NFIGUE_SCHEDULES\020\t\022\017\n\013QUERY_FILES\020\n\022\027\n\023Q" +
-      "UERY_DOWNLOAD_FILE\020\013\022\024\n\020QUERY_ERASE_FILE" +
-      "\020\014\022\017\n\013QUERY_RESET\020\r\022\032\n\026QUERY_NETWORK_SET" +
-      "TINGS\020\016\022$\n QUERY_CONFIGURE_NETWORK_SETTI" +
-      "NGS\020\017\022\022\n\016QUERY_IDENTITY\020\020\022\034\n\030QUERY_CONFI" +
-      "GURE_IDENTITY\020\021\022\020\n\014QUERY_STATUS\020\022\022\020\n\014QUE" +
-      "RY_MODULE\020\023\022\022\n\016QUERY_METADATA\020\024\022\020\n\014QUERY" +
-      "_FORMAT\020\025\022\026\n\022QUERY_GET_READINGS\020\026\022\027\n\023QUE" +
-      "RY_TAKE_READINGS\020\027\022\033\n\027QUERY_RECORDING_CO" +
-      "NTROL\020\030\022\023\n\017QUERY_CONFIGURE\020\031*\315\002\n\tReplyTy" +
-      "pe\022\016\n\nREPLY_NONE\020\000\022\021\n\rREPLY_SUCCESS\020\001\022\016\n" +
-      "\nREPLY_BUSY\020\002\022\017\n\013REPLY_ERROR\020\003\022\026\n\022REPLY_" +
-      "CAPABILITIES\020\004\022\030\n\024REPLY_LIVE_DATA_POLL\020\010" +
-      "\022\023\n\017REPLY_SCHEDULES\020\t\022\017\n\013REPLY_FILES\020\n\022\027" +
-      "\n\023REPLY_DOWNLOAD_FILE\020\013\022\017\n\013REPLY_RESET\020\014" +
-      "\022\032\n\026REPLY_NETWORK_SETTINGS\020\r\022\022\n\016REPLY_ID" +
-      "ENTITY\020\016\022\020\n\014REPLY_STATUS\020\017\022\020\n\014REPLY_MODU" +
-      "LE\020\020\022\022\n\016REPLY_METADATA\020\021\022\022\n\016REPLY_READIN" +
-      "GS\020\022*l\n\rDownloadFlags\022\026\n\022DOWNLOAD_FLAG_N" +
-      "ONE\020\000\022\"\n\036DOWNLOAD_FLAG_METADATA_PREPEND\020" +
-      "\001\022\037\n\033DOWNLOAD_FLAG_METADATA_ONLY\020\002*=\n\013Mo" +
-      "duleFlags\022\024\n\020MODULE_FLAG_NONE\020\000\022\030\n\024MODUL" +
-      "E_FLAG_INTERNAL\020\001*#\n\013SensorFlags\022\024\n\020SENS" +
-      "OR_FLAG_NONE\020\000B\025\n\023org.fieldkit.app.pbb\006p" +
-      "roto3"
+      "ware\022\014\n\004logs\030\r \001(\t\"#\n\005Range\022\r\n\005start\030\001 \001" +
+      "(\r\022\013\n\003end\030\002 \001(\r\"N\n\rDownloadQuery\022\016\n\006stre" +
+      "am\030\001 \001(\r\022\035\n\006ranges\030\003 \003(\0132\r.fk_app.Range\022" +
+      "\016\n\006blocks\030\004 \003(\r\"h\n\tRecording\022\021\n\tmodifyin" +
+      "g\030\001 \001(\010\022\017\n\007enabled\030\002 \001(\010\022\023\n\013startedTime\030" +
+      "\003 \001(\004\022\"\n\010location\030\004 \001(\0132\020.fk_app.Locatio" +
+      "n\"\367\001\n\014LoraSettings\022\021\n\tavailable\030\001 \001(\010\022\021\n" +
+      "\tmodifying\030\002 \001(\010\022\021\n\tdeviceEui\030\003 \001(\014\022\016\n\006a" +
+      "ppKey\030\004 \001(\014\022\016\n\006appEui\030\005 \001(\014\022\025\n\rfrequency" +
+      "Band\030\006 \001(\r\022\025\n\rdeviceAddress\030\007 \001(\014\022\031\n\021net" +
+      "workSessionKey\030\010 \001(\014\022\025\n\rappSessionKey\030\t " +
+      "\001(\014\022\025\n\ruplinkCounter\030\n \001(\r\022\027\n\017downlinkCo" +
+      "unter\030\013 \001(\r\"P\n\010Location\022\021\n\tmodifying\030\001 \001" +
+      "(\010\022\021\n\tlongitude\030\002 \001(\002\022\020\n\010latitude\030\003 \001(\002\022" +
+      "\014\n\004time\030\004 \001(\004\"R\n\020WifiTransmission\022\021\n\tmod" +
+      "ifying\030\001 \001(\010\022\013\n\003url\030\002 \001(\t\022\r\n\005token\030\003 \001(\t" +
+      "\022\017\n\007enabled\030\004 \001(\010\"6\n\014Transmission\022&\n\004wif" +
+      "i\030\001 \001(\0132\030.fk_app.WifiTransmission\"\035\n\rLis" +
+      "tDirectory\022\014\n\004path\030\001 \001(\t\"\217\003\n\tHttpQuery\022\037" +
+      "\n\004type\030\001 \001(\0162\021.fk_app.QueryType\022\"\n\010ident" +
+      "ity\030\002 \001(\0132\020.fk_app.Identity\022$\n\trecording" +
+      "\030\003 \001(\0132\021.fk_app.Recording\022$\n\tschedules\030\004" +
+      " \001(\0132\021.fk_app.Schedules\0220\n\017networkSettin" +
+      "gs\030\006 \001(\0132\027.fk_app.NetworkSettings\022*\n\014lor" +
+      "aSettings\030\007 \001(\0132\024.fk_app.LoraSettings\022 \n" +
+      "\006locate\030\t \001(\0132\020.fk_app.Location\022*\n\014trans" +
+      "mission\030\n \001(\0132\024.fk_app.Transmission\022(\n\td" +
+      "irectory\030\013 \001(\0132\025.fk_app.ListDirectory\022\r\n" +
+      "\005flags\030\005 \001(\r\022\014\n\004time\030\010 \001(\004\"~\n\nDataStream" +
+      "\022\n\n\002id\030\001 \001(\r\022\014\n\004time\030\002 \001(\004\022\014\n\004size\030\003 \001(\004" +
+      "\022\017\n\007version\030\004 \001(\r\022\r\n\005block\030\005 \001(\004\022\014\n\004hash" +
+      "\030\006 \001(\014\022\014\n\004name\030\007 \001(\t\022\014\n\004path\030\010 \001(\t\"N\n\021Li" +
+      "veSensorReading\022*\n\006sensor\030\001 \001(\0132\032.fk_app" +
+      ".SensorCapabilities\022\r\n\005value\030\002 \001(\002\"m\n\022Li" +
+      "veModuleReadings\022*\n\006module\030\001 \001(\0132\032.fk_ap" +
+      "p.ModuleCapabilities\022+\n\010readings\030\002 \003(\0132\031" +
+      ".fk_app.LiveSensorReading\"I\n\014LiveReading" +
+      "s\022\014\n\004time\030\001 \001(\004\022+\n\007modules\030\002 \003(\0132\032.fk_ap" +
+      "p.LiveModuleReadings\"M\n\016DirectoryEntry\022\014" +
+      "\n\004name\030\001 \001(\t\022\014\n\004path\030\002 \001(\t\022\014\n\004size\030\003 \001(\r" +
+      "\022\021\n\tdirectory\030\004 \001(\010\";\n\020DirectoryListing\022" +
+      "\'\n\007entries\030\001 \003(\0132\026.fk_app.DirectoryEntry" +
+      "\"\304\003\n\tHttpReply\022\037\n\004type\030\001 \001(\0162\021.fk_app.Re" +
+      "plyType\022\035\n\006errors\030\002 \003(\0132\r.fk_app.Error\022\036" +
+      "\n\006status\030\003 \001(\0132\016.fk_app.Status\0220\n\017networ" +
+      "kSettings\030\004 \001(\0132\027.fk_app.NetworkSettings" +
+      "\022*\n\014loraSettings\030\010 \001(\0132\024.fk_app.LoraSett" +
+      "ings\022+\n\007modules\030\005 \003(\0132\032.fk_app.ModuleCap" +
+      "abilities\022#\n\007streams\030\006 \003(\0132\022.fk_app.Data" +
+      "Stream\022*\n\014liveReadings\030\007 \003(\0132\024.fk_app.Li" +
+      "veReadings\022$\n\tschedules\030\t \001(\0132\021.fk_app.S" +
+      "chedules\022*\n\014transmission\030\n \001(\0132\024.fk_app." +
+      "Transmission\022)\n\007listing\030\013 \001(\0132\030.fk_app.D" +
+      "irectoryListing*8\n\nQueryFlags\022\024\n\020QUERY_F" +
+      "LAGS_NONE\020\000\022\024\n\020QUERY_FLAGS_LOGS\020\001*\216\004\n\tQu" +
+      "eryType\022\016\n\nQUERY_NONE\020\000\022\026\n\022QUERY_CAPABIL" +
+      "ITIES\020\001\022\032\n\026QUERY_CONFIGURE_SENSOR\020\002\022\030\n\024Q" +
+      "UERY_LIVE_DATA_POLL\020\007\022\023\n\017QUERY_SCHEDULES" +
+      "\020\010\022\034\n\030QUERY_CONFIGUE_SCHEDULES\020\t\022\017\n\013QUER" +
+      "Y_FILES\020\n\022\027\n\023QUERY_DOWNLOAD_FILE\020\013\022\024\n\020QU" +
+      "ERY_ERASE_FILE\020\014\022\017\n\013QUERY_RESET\020\r\022\032\n\026QUE" +
+      "RY_NETWORK_SETTINGS\020\016\022$\n QUERY_CONFIGURE" +
+      "_NETWORK_SETTINGS\020\017\022\022\n\016QUERY_IDENTITY\020\020\022" +
+      "\034\n\030QUERY_CONFIGURE_IDENTITY\020\021\022\020\n\014QUERY_S" +
+      "TATUS\020\022\022\020\n\014QUERY_MODULE\020\023\022\022\n\016QUERY_METAD" +
+      "ATA\020\024\022\020\n\014QUERY_FORMAT\020\025\022\026\n\022QUERY_GET_REA" +
+      "DINGS\020\026\022\027\n\023QUERY_TAKE_READINGS\020\027\022\033\n\027QUER" +
+      "Y_RECORDING_CONTROL\020\030\022\023\n\017QUERY_CONFIGURE" +
+      "\020\031*\315\002\n\tReplyType\022\016\n\nREPLY_NONE\020\000\022\021\n\rREPL" +
+      "Y_SUCCESS\020\001\022\016\n\nREPLY_BUSY\020\002\022\017\n\013REPLY_ERR" +
+      "OR\020\003\022\026\n\022REPLY_CAPABILITIES\020\004\022\030\n\024REPLY_LI" +
+      "VE_DATA_POLL\020\010\022\023\n\017REPLY_SCHEDULES\020\t\022\017\n\013R" +
+      "EPLY_FILES\020\n\022\027\n\023REPLY_DOWNLOAD_FILE\020\013\022\017\n" +
+      "\013REPLY_RESET\020\014\022\032\n\026REPLY_NETWORK_SETTINGS" +
+      "\020\r\022\022\n\016REPLY_IDENTITY\020\016\022\020\n\014REPLY_STATUS\020\017" +
+      "\022\020\n\014REPLY_MODULE\020\020\022\022\n\016REPLY_METADATA\020\021\022\022" +
+      "\n\016REPLY_READINGS\020\022*l\n\rDownloadFlags\022\026\n\022D" +
+      "OWNLOAD_FLAG_NONE\020\000\022\"\n\036DOWNLOAD_FLAG_MET" +
+      "ADATA_PREPEND\020\001\022\037\n\033DOWNLOAD_FLAG_METADAT" +
+      "A_ONLY\020\002*=\n\013ModuleFlags\022\024\n\020MODULE_FLAG_N" +
+      "ONE\020\000\022\030\n\024MODULE_FLAG_INTERNAL\020\001*#\n\013Senso" +
+      "rFlags\022\024\n\020SENSOR_FLAG_NONE\020\000B\025\n\023org.fiel" +
+      "dkit.app.pbb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -50565,7 +50713,7 @@ public final class FkApp {
     internal_static_fk_app_Status_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_fk_app_Status_descriptor,
-        new java.lang.String[] { "Version", "Uptime", "Identity", "Hardware", "Power", "Memory", "Gps", "Schedules", "Recording", "Network", "Time", "Firmware", });
+        new java.lang.String[] { "Version", "Uptime", "Identity", "Hardware", "Power", "Memory", "Gps", "Schedules", "Recording", "Network", "Time", "Firmware", "Logs", });
     internal_static_fk_app_Range_descriptor =
       getDescriptor().getMessageTypes().get(33);
     internal_static_fk_app_Range_fieldAccessorTable = new

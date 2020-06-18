@@ -339,6 +339,7 @@ message Status {
   NetworkSettings network = 10;
   uint64 time = 11;
   Firmware firmware = 12;
+  string logs = 13;
 }
 
 message Range {

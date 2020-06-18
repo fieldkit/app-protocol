@@ -428,6 +428,7 @@ typedef struct _fk_app_Status {
     uint64_t time;
     bool has_firmware;
     fk_app_Firmware firmware;
+    pb_callback_t logs;
 } fk_app_Status;
 
 typedef struct _fk_app_WireMessageQuery {
@@ -551,7 +552,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_PowerStatus_init_default          {false, fk_app_BatteryStatus_init_default}
-#define fk_app_Status_init_default               {0, 0, false, fk_app_Identity_init_default, false, fk_app_HardwareStatus_init_default, false, fk_app_PowerStatus_init_default, false, fk_app_MemoryStatus_init_default, false, fk_app_GpsStatus_init_default, false, fk_app_Schedules_init_default, false, fk_app_Recording_init_default, false, fk_app_NetworkSettings_init_default, 0, false, fk_app_Firmware_init_default}
+#define fk_app_Status_init_default               {0, 0, false, fk_app_Identity_init_default, false, fk_app_HardwareStatus_init_default, false, fk_app_PowerStatus_init_default, false, fk_app_MemoryStatus_init_default, false, fk_app_GpsStatus_init_default, false, fk_app_Schedules_init_default, false, fk_app_Recording_init_default, false, fk_app_NetworkSettings_init_default, 0, false, fk_app_Firmware_init_default, {{NULL}, NULL}}
 #define fk_app_Range_init_default                {0, 0}
 #define fk_app_DownloadQuery_init_default        {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_default            {0, 0, 0, false, fk_app_Location_init_default}
@@ -600,7 +601,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_PowerStatus_init_zero             {false, fk_app_BatteryStatus_init_zero}
-#define fk_app_Status_init_zero                  {0, 0, false, fk_app_Identity_init_zero, false, fk_app_HardwareStatus_init_zero, false, fk_app_PowerStatus_init_zero, false, fk_app_MemoryStatus_init_zero, false, fk_app_GpsStatus_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Recording_init_zero, false, fk_app_NetworkSettings_init_zero, 0, false, fk_app_Firmware_init_zero}
+#define fk_app_Status_init_zero                  {0, 0, false, fk_app_Identity_init_zero, false, fk_app_HardwareStatus_init_zero, false, fk_app_PowerStatus_init_zero, false, fk_app_MemoryStatus_init_zero, false, fk_app_GpsStatus_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Recording_init_zero, false, fk_app_NetworkSettings_init_zero, 0, false, fk_app_Firmware_init_zero, {{NULL}, NULL}}
 #define fk_app_Range_init_zero                   {0, 0}
 #define fk_app_DownloadQuery_init_zero           {0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_Recording_init_zero               {0, 0, 0, false, fk_app_Location_init_zero}
@@ -802,6 +803,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Status_network_tag                10
 #define fk_app_Status_time_tag                   11
 #define fk_app_Status_firmware_tag               12
+#define fk_app_Status_logs_tag                   13
 #define fk_app_WireMessageQuery_type_tag         1
 #define fk_app_WireMessageQuery_queryCapabilities_tag 2
 #define fk_app_WireMessageQuery_configureSensor_tag 3
@@ -1136,8 +1138,9 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  schedules,         8) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  recording,         9) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  network,          10) \
 X(a, STATIC,   SINGULAR, UINT64,   time,             11) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  firmware,         12)
-#define fk_app_Status_CALLBACK NULL
+X(a, STATIC,   OPTIONAL, MESSAGE,  firmware,         12) \
+X(a, CALLBACK, SINGULAR, STRING,   logs,             13)
+#define fk_app_Status_CALLBACK pb_default_field_callback
 #define fk_app_Status_DEFAULT NULL
 #define fk_app_Status_identity_MSGTYPE fk_app_Identity
 #define fk_app_Status_hardware_MSGTYPE fk_app_HardwareStatus
