@@ -1,6 +1,6 @@
 syntax = "proto3";
 package fk_app;
-option java_package = "org.fieldkit.app.pb";
+option java_package = "org.conservify.fieldkit.app.pb";
 
 // QueryType provides a way of determining the incoming type of a message. In
 // some cases simply looking at which "sub-message" is populated would work but the

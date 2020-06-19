@@ -2,7 +2,7 @@ PROTOC_VERSION = 3.11.2
 PROTOC_BIN = build/bin
 PROTOC = $(PROTOC_BIN)/protoc
 PROTO_NAME = fk-app
-JAVA_DEP = org/fieldkit/app/pb/FkApp.java
+JAVA_DEP = org/conservify/fieldkit/app/pb/FkApp.java
 
 all: $(PROTO_NAME).proto.json $(PROTO_NAME).pb.go src/$(PROTO_NAME).pb.c src/$(PROTO_NAME).pb.h $(JAVA_DEP) $(PROTO_NAME)_pb2.py
 
@@ -20,7 +20,7 @@ $(PROTO_NAME).pb.go: build $(PROTO_NAME).proto
 	$(PROTOC) --go_out=./ $(PROTO_NAME).proto
 
 $(JAVA_DEP): build $(PROTO_NAME).proto
-	$(PROTOC) --java_out=./ $(PROTO_NAME).proto
+	$(PROTOC) --java_out=lite:./ $(PROTO_NAME).proto
 
 build: protoc-$(PROTOC_VERSION)-linux-x86_64.zip
 	mkdir -p build

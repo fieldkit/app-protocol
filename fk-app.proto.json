@@ -2,7 +2,7 @@
   "nested": {
     "fk_app": {
       "options": {
-        "java_package": "org.fieldkit.app.pb"
+        "java_package": "org.conservify.fieldkit.app.pb"
       },
       "nested": {
         "QueryFlags": {
