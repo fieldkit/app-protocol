@@ -325,6 +325,7 @@ typedef struct _fk_app_ModuleCapabilities {
     pb_callback_t id;
     bool has_header;
     fk_app_ModuleHeader header;
+    pb_callback_t status;
 } fk_app_ModuleCapabilities;
 
 typedef struct _fk_app_NetworkSettings {
@@ -531,7 +532,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveValue_init_default            {0, 0}
 #define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_default}
 #define fk_app_ModuleHeader_init_default         {0, 0, 0}
-#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default}
+#define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default, {{NULL}, NULL}}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_default, {{NULL}, NULL}}
@@ -581,7 +582,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveValue_init_zero               {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_zero}
 #define fk_app_ModuleHeader_init_zero            {0, 0, 0}
-#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero}
+#define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero, {{NULL}, NULL}}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_zero, {{NULL}, NULL}}
@@ -764,6 +765,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_ModuleCapabilities_flags_tag      5
 #define fk_app_ModuleCapabilities_id_tag         6
 #define fk_app_ModuleCapabilities_header_tag     7
+#define fk_app_ModuleCapabilities_status_tag     8
 #define fk_app_NetworkSettings_createAccessPoint_tag 1
 #define fk_app_NetworkSettings_connected_tag     3
 #define fk_app_NetworkSettings_macAddress_tag    4
@@ -887,7 +889,8 @@ X(a, CALLBACK, REPEATED, MESSAGE,  sensors,           3) \
 X(a, CALLBACK, SINGULAR, STRING,   path,              4) \
 X(a, STATIC,   SINGULAR, UINT32,   flags,             5) \
 X(a, CALLBACK, SINGULAR, BYTES,    id,                6) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  header,            7)
+X(a, STATIC,   OPTIONAL, MESSAGE,  header,            7) \
+X(a, CALLBACK, SINGULAR, BYTES,    status,            8)
 #define fk_app_ModuleCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_ModuleCapabilities_DEFAULT NULL
 #define fk_app_ModuleCapabilities_sensors_MSGTYPE fk_app_SensorCapabilities

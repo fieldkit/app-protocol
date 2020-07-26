@@ -181,6 +181,10 @@
             "header": {
               "type": "ModuleHeader",
               "id": 7
+            },
+            "status": {
+              "type": "bytes",
+              "id": 8
             }
           }
         },
