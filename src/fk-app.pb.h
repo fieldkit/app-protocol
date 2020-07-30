@@ -110,6 +110,14 @@ typedef struct _fk_app_LiveData {
     pb_callback_t samples;
 } fk_app_LiveData;
 
+typedef struct _fk_app_NearbyNetwork {
+    pb_callback_t ssid;
+} fk_app_NearbyNetwork;
+
+typedef struct _fk_app_NearbyNetworks {
+    pb_callback_t networks;
+} fk_app_NearbyNetworks;
+
 typedef struct _fk_app_BatteryStatus {
     uint32_t voltage;
     uint32_t percentage;
@@ -498,6 +506,8 @@ typedef struct _fk_app_HttpReply {
     fk_app_Transmission transmission;
     bool has_listing;
     fk_app_DirectoryListing listing;
+    bool has_nearbyNetworks;
+    fk_app_NearbyNetworks nearbyNetworks;
 } fk_app_HttpReply;
 
 
@@ -577,7 +587,9 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveReadings_init_default         {0, {{NULL}, NULL}}
 #define fk_app_DirectoryEntry_init_default       {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_DirectoryListing_init_default     {{{NULL}, NULL}}
-#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_default, false, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_default, false, fk_app_Schedules_init_default, false, fk_app_Transmission_init_default, false, fk_app_DirectoryListing_init_default}
+#define fk_app_NearbyNetwork_init_default        {{{NULL}, NULL}}
+#define fk_app_NearbyNetworks_init_default       {{{NULL}, NULL}}
+#define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_default, false, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_default, false, fk_app_Schedules_init_default, false, fk_app_Transmission_init_default, false, fk_app_DirectoryListing_init_default, false, fk_app_NearbyNetworks_init_default}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_LiveValue_init_zero               {0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_zero}
@@ -627,7 +639,9 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_LiveReadings_init_zero            {0, {{NULL}, NULL}}
 #define fk_app_DirectoryEntry_init_zero          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
 #define fk_app_DirectoryListing_init_zero        {{{NULL}, NULL}}
-#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_zero, false, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_DirectoryListing_init_zero}
+#define fk_app_NearbyNetwork_init_zero           {{{NULL}, NULL}}
+#define fk_app_NearbyNetworks_init_zero          {{{NULL}, NULL}}
+#define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_zero, false, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_DirectoryListing_init_zero, false, fk_app_NearbyNetworks_init_zero}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define fk_app_DirectoryListing_entries_tag      1
@@ -642,6 +656,8 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_Identity_generation_tag           7
 #define fk_app_ListDirectory_path_tag            1
 #define fk_app_LiveData_samples_tag              1
+#define fk_app_NearbyNetwork_ssid_tag            1
+#define fk_app_NearbyNetworks_networks_tag       1
 #define fk_app_BatteryStatus_voltage_tag         1
 #define fk_app_BatteryStatus_percentage_tag      2
 #define fk_app_Capabilities_version_tag          1
@@ -848,6 +864,7 @@ typedef struct _fk_app_HttpReply {
 #define fk_app_HttpReply_schedules_tag           9
 #define fk_app_HttpReply_transmission_tag        10
 #define fk_app_HttpReply_listing_tag             11
+#define fk_app_HttpReply_nearbyNetworks_tag      12
 
 /* Struct field encoding specification for nanopb */
 #define fk_app_QueryCapabilities_FIELDLIST(X, a) \
@@ -1311,6 +1328,17 @@ X(a, CALLBACK, REPEATED, MESSAGE,  entries,           1)
 #define fk_app_DirectoryListing_DEFAULT NULL
 #define fk_app_DirectoryListing_entries_MSGTYPE fk_app_DirectoryEntry
 
+#define fk_app_NearbyNetwork_FIELDLIST(X, a) \
+X(a, CALLBACK, SINGULAR, STRING,   ssid,              1)
+#define fk_app_NearbyNetwork_CALLBACK pb_default_field_callback
+#define fk_app_NearbyNetwork_DEFAULT NULL
+
+#define fk_app_NearbyNetworks_FIELDLIST(X, a) \
+X(a, CALLBACK, REPEATED, MESSAGE,  networks,          1)
+#define fk_app_NearbyNetworks_CALLBACK pb_default_field_callback
+#define fk_app_NearbyNetworks_DEFAULT NULL
+#define fk_app_NearbyNetworks_networks_MSGTYPE fk_app_NearbyNetwork
+
 #define fk_app_HttpReply_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UENUM,    type,              1) \
 X(a, CALLBACK, REPEATED, MESSAGE,  errors,            2) \
@@ -1322,7 +1350,8 @@ X(a, CALLBACK, REPEATED, MESSAGE,  liveReadings,      7) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  loraSettings,      8) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  schedules,         9) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  transmission,     10) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  listing,          11)
+X(a, STATIC,   OPTIONAL, MESSAGE,  listing,          11) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  nearbyNetworks,   12)
 #define fk_app_HttpReply_CALLBACK pb_default_field_callback
 #define fk_app_HttpReply_DEFAULT NULL
 #define fk_app_HttpReply_errors_MSGTYPE fk_app_Error
@@ -1335,6 +1364,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  listing,          11)
 #define fk_app_HttpReply_schedules_MSGTYPE fk_app_Schedules
 #define fk_app_HttpReply_transmission_MSGTYPE fk_app_Transmission
 #define fk_app_HttpReply_listing_MSGTYPE fk_app_DirectoryListing
+#define fk_app_HttpReply_nearbyNetworks_MSGTYPE fk_app_NearbyNetworks
 
 extern const pb_msgdesc_t fk_app_QueryCapabilities_msg;
 extern const pb_msgdesc_t fk_app_LiveValue_msg;
@@ -1385,6 +1415,8 @@ extern const pb_msgdesc_t fk_app_LiveModuleReadings_msg;
 extern const pb_msgdesc_t fk_app_LiveReadings_msg;
 extern const pb_msgdesc_t fk_app_DirectoryEntry_msg;
 extern const pb_msgdesc_t fk_app_DirectoryListing_msg;
+extern const pb_msgdesc_t fk_app_NearbyNetwork_msg;
+extern const pb_msgdesc_t fk_app_NearbyNetworks_msg;
 extern const pb_msgdesc_t fk_app_HttpReply_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
@@ -1437,6 +1469,8 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 #define fk_app_LiveReadings_fields &fk_app_LiveReadings_msg
 #define fk_app_DirectoryEntry_fields &fk_app_DirectoryEntry_msg
 #define fk_app_DirectoryListing_fields &fk_app_DirectoryListing_msg
+#define fk_app_NearbyNetwork_fields &fk_app_NearbyNetwork_msg
+#define fk_app_NearbyNetworks_fields &fk_app_NearbyNetworks_msg
 #define fk_app_HttpReply_fields &fk_app_HttpReply_msg
 
 /* Maximum encoded size of messages (where known) */
@@ -1489,6 +1523,8 @@ extern const pb_msgdesc_t fk_app_HttpReply_msg;
 /* fk_app_LiveReadings_size depends on runtime parameters */
 /* fk_app_DirectoryEntry_size depends on runtime parameters */
 /* fk_app_DirectoryListing_size depends on runtime parameters */
+/* fk_app_NearbyNetwork_size depends on runtime parameters */
+/* fk_app_NearbyNetworks_size depends on runtime parameters */
 /* fk_app_HttpReply_size depends on runtime parameters */
 
 #ifdef __cplusplus

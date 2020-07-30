@@ -1110,6 +1110,23 @@
             }
           }
         },
+        "NearbyNetwork": {
+          "fields": {
+            "ssid": {
+              "type": "string",
+              "id": 1
+            }
+          }
+        },
+        "NearbyNetworks": {
+          "fields": {
+            "networks": {
+              "rule": "repeated",
+              "type": "NearbyNetwork",
+              "id": 1
+            }
+          }
+        },
         "HttpReply": {
           "fields": {
             "type": {
@@ -1159,6 +1176,10 @@
             "listing": {
               "type": "DirectoryListing",
               "id": 11
+            },
+            "nearbyNetworks": {
+              "type": "NearbyNetworks",
+              "id": 12
             }
           }
         }

@@ -28030,6 +28030,692 @@ public final class FkApp {
     }
   }
 
+  public interface NearbyNetworkOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.NearbyNetwork)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>string ssid = 1;</code>
+     * @return The ssid.
+     */
+    java.lang.String getSsid();
+    /**
+     * <code>string ssid = 1;</code>
+     * @return The bytes for ssid.
+     */
+    com.google.protobuf.ByteString
+        getSsidBytes();
+  }
+  /**
+   * Protobuf type {@code fk_app.NearbyNetwork}
+   */
+  public  static final class NearbyNetwork extends
+      com.google.protobuf.GeneratedMessageLite<
+          NearbyNetwork, NearbyNetwork.Builder> implements
+      // @@protoc_insertion_point(message_implements:fk_app.NearbyNetwork)
+      NearbyNetworkOrBuilder {
+    private NearbyNetwork() {
+      ssid_ = "";
+    }
+    public static final int SSID_FIELD_NUMBER = 1;
+    private java.lang.String ssid_;
+    /**
+     * <code>string ssid = 1;</code>
+     * @return The ssid.
+     */
+    @java.lang.Override
+    public java.lang.String getSsid() {
+      return ssid_;
+    }
+    /**
+     * <code>string ssid = 1;</code>
+     * @return The bytes for ssid.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSsidBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(ssid_);
+    }
+    /**
+     * <code>string ssid = 1;</code>
+     * @param value The ssid to set.
+     */
+    private void setSsid(
+        java.lang.String value) {
+      value.getClass();
+  
+      ssid_ = value;
+    }
+    /**
+     * <code>string ssid = 1;</code>
+     */
+    private void clearSsid() {
+      
+      ssid_ = getDefaultInstance().getSsid();
+    }
+    /**
+     * <code>string ssid = 1;</code>
+     * @param value The bytes for ssid to set.
+     */
+    private void setSsidBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      ssid_ = value.toStringUtf8();
+      
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code fk_app.NearbyNetwork}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork, Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.NearbyNetwork)
+        org.conservify.fieldkit.app.pb.FkApp.NearbyNetworkOrBuilder {
+      // Construct using org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>string ssid = 1;</code>
+       * @return The ssid.
+       */
+      @java.lang.Override
+      public java.lang.String getSsid() {
+        return instance.getSsid();
+      }
+      /**
+       * <code>string ssid = 1;</code>
+       * @return The bytes for ssid.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSsidBytes() {
+        return instance.getSsidBytes();
+      }
+      /**
+       * <code>string ssid = 1;</code>
+       * @param value The ssid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSsid(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSsid(value);
+        return this;
+      }
+      /**
+       * <code>string ssid = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSsid() {
+        copyOnWrite();
+        instance.clearSsid();
+        return this;
+      }
+      /**
+       * <code>string ssid = 1;</code>
+       * @param value The bytes for ssid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSsidBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSsidBytes(value);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fk_app.NearbyNetwork)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "ssid_",
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0208";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:fk_app.NearbyNetwork)
+    private static final org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork DEFAULT_INSTANCE;
+    static {
+      NearbyNetwork defaultInstance = new NearbyNetwork();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        NearbyNetwork.class, defaultInstance);
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<NearbyNetwork> PARSER;
+
+    public static com.google.protobuf.Parser<NearbyNetwork> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface NearbyNetworksOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.NearbyNetworks)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    java.util.List<org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork> 
+        getNetworksList();
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork getNetworks(int index);
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    int getNetworksCount();
+  }
+  /**
+   * Protobuf type {@code fk_app.NearbyNetworks}
+   */
+  public  static final class NearbyNetworks extends
+      com.google.protobuf.GeneratedMessageLite<
+          NearbyNetworks, NearbyNetworks.Builder> implements
+      // @@protoc_insertion_point(message_implements:fk_app.NearbyNetworks)
+      NearbyNetworksOrBuilder {
+    private NearbyNetworks() {
+      networks_ = emptyProtobufList();
+    }
+    public static final int NETWORKS_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.ProtobufList<org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork> networks_;
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork> getNetworksList() {
+      return networks_;
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    public java.util.List<? extends org.conservify.fieldkit.app.pb.FkApp.NearbyNetworkOrBuilder> 
+        getNetworksOrBuilderList() {
+      return networks_;
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    @java.lang.Override
+    public int getNetworksCount() {
+      return networks_.size();
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    @java.lang.Override
+    public org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork getNetworks(int index) {
+      return networks_.get(index);
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    public org.conservify.fieldkit.app.pb.FkApp.NearbyNetworkOrBuilder getNetworksOrBuilder(
+        int index) {
+      return networks_.get(index);
+    }
+    private void ensureNetworksIsMutable() {
+      if (!networks_.isModifiable()) {
+        networks_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(networks_);
+       }
+    }
+
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    private void setNetworks(
+        int index, org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork value) {
+      value.getClass();
+  ensureNetworksIsMutable();
+      networks_.set(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    private void addNetworks(org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork value) {
+      value.getClass();
+  ensureNetworksIsMutable();
+      networks_.add(value);
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    private void addNetworks(
+        int index, org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork value) {
+      value.getClass();
+  ensureNetworksIsMutable();
+      networks_.add(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    private void addAllNetworks(
+        java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork> values) {
+      ensureNetworksIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, networks_);
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    private void clearNetworks() {
+      networks_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+     */
+    private void removeNetworks(int index) {
+      ensureNetworksIsMutable();
+      networks_.remove(index);
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code fk_app.NearbyNetworks}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks, Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.NearbyNetworks)
+        org.conservify.fieldkit.app.pb.FkApp.NearbyNetworksOrBuilder {
+      // Construct using org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork> getNetworksList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getNetworksList());
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      @java.lang.Override
+      public int getNetworksCount() {
+        return instance.getNetworksCount();
+      }/**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      @java.lang.Override
+      public org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork getNetworks(int index) {
+        return instance.getNetworks(index);
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder setNetworks(
+          int index, org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork value) {
+        copyOnWrite();
+        instance.setNetworks(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder setNetworks(
+          int index, org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork.Builder builderForValue) {
+        copyOnWrite();
+        instance.setNetworks(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder addNetworks(org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork value) {
+        copyOnWrite();
+        instance.addNetworks(value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder addNetworks(
+          int index, org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork value) {
+        copyOnWrite();
+        instance.addNetworks(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder addNetworks(
+          org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork.Builder builderForValue) {
+        copyOnWrite();
+        instance.addNetworks(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder addNetworks(
+          int index, org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork.Builder builderForValue) {
+        copyOnWrite();
+        instance.addNetworks(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder addAllNetworks(
+          java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork> values) {
+        copyOnWrite();
+        instance.addAllNetworks(values);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder clearNetworks() {
+        copyOnWrite();
+        instance.clearNetworks();
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.NearbyNetwork networks = 1;</code>
+       */
+      public Builder removeNetworks(int index) {
+        copyOnWrite();
+        instance.removeNetworks(index);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fk_app.NearbyNetworks)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "networks_",
+              org.conservify.fieldkit.app.pb.FkApp.NearbyNetwork.class,
+            };
+            java.lang.String info =
+                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0001\u0000\u0001\u001b";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:fk_app.NearbyNetworks)
+    private static final org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks DEFAULT_INSTANCE;
+    static {
+      NearbyNetworks defaultInstance = new NearbyNetworks();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        NearbyNetworks.class, defaultInstance);
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<NearbyNetworks> PARSER;
+
+    public static com.google.protobuf.Parser<NearbyNetworks> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface HttpReplyOrBuilder extends
       // @@protoc_insertion_point(interface_extends:fk_app.HttpReply)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -28166,6 +28852,17 @@ public final class FkApp {
      * @return The listing.
      */
     org.conservify.fieldkit.app.pb.FkApp.DirectoryListing getListing();
+
+    /**
+     * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+     * @return Whether the nearbyNetworks field is set.
+     */
+    boolean hasNearbyNetworks();
+    /**
+     * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+     * @return The nearbyNetworks.
+     */
+    org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks getNearbyNetworks();
   }
   /**
    * Protobuf type {@code fk_app.HttpReply}
@@ -28868,6 +29565,52 @@ public final class FkApp {
      * <code>.fk_app.DirectoryListing listing = 11;</code>
      */
     private void clearListing() {  listing_ = null;
+      
+    }
+
+    public static final int NEARBYNETWORKS_FIELD_NUMBER = 12;
+    private org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks nearbyNetworks_;
+    /**
+     * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+     */
+    @java.lang.Override
+    public boolean hasNearbyNetworks() {
+      return nearbyNetworks_ != null;
+    }
+    /**
+     * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+     */
+    @java.lang.Override
+    public org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks getNearbyNetworks() {
+      return nearbyNetworks_ == null ? org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks.getDefaultInstance() : nearbyNetworks_;
+    }
+    /**
+     * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+     */
+    private void setNearbyNetworks(org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks value) {
+      value.getClass();
+  nearbyNetworks_ = value;
+      
+      }
+    /**
+     * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeNearbyNetworks(org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks value) {
+      value.getClass();
+  if (nearbyNetworks_ != null &&
+          nearbyNetworks_ != org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks.getDefaultInstance()) {
+        nearbyNetworks_ =
+          org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks.newBuilder(nearbyNetworks_).mergeFrom(value).buildPartial();
+      } else {
+        nearbyNetworks_ = value;
+      }
+      
+    }
+    /**
+     * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+     */
+    private void clearNearbyNetworks() {  nearbyNetworks_ = null;
       
     }
 
@@ -29702,6 +30445,53 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+       */
+      @java.lang.Override
+      public boolean hasNearbyNetworks() {
+        return instance.hasNearbyNetworks();
+      }
+      /**
+       * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+       */
+      @java.lang.Override
+      public org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks getNearbyNetworks() {
+        return instance.getNearbyNetworks();
+      }
+      /**
+       * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+       */
+      public Builder setNearbyNetworks(org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks value) {
+        copyOnWrite();
+        instance.setNearbyNetworks(value);
+        return this;
+        }
+      /**
+       * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+       */
+      public Builder setNearbyNetworks(
+          org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks.Builder builderForValue) {
+        copyOnWrite();
+        instance.setNearbyNetworks(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+       */
+      public Builder mergeNearbyNetworks(org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks value) {
+        copyOnWrite();
+        instance.mergeNearbyNetworks(value);
+        return this;
+      }
+      /**
+       * <code>.fk_app.NearbyNetworks nearbyNetworks = 12;</code>
+       */
+      public Builder clearNearbyNetworks() {  copyOnWrite();
+        instance.clearNearbyNetworks();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.HttpReply)
     }
     @java.lang.Override
@@ -29733,10 +30523,11 @@ public final class FkApp {
               "schedules_",
               "transmission_",
               "listing_",
+              "nearbyNetworks_",
             };
             java.lang.String info =
-                "\u0000\u000b\u0000\u0000\u0001\u000b\u000b\u0000\u0004\u0000\u0001\f\u0002\u001b" +
-                "\u0003\t\u0004\t\u0005\u001b\u0006\u001b\u0007\u001b\b\t\t\t\n\t\u000b\t";
+                "\u0000\f\u0000\u0000\u0001\f\f\u0000\u0004\u0000\u0001\f\u0002\u001b\u0003\t\u0004" +
+                "\t\u0005\u001b\u0006\u001b\u0007\u001b\b\t\t\t\n\t\u000b\t\f\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

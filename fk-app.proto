@@ -454,6 +454,14 @@ message DirectoryListing {
   repeated DirectoryEntry entries = 1;
 }
 
+message NearbyNetwork {
+  string ssid = 1;
+}
+
+message NearbyNetworks {
+  repeated NearbyNetwork networks = 1;
+}
+
 message HttpReply {
   ReplyType type = 1;
   repeated Error errors = 2;
@@ -466,4 +474,5 @@ message HttpReply {
   Schedules schedules = 9;
   Transmission transmission = 10;
   DirectoryListing listing = 11;
+  NearbyNetworks  nearbyNetworks = 12;
 }

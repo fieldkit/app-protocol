@@ -153,6 +153,12 @@ PB_BIND(fk_app_DirectoryEntry, fk_app_DirectoryEntry, AUTO)
 PB_BIND(fk_app_DirectoryListing, fk_app_DirectoryListing, AUTO)
 
 
+PB_BIND(fk_app_NearbyNetwork, fk_app_NearbyNetwork, AUTO)
+
+
+PB_BIND(fk_app_NearbyNetworks, fk_app_NearbyNetworks, AUTO)
+
+
 PB_BIND(fk_app_HttpReply, fk_app_HttpReply, 2)
 
 
