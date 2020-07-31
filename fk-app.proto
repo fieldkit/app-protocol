@@ -34,6 +34,7 @@ enum QueryType {
   QUERY_TAKE_READINGS = 23;
   QUERY_RECORDING_CONTROL = 24;
   QUERY_CONFIGURE = 25;
+  QUERY_SCAN_NETWORKS = 26;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as

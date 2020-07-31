@@ -190,6 +190,10 @@ public final class FkApp {
      * <code>QUERY_CONFIGURE = 25;</code>
      */
     QUERY_CONFIGURE(25),
+    /**
+     * <code>QUERY_SCAN_NETWORKS = 26;</code>
+     */
+    QUERY_SCAN_NETWORKS(26),
     UNRECOGNIZED(-1),
     ;
 
@@ -281,6 +285,10 @@ public final class FkApp {
      * <code>QUERY_CONFIGURE = 25;</code>
      */
     public static final int QUERY_CONFIGURE_VALUE = 25;
+    /**
+     * <code>QUERY_SCAN_NETWORKS = 26;</code>
+     */
+    public static final int QUERY_SCAN_NETWORKS_VALUE = 26;
 
 
     @java.lang.Override
@@ -326,6 +334,7 @@ public final class FkApp {
         case 23: return QUERY_TAKE_READINGS;
         case 24: return QUERY_RECORDING_CONTROL;
         case 25: return QUERY_CONFIGURE;
+        case 26: return QUERY_SCAN_NETWORKS;
         default: return null;
       }
     }

@@ -41,7 +41,8 @@ typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_GET_READINGS = 22,
     fk_app_QueryType_QUERY_TAKE_READINGS = 23,
     fk_app_QueryType_QUERY_RECORDING_CONTROL = 24,
-    fk_app_QueryType_QUERY_CONFIGURE = 25
+    fk_app_QueryType_QUERY_CONFIGURE = 25,
+    fk_app_QueryType_QUERY_SCAN_NETWORKS = 26
 } fk_app_QueryType;
 
 typedef enum _fk_app_ReplyType {
@@ -517,8 +518,8 @@ typedef struct _fk_app_HttpReply {
 #define _fk_app_QueryFlags_ARRAYSIZE ((fk_app_QueryFlags)(fk_app_QueryFlags_QUERY_FLAGS_LOGS+1))
 
 #define _fk_app_QueryType_MIN fk_app_QueryType_QUERY_NONE
-#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_CONFIGURE
-#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_CONFIGURE+1))
+#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_SCAN_NETWORKS
+#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_SCAN_NETWORKS+1))
 
 #define _fk_app_ReplyType_MIN fk_app_ReplyType_REPLY_NONE
 #define _fk_app_ReplyType_MAX fk_app_ReplyType_REPLY_READINGS
