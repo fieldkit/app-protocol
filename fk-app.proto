@@ -58,6 +58,7 @@ enum ReplyType {
   REPLY_MODULE = 16;
   REPLY_METADATA = 17;
   REPLY_READINGS = 18;
+  REPLY_NETWORKS = 19;
 }
 
 enum DownloadFlags {

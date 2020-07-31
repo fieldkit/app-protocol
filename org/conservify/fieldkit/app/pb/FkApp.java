@@ -444,6 +444,10 @@ public final class FkApp {
      * <code>REPLY_READINGS = 18;</code>
      */
     REPLY_READINGS(18),
+    /**
+     * <code>REPLY_NETWORKS = 19;</code>
+     */
+    REPLY_NETWORKS(19),
     UNRECOGNIZED(-1),
     ;
 
@@ -511,6 +515,10 @@ public final class FkApp {
      * <code>REPLY_READINGS = 18;</code>
      */
     public static final int REPLY_READINGS_VALUE = 18;
+    /**
+     * <code>REPLY_NETWORKS = 19;</code>
+     */
+    public static final int REPLY_NETWORKS_VALUE = 19;
 
 
     @java.lang.Override
@@ -550,6 +558,7 @@ public final class FkApp {
         case 16: return REPLY_MODULE;
         case 17: return REPLY_METADATA;
         case 18: return REPLY_READINGS;
+        case 19: return REPLY_NETWORKS;
         default: return null;
       }
     }

@@ -61,7 +61,8 @@ typedef enum _fk_app_ReplyType {
     fk_app_ReplyType_REPLY_STATUS = 15,
     fk_app_ReplyType_REPLY_MODULE = 16,
     fk_app_ReplyType_REPLY_METADATA = 17,
-    fk_app_ReplyType_REPLY_READINGS = 18
+    fk_app_ReplyType_REPLY_READINGS = 18,
+    fk_app_ReplyType_REPLY_NETWORKS = 19
 } fk_app_ReplyType;
 
 typedef enum _fk_app_DownloadFlags {
@@ -522,8 +523,8 @@ typedef struct _fk_app_HttpReply {
 #define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_SCAN_NETWORKS+1))
 
 #define _fk_app_ReplyType_MIN fk_app_ReplyType_REPLY_NONE
-#define _fk_app_ReplyType_MAX fk_app_ReplyType_REPLY_READINGS
-#define _fk_app_ReplyType_ARRAYSIZE ((fk_app_ReplyType)(fk_app_ReplyType_REPLY_READINGS+1))
+#define _fk_app_ReplyType_MAX fk_app_ReplyType_REPLY_NETWORKS
+#define _fk_app_ReplyType_ARRAYSIZE ((fk_app_ReplyType)(fk_app_ReplyType_REPLY_NETWORKS+1))
 
 #define _fk_app_DownloadFlags_MIN fk_app_DownloadFlags_DOWNLOAD_FLAG_NONE
 #define _fk_app_DownloadFlags_MAX fk_app_DownloadFlags_DOWNLOAD_FLAG_METADATA_ONLY
