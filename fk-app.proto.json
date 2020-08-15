@@ -608,6 +608,22 @@
             }
           }
         },
+        "Interval": {
+          "fields": {
+            "start": {
+              "type": "uint64",
+              "id": 1
+            },
+            "end": {
+              "type": "uint64",
+              "id": 2
+            },
+            "interval": {
+              "type": "uint32",
+              "id": 3
+            }
+          }
+        },
         "Schedule": {
           "fields": {
             "cron": {
@@ -629,6 +645,11 @@
             "jitter": {
               "type": "uint32",
               "id": 5
+            },
+            "intervals": {
+              "rule": "repeated",
+              "type": "Interval",
+              "id": 6
             }
           }
         },

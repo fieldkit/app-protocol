@@ -1959,12 +1959,11 @@ type WireMessageQuery struct {
 	QueryCapabilities *QueryCapabilities    `protobuf:"bytes,2,opt,name=queryCapabilities,proto3" json:"queryCapabilities,omitempty"`
 	ConfigureSensor   *ConfigureSensorQuery `protobuf:"bytes,3,opt,name=configureSensor,proto3" json:"configureSensor,omitempty"`
 	LiveDataPoll      *LiveDataPoll         `protobuf:"bytes,8,opt,name=liveDataPoll,proto3" json:"liveDataPoll,omitempty"`
-	// Schedules newSchedules = 9;
-	DownloadFile    *DownloadFile    `protobuf:"bytes,10,opt,name=downloadFile,proto3" json:"downloadFile,omitempty"`
-	EraseFile       *EraseFile       `protobuf:"bytes,11,opt,name=eraseFile,proto3" json:"eraseFile,omitempty"`
-	NetworkSettings *NetworkSettings `protobuf:"bytes,12,opt,name=networkSettings,proto3" json:"networkSettings,omitempty"`
-	Identity        *Identity        `protobuf:"bytes,13,opt,name=identity,proto3" json:"identity,omitempty"`
-	Module          *QueryModule     `protobuf:"bytes,14,opt,name=module,proto3" json:"module,omitempty"`
+	DownloadFile      *DownloadFile         `protobuf:"bytes,10,opt,name=downloadFile,proto3" json:"downloadFile,omitempty"`
+	EraseFile         *EraseFile            `protobuf:"bytes,11,opt,name=eraseFile,proto3" json:"eraseFile,omitempty"`
+	NetworkSettings   *NetworkSettings      `protobuf:"bytes,12,opt,name=networkSettings,proto3" json:"networkSettings,omitempty"`
+	Identity          *Identity             `protobuf:"bytes,13,opt,name=identity,proto3" json:"identity,omitempty"`
+	Module            *QueryModule          `protobuf:"bytes,14,opt,name=module,proto3" json:"module,omitempty"`
 }
 
 func (x *WireMessageQuery) Reset() {
@@ -2122,11 +2121,10 @@ type WireMessageReply struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Type         ReplyType     `protobuf:"varint,1,opt,name=type,proto3,enum=fk_app.ReplyType" json:"type,omitempty"`
-	Errors       []*Error      `protobuf:"bytes,2,rep,name=errors,proto3" json:"errors,omitempty"`
-	Capabilities *Capabilities `protobuf:"bytes,3,opt,name=capabilities,proto3" json:"capabilities,omitempty"`
-	LiveData     *LiveData     `protobuf:"bytes,6,opt,name=liveData,proto3" json:"liveData,omitempty"`
-	// Schedules schedules = 7;
+	Type            ReplyType        `protobuf:"varint,1,opt,name=type,proto3,enum=fk_app.ReplyType" json:"type,omitempty"`
+	Errors          []*Error         `protobuf:"bytes,2,rep,name=errors,proto3" json:"errors,omitempty"`
+	Capabilities    *Capabilities    `protobuf:"bytes,3,opt,name=capabilities,proto3" json:"capabilities,omitempty"`
+	LiveData        *LiveData        `protobuf:"bytes,6,opt,name=liveData,proto3" json:"liveData,omitempty"`
 	Files           *Files           `protobuf:"bytes,8,opt,name=files,proto3" json:"files,omitempty"`
 	FileData        *FileData        `protobuf:"bytes,9,opt,name=fileData,proto3" json:"fileData,omitempty"`
 	NetworkSettings *NetworkSettings `protobuf:"bytes,10,opt,name=networkSettings,proto3" json:"networkSettings,omitempty"`
@@ -2237,22 +2235,86 @@ func (x *WireMessageReply) GetModule() *ModuleReply {
 	return nil
 }
 
+type Interval struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Start    uint64 `protobuf:"varint,1,opt,name=start,proto3" json:"start,omitempty"`
+	End      uint64 `protobuf:"varint,2,opt,name=end,proto3" json:"end,omitempty"`
+	Interval uint32 `protobuf:"varint,3,opt,name=interval,proto3" json:"interval,omitempty"`
+}
+
+func (x *Interval) Reset() {
+	*x = Interval{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_fk_app_proto_msgTypes[25]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Interval) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Interval) ProtoMessage() {}
+
+func (x *Interval) ProtoReflect() protoreflect.Message {
+	mi := &file_fk_app_proto_msgTypes[25]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Interval.ProtoReflect.Descriptor instead.
+func (*Interval) Descriptor() ([]byte, []int) {
+	return file_fk_app_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *Interval) GetStart() uint64 {
+	if x != nil {
+		return x.Start
+	}
+	return 0
+}
+
+func (x *Interval) GetEnd() uint64 {
+	if x != nil {
+		return x.End
+	}
+	return 0
+}
+
+func (x *Interval) GetInterval() uint32 {
+	if x != nil {
+		return x.Interval
+	}
+	return 0
+}
+
 type Schedule struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Cron     []byte `protobuf:"bytes,1,opt,name=cron,proto3" json:"cron,omitempty"`
-	Interval uint32 `protobuf:"varint,2,opt,name=interval,proto3" json:"interval,omitempty"`
-	Repeated uint32 `protobuf:"varint,3,opt,name=repeated,proto3" json:"repeated,omitempty"`
-	Duration uint32 `protobuf:"varint,4,opt,name=duration,proto3" json:"duration,omitempty"`
-	Jitter   uint32 `protobuf:"varint,5,opt,name=jitter,proto3" json:"jitter,omitempty"`
+	Cron      []byte      `protobuf:"bytes,1,opt,name=cron,proto3" json:"cron,omitempty"`
+	Interval  uint32      `protobuf:"varint,2,opt,name=interval,proto3" json:"interval,omitempty"`
+	Repeated  uint32      `protobuf:"varint,3,opt,name=repeated,proto3" json:"repeated,omitempty"`
+	Duration  uint32      `protobuf:"varint,4,opt,name=duration,proto3" json:"duration,omitempty"`
+	Jitter    uint32      `protobuf:"varint,5,opt,name=jitter,proto3" json:"jitter,omitempty"`
+	Intervals []*Interval `protobuf:"bytes,6,rep,name=intervals,proto3" json:"intervals,omitempty"`
 }
 
 func (x *Schedule) Reset() {
 	*x = Schedule{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[25]
+		mi := &file_fk_app_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2265,7 +2327,7 @@ func (x *Schedule) String() string {
 func (*Schedule) ProtoMessage() {}
 
 func (x *Schedule) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[25]
+	mi := &file_fk_app_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2278,7 +2340,7 @@ func (x *Schedule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Schedule.ProtoReflect.Descriptor instead.
 func (*Schedule) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{25}
+	return file_fk_app_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *Schedule) GetCron() []byte {
@@ -2316,6 +2378,13 @@ func (x *Schedule) GetJitter() uint32 {
 	return 0
 }
 
+func (x *Schedule) GetIntervals() []*Interval {
+	if x != nil {
+		return x.Intervals
+	}
+	return nil
+}
+
 type Schedules struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2331,7 +2400,7 @@ type Schedules struct {
 func (x *Schedules) Reset() {
 	*x = Schedules{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[26]
+		mi := &file_fk_app_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2344,7 +2413,7 @@ func (x *Schedules) String() string {
 func (*Schedules) ProtoMessage() {}
 
 func (x *Schedules) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[26]
+	mi := &file_fk_app_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2357,7 +2426,7 @@ func (x *Schedules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Schedules.ProtoReflect.Descriptor instead.
 func (*Schedules) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{26}
+	return file_fk_app_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *Schedules) GetModifying() bool {
@@ -2404,7 +2473,7 @@ type HardwareStatus struct {
 func (x *HardwareStatus) Reset() {
 	*x = HardwareStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[27]
+		mi := &file_fk_app_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2417,7 +2486,7 @@ func (x *HardwareStatus) String() string {
 func (*HardwareStatus) ProtoMessage() {}
 
 func (x *HardwareStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[27]
+	mi := &file_fk_app_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2430,7 +2499,7 @@ func (x *HardwareStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HardwareStatus.ProtoReflect.Descriptor instead.
 func (*HardwareStatus) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{27}
+	return file_fk_app_proto_rawDescGZIP(), []int{28}
 }
 
 type GpsStatus struct {
@@ -2450,7 +2519,7 @@ type GpsStatus struct {
 func (x *GpsStatus) Reset() {
 	*x = GpsStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[28]
+		mi := &file_fk_app_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2463,7 +2532,7 @@ func (x *GpsStatus) String() string {
 func (*GpsStatus) ProtoMessage() {}
 
 func (x *GpsStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[28]
+	mi := &file_fk_app_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2476,7 +2545,7 @@ func (x *GpsStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GpsStatus.ProtoReflect.Descriptor instead.
 func (*GpsStatus) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{28}
+	return file_fk_app_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GpsStatus) GetEnabled() uint32 {
@@ -2544,7 +2613,7 @@ type MemoryStatus struct {
 func (x *MemoryStatus) Reset() {
 	*x = MemoryStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[29]
+		mi := &file_fk_app_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2557,7 +2626,7 @@ func (x *MemoryStatus) String() string {
 func (*MemoryStatus) ProtoMessage() {}
 
 func (x *MemoryStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[29]
+	mi := &file_fk_app_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2570,7 +2639,7 @@ func (x *MemoryStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MemoryStatus.ProtoReflect.Descriptor instead.
 func (*MemoryStatus) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{29}
+	return file_fk_app_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *MemoryStatus) GetSramAvailable() uint32 {
@@ -2627,7 +2696,7 @@ type BatteryStatus struct {
 func (x *BatteryStatus) Reset() {
 	*x = BatteryStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[30]
+		mi := &file_fk_app_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2640,7 +2709,7 @@ func (x *BatteryStatus) String() string {
 func (*BatteryStatus) ProtoMessage() {}
 
 func (x *BatteryStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[30]
+	mi := &file_fk_app_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2653,7 +2722,7 @@ func (x *BatteryStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatteryStatus.ProtoReflect.Descriptor instead.
 func (*BatteryStatus) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{30}
+	return file_fk_app_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *BatteryStatus) GetVoltage() uint32 {
@@ -2681,7 +2750,7 @@ type SolarStatus struct {
 func (x *SolarStatus) Reset() {
 	*x = SolarStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[31]
+		mi := &file_fk_app_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2694,7 +2763,7 @@ func (x *SolarStatus) String() string {
 func (*SolarStatus) ProtoMessage() {}
 
 func (x *SolarStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[31]
+	mi := &file_fk_app_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2707,7 +2776,7 @@ func (x *SolarStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SolarStatus.ProtoReflect.Descriptor instead.
 func (*SolarStatus) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{31}
+	return file_fk_app_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *SolarStatus) GetVoltage() uint32 {
@@ -2729,7 +2798,7 @@ type PowerStatus struct {
 func (x *PowerStatus) Reset() {
 	*x = PowerStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[32]
+		mi := &file_fk_app_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2742,7 +2811,7 @@ func (x *PowerStatus) String() string {
 func (*PowerStatus) ProtoMessage() {}
 
 func (x *PowerStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[32]
+	mi := &file_fk_app_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2755,7 +2824,7 @@ func (x *PowerStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PowerStatus.ProtoReflect.Descriptor instead.
 func (*PowerStatus) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{32}
+	return file_fk_app_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *PowerStatus) GetBattery() *BatteryStatus {
@@ -2795,7 +2864,7 @@ type Status struct {
 func (x *Status) Reset() {
 	*x = Status{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[33]
+		mi := &file_fk_app_proto_msgTypes[34]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2808,7 +2877,7 @@ func (x *Status) String() string {
 func (*Status) ProtoMessage() {}
 
 func (x *Status) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[33]
+	mi := &file_fk_app_proto_msgTypes[34]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2821,7 +2890,7 @@ func (x *Status) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Status.ProtoReflect.Descriptor instead.
 func (*Status) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{33}
+	return file_fk_app_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *Status) GetVersion() uint32 {
@@ -2927,7 +2996,7 @@ type Range struct {
 func (x *Range) Reset() {
 	*x = Range{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[34]
+		mi := &file_fk_app_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2940,7 +3009,7 @@ func (x *Range) String() string {
 func (*Range) ProtoMessage() {}
 
 func (x *Range) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[34]
+	mi := &file_fk_app_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2953,7 +3022,7 @@ func (x *Range) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Range.ProtoReflect.Descriptor instead.
 func (*Range) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{34}
+	return file_fk_app_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *Range) GetStart() uint32 {
@@ -2983,7 +3052,7 @@ type DownloadQuery struct {
 func (x *DownloadQuery) Reset() {
 	*x = DownloadQuery{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[35]
+		mi := &file_fk_app_proto_msgTypes[36]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2996,7 +3065,7 @@ func (x *DownloadQuery) String() string {
 func (*DownloadQuery) ProtoMessage() {}
 
 func (x *DownloadQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[35]
+	mi := &file_fk_app_proto_msgTypes[36]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3009,7 +3078,7 @@ func (x *DownloadQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DownloadQuery.ProtoReflect.Descriptor instead.
 func (*DownloadQuery) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{35}
+	return file_fk_app_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *DownloadQuery) GetStream() uint32 {
@@ -3047,7 +3116,7 @@ type Recording struct {
 func (x *Recording) Reset() {
 	*x = Recording{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[36]
+		mi := &file_fk_app_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3060,7 +3129,7 @@ func (x *Recording) String() string {
 func (*Recording) ProtoMessage() {}
 
 func (x *Recording) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[36]
+	mi := &file_fk_app_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3073,7 +3142,7 @@ func (x *Recording) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Recording.ProtoReflect.Descriptor instead.
 func (*Recording) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{36}
+	return file_fk_app_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *Recording) GetModifying() bool {
@@ -3125,7 +3194,7 @@ type LoraSettings struct {
 func (x *LoraSettings) Reset() {
 	*x = LoraSettings{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[37]
+		mi := &file_fk_app_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3138,7 +3207,7 @@ func (x *LoraSettings) String() string {
 func (*LoraSettings) ProtoMessage() {}
 
 func (x *LoraSettings) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[37]
+	mi := &file_fk_app_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3151,7 +3220,7 @@ func (x *LoraSettings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoraSettings.ProtoReflect.Descriptor instead.
 func (*LoraSettings) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{37}
+	return file_fk_app_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *LoraSettings) GetAvailable() bool {
@@ -3245,7 +3314,7 @@ type Location struct {
 func (x *Location) Reset() {
 	*x = Location{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[38]
+		mi := &file_fk_app_proto_msgTypes[39]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3258,7 +3327,7 @@ func (x *Location) String() string {
 func (*Location) ProtoMessage() {}
 
 func (x *Location) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[38]
+	mi := &file_fk_app_proto_msgTypes[39]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3271,7 +3340,7 @@ func (x *Location) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Location.ProtoReflect.Descriptor instead.
 func (*Location) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{38}
+	return file_fk_app_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *Location) GetModifying() bool {
@@ -3316,7 +3385,7 @@ type WifiTransmission struct {
 func (x *WifiTransmission) Reset() {
 	*x = WifiTransmission{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[39]
+		mi := &file_fk_app_proto_msgTypes[40]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3329,7 +3398,7 @@ func (x *WifiTransmission) String() string {
 func (*WifiTransmission) ProtoMessage() {}
 
 func (x *WifiTransmission) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[39]
+	mi := &file_fk_app_proto_msgTypes[40]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3342,7 +3411,7 @@ func (x *WifiTransmission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WifiTransmission.ProtoReflect.Descriptor instead.
 func (*WifiTransmission) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{39}
+	return file_fk_app_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *WifiTransmission) GetModifying() bool {
@@ -3384,7 +3453,7 @@ type Transmission struct {
 func (x *Transmission) Reset() {
 	*x = Transmission{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[40]
+		mi := &file_fk_app_proto_msgTypes[41]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3397,7 +3466,7 @@ func (x *Transmission) String() string {
 func (*Transmission) ProtoMessage() {}
 
 func (x *Transmission) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[40]
+	mi := &file_fk_app_proto_msgTypes[41]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3410,7 +3479,7 @@ func (x *Transmission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Transmission.ProtoReflect.Descriptor instead.
 func (*Transmission) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{40}
+	return file_fk_app_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *Transmission) GetWifi() *WifiTransmission {
@@ -3431,7 +3500,7 @@ type ListDirectory struct {
 func (x *ListDirectory) Reset() {
 	*x = ListDirectory{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[41]
+		mi := &file_fk_app_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3444,7 +3513,7 @@ func (x *ListDirectory) String() string {
 func (*ListDirectory) ProtoMessage() {}
 
 func (x *ListDirectory) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[41]
+	mi := &file_fk_app_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3457,7 +3526,7 @@ func (x *ListDirectory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDirectory.ProtoReflect.Descriptor instead.
 func (*ListDirectory) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{41}
+	return file_fk_app_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *ListDirectory) GetPath() string {
@@ -3488,7 +3557,7 @@ type HttpQuery struct {
 func (x *HttpQuery) Reset() {
 	*x = HttpQuery{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[42]
+		mi := &file_fk_app_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3501,7 +3570,7 @@ func (x *HttpQuery) String() string {
 func (*HttpQuery) ProtoMessage() {}
 
 func (x *HttpQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[42]
+	mi := &file_fk_app_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3514,7 +3583,7 @@ func (x *HttpQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HttpQuery.ProtoReflect.Descriptor instead.
 func (*HttpQuery) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{42}
+	return file_fk_app_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *HttpQuery) GetType() QueryType {
@@ -3612,7 +3681,7 @@ type DataStream struct {
 func (x *DataStream) Reset() {
 	*x = DataStream{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[43]
+		mi := &file_fk_app_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3625,7 +3694,7 @@ func (x *DataStream) String() string {
 func (*DataStream) ProtoMessage() {}
 
 func (x *DataStream) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[43]
+	mi := &file_fk_app_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3638,7 +3707,7 @@ func (x *DataStream) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DataStream.ProtoReflect.Descriptor instead.
 func (*DataStream) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{43}
+	return file_fk_app_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *DataStream) GetId() uint32 {
@@ -3709,7 +3778,7 @@ type LiveSensorReading struct {
 func (x *LiveSensorReading) Reset() {
 	*x = LiveSensorReading{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[44]
+		mi := &file_fk_app_proto_msgTypes[45]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3722,7 +3791,7 @@ func (x *LiveSensorReading) String() string {
 func (*LiveSensorReading) ProtoMessage() {}
 
 func (x *LiveSensorReading) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[44]
+	mi := &file_fk_app_proto_msgTypes[45]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3735,7 +3804,7 @@ func (x *LiveSensorReading) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LiveSensorReading.ProtoReflect.Descriptor instead.
 func (*LiveSensorReading) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{44}
+	return file_fk_app_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *LiveSensorReading) GetSensor() *SensorCapabilities {
@@ -3764,7 +3833,7 @@ type LiveModuleReadings struct {
 func (x *LiveModuleReadings) Reset() {
 	*x = LiveModuleReadings{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[45]
+		mi := &file_fk_app_proto_msgTypes[46]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3777,7 +3846,7 @@ func (x *LiveModuleReadings) String() string {
 func (*LiveModuleReadings) ProtoMessage() {}
 
 func (x *LiveModuleReadings) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[45]
+	mi := &file_fk_app_proto_msgTypes[46]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3790,7 +3859,7 @@ func (x *LiveModuleReadings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LiveModuleReadings.ProtoReflect.Descriptor instead.
 func (*LiveModuleReadings) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{45}
+	return file_fk_app_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *LiveModuleReadings) GetModule() *ModuleCapabilities {
@@ -3819,7 +3888,7 @@ type LiveReadings struct {
 func (x *LiveReadings) Reset() {
 	*x = LiveReadings{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[46]
+		mi := &file_fk_app_proto_msgTypes[47]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3832,7 +3901,7 @@ func (x *LiveReadings) String() string {
 func (*LiveReadings) ProtoMessage() {}
 
 func (x *LiveReadings) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[46]
+	mi := &file_fk_app_proto_msgTypes[47]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3845,7 +3914,7 @@ func (x *LiveReadings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LiveReadings.ProtoReflect.Descriptor instead.
 func (*LiveReadings) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{46}
+	return file_fk_app_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *LiveReadings) GetTime() uint64 {
@@ -3876,7 +3945,7 @@ type DirectoryEntry struct {
 func (x *DirectoryEntry) Reset() {
 	*x = DirectoryEntry{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[47]
+		mi := &file_fk_app_proto_msgTypes[48]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3889,7 +3958,7 @@ func (x *DirectoryEntry) String() string {
 func (*DirectoryEntry) ProtoMessage() {}
 
 func (x *DirectoryEntry) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[47]
+	mi := &file_fk_app_proto_msgTypes[48]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3902,7 +3971,7 @@ func (x *DirectoryEntry) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DirectoryEntry.ProtoReflect.Descriptor instead.
 func (*DirectoryEntry) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{47}
+	return file_fk_app_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *DirectoryEntry) GetName() string {
@@ -3944,7 +4013,7 @@ type DirectoryListing struct {
 func (x *DirectoryListing) Reset() {
 	*x = DirectoryListing{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[48]
+		mi := &file_fk_app_proto_msgTypes[49]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3957,7 +4026,7 @@ func (x *DirectoryListing) String() string {
 func (*DirectoryListing) ProtoMessage() {}
 
 func (x *DirectoryListing) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[48]
+	mi := &file_fk_app_proto_msgTypes[49]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3970,7 +4039,7 @@ func (x *DirectoryListing) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DirectoryListing.ProtoReflect.Descriptor instead.
 func (*DirectoryListing) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{48}
+	return file_fk_app_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *DirectoryListing) GetEntries() []*DirectoryEntry {
@@ -3991,7 +4060,7 @@ type NearbyNetwork struct {
 func (x *NearbyNetwork) Reset() {
 	*x = NearbyNetwork{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[49]
+		mi := &file_fk_app_proto_msgTypes[50]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4004,7 +4073,7 @@ func (x *NearbyNetwork) String() string {
 func (*NearbyNetwork) ProtoMessage() {}
 
 func (x *NearbyNetwork) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[49]
+	mi := &file_fk_app_proto_msgTypes[50]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4017,7 +4086,7 @@ func (x *NearbyNetwork) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NearbyNetwork.ProtoReflect.Descriptor instead.
 func (*NearbyNetwork) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{49}
+	return file_fk_app_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *NearbyNetwork) GetSsid() string {
@@ -4038,7 +4107,7 @@ type NearbyNetworks struct {
 func (x *NearbyNetworks) Reset() {
 	*x = NearbyNetworks{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[50]
+		mi := &file_fk_app_proto_msgTypes[51]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4051,7 +4120,7 @@ func (x *NearbyNetworks) String() string {
 func (*NearbyNetworks) ProtoMessage() {}
 
 func (x *NearbyNetworks) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[50]
+	mi := &file_fk_app_proto_msgTypes[51]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4064,7 +4133,7 @@ func (x *NearbyNetworks) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NearbyNetworks.ProtoReflect.Descriptor instead.
 func (*NearbyNetworks) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{50}
+	return file_fk_app_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *NearbyNetworks) GetNetworks() []*NearbyNetwork {
@@ -4096,7 +4165,7 @@ type HttpReply struct {
 func (x *HttpReply) Reset() {
 	*x = HttpReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_fk_app_proto_msgTypes[51]
+		mi := &file_fk_app_proto_msgTypes[52]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4109,7 +4178,7 @@ func (x *HttpReply) String() string {
 func (*HttpReply) ProtoMessage() {}
 
 func (x *HttpReply) ProtoReflect() protoreflect.Message {
-	mi := &file_fk_app_proto_msgTypes[51]
+	mi := &file_fk_app_proto_msgTypes[52]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4122,7 +4191,7 @@ func (x *HttpReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HttpReply.ProtoReflect.Descriptor instead.
 func (*HttpReply) Descriptor() ([]byte, []int) {
-	return file_fk_app_proto_rawDescGZIP(), []int{51}
+	return file_fk_app_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *HttpReply) GetType() ReplyType {
@@ -4447,7 +4516,12 @@ var file_fk_app_proto_rawDesc = []byte{
 	0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x2b, 0x0a, 0x06, 0x6d, 0x6f, 0x64, 0x75, 0x6c, 0x65,
 	0x18, 0x0d, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x66, 0x6b, 0x5f, 0x61, 0x70, 0x70, 0x2e,
 	0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x52, 0x06, 0x6d, 0x6f, 0x64,
-	0x75, 0x6c, 0x65, 0x22, 0x8a, 0x01, 0x0a, 0x08, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65,
+	0x75, 0x6c, 0x65, 0x22, 0x4e, 0x0a, 0x08, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x12,
+	0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x05,
+	0x73, 0x74, 0x61, 0x72, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x65, 0x6e, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x04, 0x52, 0x03, 0x65, 0x6e, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x74, 0x65, 0x72,
+	0x76, 0x61, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x69, 0x6e, 0x74, 0x65, 0x72,
+	0x76, 0x61, 0x6c, 0x22, 0xba, 0x01, 0x0a, 0x08, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65,
 	0x12, 0x12, 0x0a, 0x04, 0x63, 0x72, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x04,
 	0x63, 0x72, 0x6f, 0x6e, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c,
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c,
@@ -4456,6 +4530,9 @@ var file_fk_app_proto_rawDesc = []byte{
 	0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08,
 	0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x6a, 0x69, 0x74, 0x74,
 	0x65, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x06, 0x6a, 0x69, 0x74, 0x74, 0x65, 0x72,
+	0x12, 0x2e, 0x0a, 0x09, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x73, 0x18, 0x06, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x66, 0x6b, 0x5f, 0x61, 0x70, 0x70, 0x2e, 0x49, 0x6e, 0x74,
+	0x65, 0x72, 0x76, 0x61, 0x6c, 0x52, 0x09, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x73,
 	0x22, 0xcd, 0x01, 0x0a, 0x09, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x73, 0x12, 0x1c,
 	0x0a, 0x09, 0x6d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x08, 0x52, 0x09, 0x6d, 0x6f, 0x64, 0x69, 0x66, 0x79, 0x69, 0x6e, 0x67, 0x12, 0x2c, 0x0a, 0x08,
@@ -4825,7 +4902,7 @@ func file_fk_app_proto_rawDescGZIP() []byte {
 }
 
 var file_fk_app_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_fk_app_proto_msgTypes = make([]protoimpl.MessageInfo, 52)
+var file_fk_app_proto_msgTypes = make([]protoimpl.MessageInfo, 53)
 var file_fk_app_proto_goTypes = []interface{}{
 	(QueryFlags)(0),              // 0: fk_app.QueryFlags
 	(QueryType)(0),               // 1: fk_app.QueryType
@@ -4858,33 +4935,34 @@ var file_fk_app_proto_goTypes = []interface{}{
 	(*WireMessageQuery)(nil),     // 28: fk_app.WireMessageQuery
 	(*Error)(nil),                // 29: fk_app.Error
 	(*WireMessageReply)(nil),     // 30: fk_app.WireMessageReply
-	(*Schedule)(nil),             // 31: fk_app.Schedule
-	(*Schedules)(nil),            // 32: fk_app.Schedules
-	(*HardwareStatus)(nil),       // 33: fk_app.HardwareStatus
-	(*GpsStatus)(nil),            // 34: fk_app.GpsStatus
-	(*MemoryStatus)(nil),         // 35: fk_app.MemoryStatus
-	(*BatteryStatus)(nil),        // 36: fk_app.BatteryStatus
-	(*SolarStatus)(nil),          // 37: fk_app.SolarStatus
-	(*PowerStatus)(nil),          // 38: fk_app.PowerStatus
-	(*Status)(nil),               // 39: fk_app.Status
-	(*Range)(nil),                // 40: fk_app.Range
-	(*DownloadQuery)(nil),        // 41: fk_app.DownloadQuery
-	(*Recording)(nil),            // 42: fk_app.Recording
-	(*LoraSettings)(nil),         // 43: fk_app.LoraSettings
-	(*Location)(nil),             // 44: fk_app.Location
-	(*WifiTransmission)(nil),     // 45: fk_app.WifiTransmission
-	(*Transmission)(nil),         // 46: fk_app.Transmission
-	(*ListDirectory)(nil),        // 47: fk_app.ListDirectory
-	(*HttpQuery)(nil),            // 48: fk_app.HttpQuery
-	(*DataStream)(nil),           // 49: fk_app.DataStream
-	(*LiveSensorReading)(nil),    // 50: fk_app.LiveSensorReading
-	(*LiveModuleReadings)(nil),   // 51: fk_app.LiveModuleReadings
-	(*LiveReadings)(nil),         // 52: fk_app.LiveReadings
-	(*DirectoryEntry)(nil),       // 53: fk_app.DirectoryEntry
-	(*DirectoryListing)(nil),     // 54: fk_app.DirectoryListing
-	(*NearbyNetwork)(nil),        // 55: fk_app.NearbyNetwork
-	(*NearbyNetworks)(nil),       // 56: fk_app.NearbyNetworks
-	(*HttpReply)(nil),            // 57: fk_app.HttpReply
+	(*Interval)(nil),             // 31: fk_app.Interval
+	(*Schedule)(nil),             // 32: fk_app.Schedule
+	(*Schedules)(nil),            // 33: fk_app.Schedules
+	(*HardwareStatus)(nil),       // 34: fk_app.HardwareStatus
+	(*GpsStatus)(nil),            // 35: fk_app.GpsStatus
+	(*MemoryStatus)(nil),         // 36: fk_app.MemoryStatus
+	(*BatteryStatus)(nil),        // 37: fk_app.BatteryStatus
+	(*SolarStatus)(nil),          // 38: fk_app.SolarStatus
+	(*PowerStatus)(nil),          // 39: fk_app.PowerStatus
+	(*Status)(nil),               // 40: fk_app.Status
+	(*Range)(nil),                // 41: fk_app.Range
+	(*DownloadQuery)(nil),        // 42: fk_app.DownloadQuery
+	(*Recording)(nil),            // 43: fk_app.Recording
+	(*LoraSettings)(nil),         // 44: fk_app.LoraSettings
+	(*Location)(nil),             // 45: fk_app.Location
+	(*WifiTransmission)(nil),     // 46: fk_app.WifiTransmission
+	(*Transmission)(nil),         // 47: fk_app.Transmission
+	(*ListDirectory)(nil),        // 48: fk_app.ListDirectory
+	(*HttpQuery)(nil),            // 49: fk_app.HttpQuery
+	(*DataStream)(nil),           // 50: fk_app.DataStream
+	(*LiveSensorReading)(nil),    // 51: fk_app.LiveSensorReading
+	(*LiveModuleReadings)(nil),   // 52: fk_app.LiveModuleReadings
+	(*LiveReadings)(nil),         // 53: fk_app.LiveReadings
+	(*DirectoryEntry)(nil),       // 54: fk_app.DirectoryEntry
+	(*DirectoryListing)(nil),     // 55: fk_app.DirectoryListing
+	(*NearbyNetwork)(nil),        // 56: fk_app.NearbyNetwork
+	(*NearbyNetworks)(nil),       // 57: fk_app.NearbyNetworks
+	(*HttpReply)(nil),            // 58: fk_app.HttpReply
 }
 var file_fk_app_proto_depIdxs = []int32{
 	7,  // 0: fk_app.SensorCapabilities.value:type_name -> fk_app.LiveValue
@@ -4915,56 +4993,57 @@ var file_fk_app_proto_depIdxs = []int32{
 	15, // 25: fk_app.WireMessageReply.identity:type_name -> fk_app.Identity
 	25, // 26: fk_app.WireMessageReply.status:type_name -> fk_app.DeviceStatus
 	27, // 27: fk_app.WireMessageReply.module:type_name -> fk_app.ModuleReply
-	31, // 28: fk_app.Schedules.readings:type_name -> fk_app.Schedule
-	31, // 29: fk_app.Schedules.lora:type_name -> fk_app.Schedule
-	31, // 30: fk_app.Schedules.network:type_name -> fk_app.Schedule
-	31, // 31: fk_app.Schedules.gps:type_name -> fk_app.Schedule
-	36, // 32: fk_app.PowerStatus.battery:type_name -> fk_app.BatteryStatus
-	37, // 33: fk_app.PowerStatus.solar:type_name -> fk_app.SolarStatus
-	15, // 34: fk_app.Status.identity:type_name -> fk_app.Identity
-	33, // 35: fk_app.Status.hardware:type_name -> fk_app.HardwareStatus
-	38, // 36: fk_app.Status.power:type_name -> fk_app.PowerStatus
-	35, // 37: fk_app.Status.memory:type_name -> fk_app.MemoryStatus
-	34, // 38: fk_app.Status.gps:type_name -> fk_app.GpsStatus
-	32, // 39: fk_app.Status.schedules:type_name -> fk_app.Schedules
-	42, // 40: fk_app.Status.recording:type_name -> fk_app.Recording
-	13, // 41: fk_app.Status.network:type_name -> fk_app.NetworkSettings
-	14, // 42: fk_app.Status.firmware:type_name -> fk_app.Firmware
-	40, // 43: fk_app.DownloadQuery.ranges:type_name -> fk_app.Range
-	44, // 44: fk_app.Recording.location:type_name -> fk_app.Location
-	45, // 45: fk_app.Transmission.wifi:type_name -> fk_app.WifiTransmission
-	1,  // 46: fk_app.HttpQuery.type:type_name -> fk_app.QueryType
-	15, // 47: fk_app.HttpQuery.identity:type_name -> fk_app.Identity
-	42, // 48: fk_app.HttpQuery.recording:type_name -> fk_app.Recording
-	32, // 49: fk_app.HttpQuery.schedules:type_name -> fk_app.Schedules
-	13, // 50: fk_app.HttpQuery.networkSettings:type_name -> fk_app.NetworkSettings
-	43, // 51: fk_app.HttpQuery.loraSettings:type_name -> fk_app.LoraSettings
-	44, // 52: fk_app.HttpQuery.locate:type_name -> fk_app.Location
-	46, // 53: fk_app.HttpQuery.transmission:type_name -> fk_app.Transmission
-	47, // 54: fk_app.HttpQuery.directory:type_name -> fk_app.ListDirectory
-	8,  // 55: fk_app.LiveSensorReading.sensor:type_name -> fk_app.SensorCapabilities
-	10, // 56: fk_app.LiveModuleReadings.module:type_name -> fk_app.ModuleCapabilities
-	50, // 57: fk_app.LiveModuleReadings.readings:type_name -> fk_app.LiveSensorReading
-	51, // 58: fk_app.LiveReadings.modules:type_name -> fk_app.LiveModuleReadings
-	53, // 59: fk_app.DirectoryListing.entries:type_name -> fk_app.DirectoryEntry
-	55, // 60: fk_app.NearbyNetworks.networks:type_name -> fk_app.NearbyNetwork
-	2,  // 61: fk_app.HttpReply.type:type_name -> fk_app.ReplyType
-	29, // 62: fk_app.HttpReply.errors:type_name -> fk_app.Error
-	39, // 63: fk_app.HttpReply.status:type_name -> fk_app.Status
-	13, // 64: fk_app.HttpReply.networkSettings:type_name -> fk_app.NetworkSettings
-	43, // 65: fk_app.HttpReply.loraSettings:type_name -> fk_app.LoraSettings
-	10, // 66: fk_app.HttpReply.modules:type_name -> fk_app.ModuleCapabilities
-	49, // 67: fk_app.HttpReply.streams:type_name -> fk_app.DataStream
-	52, // 68: fk_app.HttpReply.liveReadings:type_name -> fk_app.LiveReadings
-	32, // 69: fk_app.HttpReply.schedules:type_name -> fk_app.Schedules
-	46, // 70: fk_app.HttpReply.transmission:type_name -> fk_app.Transmission
-	54, // 71: fk_app.HttpReply.listing:type_name -> fk_app.DirectoryListing
-	56, // 72: fk_app.HttpReply.nearbyNetworks:type_name -> fk_app.NearbyNetworks
-	73, // [73:73] is the sub-list for method output_type
-	73, // [73:73] is the sub-list for method input_type
-	73, // [73:73] is the sub-list for extension type_name
-	73, // [73:73] is the sub-list for extension extendee
-	0,  // [0:73] is the sub-list for field type_name
+	31, // 28: fk_app.Schedule.intervals:type_name -> fk_app.Interval
+	32, // 29: fk_app.Schedules.readings:type_name -> fk_app.Schedule
+	32, // 30: fk_app.Schedules.lora:type_name -> fk_app.Schedule
+	32, // 31: fk_app.Schedules.network:type_name -> fk_app.Schedule
+	32, // 32: fk_app.Schedules.gps:type_name -> fk_app.Schedule
+	37, // 33: fk_app.PowerStatus.battery:type_name -> fk_app.BatteryStatus
+	38, // 34: fk_app.PowerStatus.solar:type_name -> fk_app.SolarStatus
+	15, // 35: fk_app.Status.identity:type_name -> fk_app.Identity
+	34, // 36: fk_app.Status.hardware:type_name -> fk_app.HardwareStatus
+	39, // 37: fk_app.Status.power:type_name -> fk_app.PowerStatus
+	36, // 38: fk_app.Status.memory:type_name -> fk_app.MemoryStatus
+	35, // 39: fk_app.Status.gps:type_name -> fk_app.GpsStatus
+	33, // 40: fk_app.Status.schedules:type_name -> fk_app.Schedules
+	43, // 41: fk_app.Status.recording:type_name -> fk_app.Recording
+	13, // 42: fk_app.Status.network:type_name -> fk_app.NetworkSettings
+	14, // 43: fk_app.Status.firmware:type_name -> fk_app.Firmware
+	41, // 44: fk_app.DownloadQuery.ranges:type_name -> fk_app.Range
+	45, // 45: fk_app.Recording.location:type_name -> fk_app.Location
+	46, // 46: fk_app.Transmission.wifi:type_name -> fk_app.WifiTransmission
+	1,  // 47: fk_app.HttpQuery.type:type_name -> fk_app.QueryType
+	15, // 48: fk_app.HttpQuery.identity:type_name -> fk_app.Identity
+	43, // 49: fk_app.HttpQuery.recording:type_name -> fk_app.Recording
+	33, // 50: fk_app.HttpQuery.schedules:type_name -> fk_app.Schedules
+	13, // 51: fk_app.HttpQuery.networkSettings:type_name -> fk_app.NetworkSettings
+	44, // 52: fk_app.HttpQuery.loraSettings:type_name -> fk_app.LoraSettings
+	45, // 53: fk_app.HttpQuery.locate:type_name -> fk_app.Location
+	47, // 54: fk_app.HttpQuery.transmission:type_name -> fk_app.Transmission
+	48, // 55: fk_app.HttpQuery.directory:type_name -> fk_app.ListDirectory
+	8,  // 56: fk_app.LiveSensorReading.sensor:type_name -> fk_app.SensorCapabilities
+	10, // 57: fk_app.LiveModuleReadings.module:type_name -> fk_app.ModuleCapabilities
+	51, // 58: fk_app.LiveModuleReadings.readings:type_name -> fk_app.LiveSensorReading
+	52, // 59: fk_app.LiveReadings.modules:type_name -> fk_app.LiveModuleReadings
+	54, // 60: fk_app.DirectoryListing.entries:type_name -> fk_app.DirectoryEntry
+	56, // 61: fk_app.NearbyNetworks.networks:type_name -> fk_app.NearbyNetwork
+	2,  // 62: fk_app.HttpReply.type:type_name -> fk_app.ReplyType
+	29, // 63: fk_app.HttpReply.errors:type_name -> fk_app.Error
+	40, // 64: fk_app.HttpReply.status:type_name -> fk_app.Status
+	13, // 65: fk_app.HttpReply.networkSettings:type_name -> fk_app.NetworkSettings
+	44, // 66: fk_app.HttpReply.loraSettings:type_name -> fk_app.LoraSettings
+	10, // 67: fk_app.HttpReply.modules:type_name -> fk_app.ModuleCapabilities
+	50, // 68: fk_app.HttpReply.streams:type_name -> fk_app.DataStream
+	53, // 69: fk_app.HttpReply.liveReadings:type_name -> fk_app.LiveReadings
+	33, // 70: fk_app.HttpReply.schedules:type_name -> fk_app.Schedules
+	47, // 71: fk_app.HttpReply.transmission:type_name -> fk_app.Transmission
+	55, // 72: fk_app.HttpReply.listing:type_name -> fk_app.DirectoryListing
+	57, // 73: fk_app.HttpReply.nearbyNetworks:type_name -> fk_app.NearbyNetworks
+	74, // [74:74] is the sub-list for method output_type
+	74, // [74:74] is the sub-list for method input_type
+	74, // [74:74] is the sub-list for extension type_name
+	74, // [74:74] is the sub-list for extension extendee
+	0,  // [0:74] is the sub-list for field type_name
 }
 
 func init() { file_fk_app_proto_init() }
@@ -5274,7 +5353,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Schedule); i {
+			switch v := v.(*Interval); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5286,7 +5365,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Schedules); i {
+			switch v := v.(*Schedule); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5298,7 +5377,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HardwareStatus); i {
+			switch v := v.(*Schedules); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5310,7 +5389,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GpsStatus); i {
+			switch v := v.(*HardwareStatus); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5322,7 +5401,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MemoryStatus); i {
+			switch v := v.(*GpsStatus); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5334,7 +5413,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BatteryStatus); i {
+			switch v := v.(*MemoryStatus); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5346,7 +5425,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SolarStatus); i {
+			switch v := v.(*BatteryStatus); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5358,7 +5437,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PowerStatus); i {
+			switch v := v.(*SolarStatus); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5370,7 +5449,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Status); i {
+			switch v := v.(*PowerStatus); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5382,7 +5461,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Range); i {
+			switch v := v.(*Status); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5394,7 +5473,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DownloadQuery); i {
+			switch v := v.(*Range); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5406,7 +5485,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Recording); i {
+			switch v := v.(*DownloadQuery); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5418,7 +5497,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoraSettings); i {
+			switch v := v.(*Recording); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5430,7 +5509,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Location); i {
+			switch v := v.(*LoraSettings); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5442,7 +5521,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiTransmission); i {
+			switch v := v.(*Location); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5454,7 +5533,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Transmission); i {
+			switch v := v.(*WifiTransmission); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5466,7 +5545,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListDirectory); i {
+			switch v := v.(*Transmission); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5478,7 +5557,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HttpQuery); i {
+			switch v := v.(*ListDirectory); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5490,7 +5569,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DataStream); i {
+			switch v := v.(*HttpQuery); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5502,7 +5581,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LiveSensorReading); i {
+			switch v := v.(*DataStream); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5514,7 +5593,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LiveModuleReadings); i {
+			switch v := v.(*LiveSensorReading); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5526,7 +5605,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LiveReadings); i {
+			switch v := v.(*LiveModuleReadings); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5538,7 +5617,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DirectoryEntry); i {
+			switch v := v.(*LiveReadings); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5550,7 +5629,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DirectoryListing); i {
+			switch v := v.(*DirectoryEntry); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5562,7 +5641,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NearbyNetwork); i {
+			switch v := v.(*DirectoryListing); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5574,7 +5653,7 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NearbyNetworks); i {
+			switch v := v.(*NearbyNetwork); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5586,6 +5665,18 @@ func file_fk_app_proto_init() {
 			}
 		}
 		file_fk_app_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NearbyNetworks); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_fk_app_proto_msgTypes[52].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*HttpReply); i {
 			case 0:
 				return &v.state
@@ -5604,7 +5695,7 @@ func file_fk_app_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_fk_app_proto_rawDesc,
 			NumEnums:      6,
-			NumMessages:   52,
+			NumMessages:   53,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

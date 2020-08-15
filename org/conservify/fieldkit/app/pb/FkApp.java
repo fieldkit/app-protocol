@@ -12300,19 +12300,11 @@ public final class FkApp {
     org.conservify.fieldkit.app.pb.FkApp.LiveDataPoll getLiveDataPoll();
 
     /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      * @return Whether the downloadFile field is set.
      */
     boolean hasDownloadFile();
     /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      * @return The downloadFile.
      */
@@ -12555,10 +12547,6 @@ public final class FkApp {
     public static final int DOWNLOADFILE_FIELD_NUMBER = 10;
     private org.conservify.fieldkit.app.pb.FkApp.DownloadFile downloadFile_;
     /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      */
     @java.lang.Override
@@ -12566,10 +12554,6 @@ public final class FkApp {
       return downloadFile_ != null;
     }
     /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      */
     @java.lang.Override
@@ -12577,10 +12561,6 @@ public final class FkApp {
       return downloadFile_ == null ? org.conservify.fieldkit.app.pb.FkApp.DownloadFile.getDefaultInstance() : downloadFile_;
     }
     /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      */
     private void setDownloadFile(org.conservify.fieldkit.app.pb.FkApp.DownloadFile value) {
@@ -12589,10 +12569,6 @@ public final class FkApp {
       
       }
     /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
@@ -12608,10 +12584,6 @@ public final class FkApp {
       
     }
     /**
-     * <pre>
-     * Schedules newSchedules = 9;
-     * </pre>
-     *
      * <code>.fk_app.DownloadFile downloadFile = 10;</code>
      */
     private void clearDownloadFile() {  downloadFile_ = null;
@@ -13085,10 +13057,6 @@ public final class FkApp {
       }
 
       /**
-       * <pre>
-       * Schedules newSchedules = 9;
-       * </pre>
-       *
        * <code>.fk_app.DownloadFile downloadFile = 10;</code>
        */
       @java.lang.Override
@@ -13096,10 +13064,6 @@ public final class FkApp {
         return instance.hasDownloadFile();
       }
       /**
-       * <pre>
-       * Schedules newSchedules = 9;
-       * </pre>
-       *
        * <code>.fk_app.DownloadFile downloadFile = 10;</code>
        */
       @java.lang.Override
@@ -13107,10 +13071,6 @@ public final class FkApp {
         return instance.getDownloadFile();
       }
       /**
-       * <pre>
-       * Schedules newSchedules = 9;
-       * </pre>
-       *
        * <code>.fk_app.DownloadFile downloadFile = 10;</code>
        */
       public Builder setDownloadFile(org.conservify.fieldkit.app.pb.FkApp.DownloadFile value) {
@@ -13119,10 +13079,6 @@ public final class FkApp {
         return this;
         }
       /**
-       * <pre>
-       * Schedules newSchedules = 9;
-       * </pre>
-       *
        * <code>.fk_app.DownloadFile downloadFile = 10;</code>
        */
       public Builder setDownloadFile(
@@ -13132,10 +13088,6 @@ public final class FkApp {
         return this;
       }
       /**
-       * <pre>
-       * Schedules newSchedules = 9;
-       * </pre>
-       *
        * <code>.fk_app.DownloadFile downloadFile = 10;</code>
        */
       public Builder mergeDownloadFile(org.conservify.fieldkit.app.pb.FkApp.DownloadFile value) {
@@ -13144,10 +13096,6 @@ public final class FkApp {
         return this;
       }
       /**
-       * <pre>
-       * Schedules newSchedules = 9;
-       * </pre>
-       *
        * <code>.fk_app.DownloadFile downloadFile = 10;</code>
        */
       public Builder clearDownloadFile() {  copyOnWrite();
@@ -13832,19 +13780,11 @@ public final class FkApp {
     org.conservify.fieldkit.app.pb.FkApp.LiveData getLiveData();
 
     /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
      * <code>.fk_app.Files files = 8;</code>
      * @return Whether the files field is set.
      */
     boolean hasFiles();
     /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
      * <code>.fk_app.Files files = 8;</code>
      * @return The files.
      */
@@ -14146,10 +14086,6 @@ public final class FkApp {
     public static final int FILES_FIELD_NUMBER = 8;
     private org.conservify.fieldkit.app.pb.FkApp.Files files_;
     /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
      * <code>.fk_app.Files files = 8;</code>
      */
     @java.lang.Override
@@ -14157,10 +14093,6 @@ public final class FkApp {
       return files_ != null;
     }
     /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
      * <code>.fk_app.Files files = 8;</code>
      */
     @java.lang.Override
@@ -14168,10 +14100,6 @@ public final class FkApp {
       return files_ == null ? org.conservify.fieldkit.app.pb.FkApp.Files.getDefaultInstance() : files_;
     }
     /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
      * <code>.fk_app.Files files = 8;</code>
      */
     private void setFiles(org.conservify.fieldkit.app.pb.FkApp.Files value) {
@@ -14180,10 +14108,6 @@ public final class FkApp {
       
       }
     /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
      * <code>.fk_app.Files files = 8;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
@@ -14199,10 +14123,6 @@ public final class FkApp {
       
     }
     /**
-     * <pre>
-     * Schedules schedules = 7;
-     * </pre>
-     *
      * <code>.fk_app.Files files = 8;</code>
      */
     private void clearFiles() {  files_ = null;
@@ -14777,10 +14697,6 @@ public final class FkApp {
       }
 
       /**
-       * <pre>
-       * Schedules schedules = 7;
-       * </pre>
-       *
        * <code>.fk_app.Files files = 8;</code>
        */
       @java.lang.Override
@@ -14788,10 +14704,6 @@ public final class FkApp {
         return instance.hasFiles();
       }
       /**
-       * <pre>
-       * Schedules schedules = 7;
-       * </pre>
-       *
        * <code>.fk_app.Files files = 8;</code>
        */
       @java.lang.Override
@@ -14799,10 +14711,6 @@ public final class FkApp {
         return instance.getFiles();
       }
       /**
-       * <pre>
-       * Schedules schedules = 7;
-       * </pre>
-       *
        * <code>.fk_app.Files files = 8;</code>
        */
       public Builder setFiles(org.conservify.fieldkit.app.pb.FkApp.Files value) {
@@ -14811,10 +14719,6 @@ public final class FkApp {
         return this;
         }
       /**
-       * <pre>
-       * Schedules schedules = 7;
-       * </pre>
-       *
        * <code>.fk_app.Files files = 8;</code>
        */
       public Builder setFiles(
@@ -14824,10 +14728,6 @@ public final class FkApp {
         return this;
       }
       /**
-       * <pre>
-       * Schedules schedules = 7;
-       * </pre>
-       *
        * <code>.fk_app.Files files = 8;</code>
        */
       public Builder mergeFiles(org.conservify.fieldkit.app.pb.FkApp.Files value) {
@@ -14836,10 +14736,6 @@ public final class FkApp {
         return this;
       }
       /**
-       * <pre>
-       * Schedules schedules = 7;
-       * </pre>
-       *
        * <code>.fk_app.Files files = 8;</code>
        */
       public Builder clearFiles() {  copyOnWrite();
@@ -15167,6 +15063,372 @@ public final class FkApp {
     }
   }
 
+  public interface IntervalOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.Interval)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>uint64 start = 1;</code>
+     * @return The start.
+     */
+    long getStart();
+
+    /**
+     * <code>uint64 end = 2;</code>
+     * @return The end.
+     */
+    long getEnd();
+
+    /**
+     * <code>uint32 interval = 3;</code>
+     * @return The interval.
+     */
+    int getInterval();
+  }
+  /**
+   * Protobuf type {@code fk_app.Interval}
+   */
+  public  static final class Interval extends
+      com.google.protobuf.GeneratedMessageLite<
+          Interval, Interval.Builder> implements
+      // @@protoc_insertion_point(message_implements:fk_app.Interval)
+      IntervalOrBuilder {
+    private Interval() {
+    }
+    public static final int START_FIELD_NUMBER = 1;
+    private long start_;
+    /**
+     * <code>uint64 start = 1;</code>
+     * @return The start.
+     */
+    @java.lang.Override
+    public long getStart() {
+      return start_;
+    }
+    /**
+     * <code>uint64 start = 1;</code>
+     * @param value The start to set.
+     */
+    private void setStart(long value) {
+      
+      start_ = value;
+    }
+    /**
+     * <code>uint64 start = 1;</code>
+     */
+    private void clearStart() {
+      
+      start_ = 0L;
+    }
+
+    public static final int END_FIELD_NUMBER = 2;
+    private long end_;
+    /**
+     * <code>uint64 end = 2;</code>
+     * @return The end.
+     */
+    @java.lang.Override
+    public long getEnd() {
+      return end_;
+    }
+    /**
+     * <code>uint64 end = 2;</code>
+     * @param value The end to set.
+     */
+    private void setEnd(long value) {
+      
+      end_ = value;
+    }
+    /**
+     * <code>uint64 end = 2;</code>
+     */
+    private void clearEnd() {
+      
+      end_ = 0L;
+    }
+
+    public static final int INTERVAL_FIELD_NUMBER = 3;
+    private int interval_;
+    /**
+     * <code>uint32 interval = 3;</code>
+     * @return The interval.
+     */
+    @java.lang.Override
+    public int getInterval() {
+      return interval_;
+    }
+    /**
+     * <code>uint32 interval = 3;</code>
+     * @param value The interval to set.
+     */
+    private void setInterval(int value) {
+      
+      interval_ = value;
+    }
+    /**
+     * <code>uint32 interval = 3;</code>
+     */
+    private void clearInterval() {
+      
+      interval_ = 0;
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.conservify.fieldkit.app.pb.FkApp.Interval prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code fk_app.Interval}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.conservify.fieldkit.app.pb.FkApp.Interval, Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.Interval)
+        org.conservify.fieldkit.app.pb.FkApp.IntervalOrBuilder {
+      // Construct using org.conservify.fieldkit.app.pb.FkApp.Interval.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>uint64 start = 1;</code>
+       * @return The start.
+       */
+      @java.lang.Override
+      public long getStart() {
+        return instance.getStart();
+      }
+      /**
+       * <code>uint64 start = 1;</code>
+       * @param value The start to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStart(long value) {
+        copyOnWrite();
+        instance.setStart(value);
+        return this;
+      }
+      /**
+       * <code>uint64 start = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStart() {
+        copyOnWrite();
+        instance.clearStart();
+        return this;
+      }
+
+      /**
+       * <code>uint64 end = 2;</code>
+       * @return The end.
+       */
+      @java.lang.Override
+      public long getEnd() {
+        return instance.getEnd();
+      }
+      /**
+       * <code>uint64 end = 2;</code>
+       * @param value The end to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnd(long value) {
+        copyOnWrite();
+        instance.setEnd(value);
+        return this;
+      }
+      /**
+       * <code>uint64 end = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnd() {
+        copyOnWrite();
+        instance.clearEnd();
+        return this;
+      }
+
+      /**
+       * <code>uint32 interval = 3;</code>
+       * @return The interval.
+       */
+      @java.lang.Override
+      public int getInterval() {
+        return instance.getInterval();
+      }
+      /**
+       * <code>uint32 interval = 3;</code>
+       * @param value The interval to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInterval(int value) {
+        copyOnWrite();
+        instance.setInterval(value);
+        return this;
+      }
+      /**
+       * <code>uint32 interval = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInterval() {
+        copyOnWrite();
+        instance.clearInterval();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fk_app.Interval)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.conservify.fieldkit.app.pb.FkApp.Interval();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "start_",
+              "end_",
+              "interval_",
+            };
+            java.lang.String info =
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0003\u0002\u0003" +
+                "\u0003\u000b";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.conservify.fieldkit.app.pb.FkApp.Interval> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.conservify.fieldkit.app.pb.FkApp.Interval.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.conservify.fieldkit.app.pb.FkApp.Interval>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:fk_app.Interval)
+    private static final org.conservify.fieldkit.app.pb.FkApp.Interval DEFAULT_INSTANCE;
+    static {
+      Interval defaultInstance = new Interval();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        Interval.class, defaultInstance);
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.Interval getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Interval> PARSER;
+
+    public static com.google.protobuf.Parser<Interval> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface ScheduleOrBuilder extends
       // @@protoc_insertion_point(interface_extends:fk_app.Schedule)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -15200,6 +15462,20 @@ public final class FkApp {
      * @return The jitter.
      */
     int getJitter();
+
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    java.util.List<org.conservify.fieldkit.app.pb.FkApp.Interval> 
+        getIntervalsList();
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    org.conservify.fieldkit.app.pb.FkApp.Interval getIntervals(int index);
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    int getIntervalsCount();
   }
   /**
    * Protobuf type {@code fk_app.Schedule}
@@ -15211,6 +15487,7 @@ public final class FkApp {
       ScheduleOrBuilder {
     private Schedule() {
       cron_ = com.google.protobuf.ByteString.EMPTY;
+      intervals_ = emptyProtobufList();
     }
     public static final int CRON_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString cron_;
@@ -15341,6 +15618,99 @@ public final class FkApp {
     private void clearJitter() {
       
       jitter_ = 0;
+    }
+
+    public static final int INTERVALS_FIELD_NUMBER = 6;
+    private com.google.protobuf.Internal.ProtobufList<org.conservify.fieldkit.app.pb.FkApp.Interval> intervals_;
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.conservify.fieldkit.app.pb.FkApp.Interval> getIntervalsList() {
+      return intervals_;
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    public java.util.List<? extends org.conservify.fieldkit.app.pb.FkApp.IntervalOrBuilder> 
+        getIntervalsOrBuilderList() {
+      return intervals_;
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    @java.lang.Override
+    public int getIntervalsCount() {
+      return intervals_.size();
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    @java.lang.Override
+    public org.conservify.fieldkit.app.pb.FkApp.Interval getIntervals(int index) {
+      return intervals_.get(index);
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    public org.conservify.fieldkit.app.pb.FkApp.IntervalOrBuilder getIntervalsOrBuilder(
+        int index) {
+      return intervals_.get(index);
+    }
+    private void ensureIntervalsIsMutable() {
+      if (!intervals_.isModifiable()) {
+        intervals_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(intervals_);
+       }
+    }
+
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    private void setIntervals(
+        int index, org.conservify.fieldkit.app.pb.FkApp.Interval value) {
+      value.getClass();
+  ensureIntervalsIsMutable();
+      intervals_.set(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    private void addIntervals(org.conservify.fieldkit.app.pb.FkApp.Interval value) {
+      value.getClass();
+  ensureIntervalsIsMutable();
+      intervals_.add(value);
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    private void addIntervals(
+        int index, org.conservify.fieldkit.app.pb.FkApp.Interval value) {
+      value.getClass();
+  ensureIntervalsIsMutable();
+      intervals_.add(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    private void addAllIntervals(
+        java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.Interval> values) {
+      ensureIntervalsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, intervals_);
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    private void clearIntervals() {
+      intervals_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .fk_app.Interval intervals = 6;</code>
+     */
+    private void removeIntervals(int index) {
+      ensureIntervalsIsMutable();
+      intervals_.remove(index);
     }
 
     public static org.conservify.fieldkit.app.pb.FkApp.Schedule parseFrom(
@@ -15578,6 +15948,108 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.conservify.fieldkit.app.pb.FkApp.Interval> getIntervalsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getIntervalsList());
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      @java.lang.Override
+      public int getIntervalsCount() {
+        return instance.getIntervalsCount();
+      }/**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      @java.lang.Override
+      public org.conservify.fieldkit.app.pb.FkApp.Interval getIntervals(int index) {
+        return instance.getIntervals(index);
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder setIntervals(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Interval value) {
+        copyOnWrite();
+        instance.setIntervals(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder setIntervals(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Interval.Builder builderForValue) {
+        copyOnWrite();
+        instance.setIntervals(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder addIntervals(org.conservify.fieldkit.app.pb.FkApp.Interval value) {
+        copyOnWrite();
+        instance.addIntervals(value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder addIntervals(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Interval value) {
+        copyOnWrite();
+        instance.addIntervals(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder addIntervals(
+          org.conservify.fieldkit.app.pb.FkApp.Interval.Builder builderForValue) {
+        copyOnWrite();
+        instance.addIntervals(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder addIntervals(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Interval.Builder builderForValue) {
+        copyOnWrite();
+        instance.addIntervals(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder addAllIntervals(
+          java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.Interval> values) {
+        copyOnWrite();
+        instance.addAllIntervals(values);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder clearIntervals() {
+        copyOnWrite();
+        instance.clearIntervals();
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Interval intervals = 6;</code>
+       */
+      public Builder removeIntervals(int index) {
+        copyOnWrite();
+        instance.removeIntervals(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.Schedule)
     }
     @java.lang.Override
@@ -15599,10 +16071,12 @@ public final class FkApp {
               "repeated_",
               "duration_",
               "jitter_",
+              "intervals_",
+              org.conservify.fieldkit.app.pb.FkApp.Interval.class,
             };
             java.lang.String info =
-                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\n\u0002\u000b" +
-                "\u0003\u000b\u0004\u000b\u0005\u000b";
+                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0001\u0000\u0001\n\u0002\u000b" +
+                "\u0003\u000b\u0004\u000b\u0005\u000b\u0006\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

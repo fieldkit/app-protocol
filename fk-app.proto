@@ -254,7 +254,6 @@ message WireMessageQuery {
   QueryCapabilities queryCapabilities = 2;
   ConfigureSensorQuery configureSensor = 3;
   LiveDataPoll liveDataPoll = 8;
-  // Schedules newSchedules = 9;
   DownloadFile downloadFile = 10;
   EraseFile eraseFile = 11;
   NetworkSettings networkSettings = 12;
@@ -272,7 +271,6 @@ message WireMessageReply {
   repeated Error errors = 2;
   Capabilities capabilities = 3;
   LiveData liveData = 6;
-  // Schedules schedules = 7;
   Files files = 8;
   FileData fileData = 9;
   NetworkSettings networkSettings = 10;
@@ -283,12 +281,19 @@ message WireMessageReply {
 
 /**************************************************************************************************/
 
+message Interval {
+  uint64 start = 1;
+  uint64 end = 2;
+  uint32 interval = 3;
+}
+
 message Schedule {
   bytes cron = 1;
   uint32 interval = 2;
   uint32 repeated = 3;
   uint32 duration = 4;
   uint32 jitter = 5;
+  repeated Interval intervals = 6;
 }
 
 message Schedules {
