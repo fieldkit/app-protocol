@@ -483,3 +483,13 @@ message HttpReply {
   DirectoryListing listing = 11;
   NearbyNetworks  nearbyNetworks = 12;
 }
+
+enum UdpStatus {
+  UDP_STATUS_ONLINE = 0;
+  UDP_STATUS_BYE = 1;
+}
+
+message UdpMessage {
+  bytes deviceId = 1;
+  UdpStatus status = 2;
+}

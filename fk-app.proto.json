@@ -1205,6 +1205,24 @@
               "id": 12
             }
           }
+        },
+        "UdpStatus": {
+          "values": {
+            "UDP_STATUS_ONLINE": 0,
+            "UDP_STATUS_BYE": 1
+          }
+        },
+        "UdpMessage": {
+          "fields": {
+            "deviceId": {
+              "type": "bytes",
+              "id": 1
+            },
+            "status": {
+              "type": "UdpStatus",
+              "id": 2
+            }
+          }
         }
       }
     }

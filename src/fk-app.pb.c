@@ -165,6 +165,10 @@ PB_BIND(fk_app_NearbyNetworks, fk_app_NearbyNetworks, AUTO)
 PB_BIND(fk_app_HttpReply, fk_app_HttpReply, 2)
 
 
+PB_BIND(fk_app_UdpMessage, fk_app_UdpMessage, AUTO)
+
+
+
 
 
 

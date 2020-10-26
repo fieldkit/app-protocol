@@ -5876,4 +5876,106 @@ export namespace fk_app {
          */
         public toJSON(): { [k: string]: any };
     }
+
+    /** UdpStatus enum. */
+    enum UdpStatus {
+        UDP_STATUS_ONLINE = 0,
+        UDP_STATUS_BYE = 1
+    }
+
+    /** Properties of an UdpMessage. */
+    interface IUdpMessage {
+
+        /** UdpMessage deviceId */
+        deviceId?: Uint8Array;
+
+        /** UdpMessage status */
+        status?: fk_app.UdpStatus;
+    }
+
+    /** Represents an UdpMessage. */
+    class UdpMessage {
+
+        /**
+         * Constructs a new UdpMessage.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: fk_app.IUdpMessage);
+
+        /** UdpMessage deviceId. */
+        public deviceId: Uint8Array;
+
+        /** UdpMessage status. */
+        public status: fk_app.UdpStatus;
+
+        /**
+         * Creates a new UdpMessage instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns UdpMessage instance
+         */
+        public static create(properties?: fk_app.IUdpMessage): fk_app.UdpMessage;
+
+        /**
+         * Encodes the specified UdpMessage message. Does not implicitly {@link fk_app.UdpMessage.verify|verify} messages.
+         * @param message UdpMessage message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: fk_app.IUdpMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified UdpMessage message, length delimited. Does not implicitly {@link fk_app.UdpMessage.verify|verify} messages.
+         * @param message UdpMessage message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: fk_app.IUdpMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an UdpMessage message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns UdpMessage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): fk_app.UdpMessage;
+
+        /**
+         * Decodes an UdpMessage message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns UdpMessage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): fk_app.UdpMessage;
+
+        /**
+         * Verifies an UdpMessage message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an UdpMessage message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns UdpMessage
+         */
+        public static fromObject(object: { [k: string]: any }): fk_app.UdpMessage;
+
+        /**
+         * Creates a plain object from an UdpMessage message. Also converts values to other types if specified.
+         * @param message UdpMessage
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: fk_app.UdpMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this UdpMessage to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
 }

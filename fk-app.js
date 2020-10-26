@@ -15193,6 +15193,244 @@
             return HttpReply;
         })();
     
+        /**
+         * UdpStatus enum.
+         * @enum {string}
+         * @property {number} UDP_STATUS_ONLINE=0 UDP_STATUS_ONLINE value
+         * @property {number} UDP_STATUS_BYE=1 UDP_STATUS_BYE value
+         */
+        fk_app.UdpStatus = (function() {
+            var valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "UDP_STATUS_ONLINE"] = 0;
+            values[valuesById[1] = "UDP_STATUS_BYE"] = 1;
+            return values;
+        })();
+    
+        fk_app.UdpMessage = (function() {
+    
+            /**
+             * Properties of an UdpMessage.
+             * @memberof fk_app
+             * @interface IUdpMessage
+             * @property {Uint8Array} [deviceId] UdpMessage deviceId
+             * @property {fk_app.UdpStatus} [status] UdpMessage status
+             */
+    
+            /**
+             * Constructs a new UdpMessage.
+             * @memberof fk_app
+             * @classdesc Represents an UdpMessage.
+             * @constructor
+             * @param {fk_app.IUdpMessage=} [properties] Properties to set
+             */
+            function UdpMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * UdpMessage deviceId.
+             * @member {Uint8Array}deviceId
+             * @memberof fk_app.UdpMessage
+             * @instance
+             */
+            UdpMessage.prototype.deviceId = $util.newBuffer([]);
+    
+            /**
+             * UdpMessage status.
+             * @member {fk_app.UdpStatus}status
+             * @memberof fk_app.UdpMessage
+             * @instance
+             */
+            UdpMessage.prototype.status = 0;
+    
+            /**
+             * Creates a new UdpMessage instance using the specified properties.
+             * @function create
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {fk_app.IUdpMessage=} [properties] Properties to set
+             * @returns {fk_app.UdpMessage} UdpMessage instance
+             */
+            UdpMessage.create = function create(properties) {
+                return new UdpMessage(properties);
+            };
+    
+            /**
+             * Encodes the specified UdpMessage message. Does not implicitly {@link fk_app.UdpMessage.verify|verify} messages.
+             * @function encode
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {fk_app.IUdpMessage} message UdpMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            UdpMessage.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.deviceId != null && message.hasOwnProperty("deviceId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.deviceId);
+                if (message.status != null && message.hasOwnProperty("status"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.status);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified UdpMessage message, length delimited. Does not implicitly {@link fk_app.UdpMessage.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {fk_app.IUdpMessage} message UdpMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            UdpMessage.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes an UdpMessage message from the specified reader or buffer.
+             * @function decode
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {fk_app.UdpMessage} UdpMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            UdpMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.fk_app.UdpMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.deviceId = reader.bytes();
+                        break;
+                    case 2:
+                        message.status = reader.int32();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes an UdpMessage message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {fk_app.UdpMessage} UdpMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            UdpMessage.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies an UdpMessage message.
+             * @function verify
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            UdpMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.deviceId != null && message.hasOwnProperty("deviceId"))
+                    if (!(message.deviceId && typeof message.deviceId.length === "number" || $util.isString(message.deviceId)))
+                        return "deviceId: buffer expected";
+                if (message.status != null && message.hasOwnProperty("status"))
+                    switch (message.status) {
+                    default:
+                        return "status: enum value expected";
+                    case 0:
+                    case 1:
+                        break;
+                    }
+                return null;
+            };
+    
+            /**
+             * Creates an UdpMessage message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {fk_app.UdpMessage} UdpMessage
+             */
+            UdpMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.fk_app.UdpMessage)
+                    return object;
+                var message = new $root.fk_app.UdpMessage();
+                if (object.deviceId != null)
+                    if (typeof object.deviceId === "string")
+                        $util.base64.decode(object.deviceId, message.deviceId = $util.newBuffer($util.base64.length(object.deviceId)), 0);
+                    else if (object.deviceId.length)
+                        message.deviceId = object.deviceId;
+                switch (object.status) {
+                case "UDP_STATUS_ONLINE":
+                case 0:
+                    message.status = 0;
+                    break;
+                case "UDP_STATUS_BYE":
+                case 1:
+                    message.status = 1;
+                    break;
+                }
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from an UdpMessage message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof fk_app.UdpMessage
+             * @static
+             * @param {fk_app.UdpMessage} message UdpMessage
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            UdpMessage.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.deviceId = options.bytes === String ? "" : [];
+                    object.status = options.enums === String ? "UDP_STATUS_ONLINE" : 0;
+                }
+                if (message.deviceId != null && message.hasOwnProperty("deviceId"))
+                    object.deviceId = options.bytes === String ? $util.base64.encode(message.deviceId, 0, message.deviceId.length) : options.bytes === Array ? Array.prototype.slice.call(message.deviceId) : message.deviceId;
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = options.enums === String ? $root.fk_app.UdpStatus[message.status] : message.status;
+                return object;
+            };
+    
+            /**
+             * Converts this UdpMessage to JSON.
+             * @function toJSON
+             * @memberof fk_app.UdpMessage
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            UdpMessage.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return UdpMessage;
+        })();
+    
         return fk_app;
     })();
 
