@@ -23,7 +23,7 @@ export namespace fk_app {
         QUERY_RESET = 13,
         QUERY_NETWORK_SETTINGS = 14,
         QUERY_CONFIGURE_NETWORK_SETTINGS = 15,
-        QUERY_IDENTITY = 16,
+        QUERY_SCAN_MODULES = 16,
         QUERY_CONFIGURE_IDENTITY = 17,
         QUERY_STATUS = 18,
         QUERY_MODULE = 19,

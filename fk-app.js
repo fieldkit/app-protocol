@@ -53,7 +53,7 @@
          * @property {number} QUERY_RESET=13 QUERY_RESET value
          * @property {number} QUERY_NETWORK_SETTINGS=14 QUERY_NETWORK_SETTINGS value
          * @property {number} QUERY_CONFIGURE_NETWORK_SETTINGS=15 QUERY_CONFIGURE_NETWORK_SETTINGS value
-         * @property {number} QUERY_IDENTITY=16 QUERY_IDENTITY value
+         * @property {number} QUERY_SCAN_MODULES=16 QUERY_SCAN_MODULES value
          * @property {number} QUERY_CONFIGURE_IDENTITY=17 QUERY_CONFIGURE_IDENTITY value
          * @property {number} QUERY_STATUS=18 QUERY_STATUS value
          * @property {number} QUERY_MODULE=19 QUERY_MODULE value
@@ -79,7 +79,7 @@
             values[valuesById[13] = "QUERY_RESET"] = 13;
             values[valuesById[14] = "QUERY_NETWORK_SETTINGS"] = 14;
             values[valuesById[15] = "QUERY_CONFIGURE_NETWORK_SETTINGS"] = 15;
-            values[valuesById[16] = "QUERY_IDENTITY"] = 16;
+            values[valuesById[16] = "QUERY_SCAN_MODULES"] = 16;
             values[valuesById[17] = "QUERY_CONFIGURE_IDENTITY"] = 17;
             values[valuesById[18] = "QUERY_STATUS"] = 18;
             values[valuesById[19] = "QUERY_MODULE"] = 19;
@@ -6284,7 +6284,7 @@
                 case 15:
                     message.type = 15;
                     break;
-                case "QUERY_IDENTITY":
+                case "QUERY_SCAN_MODULES":
                 case 16:
                     message.type = 16;
                     break;
@@ -12452,7 +12452,7 @@
                 case 15:
                     message.type = 15;
                     break;
-                case "QUERY_IDENTITY":
+                case "QUERY_SCAN_MODULES":
                 case 16:
                     message.type = 16;
                     break;

@@ -151,9 +151,9 @@ public final class FkApp {
      */
     QUERY_CONFIGURE_NETWORK_SETTINGS(15),
     /**
-     * <code>QUERY_IDENTITY = 16;</code>
+     * <code>QUERY_SCAN_MODULES = 16;</code>
      */
-    QUERY_IDENTITY(16),
+    QUERY_SCAN_MODULES(16),
     /**
      * <code>QUERY_CONFIGURE_IDENTITY = 17;</code>
      */
@@ -246,9 +246,9 @@ public final class FkApp {
      */
     public static final int QUERY_CONFIGURE_NETWORK_SETTINGS_VALUE = 15;
     /**
-     * <code>QUERY_IDENTITY = 16;</code>
+     * <code>QUERY_SCAN_MODULES = 16;</code>
      */
-    public static final int QUERY_IDENTITY_VALUE = 16;
+    public static final int QUERY_SCAN_MODULES_VALUE = 16;
     /**
      * <code>QUERY_CONFIGURE_IDENTITY = 17;</code>
      */
@@ -324,7 +324,7 @@ public final class FkApp {
         case 13: return QUERY_RESET;
         case 14: return QUERY_NETWORK_SETTINGS;
         case 15: return QUERY_CONFIGURE_NETWORK_SETTINGS;
-        case 16: return QUERY_IDENTITY;
+        case 16: return QUERY_SCAN_MODULES;
         case 17: return QUERY_CONFIGURE_IDENTITY;
         case 18: return QUERY_STATUS;
         case 19: return QUERY_MODULE;

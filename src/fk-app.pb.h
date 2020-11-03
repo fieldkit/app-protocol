@@ -28,7 +28,7 @@ typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_RESET = 13,
     fk_app_QueryType_QUERY_NETWORK_SETTINGS = 14,
     fk_app_QueryType_QUERY_CONFIGURE_NETWORK_SETTINGS = 15,
-    fk_app_QueryType_QUERY_IDENTITY = 16,
+    fk_app_QueryType_QUERY_SCAN_MODULES = 16,
     fk_app_QueryType_QUERY_CONFIGURE_IDENTITY = 17,
     fk_app_QueryType_QUERY_STATUS = 18,
     fk_app_QueryType_QUERY_MODULE = 19,
