@@ -39,6 +39,7 @@ protoc-$(PROTOC_VERSION)-linux-x86_64.zip:
 	wget "https://github.com/protocolbuffers/protobuf/releases/download/v$(PROTOC_VERSION)/protoc-$(PROTOC_VERSION)-linux-x86_64.zip"
 
 veryclean: clean
+	rm -rf *.pb.go *.pb.c *.pb.h $(PROTO_NAME).{proto.json,d.ts,js} *.pb.go org
 
 clean:
-	rm -rf build node_modules *.pb.go *.pb.c *.pb.h $(PROTO_NAME).{proto.json,d.ts,js} *.pb.go org
+	rm -rf build node_modules
