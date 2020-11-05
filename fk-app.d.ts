@@ -1101,8 +1101,8 @@ export namespace fk_app {
         /** Identity name */
         name?: string;
 
-        /** Identity generation */
-        generation?: Uint8Array;
+        /** Identity generationId */
+        generationId?: Uint8Array;
     }
 
     /** Represents an Identity. */
@@ -1135,8 +1135,8 @@ export namespace fk_app {
         /** Identity name. */
         public name: string;
 
-        /** Identity generation. */
-        public generation: Uint8Array;
+        /** Identity generationId. */
+        public generationId: Uint8Array;
 
         /**
          * Creates a new Identity instance using the specified properties.

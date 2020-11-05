@@ -311,7 +311,7 @@
               "type": "string",
               "id": 6
             },
-            "generation": {
+            "generationId": {
               "type": "bytes",
               "id": 7
             }

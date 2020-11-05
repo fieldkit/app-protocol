@@ -164,7 +164,7 @@ message Identity {
 
   // v2
   string name = 6;
-  bytes generation = 7;
+  bytes generationId = 7;
 }
 
 // Configuring a particular sensor on the device. Some sensors may require

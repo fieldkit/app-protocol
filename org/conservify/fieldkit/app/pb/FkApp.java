@@ -6669,10 +6669,10 @@ public final class FkApp {
         getNameBytes();
 
     /**
-     * <code>bytes generation = 7;</code>
-     * @return The generation.
+     * <code>bytes generationId = 7;</code>
+     * @return The generationId.
      */
-    com.google.protobuf.ByteString getGeneration();
+    com.google.protobuf.ByteString getGenerationId();
   }
   /**
    * Protobuf type {@code fk_app.Identity}
@@ -6690,7 +6690,7 @@ public final class FkApp {
       build_ = "";
       number_ = "";
       name_ = "";
-      generation_ = com.google.protobuf.ByteString.EMPTY;
+      generationId_ = com.google.protobuf.ByteString.EMPTY;
     }
     public static final int DEVICE_FIELD_NUMBER = 1;
     private java.lang.String device_;
@@ -7021,31 +7021,31 @@ public final class FkApp {
       
     }
 
-    public static final int GENERATION_FIELD_NUMBER = 7;
-    private com.google.protobuf.ByteString generation_;
+    public static final int GENERATIONID_FIELD_NUMBER = 7;
+    private com.google.protobuf.ByteString generationId_;
     /**
-     * <code>bytes generation = 7;</code>
-     * @return The generation.
+     * <code>bytes generationId = 7;</code>
+     * @return The generationId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getGeneration() {
-      return generation_;
+    public com.google.protobuf.ByteString getGenerationId() {
+      return generationId_;
     }
     /**
-     * <code>bytes generation = 7;</code>
-     * @param value The generation to set.
+     * <code>bytes generationId = 7;</code>
+     * @param value The generationId to set.
      */
-    private void setGeneration(com.google.protobuf.ByteString value) {
+    private void setGenerationId(com.google.protobuf.ByteString value) {
       value.getClass();
   
-      generation_ = value;
+      generationId_ = value;
     }
     /**
-     * <code>bytes generation = 7;</code>
+     * <code>bytes generationId = 7;</code>
      */
-    private void clearGeneration() {
+    private void clearGenerationId() {
       
-      generation_ = getDefaultInstance().getGeneration();
+      generationId_ = getDefaultInstance().getGenerationId();
     }
 
     public static org.conservify.fieldkit.app.pb.FkApp.Identity parseFrom(
@@ -7486,30 +7486,30 @@ public final class FkApp {
       }
 
       /**
-       * <code>bytes generation = 7;</code>
-       * @return The generation.
+       * <code>bytes generationId = 7;</code>
+       * @return The generationId.
        */
       @java.lang.Override
-      public com.google.protobuf.ByteString getGeneration() {
-        return instance.getGeneration();
+      public com.google.protobuf.ByteString getGenerationId() {
+        return instance.getGenerationId();
       }
       /**
-       * <code>bytes generation = 7;</code>
-       * @param value The generation to set.
+       * <code>bytes generationId = 7;</code>
+       * @param value The generationId to set.
        * @return This builder for chaining.
        */
-      public Builder setGeneration(com.google.protobuf.ByteString value) {
+      public Builder setGenerationId(com.google.protobuf.ByteString value) {
         copyOnWrite();
-        instance.setGeneration(value);
+        instance.setGenerationId(value);
         return this;
       }
       /**
-       * <code>bytes generation = 7;</code>
+       * <code>bytes generationId = 7;</code>
        * @return This builder for chaining.
        */
-      public Builder clearGeneration() {
+      public Builder clearGenerationId() {
         copyOnWrite();
-        instance.clearGeneration();
+        instance.clearGenerationId();
         return this;
       }
 
@@ -7535,7 +7535,7 @@ public final class FkApp {
               "firmware_",
               "build_",
               "name_",
-              "generation_",
+              "generationId_",
               "number_",
             };
             java.lang.String info =

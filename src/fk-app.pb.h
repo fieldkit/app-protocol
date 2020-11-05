@@ -101,7 +101,7 @@ typedef struct _fk_app_Identity {
     pb_callback_t firmware;
     pb_callback_t build;
     pb_callback_t name;
-    pb_callback_t generation;
+    pb_callback_t generationId;
     pb_callback_t number;
 } fk_app_Identity;
 
@@ -679,7 +679,7 @@ extern "C" {
 #define fk_app_Identity_firmware_tag             4
 #define fk_app_Identity_build_tag                5
 #define fk_app_Identity_name_tag                 6
-#define fk_app_Identity_generation_tag           7
+#define fk_app_Identity_generationId_tag         7
 #define fk_app_Identity_number_tag               8
 #define fk_app_ListDirectory_path_tag            1
 #define fk_app_LiveData_samples_tag              1
@@ -991,7 +991,7 @@ X(a, CALLBACK, SINGULAR, BYTES,    deviceId,          3) \
 X(a, CALLBACK, SINGULAR, STRING,   firmware,          4) \
 X(a, CALLBACK, SINGULAR, STRING,   build,             5) \
 X(a, CALLBACK, SINGULAR, STRING,   name,              6) \
-X(a, CALLBACK, SINGULAR, BYTES,    generation,        7) \
+X(a, CALLBACK, SINGULAR, BYTES,    generationId,      7) \
 X(a, CALLBACK, SINGULAR, STRING,   number,            8)
 #define fk_app_Identity_CALLBACK pb_default_field_callback
 #define fk_app_Identity_DEFAULT NULL

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='fk_app',
   syntax='proto3',
   serialized_options=b'\n\036org.conservify.fieldkit.app.pb',
-  serialized_pb=b'\n\x0c\x66k-app.proto\x12\x06\x66k_app\"8\n\x11QueryCapabilities\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x12\n\ncallerTime\x18\x02 \x01(\r\")\n\tLiveValue\x12\r\n\x05valid\x18\x01 \x01(\x08\x12\r\n\x05value\x18\x02 \x01(\x02\"\xab\x01\n\x12SensorCapabilities\x12\x0e\n\x06number\x18\x01 \x01(\r\x12\x0e\n\x06module\x18\x02 \x01(\r\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x11\n\tfrequency\x18\x04 \x01(\r\x12\x15\n\runitOfMeasure\x18\x05 \x01(\t\x12\x0c\n\x04path\x18\x06 \x01(\t\x12\r\n\x05\x66lags\x18\x07 \x01(\r\x12 \n\x05value\x18\x08 \x01(\x0b\x32\x11.fk_app.LiveValue\"C\n\x0cModuleHeader\x12\x14\n\x0cmanufacturer\x18\x01 \x01(\r\x12\x0c\n\x04kind\x18\x02 \x01(\r\x12\x0f\n\x07version\x18\x03 \x01(\r\"\xc0\x01\n\x12ModuleCapabilities\x12\x10\n\x08position\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12+\n\x07sensors\x18\x03 \x03(\x0b\x32\x1a.fk_app.SensorCapabilities\x12\x0c\n\x04path\x18\x04 \x01(\t\x12\r\n\x05\x66lags\x18\x05 \x01(\r\x12\n\n\x02id\x18\x06 \x01(\x0c\x12$\n\x06header\x18\x07 \x01(\x0b\x32\x14.fk_app.ModuleHeader\x12\x0e\n\x06status\x18\x08 \x01(\x0c\"\x99\x01\n\x0c\x43\x61pabilities\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x10\n\x08\x64\x65viceId\x18\x02 \x01(\x0c\x12\x0c\n\x04name\x18\x03 \x01(\t\x12+\n\x07modules\x18\x04 \x03(\x0b\x32\x1a.fk_app.ModuleCapabilities\x12+\n\x07sensors\x18\x05 \x03(\x0b\x32\x1a.fk_app.SensorCapabilities\"P\n\x0bNetworkInfo\x12\x0c\n\x04ssid\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0e\n\x06\x63reate\x18\x03 \x01(\x08\x12\x11\n\tpreferred\x18\x04 \x01(\x08\"\x8f\x01\n\x0fNetworkSettings\x12\x19\n\x11\x63reateAccessPoint\x18\x01 \x01(\x05\x12&\n\tconnected\x18\x03 \x01(\x0b\x32\x13.fk_app.NetworkInfo\x12\x12\n\nmacAddress\x18\x04 \x01(\t\x12%\n\x08networks\x18\x02 \x03(\x0b\x32\x13.fk_app.NetworkInfo\"[\n\x08\x46irmware\x12\x0f\n\x07version\x18\x01 \x01(\t\x12\r\n\x05\x62uild\x18\x02 \x01(\t\x12\x0e\n\x06number\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\x04\x12\x0c\n\x04hash\x18\x05 \x01(\t\"\x8f\x01\n\x08Identity\x12\x0e\n\x06\x64\x65vice\x18\x01 \x01(\t\x12\x0e\n\x06stream\x18\x02 \x01(\t\x12\x10\n\x08\x64\x65viceId\x18\x03 \x01(\x0c\x12\x10\n\x08\x66irmware\x18\x04 \x01(\t\x12\r\n\x05\x62uild\x18\x05 \x01(\t\x12\x0e\n\x06number\x18\x08 \x01(\t\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x12\n\ngeneration\x18\x07 \x01(\x0c\"5\n\x14\x43onfigureSensorQuery\x12\n\n\x02id\x18\x01 \x01(\r\x12\x11\n\tfrequency\x18\x02 \x01(\r\" \n\x0cLiveDataPoll\x12\x10\n\x08interval\x18\x01 \x01(\r\"=\n\x0eLiveDataSample\x12\x0e\n\x06sensor\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\r\n\x05value\x18\x03 \x01(\x02\"3\n\x08LiveData\x12\'\n\x07samples\x18\x01 \x03(\x0b\x32\x16.fk_app.LiveDataSample\"^\n\x04\x46ile\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x0c\n\x04size\x18\x03 \x01(\x04\x12\x0f\n\x07version\x18\x04 \x01(\r\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x0f\n\x07maximum\x18\x06 \x01(\x04\"$\n\x05\x46iles\x12\x1b\n\x05\x66iles\x18\x01 \x03(\x0b\x32\x0c.fk_app.File\"I\n\x0c\x44ownloadFile\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0e\n\x06offset\x18\x02 \x01(\r\x12\x0e\n\x06length\x18\x03 \x01(\r\x12\r\n\x05\x66lags\x18\x04 \x01(\r\"\x17\n\tEraseFile\x12\n\n\x02id\x18\x01 \x01(\r\"a\n\x08\x46ileData\x12\x0e\n\x06offset\x18\x01 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x12\x0c\n\x04size\x18\x03 \x01(\r\x12\x0c\n\x04hash\x18\x04 \x01(\r\x12\x0f\n\x07version\x18\x05 \x01(\r\x12\n\n\x02id\x18\x06 \x01(\r\"{\n\x0c\x44\x65viceStatus\x12\x0e\n\x06uptime\x18\x01 \x01(\r\x12\x19\n\x11\x62\x61tteryPercentage\x18\x02 \x01(\x02\x12\x16\n\x0e\x62\x61tteryVoltage\x18\x03 \x01(\x02\x12\x11\n\tgpsHasFix\x18\x04 \x01(\r\x12\x15\n\rgpsSatellites\x18\x05 \x01(\r\";\n\x0bQueryModule\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x0f\n\x07message\x18\x03 \x01(\x0c\";\n\x0bModuleReply\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"\x99\x03\n\x10WireMessageQuery\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.QueryType\x12\x34\n\x11queryCapabilities\x18\x02 \x01(\x0b\x32\x19.fk_app.QueryCapabilities\x12\x35\n\x0f\x63onfigureSensor\x18\x03 \x01(\x0b\x32\x1c.fk_app.ConfigureSensorQuery\x12*\n\x0cliveDataPoll\x18\x08 \x01(\x0b\x32\x14.fk_app.LiveDataPoll\x12*\n\x0c\x64ownloadFile\x18\n \x01(\x0b\x32\x14.fk_app.DownloadFile\x12$\n\teraseFile\x18\x0b \x01(\x0b\x32\x11.fk_app.EraseFile\x12\x30\n\x0fnetworkSettings\x18\x0c \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12\"\n\x08identity\x18\r \x01(\x0b\x32\x10.fk_app.Identity\x12#\n\x06module\x18\x0e \x01(\x0b\x32\x13.fk_app.QueryModule\"\'\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x64\x65lay\x18\x02 \x01(\r\"\x85\x03\n\x10WireMessageReply\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.ReplyType\x12\x1d\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\r.fk_app.Error\x12*\n\x0c\x63\x61pabilities\x18\x03 \x01(\x0b\x32\x14.fk_app.Capabilities\x12\"\n\x08liveData\x18\x06 \x01(\x0b\x32\x10.fk_app.LiveData\x12\x1c\n\x05\x66iles\x18\x08 \x01(\x0b\x32\r.fk_app.Files\x12\"\n\x08\x66ileData\x18\t \x01(\x0b\x32\x10.fk_app.FileData\x12\x30\n\x0fnetworkSettings\x18\n \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12\"\n\x08identity\x18\x0b \x01(\x0b\x32\x10.fk_app.Identity\x12$\n\x06status\x18\x0c \x01(\x0b\x32\x14.fk_app.DeviceStatus\x12#\n\x06module\x18\r \x01(\x0b\x32\x13.fk_app.ModuleReply\"8\n\x08Interval\x12\r\n\x05start\x18\x01 \x01(\x04\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x04\x12\x10\n\x08interval\x18\x03 \x01(\r\"\x83\x01\n\x08Schedule\x12\x0c\n\x04\x63ron\x18\x01 \x01(\x0c\x12\x10\n\x08interval\x18\x02 \x01(\r\x12\x10\n\x08repeated\x18\x03 \x01(\r\x12\x10\n\x08\x64uration\x18\x04 \x01(\r\x12\x0e\n\x06jitter\x18\x05 \x01(\r\x12#\n\tintervals\x18\x06 \x03(\x0b\x32\x10.fk_app.Interval\"\xa4\x01\n\tSchedules\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\"\n\x08readings\x18\x02 \x01(\x0b\x32\x10.fk_app.Schedule\x12\x1e\n\x04lora\x18\x03 \x01(\x0b\x32\x10.fk_app.Schedule\x12!\n\x07network\x18\x04 \x01(\x0b\x32\x10.fk_app.Schedule\x12\x1d\n\x03gps\x18\x05 \x01(\x0b\x32\x10.fk_app.Schedule\"\x10\n\x0eHardwareStatus\"\x82\x01\n\tGpsStatus\x12\x0f\n\x07\x65nabled\x18\x07 \x01(\r\x12\x0b\n\x03\x66ix\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x12\n\nsatellites\x18\x03 \x01(\r\x12\x11\n\tlongitude\x18\x04 \x01(\x02\x12\x10\n\x08latitude\x18\x05 \x01(\x02\x12\x10\n\x08\x61ltitude\x18\x06 \x01(\x02\"\xb9\x01\n\x0cMemoryStatus\x12\x15\n\rsramAvailable\x18\x01 \x01(\r\x12\x1d\n\x15programFlashAvailable\x18\x02 \x01(\r\x12\x1f\n\x17\x65xtendedMemoryAvailable\x18\x03 \x01(\r\x12\x1b\n\x13\x64\x61taMemoryInstalled\x18\x04 \x01(\r\x12\x16\n\x0e\x64\x61taMemoryUsed\x18\x05 \x01(\r\x12\x1d\n\x15\x64\x61taMemoryConsumption\x18\x06 \x01(\x02\"4\n\rBatteryStatus\x12\x0f\n\x07voltage\x18\x01 \x01(\r\x12\x12\n\npercentage\x18\x02 \x01(\r\"\x1e\n\x0bSolarStatus\x12\x0f\n\x07voltage\x18\x01 \x01(\r\"Y\n\x0bPowerStatus\x12&\n\x07\x62\x61ttery\x18\x01 \x01(\x0b\x32\x15.fk_app.BatteryStatus\x12\"\n\x05solar\x18\x02 \x01(\x0b\x32\x13.fk_app.SolarStatus\"\x97\x03\n\x06Status\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0e\n\x06uptime\x18\x02 \x01(\r\x12\"\n\x08identity\x18\x03 \x01(\x0b\x32\x10.fk_app.Identity\x12(\n\x08hardware\x18\x04 \x01(\x0b\x32\x16.fk_app.HardwareStatus\x12\"\n\x05power\x18\x05 \x01(\x0b\x32\x13.fk_app.PowerStatus\x12$\n\x06memory\x18\x06 \x01(\x0b\x32\x14.fk_app.MemoryStatus\x12\x1e\n\x03gps\x18\x07 \x01(\x0b\x32\x11.fk_app.GpsStatus\x12$\n\tschedules\x18\x08 \x01(\x0b\x32\x11.fk_app.Schedules\x12$\n\trecording\x18\t \x01(\x0b\x32\x11.fk_app.Recording\x12(\n\x07network\x18\n \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12\x0c\n\x04time\x18\x0b \x01(\x04\x12\"\n\x08\x66irmware\x18\x0c \x01(\x0b\x32\x10.fk_app.Firmware\x12\x0c\n\x04logs\x18\r \x01(\t\"#\n\x05Range\x12\r\n\x05start\x18\x01 \x01(\r\x12\x0b\n\x03\x65nd\x18\x02 \x01(\r\"N\n\rDownloadQuery\x12\x0e\n\x06stream\x18\x01 \x01(\r\x12\x1d\n\x06ranges\x18\x03 \x03(\x0b\x32\r.fk_app.Range\x12\x0e\n\x06\x62locks\x18\x04 \x03(\r\"h\n\tRecording\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12\x13\n\x0bstartedTime\x18\x03 \x01(\x04\x12\"\n\x08location\x18\x04 \x01(\x0b\x32\x10.fk_app.Location\"\xf7\x01\n\x0cLoraSettings\x12\x11\n\tavailable\x18\x01 \x01(\x08\x12\x11\n\tmodifying\x18\x02 \x01(\x08\x12\x11\n\tdeviceEui\x18\x03 \x01(\x0c\x12\x0e\n\x06\x61ppKey\x18\x04 \x01(\x0c\x12\x0e\n\x06\x61ppEui\x18\x05 \x01(\x0c\x12\x15\n\rfrequencyBand\x18\x06 \x01(\r\x12\x15\n\rdeviceAddress\x18\x07 \x01(\x0c\x12\x19\n\x11networkSessionKey\x18\x08 \x01(\x0c\x12\x15\n\rappSessionKey\x18\t \x01(\x0c\x12\x15\n\ruplinkCounter\x18\n \x01(\r\x12\x17\n\x0f\x64ownlinkCounter\x18\x0b \x01(\r\"P\n\x08Location\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\x11\n\tlongitude\x18\x02 \x01(\x02\x12\x10\n\x08latitude\x18\x03 \x01(\x02\x12\x0c\n\x04time\x18\x04 \x01(\x04\"R\n\x10WifiTransmission\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\r\n\x05token\x18\x03 \x01(\t\x12\x0f\n\x07\x65nabled\x18\x04 \x01(\x08\"6\n\x0cTransmission\x12&\n\x04wifi\x18\x01 \x01(\x0b\x32\x18.fk_app.WifiTransmission\"\x1d\n\rListDirectory\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x8f\x03\n\tHttpQuery\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.QueryType\x12\"\n\x08identity\x18\x02 \x01(\x0b\x32\x10.fk_app.Identity\x12$\n\trecording\x18\x03 \x01(\x0b\x32\x11.fk_app.Recording\x12$\n\tschedules\x18\x04 \x01(\x0b\x32\x11.fk_app.Schedules\x12\x30\n\x0fnetworkSettings\x18\x06 \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12*\n\x0cloraSettings\x18\x07 \x01(\x0b\x32\x14.fk_app.LoraSettings\x12 \n\x06locate\x18\t \x01(\x0b\x32\x10.fk_app.Location\x12*\n\x0ctransmission\x18\n \x01(\x0b\x32\x14.fk_app.Transmission\x12(\n\tdirectory\x18\x0b \x01(\x0b\x32\x15.fk_app.ListDirectory\x12\r\n\x05\x66lags\x18\x05 \x01(\r\x12\x0c\n\x04time\x18\x08 \x01(\x04\"~\n\nDataStream\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x0c\n\x04size\x18\x03 \x01(\x04\x12\x0f\n\x07version\x18\x04 \x01(\r\x12\r\n\x05\x62lock\x18\x05 \x01(\x04\x12\x0c\n\x04hash\x18\x06 \x01(\x0c\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x0c\n\x04path\x18\x08 \x01(\t\"N\n\x11LiveSensorReading\x12*\n\x06sensor\x18\x01 \x01(\x0b\x32\x1a.fk_app.SensorCapabilities\x12\r\n\x05value\x18\x02 \x01(\x02\"m\n\x12LiveModuleReadings\x12*\n\x06module\x18\x01 \x01(\x0b\x32\x1a.fk_app.ModuleCapabilities\x12+\n\x08readings\x18\x02 \x03(\x0b\x32\x19.fk_app.LiveSensorReading\"I\n\x0cLiveReadings\x12\x0c\n\x04time\x18\x01 \x01(\x04\x12+\n\x07modules\x18\x02 \x03(\x0b\x32\x1a.fk_app.LiveModuleReadings\"M\n\x0e\x44irectoryEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\r\x12\x11\n\tdirectory\x18\x04 \x01(\x08\";\n\x10\x44irectoryListing\x12\'\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\x16.fk_app.DirectoryEntry\"\x1d\n\rNearbyNetwork\x12\x0c\n\x04ssid\x18\x01 \x01(\t\"9\n\x0eNearbyNetworks\x12\'\n\x08networks\x18\x01 \x03(\x0b\x32\x15.fk_app.NearbyNetwork\"\xf4\x03\n\tHttpReply\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.ReplyType\x12\x1d\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\r.fk_app.Error\x12\x1e\n\x06status\x18\x03 \x01(\x0b\x32\x0e.fk_app.Status\x12\x30\n\x0fnetworkSettings\x18\x04 \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12*\n\x0cloraSettings\x18\x08 \x01(\x0b\x32\x14.fk_app.LoraSettings\x12+\n\x07modules\x18\x05 \x03(\x0b\x32\x1a.fk_app.ModuleCapabilities\x12#\n\x07streams\x18\x06 \x03(\x0b\x32\x12.fk_app.DataStream\x12*\n\x0cliveReadings\x18\x07 \x03(\x0b\x32\x14.fk_app.LiveReadings\x12$\n\tschedules\x18\t \x01(\x0b\x32\x11.fk_app.Schedules\x12*\n\x0ctransmission\x18\n \x01(\x0b\x32\x14.fk_app.Transmission\x12)\n\x07listing\x18\x0b \x01(\x0b\x32\x18.fk_app.DirectoryListing\x12.\n\x0enearbyNetworks\x18\x0c \x01(\x0b\x32\x16.fk_app.NearbyNetworks\"A\n\nUdpMessage\x12\x10\n\x08\x64\x65viceId\x18\x01 \x01(\x0c\x12!\n\x06status\x18\x02 \x01(\x0e\x32\x11.fk_app.UdpStatus*8\n\nQueryFlags\x12\x14\n\x10QUERY_FLAGS_NONE\x10\x00\x12\x14\n\x10QUERY_FLAGS_LOGS\x10\x01*\xab\x04\n\tQueryType\x12\x0e\n\nQUERY_NONE\x10\x00\x12\x16\n\x12QUERY_CAPABILITIES\x10\x01\x12\x1a\n\x16QUERY_CONFIGURE_SENSOR\x10\x02\x12\x18\n\x14QUERY_LIVE_DATA_POLL\x10\x07\x12\x13\n\x0fQUERY_SCHEDULES\x10\x08\x12\x1c\n\x18QUERY_CONFIGUE_SCHEDULES\x10\t\x12\x0f\n\x0bQUERY_FILES\x10\n\x12\x17\n\x13QUERY_DOWNLOAD_FILE\x10\x0b\x12\x14\n\x10QUERY_ERASE_FILE\x10\x0c\x12\x0f\n\x0bQUERY_RESET\x10\r\x12\x1a\n\x16QUERY_NETWORK_SETTINGS\x10\x0e\x12$\n QUERY_CONFIGURE_NETWORK_SETTINGS\x10\x0f\x12\x16\n\x12QUERY_SCAN_MODULES\x10\x10\x12\x1c\n\x18QUERY_CONFIGURE_IDENTITY\x10\x11\x12\x10\n\x0cQUERY_STATUS\x10\x12\x12\x10\n\x0cQUERY_MODULE\x10\x13\x12\x12\n\x0eQUERY_METADATA\x10\x14\x12\x10\n\x0cQUERY_FORMAT\x10\x15\x12\x16\n\x12QUERY_GET_READINGS\x10\x16\x12\x17\n\x13QUERY_TAKE_READINGS\x10\x17\x12\x1b\n\x17QUERY_RECORDING_CONTROL\x10\x18\x12\x13\n\x0fQUERY_CONFIGURE\x10\x19\x12\x17\n\x13QUERY_SCAN_NETWORKS\x10\x1a*\xe1\x02\n\tReplyType\x12\x0e\n\nREPLY_NONE\x10\x00\x12\x11\n\rREPLY_SUCCESS\x10\x01\x12\x0e\n\nREPLY_BUSY\x10\x02\x12\x0f\n\x0bREPLY_ERROR\x10\x03\x12\x16\n\x12REPLY_CAPABILITIES\x10\x04\x12\x18\n\x14REPLY_LIVE_DATA_POLL\x10\x08\x12\x13\n\x0fREPLY_SCHEDULES\x10\t\x12\x0f\n\x0bREPLY_FILES\x10\n\x12\x17\n\x13REPLY_DOWNLOAD_FILE\x10\x0b\x12\x0f\n\x0bREPLY_RESET\x10\x0c\x12\x1a\n\x16REPLY_NETWORK_SETTINGS\x10\r\x12\x12\n\x0eREPLY_IDENTITY\x10\x0e\x12\x10\n\x0cREPLY_STATUS\x10\x0f\x12\x10\n\x0cREPLY_MODULE\x10\x10\x12\x12\n\x0eREPLY_METADATA\x10\x11\x12\x12\n\x0eREPLY_READINGS\x10\x12\x12\x12\n\x0eREPLY_NETWORKS\x10\x13*l\n\rDownloadFlags\x12\x16\n\x12\x44OWNLOAD_FLAG_NONE\x10\x00\x12\"\n\x1e\x44OWNLOAD_FLAG_METADATA_PREPEND\x10\x01\x12\x1f\n\x1b\x44OWNLOAD_FLAG_METADATA_ONLY\x10\x02*=\n\x0bModuleFlags\x12\x14\n\x10MODULE_FLAG_NONE\x10\x00\x12\x18\n\x14MODULE_FLAG_INTERNAL\x10\x01*#\n\x0bSensorFlags\x12\x14\n\x10SENSOR_FLAG_NONE\x10\x00*6\n\tUdpStatus\x12\x15\n\x11UDP_STATUS_ONLINE\x10\x00\x12\x12\n\x0eUDP_STATUS_BYE\x10\x01\x42 \n\x1eorg.conservify.fieldkit.app.pbb\x06proto3'
+  serialized_pb=b'\n\x0c\x66k-app.proto\x12\x06\x66k_app\"8\n\x11QueryCapabilities\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x12\n\ncallerTime\x18\x02 \x01(\r\")\n\tLiveValue\x12\r\n\x05valid\x18\x01 \x01(\x08\x12\r\n\x05value\x18\x02 \x01(\x02\"\xab\x01\n\x12SensorCapabilities\x12\x0e\n\x06number\x18\x01 \x01(\r\x12\x0e\n\x06module\x18\x02 \x01(\r\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x11\n\tfrequency\x18\x04 \x01(\r\x12\x15\n\runitOfMeasure\x18\x05 \x01(\t\x12\x0c\n\x04path\x18\x06 \x01(\t\x12\r\n\x05\x66lags\x18\x07 \x01(\r\x12 \n\x05value\x18\x08 \x01(\x0b\x32\x11.fk_app.LiveValue\"C\n\x0cModuleHeader\x12\x14\n\x0cmanufacturer\x18\x01 \x01(\r\x12\x0c\n\x04kind\x18\x02 \x01(\r\x12\x0f\n\x07version\x18\x03 \x01(\r\"\xc0\x01\n\x12ModuleCapabilities\x12\x10\n\x08position\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12+\n\x07sensors\x18\x03 \x03(\x0b\x32\x1a.fk_app.SensorCapabilities\x12\x0c\n\x04path\x18\x04 \x01(\t\x12\r\n\x05\x66lags\x18\x05 \x01(\r\x12\n\n\x02id\x18\x06 \x01(\x0c\x12$\n\x06header\x18\x07 \x01(\x0b\x32\x14.fk_app.ModuleHeader\x12\x0e\n\x06status\x18\x08 \x01(\x0c\"\x99\x01\n\x0c\x43\x61pabilities\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x10\n\x08\x64\x65viceId\x18\x02 \x01(\x0c\x12\x0c\n\x04name\x18\x03 \x01(\t\x12+\n\x07modules\x18\x04 \x03(\x0b\x32\x1a.fk_app.ModuleCapabilities\x12+\n\x07sensors\x18\x05 \x03(\x0b\x32\x1a.fk_app.SensorCapabilities\"P\n\x0bNetworkInfo\x12\x0c\n\x04ssid\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0e\n\x06\x63reate\x18\x03 \x01(\x08\x12\x11\n\tpreferred\x18\x04 \x01(\x08\"\x8f\x01\n\x0fNetworkSettings\x12\x19\n\x11\x63reateAccessPoint\x18\x01 \x01(\x05\x12&\n\tconnected\x18\x03 \x01(\x0b\x32\x13.fk_app.NetworkInfo\x12\x12\n\nmacAddress\x18\x04 \x01(\t\x12%\n\x08networks\x18\x02 \x03(\x0b\x32\x13.fk_app.NetworkInfo\"[\n\x08\x46irmware\x12\x0f\n\x07version\x18\x01 \x01(\t\x12\r\n\x05\x62uild\x18\x02 \x01(\t\x12\x0e\n\x06number\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\x04\x12\x0c\n\x04hash\x18\x05 \x01(\t\"\x91\x01\n\x08Identity\x12\x0e\n\x06\x64\x65vice\x18\x01 \x01(\t\x12\x0e\n\x06stream\x18\x02 \x01(\t\x12\x10\n\x08\x64\x65viceId\x18\x03 \x01(\x0c\x12\x10\n\x08\x66irmware\x18\x04 \x01(\t\x12\r\n\x05\x62uild\x18\x05 \x01(\t\x12\x0e\n\x06number\x18\x08 \x01(\t\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x14\n\x0cgenerationId\x18\x07 \x01(\x0c\"5\n\x14\x43onfigureSensorQuery\x12\n\n\x02id\x18\x01 \x01(\r\x12\x11\n\tfrequency\x18\x02 \x01(\r\" \n\x0cLiveDataPoll\x12\x10\n\x08interval\x18\x01 \x01(\r\"=\n\x0eLiveDataSample\x12\x0e\n\x06sensor\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\r\n\x05value\x18\x03 \x01(\x02\"3\n\x08LiveData\x12\'\n\x07samples\x18\x01 \x03(\x0b\x32\x16.fk_app.LiveDataSample\"^\n\x04\x46ile\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x0c\n\x04size\x18\x03 \x01(\x04\x12\x0f\n\x07version\x18\x04 \x01(\r\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x0f\n\x07maximum\x18\x06 \x01(\x04\"$\n\x05\x46iles\x12\x1b\n\x05\x66iles\x18\x01 \x03(\x0b\x32\x0c.fk_app.File\"I\n\x0c\x44ownloadFile\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0e\n\x06offset\x18\x02 \x01(\r\x12\x0e\n\x06length\x18\x03 \x01(\r\x12\r\n\x05\x66lags\x18\x04 \x01(\r\"\x17\n\tEraseFile\x12\n\n\x02id\x18\x01 \x01(\r\"a\n\x08\x46ileData\x12\x0e\n\x06offset\x18\x01 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\x12\x0c\n\x04size\x18\x03 \x01(\r\x12\x0c\n\x04hash\x18\x04 \x01(\r\x12\x0f\n\x07version\x18\x05 \x01(\r\x12\n\n\x02id\x18\x06 \x01(\r\"{\n\x0c\x44\x65viceStatus\x12\x0e\n\x06uptime\x18\x01 \x01(\r\x12\x19\n\x11\x62\x61tteryPercentage\x18\x02 \x01(\x02\x12\x16\n\x0e\x62\x61tteryVoltage\x18\x03 \x01(\x02\x12\x11\n\tgpsHasFix\x18\x04 \x01(\r\x12\x15\n\rgpsSatellites\x18\x05 \x01(\r\";\n\x0bQueryModule\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x0f\n\x07message\x18\x03 \x01(\x0c\";\n\x0bModuleReply\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\r\x12\x0f\n\x07message\x18\x03 \x01(\x0c\"\x99\x03\n\x10WireMessageQuery\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.QueryType\x12\x34\n\x11queryCapabilities\x18\x02 \x01(\x0b\x32\x19.fk_app.QueryCapabilities\x12\x35\n\x0f\x63onfigureSensor\x18\x03 \x01(\x0b\x32\x1c.fk_app.ConfigureSensorQuery\x12*\n\x0cliveDataPoll\x18\x08 \x01(\x0b\x32\x14.fk_app.LiveDataPoll\x12*\n\x0c\x64ownloadFile\x18\n \x01(\x0b\x32\x14.fk_app.DownloadFile\x12$\n\teraseFile\x18\x0b \x01(\x0b\x32\x11.fk_app.EraseFile\x12\x30\n\x0fnetworkSettings\x18\x0c \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12\"\n\x08identity\x18\r \x01(\x0b\x32\x10.fk_app.Identity\x12#\n\x06module\x18\x0e \x01(\x0b\x32\x13.fk_app.QueryModule\"\'\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x64\x65lay\x18\x02 \x01(\r\"\x85\x03\n\x10WireMessageReply\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.ReplyType\x12\x1d\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\r.fk_app.Error\x12*\n\x0c\x63\x61pabilities\x18\x03 \x01(\x0b\x32\x14.fk_app.Capabilities\x12\"\n\x08liveData\x18\x06 \x01(\x0b\x32\x10.fk_app.LiveData\x12\x1c\n\x05\x66iles\x18\x08 \x01(\x0b\x32\r.fk_app.Files\x12\"\n\x08\x66ileData\x18\t \x01(\x0b\x32\x10.fk_app.FileData\x12\x30\n\x0fnetworkSettings\x18\n \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12\"\n\x08identity\x18\x0b \x01(\x0b\x32\x10.fk_app.Identity\x12$\n\x06status\x18\x0c \x01(\x0b\x32\x14.fk_app.DeviceStatus\x12#\n\x06module\x18\r \x01(\x0b\x32\x13.fk_app.ModuleReply\"8\n\x08Interval\x12\r\n\x05start\x18\x01 \x01(\x04\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x04\x12\x10\n\x08interval\x18\x03 \x01(\r\"\x83\x01\n\x08Schedule\x12\x0c\n\x04\x63ron\x18\x01 \x01(\x0c\x12\x10\n\x08interval\x18\x02 \x01(\r\x12\x10\n\x08repeated\x18\x03 \x01(\r\x12\x10\n\x08\x64uration\x18\x04 \x01(\r\x12\x0e\n\x06jitter\x18\x05 \x01(\r\x12#\n\tintervals\x18\x06 \x03(\x0b\x32\x10.fk_app.Interval\"\xa4\x01\n\tSchedules\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\"\n\x08readings\x18\x02 \x01(\x0b\x32\x10.fk_app.Schedule\x12\x1e\n\x04lora\x18\x03 \x01(\x0b\x32\x10.fk_app.Schedule\x12!\n\x07network\x18\x04 \x01(\x0b\x32\x10.fk_app.Schedule\x12\x1d\n\x03gps\x18\x05 \x01(\x0b\x32\x10.fk_app.Schedule\"\x10\n\x0eHardwareStatus\"\x82\x01\n\tGpsStatus\x12\x0f\n\x07\x65nabled\x18\x07 \x01(\r\x12\x0b\n\x03\x66ix\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x12\n\nsatellites\x18\x03 \x01(\r\x12\x11\n\tlongitude\x18\x04 \x01(\x02\x12\x10\n\x08latitude\x18\x05 \x01(\x02\x12\x10\n\x08\x61ltitude\x18\x06 \x01(\x02\"\xb9\x01\n\x0cMemoryStatus\x12\x15\n\rsramAvailable\x18\x01 \x01(\r\x12\x1d\n\x15programFlashAvailable\x18\x02 \x01(\r\x12\x1f\n\x17\x65xtendedMemoryAvailable\x18\x03 \x01(\r\x12\x1b\n\x13\x64\x61taMemoryInstalled\x18\x04 \x01(\r\x12\x16\n\x0e\x64\x61taMemoryUsed\x18\x05 \x01(\r\x12\x1d\n\x15\x64\x61taMemoryConsumption\x18\x06 \x01(\x02\"4\n\rBatteryStatus\x12\x0f\n\x07voltage\x18\x01 \x01(\r\x12\x12\n\npercentage\x18\x02 \x01(\r\"\x1e\n\x0bSolarStatus\x12\x0f\n\x07voltage\x18\x01 \x01(\r\"Y\n\x0bPowerStatus\x12&\n\x07\x62\x61ttery\x18\x01 \x01(\x0b\x32\x15.fk_app.BatteryStatus\x12\"\n\x05solar\x18\x02 \x01(\x0b\x32\x13.fk_app.SolarStatus\"\x97\x03\n\x06Status\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x0e\n\x06uptime\x18\x02 \x01(\r\x12\"\n\x08identity\x18\x03 \x01(\x0b\x32\x10.fk_app.Identity\x12(\n\x08hardware\x18\x04 \x01(\x0b\x32\x16.fk_app.HardwareStatus\x12\"\n\x05power\x18\x05 \x01(\x0b\x32\x13.fk_app.PowerStatus\x12$\n\x06memory\x18\x06 \x01(\x0b\x32\x14.fk_app.MemoryStatus\x12\x1e\n\x03gps\x18\x07 \x01(\x0b\x32\x11.fk_app.GpsStatus\x12$\n\tschedules\x18\x08 \x01(\x0b\x32\x11.fk_app.Schedules\x12$\n\trecording\x18\t \x01(\x0b\x32\x11.fk_app.Recording\x12(\n\x07network\x18\n \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12\x0c\n\x04time\x18\x0b \x01(\x04\x12\"\n\x08\x66irmware\x18\x0c \x01(\x0b\x32\x10.fk_app.Firmware\x12\x0c\n\x04logs\x18\r \x01(\t\"#\n\x05Range\x12\r\n\x05start\x18\x01 \x01(\r\x12\x0b\n\x03\x65nd\x18\x02 \x01(\r\"N\n\rDownloadQuery\x12\x0e\n\x06stream\x18\x01 \x01(\r\x12\x1d\n\x06ranges\x18\x03 \x03(\x0b\x32\r.fk_app.Range\x12\x0e\n\x06\x62locks\x18\x04 \x03(\r\"h\n\tRecording\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\x0f\n\x07\x65nabled\x18\x02 \x01(\x08\x12\x13\n\x0bstartedTime\x18\x03 \x01(\x04\x12\"\n\x08location\x18\x04 \x01(\x0b\x32\x10.fk_app.Location\"\xf7\x01\n\x0cLoraSettings\x12\x11\n\tavailable\x18\x01 \x01(\x08\x12\x11\n\tmodifying\x18\x02 \x01(\x08\x12\x11\n\tdeviceEui\x18\x03 \x01(\x0c\x12\x0e\n\x06\x61ppKey\x18\x04 \x01(\x0c\x12\x0e\n\x06\x61ppEui\x18\x05 \x01(\x0c\x12\x15\n\rfrequencyBand\x18\x06 \x01(\r\x12\x15\n\rdeviceAddress\x18\x07 \x01(\x0c\x12\x19\n\x11networkSessionKey\x18\x08 \x01(\x0c\x12\x15\n\rappSessionKey\x18\t \x01(\x0c\x12\x15\n\ruplinkCounter\x18\n \x01(\r\x12\x17\n\x0f\x64ownlinkCounter\x18\x0b \x01(\r\"P\n\x08Location\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\x11\n\tlongitude\x18\x02 \x01(\x02\x12\x10\n\x08latitude\x18\x03 \x01(\x02\x12\x0c\n\x04time\x18\x04 \x01(\x04\"R\n\x10WifiTransmission\x12\x11\n\tmodifying\x18\x01 \x01(\x08\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\r\n\x05token\x18\x03 \x01(\t\x12\x0f\n\x07\x65nabled\x18\x04 \x01(\x08\"6\n\x0cTransmission\x12&\n\x04wifi\x18\x01 \x01(\x0b\x32\x18.fk_app.WifiTransmission\"\x1d\n\rListDirectory\x12\x0c\n\x04path\x18\x01 \x01(\t\"\x8f\x03\n\tHttpQuery\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.QueryType\x12\"\n\x08identity\x18\x02 \x01(\x0b\x32\x10.fk_app.Identity\x12$\n\trecording\x18\x03 \x01(\x0b\x32\x11.fk_app.Recording\x12$\n\tschedules\x18\x04 \x01(\x0b\x32\x11.fk_app.Schedules\x12\x30\n\x0fnetworkSettings\x18\x06 \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12*\n\x0cloraSettings\x18\x07 \x01(\x0b\x32\x14.fk_app.LoraSettings\x12 \n\x06locate\x18\t \x01(\x0b\x32\x10.fk_app.Location\x12*\n\x0ctransmission\x18\n \x01(\x0b\x32\x14.fk_app.Transmission\x12(\n\tdirectory\x18\x0b \x01(\x0b\x32\x15.fk_app.ListDirectory\x12\r\n\x05\x66lags\x18\x05 \x01(\r\x12\x0c\n\x04time\x18\x08 \x01(\x04\"~\n\nDataStream\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x0c\n\x04size\x18\x03 \x01(\x04\x12\x0f\n\x07version\x18\x04 \x01(\r\x12\r\n\x05\x62lock\x18\x05 \x01(\x04\x12\x0c\n\x04hash\x18\x06 \x01(\x0c\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x0c\n\x04path\x18\x08 \x01(\t\"N\n\x11LiveSensorReading\x12*\n\x06sensor\x18\x01 \x01(\x0b\x32\x1a.fk_app.SensorCapabilities\x12\r\n\x05value\x18\x02 \x01(\x02\"m\n\x12LiveModuleReadings\x12*\n\x06module\x18\x01 \x01(\x0b\x32\x1a.fk_app.ModuleCapabilities\x12+\n\x08readings\x18\x02 \x03(\x0b\x32\x19.fk_app.LiveSensorReading\"I\n\x0cLiveReadings\x12\x0c\n\x04time\x18\x01 \x01(\x04\x12+\n\x07modules\x18\x02 \x03(\x0b\x32\x1a.fk_app.LiveModuleReadings\"M\n\x0e\x44irectoryEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\r\x12\x11\n\tdirectory\x18\x04 \x01(\x08\";\n\x10\x44irectoryListing\x12\'\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\x16.fk_app.DirectoryEntry\"\x1d\n\rNearbyNetwork\x12\x0c\n\x04ssid\x18\x01 \x01(\t\"9\n\x0eNearbyNetworks\x12\'\n\x08networks\x18\x01 \x03(\x0b\x32\x15.fk_app.NearbyNetwork\"\xf4\x03\n\tHttpReply\x12\x1f\n\x04type\x18\x01 \x01(\x0e\x32\x11.fk_app.ReplyType\x12\x1d\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\r.fk_app.Error\x12\x1e\n\x06status\x18\x03 \x01(\x0b\x32\x0e.fk_app.Status\x12\x30\n\x0fnetworkSettings\x18\x04 \x01(\x0b\x32\x17.fk_app.NetworkSettings\x12*\n\x0cloraSettings\x18\x08 \x01(\x0b\x32\x14.fk_app.LoraSettings\x12+\n\x07modules\x18\x05 \x03(\x0b\x32\x1a.fk_app.ModuleCapabilities\x12#\n\x07streams\x18\x06 \x03(\x0b\x32\x12.fk_app.DataStream\x12*\n\x0cliveReadings\x18\x07 \x03(\x0b\x32\x14.fk_app.LiveReadings\x12$\n\tschedules\x18\t \x01(\x0b\x32\x11.fk_app.Schedules\x12*\n\x0ctransmission\x18\n \x01(\x0b\x32\x14.fk_app.Transmission\x12)\n\x07listing\x18\x0b \x01(\x0b\x32\x18.fk_app.DirectoryListing\x12.\n\x0enearbyNetworks\x18\x0c \x01(\x0b\x32\x16.fk_app.NearbyNetworks\"A\n\nUdpMessage\x12\x10\n\x08\x64\x65viceId\x18\x01 \x01(\x0c\x12!\n\x06status\x18\x02 \x01(\x0e\x32\x11.fk_app.UdpStatus*8\n\nQueryFlags\x12\x14\n\x10QUERY_FLAGS_NONE\x10\x00\x12\x14\n\x10QUERY_FLAGS_LOGS\x10\x01*\xab\x04\n\tQueryType\x12\x0e\n\nQUERY_NONE\x10\x00\x12\x16\n\x12QUERY_CAPABILITIES\x10\x01\x12\x1a\n\x16QUERY_CONFIGURE_SENSOR\x10\x02\x12\x18\n\x14QUERY_LIVE_DATA_POLL\x10\x07\x12\x13\n\x0fQUERY_SCHEDULES\x10\x08\x12\x1c\n\x18QUERY_CONFIGUE_SCHEDULES\x10\t\x12\x0f\n\x0bQUERY_FILES\x10\n\x12\x17\n\x13QUERY_DOWNLOAD_FILE\x10\x0b\x12\x14\n\x10QUERY_ERASE_FILE\x10\x0c\x12\x0f\n\x0bQUERY_RESET\x10\r\x12\x1a\n\x16QUERY_NETWORK_SETTINGS\x10\x0e\x12$\n QUERY_CONFIGURE_NETWORK_SETTINGS\x10\x0f\x12\x16\n\x12QUERY_SCAN_MODULES\x10\x10\x12\x1c\n\x18QUERY_CONFIGURE_IDENTITY\x10\x11\x12\x10\n\x0cQUERY_STATUS\x10\x12\x12\x10\n\x0cQUERY_MODULE\x10\x13\x12\x12\n\x0eQUERY_METADATA\x10\x14\x12\x10\n\x0cQUERY_FORMAT\x10\x15\x12\x16\n\x12QUERY_GET_READINGS\x10\x16\x12\x17\n\x13QUERY_TAKE_READINGS\x10\x17\x12\x1b\n\x17QUERY_RECORDING_CONTROL\x10\x18\x12\x13\n\x0fQUERY_CONFIGURE\x10\x19\x12\x17\n\x13QUERY_SCAN_NETWORKS\x10\x1a*\xe1\x02\n\tReplyType\x12\x0e\n\nREPLY_NONE\x10\x00\x12\x11\n\rREPLY_SUCCESS\x10\x01\x12\x0e\n\nREPLY_BUSY\x10\x02\x12\x0f\n\x0bREPLY_ERROR\x10\x03\x12\x16\n\x12REPLY_CAPABILITIES\x10\x04\x12\x18\n\x14REPLY_LIVE_DATA_POLL\x10\x08\x12\x13\n\x0fREPLY_SCHEDULES\x10\t\x12\x0f\n\x0bREPLY_FILES\x10\n\x12\x17\n\x13REPLY_DOWNLOAD_FILE\x10\x0b\x12\x0f\n\x0bREPLY_RESET\x10\x0c\x12\x1a\n\x16REPLY_NETWORK_SETTINGS\x10\r\x12\x12\n\x0eREPLY_IDENTITY\x10\x0e\x12\x10\n\x0cREPLY_STATUS\x10\x0f\x12\x10\n\x0cREPLY_MODULE\x10\x10\x12\x12\n\x0eREPLY_METADATA\x10\x11\x12\x12\n\x0eREPLY_READINGS\x10\x12\x12\x12\n\x0eREPLY_NETWORKS\x10\x13*l\n\rDownloadFlags\x12\x16\n\x12\x44OWNLOAD_FLAG_NONE\x10\x00\x12\"\n\x1e\x44OWNLOAD_FLAG_METADATA_PREPEND\x10\x01\x12\x1f\n\x1b\x44OWNLOAD_FLAG_METADATA_ONLY\x10\x02*=\n\x0bModuleFlags\x12\x14\n\x10MODULE_FLAG_NONE\x10\x00\x12\x18\n\x14MODULE_FLAG_INTERNAL\x10\x01*#\n\x0bSensorFlags\x12\x14\n\x10SENSOR_FLAG_NONE\x10\x00*6\n\tUdpStatus\x12\x15\n\x11UDP_STATUS_ONLINE\x10\x00\x12\x12\n\x0eUDP_STATUS_BYE\x10\x01\x42 \n\x1eorg.conservify.fieldkit.app.pbb\x06proto3'
 )
 
 _QUERYFLAGS = _descriptor.EnumDescriptor(
@@ -39,8 +39,8 @@ _QUERYFLAGS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6423,
-  serialized_end=6479,
+  serialized_start=6425,
+  serialized_end=6481,
 )
 _sym_db.RegisterEnumDescriptor(_QUERYFLAGS)
 
@@ -146,8 +146,8 @@ _QUERYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6482,
-  serialized_end=7037,
+  serialized_start=6484,
+  serialized_end=7039,
 )
 _sym_db.RegisterEnumDescriptor(_QUERYTYPE)
 
@@ -229,8 +229,8 @@ _REPLYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7040,
-  serialized_end=7393,
+  serialized_start=7042,
+  serialized_end=7395,
 )
 _sym_db.RegisterEnumDescriptor(_REPLYTYPE)
 
@@ -256,8 +256,8 @@ _DOWNLOADFLAGS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7395,
-  serialized_end=7503,
+  serialized_start=7397,
+  serialized_end=7505,
 )
 _sym_db.RegisterEnumDescriptor(_DOWNLOADFLAGS)
 
@@ -279,8 +279,8 @@ _MODULEFLAGS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7505,
-  serialized_end=7566,
+  serialized_start=7507,
+  serialized_end=7568,
 )
 _sym_db.RegisterEnumDescriptor(_MODULEFLAGS)
 
@@ -298,8 +298,8 @@ _SENSORFLAGS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7568,
-  serialized_end=7603,
+  serialized_start=7570,
+  serialized_end=7605,
 )
 _sym_db.RegisterEnumDescriptor(_SENSORFLAGS)
 
@@ -321,8 +321,8 @@ _UDPSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7605,
-  serialized_end=7659,
+  serialized_start=7607,
+  serialized_end=7661,
 )
 _sym_db.RegisterEnumDescriptor(_UDPSTATUS)
 
@@ -940,7 +940,7 @@ _IDENTITY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='generation', full_name='fk_app.Identity.generation', index=7,
+      name='generationId', full_name='fk_app.Identity.generationId', index=7,
       number=7, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
@@ -959,7 +959,7 @@ _IDENTITY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1041,
-  serialized_end=1184,
+  serialized_end=1186,
 )
 
 
@@ -996,8 +996,8 @@ _CONFIGURESENSORQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1186,
-  serialized_end=1239,
+  serialized_start=1188,
+  serialized_end=1241,
 )
 
 
@@ -1027,8 +1027,8 @@ _LIVEDATAPOLL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1241,
-  serialized_end=1273,
+  serialized_start=1243,
+  serialized_end=1275,
 )
 
 
@@ -1072,8 +1072,8 @@ _LIVEDATASAMPLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1275,
-  serialized_end=1336,
+  serialized_start=1277,
+  serialized_end=1338,
 )
 
 
@@ -1103,8 +1103,8 @@ _LIVEDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1338,
-  serialized_end=1389,
+  serialized_start=1340,
+  serialized_end=1391,
 )
 
 
@@ -1169,8 +1169,8 @@ _FILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1391,
-  serialized_end=1485,
+  serialized_start=1393,
+  serialized_end=1487,
 )
 
 
@@ -1200,8 +1200,8 @@ _FILES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1487,
-  serialized_end=1523,
+  serialized_start=1489,
+  serialized_end=1525,
 )
 
 
@@ -1252,8 +1252,8 @@ _DOWNLOADFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1525,
-  serialized_end=1598,
+  serialized_start=1527,
+  serialized_end=1600,
 )
 
 
@@ -1283,8 +1283,8 @@ _ERASEFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1600,
-  serialized_end=1623,
+  serialized_start=1602,
+  serialized_end=1625,
 )
 
 
@@ -1349,8 +1349,8 @@ _FILEDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1625,
-  serialized_end=1722,
+  serialized_start=1627,
+  serialized_end=1724,
 )
 
 
@@ -1408,8 +1408,8 @@ _DEVICESTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1724,
-  serialized_end=1847,
+  serialized_start=1726,
+  serialized_end=1849,
 )
 
 
@@ -1453,8 +1453,8 @@ _QUERYMODULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1849,
-  serialized_end=1908,
+  serialized_start=1851,
+  serialized_end=1910,
 )
 
 
@@ -1498,8 +1498,8 @@ _MODULEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1910,
-  serialized_end=1969,
+  serialized_start=1912,
+  serialized_end=1971,
 )
 
 
@@ -1585,8 +1585,8 @@ _WIREMESSAGEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1972,
-  serialized_end=2381,
+  serialized_start=1974,
+  serialized_end=2383,
 )
 
 
@@ -1623,8 +1623,8 @@ _ERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2383,
-  serialized_end=2422,
+  serialized_start=2385,
+  serialized_end=2424,
 )
 
 
@@ -1717,8 +1717,8 @@ _WIREMESSAGEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2425,
-  serialized_end=2814,
+  serialized_start=2427,
+  serialized_end=2816,
 )
 
 
@@ -1762,8 +1762,8 @@ _INTERVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2816,
-  serialized_end=2872,
+  serialized_start=2818,
+  serialized_end=2874,
 )
 
 
@@ -1828,8 +1828,8 @@ _SCHEDULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2875,
-  serialized_end=3006,
+  serialized_start=2877,
+  serialized_end=3008,
 )
 
 
@@ -1887,8 +1887,8 @@ _SCHEDULES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3009,
-  serialized_end=3173,
+  serialized_start=3011,
+  serialized_end=3175,
 )
 
 
@@ -1911,8 +1911,8 @@ _HARDWARESTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3175,
-  serialized_end=3191,
+  serialized_start=3177,
+  serialized_end=3193,
 )
 
 
@@ -1984,8 +1984,8 @@ _GPSSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3194,
-  serialized_end=3324,
+  serialized_start=3196,
+  serialized_end=3326,
 )
 
 
@@ -2050,8 +2050,8 @@ _MEMORYSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3327,
-  serialized_end=3512,
+  serialized_start=3329,
+  serialized_end=3514,
 )
 
 
@@ -2088,8 +2088,8 @@ _BATTERYSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3514,
-  serialized_end=3566,
+  serialized_start=3516,
+  serialized_end=3568,
 )
 
 
@@ -2119,8 +2119,8 @@ _SOLARSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3568,
-  serialized_end=3598,
+  serialized_start=3570,
+  serialized_end=3600,
 )
 
 
@@ -2157,8 +2157,8 @@ _POWERSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3600,
-  serialized_end=3689,
+  serialized_start=3602,
+  serialized_end=3691,
 )
 
 
@@ -2272,8 +2272,8 @@ _STATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3692,
-  serialized_end=4099,
+  serialized_start=3694,
+  serialized_end=4101,
 )
 
 
@@ -2310,8 +2310,8 @@ _RANGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4101,
-  serialized_end=4136,
+  serialized_start=4103,
+  serialized_end=4138,
 )
 
 
@@ -2355,8 +2355,8 @@ _DOWNLOADQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4138,
-  serialized_end=4216,
+  serialized_start=4140,
+  serialized_end=4218,
 )
 
 
@@ -2407,8 +2407,8 @@ _RECORDING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4218,
-  serialized_end=4322,
+  serialized_start=4220,
+  serialized_end=4324,
 )
 
 
@@ -2508,8 +2508,8 @@ _LORASETTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4325,
-  serialized_end=4572,
+  serialized_start=4327,
+  serialized_end=4574,
 )
 
 
@@ -2560,8 +2560,8 @@ _LOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4574,
-  serialized_end=4654,
+  serialized_start=4576,
+  serialized_end=4656,
 )
 
 
@@ -2612,8 +2612,8 @@ _WIFITRANSMISSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4656,
-  serialized_end=4738,
+  serialized_start=4658,
+  serialized_end=4740,
 )
 
 
@@ -2643,8 +2643,8 @@ _TRANSMISSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4740,
-  serialized_end=4794,
+  serialized_start=4742,
+  serialized_end=4796,
 )
 
 
@@ -2674,8 +2674,8 @@ _LISTDIRECTORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4796,
-  serialized_end=4825,
+  serialized_start=4798,
+  serialized_end=4827,
 )
 
 
@@ -2775,8 +2775,8 @@ _HTTPQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4828,
-  serialized_end=5227,
+  serialized_start=4830,
+  serialized_end=5229,
 )
 
 
@@ -2855,8 +2855,8 @@ _DATASTREAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5229,
-  serialized_end=5355,
+  serialized_start=5231,
+  serialized_end=5357,
 )
 
 
@@ -2893,8 +2893,8 @@ _LIVESENSORREADING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5357,
-  serialized_end=5435,
+  serialized_start=5359,
+  serialized_end=5437,
 )
 
 
@@ -2931,8 +2931,8 @@ _LIVEMODULEREADINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5437,
-  serialized_end=5546,
+  serialized_start=5439,
+  serialized_end=5548,
 )
 
 
@@ -2969,8 +2969,8 @@ _LIVEREADINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5548,
-  serialized_end=5621,
+  serialized_start=5550,
+  serialized_end=5623,
 )
 
 
@@ -3021,8 +3021,8 @@ _DIRECTORYENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5623,
-  serialized_end=5700,
+  serialized_start=5625,
+  serialized_end=5702,
 )
 
 
@@ -3052,8 +3052,8 @@ _DIRECTORYLISTING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5702,
-  serialized_end=5761,
+  serialized_start=5704,
+  serialized_end=5763,
 )
 
 
@@ -3083,8 +3083,8 @@ _NEARBYNETWORK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5763,
-  serialized_end=5792,
+  serialized_start=5765,
+  serialized_end=5794,
 )
 
 
@@ -3114,8 +3114,8 @@ _NEARBYNETWORKS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5794,
-  serialized_end=5851,
+  serialized_start=5796,
+  serialized_end=5853,
 )
 
 
@@ -3222,8 +3222,8 @@ _HTTPREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5854,
-  serialized_end=6354,
+  serialized_start=5856,
+  serialized_end=6356,
 )
 
 
@@ -3260,8 +3260,8 @@ _UDPMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6356,
-  serialized_end=6421,
+  serialized_start=6358,
+  serialized_end=6423,
 )
 
 _SENSORCAPABILITIES.fields_by_name['value'].message_type = _LIVEVALUE

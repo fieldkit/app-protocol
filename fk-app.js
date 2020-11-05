@@ -2701,7 +2701,7 @@
              * @property {string} [build] Identity build
              * @property {string} [number] Identity number
              * @property {string} [name] Identity name
-             * @property {Uint8Array} [generation] Identity generation
+             * @property {Uint8Array} [generationId] Identity generationId
              */
     
             /**
@@ -2775,12 +2775,12 @@
             Identity.prototype.name = "";
     
             /**
-             * Identity generation.
-             * @member {Uint8Array}generation
+             * Identity generationId.
+             * @member {Uint8Array}generationId
              * @memberof fk_app.Identity
              * @instance
              */
-            Identity.prototype.generation = $util.newBuffer([]);
+            Identity.prototype.generationId = $util.newBuffer([]);
     
             /**
              * Creates a new Identity instance using the specified properties.
@@ -2818,8 +2818,8 @@
                     writer.uint32(/* id 5, wireType 2 =*/42).string(message.build);
                 if (message.name != null && message.hasOwnProperty("name"))
                     writer.uint32(/* id 6, wireType 2 =*/50).string(message.name);
-                if (message.generation != null && message.hasOwnProperty("generation"))
-                    writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.generation);
+                if (message.generationId != null && message.hasOwnProperty("generationId"))
+                    writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.generationId);
                 if (message.number != null && message.hasOwnProperty("number"))
                     writer.uint32(/* id 8, wireType 2 =*/66).string(message.number);
                 return writer;
@@ -2878,7 +2878,7 @@
                         message.name = reader.string();
                         break;
                     case 7:
-                        message.generation = reader.bytes();
+                        message.generationId = reader.bytes();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -2936,9 +2936,9 @@
                 if (message.name != null && message.hasOwnProperty("name"))
                     if (!$util.isString(message.name))
                         return "name: string expected";
-                if (message.generation != null && message.hasOwnProperty("generation"))
-                    if (!(message.generation && typeof message.generation.length === "number" || $util.isString(message.generation)))
-                        return "generation: buffer expected";
+                if (message.generationId != null && message.hasOwnProperty("generationId"))
+                    if (!(message.generationId && typeof message.generationId.length === "number" || $util.isString(message.generationId)))
+                        return "generationId: buffer expected";
                 return null;
             };
     
@@ -2971,11 +2971,11 @@
                     message.number = String(object.number);
                 if (object.name != null)
                     message.name = String(object.name);
-                if (object.generation != null)
-                    if (typeof object.generation === "string")
-                        $util.base64.decode(object.generation, message.generation = $util.newBuffer($util.base64.length(object.generation)), 0);
-                    else if (object.generation.length)
-                        message.generation = object.generation;
+                if (object.generationId != null)
+                    if (typeof object.generationId === "string")
+                        $util.base64.decode(object.generationId, message.generationId = $util.newBuffer($util.base64.length(object.generationId)), 0);
+                    else if (object.generationId.length)
+                        message.generationId = object.generationId;
                 return message;
             };
     
@@ -2999,7 +2999,7 @@
                     object.firmware = "";
                     object.build = "";
                     object.name = "";
-                    object.generation = options.bytes === String ? "" : [];
+                    object.generationId = options.bytes === String ? "" : [];
                     object.number = "";
                 }
                 if (message.device != null && message.hasOwnProperty("device"))
@@ -3014,8 +3014,8 @@
                     object.build = message.build;
                 if (message.name != null && message.hasOwnProperty("name"))
                     object.name = message.name;
-                if (message.generation != null && message.hasOwnProperty("generation"))
-                    object.generation = options.bytes === String ? $util.base64.encode(message.generation, 0, message.generation.length) : options.bytes === Array ? Array.prototype.slice.call(message.generation) : message.generation;
+                if (message.generationId != null && message.hasOwnProperty("generationId"))
+                    object.generationId = options.bytes === String ? $util.base64.encode(message.generationId, 0, message.generationId.length) : options.bytes === Array ? Array.prototype.slice.call(message.generationId) : message.generationId;
                 if (message.number != null && message.hasOwnProperty("number"))
                     object.number = message.number;
                 return object;
