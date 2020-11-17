@@ -31183,6 +31183,12 @@ public final class FkApp {
      * @return The status.
      */
     org.conservify.fieldkit.app.pb.FkApp.UdpStatus getStatus();
+
+    /**
+     * <code>uint32 counter = 3;</code>
+     * @return The counter.
+     */
+    int getCounter();
   }
   /**
    * Protobuf type {@code fk_app.UdpMessage}
@@ -31262,6 +31268,32 @@ public final class FkApp {
     private void clearStatus() {
       
       status_ = 0;
+    }
+
+    public static final int COUNTER_FIELD_NUMBER = 3;
+    private int counter_;
+    /**
+     * <code>uint32 counter = 3;</code>
+     * @return The counter.
+     */
+    @java.lang.Override
+    public int getCounter() {
+      return counter_;
+    }
+    /**
+     * <code>uint32 counter = 3;</code>
+     * @param value The counter to set.
+     */
+    private void setCounter(int value) {
+      
+      counter_ = value;
+    }
+    /**
+     * <code>uint32 counter = 3;</code>
+     */
+    private void clearCounter() {
+      
+      counter_ = 0;
     }
 
     public static org.conservify.fieldkit.app.pb.FkApp.UdpMessage parseFrom(
@@ -31433,6 +31465,34 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>uint32 counter = 3;</code>
+       * @return The counter.
+       */
+      @java.lang.Override
+      public int getCounter() {
+        return instance.getCounter();
+      }
+      /**
+       * <code>uint32 counter = 3;</code>
+       * @param value The counter to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCounter(int value) {
+        copyOnWrite();
+        instance.setCounter(value);
+        return this;
+      }
+      /**
+       * <code>uint32 counter = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCounter() {
+        copyOnWrite();
+        instance.clearCounter();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.UdpMessage)
     }
     @java.lang.Override
@@ -31451,9 +31511,11 @@ public final class FkApp {
             java.lang.Object[] objects = new java.lang.Object[] {
               "deviceId_",
               "status_",
+              "counter_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\n\u0002\f";
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\n\u0002\f\u0003" +
+                "\u000b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

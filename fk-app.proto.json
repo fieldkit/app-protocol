@@ -1221,6 +1221,10 @@
             "status": {
               "type": "UdpStatus",
               "id": 2
+            },
+            "counter": {
+              "type": "uint32",
+              "id": 3
             }
           }
         }

@@ -15214,6 +15214,7 @@
              * @interface IUdpMessage
              * @property {Uint8Array} [deviceId] UdpMessage deviceId
              * @property {fk_app.UdpStatus} [status] UdpMessage status
+             * @property {number} [counter] UdpMessage counter
              */
     
             /**
@@ -15247,6 +15248,14 @@
             UdpMessage.prototype.status = 0;
     
             /**
+             * UdpMessage counter.
+             * @member {number}counter
+             * @memberof fk_app.UdpMessage
+             * @instance
+             */
+            UdpMessage.prototype.counter = 0;
+    
+            /**
              * Creates a new UdpMessage instance using the specified properties.
              * @function create
              * @memberof fk_app.UdpMessage
@@ -15274,6 +15283,8 @@
                     writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.deviceId);
                 if (message.status != null && message.hasOwnProperty("status"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.status);
+                if (message.counter != null && message.hasOwnProperty("counter"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.counter);
                 return writer;
             };
     
@@ -15313,6 +15324,9 @@
                         break;
                     case 2:
                         message.status = reader.int32();
+                        break;
+                    case 3:
+                        message.counter = reader.uint32();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -15360,6 +15374,9 @@
                     case 1:
                         break;
                     }
+                if (message.counter != null && message.hasOwnProperty("counter"))
+                    if (!$util.isInteger(message.counter))
+                        return "counter: integer expected";
                 return null;
             };
     
@@ -15390,6 +15407,8 @@
                     message.status = 1;
                     break;
                 }
+                if (object.counter != null)
+                    message.counter = object.counter >>> 0;
                 return message;
             };
     
@@ -15409,11 +15428,14 @@
                 if (options.defaults) {
                     object.deviceId = options.bytes === String ? "" : [];
                     object.status = options.enums === String ? "UDP_STATUS_ONLINE" : 0;
+                    object.counter = 0;
                 }
                 if (message.deviceId != null && message.hasOwnProperty("deviceId"))
                     object.deviceId = options.bytes === String ? $util.base64.encode(message.deviceId, 0, message.deviceId.length) : options.bytes === Array ? Array.prototype.slice.call(message.deviceId) : message.deviceId;
                 if (message.status != null && message.hasOwnProperty("status"))
                     object.status = options.enums === String ? $root.fk_app.UdpStatus[message.status] : message.status;
+                if (message.counter != null && message.hasOwnProperty("counter"))
+                    object.counter = message.counter;
                 return object;
             };
     

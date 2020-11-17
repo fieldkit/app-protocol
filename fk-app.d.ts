@@ -5891,6 +5891,9 @@ export namespace fk_app {
 
         /** UdpMessage status */
         status?: fk_app.UdpStatus;
+
+        /** UdpMessage counter */
+        counter?: number;
     }
 
     /** Represents an UdpMessage. */
@@ -5907,6 +5910,9 @@ export namespace fk_app {
 
         /** UdpMessage status. */
         public status: fk_app.UdpStatus;
+
+        /** UdpMessage counter. */
+        public counter: number;
 
         /**
          * Creates a new UdpMessage instance using the specified properties.

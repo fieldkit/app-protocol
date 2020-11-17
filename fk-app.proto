@@ -492,4 +492,5 @@ enum UdpStatus {
 message UdpMessage {
   bytes deviceId = 1;
   UdpStatus status = 2;
+  uint32 counter = 3;
 }
