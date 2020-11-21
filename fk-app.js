@@ -11865,6 +11865,7 @@
              * @memberof fk_app
              * @interface IListDirectory
              * @property {string} [path] ListDirectory path
+             * @property {number} [page] ListDirectory page
              */
     
             /**
@@ -11888,6 +11889,14 @@
              * @instance
              */
             ListDirectory.prototype.path = "";
+    
+            /**
+             * ListDirectory page.
+             * @member {number}page
+             * @memberof fk_app.ListDirectory
+             * @instance
+             */
+            ListDirectory.prototype.page = 0;
     
             /**
              * Creates a new ListDirectory instance using the specified properties.
@@ -11915,6 +11924,8 @@
                     writer = $Writer.create();
                 if (message.path != null && message.hasOwnProperty("path"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.path);
+                if (message.page != null && message.hasOwnProperty("page"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.page);
                 return writer;
             };
     
@@ -11951,6 +11962,9 @@
                     switch (tag >>> 3) {
                     case 1:
                         message.path = reader.string();
+                        break;
+                    case 2:
+                        message.page = reader.uint32();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -11990,6 +12004,9 @@
                 if (message.path != null && message.hasOwnProperty("path"))
                     if (!$util.isString(message.path))
                         return "path: string expected";
+                if (message.page != null && message.hasOwnProperty("page"))
+                    if (!$util.isInteger(message.page))
+                        return "page: integer expected";
                 return null;
             };
     
@@ -12007,6 +12024,8 @@
                 var message = new $root.fk_app.ListDirectory();
                 if (object.path != null)
                     message.path = String(object.path);
+                if (object.page != null)
+                    message.page = object.page >>> 0;
                 return message;
             };
     
@@ -12023,10 +12042,14 @@
                 if (!options)
                     options = {};
                 var object = {};
-                if (options.defaults)
+                if (options.defaults) {
                     object.path = "";
+                    object.page = 0;
+                }
                 if (message.path != null && message.hasOwnProperty("path"))
                     object.path = message.path;
+                if (message.page != null && message.hasOwnProperty("page"))
+                    object.page = message.page;
                 return object;
             };
     

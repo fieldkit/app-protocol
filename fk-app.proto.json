@@ -979,6 +979,10 @@
             "path": {
               "type": "string",
               "id": 1
+            },
+            "page": {
+              "type": "uint32",
+              "id": 2
             }
           }
         },

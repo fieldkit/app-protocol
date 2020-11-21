@@ -24094,6 +24094,12 @@ public final class FkApp {
      */
     com.google.protobuf.ByteString
         getPathBytes();
+
+    /**
+     * <code>uint32 page = 2;</code>
+     * @return The page.
+     */
+    int getPage();
   }
   /**
    * Protobuf type {@code fk_app.ListDirectory}
@@ -24151,6 +24157,32 @@ public final class FkApp {
       checkByteStringIsUtf8(value);
       path_ = value.toStringUtf8();
       
+    }
+
+    public static final int PAGE_FIELD_NUMBER = 2;
+    private int page_;
+    /**
+     * <code>uint32 page = 2;</code>
+     * @return The page.
+     */
+    @java.lang.Override
+    public int getPage() {
+      return page_;
+    }
+    /**
+     * <code>uint32 page = 2;</code>
+     * @param value The page to set.
+     */
+    private void setPage(int value) {
+      
+      page_ = value;
+    }
+    /**
+     * <code>uint32 page = 2;</code>
+     */
+    private void clearPage() {
+      
+      page_ = 0;
     }
 
     public static org.conservify.fieldkit.app.pb.FkApp.ListDirectory parseFrom(
@@ -24297,6 +24329,34 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>uint32 page = 2;</code>
+       * @return The page.
+       */
+      @java.lang.Override
+      public int getPage() {
+        return instance.getPage();
+      }
+      /**
+       * <code>uint32 page = 2;</code>
+       * @param value The page to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPage(int value) {
+        copyOnWrite();
+        instance.setPage(value);
+        return this;
+      }
+      /**
+       * <code>uint32 page = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPage() {
+        copyOnWrite();
+        instance.clearPage();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.ListDirectory)
     }
     @java.lang.Override
@@ -24314,9 +24374,11 @@ public final class FkApp {
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
               "path_",
+              "page_",
             };
             java.lang.String info =
-                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u0208";
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u0208\u0002\u000b" +
+                "";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

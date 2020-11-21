@@ -408,6 +408,7 @@ message Transmission {
 
 message ListDirectory {
   string path = 1;
+  uint32 page = 2;
 }
 
 message HttpQuery {

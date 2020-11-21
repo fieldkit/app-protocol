@@ -105,10 +105,6 @@ typedef struct _fk_app_Identity {
     pb_callback_t number;
 } fk_app_Identity;
 
-typedef struct _fk_app_ListDirectory {
-    pb_callback_t path;
-} fk_app_ListDirectory;
-
 typedef struct _fk_app_LiveData {
     pb_callback_t samples;
 } fk_app_LiveData;
@@ -228,6 +224,11 @@ typedef struct _fk_app_Interval {
     uint64_t end;
     uint32_t interval;
 } fk_app_Interval;
+
+typedef struct _fk_app_ListDirectory {
+    pb_callback_t path;
+    uint32_t page;
+} fk_app_ListDirectory;
 
 typedef struct _fk_app_LiveDataPoll {
     uint32_t interval;
@@ -604,7 +605,7 @@ extern "C" {
 #define fk_app_Location_init_default             {0, 0, 0, 0}
 #define fk_app_WifiTransmission_init_default     {0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Transmission_init_default         {false, fk_app_WifiTransmission_init_default}
-#define fk_app_ListDirectory_init_default        {{{NULL}, NULL}}
+#define fk_app_ListDirectory_init_default        {{{NULL}, NULL}, 0}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, false, fk_app_Identity_init_default, false, fk_app_Recording_init_default, false, fk_app_Schedules_init_default, 0, false, fk_app_NetworkSettings_init_default, false, fk_app_LoraSettings_init_default, 0, false, fk_app_Location_init_default, false, fk_app_Transmission_init_default, false, fk_app_ListDirectory_init_default}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_default    {false, fk_app_SensorCapabilities_init_default, 0}
@@ -658,7 +659,7 @@ extern "C" {
 #define fk_app_Location_init_zero                {0, 0, 0, 0}
 #define fk_app_WifiTransmission_init_zero        {0, {{NULL}, NULL}, {{NULL}, NULL}, 0}
 #define fk_app_Transmission_init_zero            {false, fk_app_WifiTransmission_init_zero}
-#define fk_app_ListDirectory_init_zero           {{{NULL}, NULL}}
+#define fk_app_ListDirectory_init_zero           {{{NULL}, NULL}, 0}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, false, fk_app_Identity_init_zero, false, fk_app_Recording_init_zero, false, fk_app_Schedules_init_zero, 0, false, fk_app_NetworkSettings_init_zero, false, fk_app_LoraSettings_init_zero, 0, false, fk_app_Location_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_ListDirectory_init_zero}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_LiveSensorReading_init_zero       {false, fk_app_SensorCapabilities_init_zero, 0}
@@ -682,7 +683,6 @@ extern "C" {
 #define fk_app_Identity_name_tag                 6
 #define fk_app_Identity_generationId_tag         7
 #define fk_app_Identity_number_tag               8
-#define fk_app_ListDirectory_path_tag            1
 #define fk_app_LiveData_samples_tag              1
 #define fk_app_NearbyNetwork_ssid_tag            1
 #define fk_app_NearbyNetworks_networks_tag       1
@@ -749,6 +749,8 @@ extern "C" {
 #define fk_app_Interval_start_tag                1
 #define fk_app_Interval_end_tag                  2
 #define fk_app_Interval_interval_tag             3
+#define fk_app_ListDirectory_path_tag            1
+#define fk_app_ListDirectory_page_tag            2
 #define fk_app_LiveDataPoll_interval_tag         1
 #define fk_app_LiveDataSample_sensor_tag         1
 #define fk_app_LiveDataSample_time_tag           2
@@ -1297,7 +1299,8 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  wifi,              1)
 #define fk_app_Transmission_wifi_MSGTYPE fk_app_WifiTransmission
 
 #define fk_app_ListDirectory_FIELDLIST(X, a) \
-X(a, CALLBACK, SINGULAR, STRING,   path,              1)
+X(a, CALLBACK, SINGULAR, STRING,   path,              1) \
+X(a, STATIC,   SINGULAR, UINT32,   page,              2)
 #define fk_app_ListDirectory_CALLBACK pb_default_field_callback
 #define fk_app_ListDirectory_DEFAULT NULL
 

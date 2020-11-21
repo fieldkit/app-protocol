@@ -4688,6 +4688,9 @@ export namespace fk_app {
 
         /** ListDirectory path */
         path?: string;
+
+        /** ListDirectory page */
+        page?: number;
     }
 
     /** Represents a ListDirectory. */
@@ -4701,6 +4704,9 @@ export namespace fk_app {
 
         /** ListDirectory path. */
         public path: string;
+
+        /** ListDirectory page. */
+        public page: number;
 
         /**
          * Creates a new ListDirectory instance using the specified properties.
