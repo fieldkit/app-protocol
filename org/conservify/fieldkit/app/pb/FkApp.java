@@ -28284,16 +28284,28 @@ public final class FkApp {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>string path = 1;</code>
+     * @return The path.
+     */
+    java.lang.String getPath();
+    /**
+     * <code>string path = 1;</code>
+     * @return The bytes for path.
+     */
+    com.google.protobuf.ByteString
+        getPathBytes();
+
+    /**
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     java.util.List<org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry> 
         getEntriesList();
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry getEntries(int index);
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     int getEntriesCount();
   }
@@ -28306,40 +28318,88 @@ public final class FkApp {
       // @@protoc_insertion_point(message_implements:fk_app.DirectoryListing)
       DirectoryListingOrBuilder {
     private DirectoryListing() {
+      path_ = "";
       entries_ = emptyProtobufList();
     }
-    public static final int ENTRIES_FIELD_NUMBER = 1;
+    public static final int PATH_FIELD_NUMBER = 1;
+    private java.lang.String path_;
+    /**
+     * <code>string path = 1;</code>
+     * @return The path.
+     */
+    @java.lang.Override
+    public java.lang.String getPath() {
+      return path_;
+    }
+    /**
+     * <code>string path = 1;</code>
+     * @return The bytes for path.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPathBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(path_);
+    }
+    /**
+     * <code>string path = 1;</code>
+     * @param value The path to set.
+     */
+    private void setPath(
+        java.lang.String value) {
+      value.getClass();
+  
+      path_ = value;
+    }
+    /**
+     * <code>string path = 1;</code>
+     */
+    private void clearPath() {
+      
+      path_ = getDefaultInstance().getPath();
+    }
+    /**
+     * <code>string path = 1;</code>
+     * @param value The bytes for path to set.
+     */
+    private void setPathBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      path_ = value.toStringUtf8();
+      
+    }
+
+    public static final int ENTRIES_FIELD_NUMBER = 2;
     private com.google.protobuf.Internal.ProtobufList<org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry> entries_;
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     @java.lang.Override
     public java.util.List<org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry> getEntriesList() {
       return entries_;
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     public java.util.List<? extends org.conservify.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder> 
         getEntriesOrBuilderList() {
       return entries_;
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     @java.lang.Override
     public int getEntriesCount() {
       return entries_.size();
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     @java.lang.Override
     public org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry getEntries(int index) {
       return entries_.get(index);
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     public org.conservify.fieldkit.app.pb.FkApp.DirectoryEntryOrBuilder getEntriesOrBuilder(
         int index) {
@@ -28353,7 +28413,7 @@ public final class FkApp {
     }
 
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     private void setEntries(
         int index, org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry value) {
@@ -28362,7 +28422,7 @@ public final class FkApp {
       entries_.set(index, value);
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     private void addEntries(org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry value) {
       value.getClass();
@@ -28370,7 +28430,7 @@ public final class FkApp {
       entries_.add(value);
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     private void addEntries(
         int index, org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry value) {
@@ -28379,7 +28439,7 @@ public final class FkApp {
       entries_.add(index, value);
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     private void addAllEntries(
         java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry> values) {
@@ -28388,13 +28448,13 @@ public final class FkApp {
           values, entries_);
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     private void clearEntries() {
       entries_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+     * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     private void removeEntries(int index) {
       ensureEntriesIsMutable();
@@ -28497,7 +28557,56 @@ public final class FkApp {
 
 
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>string path = 1;</code>
+       * @return The path.
+       */
+      @java.lang.Override
+      public java.lang.String getPath() {
+        return instance.getPath();
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @return The bytes for path.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPathBytes() {
+        return instance.getPathBytes();
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @param value The path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPath(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setPath(value);
+        return this;
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPath() {
+        copyOnWrite();
+        instance.clearPath();
+        return this;
+      }
+      /**
+       * <code>string path = 1;</code>
+       * @param value The bytes for path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPathBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setPathBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       @java.lang.Override
       public java.util.List<org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry> getEntriesList() {
@@ -28505,20 +28614,20 @@ public final class FkApp {
             instance.getEntriesList());
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       @java.lang.Override
       public int getEntriesCount() {
         return instance.getEntriesCount();
       }/**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       @java.lang.Override
       public org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry getEntries(int index) {
         return instance.getEntries(index);
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder setEntries(
           int index, org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry value) {
@@ -28527,7 +28636,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder setEntries(
           int index, org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry.Builder builderForValue) {
@@ -28537,7 +28646,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder addEntries(org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry value) {
         copyOnWrite();
@@ -28545,7 +28654,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder addEntries(
           int index, org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry value) {
@@ -28554,7 +28663,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder addEntries(
           org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry.Builder builderForValue) {
@@ -28563,7 +28672,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder addEntries(
           int index, org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry.Builder builderForValue) {
@@ -28573,7 +28682,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder addAllEntries(
           java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry> values) {
@@ -28582,7 +28691,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder clearEntries() {
         copyOnWrite();
@@ -28590,7 +28699,7 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>repeated .fk_app.DirectoryEntry entries = 1;</code>
+       * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       public Builder removeEntries(int index) {
         copyOnWrite();
@@ -28614,11 +28723,13 @@ public final class FkApp {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
+              "path_",
               "entries_",
               org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry.class,
             };
             java.lang.String info =
-                "\u0000\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0001\u0000\u0001\u001b";
+                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
+                "";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

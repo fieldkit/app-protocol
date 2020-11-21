@@ -5460,6 +5460,9 @@ export namespace fk_app {
     /** Properties of a DirectoryListing. */
     interface IDirectoryListing {
 
+        /** DirectoryListing path */
+        path?: string;
+
         /** DirectoryListing entries */
         entries?: fk_app.IDirectoryEntry[];
     }
@@ -5472,6 +5475,9 @@ export namespace fk_app {
          * @param [properties] Properties to set
          */
         constructor(properties?: fk_app.IDirectoryListing);
+
+        /** DirectoryListing path. */
+        public path: string;
 
         /** DirectoryListing entries. */
         public entries: fk_app.IDirectoryEntry[];

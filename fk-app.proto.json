@@ -1130,10 +1130,14 @@
         },
         "DirectoryListing": {
           "fields": {
+            "path": {
+              "type": "string",
+              "id": 1
+            },
             "entries": {
               "rule": "repeated",
               "type": "DirectoryEntry",
-              "id": 1
+              "id": 2
             }
           }
         },

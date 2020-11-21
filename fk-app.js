@@ -13984,6 +13984,7 @@
              * Properties of a DirectoryListing.
              * @memberof fk_app
              * @interface IDirectoryListing
+             * @property {string} [path] DirectoryListing path
              * @property {Array.<fk_app.IDirectoryEntry>} [entries] DirectoryListing entries
              */
     
@@ -14001,6 +14002,14 @@
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+    
+            /**
+             * DirectoryListing path.
+             * @member {string}path
+             * @memberof fk_app.DirectoryListing
+             * @instance
+             */
+            DirectoryListing.prototype.path = "";
     
             /**
              * DirectoryListing entries.
@@ -14034,9 +14043,11 @@
             DirectoryListing.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
+                if (message.path != null && message.hasOwnProperty("path"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.path);
                 if (message.entries != null && message.entries.length)
                     for (var i = 0; i < message.entries.length; ++i)
-                        $root.fk_app.DirectoryEntry.encode(message.entries[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        $root.fk_app.DirectoryEntry.encode(message.entries[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
     
@@ -14072,6 +14083,9 @@
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
+                        message.path = reader.string();
+                        break;
+                    case 2:
                         if (!(message.entries && message.entries.length))
                             message.entries = [];
                         message.entries.push($root.fk_app.DirectoryEntry.decode(reader, reader.uint32()));
@@ -14111,6 +14125,9 @@
             DirectoryListing.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
+                if (message.path != null && message.hasOwnProperty("path"))
+                    if (!$util.isString(message.path))
+                        return "path: string expected";
                 if (message.entries != null && message.hasOwnProperty("entries")) {
                     if (!Array.isArray(message.entries))
                         return "entries: array expected";
@@ -14135,6 +14152,8 @@
                 if (object instanceof $root.fk_app.DirectoryListing)
                     return object;
                 var message = new $root.fk_app.DirectoryListing();
+                if (object.path != null)
+                    message.path = String(object.path);
                 if (object.entries) {
                     if (!Array.isArray(object.entries))
                         throw TypeError(".fk_app.DirectoryListing.entries: array expected");
@@ -14163,6 +14182,10 @@
                 var object = {};
                 if (options.arrays || options.defaults)
                     object.entries = [];
+                if (options.defaults)
+                    object.path = "";
+                if (message.path != null && message.hasOwnProperty("path"))
+                    object.path = message.path;
                 if (message.entries && message.entries.length) {
                     object.entries = [];
                     for (var j = 0; j < message.entries.length; ++j)
