@@ -13985,6 +13985,7 @@
              * @memberof fk_app
              * @interface IDirectoryListing
              * @property {string} [path] DirectoryListing path
+             * @property {number} [totalEntries] DirectoryListing totalEntries
              * @property {Array.<fk_app.IDirectoryEntry>} [entries] DirectoryListing entries
              */
     
@@ -14010,6 +14011,14 @@
              * @instance
              */
             DirectoryListing.prototype.path = "";
+    
+            /**
+             * DirectoryListing totalEntries.
+             * @member {number}totalEntries
+             * @memberof fk_app.DirectoryListing
+             * @instance
+             */
+            DirectoryListing.prototype.totalEntries = 0;
     
             /**
              * DirectoryListing entries.
@@ -14048,6 +14057,8 @@
                 if (message.entries != null && message.entries.length)
                     for (var i = 0; i < message.entries.length; ++i)
                         $root.fk_app.DirectoryEntry.encode(message.entries[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                if (message.totalEntries != null && message.hasOwnProperty("totalEntries"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.totalEntries);
                 return writer;
             };
     
@@ -14084,6 +14095,9 @@
                     switch (tag >>> 3) {
                     case 1:
                         message.path = reader.string();
+                        break;
+                    case 3:
+                        message.totalEntries = reader.uint32();
                         break;
                     case 2:
                         if (!(message.entries && message.entries.length))
@@ -14128,6 +14142,9 @@
                 if (message.path != null && message.hasOwnProperty("path"))
                     if (!$util.isString(message.path))
                         return "path: string expected";
+                if (message.totalEntries != null && message.hasOwnProperty("totalEntries"))
+                    if (!$util.isInteger(message.totalEntries))
+                        return "totalEntries: integer expected";
                 if (message.entries != null && message.hasOwnProperty("entries")) {
                     if (!Array.isArray(message.entries))
                         return "entries: array expected";
@@ -14154,6 +14171,8 @@
                 var message = new $root.fk_app.DirectoryListing();
                 if (object.path != null)
                     message.path = String(object.path);
+                if (object.totalEntries != null)
+                    message.totalEntries = object.totalEntries >>> 0;
                 if (object.entries) {
                     if (!Array.isArray(object.entries))
                         throw TypeError(".fk_app.DirectoryListing.entries: array expected");
@@ -14182,8 +14201,10 @@
                 var object = {};
                 if (options.arrays || options.defaults)
                     object.entries = [];
-                if (options.defaults)
+                if (options.defaults) {
                     object.path = "";
+                    object.totalEntries = 0;
+                }
                 if (message.path != null && message.hasOwnProperty("path"))
                     object.path = message.path;
                 if (message.entries && message.entries.length) {
@@ -14191,6 +14212,8 @@
                     for (var j = 0; j < message.entries.length; ++j)
                         object.entries[j] = $root.fk_app.DirectoryEntry.toObject(message.entries[j], options);
                 }
+                if (message.totalEntries != null && message.hasOwnProperty("totalEntries"))
+                    object.totalEntries = message.totalEntries;
                 return object;
             };
     

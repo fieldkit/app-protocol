@@ -28296,6 +28296,12 @@ public final class FkApp {
         getPathBytes();
 
     /**
+     * <code>uint32 totalEntries = 3;</code>
+     * @return The totalEntries.
+     */
+    int getTotalEntries();
+
+    /**
      * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
      */
     java.util.List<org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry> 
@@ -28366,6 +28372,32 @@ public final class FkApp {
       checkByteStringIsUtf8(value);
       path_ = value.toStringUtf8();
       
+    }
+
+    public static final int TOTALENTRIES_FIELD_NUMBER = 3;
+    private int totalEntries_;
+    /**
+     * <code>uint32 totalEntries = 3;</code>
+     * @return The totalEntries.
+     */
+    @java.lang.Override
+    public int getTotalEntries() {
+      return totalEntries_;
+    }
+    /**
+     * <code>uint32 totalEntries = 3;</code>
+     * @param value The totalEntries to set.
+     */
+    private void setTotalEntries(int value) {
+      
+      totalEntries_ = value;
+    }
+    /**
+     * <code>uint32 totalEntries = 3;</code>
+     */
+    private void clearTotalEntries() {
+      
+      totalEntries_ = 0;
     }
 
     public static final int ENTRIES_FIELD_NUMBER = 2;
@@ -28606,6 +28638,34 @@ public final class FkApp {
       }
 
       /**
+       * <code>uint32 totalEntries = 3;</code>
+       * @return The totalEntries.
+       */
+      @java.lang.Override
+      public int getTotalEntries() {
+        return instance.getTotalEntries();
+      }
+      /**
+       * <code>uint32 totalEntries = 3;</code>
+       * @param value The totalEntries to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTotalEntries(int value) {
+        copyOnWrite();
+        instance.setTotalEntries(value);
+        return this;
+      }
+      /**
+       * <code>uint32 totalEntries = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTotalEntries() {
+        copyOnWrite();
+        instance.clearTotalEntries();
+        return this;
+      }
+
+      /**
        * <code>repeated .fk_app.DirectoryEntry entries = 2;</code>
        */
       @java.lang.Override
@@ -28726,10 +28786,11 @@ public final class FkApp {
               "path_",
               "entries_",
               org.conservify.fieldkit.app.pb.FkApp.DirectoryEntry.class,
+              "totalEntries_",
             };
             java.lang.String info =
-                "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
-                "";
+                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0001\u0000\u0001\u0208\u0002\u001b" +
+                "\u0003\u000b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

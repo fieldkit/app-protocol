@@ -5463,6 +5463,9 @@ export namespace fk_app {
         /** DirectoryListing path */
         path?: string;
 
+        /** DirectoryListing totalEntries */
+        totalEntries?: number;
+
         /** DirectoryListing entries */
         entries?: fk_app.IDirectoryEntry[];
     }
@@ -5478,6 +5481,9 @@ export namespace fk_app {
 
         /** DirectoryListing path. */
         public path: string;
+
+        /** DirectoryListing totalEntries. */
+        public totalEntries: number;
 
         /** DirectoryListing entries. */
         public entries: fk_app.IDirectoryEntry[];

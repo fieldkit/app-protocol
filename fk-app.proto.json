@@ -1134,6 +1134,10 @@
               "type": "string",
               "id": 1
             },
+            "totalEntries": {
+              "type": "uint32",
+              "id": 3
+            },
             "entries": {
               "rule": "repeated",
               "type": "DirectoryEntry",

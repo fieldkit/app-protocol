@@ -460,6 +460,7 @@ message DirectoryEntry {
 
 message DirectoryListing {
   string path = 1;
+  uint32 totalEntries = 3;
   repeated DirectoryEntry entries = 2;
 }
 
