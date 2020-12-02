@@ -761,6 +761,9 @@ export namespace fk_app {
 
         /** NetworkInfo preferred */
         preferred?: boolean;
+
+        /** NetworkInfo keeping */
+        keeping?: boolean;
     }
 
     /** Represents a NetworkInfo. */
@@ -783,6 +786,9 @@ export namespace fk_app {
 
         /** NetworkInfo preferred. */
         public preferred: boolean;
+
+        /** NetworkInfo keeping. */
+        public keeping: boolean;
 
         /**
          * Creates a new NetworkInfo instance using the specified properties.

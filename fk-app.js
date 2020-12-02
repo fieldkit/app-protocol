@@ -1876,6 +1876,7 @@
              * @property {string} [password] NetworkInfo password
              * @property {boolean} [create] NetworkInfo create
              * @property {boolean} [preferred] NetworkInfo preferred
+             * @property {boolean} [keeping] NetworkInfo keeping
              */
     
             /**
@@ -1925,6 +1926,14 @@
             NetworkInfo.prototype.preferred = false;
     
             /**
+             * NetworkInfo keeping.
+             * @member {boolean}keeping
+             * @memberof fk_app.NetworkInfo
+             * @instance
+             */
+            NetworkInfo.prototype.keeping = false;
+    
+            /**
              * Creates a new NetworkInfo instance using the specified properties.
              * @function create
              * @memberof fk_app.NetworkInfo
@@ -1956,6 +1965,8 @@
                     writer.uint32(/* id 3, wireType 0 =*/24).bool(message.create);
                 if (message.preferred != null && message.hasOwnProperty("preferred"))
                     writer.uint32(/* id 4, wireType 0 =*/32).bool(message.preferred);
+                if (message.keeping != null && message.hasOwnProperty("keeping"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).bool(message.keeping);
                 return writer;
             };
     
@@ -2001,6 +2012,9 @@
                         break;
                     case 4:
                         message.preferred = reader.bool();
+                        break;
+                    case 5:
+                        message.keeping = reader.bool();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -2049,6 +2063,9 @@
                 if (message.preferred != null && message.hasOwnProperty("preferred"))
                     if (typeof message.preferred !== "boolean")
                         return "preferred: boolean expected";
+                if (message.keeping != null && message.hasOwnProperty("keeping"))
+                    if (typeof message.keeping !== "boolean")
+                        return "keeping: boolean expected";
                 return null;
             };
     
@@ -2072,6 +2089,8 @@
                     message.create = Boolean(object.create);
                 if (object.preferred != null)
                     message.preferred = Boolean(object.preferred);
+                if (object.keeping != null)
+                    message.keeping = Boolean(object.keeping);
                 return message;
             };
     
@@ -2093,6 +2112,7 @@
                     object.password = "";
                     object.create = false;
                     object.preferred = false;
+                    object.keeping = false;
                 }
                 if (message.ssid != null && message.hasOwnProperty("ssid"))
                     object.ssid = message.ssid;
@@ -2102,6 +2122,8 @@
                     object.create = message.create;
                 if (message.preferred != null && message.hasOwnProperty("preferred"))
                     object.preferred = message.preferred;
+                if (message.keeping != null && message.hasOwnProperty("keeping"))
+                    object.keeping = message.keeping;
                 return object;
             };
     

@@ -4737,6 +4737,12 @@ public final class FkApp {
      * @return The preferred.
      */
     boolean getPreferred();
+
+    /**
+     * <code>bool keeping = 5;</code>
+     * @return The keeping.
+     */
+    boolean getKeeping();
   }
   /**
    * Protobuf type {@code fk_app.NetworkInfo}
@@ -4894,6 +4900,32 @@ public final class FkApp {
     private void clearPreferred() {
       
       preferred_ = false;
+    }
+
+    public static final int KEEPING_FIELD_NUMBER = 5;
+    private boolean keeping_;
+    /**
+     * <code>bool keeping = 5;</code>
+     * @return The keeping.
+     */
+    @java.lang.Override
+    public boolean getKeeping() {
+      return keeping_;
+    }
+    /**
+     * <code>bool keeping = 5;</code>
+     * @param value The keeping to set.
+     */
+    private void setKeeping(boolean value) {
+      
+      keeping_ = value;
+    }
+    /**
+     * <code>bool keeping = 5;</code>
+     */
+    private void clearKeeping() {
+      
+      keeping_ = false;
     }
 
     public static org.conservify.fieldkit.app.pb.FkApp.NetworkInfo parseFrom(
@@ -5145,6 +5177,34 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>bool keeping = 5;</code>
+       * @return The keeping.
+       */
+      @java.lang.Override
+      public boolean getKeeping() {
+        return instance.getKeeping();
+      }
+      /**
+       * <code>bool keeping = 5;</code>
+       * @param value The keeping to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeeping(boolean value) {
+        copyOnWrite();
+        instance.setKeeping(value);
+        return this;
+      }
+      /**
+       * <code>bool keeping = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKeeping() {
+        copyOnWrite();
+        instance.clearKeeping();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.NetworkInfo)
     }
     @java.lang.Override
@@ -5165,10 +5225,11 @@ public final class FkApp {
               "password_",
               "create_",
               "preferred_",
+              "keeping_",
             };
             java.lang.String info =
-                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-                "\u0003\u0007\u0004\u0007";
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\u0007\u0004\u0007\u0005\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -233,6 +233,10 @@
             "preferred": {
               "type": "bool",
               "id": 4
+            },
+            "keeping": {
+              "type": "bool",
+              "id": 5
             }
           }
         },

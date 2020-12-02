@@ -137,6 +137,7 @@ message NetworkInfo {
   string password = 2;
   bool create = 3;
   bool preferred = 4;
+  bool keeping = 5;
 }
 
 message NetworkSettings {
