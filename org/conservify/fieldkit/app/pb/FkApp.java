@@ -29592,6 +29592,484 @@ public final class FkApp {
     }
   }
 
+  public interface FaultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:fk_app.Fault)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>uint32 time = 1;</code>
+     * @return The time.
+     */
+    int getTime();
+
+    /**
+     * <code>uint32 code = 2;</code>
+     * @return The code.
+     */
+    int getCode();
+
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <code>bytes debug = 4;</code>
+     * @return The debug.
+     */
+    com.google.protobuf.ByteString getDebug();
+  }
+  /**
+   * Protobuf type {@code fk_app.Fault}
+   */
+  public  static final class Fault extends
+      com.google.protobuf.GeneratedMessageLite<
+          Fault, Fault.Builder> implements
+      // @@protoc_insertion_point(message_implements:fk_app.Fault)
+      FaultOrBuilder {
+    private Fault() {
+      description_ = "";
+      debug_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    public static final int TIME_FIELD_NUMBER = 1;
+    private int time_;
+    /**
+     * <code>uint32 time = 1;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public int getTime() {
+      return time_;
+    }
+    /**
+     * <code>uint32 time = 1;</code>
+     * @param value The time to set.
+     */
+    private void setTime(int value) {
+      
+      time_ = value;
+    }
+    /**
+     * <code>uint32 time = 1;</code>
+     */
+    private void clearTime() {
+      
+      time_ = 0;
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>uint32 code = 2;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public int getCode() {
+      return code_;
+    }
+    /**
+     * <code>uint32 code = 2;</code>
+     * @param value The code to set.
+     */
+    private void setCode(int value) {
+      
+      code_ = value;
+    }
+    /**
+     * <code>uint32 code = 2;</code>
+     */
+    private void clearCode() {
+      
+      code_ = 0;
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 3;
+    private java.lang.String description_;
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      return description_;
+    }
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(description_);
+    }
+    /**
+     * <code>string description = 3;</code>
+     * @param value The description to set.
+     */
+    private void setDescription(
+        java.lang.String value) {
+      value.getClass();
+  
+      description_ = value;
+    }
+    /**
+     * <code>string description = 3;</code>
+     */
+    private void clearDescription() {
+      
+      description_ = getDefaultInstance().getDescription();
+    }
+    /**
+     * <code>string description = 3;</code>
+     * @param value The bytes for description to set.
+     */
+    private void setDescriptionBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      description_ = value.toStringUtf8();
+      
+    }
+
+    public static final int DEBUG_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString debug_;
+    /**
+     * <code>bytes debug = 4;</code>
+     * @return The debug.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getDebug() {
+      return debug_;
+    }
+    /**
+     * <code>bytes debug = 4;</code>
+     * @param value The debug to set.
+     */
+    private void setDebug(com.google.protobuf.ByteString value) {
+      value.getClass();
+  
+      debug_ = value;
+    }
+    /**
+     * <code>bytes debug = 4;</code>
+     */
+    private void clearDebug() {
+      
+      debug_ = getDefaultInstance().getDebug();
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.conservify.fieldkit.app.pb.FkApp.Fault prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code fk_app.Fault}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.conservify.fieldkit.app.pb.FkApp.Fault, Builder> implements
+        // @@protoc_insertion_point(builder_implements:fk_app.Fault)
+        org.conservify.fieldkit.app.pb.FkApp.FaultOrBuilder {
+      // Construct using org.conservify.fieldkit.app.pb.FkApp.Fault.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>uint32 time = 1;</code>
+       * @return The time.
+       */
+      @java.lang.Override
+      public int getTime() {
+        return instance.getTime();
+      }
+      /**
+       * <code>uint32 time = 1;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(int value) {
+        copyOnWrite();
+        instance.setTime(value);
+        return this;
+      }
+      /**
+       * <code>uint32 time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        copyOnWrite();
+        instance.clearTime();
+        return this;
+      }
+
+      /**
+       * <code>uint32 code = 2;</code>
+       * @return The code.
+       */
+      @java.lang.Override
+      public int getCode() {
+        return instance.getCode();
+      }
+      /**
+       * <code>uint32 code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(int value) {
+        copyOnWrite();
+        instance.setCode(value);
+        return this;
+      }
+      /**
+       * <code>uint32 code = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        copyOnWrite();
+        instance.clearCode();
+        return this;
+      }
+
+      /**
+       * <code>string description = 3;</code>
+       * @return The description.
+       */
+      @java.lang.Override
+      public java.lang.String getDescription() {
+        return instance.getDescription();
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return The bytes for description.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        return instance.getDescriptionBytes();
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setDescription(value);
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        copyOnWrite();
+        instance.clearDescription();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDescriptionBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>bytes debug = 4;</code>
+       * @return The debug.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getDebug() {
+        return instance.getDebug();
+      }
+      /**
+       * <code>bytes debug = 4;</code>
+       * @param value The debug to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDebug(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDebug(value);
+        return this;
+      }
+      /**
+       * <code>bytes debug = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDebug() {
+        copyOnWrite();
+        instance.clearDebug();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:fk_app.Fault)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.conservify.fieldkit.app.pb.FkApp.Fault();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "time_",
+              "code_",
+              "description_",
+              "debug_",
+            };
+            java.lang.String info =
+                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u000b\u0002\u000b" +
+                "\u0003\u0208\u0004\n";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.conservify.fieldkit.app.pb.FkApp.Fault> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.conservify.fieldkit.app.pb.FkApp.Fault.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.conservify.fieldkit.app.pb.FkApp.Fault>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:fk_app.Fault)
+    private static final org.conservify.fieldkit.app.pb.FkApp.Fault DEFAULT_INSTANCE;
+    static {
+      Fault defaultInstance = new Fault();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        Fault.class, defaultInstance);
+    }
+
+    public static org.conservify.fieldkit.app.pb.FkApp.Fault getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Fault> PARSER;
+
+    public static com.google.protobuf.Parser<Fault> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   public interface HttpReplyOrBuilder extends
       // @@protoc_insertion_point(interface_extends:fk_app.HttpReply)
       com.google.protobuf.MessageLiteOrBuilder {
@@ -29739,6 +30217,20 @@ public final class FkApp {
      * @return The nearbyNetworks.
      */
     org.conservify.fieldkit.app.pb.FkApp.NearbyNetworks getNearbyNetworks();
+
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    java.util.List<org.conservify.fieldkit.app.pb.FkApp.Fault> 
+        getFaultsList();
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    org.conservify.fieldkit.app.pb.FkApp.Fault getFaults(int index);
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    int getFaultsCount();
   }
   /**
    * Protobuf type {@code fk_app.HttpReply}
@@ -29753,6 +30245,7 @@ public final class FkApp {
       modules_ = emptyProtobufList();
       streams_ = emptyProtobufList();
       liveReadings_ = emptyProtobufList();
+      faults_ = emptyProtobufList();
     }
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
@@ -30488,6 +30981,99 @@ public final class FkApp {
      */
     private void clearNearbyNetworks() {  nearbyNetworks_ = null;
       
+    }
+
+    public static final int FAULTS_FIELD_NUMBER = 13;
+    private com.google.protobuf.Internal.ProtobufList<org.conservify.fieldkit.app.pb.FkApp.Fault> faults_;
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.conservify.fieldkit.app.pb.FkApp.Fault> getFaultsList() {
+      return faults_;
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    public java.util.List<? extends org.conservify.fieldkit.app.pb.FkApp.FaultOrBuilder> 
+        getFaultsOrBuilderList() {
+      return faults_;
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    @java.lang.Override
+    public int getFaultsCount() {
+      return faults_.size();
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    @java.lang.Override
+    public org.conservify.fieldkit.app.pb.FkApp.Fault getFaults(int index) {
+      return faults_.get(index);
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    public org.conservify.fieldkit.app.pb.FkApp.FaultOrBuilder getFaultsOrBuilder(
+        int index) {
+      return faults_.get(index);
+    }
+    private void ensureFaultsIsMutable() {
+      if (!faults_.isModifiable()) {
+        faults_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(faults_);
+       }
+    }
+
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    private void setFaults(
+        int index, org.conservify.fieldkit.app.pb.FkApp.Fault value) {
+      value.getClass();
+  ensureFaultsIsMutable();
+      faults_.set(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    private void addFaults(org.conservify.fieldkit.app.pb.FkApp.Fault value) {
+      value.getClass();
+  ensureFaultsIsMutable();
+      faults_.add(value);
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    private void addFaults(
+        int index, org.conservify.fieldkit.app.pb.FkApp.Fault value) {
+      value.getClass();
+  ensureFaultsIsMutable();
+      faults_.add(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    private void addAllFaults(
+        java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.Fault> values) {
+      ensureFaultsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, faults_);
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    private void clearFaults() {
+      faults_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .fk_app.Fault faults = 13;</code>
+     */
+    private void removeFaults(int index) {
+      ensureFaultsIsMutable();
+      faults_.remove(index);
     }
 
     public static org.conservify.fieldkit.app.pb.FkApp.HttpReply parseFrom(
@@ -31368,6 +31954,108 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.conservify.fieldkit.app.pb.FkApp.Fault> getFaultsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getFaultsList());
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      @java.lang.Override
+      public int getFaultsCount() {
+        return instance.getFaultsCount();
+      }/**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      @java.lang.Override
+      public org.conservify.fieldkit.app.pb.FkApp.Fault getFaults(int index) {
+        return instance.getFaults(index);
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder setFaults(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Fault value) {
+        copyOnWrite();
+        instance.setFaults(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder setFaults(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Fault.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFaults(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder addFaults(org.conservify.fieldkit.app.pb.FkApp.Fault value) {
+        copyOnWrite();
+        instance.addFaults(value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder addFaults(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Fault value) {
+        copyOnWrite();
+        instance.addFaults(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder addFaults(
+          org.conservify.fieldkit.app.pb.FkApp.Fault.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFaults(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder addFaults(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Fault.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFaults(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder addAllFaults(
+          java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.Fault> values) {
+        copyOnWrite();
+        instance.addAllFaults(values);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder clearFaults() {
+        copyOnWrite();
+        instance.clearFaults();
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Fault faults = 13;</code>
+       */
+      public Builder removeFaults(int index) {
+        copyOnWrite();
+        instance.removeFaults(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.HttpReply)
     }
     @java.lang.Override
@@ -31400,10 +32088,12 @@ public final class FkApp {
               "transmission_",
               "listing_",
               "nearbyNetworks_",
+              "faults_",
+              org.conservify.fieldkit.app.pb.FkApp.Fault.class,
             };
             java.lang.String info =
-                "\u0000\f\u0000\u0000\u0001\f\f\u0000\u0004\u0000\u0001\f\u0002\u001b\u0003\t\u0004" +
-                "\t\u0005\u001b\u0006\u001b\u0007\u001b\b\t\t\t\n\t\u000b\t\f\t";
+                "\u0000\r\u0000\u0000\u0001\r\r\u0000\u0005\u0000\u0001\f\u0002\u001b\u0003\t\u0004" +
+                "\t\u0005\u001b\u0006\u001b\u0007\u001b\b\t\t\t\n\t\u000b\t\f\t\r\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

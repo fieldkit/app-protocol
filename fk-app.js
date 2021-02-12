@@ -14646,6 +14646,262 @@
             return NearbyNetworks;
         })();
     
+        fk_app.Fault = (function() {
+    
+            /**
+             * Properties of a Fault.
+             * @memberof fk_app
+             * @interface IFault
+             * @property {number} [time] Fault time
+             * @property {number} [code] Fault code
+             * @property {string} [description] Fault description
+             * @property {Uint8Array} [debug] Fault debug
+             */
+    
+            /**
+             * Constructs a new Fault.
+             * @memberof fk_app
+             * @classdesc Represents a Fault.
+             * @constructor
+             * @param {fk_app.IFault=} [properties] Properties to set
+             */
+            function Fault(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * Fault time.
+             * @member {number}time
+             * @memberof fk_app.Fault
+             * @instance
+             */
+            Fault.prototype.time = 0;
+    
+            /**
+             * Fault code.
+             * @member {number}code
+             * @memberof fk_app.Fault
+             * @instance
+             */
+            Fault.prototype.code = 0;
+    
+            /**
+             * Fault description.
+             * @member {string}description
+             * @memberof fk_app.Fault
+             * @instance
+             */
+            Fault.prototype.description = "";
+    
+            /**
+             * Fault debug.
+             * @member {Uint8Array}debug
+             * @memberof fk_app.Fault
+             * @instance
+             */
+            Fault.prototype.debug = $util.newBuffer([]);
+    
+            /**
+             * Creates a new Fault instance using the specified properties.
+             * @function create
+             * @memberof fk_app.Fault
+             * @static
+             * @param {fk_app.IFault=} [properties] Properties to set
+             * @returns {fk_app.Fault} Fault instance
+             */
+            Fault.create = function create(properties) {
+                return new Fault(properties);
+            };
+    
+            /**
+             * Encodes the specified Fault message. Does not implicitly {@link fk_app.Fault.verify|verify} messages.
+             * @function encode
+             * @memberof fk_app.Fault
+             * @static
+             * @param {fk_app.IFault} message Fault message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Fault.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.time != null && message.hasOwnProperty("time"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.time);
+                if (message.code != null && message.hasOwnProperty("code"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.code);
+                if (message.description != null && message.hasOwnProperty("description"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.description);
+                if (message.debug != null && message.hasOwnProperty("debug"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.debug);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified Fault message, length delimited. Does not implicitly {@link fk_app.Fault.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof fk_app.Fault
+             * @static
+             * @param {fk_app.IFault} message Fault message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Fault.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a Fault message from the specified reader or buffer.
+             * @function decode
+             * @memberof fk_app.Fault
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {fk_app.Fault} Fault
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Fault.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.fk_app.Fault();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.time = reader.uint32();
+                        break;
+                    case 2:
+                        message.code = reader.uint32();
+                        break;
+                    case 3:
+                        message.description = reader.string();
+                        break;
+                    case 4:
+                        message.debug = reader.bytes();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a Fault message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof fk_app.Fault
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {fk_app.Fault} Fault
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Fault.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a Fault message.
+             * @function verify
+             * @memberof fk_app.Fault
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Fault.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.time != null && message.hasOwnProperty("time"))
+                    if (!$util.isInteger(message.time))
+                        return "time: integer expected";
+                if (message.code != null && message.hasOwnProperty("code"))
+                    if (!$util.isInteger(message.code))
+                        return "code: integer expected";
+                if (message.description != null && message.hasOwnProperty("description"))
+                    if (!$util.isString(message.description))
+                        return "description: string expected";
+                if (message.debug != null && message.hasOwnProperty("debug"))
+                    if (!(message.debug && typeof message.debug.length === "number" || $util.isString(message.debug)))
+                        return "debug: buffer expected";
+                return null;
+            };
+    
+            /**
+             * Creates a Fault message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof fk_app.Fault
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {fk_app.Fault} Fault
+             */
+            Fault.fromObject = function fromObject(object) {
+                if (object instanceof $root.fk_app.Fault)
+                    return object;
+                var message = new $root.fk_app.Fault();
+                if (object.time != null)
+                    message.time = object.time >>> 0;
+                if (object.code != null)
+                    message.code = object.code >>> 0;
+                if (object.description != null)
+                    message.description = String(object.description);
+                if (object.debug != null)
+                    if (typeof object.debug === "string")
+                        $util.base64.decode(object.debug, message.debug = $util.newBuffer($util.base64.length(object.debug)), 0);
+                    else if (object.debug.length)
+                        message.debug = object.debug;
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a Fault message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof fk_app.Fault
+             * @static
+             * @param {fk_app.Fault} message Fault
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Fault.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.time = 0;
+                    object.code = 0;
+                    object.description = "";
+                    object.debug = options.bytes === String ? "" : [];
+                }
+                if (message.time != null && message.hasOwnProperty("time"))
+                    object.time = message.time;
+                if (message.code != null && message.hasOwnProperty("code"))
+                    object.code = message.code;
+                if (message.description != null && message.hasOwnProperty("description"))
+                    object.description = message.description;
+                if (message.debug != null && message.hasOwnProperty("debug"))
+                    object.debug = options.bytes === String ? $util.base64.encode(message.debug, 0, message.debug.length) : options.bytes === Array ? Array.prototype.slice.call(message.debug) : message.debug;
+                return object;
+            };
+    
+            /**
+             * Converts this Fault to JSON.
+             * @function toJSON
+             * @memberof fk_app.Fault
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Fault.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return Fault;
+        })();
+    
         fk_app.HttpReply = (function() {
     
             /**
@@ -14664,6 +14920,7 @@
              * @property {fk_app.ITransmission} [transmission] HttpReply transmission
              * @property {fk_app.IDirectoryListing} [listing] HttpReply listing
              * @property {fk_app.INearbyNetworks} [nearbyNetworks] HttpReply nearbyNetworks
+             * @property {Array.<fk_app.IFault>} [faults] HttpReply faults
              */
     
             /**
@@ -14678,6 +14935,7 @@
                 this.modules = [];
                 this.streams = [];
                 this.liveReadings = [];
+                this.faults = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -14781,6 +15039,14 @@
             HttpReply.prototype.nearbyNetworks = null;
     
             /**
+             * HttpReply faults.
+             * @member {Array.<fk_app.IFault>}faults
+             * @memberof fk_app.HttpReply
+             * @instance
+             */
+            HttpReply.prototype.faults = $util.emptyArray;
+    
+            /**
              * Creates a new HttpReply instance using the specified properties.
              * @function create
              * @memberof fk_app.HttpReply
@@ -14832,6 +15098,9 @@
                     $root.fk_app.DirectoryListing.encode(message.listing, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
                 if (message.nearbyNetworks != null && message.hasOwnProperty("nearbyNetworks"))
                     $root.fk_app.NearbyNetworks.encode(message.nearbyNetworks, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
+                if (message.faults != null && message.faults.length)
+                    for (var i = 0; i < message.faults.length; ++i)
+                        $root.fk_app.Fault.encode(message.faults[i], writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
                 return writer;
             };
     
@@ -14909,6 +15178,11 @@
                         break;
                     case 12:
                         message.nearbyNetworks = $root.fk_app.NearbyNetworks.decode(reader, reader.uint32());
+                        break;
+                    case 13:
+                        if (!(message.faults && message.faults.length))
+                            message.faults = [];
+                        message.faults.push($root.fk_app.Fault.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -15038,6 +15312,15 @@
                     error = $root.fk_app.NearbyNetworks.verify(message.nearbyNetworks);
                     if (error)
                         return "nearbyNetworks." + error;
+                }
+                if (message.faults != null && message.hasOwnProperty("faults")) {
+                    if (!Array.isArray(message.faults))
+                        return "faults: array expected";
+                    for (var i = 0; i < message.faults.length; ++i) {
+                        error = $root.fk_app.Fault.verify(message.faults[i]);
+                        if (error)
+                            return "faults." + error;
+                    }
                 }
                 return null;
             };
@@ -15199,6 +15482,16 @@
                         throw TypeError(".fk_app.HttpReply.nearbyNetworks: object expected");
                     message.nearbyNetworks = $root.fk_app.NearbyNetworks.fromObject(object.nearbyNetworks);
                 }
+                if (object.faults) {
+                    if (!Array.isArray(object.faults))
+                        throw TypeError(".fk_app.HttpReply.faults: array expected");
+                    message.faults = [];
+                    for (var i = 0; i < object.faults.length; ++i) {
+                        if (typeof object.faults[i] !== "object")
+                            throw TypeError(".fk_app.HttpReply.faults: object expected");
+                        message.faults[i] = $root.fk_app.Fault.fromObject(object.faults[i]);
+                    }
+                }
                 return message;
             };
     
@@ -15220,6 +15513,7 @@
                     object.modules = [];
                     object.streams = [];
                     object.liveReadings = [];
+                    object.faults = [];
                 }
                 if (options.defaults) {
                     object.type = options.enums === String ? "REPLY_NONE" : 0;
@@ -15267,6 +15561,11 @@
                     object.listing = $root.fk_app.DirectoryListing.toObject(message.listing, options);
                 if (message.nearbyNetworks != null && message.hasOwnProperty("nearbyNetworks"))
                     object.nearbyNetworks = $root.fk_app.NearbyNetworks.toObject(message.nearbyNetworks, options);
+                if (message.faults && message.faults.length) {
+                    object.faults = [];
+                    for (var j = 0; j < message.faults.length; ++j)
+                        object.faults[j] = $root.fk_app.Fault.toObject(message.faults[j], options);
+                }
                 return object;
             };
     

@@ -1166,6 +1166,26 @@
             }
           }
         },
+        "Fault": {
+          "fields": {
+            "time": {
+              "type": "uint32",
+              "id": 1
+            },
+            "code": {
+              "type": "uint32",
+              "id": 2
+            },
+            "description": {
+              "type": "string",
+              "id": 3
+            },
+            "debug": {
+              "type": "bytes",
+              "id": 4
+            }
+          }
+        },
         "HttpReply": {
           "fields": {
             "type": {
@@ -1219,6 +1239,11 @@
             "nearbyNetworks": {
               "type": "NearbyNetworks",
               "id": 12
+            },
+            "faults": {
+              "rule": "repeated",
+              "type": "Fault",
+              "id": 13
             }
           }
         },
