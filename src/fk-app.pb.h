@@ -257,6 +257,7 @@ typedef struct _fk_app_LiveReadings {
 typedef struct _fk_app_LiveValue {
     bool valid;
     float value;
+    float uncalibrated;
 } fk_app_LiveValue;
 
 typedef struct _fk_app_Location {
@@ -447,6 +448,7 @@ typedef struct _fk_app_LiveSensorReading {
     bool has_sensor;
     fk_app_SensorCapabilities sensor;
     float value;
+    float uncalibrated;
 } fk_app_LiveSensorReading;
 
 typedef struct _fk_app_Status {
@@ -575,7 +577,7 @@ extern "C" {
 
 /* Initializer values for message structs */
 #define fk_app_QueryCapabilities_init_default    {0, 0}
-#define fk_app_LiveValue_init_default            {0, 0}
+#define fk_app_LiveValue_init_default            {0, 0, 0}
 #define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_default}
 #define fk_app_ModuleHeader_init_default         {0, 0, 0}
 #define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default, {{NULL}, NULL}}
@@ -619,7 +621,7 @@ extern "C" {
 #define fk_app_ListDirectory_init_default        {{{NULL}, NULL}, 0}
 #define fk_app_HttpQuery_init_default            {_fk_app_QueryType_MIN, false, fk_app_Identity_init_default, false, fk_app_Recording_init_default, false, fk_app_Schedules_init_default, 0, false, fk_app_NetworkSettings_init_default, false, fk_app_LoraSettings_init_default, 0, false, fk_app_Location_init_default, false, fk_app_Transmission_init_default, false, fk_app_ListDirectory_init_default}
 #define fk_app_DataStream_init_default           {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_LiveSensorReading_init_default    {false, fk_app_SensorCapabilities_init_default, 0}
+#define fk_app_LiveSensorReading_init_default    {false, fk_app_SensorCapabilities_init_default, 0, 0}
 #define fk_app_LiveModuleReadings_init_default   {false, fk_app_ModuleCapabilities_init_default, {{NULL}, NULL}}
 #define fk_app_LiveReadings_init_default         {0, {{NULL}, NULL}}
 #define fk_app_DirectoryEntry_init_default       {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
@@ -630,7 +632,7 @@ extern "C" {
 #define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_default, false, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_default, false, fk_app_Schedules_init_default, false, fk_app_Transmission_init_default, false, fk_app_DirectoryListing_init_default, false, fk_app_NearbyNetworks_init_default, {{NULL}, NULL}}
 #define fk_app_UdpMessage_init_default           {{{NULL}, NULL}, _fk_app_UdpStatus_MIN, 0}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
-#define fk_app_LiveValue_init_zero               {0, 0}
+#define fk_app_LiveValue_init_zero               {0, 0, 0}
 #define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_zero}
 #define fk_app_ModuleHeader_init_zero            {0, 0, 0}
 #define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero, {{NULL}, NULL}}
@@ -674,7 +676,7 @@ extern "C" {
 #define fk_app_ListDirectory_init_zero           {{{NULL}, NULL}, 0}
 #define fk_app_HttpQuery_init_zero               {_fk_app_QueryType_MIN, false, fk_app_Identity_init_zero, false, fk_app_Recording_init_zero, false, fk_app_Schedules_init_zero, 0, false, fk_app_NetworkSettings_init_zero, false, fk_app_LoraSettings_init_zero, 0, false, fk_app_Location_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_ListDirectory_init_zero}
 #define fk_app_DataStream_init_zero              {0, 0, 0, 0, 0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_LiveSensorReading_init_zero       {false, fk_app_SensorCapabilities_init_zero, 0}
+#define fk_app_LiveSensorReading_init_zero       {false, fk_app_SensorCapabilities_init_zero, 0, 0}
 #define fk_app_LiveModuleReadings_init_zero      {false, fk_app_ModuleCapabilities_init_zero, {{NULL}, NULL}}
 #define fk_app_LiveReadings_init_zero            {0, {{NULL}, NULL}}
 #define fk_app_DirectoryEntry_init_zero          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0}
@@ -778,6 +780,7 @@ extern "C" {
 #define fk_app_LiveReadings_modules_tag          2
 #define fk_app_LiveValue_valid_tag               1
 #define fk_app_LiveValue_value_tag               2
+#define fk_app_LiveValue_uncalibrated_tag        3
 #define fk_app_Location_modifying_tag            1
 #define fk_app_Location_longitude_tag            2
 #define fk_app_Location_latitude_tag             3
@@ -878,6 +881,7 @@ extern "C" {
 #define fk_app_LiveModuleReadings_readings_tag   2
 #define fk_app_LiveSensorReading_sensor_tag      1
 #define fk_app_LiveSensorReading_value_tag       2
+#define fk_app_LiveSensorReading_uncalibrated_tag 3
 #define fk_app_Status_version_tag                1
 #define fk_app_Status_uptime_tag                 2
 #define fk_app_Status_identity_tag               3
@@ -933,7 +937,8 @@ X(a, STATIC,   SINGULAR, UINT32,   callerTime,        2)
 
 #define fk_app_LiveValue_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, BOOL,     valid,             1) \
-X(a, STATIC,   SINGULAR, FLOAT,    value,             2)
+X(a, STATIC,   SINGULAR, FLOAT,    value,             2) \
+X(a, STATIC,   SINGULAR, FLOAT,    uncalibrated,      3)
 #define fk_app_LiveValue_CALLBACK NULL
 #define fk_app_LiveValue_DEFAULT NULL
 
@@ -1363,7 +1368,8 @@ X(a, CALLBACK, SINGULAR, STRING,   path,              8)
 
 #define fk_app_LiveSensorReading_FIELDLIST(X, a) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  sensor,            1) \
-X(a, STATIC,   SINGULAR, FLOAT,    value,             2)
+X(a, STATIC,   SINGULAR, FLOAT,    value,             2) \
+X(a, STATIC,   SINGULAR, FLOAT,    uncalibrated,      3)
 #define fk_app_LiveSensorReading_CALLBACK NULL
 #define fk_app_LiveSensorReading_DEFAULT NULL
 #define fk_app_LiveSensorReading_sensor_MSGTYPE fk_app_SensorCapabilities
@@ -1569,7 +1575,7 @@ extern const pb_msgdesc_t fk_app_UdpMessage_msg;
 
 /* Maximum encoded size of messages (where known) */
 #define fk_app_QueryCapabilities_size            12
-#define fk_app_LiveValue_size                    7
+#define fk_app_LiveValue_size                    12
 /* fk_app_SensorCapabilities_size depends on runtime parameters */
 #define fk_app_ModuleHeader_size                 18
 /* fk_app_ModuleCapabilities_size depends on runtime parameters */

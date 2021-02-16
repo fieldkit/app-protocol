@@ -392,6 +392,7 @@
              * @interface ILiveValue
              * @property {boolean} [valid] LiveValue valid
              * @property {number} [value] LiveValue value
+             * @property {number} [uncalibrated] LiveValue uncalibrated
              */
     
             /**
@@ -425,6 +426,14 @@
             LiveValue.prototype.value = 0;
     
             /**
+             * LiveValue uncalibrated.
+             * @member {number}uncalibrated
+             * @memberof fk_app.LiveValue
+             * @instance
+             */
+            LiveValue.prototype.uncalibrated = 0;
+    
+            /**
              * Creates a new LiveValue instance using the specified properties.
              * @function create
              * @memberof fk_app.LiveValue
@@ -452,6 +461,8 @@
                     writer.uint32(/* id 1, wireType 0 =*/8).bool(message.valid);
                 if (message.value != null && message.hasOwnProperty("value"))
                     writer.uint32(/* id 2, wireType 5 =*/21).float(message.value);
+                if (message.uncalibrated != null && message.hasOwnProperty("uncalibrated"))
+                    writer.uint32(/* id 3, wireType 5 =*/29).float(message.uncalibrated);
                 return writer;
             };
     
@@ -491,6 +502,9 @@
                         break;
                     case 2:
                         message.value = reader.float();
+                        break;
+                    case 3:
+                        message.uncalibrated = reader.float();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -533,6 +547,9 @@
                 if (message.value != null && message.hasOwnProperty("value"))
                     if (typeof message.value !== "number")
                         return "value: number expected";
+                if (message.uncalibrated != null && message.hasOwnProperty("uncalibrated"))
+                    if (typeof message.uncalibrated !== "number")
+                        return "uncalibrated: number expected";
                 return null;
             };
     
@@ -552,6 +569,8 @@
                     message.valid = Boolean(object.valid);
                 if (object.value != null)
                     message.value = Number(object.value);
+                if (object.uncalibrated != null)
+                    message.uncalibrated = Number(object.uncalibrated);
                 return message;
             };
     
@@ -571,11 +590,14 @@
                 if (options.defaults) {
                     object.valid = false;
                     object.value = 0;
+                    object.uncalibrated = 0;
                 }
                 if (message.valid != null && message.hasOwnProperty("valid"))
                     object.valid = message.valid;
                 if (message.value != null && message.hasOwnProperty("value"))
                     object.value = options.json && !isFinite(message.value) ? String(message.value) : message.value;
+                if (message.uncalibrated != null && message.hasOwnProperty("uncalibrated"))
+                    object.uncalibrated = options.json && !isFinite(message.uncalibrated) ? String(message.uncalibrated) : message.uncalibrated;
                 return object;
             };
     
@@ -13062,6 +13084,7 @@
              * @interface ILiveSensorReading
              * @property {fk_app.ISensorCapabilities} [sensor] LiveSensorReading sensor
              * @property {number} [value] LiveSensorReading value
+             * @property {number} [uncalibrated] LiveSensorReading uncalibrated
              */
     
             /**
@@ -13095,6 +13118,14 @@
             LiveSensorReading.prototype.value = 0;
     
             /**
+             * LiveSensorReading uncalibrated.
+             * @member {number}uncalibrated
+             * @memberof fk_app.LiveSensorReading
+             * @instance
+             */
+            LiveSensorReading.prototype.uncalibrated = 0;
+    
+            /**
              * Creates a new LiveSensorReading instance using the specified properties.
              * @function create
              * @memberof fk_app.LiveSensorReading
@@ -13122,6 +13153,8 @@
                     $root.fk_app.SensorCapabilities.encode(message.sensor, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 if (message.value != null && message.hasOwnProperty("value"))
                     writer.uint32(/* id 2, wireType 5 =*/21).float(message.value);
+                if (message.uncalibrated != null && message.hasOwnProperty("uncalibrated"))
+                    writer.uint32(/* id 3, wireType 5 =*/29).float(message.uncalibrated);
                 return writer;
             };
     
@@ -13161,6 +13194,9 @@
                         break;
                     case 2:
                         message.value = reader.float();
+                        break;
+                    case 3:
+                        message.uncalibrated = reader.float();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -13205,6 +13241,9 @@
                 if (message.value != null && message.hasOwnProperty("value"))
                     if (typeof message.value !== "number")
                         return "value: number expected";
+                if (message.uncalibrated != null && message.hasOwnProperty("uncalibrated"))
+                    if (typeof message.uncalibrated !== "number")
+                        return "uncalibrated: number expected";
                 return null;
             };
     
@@ -13227,6 +13266,8 @@
                 }
                 if (object.value != null)
                     message.value = Number(object.value);
+                if (object.uncalibrated != null)
+                    message.uncalibrated = Number(object.uncalibrated);
                 return message;
             };
     
@@ -13246,11 +13287,14 @@
                 if (options.defaults) {
                     object.sensor = null;
                     object.value = 0;
+                    object.uncalibrated = 0;
                 }
                 if (message.sensor != null && message.hasOwnProperty("sensor"))
                     object.sensor = $root.fk_app.SensorCapabilities.toObject(message.sensor, options);
                 if (message.value != null && message.hasOwnProperty("value"))
                     object.value = options.json && !isFinite(message.value) ? String(message.value) : message.value;
+                if (message.uncalibrated != null && message.hasOwnProperty("uncalibrated"))
+                    object.uncalibrated = options.json && !isFinite(message.uncalibrated) ? String(message.uncalibrated) : message.uncalibrated;
                 return object;
             };
     

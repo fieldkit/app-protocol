@@ -90,6 +90,7 @@ message QueryCapabilities {
 message LiveValue {
   bool valid = 1;
   float value = 2;
+  float uncalibrated = 3;
 }
 
 message SensorCapabilities {
@@ -440,6 +441,7 @@ message DataStream {
 message LiveSensorReading {
   SensorCapabilities sensor = 1;
   float value = 2;
+  float uncalibrated = 3;
 }
 
 message LiveModuleReadings {

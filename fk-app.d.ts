@@ -179,6 +179,9 @@ export namespace fk_app {
 
         /** LiveValue value */
         value?: number;
+
+        /** LiveValue uncalibrated */
+        uncalibrated?: number;
     }
 
     /** Represents a LiveValue. */
@@ -195,6 +198,9 @@ export namespace fk_app {
 
         /** LiveValue value. */
         public value: number;
+
+        /** LiveValue uncalibrated. */
+        public uncalibrated: number;
 
         /**
          * Creates a new LiveValue instance using the specified properties.
@@ -5075,6 +5081,9 @@ export namespace fk_app {
 
         /** LiveSensorReading value */
         value?: number;
+
+        /** LiveSensorReading uncalibrated */
+        uncalibrated?: number;
     }
 
     /** Represents a LiveSensorReading. */
@@ -5091,6 +5100,9 @@ export namespace fk_app {
 
         /** LiveSensorReading value. */
         public value: number;
+
+        /** LiveSensorReading uncalibrated. */
+        public uncalibrated: number;
 
         /**
          * Creates a new LiveSensorReading instance using the specified properties.
