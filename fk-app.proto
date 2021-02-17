@@ -122,7 +122,7 @@ message ModuleCapabilities {
   uint32 flags = 5;
   bytes id = 6;
   ModuleHeader header = 7;
-  bytes status = 8;
+  bytes configuration = 8;
 }
 
 message Capabilities {

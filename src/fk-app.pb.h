@@ -361,7 +361,7 @@ typedef struct _fk_app_ModuleCapabilities {
     pb_callback_t id;
     bool has_header;
     fk_app_ModuleHeader header;
-    pb_callback_t status;
+    pb_callback_t configuration;
 } fk_app_ModuleCapabilities;
 
 typedef struct _fk_app_NetworkSettings {
@@ -841,7 +841,7 @@ extern "C" {
 #define fk_app_ModuleCapabilities_flags_tag      5
 #define fk_app_ModuleCapabilities_id_tag         6
 #define fk_app_ModuleCapabilities_header_tag     7
-#define fk_app_ModuleCapabilities_status_tag     8
+#define fk_app_ModuleCapabilities_configuration_tag 8
 #define fk_app_NetworkSettings_createAccessPoint_tag 1
 #define fk_app_NetworkSettings_networks_tag      2
 #define fk_app_NetworkSettings_connected_tag     3
@@ -970,7 +970,7 @@ X(a, CALLBACK, SINGULAR, STRING,   path,              4) \
 X(a, STATIC,   SINGULAR, UINT32,   flags,             5) \
 X(a, CALLBACK, SINGULAR, BYTES,    id,                6) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  header,            7) \
-X(a, CALLBACK, SINGULAR, BYTES,    status,            8)
+X(a, CALLBACK, SINGULAR, BYTES,    configuration,     8)
 #define fk_app_ModuleCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_ModuleCapabilities_DEFAULT NULL
 #define fk_app_ModuleCapabilities_sensors_MSGTYPE fk_app_SensorCapabilities

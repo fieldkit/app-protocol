@@ -188,7 +188,7 @@
               "type": "ModuleHeader",
               "id": 7
             },
-            "status": {
+            "configuration": {
               "type": "bytes",
               "id": 8
             }

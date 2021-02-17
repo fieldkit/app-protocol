@@ -531,8 +531,8 @@ export namespace fk_app {
         /** ModuleCapabilities header */
         header?: fk_app.IModuleHeader;
 
-        /** ModuleCapabilities status */
-        status?: Uint8Array;
+        /** ModuleCapabilities configuration */
+        configuration?: Uint8Array;
     }
 
     /** Represents a ModuleCapabilities. */
@@ -565,8 +565,8 @@ export namespace fk_app {
         /** ModuleCapabilities header. */
         public header?: (fk_app.IModuleHeader|null);
 
-        /** ModuleCapabilities status. */
-        public status: Uint8Array;
+        /** ModuleCapabilities configuration. */
+        public configuration: Uint8Array;
 
         /**
          * Creates a new ModuleCapabilities instance using the specified properties.

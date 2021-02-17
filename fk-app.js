@@ -1205,7 +1205,7 @@
              * @property {number} [flags] ModuleCapabilities flags
              * @property {Uint8Array} [id] ModuleCapabilities id
              * @property {fk_app.IModuleHeader} [header] ModuleCapabilities header
-             * @property {Uint8Array} [status] ModuleCapabilities status
+             * @property {Uint8Array} [configuration] ModuleCapabilities configuration
              */
     
             /**
@@ -1280,12 +1280,12 @@
             ModuleCapabilities.prototype.header = null;
     
             /**
-             * ModuleCapabilities status.
-             * @member {Uint8Array}status
+             * ModuleCapabilities configuration.
+             * @member {Uint8Array}configuration
              * @memberof fk_app.ModuleCapabilities
              * @instance
              */
-            ModuleCapabilities.prototype.status = $util.newBuffer([]);
+            ModuleCapabilities.prototype.configuration = $util.newBuffer([]);
     
             /**
              * Creates a new ModuleCapabilities instance using the specified properties.
@@ -1326,8 +1326,8 @@
                     writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.id);
                 if (message.header != null && message.hasOwnProperty("header"))
                     $root.fk_app.ModuleHeader.encode(message.header, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
-                if (message.status != null && message.hasOwnProperty("status"))
-                    writer.uint32(/* id 8, wireType 2 =*/66).bytes(message.status);
+                if (message.configuration != null && message.hasOwnProperty("configuration"))
+                    writer.uint32(/* id 8, wireType 2 =*/66).bytes(message.configuration);
                 return writer;
             };
     
@@ -1386,7 +1386,7 @@
                         message.header = $root.fk_app.ModuleHeader.decode(reader, reader.uint32());
                         break;
                     case 8:
-                        message.status = reader.bytes();
+                        message.configuration = reader.bytes();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -1452,9 +1452,9 @@
                     if (error)
                         return "header." + error;
                 }
-                if (message.status != null && message.hasOwnProperty("status"))
-                    if (!(message.status && typeof message.status.length === "number" || $util.isString(message.status)))
-                        return "status: buffer expected";
+                if (message.configuration != null && message.hasOwnProperty("configuration"))
+                    if (!(message.configuration && typeof message.configuration.length === "number" || $util.isString(message.configuration)))
+                        return "configuration: buffer expected";
                 return null;
             };
     
@@ -1498,11 +1498,11 @@
                         throw TypeError(".fk_app.ModuleCapabilities.header: object expected");
                     message.header = $root.fk_app.ModuleHeader.fromObject(object.header);
                 }
-                if (object.status != null)
-                    if (typeof object.status === "string")
-                        $util.base64.decode(object.status, message.status = $util.newBuffer($util.base64.length(object.status)), 0);
-                    else if (object.status.length)
-                        message.status = object.status;
+                if (object.configuration != null)
+                    if (typeof object.configuration === "string")
+                        $util.base64.decode(object.configuration, message.configuration = $util.newBuffer($util.base64.length(object.configuration)), 0);
+                    else if (object.configuration.length)
+                        message.configuration = object.configuration;
                 return message;
             };
     
@@ -1528,7 +1528,7 @@
                     object.flags = 0;
                     object.id = options.bytes === String ? "" : [];
                     object.header = null;
-                    object.status = options.bytes === String ? "" : [];
+                    object.configuration = options.bytes === String ? "" : [];
                 }
                 if (message.position != null && message.hasOwnProperty("position"))
                     object.position = message.position;
@@ -1547,8 +1547,8 @@
                     object.id = options.bytes === String ? $util.base64.encode(message.id, 0, message.id.length) : options.bytes === Array ? Array.prototype.slice.call(message.id) : message.id;
                 if (message.header != null && message.hasOwnProperty("header"))
                     object.header = $root.fk_app.ModuleHeader.toObject(message.header, options);
-                if (message.status != null && message.hasOwnProperty("status"))
-                    object.status = options.bytes === String ? $util.base64.encode(message.status, 0, message.status.length) : options.bytes === Array ? Array.prototype.slice.call(message.status) : message.status;
+                if (message.configuration != null && message.hasOwnProperty("configuration"))
+                    object.configuration = options.bytes === String ? $util.base64.encode(message.configuration, 0, message.configuration.length) : options.bytes === Array ? Array.prototype.slice.call(message.configuration) : message.configuration;
                 return object;
             };
     
