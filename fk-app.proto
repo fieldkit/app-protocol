@@ -154,6 +154,8 @@ message Firmware {
   string number = 3;
   uint64 timestamp = 4;
   string hash = 5;
+  uint64 logical_address = 6;
+  string name = 7;
 }
 
 message Identity {
@@ -326,6 +328,7 @@ message MemoryStatus {
   uint32 dataMemoryInstalled = 4;
   uint32 dataMemoryUsed = 5;
   float dataMemoryConsumption = 6;
+  repeated Firmware firmware = 7;
 }
 
 message BatteryStatus {

@@ -6073,6 +6073,24 @@ public final class FkApp {
      */
     com.google.protobuf.ByteString
         getHashBytes();
+
+    /**
+     * <code>uint64 logical_address = 6;</code>
+     * @return The logicalAddress.
+     */
+    long getLogicalAddress();
+
+    /**
+     * <code>string name = 7;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 7;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
   }
   /**
    * Protobuf type {@code fk_app.Firmware}
@@ -6087,6 +6105,7 @@ public final class FkApp {
       build_ = "";
       number_ = "";
       hash_ = "";
+      name_ = "";
     }
     public static final int VERSION_FIELD_NUMBER = 1;
     private java.lang.String version_;
@@ -6299,6 +6318,79 @@ public final class FkApp {
         com.google.protobuf.ByteString value) {
       checkByteStringIsUtf8(value);
       hash_ = value.toStringUtf8();
+      
+    }
+
+    public static final int LOGICAL_ADDRESS_FIELD_NUMBER = 6;
+    private long logicalAddress_;
+    /**
+     * <code>uint64 logical_address = 6;</code>
+     * @return The logicalAddress.
+     */
+    @java.lang.Override
+    public long getLogicalAddress() {
+      return logicalAddress_;
+    }
+    /**
+     * <code>uint64 logical_address = 6;</code>
+     * @param value The logicalAddress to set.
+     */
+    private void setLogicalAddress(long value) {
+      
+      logicalAddress_ = value;
+    }
+    /**
+     * <code>uint64 logical_address = 6;</code>
+     */
+    private void clearLogicalAddress() {
+      
+      logicalAddress_ = 0L;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 7;
+    private java.lang.String name_;
+    /**
+     * <code>string name = 7;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      return name_;
+    }
+    /**
+     * <code>string name = 7;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(name_);
+    }
+    /**
+     * <code>string name = 7;</code>
+     * @param value The name to set.
+     */
+    private void setName(
+        java.lang.String value) {
+      value.getClass();
+  
+      name_ = value;
+    }
+    /**
+     * <code>string name = 7;</code>
+     */
+    private void clearName() {
+      
+      name_ = getDefaultInstance().getName();
+    }
+    /**
+     * <code>string name = 7;</code>
+     * @param value The bytes for name to set.
+     */
+    private void setNameBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      name_ = value.toStringUtf8();
       
     }
 
@@ -6621,6 +6713,83 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>uint64 logical_address = 6;</code>
+       * @return The logicalAddress.
+       */
+      @java.lang.Override
+      public long getLogicalAddress() {
+        return instance.getLogicalAddress();
+      }
+      /**
+       * <code>uint64 logical_address = 6;</code>
+       * @param value The logicalAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLogicalAddress(long value) {
+        copyOnWrite();
+        instance.setLogicalAddress(value);
+        return this;
+      }
+      /**
+       * <code>uint64 logical_address = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLogicalAddress() {
+        copyOnWrite();
+        instance.clearLogicalAddress();
+        return this;
+      }
+
+      /**
+       * <code>string name = 7;</code>
+       * @return The name.
+       */
+      @java.lang.Override
+      public java.lang.String getName() {
+        return instance.getName();
+      }
+      /**
+       * <code>string name = 7;</code>
+       * @return The bytes for name.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        return instance.getNameBytes();
+      }
+      /**
+       * <code>string name = 7;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setName(value);
+        return this;
+      }
+      /**
+       * <code>string name = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        copyOnWrite();
+        instance.clearName();
+        return this;
+      }
+      /**
+       * <code>string name = 7;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setNameBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.Firmware)
     }
     @java.lang.Override
@@ -6642,10 +6811,12 @@ public final class FkApp {
               "number_",
               "timestamp_",
               "hash_",
+              "logicalAddress_",
+              "name_",
             };
             java.lang.String info =
-                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-                "\u0003\u0208\u0004\u0003\u0005\u0208";
+                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\u0208\u0004\u0003\u0005\u0208\u0006\u0003\u0007\u0208";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -17835,6 +18006,20 @@ public final class FkApp {
      * @return The dataMemoryConsumption.
      */
     float getDataMemoryConsumption();
+
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    java.util.List<org.conservify.fieldkit.app.pb.FkApp.Firmware> 
+        getFirmwareList();
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    org.conservify.fieldkit.app.pb.FkApp.Firmware getFirmware(int index);
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    int getFirmwareCount();
   }
   /**
    * Protobuf type {@code fk_app.MemoryStatus}
@@ -17845,6 +18030,7 @@ public final class FkApp {
       // @@protoc_insertion_point(message_implements:fk_app.MemoryStatus)
       MemoryStatusOrBuilder {
     private MemoryStatus() {
+      firmware_ = emptyProtobufList();
     }
     public static final int SRAMAVAILABLE_FIELD_NUMBER = 1;
     private int sramAvailable_;
@@ -18000,6 +18186,99 @@ public final class FkApp {
     private void clearDataMemoryConsumption() {
       
       dataMemoryConsumption_ = 0F;
+    }
+
+    public static final int FIRMWARE_FIELD_NUMBER = 7;
+    private com.google.protobuf.Internal.ProtobufList<org.conservify.fieldkit.app.pb.FkApp.Firmware> firmware_;
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.conservify.fieldkit.app.pb.FkApp.Firmware> getFirmwareList() {
+      return firmware_;
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    public java.util.List<? extends org.conservify.fieldkit.app.pb.FkApp.FirmwareOrBuilder> 
+        getFirmwareOrBuilderList() {
+      return firmware_;
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    @java.lang.Override
+    public int getFirmwareCount() {
+      return firmware_.size();
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    @java.lang.Override
+    public org.conservify.fieldkit.app.pb.FkApp.Firmware getFirmware(int index) {
+      return firmware_.get(index);
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    public org.conservify.fieldkit.app.pb.FkApp.FirmwareOrBuilder getFirmwareOrBuilder(
+        int index) {
+      return firmware_.get(index);
+    }
+    private void ensureFirmwareIsMutable() {
+      if (!firmware_.isModifiable()) {
+        firmware_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(firmware_);
+       }
+    }
+
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    private void setFirmware(
+        int index, org.conservify.fieldkit.app.pb.FkApp.Firmware value) {
+      value.getClass();
+  ensureFirmwareIsMutable();
+      firmware_.set(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    private void addFirmware(org.conservify.fieldkit.app.pb.FkApp.Firmware value) {
+      value.getClass();
+  ensureFirmwareIsMutable();
+      firmware_.add(value);
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    private void addFirmware(
+        int index, org.conservify.fieldkit.app.pb.FkApp.Firmware value) {
+      value.getClass();
+  ensureFirmwareIsMutable();
+      firmware_.add(index, value);
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    private void addAllFirmware(
+        java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.Firmware> values) {
+      ensureFirmwareIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, firmware_);
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    private void clearFirmware() {
+      firmware_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .fk_app.Firmware firmware = 7;</code>
+     */
+    private void removeFirmware(int index) {
+      ensureFirmwareIsMutable();
+      firmware_.remove(index);
     }
 
     public static org.conservify.fieldkit.app.pb.FkApp.MemoryStatus parseFrom(
@@ -18265,6 +18544,108 @@ public final class FkApp {
         return this;
       }
 
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.conservify.fieldkit.app.pb.FkApp.Firmware> getFirmwareList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getFirmwareList());
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      @java.lang.Override
+      public int getFirmwareCount() {
+        return instance.getFirmwareCount();
+      }/**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      @java.lang.Override
+      public org.conservify.fieldkit.app.pb.FkApp.Firmware getFirmware(int index) {
+        return instance.getFirmware(index);
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder setFirmware(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Firmware value) {
+        copyOnWrite();
+        instance.setFirmware(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder setFirmware(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Firmware.Builder builderForValue) {
+        copyOnWrite();
+        instance.setFirmware(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder addFirmware(org.conservify.fieldkit.app.pb.FkApp.Firmware value) {
+        copyOnWrite();
+        instance.addFirmware(value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder addFirmware(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Firmware value) {
+        copyOnWrite();
+        instance.addFirmware(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder addFirmware(
+          org.conservify.fieldkit.app.pb.FkApp.Firmware.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFirmware(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder addFirmware(
+          int index, org.conservify.fieldkit.app.pb.FkApp.Firmware.Builder builderForValue) {
+        copyOnWrite();
+        instance.addFirmware(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder addAllFirmware(
+          java.lang.Iterable<? extends org.conservify.fieldkit.app.pb.FkApp.Firmware> values) {
+        copyOnWrite();
+        instance.addAllFirmware(values);
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder clearFirmware() {
+        copyOnWrite();
+        instance.clearFirmware();
+        return this;
+      }
+      /**
+       * <code>repeated .fk_app.Firmware firmware = 7;</code>
+       */
+      public Builder removeFirmware(int index) {
+        copyOnWrite();
+        instance.removeFirmware(index);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:fk_app.MemoryStatus)
     }
     @java.lang.Override
@@ -18287,10 +18668,12 @@ public final class FkApp {
               "dataMemoryInstalled_",
               "dataMemoryUsed_",
               "dataMemoryConsumption_",
+              "firmware_",
+              org.conservify.fieldkit.app.pb.FkApp.Firmware.class,
             };
             java.lang.String info =
-                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u000b\u0002\u000b" +
-                "\u0003\u000b\u0004\u000b\u0005\u000b\u0006\u0001";
+                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0001\u0000\u0001\u000b\u0002\u000b" +
+                "\u0003\u000b\u0004\u000b\u0005\u000b\u0006\u0001\u0007\u001b";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

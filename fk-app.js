@@ -2454,6 +2454,8 @@
              * @property {string} [number] Firmware number
              * @property {number|Long} [timestamp] Firmware timestamp
              * @property {string} [hash] Firmware hash
+             * @property {number|Long} [logicalAddress] Firmware logicalAddress
+             * @property {string} [name] Firmware name
              */
     
             /**
@@ -2511,6 +2513,22 @@
             Firmware.prototype.hash = "";
     
             /**
+             * Firmware logicalAddress.
+             * @member {number|Long}logicalAddress
+             * @memberof fk_app.Firmware
+             * @instance
+             */
+            Firmware.prototype.logicalAddress = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+    
+            /**
+             * Firmware name.
+             * @member {string}name
+             * @memberof fk_app.Firmware
+             * @instance
+             */
+            Firmware.prototype.name = "";
+    
+            /**
              * Creates a new Firmware instance using the specified properties.
              * @function create
              * @memberof fk_app.Firmware
@@ -2544,6 +2562,10 @@
                     writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.timestamp);
                 if (message.hash != null && message.hasOwnProperty("hash"))
                     writer.uint32(/* id 5, wireType 2 =*/42).string(message.hash);
+                if (message.logicalAddress != null && message.hasOwnProperty("logicalAddress"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).uint64(message.logicalAddress);
+                if (message.name != null && message.hasOwnProperty("name"))
+                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.name);
                 return writer;
             };
     
@@ -2592,6 +2614,12 @@
                         break;
                     case 5:
                         message.hash = reader.string();
+                        break;
+                    case 6:
+                        message.logicalAddress = reader.uint64();
+                        break;
+                    case 7:
+                        message.name = reader.string();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -2643,6 +2671,12 @@
                 if (message.hash != null && message.hasOwnProperty("hash"))
                     if (!$util.isString(message.hash))
                         return "hash: string expected";
+                if (message.logicalAddress != null && message.hasOwnProperty("logicalAddress"))
+                    if (!$util.isInteger(message.logicalAddress) && !(message.logicalAddress && $util.isInteger(message.logicalAddress.low) && $util.isInteger(message.logicalAddress.high)))
+                        return "logicalAddress: integer|Long expected";
+                if (message.name != null && message.hasOwnProperty("name"))
+                    if (!$util.isString(message.name))
+                        return "name: string expected";
                 return null;
             };
     
@@ -2675,6 +2709,17 @@
                         message.timestamp = new $util.LongBits(object.timestamp.low >>> 0, object.timestamp.high >>> 0).toNumber(true);
                 if (object.hash != null)
                     message.hash = String(object.hash);
+                if (object.logicalAddress != null)
+                    if ($util.Long)
+                        (message.logicalAddress = $util.Long.fromValue(object.logicalAddress)).unsigned = true;
+                    else if (typeof object.logicalAddress === "string")
+                        message.logicalAddress = parseInt(object.logicalAddress, 10);
+                    else if (typeof object.logicalAddress === "number")
+                        message.logicalAddress = object.logicalAddress;
+                    else if (typeof object.logicalAddress === "object")
+                        message.logicalAddress = new $util.LongBits(object.logicalAddress.low >>> 0, object.logicalAddress.high >>> 0).toNumber(true);
+                if (object.name != null)
+                    message.name = String(object.name);
                 return message;
             };
     
@@ -2701,6 +2746,12 @@
                     } else
                         object.timestamp = options.longs === String ? "0" : 0;
                     object.hash = "";
+                    if ($util.Long) {
+                        var long = new $util.Long(0, 0, true);
+                        object.logicalAddress = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.logicalAddress = options.longs === String ? "0" : 0;
+                    object.name = "";
                 }
                 if (message.version != null && message.hasOwnProperty("version"))
                     object.version = message.version;
@@ -2715,6 +2766,13 @@
                         object.timestamp = options.longs === String ? $util.Long.prototype.toString.call(message.timestamp) : options.longs === Number ? new $util.LongBits(message.timestamp.low >>> 0, message.timestamp.high >>> 0).toNumber(true) : message.timestamp;
                 if (message.hash != null && message.hasOwnProperty("hash"))
                     object.hash = message.hash;
+                if (message.logicalAddress != null && message.hasOwnProperty("logicalAddress"))
+                    if (typeof message.logicalAddress === "number")
+                        object.logicalAddress = options.longs === String ? String(message.logicalAddress) : message.logicalAddress;
+                    else
+                        object.logicalAddress = options.longs === String ? $util.Long.prototype.toString.call(message.logicalAddress) : options.longs === Number ? new $util.LongBits(message.logicalAddress.low >>> 0, message.logicalAddress.high >>> 0).toNumber(true) : message.logicalAddress;
+                if (message.name != null && message.hasOwnProperty("name"))
+                    object.name = message.name;
                 return object;
             };
     
@@ -8599,6 +8657,7 @@
              * @property {number} [dataMemoryInstalled] MemoryStatus dataMemoryInstalled
              * @property {number} [dataMemoryUsed] MemoryStatus dataMemoryUsed
              * @property {number} [dataMemoryConsumption] MemoryStatus dataMemoryConsumption
+             * @property {Array.<fk_app.IFirmware>} [firmware] MemoryStatus firmware
              */
     
             /**
@@ -8609,6 +8668,7 @@
              * @param {fk_app.IMemoryStatus=} [properties] Properties to set
              */
             function MemoryStatus(properties) {
+                this.firmware = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -8664,6 +8724,14 @@
             MemoryStatus.prototype.dataMemoryConsumption = 0;
     
             /**
+             * MemoryStatus firmware.
+             * @member {Array.<fk_app.IFirmware>}firmware
+             * @memberof fk_app.MemoryStatus
+             * @instance
+             */
+            MemoryStatus.prototype.firmware = $util.emptyArray;
+    
+            /**
              * Creates a new MemoryStatus instance using the specified properties.
              * @function create
              * @memberof fk_app.MemoryStatus
@@ -8699,6 +8767,9 @@
                     writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.dataMemoryUsed);
                 if (message.dataMemoryConsumption != null && message.hasOwnProperty("dataMemoryConsumption"))
                     writer.uint32(/* id 6, wireType 5 =*/53).float(message.dataMemoryConsumption);
+                if (message.firmware != null && message.firmware.length)
+                    for (var i = 0; i < message.firmware.length; ++i)
+                        $root.fk_app.Firmware.encode(message.firmware[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
                 return writer;
             };
     
@@ -8750,6 +8821,11 @@
                         break;
                     case 6:
                         message.dataMemoryConsumption = reader.float();
+                        break;
+                    case 7:
+                        if (!(message.firmware && message.firmware.length))
+                            message.firmware = [];
+                        message.firmware.push($root.fk_app.Firmware.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -8804,6 +8880,15 @@
                 if (message.dataMemoryConsumption != null && message.hasOwnProperty("dataMemoryConsumption"))
                     if (typeof message.dataMemoryConsumption !== "number")
                         return "dataMemoryConsumption: number expected";
+                if (message.firmware != null && message.hasOwnProperty("firmware")) {
+                    if (!Array.isArray(message.firmware))
+                        return "firmware: array expected";
+                    for (var i = 0; i < message.firmware.length; ++i) {
+                        var error = $root.fk_app.Firmware.verify(message.firmware[i]);
+                        if (error)
+                            return "firmware." + error;
+                    }
+                }
                 return null;
             };
     
@@ -8831,6 +8916,16 @@
                     message.dataMemoryUsed = object.dataMemoryUsed >>> 0;
                 if (object.dataMemoryConsumption != null)
                     message.dataMemoryConsumption = Number(object.dataMemoryConsumption);
+                if (object.firmware) {
+                    if (!Array.isArray(object.firmware))
+                        throw TypeError(".fk_app.MemoryStatus.firmware: array expected");
+                    message.firmware = [];
+                    for (var i = 0; i < object.firmware.length; ++i) {
+                        if (typeof object.firmware[i] !== "object")
+                            throw TypeError(".fk_app.MemoryStatus.firmware: object expected");
+                        message.firmware[i] = $root.fk_app.Firmware.fromObject(object.firmware[i]);
+                    }
+                }
                 return message;
             };
     
@@ -8847,6 +8942,8 @@
                 if (!options)
                     options = {};
                 var object = {};
+                if (options.arrays || options.defaults)
+                    object.firmware = [];
                 if (options.defaults) {
                     object.sramAvailable = 0;
                     object.programFlashAvailable = 0;
@@ -8867,6 +8964,11 @@
                     object.dataMemoryUsed = message.dataMemoryUsed;
                 if (message.dataMemoryConsumption != null && message.hasOwnProperty("dataMemoryConsumption"))
                     object.dataMemoryConsumption = options.json && !isFinite(message.dataMemoryConsumption) ? String(message.dataMemoryConsumption) : message.dataMemoryConsumption;
+                if (message.firmware && message.firmware.length) {
+                    object.firmware = [];
+                    for (var j = 0; j < message.firmware.length; ++j)
+                        object.firmware[j] = $root.fk_app.Firmware.toObject(message.firmware[j], options);
+                }
                 return object;
             };
     

@@ -286,6 +286,14 @@
             "hash": {
               "type": "string",
               "id": 5
+            },
+            "logicalAddress": {
+              "type": "uint64",
+              "id": 6
+            },
+            "name": {
+              "type": "string",
+              "id": 7
             }
           }
         },
@@ -745,6 +753,11 @@
             "dataMemoryConsumption": {
               "type": "float",
               "id": 6
+            },
+            "firmware": {
+              "rule": "repeated",
+              "type": "Firmware",
+              "id": 7
             }
           }
         },

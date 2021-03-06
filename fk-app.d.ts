@@ -992,6 +992,12 @@ export namespace fk_app {
 
         /** Firmware hash */
         hash?: string;
+
+        /** Firmware logicalAddress */
+        logicalAddress?: (number|Long);
+
+        /** Firmware name */
+        name?: string;
     }
 
     /** Represents a Firmware. */
@@ -1017,6 +1023,12 @@ export namespace fk_app {
 
         /** Firmware hash. */
         public hash: string;
+
+        /** Firmware logicalAddress. */
+        public logicalAddress: (number|Long);
+
+        /** Firmware name. */
+        public name: string;
 
         /**
          * Creates a new Firmware instance using the specified properties.
@@ -3389,6 +3401,9 @@ export namespace fk_app {
 
         /** MemoryStatus dataMemoryConsumption */
         dataMemoryConsumption?: number;
+
+        /** MemoryStatus firmware */
+        firmware?: fk_app.IFirmware[];
     }
 
     /** Represents a MemoryStatus. */
@@ -3417,6 +3432,9 @@ export namespace fk_app {
 
         /** MemoryStatus dataMemoryConsumption. */
         public dataMemoryConsumption: number;
+
+        /** MemoryStatus firmware. */
+        public firmware: fk_app.IFirmware[];
 
         /**
          * Creates a new MemoryStatus instance using the specified properties.

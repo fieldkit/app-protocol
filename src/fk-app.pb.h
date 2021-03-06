@@ -216,6 +216,8 @@ typedef struct _fk_app_Firmware {
     pb_callback_t number;
     uint64_t timestamp;
     pb_callback_t hash;
+    uint64_t logical_address;
+    pb_callback_t name;
 } fk_app_Firmware;
 
 typedef struct _fk_app_GpsStatus {
@@ -288,6 +290,7 @@ typedef struct _fk_app_MemoryStatus {
     uint32_t dataMemoryInstalled;
     uint32_t dataMemoryUsed;
     float dataMemoryConsumption;
+    pb_callback_t firmware;
 } fk_app_MemoryStatus;
 
 typedef struct _fk_app_ModuleHeader {
@@ -584,7 +587,7 @@ extern "C" {
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_default          {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0, 0}
 #define fk_app_NetworkSettings_init_default      {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_default, {{NULL}, NULL}}
-#define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
+#define fk_app_Firmware_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_default             {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_default {0, 0}
 #define fk_app_LiveDataPoll_init_default         {0}
@@ -606,7 +609,7 @@ extern "C" {
 #define fk_app_Schedules_init_default            {0, false, fk_app_Schedule_init_default, false, fk_app_Schedule_init_default, false, fk_app_Schedule_init_default, false, fk_app_Schedule_init_default}
 #define fk_app_HardwareStatus_init_default       {0}
 #define fk_app_GpsStatus_init_default            {0, 0, 0, 0, 0, 0, 0}
-#define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0}
+#define fk_app_MemoryStatus_init_default         {0, 0, 0, 0, 0, 0, {{NULL}, NULL}}
 #define fk_app_BatteryStatus_init_default        {0, 0}
 #define fk_app_SolarStatus_init_default          {0}
 #define fk_app_PowerStatus_init_default          {false, fk_app_BatteryStatus_init_default, false, fk_app_SolarStatus_init_default}
@@ -639,7 +642,7 @@ extern "C" {
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_NetworkInfo_init_zero             {{{NULL}, NULL}, {{NULL}, NULL}, 0, 0, 0}
 #define fk_app_NetworkSettings_init_zero         {0, {{NULL}, NULL}, false, fk_app_NetworkInfo_init_zero, {{NULL}, NULL}}
-#define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}}
+#define fk_app_Firmware_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}}
 #define fk_app_Identity_init_zero                {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_ConfigureSensorQuery_init_zero    {0, 0}
 #define fk_app_LiveDataPoll_init_zero            {0}
@@ -661,7 +664,7 @@ extern "C" {
 #define fk_app_Schedules_init_zero               {0, false, fk_app_Schedule_init_zero, false, fk_app_Schedule_init_zero, false, fk_app_Schedule_init_zero, false, fk_app_Schedule_init_zero}
 #define fk_app_HardwareStatus_init_zero          {0}
 #define fk_app_GpsStatus_init_zero               {0, 0, 0, 0, 0, 0, 0}
-#define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0}
+#define fk_app_MemoryStatus_init_zero            {0, 0, 0, 0, 0, 0, {{NULL}, NULL}}
 #define fk_app_BatteryStatus_init_zero           {0, 0}
 #define fk_app_SolarStatus_init_zero             {0}
 #define fk_app_PowerStatus_init_zero             {false, fk_app_BatteryStatus_init_zero, false, fk_app_SolarStatus_init_zero}
@@ -760,6 +763,8 @@ extern "C" {
 #define fk_app_Firmware_number_tag               3
 #define fk_app_Firmware_timestamp_tag            4
 #define fk_app_Firmware_hash_tag                 5
+#define fk_app_Firmware_logical_address_tag      6
+#define fk_app_Firmware_name_tag                 7
 #define fk_app_GpsStatus_fix_tag                 1
 #define fk_app_GpsStatus_time_tag                2
 #define fk_app_GpsStatus_satellites_tag          3
@@ -802,6 +807,7 @@ extern "C" {
 #define fk_app_MemoryStatus_dataMemoryInstalled_tag 4
 #define fk_app_MemoryStatus_dataMemoryUsed_tag   5
 #define fk_app_MemoryStatus_dataMemoryConsumption_tag 6
+#define fk_app_MemoryStatus_firmware_tag         7
 #define fk_app_ModuleHeader_manufacturer_tag     1
 #define fk_app_ModuleHeader_kind_tag             2
 #define fk_app_ModuleHeader_version_tag          3
@@ -1011,7 +1017,9 @@ X(a, CALLBACK, SINGULAR, STRING,   version,           1) \
 X(a, CALLBACK, SINGULAR, STRING,   build,             2) \
 X(a, CALLBACK, SINGULAR, STRING,   number,            3) \
 X(a, STATIC,   SINGULAR, UINT64,   timestamp,         4) \
-X(a, CALLBACK, SINGULAR, STRING,   hash,              5)
+X(a, CALLBACK, SINGULAR, STRING,   hash,              5) \
+X(a, STATIC,   SINGULAR, UINT64,   logical_address,   6) \
+X(a, CALLBACK, SINGULAR, STRING,   name,              7)
 #define fk_app_Firmware_CALLBACK pb_default_field_callback
 #define fk_app_Firmware_DEFAULT NULL
 
@@ -1216,9 +1224,11 @@ X(a, STATIC,   SINGULAR, UINT32,   programFlashAvailable,   2) \
 X(a, STATIC,   SINGULAR, UINT32,   extendedMemoryAvailable,   3) \
 X(a, STATIC,   SINGULAR, UINT32,   dataMemoryInstalled,   4) \
 X(a, STATIC,   SINGULAR, UINT32,   dataMemoryUsed,    5) \
-X(a, STATIC,   SINGULAR, FLOAT,    dataMemoryConsumption,   6)
-#define fk_app_MemoryStatus_CALLBACK NULL
+X(a, STATIC,   SINGULAR, FLOAT,    dataMemoryConsumption,   6) \
+X(a, CALLBACK, REPEATED, MESSAGE,  firmware,          7)
+#define fk_app_MemoryStatus_CALLBACK pb_default_field_callback
 #define fk_app_MemoryStatus_DEFAULT NULL
+#define fk_app_MemoryStatus_firmware_MSGTYPE fk_app_Firmware
 
 #define fk_app_BatteryStatus_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UINT32,   voltage,           1) \
@@ -1604,7 +1614,7 @@ extern const pb_msgdesc_t fk_app_UdpMessage_msg;
 /* fk_app_Schedules_size depends on runtime parameters */
 #define fk_app_HardwareStatus_size               0
 #define fk_app_GpsStatus_size                    44
-#define fk_app_MemoryStatus_size                 35
+/* fk_app_MemoryStatus_size depends on runtime parameters */
 #define fk_app_BatteryStatus_size                12
 #define fk_app_SolarStatus_size                  6
 #define fk_app_PowerStatus_size                  22
