@@ -5379,6 +5379,12 @@ public final class FkApp {
         getMacAddressBytes();
 
     /**
+     * <code>bool modifying = 5;</code>
+     * @return The modifying.
+     */
+    boolean getModifying();
+
+    /**
      * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
      */
     java.util.List<org.conservify.fieldkit.app.pb.FkApp.NetworkInfo> 
@@ -5521,6 +5527,32 @@ public final class FkApp {
       checkByteStringIsUtf8(value);
       macAddress_ = value.toStringUtf8();
       
+    }
+
+    public static final int MODIFYING_FIELD_NUMBER = 5;
+    private boolean modifying_;
+    /**
+     * <code>bool modifying = 5;</code>
+     * @return The modifying.
+     */
+    @java.lang.Override
+    public boolean getModifying() {
+      return modifying_;
+    }
+    /**
+     * <code>bool modifying = 5;</code>
+     * @param value The modifying to set.
+     */
+    private void setModifying(boolean value) {
+      
+      modifying_ = value;
+    }
+    /**
+     * <code>bool modifying = 5;</code>
+     */
+    private void clearModifying() {
+      
+      modifying_ = false;
     }
 
     public static final int NETWORKS_FIELD_NUMBER = 2;
@@ -5836,6 +5868,34 @@ public final class FkApp {
       }
 
       /**
+       * <code>bool modifying = 5;</code>
+       * @return The modifying.
+       */
+      @java.lang.Override
+      public boolean getModifying() {
+        return instance.getModifying();
+      }
+      /**
+       * <code>bool modifying = 5;</code>
+       * @param value The modifying to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModifying(boolean value) {
+        copyOnWrite();
+        instance.setModifying(value);
+        return this;
+      }
+      /**
+       * <code>bool modifying = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModifying() {
+        copyOnWrite();
+        instance.clearModifying();
+        return this;
+      }
+
+      /**
        * <code>repeated .fk_app.NetworkInfo networks = 2;</code>
        */
       @java.lang.Override
@@ -5958,10 +6018,11 @@ public final class FkApp {
               org.conservify.fieldkit.app.pb.FkApp.NetworkInfo.class,
               "connected_",
               "macAddress_",
+              "modifying_",
             };
             java.lang.String info =
-                "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0001\u0000\u0001\u0004\u0002\u001b" +
-                "\u0003\t\u0004\u0208";
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0001\u0000\u0001\u0004\u0002\u001b" +
+                "\u0003\t\u0004\u0208\u0005\u0007";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

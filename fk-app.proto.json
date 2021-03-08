@@ -258,6 +258,10 @@
               "type": "string",
               "id": 4
             },
+            "modifying": {
+              "type": "bool",
+              "id": 5
+            },
             "networks": {
               "rule": "repeated",
               "type": "NetworkInfo",

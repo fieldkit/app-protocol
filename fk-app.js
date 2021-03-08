@@ -2172,6 +2172,7 @@
              * @property {number} [createAccessPoint] NetworkSettings createAccessPoint
              * @property {fk_app.INetworkInfo} [connected] NetworkSettings connected
              * @property {string} [macAddress] NetworkSettings macAddress
+             * @property {boolean} [modifying] NetworkSettings modifying
              * @property {Array.<fk_app.INetworkInfo>} [networks] NetworkSettings networks
              */
     
@@ -2215,6 +2216,14 @@
             NetworkSettings.prototype.macAddress = "";
     
             /**
+             * NetworkSettings modifying.
+             * @member {boolean}modifying
+             * @memberof fk_app.NetworkSettings
+             * @instance
+             */
+            NetworkSettings.prototype.modifying = false;
+    
+            /**
              * NetworkSettings networks.
              * @member {Array.<fk_app.INetworkInfo>}networks
              * @memberof fk_app.NetworkSettings
@@ -2255,6 +2264,8 @@
                     $root.fk_app.NetworkInfo.encode(message.connected, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 if (message.macAddress != null && message.hasOwnProperty("macAddress"))
                     writer.uint32(/* id 4, wireType 2 =*/34).string(message.macAddress);
+                if (message.modifying != null && message.hasOwnProperty("modifying"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).bool(message.modifying);
                 return writer;
             };
     
@@ -2297,6 +2308,9 @@
                         break;
                     case 4:
                         message.macAddress = reader.string();
+                        break;
+                    case 5:
+                        message.modifying = reader.bool();
                         break;
                     case 2:
                         if (!(message.networks && message.networks.length))
@@ -2349,6 +2363,9 @@
                 if (message.macAddress != null && message.hasOwnProperty("macAddress"))
                     if (!$util.isString(message.macAddress))
                         return "macAddress: string expected";
+                if (message.modifying != null && message.hasOwnProperty("modifying"))
+                    if (typeof message.modifying !== "boolean")
+                        return "modifying: boolean expected";
                 if (message.networks != null && message.hasOwnProperty("networks")) {
                     if (!Array.isArray(message.networks))
                         return "networks: array expected";
@@ -2382,6 +2399,8 @@
                 }
                 if (object.macAddress != null)
                     message.macAddress = String(object.macAddress);
+                if (object.modifying != null)
+                    message.modifying = Boolean(object.modifying);
                 if (object.networks) {
                     if (!Array.isArray(object.networks))
                         throw TypeError(".fk_app.NetworkSettings.networks: array expected");
@@ -2414,6 +2433,7 @@
                     object.createAccessPoint = 0;
                     object.connected = null;
                     object.macAddress = "";
+                    object.modifying = false;
                 }
                 if (message.createAccessPoint != null && message.hasOwnProperty("createAccessPoint"))
                     object.createAccessPoint = message.createAccessPoint;
@@ -2426,6 +2446,8 @@
                     object.connected = $root.fk_app.NetworkInfo.toObject(message.connected, options);
                 if (message.macAddress != null && message.hasOwnProperty("macAddress"))
                     object.macAddress = message.macAddress;
+                if (message.modifying != null && message.hasOwnProperty("modifying"))
+                    object.modifying = message.modifying;
                 return object;
             };
     

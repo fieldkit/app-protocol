@@ -879,6 +879,9 @@ export namespace fk_app {
         /** NetworkSettings macAddress */
         macAddress?: string;
 
+        /** NetworkSettings modifying */
+        modifying?: boolean;
+
         /** NetworkSettings networks */
         networks?: fk_app.INetworkInfo[];
     }
@@ -900,6 +903,9 @@ export namespace fk_app {
 
         /** NetworkSettings macAddress. */
         public macAddress: string;
+
+        /** NetworkSettings modifying. */
+        public modifying: boolean;
 
         /** NetworkSettings networks. */
         public networks: fk_app.INetworkInfo[];
