@@ -21,7 +21,7 @@ typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_CONFIGURE_SENSOR = 2,
     fk_app_QueryType_QUERY_LIVE_DATA_POLL = 7,
     fk_app_QueryType_QUERY_SCHEDULES = 8,
-    fk_app_QueryType_QUERY_CONFIGUE_SCHEDULES = 9,
+    fk_app_QueryType_QUERY_CONFIGURE_SCHEDULES = 9,
     fk_app_QueryType_QUERY_FILES = 10,
     fk_app_QueryType_QUERY_DOWNLOAD_FILE = 11,
     fk_app_QueryType_QUERY_ERASE_FILE = 12,

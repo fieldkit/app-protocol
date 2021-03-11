@@ -123,9 +123,9 @@ public final class FkApp {
      */
     QUERY_SCHEDULES(8),
     /**
-     * <code>QUERY_CONFIGUE_SCHEDULES = 9;</code>
+     * <code>QUERY_CONFIGURE_SCHEDULES = 9;</code>
      */
-    QUERY_CONFIGUE_SCHEDULES(9),
+    QUERY_CONFIGURE_SCHEDULES(9),
     /**
      * <code>QUERY_FILES = 10;</code>
      */
@@ -218,9 +218,9 @@ public final class FkApp {
      */
     public static final int QUERY_SCHEDULES_VALUE = 8;
     /**
-     * <code>QUERY_CONFIGUE_SCHEDULES = 9;</code>
+     * <code>QUERY_CONFIGURE_SCHEDULES = 9;</code>
      */
-    public static final int QUERY_CONFIGUE_SCHEDULES_VALUE = 9;
+    public static final int QUERY_CONFIGURE_SCHEDULES_VALUE = 9;
     /**
      * <code>QUERY_FILES = 10;</code>
      */
@@ -317,7 +317,7 @@ public final class FkApp {
         case 2: return QUERY_CONFIGURE_SENSOR;
         case 7: return QUERY_LIVE_DATA_POLL;
         case 8: return QUERY_SCHEDULES;
-        case 9: return QUERY_CONFIGUE_SCHEDULES;
+        case 9: return QUERY_CONFIGURE_SCHEDULES;
         case 10: return QUERY_FILES;
         case 11: return QUERY_DOWNLOAD_FILE;
         case 12: return QUERY_ERASE_FILE;

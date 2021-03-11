@@ -46,7 +46,7 @@
          * @property {number} QUERY_CONFIGURE_SENSOR=2 QUERY_CONFIGURE_SENSOR value
          * @property {number} QUERY_LIVE_DATA_POLL=7 QUERY_LIVE_DATA_POLL value
          * @property {number} QUERY_SCHEDULES=8 QUERY_SCHEDULES value
-         * @property {number} QUERY_CONFIGUE_SCHEDULES=9 QUERY_CONFIGUE_SCHEDULES value
+         * @property {number} QUERY_CONFIGURE_SCHEDULES=9 QUERY_CONFIGURE_SCHEDULES value
          * @property {number} QUERY_FILES=10 QUERY_FILES value
          * @property {number} QUERY_DOWNLOAD_FILE=11 QUERY_DOWNLOAD_FILE value
          * @property {number} QUERY_ERASE_FILE=12 QUERY_ERASE_FILE value
@@ -72,7 +72,7 @@
             values[valuesById[2] = "QUERY_CONFIGURE_SENSOR"] = 2;
             values[valuesById[7] = "QUERY_LIVE_DATA_POLL"] = 7;
             values[valuesById[8] = "QUERY_SCHEDULES"] = 8;
-            values[valuesById[9] = "QUERY_CONFIGUE_SCHEDULES"] = 9;
+            values[valuesById[9] = "QUERY_CONFIGURE_SCHEDULES"] = 9;
             values[valuesById[10] = "QUERY_FILES"] = 10;
             values[valuesById[11] = "QUERY_DOWNLOAD_FILE"] = 11;
             values[valuesById[12] = "QUERY_ERASE_FILE"] = 12;
@@ -6380,7 +6380,7 @@
                 case 8:
                     message.type = 8;
                     break;
-                case "QUERY_CONFIGUE_SCHEDULES":
+                case "QUERY_CONFIGURE_SCHEDULES":
                 case 9:
                     message.type = 9;
                     break;
@@ -12615,7 +12615,7 @@
                 case 8:
                     message.type = 8;
                     break;
-                case "QUERY_CONFIGUE_SCHEDULES":
+                case "QUERY_CONFIGURE_SCHEDULES":
                 case 9:
                     message.type = 9;
                     break;
