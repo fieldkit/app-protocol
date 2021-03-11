@@ -22,7 +22,7 @@ typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_LIVE_DATA_POLL = 7,
     fk_app_QueryType_QUERY_SCHEDULES = 8,
     fk_app_QueryType_QUERY_CONFIGURE_SCHEDULES = 9,
-    fk_app_QueryType_QUERY_FILES = 10,
+    fk_app_QueryType_QUERY_FILES_SD = 10,
     fk_app_QueryType_QUERY_DOWNLOAD_FILE = 11,
     fk_app_QueryType_QUERY_ERASE_FILE = 12,
     fk_app_QueryType_QUERY_RESET = 13,
@@ -38,7 +38,9 @@ typedef enum _fk_app_QueryType {
     fk_app_QueryType_QUERY_TAKE_READINGS = 23,
     fk_app_QueryType_QUERY_RECORDING_CONTROL = 24,
     fk_app_QueryType_QUERY_CONFIGURE = 25,
-    fk_app_QueryType_QUERY_SCAN_NETWORKS = 26
+    fk_app_QueryType_QUERY_SCAN_NETWORKS = 26,
+    fk_app_QueryType_QUERY_FILES_SPI = 27,
+    fk_app_QueryType_QUERY_FILES_QSPI = 28
 } fk_app_QueryType;
 
 typedef enum _fk_app_ReplyType {
@@ -551,8 +553,8 @@ typedef struct _fk_app_HttpReply {
 #define _fk_app_QueryFlags_ARRAYSIZE ((fk_app_QueryFlags)(fk_app_QueryFlags_QUERY_FLAGS_LOGS+1))
 
 #define _fk_app_QueryType_MIN fk_app_QueryType_QUERY_NONE
-#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_SCAN_NETWORKS
-#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_SCAN_NETWORKS+1))
+#define _fk_app_QueryType_MAX fk_app_QueryType_QUERY_FILES_QSPI
+#define _fk_app_QueryType_ARRAYSIZE ((fk_app_QueryType)(fk_app_QueryType_QUERY_FILES_QSPI+1))
 
 #define _fk_app_ReplyType_MIN fk_app_ReplyType_REPLY_NONE
 #define _fk_app_ReplyType_MAX fk_app_ReplyType_REPLY_NETWORKS

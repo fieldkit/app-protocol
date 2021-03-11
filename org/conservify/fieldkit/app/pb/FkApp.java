@@ -127,9 +127,9 @@ public final class FkApp {
      */
     QUERY_CONFIGURE_SCHEDULES(9),
     /**
-     * <code>QUERY_FILES = 10;</code>
+     * <code>QUERY_FILES_SD = 10;</code>
      */
-    QUERY_FILES(10),
+    QUERY_FILES_SD(10),
     /**
      * <code>QUERY_DOWNLOAD_FILE = 11;</code>
      */
@@ -194,6 +194,14 @@ public final class FkApp {
      * <code>QUERY_SCAN_NETWORKS = 26;</code>
      */
     QUERY_SCAN_NETWORKS(26),
+    /**
+     * <code>QUERY_FILES_SPI = 27;</code>
+     */
+    QUERY_FILES_SPI(27),
+    /**
+     * <code>QUERY_FILES_QSPI = 28;</code>
+     */
+    QUERY_FILES_QSPI(28),
     UNRECOGNIZED(-1),
     ;
 
@@ -222,9 +230,9 @@ public final class FkApp {
      */
     public static final int QUERY_CONFIGURE_SCHEDULES_VALUE = 9;
     /**
-     * <code>QUERY_FILES = 10;</code>
+     * <code>QUERY_FILES_SD = 10;</code>
      */
-    public static final int QUERY_FILES_VALUE = 10;
+    public static final int QUERY_FILES_SD_VALUE = 10;
     /**
      * <code>QUERY_DOWNLOAD_FILE = 11;</code>
      */
@@ -289,6 +297,14 @@ public final class FkApp {
      * <code>QUERY_SCAN_NETWORKS = 26;</code>
      */
     public static final int QUERY_SCAN_NETWORKS_VALUE = 26;
+    /**
+     * <code>QUERY_FILES_SPI = 27;</code>
+     */
+    public static final int QUERY_FILES_SPI_VALUE = 27;
+    /**
+     * <code>QUERY_FILES_QSPI = 28;</code>
+     */
+    public static final int QUERY_FILES_QSPI_VALUE = 28;
 
 
     @java.lang.Override
@@ -318,7 +334,7 @@ public final class FkApp {
         case 7: return QUERY_LIVE_DATA_POLL;
         case 8: return QUERY_SCHEDULES;
         case 9: return QUERY_CONFIGURE_SCHEDULES;
-        case 10: return QUERY_FILES;
+        case 10: return QUERY_FILES_SD;
         case 11: return QUERY_DOWNLOAD_FILE;
         case 12: return QUERY_ERASE_FILE;
         case 13: return QUERY_RESET;
@@ -335,6 +351,8 @@ public final class FkApp {
         case 24: return QUERY_RECORDING_CONTROL;
         case 25: return QUERY_CONFIGURE;
         case 26: return QUERY_SCAN_NETWORKS;
+        case 27: return QUERY_FILES_SPI;
+        case 28: return QUERY_FILES_QSPI;
         default: return null;
       }
     }

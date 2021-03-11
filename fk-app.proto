@@ -18,7 +18,7 @@ enum QueryType {
   QUERY_LIVE_DATA_POLL = 7;
   QUERY_SCHEDULES = 8;
   QUERY_CONFIGURE_SCHEDULES = 9;
-  QUERY_FILES = 10;
+  QUERY_FILES_SD = 10;
   QUERY_DOWNLOAD_FILE = 11;
   QUERY_ERASE_FILE = 12;
   QUERY_RESET = 13;
@@ -35,6 +35,8 @@ enum QueryType {
   QUERY_RECORDING_CONTROL = 24;
   QUERY_CONFIGURE = 25;
   QUERY_SCAN_NETWORKS = 26;
+  QUERY_FILES_SPI = 27;
+  QUERY_FILES_QSPI = 28;
 }
 
 // ReplyType serves a similar purpose. In general situations this isn't as

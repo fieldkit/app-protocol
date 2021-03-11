@@ -47,7 +47,7 @@
          * @property {number} QUERY_LIVE_DATA_POLL=7 QUERY_LIVE_DATA_POLL value
          * @property {number} QUERY_SCHEDULES=8 QUERY_SCHEDULES value
          * @property {number} QUERY_CONFIGURE_SCHEDULES=9 QUERY_CONFIGURE_SCHEDULES value
-         * @property {number} QUERY_FILES=10 QUERY_FILES value
+         * @property {number} QUERY_FILES_SD=10 QUERY_FILES_SD value
          * @property {number} QUERY_DOWNLOAD_FILE=11 QUERY_DOWNLOAD_FILE value
          * @property {number} QUERY_ERASE_FILE=12 QUERY_ERASE_FILE value
          * @property {number} QUERY_RESET=13 QUERY_RESET value
@@ -64,6 +64,8 @@
          * @property {number} QUERY_RECORDING_CONTROL=24 QUERY_RECORDING_CONTROL value
          * @property {number} QUERY_CONFIGURE=25 QUERY_CONFIGURE value
          * @property {number} QUERY_SCAN_NETWORKS=26 QUERY_SCAN_NETWORKS value
+         * @property {number} QUERY_FILES_SPI=27 QUERY_FILES_SPI value
+         * @property {number} QUERY_FILES_QSPI=28 QUERY_FILES_QSPI value
          */
         fk_app.QueryType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -73,7 +75,7 @@
             values[valuesById[7] = "QUERY_LIVE_DATA_POLL"] = 7;
             values[valuesById[8] = "QUERY_SCHEDULES"] = 8;
             values[valuesById[9] = "QUERY_CONFIGURE_SCHEDULES"] = 9;
-            values[valuesById[10] = "QUERY_FILES"] = 10;
+            values[valuesById[10] = "QUERY_FILES_SD"] = 10;
             values[valuesById[11] = "QUERY_DOWNLOAD_FILE"] = 11;
             values[valuesById[12] = "QUERY_ERASE_FILE"] = 12;
             values[valuesById[13] = "QUERY_RESET"] = 13;
@@ -90,6 +92,8 @@
             values[valuesById[24] = "QUERY_RECORDING_CONTROL"] = 24;
             values[valuesById[25] = "QUERY_CONFIGURE"] = 25;
             values[valuesById[26] = "QUERY_SCAN_NETWORKS"] = 26;
+            values[valuesById[27] = "QUERY_FILES_SPI"] = 27;
+            values[valuesById[28] = "QUERY_FILES_QSPI"] = 28;
             return values;
         })();
     
@@ -6302,6 +6306,8 @@
                     case 24:
                     case 25:
                     case 26:
+                    case 27:
+                    case 28:
                         break;
                     }
                 if (message.queryCapabilities != null && message.hasOwnProperty("queryCapabilities")) {
@@ -6384,7 +6390,7 @@
                 case 9:
                     message.type = 9;
                     break;
-                case "QUERY_FILES":
+                case "QUERY_FILES_SD":
                 case 10:
                     message.type = 10;
                     break;
@@ -6451,6 +6457,14 @@
                 case "QUERY_SCAN_NETWORKS":
                 case 26:
                     message.type = 26;
+                    break;
+                case "QUERY_FILES_SPI":
+                case 27:
+                    message.type = 27;
+                    break;
+                case "QUERY_FILES_QSPI":
+                case 28:
+                    message.type = 28;
                     break;
                 }
                 if (object.queryCapabilities != null) {
@@ -12531,6 +12545,8 @@
                     case 24:
                     case 25:
                     case 26:
+                    case 27:
+                    case 28:
                         break;
                     }
                 if (message.identity != null && message.hasOwnProperty("identity")) {
@@ -12619,7 +12635,7 @@
                 case 9:
                     message.type = 9;
                     break;
-                case "QUERY_FILES":
+                case "QUERY_FILES_SD":
                 case 10:
                     message.type = 10;
                     break;
@@ -12686,6 +12702,14 @@
                 case "QUERY_SCAN_NETWORKS":
                 case 26:
                     message.type = 26;
+                    break;
+                case "QUERY_FILES_SPI":
+                case 27:
+                    message.type = 27;
+                    break;
+                case "QUERY_FILES_QSPI":
+                case 28:
+                    message.type = 28;
                     break;
                 }
                 if (object.identity != null) {
