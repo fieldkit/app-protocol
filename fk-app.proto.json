@@ -2,7 +2,8 @@
   "nested": {
     "fk_app": {
       "options": {
-        "java_package": "org.conservify.fieldkit.app.pb"
+        "java_package": "org.conservify.fieldkit.app.pb",
+        "go_package": "github.com/fieldkit/app-protocol"
       },
       "nested": {
         "QueryFlags": {
