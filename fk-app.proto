@@ -505,6 +505,12 @@ message HttpReply {
   repeated Fault faults = 13;
 }
 
+message ModuleHttpQuery {
+  QueryType type = 1;
+  repeated Error errors = 2;
+  bytes configuration = 3;
+}
+
 message ModuleHttpReply {
   ReplyType type = 1;
   repeated Error errors = 2;

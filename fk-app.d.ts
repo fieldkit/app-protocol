@@ -6053,6 +6053,108 @@ export namespace fk_app {
         public toJSON(): { [k: string]: any };
     }
 
+    /** Properties of a ModuleHttpQuery. */
+    interface IModuleHttpQuery {
+
+        /** ModuleHttpQuery type */
+        type?: fk_app.QueryType;
+
+        /** ModuleHttpQuery errors */
+        errors?: fk_app.IError[];
+
+        /** ModuleHttpQuery configuration */
+        configuration?: Uint8Array;
+    }
+
+    /** Represents a ModuleHttpQuery. */
+    class ModuleHttpQuery {
+
+        /**
+         * Constructs a new ModuleHttpQuery.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: fk_app.IModuleHttpQuery);
+
+        /** ModuleHttpQuery type. */
+        public type: fk_app.QueryType;
+
+        /** ModuleHttpQuery errors. */
+        public errors: fk_app.IError[];
+
+        /** ModuleHttpQuery configuration. */
+        public configuration: Uint8Array;
+
+        /**
+         * Creates a new ModuleHttpQuery instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ModuleHttpQuery instance
+         */
+        public static create(properties?: fk_app.IModuleHttpQuery): fk_app.ModuleHttpQuery;
+
+        /**
+         * Encodes the specified ModuleHttpQuery message. Does not implicitly {@link fk_app.ModuleHttpQuery.verify|verify} messages.
+         * @param message ModuleHttpQuery message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: fk_app.IModuleHttpQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ModuleHttpQuery message, length delimited. Does not implicitly {@link fk_app.ModuleHttpQuery.verify|verify} messages.
+         * @param message ModuleHttpQuery message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: fk_app.IModuleHttpQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ModuleHttpQuery message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ModuleHttpQuery
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): fk_app.ModuleHttpQuery;
+
+        /**
+         * Decodes a ModuleHttpQuery message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ModuleHttpQuery
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): fk_app.ModuleHttpQuery;
+
+        /**
+         * Verifies a ModuleHttpQuery message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ModuleHttpQuery message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ModuleHttpQuery
+         */
+        public static fromObject(object: { [k: string]: any }): fk_app.ModuleHttpQuery;
+
+        /**
+         * Creates a plain object from a ModuleHttpQuery message. Also converts values to other types if specified.
+         * @param message ModuleHttpQuery
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: fk_app.ModuleHttpQuery, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ModuleHttpQuery to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
     /** Properties of a ModuleHttpReply. */
     interface IModuleHttpReply {
 
