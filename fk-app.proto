@@ -505,6 +505,12 @@ message HttpReply {
   repeated Fault faults = 13;
 }
 
+message ModuleHttpReply {
+  ReplyType type = 1;
+  repeated Error errors = 2;
+  bytes configuration = 3;
+}
+
 enum UdpStatus {
   UDP_STATUS_ONLINE = 0;
   UDP_STATUS_BYE = 1;

@@ -15775,6 +15775,350 @@
             return HttpReply;
         })();
     
+        fk_app.ModuleHttpReply = (function() {
+    
+            /**
+             * Properties of a ModuleHttpReply.
+             * @memberof fk_app
+             * @interface IModuleHttpReply
+             * @property {fk_app.ReplyType} [type] ModuleHttpReply type
+             * @property {Array.<fk_app.IError>} [errors] ModuleHttpReply errors
+             * @property {Uint8Array} [configuration] ModuleHttpReply configuration
+             */
+    
+            /**
+             * Constructs a new ModuleHttpReply.
+             * @memberof fk_app
+             * @classdesc Represents a ModuleHttpReply.
+             * @constructor
+             * @param {fk_app.IModuleHttpReply=} [properties] Properties to set
+             */
+            function ModuleHttpReply(properties) {
+                this.errors = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+    
+            /**
+             * ModuleHttpReply type.
+             * @member {fk_app.ReplyType}type
+             * @memberof fk_app.ModuleHttpReply
+             * @instance
+             */
+            ModuleHttpReply.prototype.type = 0;
+    
+            /**
+             * ModuleHttpReply errors.
+             * @member {Array.<fk_app.IError>}errors
+             * @memberof fk_app.ModuleHttpReply
+             * @instance
+             */
+            ModuleHttpReply.prototype.errors = $util.emptyArray;
+    
+            /**
+             * ModuleHttpReply configuration.
+             * @member {Uint8Array}configuration
+             * @memberof fk_app.ModuleHttpReply
+             * @instance
+             */
+            ModuleHttpReply.prototype.configuration = $util.newBuffer([]);
+    
+            /**
+             * Creates a new ModuleHttpReply instance using the specified properties.
+             * @function create
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {fk_app.IModuleHttpReply=} [properties] Properties to set
+             * @returns {fk_app.ModuleHttpReply} ModuleHttpReply instance
+             */
+            ModuleHttpReply.create = function create(properties) {
+                return new ModuleHttpReply(properties);
+            };
+    
+            /**
+             * Encodes the specified ModuleHttpReply message. Does not implicitly {@link fk_app.ModuleHttpReply.verify|verify} messages.
+             * @function encode
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {fk_app.IModuleHttpReply} message ModuleHttpReply message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ModuleHttpReply.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.type != null && message.hasOwnProperty("type"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
+                if (message.errors != null && message.errors.length)
+                    for (var i = 0; i < message.errors.length; ++i)
+                        $root.fk_app.Error.encode(message.errors[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                if (message.configuration != null && message.hasOwnProperty("configuration"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.configuration);
+                return writer;
+            };
+    
+            /**
+             * Encodes the specified ModuleHttpReply message, length delimited. Does not implicitly {@link fk_app.ModuleHttpReply.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {fk_app.IModuleHttpReply} message ModuleHttpReply message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ModuleHttpReply.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+    
+            /**
+             * Decodes a ModuleHttpReply message from the specified reader or buffer.
+             * @function decode
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {fk_app.ModuleHttpReply} ModuleHttpReply
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ModuleHttpReply.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.fk_app.ModuleHttpReply();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.type = reader.int32();
+                        break;
+                    case 2:
+                        if (!(message.errors && message.errors.length))
+                            message.errors = [];
+                        message.errors.push($root.fk_app.Error.decode(reader, reader.uint32()));
+                        break;
+                    case 3:
+                        message.configuration = reader.bytes();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+    
+            /**
+             * Decodes a ModuleHttpReply message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {fk_app.ModuleHttpReply} ModuleHttpReply
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ModuleHttpReply.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+    
+            /**
+             * Verifies a ModuleHttpReply message.
+             * @function verify
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ModuleHttpReply.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.type != null && message.hasOwnProperty("type"))
+                    switch (message.type) {
+                    default:
+                        return "type: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                    case 18:
+                    case 19:
+                        break;
+                    }
+                if (message.errors != null && message.hasOwnProperty("errors")) {
+                    if (!Array.isArray(message.errors))
+                        return "errors: array expected";
+                    for (var i = 0; i < message.errors.length; ++i) {
+                        var error = $root.fk_app.Error.verify(message.errors[i]);
+                        if (error)
+                            return "errors." + error;
+                    }
+                }
+                if (message.configuration != null && message.hasOwnProperty("configuration"))
+                    if (!(message.configuration && typeof message.configuration.length === "number" || $util.isString(message.configuration)))
+                        return "configuration: buffer expected";
+                return null;
+            };
+    
+            /**
+             * Creates a ModuleHttpReply message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {fk_app.ModuleHttpReply} ModuleHttpReply
+             */
+            ModuleHttpReply.fromObject = function fromObject(object) {
+                if (object instanceof $root.fk_app.ModuleHttpReply)
+                    return object;
+                var message = new $root.fk_app.ModuleHttpReply();
+                switch (object.type) {
+                case "REPLY_NONE":
+                case 0:
+                    message.type = 0;
+                    break;
+                case "REPLY_SUCCESS":
+                case 1:
+                    message.type = 1;
+                    break;
+                case "REPLY_BUSY":
+                case 2:
+                    message.type = 2;
+                    break;
+                case "REPLY_ERROR":
+                case 3:
+                    message.type = 3;
+                    break;
+                case "REPLY_CAPABILITIES":
+                case 4:
+                    message.type = 4;
+                    break;
+                case "REPLY_LIVE_DATA_POLL":
+                case 8:
+                    message.type = 8;
+                    break;
+                case "REPLY_SCHEDULES":
+                case 9:
+                    message.type = 9;
+                    break;
+                case "REPLY_FILES":
+                case 10:
+                    message.type = 10;
+                    break;
+                case "REPLY_DOWNLOAD_FILE":
+                case 11:
+                    message.type = 11;
+                    break;
+                case "REPLY_RESET":
+                case 12:
+                    message.type = 12;
+                    break;
+                case "REPLY_NETWORK_SETTINGS":
+                case 13:
+                    message.type = 13;
+                    break;
+                case "REPLY_IDENTITY":
+                case 14:
+                    message.type = 14;
+                    break;
+                case "REPLY_STATUS":
+                case 15:
+                    message.type = 15;
+                    break;
+                case "REPLY_MODULE":
+                case 16:
+                    message.type = 16;
+                    break;
+                case "REPLY_METADATA":
+                case 17:
+                    message.type = 17;
+                    break;
+                case "REPLY_READINGS":
+                case 18:
+                    message.type = 18;
+                    break;
+                case "REPLY_NETWORKS":
+                case 19:
+                    message.type = 19;
+                    break;
+                }
+                if (object.errors) {
+                    if (!Array.isArray(object.errors))
+                        throw TypeError(".fk_app.ModuleHttpReply.errors: array expected");
+                    message.errors = [];
+                    for (var i = 0; i < object.errors.length; ++i) {
+                        if (typeof object.errors[i] !== "object")
+                            throw TypeError(".fk_app.ModuleHttpReply.errors: object expected");
+                        message.errors[i] = $root.fk_app.Error.fromObject(object.errors[i]);
+                    }
+                }
+                if (object.configuration != null)
+                    if (typeof object.configuration === "string")
+                        $util.base64.decode(object.configuration, message.configuration = $util.newBuffer($util.base64.length(object.configuration)), 0);
+                    else if (object.configuration.length)
+                        message.configuration = object.configuration;
+                return message;
+            };
+    
+            /**
+             * Creates a plain object from a ModuleHttpReply message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof fk_app.ModuleHttpReply
+             * @static
+             * @param {fk_app.ModuleHttpReply} message ModuleHttpReply
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ModuleHttpReply.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.errors = [];
+                if (options.defaults) {
+                    object.type = options.enums === String ? "REPLY_NONE" : 0;
+                    object.configuration = options.bytes === String ? "" : [];
+                }
+                if (message.type != null && message.hasOwnProperty("type"))
+                    object.type = options.enums === String ? $root.fk_app.ReplyType[message.type] : message.type;
+                if (message.errors && message.errors.length) {
+                    object.errors = [];
+                    for (var j = 0; j < message.errors.length; ++j)
+                        object.errors[j] = $root.fk_app.Error.toObject(message.errors[j], options);
+                }
+                if (message.configuration != null && message.hasOwnProperty("configuration"))
+                    object.configuration = options.bytes === String ? $util.base64.encode(message.configuration, 0, message.configuration.length) : options.bytes === Array ? Array.prototype.slice.call(message.configuration) : message.configuration;
+                return object;
+            };
+    
+            /**
+             * Converts this ModuleHttpReply to JSON.
+             * @function toJSON
+             * @memberof fk_app.ModuleHttpReply
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ModuleHttpReply.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+    
+            return ModuleHttpReply;
+        })();
+    
         /**
          * UdpStatus enum.
          * @enum {string}

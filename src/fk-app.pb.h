@@ -301,6 +301,12 @@ typedef struct _fk_app_ModuleHeader {
     uint32_t version;
 } fk_app_ModuleHeader;
 
+typedef struct _fk_app_ModuleHttpReply {
+    fk_app_ReplyType type;
+    pb_callback_t errors;
+    pb_callback_t configuration;
+} fk_app_ModuleHttpReply;
+
 typedef struct _fk_app_ModuleReply {
     uint32_t id;
     uint32_t address;
@@ -636,6 +642,7 @@ extern "C" {
 #define fk_app_NearbyNetworks_init_default       {{{NULL}, NULL}}
 #define fk_app_Fault_init_default                {0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_default, false, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_default, false, fk_app_Schedules_init_default, false, fk_app_Transmission_init_default, false, fk_app_DirectoryListing_init_default, false, fk_app_NearbyNetworks_init_default, {{NULL}, NULL}}
+#define fk_app_ModuleHttpReply_init_default      {_fk_app_ReplyType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_UdpMessage_init_default           {{{NULL}, NULL}, _fk_app_UdpStatus_MIN, 0}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_LiveValue_init_zero               {0, 0, 0}
@@ -691,6 +698,7 @@ extern "C" {
 #define fk_app_NearbyNetworks_init_zero          {{{NULL}, NULL}}
 #define fk_app_Fault_init_zero                   {0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_zero, false, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_DirectoryListing_init_zero, false, fk_app_NearbyNetworks_init_zero, {{NULL}, NULL}}
+#define fk_app_ModuleHttpReply_init_zero         {_fk_app_ReplyType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_UdpMessage_init_zero              {{{NULL}, NULL}, _fk_app_UdpStatus_MIN, 0}
 
 /* Field tags (for use in manual encoding/decoding) */
@@ -814,6 +822,9 @@ extern "C" {
 #define fk_app_ModuleHeader_manufacturer_tag     1
 #define fk_app_ModuleHeader_kind_tag             2
 #define fk_app_ModuleHeader_version_tag          3
+#define fk_app_ModuleHttpReply_type_tag          1
+#define fk_app_ModuleHttpReply_errors_tag        2
+#define fk_app_ModuleHttpReply_configuration_tag 3
 #define fk_app_ModuleReply_id_tag                1
 #define fk_app_ModuleReply_address_tag           2
 #define fk_app_ModuleReply_message_tag           3
@@ -1468,6 +1479,14 @@ X(a, CALLBACK, REPEATED, MESSAGE,  faults,           13)
 #define fk_app_HttpReply_nearbyNetworks_MSGTYPE fk_app_NearbyNetworks
 #define fk_app_HttpReply_faults_MSGTYPE fk_app_Fault
 
+#define fk_app_ModuleHttpReply_FIELDLIST(X, a) \
+X(a, STATIC,   SINGULAR, UENUM,    type,              1) \
+X(a, CALLBACK, REPEATED, MESSAGE,  errors,            2) \
+X(a, CALLBACK, SINGULAR, BYTES,    configuration,     3)
+#define fk_app_ModuleHttpReply_CALLBACK pb_default_field_callback
+#define fk_app_ModuleHttpReply_DEFAULT NULL
+#define fk_app_ModuleHttpReply_errors_MSGTYPE fk_app_Error
+
 #define fk_app_UdpMessage_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, BYTES,    deviceId,          1) \
 X(a, STATIC,   SINGULAR, UENUM,    status,            2) \
@@ -1529,6 +1548,7 @@ extern const pb_msgdesc_t fk_app_NearbyNetwork_msg;
 extern const pb_msgdesc_t fk_app_NearbyNetworks_msg;
 extern const pb_msgdesc_t fk_app_Fault_msg;
 extern const pb_msgdesc_t fk_app_HttpReply_msg;
+extern const pb_msgdesc_t fk_app_ModuleHttpReply_msg;
 extern const pb_msgdesc_t fk_app_UdpMessage_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
@@ -1586,6 +1606,7 @@ extern const pb_msgdesc_t fk_app_UdpMessage_msg;
 #define fk_app_NearbyNetworks_fields &fk_app_NearbyNetworks_msg
 #define fk_app_Fault_fields &fk_app_Fault_msg
 #define fk_app_HttpReply_fields &fk_app_HttpReply_msg
+#define fk_app_ModuleHttpReply_fields &fk_app_ModuleHttpReply_msg
 #define fk_app_UdpMessage_fields &fk_app_UdpMessage_msg
 
 /* Maximum encoded size of messages (where known) */
@@ -1643,6 +1664,7 @@ extern const pb_msgdesc_t fk_app_UdpMessage_msg;
 /* fk_app_NearbyNetworks_size depends on runtime parameters */
 /* fk_app_Fault_size depends on runtime parameters */
 /* fk_app_HttpReply_size depends on runtime parameters */
+/* fk_app_ModuleHttpReply_size depends on runtime parameters */
 /* fk_app_UdpMessage_size depends on runtime parameters */
 
 #ifdef __cplusplus

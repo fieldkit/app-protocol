@@ -1275,6 +1275,23 @@
             }
           }
         },
+        "ModuleHttpReply": {
+          "fields": {
+            "type": {
+              "type": "ReplyType",
+              "id": 1
+            },
+            "errors": {
+              "rule": "repeated",
+              "type": "Error",
+              "id": 2
+            },
+            "configuration": {
+              "type": "bytes",
+              "id": 3
+            }
+          }
+        },
         "UdpStatus": {
           "values": {
             "UDP_STATUS_ONLINE": 0,
