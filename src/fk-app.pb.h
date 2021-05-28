@@ -78,6 +78,20 @@ typedef enum _fk_app_SensorFlags {
     fk_app_SensorFlags_SENSOR_FLAG_NONE = 0
 } fk_app_SensorFlags;
 
+typedef enum _fk_app_ModuleQueryType {
+    fk_app_ModuleQueryType_MODULE_QUERY_NONE = 0,
+    fk_app_ModuleQueryType_MODULE_QUERY_STATUS = 1,
+    fk_app_ModuleQueryType_MODULE_QUERY_CONFIGURE = 2,
+    fk_app_ModuleQueryType_MODULE_QUERY_RESET = 3
+} fk_app_ModuleQueryType;
+
+typedef enum _fk_app_ModuleReplyType {
+    fk_app_ModuleReplyType_MODULE_REPLY_NONE = 0,
+    fk_app_ModuleReplyType_MODULE_REPLY_SUCCESS = 1,
+    fk_app_ModuleReplyType_MODULE_REPLY_BUSY = 2,
+    fk_app_ModuleReplyType_MODULE_REPLY_ERROR = 3
+} fk_app_ModuleReplyType;
+
 typedef enum _fk_app_UdpStatus {
     fk_app_UdpStatus_UDP_STATUS_ONLINE = 0,
     fk_app_UdpStatus_UDP_STATUS_BYE = 1
@@ -302,13 +316,13 @@ typedef struct _fk_app_ModuleHeader {
 } fk_app_ModuleHeader;
 
 typedef struct _fk_app_ModuleHttpQuery {
-    fk_app_QueryType type;
+    fk_app_ModuleQueryType type;
     pb_callback_t errors;
     pb_callback_t configuration;
 } fk_app_ModuleHttpQuery;
 
 typedef struct _fk_app_ModuleHttpReply {
-    fk_app_ReplyType type;
+    fk_app_ModuleReplyType type;
     pb_callback_t errors;
     pb_callback_t configuration;
 } fk_app_ModuleHttpReply;
@@ -584,6 +598,14 @@ typedef struct _fk_app_HttpReply {
 #define _fk_app_SensorFlags_MAX fk_app_SensorFlags_SENSOR_FLAG_NONE
 #define _fk_app_SensorFlags_ARRAYSIZE ((fk_app_SensorFlags)(fk_app_SensorFlags_SENSOR_FLAG_NONE+1))
 
+#define _fk_app_ModuleQueryType_MIN fk_app_ModuleQueryType_MODULE_QUERY_NONE
+#define _fk_app_ModuleQueryType_MAX fk_app_ModuleQueryType_MODULE_QUERY_RESET
+#define _fk_app_ModuleQueryType_ARRAYSIZE ((fk_app_ModuleQueryType)(fk_app_ModuleQueryType_MODULE_QUERY_RESET+1))
+
+#define _fk_app_ModuleReplyType_MIN fk_app_ModuleReplyType_MODULE_REPLY_NONE
+#define _fk_app_ModuleReplyType_MAX fk_app_ModuleReplyType_MODULE_REPLY_ERROR
+#define _fk_app_ModuleReplyType_ARRAYSIZE ((fk_app_ModuleReplyType)(fk_app_ModuleReplyType_MODULE_REPLY_ERROR+1))
+
 #define _fk_app_UdpStatus_MIN fk_app_UdpStatus_UDP_STATUS_ONLINE
 #define _fk_app_UdpStatus_MAX fk_app_UdpStatus_UDP_STATUS_BYE
 #define _fk_app_UdpStatus_ARRAYSIZE ((fk_app_UdpStatus)(fk_app_UdpStatus_UDP_STATUS_BYE+1))
@@ -648,8 +670,8 @@ extern "C" {
 #define fk_app_NearbyNetworks_init_default       {{{NULL}, NULL}}
 #define fk_app_Fault_init_default                {0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_default            {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_default, false, fk_app_NetworkSettings_init_default, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_default, false, fk_app_Schedules_init_default, false, fk_app_Transmission_init_default, false, fk_app_DirectoryListing_init_default, false, fk_app_NearbyNetworks_init_default, {{NULL}, NULL}}
-#define fk_app_ModuleHttpQuery_init_default      {_fk_app_QueryType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_ModuleHttpReply_init_default      {_fk_app_ReplyType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_ModuleHttpQuery_init_default      {_fk_app_ModuleQueryType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_ModuleHttpReply_init_default      {_fk_app_ModuleReplyType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_UdpMessage_init_default           {{{NULL}, NULL}, _fk_app_UdpStatus_MIN, 0}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_LiveValue_init_zero               {0, 0, 0}
@@ -705,8 +727,8 @@ extern "C" {
 #define fk_app_NearbyNetworks_init_zero          {{{NULL}, NULL}}
 #define fk_app_Fault_init_zero                   {0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_HttpReply_init_zero               {_fk_app_ReplyType_MIN, {{NULL}, NULL}, false, fk_app_Status_init_zero, false, fk_app_NetworkSettings_init_zero, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, false, fk_app_LoraSettings_init_zero, false, fk_app_Schedules_init_zero, false, fk_app_Transmission_init_zero, false, fk_app_DirectoryListing_init_zero, false, fk_app_NearbyNetworks_init_zero, {{NULL}, NULL}}
-#define fk_app_ModuleHttpQuery_init_zero         {_fk_app_QueryType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
-#define fk_app_ModuleHttpReply_init_zero         {_fk_app_ReplyType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_ModuleHttpQuery_init_zero         {_fk_app_ModuleQueryType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
+#define fk_app_ModuleHttpReply_init_zero         {_fk_app_ModuleReplyType_MIN, {{NULL}, NULL}, {{NULL}, NULL}}
 #define fk_app_UdpMessage_init_zero              {{{NULL}, NULL}, _fk_app_UdpStatus_MIN, 0}
 
 /* Field tags (for use in manual encoding/decoding) */

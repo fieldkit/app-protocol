@@ -15775,13 +15775,30 @@
             return HttpReply;
         })();
     
+        /**
+         * ModuleQueryType enum.
+         * @enum {string}
+         * @property {number} MODULE_QUERY_NONE=0 MODULE_QUERY_NONE value
+         * @property {number} MODULE_QUERY_STATUS=1 MODULE_QUERY_STATUS value
+         * @property {number} MODULE_QUERY_CONFIGURE=2 MODULE_QUERY_CONFIGURE value
+         * @property {number} MODULE_QUERY_RESET=3 MODULE_QUERY_RESET value
+         */
+        fk_app.ModuleQueryType = (function() {
+            var valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "MODULE_QUERY_NONE"] = 0;
+            values[valuesById[1] = "MODULE_QUERY_STATUS"] = 1;
+            values[valuesById[2] = "MODULE_QUERY_CONFIGURE"] = 2;
+            values[valuesById[3] = "MODULE_QUERY_RESET"] = 3;
+            return values;
+        })();
+    
         fk_app.ModuleHttpQuery = (function() {
     
             /**
              * Properties of a ModuleHttpQuery.
              * @memberof fk_app
              * @interface IModuleHttpQuery
-             * @property {fk_app.QueryType} [type] ModuleHttpQuery type
+             * @property {fk_app.ModuleQueryType} [type] ModuleHttpQuery type
              * @property {Array.<fk_app.IError>} [errors] ModuleHttpQuery errors
              * @property {Uint8Array} [configuration] ModuleHttpQuery configuration
              */
@@ -15803,7 +15820,7 @@
     
             /**
              * ModuleHttpQuery type.
-             * @member {fk_app.QueryType}type
+             * @member {fk_app.ModuleQueryType}type
              * @memberof fk_app.ModuleHttpQuery
              * @instance
              */
@@ -15943,28 +15960,7 @@
                     case 0:
                     case 1:
                     case 2:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 11:
-                    case 12:
-                    case 13:
-                    case 14:
-                    case 15:
-                    case 16:
-                    case 17:
-                    case 18:
-                    case 19:
-                    case 20:
-                    case 21:
-                    case 22:
-                    case 23:
-                    case 24:
-                    case 25:
-                    case 26:
-                    case 27:
-                    case 28:
+                    case 3:
                         break;
                     }
                 if (message.errors != null && message.hasOwnProperty("errors")) {
@@ -15995,105 +15991,21 @@
                     return object;
                 var message = new $root.fk_app.ModuleHttpQuery();
                 switch (object.type) {
-                case "QUERY_NONE":
+                case "MODULE_QUERY_NONE":
                 case 0:
                     message.type = 0;
                     break;
-                case "QUERY_CAPABILITIES":
+                case "MODULE_QUERY_STATUS":
                 case 1:
                     message.type = 1;
                     break;
-                case "QUERY_CONFIGURE_SENSOR":
+                case "MODULE_QUERY_CONFIGURE":
                 case 2:
                     message.type = 2;
                     break;
-                case "QUERY_LIVE_DATA_POLL":
-                case 7:
-                    message.type = 7;
-                    break;
-                case "QUERY_SCHEDULES":
-                case 8:
-                    message.type = 8;
-                    break;
-                case "QUERY_CONFIGURE_SCHEDULES":
-                case 9:
-                    message.type = 9;
-                    break;
-                case "QUERY_FILES_SD":
-                case 10:
-                    message.type = 10;
-                    break;
-                case "QUERY_DOWNLOAD_FILE":
-                case 11:
-                    message.type = 11;
-                    break;
-                case "QUERY_ERASE_FILE":
-                case 12:
-                    message.type = 12;
-                    break;
-                case "QUERY_RESET":
-                case 13:
-                    message.type = 13;
-                    break;
-                case "QUERY_NETWORK_SETTINGS":
-                case 14:
-                    message.type = 14;
-                    break;
-                case "QUERY_CONFIGURE_NETWORK_SETTINGS":
-                case 15:
-                    message.type = 15;
-                    break;
-                case "QUERY_SCAN_MODULES":
-                case 16:
-                    message.type = 16;
-                    break;
-                case "QUERY_CONFIGURE_IDENTITY":
-                case 17:
-                    message.type = 17;
-                    break;
-                case "QUERY_STATUS":
-                case 18:
-                    message.type = 18;
-                    break;
-                case "QUERY_MODULE":
-                case 19:
-                    message.type = 19;
-                    break;
-                case "QUERY_METADATA":
-                case 20:
-                    message.type = 20;
-                    break;
-                case "QUERY_FORMAT":
-                case 21:
-                    message.type = 21;
-                    break;
-                case "QUERY_GET_READINGS":
-                case 22:
-                    message.type = 22;
-                    break;
-                case "QUERY_TAKE_READINGS":
-                case 23:
-                    message.type = 23;
-                    break;
-                case "QUERY_RECORDING_CONTROL":
-                case 24:
-                    message.type = 24;
-                    break;
-                case "QUERY_CONFIGURE":
-                case 25:
-                    message.type = 25;
-                    break;
-                case "QUERY_SCAN_NETWORKS":
-                case 26:
-                    message.type = 26;
-                    break;
-                case "QUERY_FILES_SPI":
-                case 27:
-                    message.type = 27;
-                    break;
-                case "QUERY_FILES_QSPI":
-                case 28:
-                    message.type = 28;
+                case "MODULE_QUERY_RESET":
+                case 3:
+                    message.type = 3;
                     break;
                 }
                 if (object.errors) {
@@ -16130,11 +16042,11 @@
                 if (options.arrays || options.defaults)
                     object.errors = [];
                 if (options.defaults) {
-                    object.type = options.enums === String ? "QUERY_NONE" : 0;
+                    object.type = options.enums === String ? "MODULE_QUERY_NONE" : 0;
                     object.configuration = options.bytes === String ? "" : [];
                 }
                 if (message.type != null && message.hasOwnProperty("type"))
-                    object.type = options.enums === String ? $root.fk_app.QueryType[message.type] : message.type;
+                    object.type = options.enums === String ? $root.fk_app.ModuleQueryType[message.type] : message.type;
                 if (message.errors && message.errors.length) {
                     object.errors = [];
                     for (var j = 0; j < message.errors.length; ++j)
@@ -16159,13 +16071,30 @@
             return ModuleHttpQuery;
         })();
     
+        /**
+         * ModuleReplyType enum.
+         * @enum {string}
+         * @property {number} MODULE_REPLY_NONE=0 MODULE_REPLY_NONE value
+         * @property {number} MODULE_REPLY_SUCCESS=1 MODULE_REPLY_SUCCESS value
+         * @property {number} MODULE_REPLY_BUSY=2 MODULE_REPLY_BUSY value
+         * @property {number} MODULE_REPLY_ERROR=3 MODULE_REPLY_ERROR value
+         */
+        fk_app.ModuleReplyType = (function() {
+            var valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "MODULE_REPLY_NONE"] = 0;
+            values[valuesById[1] = "MODULE_REPLY_SUCCESS"] = 1;
+            values[valuesById[2] = "MODULE_REPLY_BUSY"] = 2;
+            values[valuesById[3] = "MODULE_REPLY_ERROR"] = 3;
+            return values;
+        })();
+    
         fk_app.ModuleHttpReply = (function() {
     
             /**
              * Properties of a ModuleHttpReply.
              * @memberof fk_app
              * @interface IModuleHttpReply
-             * @property {fk_app.ReplyType} [type] ModuleHttpReply type
+             * @property {fk_app.ModuleReplyType} [type] ModuleHttpReply type
              * @property {Array.<fk_app.IError>} [errors] ModuleHttpReply errors
              * @property {Uint8Array} [configuration] ModuleHttpReply configuration
              */
@@ -16187,7 +16116,7 @@
     
             /**
              * ModuleHttpReply type.
-             * @member {fk_app.ReplyType}type
+             * @member {fk_app.ModuleReplyType}type
              * @memberof fk_app.ModuleHttpReply
              * @instance
              */
@@ -16328,19 +16257,6 @@
                     case 1:
                     case 2:
                     case 3:
-                    case 4:
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 11:
-                    case 12:
-                    case 13:
-                    case 14:
-                    case 15:
-                    case 16:
-                    case 17:
-                    case 18:
-                    case 19:
                         break;
                     }
                 if (message.errors != null && message.hasOwnProperty("errors")) {
@@ -16371,73 +16287,21 @@
                     return object;
                 var message = new $root.fk_app.ModuleHttpReply();
                 switch (object.type) {
-                case "REPLY_NONE":
+                case "MODULE_REPLY_NONE":
                 case 0:
                     message.type = 0;
                     break;
-                case "REPLY_SUCCESS":
+                case "MODULE_REPLY_SUCCESS":
                 case 1:
                     message.type = 1;
                     break;
-                case "REPLY_BUSY":
+                case "MODULE_REPLY_BUSY":
                 case 2:
                     message.type = 2;
                     break;
-                case "REPLY_ERROR":
+                case "MODULE_REPLY_ERROR":
                 case 3:
                     message.type = 3;
-                    break;
-                case "REPLY_CAPABILITIES":
-                case 4:
-                    message.type = 4;
-                    break;
-                case "REPLY_LIVE_DATA_POLL":
-                case 8:
-                    message.type = 8;
-                    break;
-                case "REPLY_SCHEDULES":
-                case 9:
-                    message.type = 9;
-                    break;
-                case "REPLY_FILES":
-                case 10:
-                    message.type = 10;
-                    break;
-                case "REPLY_DOWNLOAD_FILE":
-                case 11:
-                    message.type = 11;
-                    break;
-                case "REPLY_RESET":
-                case 12:
-                    message.type = 12;
-                    break;
-                case "REPLY_NETWORK_SETTINGS":
-                case 13:
-                    message.type = 13;
-                    break;
-                case "REPLY_IDENTITY":
-                case 14:
-                    message.type = 14;
-                    break;
-                case "REPLY_STATUS":
-                case 15:
-                    message.type = 15;
-                    break;
-                case "REPLY_MODULE":
-                case 16:
-                    message.type = 16;
-                    break;
-                case "REPLY_METADATA":
-                case 17:
-                    message.type = 17;
-                    break;
-                case "REPLY_READINGS":
-                case 18:
-                    message.type = 18;
-                    break;
-                case "REPLY_NETWORKS":
-                case 19:
-                    message.type = 19;
                     break;
                 }
                 if (object.errors) {
@@ -16474,11 +16338,11 @@
                 if (options.arrays || options.defaults)
                     object.errors = [];
                 if (options.defaults) {
-                    object.type = options.enums === String ? "REPLY_NONE" : 0;
+                    object.type = options.enums === String ? "MODULE_REPLY_NONE" : 0;
                     object.configuration = options.bytes === String ? "" : [];
                 }
                 if (message.type != null && message.hasOwnProperty("type"))
-                    object.type = options.enums === String ? $root.fk_app.ReplyType[message.type] : message.type;
+                    object.type = options.enums === String ? $root.fk_app.ModuleReplyType[message.type] : message.type;
                 if (message.errors && message.errors.length) {
                     object.errors = [];
                     for (var j = 0; j < message.errors.length; ++j)

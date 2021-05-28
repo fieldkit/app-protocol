@@ -6053,11 +6053,19 @@ export namespace fk_app {
         public toJSON(): { [k: string]: any };
     }
 
+    /** ModuleQueryType enum. */
+    enum ModuleQueryType {
+        MODULE_QUERY_NONE = 0,
+        MODULE_QUERY_STATUS = 1,
+        MODULE_QUERY_CONFIGURE = 2,
+        MODULE_QUERY_RESET = 3
+    }
+
     /** Properties of a ModuleHttpQuery. */
     interface IModuleHttpQuery {
 
         /** ModuleHttpQuery type */
-        type?: fk_app.QueryType;
+        type?: fk_app.ModuleQueryType;
 
         /** ModuleHttpQuery errors */
         errors?: fk_app.IError[];
@@ -6076,7 +6084,7 @@ export namespace fk_app {
         constructor(properties?: fk_app.IModuleHttpQuery);
 
         /** ModuleHttpQuery type. */
-        public type: fk_app.QueryType;
+        public type: fk_app.ModuleQueryType;
 
         /** ModuleHttpQuery errors. */
         public errors: fk_app.IError[];
@@ -6155,11 +6163,19 @@ export namespace fk_app {
         public toJSON(): { [k: string]: any };
     }
 
+    /** ModuleReplyType enum. */
+    enum ModuleReplyType {
+        MODULE_REPLY_NONE = 0,
+        MODULE_REPLY_SUCCESS = 1,
+        MODULE_REPLY_BUSY = 2,
+        MODULE_REPLY_ERROR = 3
+    }
+
     /** Properties of a ModuleHttpReply. */
     interface IModuleHttpReply {
 
         /** ModuleHttpReply type */
-        type?: fk_app.ReplyType;
+        type?: fk_app.ModuleReplyType;
 
         /** ModuleHttpReply errors */
         errors?: fk_app.IError[];
@@ -6178,7 +6194,7 @@ export namespace fk_app {
         constructor(properties?: fk_app.IModuleHttpReply);
 
         /** ModuleHttpReply type. */
-        public type: fk_app.ReplyType;
+        public type: fk_app.ModuleReplyType;
 
         /** ModuleHttpReply errors. */
         public errors: fk_app.IError[];

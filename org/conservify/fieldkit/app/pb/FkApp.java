@@ -885,6 +885,220 @@ public final class FkApp {
   }
 
   /**
+   * Protobuf enum {@code fk_app.ModuleQueryType}
+   */
+  public enum ModuleQueryType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>MODULE_QUERY_NONE = 0;</code>
+     */
+    MODULE_QUERY_NONE(0),
+    /**
+     * <code>MODULE_QUERY_STATUS = 1;</code>
+     */
+    MODULE_QUERY_STATUS(1),
+    /**
+     * <code>MODULE_QUERY_CONFIGURE = 2;</code>
+     */
+    MODULE_QUERY_CONFIGURE(2),
+    /**
+     * <code>MODULE_QUERY_RESET = 3;</code>
+     */
+    MODULE_QUERY_RESET(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>MODULE_QUERY_NONE = 0;</code>
+     */
+    public static final int MODULE_QUERY_NONE_VALUE = 0;
+    /**
+     * <code>MODULE_QUERY_STATUS = 1;</code>
+     */
+    public static final int MODULE_QUERY_STATUS_VALUE = 1;
+    /**
+     * <code>MODULE_QUERY_CONFIGURE = 2;</code>
+     */
+    public static final int MODULE_QUERY_CONFIGURE_VALUE = 2;
+    /**
+     * <code>MODULE_QUERY_RESET = 3;</code>
+     */
+    public static final int MODULE_QUERY_RESET_VALUE = 3;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ModuleQueryType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ModuleQueryType forNumber(int value) {
+      switch (value) {
+        case 0: return MODULE_QUERY_NONE;
+        case 1: return MODULE_QUERY_STATUS;
+        case 2: return MODULE_QUERY_CONFIGURE;
+        case 3: return MODULE_QUERY_RESET;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ModuleQueryType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ModuleQueryType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ModuleQueryType>() {
+            @java.lang.Override
+            public ModuleQueryType findValueByNumber(int number) {
+              return ModuleQueryType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ModuleQueryTypeVerifier.INSTANCE;
+    }
+
+    private static final class ModuleQueryTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ModuleQueryTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ModuleQueryType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private ModuleQueryType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:fk_app.ModuleQueryType)
+  }
+
+  /**
+   * Protobuf enum {@code fk_app.ModuleReplyType}
+   */
+  public enum ModuleReplyType
+      implements com.google.protobuf.Internal.EnumLite {
+    /**
+     * <code>MODULE_REPLY_NONE = 0;</code>
+     */
+    MODULE_REPLY_NONE(0),
+    /**
+     * <code>MODULE_REPLY_SUCCESS = 1;</code>
+     */
+    MODULE_REPLY_SUCCESS(1),
+    /**
+     * <code>MODULE_REPLY_BUSY = 2;</code>
+     */
+    MODULE_REPLY_BUSY(2),
+    /**
+     * <code>MODULE_REPLY_ERROR = 3;</code>
+     */
+    MODULE_REPLY_ERROR(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>MODULE_REPLY_NONE = 0;</code>
+     */
+    public static final int MODULE_REPLY_NONE_VALUE = 0;
+    /**
+     * <code>MODULE_REPLY_SUCCESS = 1;</code>
+     */
+    public static final int MODULE_REPLY_SUCCESS_VALUE = 1;
+    /**
+     * <code>MODULE_REPLY_BUSY = 2;</code>
+     */
+    public static final int MODULE_REPLY_BUSY_VALUE = 2;
+    /**
+     * <code>MODULE_REPLY_ERROR = 3;</code>
+     */
+    public static final int MODULE_REPLY_ERROR_VALUE = 3;
+
+
+    @java.lang.Override
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ModuleReplyType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ModuleReplyType forNumber(int value) {
+      switch (value) {
+        case 0: return MODULE_REPLY_NONE;
+        case 1: return MODULE_REPLY_SUCCESS;
+        case 2: return MODULE_REPLY_BUSY;
+        case 3: return MODULE_REPLY_ERROR;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ModuleReplyType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ModuleReplyType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ModuleReplyType>() {
+            @java.lang.Override
+            public ModuleReplyType findValueByNumber(int number) {
+              return ModuleReplyType.forNumber(number);
+            }
+          };
+
+    public static com.google.protobuf.Internal.EnumVerifier 
+        internalGetVerifier() {
+      return ModuleReplyTypeVerifier.INSTANCE;
+    }
+
+    private static final class ModuleReplyTypeVerifier implements 
+         com.google.protobuf.Internal.EnumVerifier { 
+            static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new ModuleReplyTypeVerifier();
+            @java.lang.Override
+            public boolean isInRange(int number) {
+              return ModuleReplyType.forNumber(number) != null;
+            }
+          };
+
+    private final int value;
+
+    private ModuleReplyType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:fk_app.ModuleReplyType)
+  }
+
+  /**
    * Protobuf enum {@code fk_app.UdpStatus}
    */
   public enum UdpStatus
@@ -32737,15 +32951,15 @@ public final class FkApp {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>.fk_app.QueryType type = 1;</code>
+     * <code>.fk_app.ModuleQueryType type = 1;</code>
      * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
-     * <code>.fk_app.QueryType type = 1;</code>
+     * <code>.fk_app.ModuleQueryType type = 1;</code>
      * @return The type.
      */
-    org.conservify.fieldkit.app.pb.FkApp.QueryType getType();
+    org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType getType();
 
     /**
      * <code>repeated .fk_app.Error errors = 2;</code>
@@ -32782,7 +32996,7 @@ public final class FkApp {
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
     /**
-     * <code>.fk_app.QueryType type = 1;</code>
+     * <code>.fk_app.ModuleQueryType type = 1;</code>
      * @return The enum numeric value on the wire for type.
      */
     @java.lang.Override
@@ -32790,31 +33004,31 @@ public final class FkApp {
       return type_;
     }
     /**
-     * <code>.fk_app.QueryType type = 1;</code>
+     * <code>.fk_app.ModuleQueryType type = 1;</code>
      * @return The type.
      */
     @java.lang.Override
-    public org.conservify.fieldkit.app.pb.FkApp.QueryType getType() {
-      org.conservify.fieldkit.app.pb.FkApp.QueryType result = org.conservify.fieldkit.app.pb.FkApp.QueryType.forNumber(type_);
-      return result == null ? org.conservify.fieldkit.app.pb.FkApp.QueryType.UNRECOGNIZED : result;
+    public org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType getType() {
+      org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType result = org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType.forNumber(type_);
+      return result == null ? org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.fk_app.QueryType type = 1;</code>
+     * <code>.fk_app.ModuleQueryType type = 1;</code>
      * @param value The enum numeric value on the wire for type to set.
      */
     private void setTypeValue(int value) {
         type_ = value;
     }
     /**
-     * <code>.fk_app.QueryType type = 1;</code>
+     * <code>.fk_app.ModuleQueryType type = 1;</code>
      * @param value The type to set.
      */
-    private void setType(org.conservify.fieldkit.app.pb.FkApp.QueryType value) {
+    private void setType(org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType value) {
       type_ = value.getNumber();
       
     }
     /**
-     * <code>.fk_app.QueryType type = 1;</code>
+     * <code>.fk_app.ModuleQueryType type = 1;</code>
      */
     private void clearType() {
       
@@ -33037,7 +33251,7 @@ public final class FkApp {
 
 
       /**
-       * <code>.fk_app.QueryType type = 1;</code>
+       * <code>.fk_app.ModuleQueryType type = 1;</code>
        * @return The enum numeric value on the wire for type.
        */
       @java.lang.Override
@@ -33045,7 +33259,7 @@ public final class FkApp {
         return instance.getTypeValue();
       }
       /**
-       * <code>.fk_app.QueryType type = 1;</code>
+       * <code>.fk_app.ModuleQueryType type = 1;</code>
        * @param value The type to set.
        * @return This builder for chaining.
        */
@@ -33055,25 +33269,25 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>.fk_app.QueryType type = 1;</code>
+       * <code>.fk_app.ModuleQueryType type = 1;</code>
        * @return The type.
        */
       @java.lang.Override
-      public org.conservify.fieldkit.app.pb.FkApp.QueryType getType() {
+      public org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType getType() {
         return instance.getType();
       }
       /**
-       * <code>.fk_app.QueryType type = 1;</code>
+       * <code>.fk_app.ModuleQueryType type = 1;</code>
        * @param value The enum numeric value on the wire for type to set.
        * @return This builder for chaining.
        */
-      public Builder setType(org.conservify.fieldkit.app.pb.FkApp.QueryType value) {
+      public Builder setType(org.conservify.fieldkit.app.pb.FkApp.ModuleQueryType value) {
         copyOnWrite();
         instance.setType(value);
         return this;
       }
       /**
-       * <code>.fk_app.QueryType type = 1;</code>
+       * <code>.fk_app.ModuleQueryType type = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearType() {
@@ -33295,15 +33509,15 @@ public final class FkApp {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>.fk_app.ReplyType type = 1;</code>
+     * <code>.fk_app.ModuleReplyType type = 1;</code>
      * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
-     * <code>.fk_app.ReplyType type = 1;</code>
+     * <code>.fk_app.ModuleReplyType type = 1;</code>
      * @return The type.
      */
-    org.conservify.fieldkit.app.pb.FkApp.ReplyType getType();
+    org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType getType();
 
     /**
      * <code>repeated .fk_app.Error errors = 2;</code>
@@ -33340,7 +33554,7 @@ public final class FkApp {
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
     /**
-     * <code>.fk_app.ReplyType type = 1;</code>
+     * <code>.fk_app.ModuleReplyType type = 1;</code>
      * @return The enum numeric value on the wire for type.
      */
     @java.lang.Override
@@ -33348,31 +33562,31 @@ public final class FkApp {
       return type_;
     }
     /**
-     * <code>.fk_app.ReplyType type = 1;</code>
+     * <code>.fk_app.ModuleReplyType type = 1;</code>
      * @return The type.
      */
     @java.lang.Override
-    public org.conservify.fieldkit.app.pb.FkApp.ReplyType getType() {
-      org.conservify.fieldkit.app.pb.FkApp.ReplyType result = org.conservify.fieldkit.app.pb.FkApp.ReplyType.forNumber(type_);
-      return result == null ? org.conservify.fieldkit.app.pb.FkApp.ReplyType.UNRECOGNIZED : result;
+    public org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType getType() {
+      org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType result = org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType.forNumber(type_);
+      return result == null ? org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.fk_app.ReplyType type = 1;</code>
+     * <code>.fk_app.ModuleReplyType type = 1;</code>
      * @param value The enum numeric value on the wire for type to set.
      */
     private void setTypeValue(int value) {
         type_ = value;
     }
     /**
-     * <code>.fk_app.ReplyType type = 1;</code>
+     * <code>.fk_app.ModuleReplyType type = 1;</code>
      * @param value The type to set.
      */
-    private void setType(org.conservify.fieldkit.app.pb.FkApp.ReplyType value) {
+    private void setType(org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType value) {
       type_ = value.getNumber();
       
     }
     /**
-     * <code>.fk_app.ReplyType type = 1;</code>
+     * <code>.fk_app.ModuleReplyType type = 1;</code>
      */
     private void clearType() {
       
@@ -33595,7 +33809,7 @@ public final class FkApp {
 
 
       /**
-       * <code>.fk_app.ReplyType type = 1;</code>
+       * <code>.fk_app.ModuleReplyType type = 1;</code>
        * @return The enum numeric value on the wire for type.
        */
       @java.lang.Override
@@ -33603,7 +33817,7 @@ public final class FkApp {
         return instance.getTypeValue();
       }
       /**
-       * <code>.fk_app.ReplyType type = 1;</code>
+       * <code>.fk_app.ModuleReplyType type = 1;</code>
        * @param value The type to set.
        * @return This builder for chaining.
        */
@@ -33613,25 +33827,25 @@ public final class FkApp {
         return this;
       }
       /**
-       * <code>.fk_app.ReplyType type = 1;</code>
+       * <code>.fk_app.ModuleReplyType type = 1;</code>
        * @return The type.
        */
       @java.lang.Override
-      public org.conservify.fieldkit.app.pb.FkApp.ReplyType getType() {
+      public org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType getType() {
         return instance.getType();
       }
       /**
-       * <code>.fk_app.ReplyType type = 1;</code>
+       * <code>.fk_app.ModuleReplyType type = 1;</code>
        * @param value The enum numeric value on the wire for type to set.
        * @return This builder for chaining.
        */
-      public Builder setType(org.conservify.fieldkit.app.pb.FkApp.ReplyType value) {
+      public Builder setType(org.conservify.fieldkit.app.pb.FkApp.ModuleReplyType value) {
         copyOnWrite();
         instance.setType(value);
         return this;
       }
       /**
-       * <code>.fk_app.ReplyType type = 1;</code>
+       * <code>.fk_app.ModuleReplyType type = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearType() {
