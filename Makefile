@@ -1,5 +1,5 @@
 PROTOC_VERSION = 3.11.2
-PROTOC_BIN = build/bin
+PROTOC_BIN = $(shell pwd)/build/bin
 PROTOC = $(PROTOC_BIN)/protoc
 PROTO_NAME = fk-app
 JAVA_DEP = org/conservify/fieldkit/app/pb/FkApp.java
@@ -16,7 +16,9 @@ $(PROTO_NAME).d.ts: $(PROTO_NAME).js
 	node_modules/.bin/pbts -o $(PROTO_NAME).d.ts $(PROTO_NAME).js
 
 src/$(PROTO_NAME).pb.c src/$(PROTO_NAME).pb.h: build $(PROTO_NAME).proto
-	PATH=$(PATH):$(PROTOC_BIN) $(PROTOC) --plugin=protoc-gen-nanopb=build/nanopb/generator/protoc-gen-nanopb --nanopb_out=./src $(PROTO_NAME).proto
+	PATH=$(PATH):$(PROTOC_BIN) PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python build/nanopb/generator/nanopb_generator.py $(PROTO_NAME).proto
+	mkdir -p src
+	mv $(PROTO_NAME).pb.[ch] src
 
 $(PROTO_NAME)_pb2.py: build $(PROTO_NAME).proto
 	PATH=$(PATH):$(PROTOC_BIN) $(PROTOC) --python_out=./ $(PROTO_NAME).proto
