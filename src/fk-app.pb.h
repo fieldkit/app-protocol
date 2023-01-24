@@ -443,6 +443,7 @@ typedef struct _fk_app_SensorCapabilities {
     uint32_t flags;
     bool has_value;
     fk_app_LiveValue value;
+    pb_callback_t uncalibratedUnitOfMeasure;
 } fk_app_SensorCapabilities;
 
 typedef struct _fk_app_Transmission { 
@@ -623,7 +624,7 @@ extern "C" {
 /* Initializer values for message structs */
 #define fk_app_QueryCapabilities_init_default    {0, 0}
 #define fk_app_LiveValue_init_default            {0, 0, 0}
-#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_default}
+#define fk_app_SensorCapabilities_init_default   {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_default, {{NULL}, NULL}}
 #define fk_app_ModuleHeader_init_default         {0, 0, 0}
 #define fk_app_ModuleCapabilities_init_default   {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_default, {{NULL}, NULL}}
 #define fk_app_Capabilities_init_default         {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -680,7 +681,7 @@ extern "C" {
 #define fk_app_UdpMessage_init_default           {{{NULL}, NULL}, _fk_app_UdpStatus_MIN, 0}
 #define fk_app_QueryCapabilities_init_zero       {0, 0}
 #define fk_app_LiveValue_init_zero               {0, 0, 0}
-#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_zero}
+#define fk_app_SensorCapabilities_init_zero      {0, 0, {{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}, 0, false, fk_app_LiveValue_init_zero, {{NULL}, NULL}}
 #define fk_app_ModuleHeader_init_zero            {0, 0, 0}
 #define fk_app_ModuleCapabilities_init_zero      {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, 0, {{NULL}, NULL}, false, fk_app_ModuleHeader_init_zero, {{NULL}, NULL}}
 #define fk_app_Capabilities_init_zero            {0, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
@@ -923,6 +924,7 @@ extern "C" {
 #define fk_app_SensorCapabilities_path_tag       6
 #define fk_app_SensorCapabilities_flags_tag      7
 #define fk_app_SensorCapabilities_value_tag      8
+#define fk_app_SensorCapabilities_uncalibratedUnitOfMeasure_tag 9
 #define fk_app_Transmission_wifi_tag             1
 #define fk_app_HttpQuery_type_tag                1
 #define fk_app_HttpQuery_identity_tag            2
@@ -1011,7 +1013,8 @@ X(a, STATIC,   SINGULAR, UINT32,   frequency,         4) \
 X(a, CALLBACK, SINGULAR, STRING,   unitOfMeasure,     5) \
 X(a, CALLBACK, SINGULAR, STRING,   path,              6) \
 X(a, STATIC,   SINGULAR, UINT32,   flags,             7) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  value,             8)
+X(a, STATIC,   OPTIONAL, MESSAGE,  value,             8) \
+X(a, CALLBACK, SINGULAR, STRING,   uncalibratedUnitOfMeasure,   9)
 #define fk_app_SensorCapabilities_CALLBACK pb_default_field_callback
 #define fk_app_SensorCapabilities_DEFAULT NULL
 #define fk_app_SensorCapabilities_value_MSGTYPE fk_app_LiveValue
