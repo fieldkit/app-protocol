@@ -32,7 +32,8 @@ $(PROTO_NAME).pb.go: build $(PROTO_NAME).proto
 	mv github.com/*/*/*.go .
 
 $(JAVA_DEP): build $(PROTO_NAME).proto
-	$(PROTOC) --java_out=lite:./ $(PROTO_NAME).proto
+	dart pub global activate protoc_plugin
+	PATH=$(PATH):$(HOME)/.pub-cache/bin $(PROTOC) --java_out=lite:./ $(PROTO_NAME).proto
 
 build: protoc-$(PROTOC_VERSION)-linux-x86_64.zip
 	mkdir -p build
