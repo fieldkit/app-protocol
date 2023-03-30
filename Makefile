@@ -24,7 +24,8 @@ $(PROTO_NAME)_pb2.py: build $(PROTO_NAME).proto
 	PATH=$(PATH):$(PROTOC_BIN) $(PROTOC) --python_out=./ $(PROTO_NAME).proto
 
 $(PROTO_NAME).dart: build $(PROTO_NAME).proto
-	PATH=$(PATH):$(PROTOC_BIN) $(PROTOC) --dart_out=./ $(PROTO_NAME).proto
+	dart pub global activate protoc_plugin
+	PATH=$(PATH):$(PROTOC_BIN):$(HOME)/.pub-cache/bin $(PROTOC) --dart_out=./ $(PROTO_NAME).proto
 
 $(PROTO_NAME).pb.go: build $(PROTO_NAME).proto
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
@@ -32,8 +33,7 @@ $(PROTO_NAME).pb.go: build $(PROTO_NAME).proto
 	mv github.com/*/*/*.go .
 
 $(JAVA_DEP): build $(PROTO_NAME).proto
-	dart pub global activate protoc_plugin
-	PATH=$(PATH):$(HOME)/.pub-cache/bin $(PROTOC) --java_out=lite:./ $(PROTO_NAME).proto
+	$(PROTOC) --java_out=lite:./ $(PROTO_NAME).proto
 
 build: protoc-$(PROTOC_VERSION)-linux-x86_64.zip
 	mkdir -p build
