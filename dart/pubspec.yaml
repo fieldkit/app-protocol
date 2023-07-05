@@ -3,4 +3,4 @@ version: 1.0.0
 repository: https://github.com/fieldkit/app-protocol/
 
 environment:
-  sdk: ^3.0.5
+  sdk: ">=2.18.0"
