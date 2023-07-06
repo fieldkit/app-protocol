@@ -1,17 +1,21 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: fk-app.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-// ignore_for_file: UNDEFINED_SHOWN_NAME
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:core' as $core;
+
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class QueryFlags extends $pb.ProtobufEnum {
-  static const QueryFlags QUERY_FLAGS_NONE = QueryFlags._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_FLAGS_NONE');
-  static const QueryFlags QUERY_FLAGS_LOGS = QueryFlags._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_FLAGS_LOGS');
+  static const QueryFlags QUERY_FLAGS_NONE = QueryFlags._(0, _omitEnumNames ? '' : 'QUERY_FLAGS_NONE');
+  static const QueryFlags QUERY_FLAGS_LOGS = QueryFlags._(1, _omitEnumNames ? '' : 'QUERY_FLAGS_LOGS');
 
   static const $core.List<QueryFlags> values = <QueryFlags> [
     QUERY_FLAGS_NONE,
@@ -25,31 +29,31 @@ class QueryFlags extends $pb.ProtobufEnum {
 }
 
 class QueryType extends $pb.ProtobufEnum {
-  static const QueryType QUERY_NONE = QueryType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_NONE');
-  static const QueryType QUERY_CAPABILITIES = QueryType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_CAPABILITIES');
-  static const QueryType QUERY_CONFIGURE_SENSOR = QueryType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_CONFIGURE_SENSOR');
-  static const QueryType QUERY_LIVE_DATA_POLL = QueryType._(7, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_LIVE_DATA_POLL');
-  static const QueryType QUERY_SCHEDULES = QueryType._(8, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_SCHEDULES');
-  static const QueryType QUERY_CONFIGURE_SCHEDULES = QueryType._(9, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_CONFIGURE_SCHEDULES');
-  static const QueryType QUERY_FILES_SD = QueryType._(10, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_FILES_SD');
-  static const QueryType QUERY_DOWNLOAD_FILE = QueryType._(11, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_DOWNLOAD_FILE');
-  static const QueryType QUERY_ERASE_FILE = QueryType._(12, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_ERASE_FILE');
-  static const QueryType QUERY_RESET = QueryType._(13, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_RESET');
-  static const QueryType QUERY_NETWORK_SETTINGS = QueryType._(14, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_NETWORK_SETTINGS');
-  static const QueryType QUERY_CONFIGURE_NETWORK_SETTINGS = QueryType._(15, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_CONFIGURE_NETWORK_SETTINGS');
-  static const QueryType QUERY_SCAN_MODULES = QueryType._(16, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_SCAN_MODULES');
-  static const QueryType QUERY_CONFIGURE_IDENTITY = QueryType._(17, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_CONFIGURE_IDENTITY');
-  static const QueryType QUERY_STATUS = QueryType._(18, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_STATUS');
-  static const QueryType QUERY_MODULE = QueryType._(19, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_MODULE');
-  static const QueryType QUERY_METADATA = QueryType._(20, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_METADATA');
-  static const QueryType QUERY_FORMAT = QueryType._(21, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_FORMAT');
-  static const QueryType QUERY_GET_READINGS = QueryType._(22, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_GET_READINGS');
-  static const QueryType QUERY_TAKE_READINGS = QueryType._(23, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_TAKE_READINGS');
-  static const QueryType QUERY_RECORDING_CONTROL = QueryType._(24, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_RECORDING_CONTROL');
-  static const QueryType QUERY_CONFIGURE = QueryType._(25, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_CONFIGURE');
-  static const QueryType QUERY_SCAN_NETWORKS = QueryType._(26, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_SCAN_NETWORKS');
-  static const QueryType QUERY_FILES_SPI = QueryType._(27, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_FILES_SPI');
-  static const QueryType QUERY_FILES_QSPI = QueryType._(28, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'QUERY_FILES_QSPI');
+  static const QueryType QUERY_NONE = QueryType._(0, _omitEnumNames ? '' : 'QUERY_NONE');
+  static const QueryType QUERY_CAPABILITIES = QueryType._(1, _omitEnumNames ? '' : 'QUERY_CAPABILITIES');
+  static const QueryType QUERY_CONFIGURE_SENSOR = QueryType._(2, _omitEnumNames ? '' : 'QUERY_CONFIGURE_SENSOR');
+  static const QueryType QUERY_LIVE_DATA_POLL = QueryType._(7, _omitEnumNames ? '' : 'QUERY_LIVE_DATA_POLL');
+  static const QueryType QUERY_SCHEDULES = QueryType._(8, _omitEnumNames ? '' : 'QUERY_SCHEDULES');
+  static const QueryType QUERY_CONFIGURE_SCHEDULES = QueryType._(9, _omitEnumNames ? '' : 'QUERY_CONFIGURE_SCHEDULES');
+  static const QueryType QUERY_FILES_SD = QueryType._(10, _omitEnumNames ? '' : 'QUERY_FILES_SD');
+  static const QueryType QUERY_DOWNLOAD_FILE = QueryType._(11, _omitEnumNames ? '' : 'QUERY_DOWNLOAD_FILE');
+  static const QueryType QUERY_ERASE_FILE = QueryType._(12, _omitEnumNames ? '' : 'QUERY_ERASE_FILE');
+  static const QueryType QUERY_RESET = QueryType._(13, _omitEnumNames ? '' : 'QUERY_RESET');
+  static const QueryType QUERY_NETWORK_SETTINGS = QueryType._(14, _omitEnumNames ? '' : 'QUERY_NETWORK_SETTINGS');
+  static const QueryType QUERY_CONFIGURE_NETWORK_SETTINGS = QueryType._(15, _omitEnumNames ? '' : 'QUERY_CONFIGURE_NETWORK_SETTINGS');
+  static const QueryType QUERY_SCAN_MODULES = QueryType._(16, _omitEnumNames ? '' : 'QUERY_SCAN_MODULES');
+  static const QueryType QUERY_CONFIGURE_IDENTITY = QueryType._(17, _omitEnumNames ? '' : 'QUERY_CONFIGURE_IDENTITY');
+  static const QueryType QUERY_STATUS = QueryType._(18, _omitEnumNames ? '' : 'QUERY_STATUS');
+  static const QueryType QUERY_MODULE = QueryType._(19, _omitEnumNames ? '' : 'QUERY_MODULE');
+  static const QueryType QUERY_METADATA = QueryType._(20, _omitEnumNames ? '' : 'QUERY_METADATA');
+  static const QueryType QUERY_FORMAT = QueryType._(21, _omitEnumNames ? '' : 'QUERY_FORMAT');
+  static const QueryType QUERY_GET_READINGS = QueryType._(22, _omitEnumNames ? '' : 'QUERY_GET_READINGS');
+  static const QueryType QUERY_TAKE_READINGS = QueryType._(23, _omitEnumNames ? '' : 'QUERY_TAKE_READINGS');
+  static const QueryType QUERY_RECORDING_CONTROL = QueryType._(24, _omitEnumNames ? '' : 'QUERY_RECORDING_CONTROL');
+  static const QueryType QUERY_CONFIGURE = QueryType._(25, _omitEnumNames ? '' : 'QUERY_CONFIGURE');
+  static const QueryType QUERY_SCAN_NETWORKS = QueryType._(26, _omitEnumNames ? '' : 'QUERY_SCAN_NETWORKS');
+  static const QueryType QUERY_FILES_SPI = QueryType._(27, _omitEnumNames ? '' : 'QUERY_FILES_SPI');
+  static const QueryType QUERY_FILES_QSPI = QueryType._(28, _omitEnumNames ? '' : 'QUERY_FILES_QSPI');
 
   static const $core.List<QueryType> values = <QueryType> [
     QUERY_NONE,
@@ -86,23 +90,23 @@ class QueryType extends $pb.ProtobufEnum {
 }
 
 class ReplyType extends $pb.ProtobufEnum {
-  static const ReplyType REPLY_NONE = ReplyType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_NONE');
-  static const ReplyType REPLY_SUCCESS = ReplyType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_SUCCESS');
-  static const ReplyType REPLY_BUSY = ReplyType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_BUSY');
-  static const ReplyType REPLY_ERROR = ReplyType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_ERROR');
-  static const ReplyType REPLY_CAPABILITIES = ReplyType._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_CAPABILITIES');
-  static const ReplyType REPLY_LIVE_DATA_POLL = ReplyType._(8, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_LIVE_DATA_POLL');
-  static const ReplyType REPLY_SCHEDULES = ReplyType._(9, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_SCHEDULES');
-  static const ReplyType REPLY_FILES = ReplyType._(10, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_FILES');
-  static const ReplyType REPLY_DOWNLOAD_FILE = ReplyType._(11, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_DOWNLOAD_FILE');
-  static const ReplyType REPLY_RESET = ReplyType._(12, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_RESET');
-  static const ReplyType REPLY_NETWORK_SETTINGS = ReplyType._(13, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_NETWORK_SETTINGS');
-  static const ReplyType REPLY_IDENTITY = ReplyType._(14, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_IDENTITY');
-  static const ReplyType REPLY_STATUS = ReplyType._(15, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_STATUS');
-  static const ReplyType REPLY_MODULE = ReplyType._(16, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_MODULE');
-  static const ReplyType REPLY_METADATA = ReplyType._(17, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_METADATA');
-  static const ReplyType REPLY_READINGS = ReplyType._(18, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_READINGS');
-  static const ReplyType REPLY_NETWORKS = ReplyType._(19, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REPLY_NETWORKS');
+  static const ReplyType REPLY_NONE = ReplyType._(0, _omitEnumNames ? '' : 'REPLY_NONE');
+  static const ReplyType REPLY_SUCCESS = ReplyType._(1, _omitEnumNames ? '' : 'REPLY_SUCCESS');
+  static const ReplyType REPLY_BUSY = ReplyType._(2, _omitEnumNames ? '' : 'REPLY_BUSY');
+  static const ReplyType REPLY_ERROR = ReplyType._(3, _omitEnumNames ? '' : 'REPLY_ERROR');
+  static const ReplyType REPLY_CAPABILITIES = ReplyType._(4, _omitEnumNames ? '' : 'REPLY_CAPABILITIES');
+  static const ReplyType REPLY_LIVE_DATA_POLL = ReplyType._(8, _omitEnumNames ? '' : 'REPLY_LIVE_DATA_POLL');
+  static const ReplyType REPLY_SCHEDULES = ReplyType._(9, _omitEnumNames ? '' : 'REPLY_SCHEDULES');
+  static const ReplyType REPLY_FILES = ReplyType._(10, _omitEnumNames ? '' : 'REPLY_FILES');
+  static const ReplyType REPLY_DOWNLOAD_FILE = ReplyType._(11, _omitEnumNames ? '' : 'REPLY_DOWNLOAD_FILE');
+  static const ReplyType REPLY_RESET = ReplyType._(12, _omitEnumNames ? '' : 'REPLY_RESET');
+  static const ReplyType REPLY_NETWORK_SETTINGS = ReplyType._(13, _omitEnumNames ? '' : 'REPLY_NETWORK_SETTINGS');
+  static const ReplyType REPLY_IDENTITY = ReplyType._(14, _omitEnumNames ? '' : 'REPLY_IDENTITY');
+  static const ReplyType REPLY_STATUS = ReplyType._(15, _omitEnumNames ? '' : 'REPLY_STATUS');
+  static const ReplyType REPLY_MODULE = ReplyType._(16, _omitEnumNames ? '' : 'REPLY_MODULE');
+  static const ReplyType REPLY_METADATA = ReplyType._(17, _omitEnumNames ? '' : 'REPLY_METADATA');
+  static const ReplyType REPLY_READINGS = ReplyType._(18, _omitEnumNames ? '' : 'REPLY_READINGS');
+  static const ReplyType REPLY_NETWORKS = ReplyType._(19, _omitEnumNames ? '' : 'REPLY_NETWORKS');
 
   static const $core.List<ReplyType> values = <ReplyType> [
     REPLY_NONE,
@@ -131,9 +135,9 @@ class ReplyType extends $pb.ProtobufEnum {
 }
 
 class DownloadFlags extends $pb.ProtobufEnum {
-  static const DownloadFlags DOWNLOAD_FLAG_NONE = DownloadFlags._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DOWNLOAD_FLAG_NONE');
-  static const DownloadFlags DOWNLOAD_FLAG_METADATA_PREPEND = DownloadFlags._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DOWNLOAD_FLAG_METADATA_PREPEND');
-  static const DownloadFlags DOWNLOAD_FLAG_METADATA_ONLY = DownloadFlags._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DOWNLOAD_FLAG_METADATA_ONLY');
+  static const DownloadFlags DOWNLOAD_FLAG_NONE = DownloadFlags._(0, _omitEnumNames ? '' : 'DOWNLOAD_FLAG_NONE');
+  static const DownloadFlags DOWNLOAD_FLAG_METADATA_PREPEND = DownloadFlags._(1, _omitEnumNames ? '' : 'DOWNLOAD_FLAG_METADATA_PREPEND');
+  static const DownloadFlags DOWNLOAD_FLAG_METADATA_ONLY = DownloadFlags._(2, _omitEnumNames ? '' : 'DOWNLOAD_FLAG_METADATA_ONLY');
 
   static const $core.List<DownloadFlags> values = <DownloadFlags> [
     DOWNLOAD_FLAG_NONE,
@@ -148,8 +152,8 @@ class DownloadFlags extends $pb.ProtobufEnum {
 }
 
 class ModuleFlags extends $pb.ProtobufEnum {
-  static const ModuleFlags MODULE_FLAG_NONE = ModuleFlags._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_FLAG_NONE');
-  static const ModuleFlags MODULE_FLAG_INTERNAL = ModuleFlags._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_FLAG_INTERNAL');
+  static const ModuleFlags MODULE_FLAG_NONE = ModuleFlags._(0, _omitEnumNames ? '' : 'MODULE_FLAG_NONE');
+  static const ModuleFlags MODULE_FLAG_INTERNAL = ModuleFlags._(1, _omitEnumNames ? '' : 'MODULE_FLAG_INTERNAL');
 
   static const $core.List<ModuleFlags> values = <ModuleFlags> [
     MODULE_FLAG_NONE,
@@ -163,7 +167,7 @@ class ModuleFlags extends $pb.ProtobufEnum {
 }
 
 class SensorFlags extends $pb.ProtobufEnum {
-  static const SensorFlags SENSOR_FLAG_NONE = SensorFlags._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SENSOR_FLAG_NONE');
+  static const SensorFlags SENSOR_FLAG_NONE = SensorFlags._(0, _omitEnumNames ? '' : 'SENSOR_FLAG_NONE');
 
   static const $core.List<SensorFlags> values = <SensorFlags> [
     SENSOR_FLAG_NONE,
@@ -176,10 +180,10 @@ class SensorFlags extends $pb.ProtobufEnum {
 }
 
 class ModuleQueryType extends $pb.ProtobufEnum {
-  static const ModuleQueryType MODULE_QUERY_NONE = ModuleQueryType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_QUERY_NONE');
-  static const ModuleQueryType MODULE_QUERY_STATUS = ModuleQueryType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_QUERY_STATUS');
-  static const ModuleQueryType MODULE_QUERY_CONFIGURE = ModuleQueryType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_QUERY_CONFIGURE');
-  static const ModuleQueryType MODULE_QUERY_RESET = ModuleQueryType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_QUERY_RESET');
+  static const ModuleQueryType MODULE_QUERY_NONE = ModuleQueryType._(0, _omitEnumNames ? '' : 'MODULE_QUERY_NONE');
+  static const ModuleQueryType MODULE_QUERY_STATUS = ModuleQueryType._(1, _omitEnumNames ? '' : 'MODULE_QUERY_STATUS');
+  static const ModuleQueryType MODULE_QUERY_CONFIGURE = ModuleQueryType._(2, _omitEnumNames ? '' : 'MODULE_QUERY_CONFIGURE');
+  static const ModuleQueryType MODULE_QUERY_RESET = ModuleQueryType._(3, _omitEnumNames ? '' : 'MODULE_QUERY_RESET');
 
   static const $core.List<ModuleQueryType> values = <ModuleQueryType> [
     MODULE_QUERY_NONE,
@@ -195,10 +199,10 @@ class ModuleQueryType extends $pb.ProtobufEnum {
 }
 
 class ModuleReplyType extends $pb.ProtobufEnum {
-  static const ModuleReplyType MODULE_REPLY_NONE = ModuleReplyType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_REPLY_NONE');
-  static const ModuleReplyType MODULE_REPLY_SUCCESS = ModuleReplyType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_REPLY_SUCCESS');
-  static const ModuleReplyType MODULE_REPLY_BUSY = ModuleReplyType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_REPLY_BUSY');
-  static const ModuleReplyType MODULE_REPLY_ERROR = ModuleReplyType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODULE_REPLY_ERROR');
+  static const ModuleReplyType MODULE_REPLY_NONE = ModuleReplyType._(0, _omitEnumNames ? '' : 'MODULE_REPLY_NONE');
+  static const ModuleReplyType MODULE_REPLY_SUCCESS = ModuleReplyType._(1, _omitEnumNames ? '' : 'MODULE_REPLY_SUCCESS');
+  static const ModuleReplyType MODULE_REPLY_BUSY = ModuleReplyType._(2, _omitEnumNames ? '' : 'MODULE_REPLY_BUSY');
+  static const ModuleReplyType MODULE_REPLY_ERROR = ModuleReplyType._(3, _omitEnumNames ? '' : 'MODULE_REPLY_ERROR');
 
   static const $core.List<ModuleReplyType> values = <ModuleReplyType> [
     MODULE_REPLY_NONE,
@@ -214,8 +218,8 @@ class ModuleReplyType extends $pb.ProtobufEnum {
 }
 
 class UdpStatus extends $pb.ProtobufEnum {
-  static const UdpStatus UDP_STATUS_ONLINE = UdpStatus._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UDP_STATUS_ONLINE');
-  static const UdpStatus UDP_STATUS_BYE = UdpStatus._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UDP_STATUS_BYE');
+  static const UdpStatus UDP_STATUS_ONLINE = UdpStatus._(0, _omitEnumNames ? '' : 'UDP_STATUS_ONLINE');
+  static const UdpStatus UDP_STATUS_BYE = UdpStatus._(1, _omitEnumNames ? '' : 'UDP_STATUS_BYE');
 
   static const $core.List<UdpStatus> values = <UdpStatus> [
     UDP_STATUS_ONLINE,
@@ -228,3 +232,5 @@ class UdpStatus extends $pb.ProtobufEnum {
   const UdpStatus._($core.int v, $core.String n) : super(v, n);
 }
 
+
+const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');
